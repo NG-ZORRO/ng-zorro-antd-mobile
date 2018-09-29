@@ -1,0 +1,9 @@
+<div class="title">{{props.title}}</div>
+<DatePickerView [ngStyle]="{height: selfHeight, overflow: 'hidden'}"
+                [mode]="props.mode"
+                [value]="props.value"
+                [locale]="props.datePickerViewLocale"
+                [minDate]="getMinTime(props.value || props.defaultValue || undefined)"
+                [maxDate]="getMaxTime(props.value || props.defaultValue || undefined)"
+                (onValueChange)="onDateChange($event)"
+></DatePickerView>

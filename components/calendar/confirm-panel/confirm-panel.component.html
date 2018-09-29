@@ -1,0 +1,7 @@
+<div *ngIf="props.type === 'range'" class="info">
+  <p>{{props.locale.start}}: <span class="{{!props.startDateTime ? 'grey' : ''}}">{{startTimeStr}}</span></p>
+  <p>{{props.locale.end}}: <span class="{{!props.endDateTime ? 'grey' : ''}}">{{endTimeStr}}</span></p>
+</div>
+<div [ngClass]="btnCls" (click)="triggerConfirm()">
+  {{props.locale.confirm}}
+</div>

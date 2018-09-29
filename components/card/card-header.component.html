@@ -1,0 +1,14 @@
+<div class="{{prefixCls}}-content">
+  <img *ngIf='thumb && !isTemplateRef(thumb)' src="{{thumb}}" [ngStyle]="thumbStyle">
+  <ng-container *ngIf="thumb && isTemplateRef(thumb)" [ngTemplateOutlet]="thumb"></ng-container>
+  <ng-container *ngIf="!isTemplateRef(title);else titleTemplate">{{title}}</ng-container>
+</div>
+<div *ngIf="extra" class="{{prefixCls}}-extra">
+  <ng-container *ngIf="!isTemplateRef(extra);else extraTemplate">{{extra}}</ng-container>
+</div>
+<ng-template #titleTemplate>
+  <ng-template [ngTemplateOutlet]="title"></ng-template>
+</ng-template>
+<ng-template #extraTemplate>
+  <ng-template [ngTemplateOutlet]="extra"></ng-template>
+</ng-template>

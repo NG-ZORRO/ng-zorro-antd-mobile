@@ -1,0 +1,12 @@
+<div role="tab"
+     *ngFor="let value of values; let i = index;"
+     class="{{prefixCls}}-item"
+     [ngClass]="{'am-segment-item-selected' : i === selectedIndex}"
+     [ngStyle]="{'border-color': tintColor, 'color': i === selectedIndex ? '#fff' : tintColor, 'background-color': i === selectedIndex ? tintColor : 'transparent'}"
+     (click)="onClick(i, value)"
+>
+  <div class="{{prefixCls}}-item-inner"
+       [ngStyle]="{'background-color': i === selectedIndex ? tintColor : 'transparent'}"
+  ></div>
+  {{value}}
+</div>

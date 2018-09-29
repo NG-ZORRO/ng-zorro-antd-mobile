@@ -1,0 +1,12 @@
+<Icon *ngIf="iconType"
+      class="{{prefixCls}}-icon"
+      [type]="iconType"
+      [size]="size ==='small' ? 'xxs' : 'md'"
+></Icon>
+<ng-template *ngIf="!iconType" [ngTemplateOutlet]="icon"></ng-template>
+<ng-content select="img"></ng-content>
+<div class="{{prefixCls}}-content">
+  <span>
+    <ng-content></ng-content>
+  </span>
+</div>

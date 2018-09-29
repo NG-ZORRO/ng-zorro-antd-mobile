@@ -1,0 +1,24 @@
+<div class="{{prefixCls}}-icon" [style.color]="selected ? tintColor : unselectedTintColor">
+  <Badge *ngIf="badge" className="{{prefixCls}}-badge tab-badge" [text]="badge">
+    <ng-container *ngIf="isTemplateRef(selected ? selectedIcon : icon); then domTemplate; else imgTemplate">
+    </ng-container>
+  </Badge>
+  <Badge className="{{prefixCls}}-badge tab-badge" [dot]="dot" *ngIf="dot">
+    <ng-container *ngIf="isTemplateRef(selected ? selectedIcon : icon); then domTemplate; else imgTemplate">
+    </ng-container>
+  </Badge>
+  <ng-container *ngIf="!badge && !dot" >
+    <ng-container *ngIf="isTemplateRef(selected ? selectedIcon : icon); then domTemplate; else imgTemplate">
+    </ng-container>
+  </ng-container>
+</div>
+<p class="{{prefixCls}}-title" [style.color]="selected ? tintColor : unselectedTintColor">
+  {{title}}
+</p>
+
+<ng-template #domTemplate>
+  <ng-template [ngTemplateOutlet]="(selected ? selectedIcon : icon)"></ng-template>
+</ng-template>
+<ng-template #imgTemplate >
+  <img src="{{selected ? selectedIcon : icon}}" alt="{{title}}">
+</ng-template>

@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "lib": ["es2015", "dom"]
+  },
+  "files": [
+    "./ng-zorro-antd-mobile.module.ts"
+  ],
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true
+  }
+}

@@ -1,0 +1,12 @@
+<div *ngIf="!closed" [ngClass]="wrapCls" (click)="onClick()">
+  <div class="{{prefixCls}}-text">
+    <ng-content></ng-content>
+  </div>
+  <div *ngIf="closable && !disabled && !small"
+       role="button"
+       class="{{prefixCls}}-close"
+       aria-label="remove tag"
+       (click)="onTagClose()">
+    <Icon aria-hidden="true" [type]="'cross-circle'" [size]="'xs'"></Icon>
+  </div>
+</div>

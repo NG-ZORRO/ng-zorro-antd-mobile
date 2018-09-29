@@ -1,0 +1,18 @@
+<div *ngIf="animating && toast && text && text.length>0">
+  <div class="{{prefixCls}}-content">
+    <span [ngClass]="spinnerClass" aria-hidden="'true'"></span>
+    <span class="{{prefixCls}}-toast">{{text}}</span>
+  </div>
+</div>
+<div *ngIf="animating && toast && !text">
+  <div class="{{prefixCls}}-content">
+    <span [ngClass]="spinnerClass" aria-label="'Loading'"></span>
+  </div>
+</div>
+<div *ngIf="animating && !toast && text && text.length>0">
+  <span [ngClass]="spinnerClass" aria-hidden="true"></span>
+  <span class="{{prefixCls}}-tip">{{text}}</span>
+</div>
+<div *ngIf="animating &&! toast && !text">
+  <span [ngClass]="spinnerClass" aria-label="'loading'"></span>
+</div>

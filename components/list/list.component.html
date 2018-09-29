@@ -1,0 +1,10 @@
+<div *ngIf="renderHeader" class="{{defaultProps.prefixCls}}-header">
+  {{renderHeader()}}
+</div>
+<div class="{{defaultProps.prefixCls}}-body">
+  <ng-content></ng-content>
+</div>
+<div *ngIf="renderFooter" class="{{defaultProps.prefixCls}}-footer">
+  {{renderFooter()}}
+</div>
+

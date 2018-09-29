@@ -1,0 +1,12 @@
+<div class="{{prefixCls}}-content">
+  <ng-container *ngIf="!isTemplateRef(content);else contentTemplate">{{content}}</ng-container>
+</div>
+<div *ngIf="extra" class="{{prefixCls}}-extra">
+  <ng-container *ngIf="!isTemplateRef(extra);else extraTemplate">{{extra}}</ng-container>
+</div>
+<ng-template #contentTemplate>
+  <ng-template [ngTemplateOutlet]="content"></ng-template>
+</ng-template>
+<ng-template #extraTemplate>
+  <ng-template [ngTemplateOutlet]="extra"></ng-template>
+</ng-template>

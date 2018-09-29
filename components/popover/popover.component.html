@@ -1,0 +1,13 @@
+<ng-content></ng-content>
+<div [ngClass]="maskCls" (click)="options.hidePopover()"></div>
+<div [ngClass]="popoverCls" style="color: currentcolor;">
+  <div class="{{defaultProps.prefixCls}}-content">
+    <div *ngIf="options.showArrow" class="{{defaultProps.prefixCls}}-arrow"></div>
+    <div class="{{defaultProps.prefixCls}}-inner">
+      <div class="{{defaultProps.prefixCls}}-inner-wrapper">
+        <ng-template [ngTemplateOutlet]="options.overlay" [ngTemplateOutletContext]="{options: options}">
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

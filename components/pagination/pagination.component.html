@@ -1,0 +1,34 @@
+<div class="{{prefixCls}} {{prefixCls}}-align-center">
+  <Flex *ngIf="mode === 'button'">
+    <FlexItem class="{{prefixCls}}-wrap-btn {{prefixCls}}-wrap-btn-prev">
+      <a Button [inline]="true" [disabled]="current <= 1" (onClick)="onClick(current - 1)">
+        <ng-container *ngIf="!isTemplateRef(locale.prevText)">
+          {{locale.prevText}}
+        </ng-container>
+        <ng-template *ngIf="isTemplateRef(locale.prevText)" [ngTemplateOutlet]="locale.prevText"></ng-template>
+      </a>
+    </FlexItem>
+    <FlexItem class="{{prefixCls}}-wrap" aria-live="assertive" *ngIf="!simple">
+      <span class="active">{{current}}</span>/
+      <span>{{total}}</span>
+    </FlexItem>
+    <FlexItem class="{{prefixCls}}-wrap-btn {{prefixCls}}-wrap-btn-next">
+      <a Button [inline]="true" [disabled]="current>= total" (onClick)="onClick(current + 1)">
+        <ng-container *ngIf="!isTemplateRef(locale.nextText)">
+          {{locale.nextText}}
+        </ng-container>
+        <ng-template *ngIf="isTemplateRef(locale.nextText)" [ngTemplateOutlet]="locale.nextText"></ng-template>
+      </a>
+    </FlexItem>
+  </Flex>
+
+  <div class="{{prefixCls}}-wrap" *ngIf="mode === 'number'">
+    <span class="active">{{current}}</span>/<span>{{total}}</span>
+  </div>
+
+  <div class="{{prefixCls}}-wrap" *ngIf="mode === 'pointer'">
+    <div *ngFor="let number of getNumber(total); let i = index" class="{{prefixCls}}-wrap-dot {{current === i+1 ? (prefixCls + '-wrap-dot-active') : ''}}">
+      <span></span>
+    </div>
+  </div>
+</div>

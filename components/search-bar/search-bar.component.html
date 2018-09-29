@@ -1,0 +1,45 @@
+<form name="myForm"
+      class="{{prefixCls}}"
+      [ngClass]="wrapCls"
+      action="#"
+      (submit)="onSearchSubmit($event)"
+>
+  <div class="{{prefixCls}}-input">
+    <div class="{{prefixCls}}-synthetic-ph"
+         style="box-sizing:unset"
+         [@cancelButtonState]="showCancelButton?'visible' : 'hidden'"
+    >
+      <span class="{{prefixCls}}-synthetic-ph-container">
+        <i class="{{prefixCls}}-synthetic-ph-icon"></i>
+        <span class="{{prefixCls}}-synthetic-ph-placeholder"
+              [ngStyle]="{'visibility' : (placeholder && !value) ? 'visible' : 'hidden'}"
+        >
+          {{placeholder}}
+        </span>
+      </span>
+    </div>
+    <input #search
+           class="{{prefixCls}}-value"
+           style="outline:none;"
+           [name]="'search'"
+           [type]="'search'"
+           [disabled]="disabled"
+           [maxlength]="maxLength"
+           [placeholder]="placeholder"
+           [(ngModel)]="value"
+           (blur)="onSearchbarBlur()"
+           (focus)="onSearchbarFocus()"
+           (ngModelChange)="onSearchbarChange($event)"
+    />
+    <a [ngClass]="clearCls"
+       style="box-sizing: content-box;transition: 0s"
+       (click)="onSearchbarClear()"
+    ></a>
+  </div>
+  <div class="cancel"
+       [ngClass]="cancelCls"
+       (click)="onSearchbarCancel()"
+  >
+    {{cancelText}}
+  </div>
+</form>

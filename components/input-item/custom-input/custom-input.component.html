@@ -1,0 +1,6 @@
+<div *ngIf="value===''" class="fake-input-placeholder">
+  {{placeholder}}
+</div>
+<div [ngClass]="fakeInputCls" (click)="onFakeInputClick()">
+  {{value}}
+</div>

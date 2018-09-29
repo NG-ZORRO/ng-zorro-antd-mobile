@@ -1,0 +1,19 @@
+<div class="{{prefixCls}} {{prefixCls}}-{{tabBarPosition}}"
+     [ngClass]="{'am-tabs-default-bar-animated' : animated}"
+     [ngStyle]="{backgroundColor: tabBarBackgroundColor || '#FFF'}"
+>
+  <div *ngIf="showPrev" class="{{prefixCls}}-prevpage"></div>
+  <div #TabsBarSwipe
+       class="{{prefixCls}}-content"
+       [ngStyle]="tabsBarStyle"
+       (touchstart)="onTouchStart($event)"
+       (touchmove)="onTouchMove($event)"
+       (touchend)="onTouchEnd()"
+       (cdkObserveContent)="onContentChange()"
+  >
+    <ng-content></ng-content>
+    <div class="{{prefixCls}}-underline" [ngStyle]="inkBarStyle">
+    </div>
+  </div>
+  <div *ngIf="showNext" class="{{prefixCls}}-nextpage"></div>
+</div>

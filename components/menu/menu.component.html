@@ -1,0 +1,47 @@
+<Flex class="{{prefixCls}}"
+      [ngStyle]="heightStyle"
+      [direction]="'column'"
+      [align]="'stretch'"
+>
+  <Flex class="{{menuSelectContanerPrefixCls}}" [align]="'start'">
+    <FlexItem *ngIf="level == 2">
+      <List role="tablist">
+        <ListItem role="tab"
+                  *ngFor="let dataItem of data, let i = index"
+                  [className]="getClass(dataItem)"
+                  (click)="onClickFirstLevelItem(dataItem)"
+        >
+          {{dataItem.label}}
+        </ListItem>
+      </List>
+    </FlexItem>
+
+    <FlexItem role="tabpanel" aria-hidden="false" class="{{menuSelectContanerPrefixCls}}-submenu">
+      <SubMenu [subMenuPrefixCls]="subMenuPrefixCls"
+               [radioPrefixCls]="radioPrefixCls"
+               [subMenuData]="subMenuData"
+               [selItem]="subSelInitItem"
+               [showSelect]="showSelect"
+               [multiSelect]="multiSelect"
+               (onSel)="onClickSubMenuItem($event)">
+      </SubMenu>
+    </FlexItem>
+  </Flex>
+
+  <div *ngIf="multiSelect" class="{{multiSelectMenuBtnsCls}}">
+    <a Button
+       [className]="'am-multi-select-btns-btn'"
+       [inline]="true"
+       (onClick)="onMenuCancel()"
+    >
+      {{locale.cancelText}}
+    </a>
+    <a Button
+       [className]="'am-multi-select-btns-btn'"
+       [inline]="true" [type]="'primary'"
+       (onClick)="onMenuOk()"
+    >
+      {{locale.okText}}
+    </a>
+  </div>
+</Flex>

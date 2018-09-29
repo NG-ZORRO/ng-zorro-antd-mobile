@@ -1,0 +1,12 @@
+<div class="slider-frame" [ngStyle]="{overflow: frameOverflow}">
+  <ul class="slider-list" [ngStyle]="style">
+    <ng-content></ng-content>
+  </ul>
+</div>
+<DotIndicator *ngIf="dotindicatorStatus"
+              class="am-carousel-wrap-dot"
+              [page]="page"
+              [dotStyle]="dotStyle"
+              [pageCount]="pageCount"
+              [dotActiveStyle]="dotActiveStyle"
+></DotIndicator>

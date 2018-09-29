@@ -1,0 +1,23 @@
+<div class="month-title">
+  {{props.monthData.title}}
+</div>
+<div class="date">
+  <div *ngFor="let row of state.weekComponents;let i = index;" [ngClass]="row.rowCls">
+    <div *ngFor="let cell of row.weeksDataList;let j = index;"
+         class="{{'cell ' + (row.extra && row.extra.cellCls || '')}}"
+         (click)="onClickCell(cell)"
+    >
+      <div *ngIf="row.extra && row.extra.cellRender">test</div>
+      <div *ngIf="!row.extra || (row.extra && row.extra.cellRender)" class="date-wrapper">
+        <span [ngClass]="cell.lCls"></span>
+        <div [ngClass]="cell.cls">
+          {{cell.day && cell.day.dayOfMonth || ''}}
+        </div>
+        <span [ngClass]="cell.rCls"></span>
+      </div>
+      <div *ngIf="!row.extra || (row.extra && row.extra.cellRender)" [ngClass]="cell.infoCls">
+        {{cell.info}}
+      </div>
+    </div>
+  </div>
+</div>

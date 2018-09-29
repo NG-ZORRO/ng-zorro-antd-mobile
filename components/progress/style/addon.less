@@ -1,0 +1,33 @@
+@import '../../style/mixins';
+@import '../../style/themes/default';
+
+@pickerPrefixClass: am-progress;
+
+progress {
+  appearance: none;
+  border: none;
+  /* Add dimensions */
+  width: 100%;
+  height: 4px;
+  position: relative;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #ddd;
+  border-radius: 3px;
+}
+
+progress::-webkit-progress-value {
+  background-color: @brand-primary;
+  transition: all .3s linear 0s;
+  position: relative;
+}
+.@{pickerPrefixClass} {
+  &-hide-outer::-webkit-progress-bar {
+    background-color: transparent;
+  }
+}
+
+.@{pickerPrefixClass} {
+  display: block;
+}

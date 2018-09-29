@@ -1,0 +1,38 @@
+<div class="am-slider" [ngClass]="sliderCls">
+  <div class="am-slider-rail" [ngStyle]="railStyle"></div>
+  <SliderTrack *ngFor="let off of offset ; let i = index"
+               [className]="'am-slider-track'"
+               [included]="included"
+               [style]="trackStyle[i]"
+               [offset]="off"
+               [length]="length[i]"
+  ></SliderTrack>
+  <SliderSteps [max]="max"
+               [min]="min"
+               [dots]="dots"
+               [step]="step"
+               [marks]="marks"
+               [upperBound]="upperBound"
+               [lowerBound]="lowerBound"
+  ></SliderSteps>
+  <SliderHandle *ngFor="let val of value ; let i = index"
+                [max]="max"
+                [min]="min"
+                [maxBound]="maxBound[i]"
+                [minBound]="minBound[i]"
+                [value]="val"
+                [step]="step"
+                [disabled]="disabled"
+                [sliderLength]="sliderLength"
+                [sliderStart]="sliderStart"
+                [handleStyle]="handleStyle[i]"
+                (onChange)="handleChange($event , i)"
+                (onAfterChange)="handleAfterChange($event , i)"
+  ></SliderHandle>
+  <SliderMarks [max]="max"
+               [min]="min"
+               [marks]="marks"
+               [upperBound]="upperBound"
+               [lowerBound]="lowerBound"
+  ></SliderMarks>
+</div>
