@@ -1,8 +1,8 @@
-import {Tree, SchematicsException} from '@angular-devkit/schematics';
+import { Tree, SchematicsException } from '@angular-devkit/schematics';
 import * as parse5 from 'parse5';
-import {getIndexHtmlPath} from './ast';
-import {InsertChange} from './devkit-utils/change';
-import {Project} from './devkit-utils/config';
+import { getIndexHtmlPath } from './ast';
+import { InsertChange } from './devkit-utils/change';
+import { Project } from './devkit-utils/config';
 
 /**
  * Parses the index.html file to get the HEAD tag position.
@@ -11,7 +11,7 @@ import {Project} from './devkit-utils/config';
  */
 export function getHeadTag(host: Tree, src: string) {
   const document = parse5.parse(src,
-    {locationInfo: true}) as parse5.AST.Default.Document;
+    { locationInfo: true }) as parse5.AST.Default.Document;
 
   let head;
   const visit = (nodes: parse5.AST.Default.Node[]) => {

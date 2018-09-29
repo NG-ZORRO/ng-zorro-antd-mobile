@@ -29,6 +29,7 @@ module.exports = function generateCode(component, key, title, doc, iframe) {
   }
   output = output.replace(/{{code}}/g, camelCase(key));
   output = output.replace(/{{rawCode}}/g, `${camelCase(key)}Raw`);
-  
+  output = output.replace(/{{nzGenerateCommand}}/g, `ng g ng-zorro-antd-mobile:${component}-${key} --name=`);
+
   return output;
 };
