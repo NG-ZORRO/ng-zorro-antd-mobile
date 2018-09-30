@@ -10,6 +10,8 @@
   position: fixed;
   width: 100%;
   background-color: @fill-base;
+  -webkit-transform: translateZ(1px);
+  transform: translateZ(1px);
 
   &-wrap {
     position: fixed;
@@ -21,8 +23,6 @@
     z-index: @picker-zindex;
     -webkit-overflow-scrolling: touch;
     outline: 0;
-    -webkit-transform: translateZ(1px);
-    transform: translateZ(1px);
   }
 
   &-mask {
@@ -34,8 +34,6 @@
     background-color: @fill-mask;
     height: 100%;
     z-index: @picker-zindex;
-    -webkit-transform: translateZ(1px);
-    transform: translateZ(1px);
 
     &-hidden {
       display: none;

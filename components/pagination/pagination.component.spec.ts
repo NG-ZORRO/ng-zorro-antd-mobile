@@ -80,8 +80,8 @@ describe('pagination', () => {
   it('should local work', () => {
     nextButton = paginationEle.nativeElement.querySelector('.am-pagination-wrap-btn-next').firstElementChild;
     prevButton = paginationEle.nativeElement.querySelector('.am-pagination-wrap-btn-prev').firstElementChild;
-    expect(prevButton.firstElementChild.innerText.trim()).toBe(component.locale.prevText);
-    expect(nextButton.firstElementChild.innerText.trim()).toBe(component.locale.nextText);
+    expect(prevButton.lastElementChild.innerText.trim()).toBe(component.locale.prevText);
+    expect(nextButton.lastElementChild.innerText.trim()).toBe(component.locale.nextText);
   });
 
   it('should onChange work', () => {

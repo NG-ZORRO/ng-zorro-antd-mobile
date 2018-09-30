@@ -546,7 +546,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       result = this.resultArr.map(v => v).join('-');
     }
-    this.resultDate = new Date(result);
+    this.resultDate = new Date(result.replace(/-/g, '/'));
     if (this.options.minDate.getTime() > this.resultDate.getTime()) {
       if (this.resultArr.length > 0) {
         for (let index = 0; index < this.resultArr.length; index++) {
