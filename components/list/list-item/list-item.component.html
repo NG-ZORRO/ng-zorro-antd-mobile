@@ -1,0 +1,21 @@
+<div *ngIf="thumb_src && !thumb_component" class="{{defaultProps.prefixCls}}-thumb">
+  <img src={{thumb_src}}/>
+</div>
+<div *ngIf="thumb && thumb_component" class="{{defaultProps.prefixCls}}-thumb">
+  <ng-template [ngTemplateOutlet]="thumb"></ng-template>
+</div>
+<div [ngClass]="lineCls">
+  <div class="{{defaultProps.prefixCls}}-content">
+    <ng-content></ng-content>
+  </div>
+  <div *ngIf="extra_title && !extra_component"
+       class="{{defaultProps.prefixCls}}-extra"
+       [innerHTML]="extra_title"
+  ></div>
+  <div *ngIf="extra && extra_component" class="{{defaultProps.prefixCls}}-extra">
+    <ng-template [ngTemplateOutlet]="extra"></ng-template>
+  </div>
+  <div *ngIf="arrow" [ngClass]="arrowCls" aria-hidden="true"></div>
+</div>
+<div [ngClass]="rippleCls" [ngStyle]="defaultProps.rippleStyle"></div>
+

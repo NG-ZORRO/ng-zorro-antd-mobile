@@ -1,0 +1,102 @@
+<div *ngIf="defaultProps.visible">
+  <div class="{{defaultProps.prefixCls}}-mask {{maskTransitionName}}"></div>
+  <div role="dialog"
+       class="{{defaultProps.prefixCls}}-wrap {{transitionName}}"
+       [ngClass]="wrapCls"
+       (click)="close()"
+  >
+    <div role="document"
+         class="{{defaultProps.prefixCls}}"
+         [ngClass]="cls"
+    >
+      <div class="{{defaultProps.prefixCls}}-content">
+        <div *ngIf="defaultProps.closable"
+             class="{{defaultProps.prefixCls}}-close"
+             (click)="close()"
+      >
+          <span class="{{defaultProps.prefixCls}}-close-x"></span>
+        </div>
+        <div class="{{defaultProps.prefixCls}}-header">
+          <div *ngIf="isTitleString" class="{{defaultProps.prefixCls}}-title">{{title}}</div>
+          <ng-template *ngIf="!isTitleString" [ngTemplateOutlet]="title"></ng-template>
+        </div>
+        <div class="{{defaultProps.prefixCls}}-body">
+          <ng-content></ng-content>
+          <div *ngIf="isMessageString" class="{{defaultProps.prefixCls}}-alert-content">{{message}}</div>
+          <ng-template *ngIf="!isMessageString" [ngTemplateOutlet]="message"></ng-template>
+          <ng-template *ngIf="defaultProps.type === 'default'" [ngTemplateOutlet]="promptDefault"></ng-template>
+          <ng-template *ngIf="defaultProps.type === 'secure-text'" [ngTemplateOutlet]="promptSecure"></ng-template>
+          <ng-template *ngIf="defaultProps.type === 'login-password'" [ngTemplateOutlet]="promptPassword"></ng-template>
+        </div>
+        <div class="{{defaultProps.prefixCls}}-footer">
+          <div [ngClass]="btnGroupClass" role="group">
+            <div Button
+                 role="button"
+                 *ngFor="let button of defaultProps.footer"
+                 [className]="'am-modal-button'"
+                 (onClick)="button.onPress()"
+            >
+              {{button.text}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #promptPassword>
+  <div class="{{defaultProps.prefixCls}}-input-container">
+    <div class="{{defaultProps.prefixCls}}-input">
+        <input 
+          #inputElement 
+          autofocus
+          [type]="'text'" 
+          [defaultValue]="defaultProps.defaultValue || ''" 
+          [placeholder]="defaultProps.placeholders[0] || ''"
+          [(ngModel)]="value" 
+          (ngModelChange)="inputChange('text', $event)" 
+        >
+    </div>
+    <div className="{{defaultProps.prefixCls}}-input">
+        <input 
+          #inputElement 
+          [type]="'password'" 
+          [defaultValue]="defaultProps.defaultValue || ''" 
+          [placeholder]="defaultProps.placeholders[0] || ''"
+          [(ngModel)]="passwordValue" 
+          (ngModelChange)="inputChange('password', $event)" 
+        >
+    </div>
+  </div>
+</ng-template>
+<ng-template #promptSecure>
+  <div className="{{defaultProps.prefixCls}}-input-container">
+    <div className="{{defaultProps.prefixCls}}-input">
+        <input 
+          #inputElement 
+          autofocus
+          [type]="'password'" 
+          [defaultValue]="defaultProps.defaultValue || ''" 
+          [placeholder]="defaultProps.placeholders[0] || ''"
+          [(ngModel)]="passwordValue" 
+          (ngModelChange)="inputChange('password', $event)" 
+        >
+    </div>
+  </div>
+</ng-template>
+<ng-template #promptDefault>
+  <div className="{{defaultProps.prefixCls}}-input-container">
+    <div className="{{defaultProps.prefixCls}}-input">
+      <input 
+        #inputElement 
+        autofocus
+        [type]="'text'" 
+        [defaultValue]="defaultProps.defaultValue || ''" 
+        [placeholder]="defaultProps.placeholders[0] || ''"
+        [(ngModel)]="value" 
+        (ngModelChange)="inputChange('text', $event)" 
+      >
+    </div>
+  </div>
+</ng-template>

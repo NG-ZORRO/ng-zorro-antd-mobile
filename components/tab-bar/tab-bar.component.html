@@ -1,0 +1,23 @@
+<Tabs [activeTab]="activeTab"
+      [swipeable]="false"
+      [useOnPan]="false"
+      [animated]="false"
+      [tabDirection]="'horizontal'"
+      [tabBarPosition]='tabBarPosition'
+      [renderTabBar]="TabBarBar"
+      [tabPanesComponent]="tabPanes"
+>
+  <ng-content></ng-content>
+</Tabs>
+
+<ng-template #TabBarBar>
+  <div class="am-tabs-tab-bar-wrap">
+    <div class="{{prefixCls}}-bar"
+         [ngClass]="{'am-tab-bar-bar-hidden-top': 'top' === tabBarPosition && hidden, 'am-tab-bar-bar-hidden-bottom': 'bottom' === tabBarPosition && hidden}"
+         [style.background-color]="barTintColor">
+      <div *ngFor="let tabPane of tabPanes; let i = index;" (click)="selectTabPane(i)">
+        <ng-container [ngTemplateOutlet]="tabPane.title"></ng-container>
+      </div>
+    </div>
+  </div>
+</ng-template>

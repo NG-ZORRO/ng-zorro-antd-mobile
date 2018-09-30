@@ -1,0 +1,30 @@
+<div [ngClass]="wrapCls">
+  <div *ngIf="title &&  isTitleString" [ngClass]="labelCls">{{title}}</div>
+  <div *ngIf="title &&  !isTitleString" [ngClass]="labelCls">
+    <ng-template [ngTemplateOutlet]="title"></ng-template>
+  </div>
+  <div [ngClass]="controlCls">
+    <textarea #text
+              [rows]="rows"
+              [maxlength]="maxLength"
+              [(ngModel)]="value"
+              [defaultValue]="defaultValue"
+              [placeholder]="placeholder"
+              [disabled]="disabled"
+              [readOnly]="!editable"
+              [autofocus]="autoFocus"
+              (ngModelChange)="inputChange($event)"
+              (blur)="inputBlur(value , $event)"
+              (focus)="inputFocus(value)"
+    ></textarea>
+  </div>
+  <div *ngIf="clear && editable && !disabled && (value && value.length >0 )"
+       class="{{prefixCls}}-clear"
+       [ngClass]="clearCls"
+       (click)="clearInput()"
+  ></div>
+  <div *ngIf="error" class="{{prefixCls}}-error-extra" (click)="errorClick($event)"></div>
+  <span *ngIf="hasCount" class="{{prefixCls}}-count">
+    <span>{{characterLength}}</span>/{{count}}
+  </span>
+</div>

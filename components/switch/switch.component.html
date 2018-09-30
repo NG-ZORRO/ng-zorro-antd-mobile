@@ -1,0 +1,16 @@
+<label class="{{prefixCls}}" [ngClass]="wrapCls">
+  <input #switchValue
+         type="checkbox"
+         name="name"
+         class="{{prefixCls}}-checkbox"
+         [checked]="switchChecked"
+         [value]="switchChecked"
+         [disabled]="disabled"
+         (change)="changeSwitch(switchValue.checked)"
+  />
+  <div class="checkbox"
+       [ngClass]="checkboxCls"
+       [ngStyle]="colorStyle"
+       (click)="click()"
+  ></div>
+</label>

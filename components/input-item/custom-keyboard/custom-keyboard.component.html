@@ -1,0 +1,41 @@
+<table>
+  <tbody>
+    <tr>
+      <td [ngClass]="wrapCls" (click)="tdClick(1)">1
+      </td>
+      <td [ngClass]="wrapCls" (click)="tdClick(2)">2
+      </td>
+      <td [ngClass]="wrapCls" (click)="tdClick(3)">3
+      </td>
+      <td class="keyboard-delete" [rowSpan]="2" [ngClass]="wrapCls" (click)="tdClick('delete')">
+      </td>
+    </tr>
+    <tr>
+      <td [ngClass]="wrapCls" (click)="tdClick(4)">4
+      </td>
+      <td [ngClass]="wrapCls" (click)="tdClick(5)">5
+      </td>
+      <td [ngClass]="wrapCls" (click)="tdClick(6)">6
+      </td>
+
+    </tr>
+    <tr>
+      <td [ngClass]="wrapCls" (click)="tdClick(7)">7
+      </td>
+      <td [ngClass]="wrapCls" (click)="tdClick(8)">8
+      </td>
+      <td [ngClass]="wrapCls" (click)="tdClick(9)">9
+      </td>
+      <td class="keyboard-confirm" [rowSpan]="2" [ngClass]="wrapCls" (click)="tdClick('confirm')">{{okText}}
+      </td>
+    </tr>
+    <tr>
+      <td [ngClass]="wrapCls" (click)="tdClick('.')">.
+      </td>
+      <td [ngClass]="wrapCls" (click)="tdClick(0)">0
+      </td>
+      <td class="keyboard-hide" [ngClass]="wrapCls" (click)="tdClick('hide')">
+      </td>
+    </tr>
+  </tbody>
+</table>

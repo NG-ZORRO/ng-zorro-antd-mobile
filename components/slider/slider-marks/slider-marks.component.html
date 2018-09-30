@@ -1,0 +1,6 @@
+<span *ngFor="let item of markArray"
+      [ngClass]="item.className"
+      [ngStyle]="item.style"
+      (onMouseDown)="onClickLabel($event, point)"
+      (onTouchStart)="onClickLabel($events, point)">
+</span>

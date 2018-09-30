@@ -1,0 +1,73 @@
+.notice-bar-card {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 989;
+  display: block;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  -webkit-overflow-scrolling: touch;
+
+}
+
+.nz-yellow-bar-bg {
+  width: 100%;
+  height: 30px;
+  background: transparent;
+}
+
+.close {
+  // position: fixed;
+  // top: 0;
+  right: 0;
+  z-index: 990;
+  font-size: 15px;
+  color: #999999;
+  background: #fff9ec;
+  padding: 4.5px;
+}
+
+.marquee {
+  height: 30px;
+  font-size: 14px;
+  overflow: hidden;
+  display: block;
+  line-height: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 899;
+  color: #ff8533;
+  overflow-x: auto;
+  touch-action: none;
+
+}
+
+.marquee div {
+  display: block;
+  line-height: 30px;
+  position: absolute;
+  overflow: hidden;
+}
+
+.marquee div.scrolling {
+  // animation: 15s noticebarmarquee 2s linear infinite;
+  // animation-iteration-count: infinite;
+  animation-name: noticebarmarquee;
+  animation-delay: 2s;
+  animation-timing-function: linear;
+  animation-duration: 15s;
+  animation-fill-mode: forwards;
+}
+
+.marquee div.scrolling-stop {
+  animation: 15s noticebarmarquee 2s linear infinite;
+  animation-play-state: paused;
+}
+
+.marquee span {
+  float: left;
+  width: 50%;
+  white-space: nowrap;
+}

@@ -1,0 +1,31 @@
+<div class="{{prefixCls}}-handler-wrap">
+    <span role="button"
+          class="{{prefixCls}}-handler {{prefixCls}}-handler-up"
+          style="line-height:28px;"
+          [ngClass]="upDisableCls"
+          (click)="onIncrease()">
+          <Icon [type]="'plus'"
+                [size]="'xxs'">
+          </Icon>
+    </span>
+    <span role="button"
+          class="{{prefixCls}}-handler {{prefixCls}}-handler-down"
+          style="line-height:28px;"
+          [ngClass]="downDisableCls"
+          (click)="onDecrease()">
+          <Icon [type]="'minus'"
+                [size]="'xxs'">
+          </Icon>
+    </span>
+</div>
+<div class="{{prefixCls}}-input-wrap">
+    <input class="{{prefixCls}}-input"
+           style="outline:none"
+           [disabled]="disabled"
+           [readonly]="readOnly"
+           [autocomplete]="'off'"
+           [max]="max"
+           [min]="min"
+           [(ngModel)]="value"
+           (change)="inputChange($event)">
+</div>

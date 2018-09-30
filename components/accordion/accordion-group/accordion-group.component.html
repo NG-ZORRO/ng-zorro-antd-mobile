@@ -1,0 +1,19 @@
+<div role="tab"
+     class="am-accordion-header"
+     data-scale="true"
+     [attr.aria-expanded]="isOpened"
+     (click)="checkAndToggle()"
+>
+  <i class="arrow"></i>
+  {{header}}
+</div>
+<div role="tabpanel"
+     class="am-accordion-content"
+     [ngClass]="{'am-accordion-content-active':isOpened}"
+     [@slide]="slide"
+     (@slide.done)="slideAnimationDoen($event)" 
+>
+  <div *ngIf="isShowChild" class="am-accordion-content-box">
+    <ng-content></ng-content>
+  </div>
+</div>

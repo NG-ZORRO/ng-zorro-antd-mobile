@@ -1,0 +1,49 @@
+<div class="{{prefixListCls}}-line">
+  <div #lableContent [ngClass]="labelCls">
+    <ng-content></ng-content>
+  </div>
+  <div [ngClass]="controlCls">
+    <CustomInput *ngIf="type==='money'"
+                 [value]="value"
+                 [defaultValue]="defaultValue"
+                 [placeholder]="placeholder"
+                 [disabled]="disabled"
+                 [editable]="editable"
+                 [moneyKeyboardAlign]="moneyKeyboardAlign"
+                 [setFocus]="setFocus"
+                 [maxLength]="maxLength"
+                 (onChange)="inputChange($event)"
+                 (onBlur)="inputBlur(value)"
+                 (onFocus)="inputFocus(value)">
+    </CustomInput>
+    <div *ngIf="type!=='money'">
+      <input #inputElement
+             [type]="type"
+             [name]="name"
+             [(ngModel)]="value"
+             [defaultValue]="defaultValue"
+             [placeholder]="placeholder"
+             [disabled]="disabled"
+             [readOnly]="!editable"
+             [autofocus]="autoFocus"
+             [maxlength]="maxLength"
+             [pattern]="pattern"
+             (ngModelChange)="inputChange($event)"
+             (blur)="inputBlur(value , $event)"
+             (focus)="inputFocus(value)"
+             style="outline:none" />
+    </div>
+  </div>
+  <div  *ngIf="clear && editable && !disabled && (value && value.length >0 )"
+        class="{{prefixCls}}-clear"
+        (click)="clearInput()"
+  ></div>
+  <div *ngIf="error"
+       class="{{prefixCls}}-error-extra"
+       (click)="errorClick($event)"
+  ></div>
+  <div *ngIf="extra!==''"
+       class="{{prefixCls}}-extra"
+       (click)="extraClick($event)"
+  >{{extra}}</div>
+</div>

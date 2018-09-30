@@ -1,0 +1,13 @@
+<h1>{{title}}<span class="subtitle">{{subtitle}}</span>
+  {{start}}
+  <span nz-popover nzPlacement="bottom" [nzContent]="contentTemplate" class="edit-button" target="_blank">
+		<i class="anticon anticon-qrcode"></i>
+  </span>
+  {{end}}
+</h1>
+<ng-template #contentTemplate>
+  <div>
+    <p style="font-weight: bold;margin-bottom: 10px;">扫二维码查看演示效果</p>
+    <div id="qrcode"></div>
+  </div>
+</ng-template>

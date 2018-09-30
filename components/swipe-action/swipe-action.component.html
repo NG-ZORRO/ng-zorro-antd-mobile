@@ -1,0 +1,46 @@
+<div *ngIf="(left.length != 0 || right.length != 0) && !disabled" class="{{wrapCls}}">
+  <div class="{{prefixCls}}-cover" #coverRef></div>
+  <div *ngIf="left && left.length > 0"
+       class="{{prefixCls}}-actions {{prefixCls}}-actions-left"
+       #leftBtnRef>
+    <div *ngFor="let btn of left"
+         class="{{prefixCls}}-btn"
+         [ngStyle]="btn.style"
+         role="button"
+         (click)="onBtnClick($event, btn)">
+      <div class="{{prefixCls}}-btn-text">
+        {{btn.text || 'Click'}}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="right && right.length > 0"
+       class="{{prefixCls}}-actions {{prefixCls}}-actions-right"
+       #rightBtnRef>
+    <div *ngFor="let btn of right"
+         class="{{prefixCls}}-btn"
+         [ngStyle]="btn.style"
+         role="button"
+         (click)="onBtnClick($event, btn)"
+         >
+      <div class="{{prefixCls}}-btn-text">
+        {{btn.text || 'Click'}}
+      </div>
+    </div>
+  </div>
+  <div class="{{prefixCls}}-content"
+       #contentRef
+       (touchstart)="onTouchStart($event)"
+       (touchmove)="onTouchMove($event)"
+       (touchend)="onTouchEnd($event)">
+    <ng-template [ngTemplateOutlet]="content"></ng-template>
+  </div>
+</div>
+<div *ngIf="!((left.length != 0 || right.length != 0) && !disabled)"
+     class="{{prefixCls}}-content"
+     #contentRef>
+  <ng-template [ngTemplateOutlet]="content"></ng-template>
+</div>
+
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>

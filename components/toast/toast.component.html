@@ -1,0 +1,19 @@
+<div class="{{prefixCls}}-notice {{prefixCls}}-notice-closable {{transitionName}}">
+  <div class="{{prefixCls}}-notice-content">
+    <div role="alert"
+         *ngIf="iconType"
+         class="{{prefixCls}}-text {{prefixCls}}-text-icon"
+         aria-live="assertive"
+    >
+      <Icon [type]="iconType" [size]="'lg'"></Icon>
+      <div *ngIf="isContentString" class="{{prefixCls}}-text-info">{{content}}</div>
+    </div>
+    <div *ngIf="!iconType" class="{{prefixCls}}-text" role="alert" aria-live="assertive">
+      <div *ngIf="isContentString" class="{{prefixCls}}-text-info">{{content}}</div>
+      <ng-template *ngIf="!isContentString" [ngTemplateOutlet]="content"></ng-template>
+    </div>
+  </div>
+  <a class="{{prefixCls}}-notice-close">
+    <span class="{{prefixCls}}-notice-close-x"></span>
+  </a>
+</div>

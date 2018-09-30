@@ -1,0 +1,45 @@
+<span *ngIf="isShow">
+  <div class="{{'mask ' + maskAnimateClass}}"></div>
+</span>
+<span *ngIf="isShow">
+  <div class="{{'content animate ' + contentAnimateClass}}">
+    <CalendarHeader [locale]="props.locale"
+                    [closeIcon]="closeIconHtml"
+                    [showClear]="showClear"
+                    (onCancel)="triggerCancel()"
+                    (onClear)="triggerClear()"
+    ></CalendarHeader>
+    <CalendarDatePicker [propsData]="props"
+                        [endDate]="state.endDate"
+                        [startDate]="state.startDate"
+                        [onCellClick]="onSelectedDate"
+                        [onSelectHasDisableDate]="triggerSelectHasDisableDate"
+                        [onLayout]="setClientHeight"
+    ></CalendarDatePicker>
+    <CalendarTimePicker *ngIf="state.showTimePicker"
+                        [propsData]="props"
+                        [title]="state.timePickerTitle"
+                        [clientHeight]="state.clientHight"
+                        [prefixCls]="props.timePickerPrefixCls"
+                        [defaultValue]="props.defaultTimeValue"
+                        [pickerPrefixCls]="props.timePickerPickerPrefixCls"
+                        [value]="state.endDate ? state.endDate : state.startDate"
+                        [onValueChange]="onTimeChange"
+    ></CalendarTimePicker>
+    <CalendarShortcutPanel *ngIf="props.showShortcut && !state.showTimePicker"
+                           [locale]="props.locale"
+                           [onSelect]="shortcutSelect"
+    ></CalendarShortcutPanel>
+    <CalendarConfirmPanel *ngIf="state.startDate"
+                          [startDateTime]="state.startDate"
+                          [endDateTime]="state.endDate"
+                          [propsData]="props"
+                          [disableBtn]="state.disConfirmBtn"
+                          [formatStr]="props.pickTime ? props.locale.dateTimeFormat : props.locale.dateFormat"
+                          [onConfirm]="triggerConfirm"
+    ></CalendarConfirmPanel>
+  </div>
+</span>
+<ng-template #closeIconHtml>
+  <Icon [type]="'cross'"></Icon>
+</ng-template>

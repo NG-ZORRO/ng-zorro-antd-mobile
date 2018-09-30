@@ -1,0 +1,30 @@
+@import '../../style/themes/default';
+@import '../../style/mixins';
+
+@tabs-prefix-cls: am-tabs;
+@tabs-default-bar-prefix-cls: am-tabs-default-bar;
+
+.@{tabs-prefix-cls} {
+  &-pane-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &-pane-wrap:first-child {
+    position: relative;
+  }
+}
+
+.@{tabs-default-bar-prefix-cls}-top,
+.@{tabs-default-bar-prefix-cls}-bottom {
+  .@{tabs-default-bar-prefix-cls}-underline {
+    left: 0;
+  }
+}
+
+.@{tabs-default-bar-prefix-cls}-left,
+.@{tabs-default-bar-prefix-cls}-right {
+  .@{tabs-default-bar-prefix-cls}-underline {
+    top: 0;
+  }
+}

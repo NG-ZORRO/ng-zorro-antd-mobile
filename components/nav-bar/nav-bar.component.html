@@ -1,0 +1,14 @@
+<div role="button" class="{{defaultProps.prefixCls}}-left" (click)="click($event)">
+  <ng-template *ngIf="!isLeftContentString" [ngTemplateOutlet]="leftContent"></ng-template>
+  <span *ngIf="icon" class="{{defaultProps.prefixCls}}-left-icon" aria-hidden="true">
+    <ng-template [ngTemplateOutlet]="icon"></ng-template>
+  </span>
+  {{isLeftContentString ? leftContent: null}}
+</div>
+<div class="{{defaultProps.prefixCls}}-title">
+  <ng-content></ng-content>
+</div>
+<div class="{{defaultProps.prefixCls}}-right">
+  {{isRightContentString ? rightContent: null}}
+  <ng-template *ngIf="!isRightContentString" [ngTemplateOutlet]="rightContent"></ng-template>
+</div>

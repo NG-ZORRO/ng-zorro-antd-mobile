@@ -1,0 +1,36 @@
+<div class="am-slider" [ngClass]="sliderCls">
+  <div class="am-slider-rail" [ngStyle]="railStyle"></div>
+  <SliderTrack [className]="'am-slider-track'"
+               [style]="trackStyle"
+               [offset]="offset"
+               [length]="length"
+               [included]="included"
+  ></SliderTrack>
+  <SliderSteps [max]="max"
+               [min]="min"
+               [dots]="dots"
+               [step]="step"
+               [marks]="marks"
+               [lowerBound]="min"
+               [upperBound]="value"
+               [included]="included"
+  ></SliderSteps>
+  <SliderHandle [max]="max"
+                [min]="min"
+                [value]="value"
+                [step]="step"
+                [disabled]="disabled"
+                [handleStyle]="handleStyle"
+                [sliderStart]="sliderStart"
+                [sliderLength]="sliderLength"
+                (onChange)="handleChange($event)"
+                (onAfterChange)="handleAfterChange($event)"
+  ></SliderHandle>
+  <SliderMarks [max]="max"
+               [min]="min"
+               [marks]="marks"
+               [lowerBound]="min"
+               [upperBound]="value"
+               [included]="included"
+  ></SliderMarks>
+</div>

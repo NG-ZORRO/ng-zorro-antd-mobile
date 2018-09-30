@@ -1,0 +1,11 @@
+<label Checkbox
+       class="{{prefixCls}}-agree-label"
+       [name]="name"
+       [value]="value"
+       [checked]="checked"
+       [disabled]="disabled"
+       (click)="agree()"
+       (onChange)="change($event)"
+>
+  <ng-content></ng-content>
+</label>

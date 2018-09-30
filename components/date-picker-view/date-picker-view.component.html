@@ -1,0 +1,7 @@
+<div *ngFor="let item of dataWithStr; let i = index" class="am-picker-col">
+  <div class="am-picker-col-indicator " style="top: 102px;"></div>
+  <div id={{i}} class="am-picker-col-mask" style="background-size: 100% 102px;"></div>
+  <div class="am-picker-col-content">
+    <div id={{i}} *ngFor="let val of item; let i = index" class="am-picker-col-item">{{val.label?val.label:val}}</div>
+  </div>
+</div>

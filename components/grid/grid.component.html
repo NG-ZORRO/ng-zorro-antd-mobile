@@ -1,0 +1,70 @@
+<ng-container *ngIf="!isCarousel">
+  <Flex *ngFor="let item of gridData; let i = index;"
+        [justify]="'center'"
+        [align]="'stretch'"
+  >
+    <FlexItem TouchFeedback
+              *ngFor="let subItem of item; let j = index;"
+              [ngClass]="itemCls"
+              [ngStyle]="itemStyle"
+              [className]="['am-grid-item-active']"
+              [activeStyle]="activeStyle"
+    >
+      <div *ngIf="subItem !== null"
+           class="{{defaultProps.prefixCls}}-item-content"
+           (click)="click(subItem,i * columnNum + j)"
+      >
+        <div class="{{defaultProps.prefixCls}}-item-inner-content column-num-{{columnNum}}">
+          <img *ngIf="subItem.icon && isURL(subItem.icon)"
+               src="{{subItem.icon}}"
+               class="{{defaultProps.prefixCls}}-icon"
+          >
+          <Icon *ngIf="subItem.icon && !isURL(subItem.icon)"
+                [type]="subItem.icon"
+                [size]="subItem.size"
+          ></Icon>
+          <div class="{{defaultProps.prefixCls}}-text">{{subItem.text}}</div>
+        </div>
+      </div>
+      <div *ngIf="subItem === null" class="{{defaultProps.prefixCls}}-null-item"></div>
+    </FlexItem>
+    <ng-content></ng-content>
+  </Flex>
+</ng-container>
+
+<Carousel *ngIf="isCarousel && carouselDataTmp.length > 0"
+          [autoplay]="false"
+          [infinite]="true"
+          [selectedIndex]="0"
+          [autoplayInterval]='3000'
+          [dots]="carouselProps.dots"
+          [dragging]="carouselProps.dragging"
+>
+  <CarouselSlide *ngFor="let gridData of carouselDataTmp"
+                 class="{{defaultProps.prefixCls}}-carousel-page"
+                 style="display: block;"
+  >
+    <Flex *ngFor="let item of gridData; let i = index;"
+          [justify]="'center'"
+          [align]="'stretch'"
+    >
+      <FlexItem TouchFeedback
+                *ngFor="let subItem of item; let j = index;"
+                class="{{defaultProps.prefixCls}}-item"
+                [ngStyle]="itemStyle"
+                [className]="['am-grid-item-active']"
+      >
+        <div *ngIf="subItem !== null"
+             class="{{defaultProps.prefixCls}}-item-content"
+             (click)="click(subItem,i * columnNum + j)"
+        >
+          <div class="{{defaultProps.prefixCls}}-item-inner-content column-num-4">
+            <img class="{{defaultProps.prefixCls}}-icon" src="{{subItem.icon}}">
+            <div class="{{defaultProps.prefixCls}}-text">{{subItem.text}}</div>
+          </div>
+        </div>
+        <div *ngIf="subItem === null" class="{{defaultProps.prefixCls}}-null-item"></div>
+      </FlexItem>
+    </Flex>
+  </CarouselSlide>
+</Carousel>

@@ -1,0 +1,34 @@
+<div class="{{prefixCls}}-list" role="group">
+  <Flex *ngFor="let rowItem of flexEl;let i = index;">
+    <FlexItem *ngFor="let item of rowItem;let j =index;">
+      <div *ngIf="item && 'img' === item.type && item.backgroundImage" class="{{prefixCls}}-item">
+        <div role="button"
+             aria-label="Click and Remove this image"
+             class="{{prefixCls}}-item-remove"
+             (click)="removeImage(i * length + j)"
+        ></div>
+        <div role="button"
+             aria-label="Image can be clicked"
+             class="{{prefixCls}}-item-content"
+             [ngStyle]="{'background-image': item.backgroundImage, 'transform': item.transform}"
+             (click)="imageClick(i * length + j)"
+        ></div>
+      </div>
+      <div role="button"
+           aria-label="Choose and add image"
+           *ngIf="item && 'select' === item.type"
+           class="{{prefixCls}}-item {{prefixCls}}-upload-btn"
+           (click)="addImageClick($event)"
+      >
+        <input #fileSelectorInput
+               type="file"
+               [accept]="accept"
+               [multiple]="multiple"
+               (change)="fileChange()"
+        />
+      </div>
+      <div *ngIf="item && 'white' === item.type" class="{{prefixCls}}-item-white">
+      </div>
+    </FlexItem>
+  </Flex>
+</div>

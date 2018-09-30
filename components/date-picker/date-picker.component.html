@@ -1,0 +1,40 @@
+<div *ngIf="options.mask" class="am-picker-popup-mask {{maskTransitionName}}" (click)="cancel()"></div>
+<div class="am-picker-popup {{transitionName}}" style="z-index: 1001">
+  <div class="am-picker-popup-content">
+    <div class="am-picker-popup-body">
+      <div>
+        <div class="am-picker-popup-header">
+          <div class="am-picker-popup-item am-picker-popup-header-left"
+               (click)="cancel()"
+          >
+            {{options.dismissText}}
+          </div>
+          <div class="am-picker-popup-item am-picker-popup-title">{{options.title}}</div>
+          <div class="am-picker-popup-item am-picker-popup-header-right"
+               (click)="ok()"
+          >
+            {{options.okText}}
+          </div>
+        </div>
+        <div #picker
+             class="am-picker"
+             style="flex-direction: row; align-items: center;"
+        >
+          <div *ngFor="let item of dataWithStr; let i = index" class="am-picker-col">
+            <div class="am-picker-col-indicator " style="top: 102px;"></div>
+            <div id={{i}}
+                 class="am-picker-col-mask"
+                 style="background-size: 100% 102px;"
+            ></div>
+            <div class="am-picker-col-content">
+              <div id={{i}}
+                   class="am-picker-col-item"
+                   *ngFor="let val of item; let i = index"
+              >{{val.label?val.label:val}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

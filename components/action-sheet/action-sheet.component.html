@@ -1,0 +1,74 @@
+<div class="{{props.prefixCls}}-mask {{maskTransitionName}}"></div>
+<div class="{{props.prefixCls}}-wrap {{transitionName}}" (click)="onPress(-1)">
+  <div role="document"
+       class="{{props.prefixCls}}"
+       [ngClass]="showShare(flag)">
+    <div class="{{props.prefixCls}}-content">
+      <button aria-label="Close" class="{{props.prefixCls}}-close">
+        <span class="{{props.prefixCls}}-close-x"></span>
+      </button>
+      <div class="{{props.prefixCls}}-body">
+        <div>
+          <ng-template *ngIf="isTemplateRef(title)" [ngTemplateOutlet]="title"></ng-template>
+          <h3 *ngIf="!isTemplateRef(title)" class="{{props.prefixCls}}-title">{{title}}</h3>
+          <ng-template *ngIf="isTemplateRef(message)" [ngTemplateOutlet]="message"></ng-template>
+          <div *ngIf="!isTemplateRef(message)" class="{{props.prefixCls}}-message">{{message}}</div>
+          <ng-container [ngSwitch]="flag">
+            <div *ngSwitchCase="'NORMAL'" class="{{props.prefixCls}}-button-list" role="group">
+              <ng-container *ngFor="let item of options; let i = index;">
+                  <TouchFeedBack class="{{props.prefixCls}}-button-list-item" [activeClassName]="activeClassName" >
+                      <div *ngIf="destructiveButtonIndex !== i && cancelButtonIndex !== i"
+                           class="{{props.prefixCls}}-button-list-item"
+                           (click)="onPress(i)"
+                      >
+                        {{item}}
+                      </div>
+                      <div *ngIf="destructiveButtonIndex === i"
+                           class="{{props.prefixCls}}-button-list-item {{props.prefixCls}}-destructive-button"
+                           (click)="onPress(i)"
+                      >
+                        {{item}}
+                      </div>
+                      <div *ngIf="cancelButtonIndex === i"
+                           class="{{props.prefixCls}}-button-list-item {{props.prefixCls}}-cancel-button"
+                           (click)="onPress(i)"
+                      >
+                        {{item}}
+                        <span class="{{props.prefixCls}}-cancel-button-mask"></span>
+                      </div>
+                  </TouchFeedBack>
+              </ng-container>
+            </div>
+            <div *ngSwitchCase="'SHARE'" class="{{props.prefixCls}}-share {{props.prefixCls}}-share-content">
+              <div *ngIf="!isArray(options, options[0])" class="{{props.prefixCls}}-share-list">
+                <ng-container *ngFor="let item of options; let i = index;">
+                  <div class="{{props.prefixCls}}-share-list-item" (click)="onPress(i)">
+                    <div class="{{props.prefixCls}}-share-list-item-icon">
+                      <ng-template *ngIf="isTemplateRef(item.icon)" [ngTemplateOutlet]="item.icon"></ng-template>
+                      <div *ngIf="!isTemplateRef(item.icon)" [innerHTML]="item.icon | safeHTML"></div>
+                    </div>
+                    <div class="{{props.prefixCls}}-share-list-item-title">{{item.title}}</div>
+                  </div>
+                </ng-container>
+              </div>
+              <ng-container *ngIf="isArray(options, options[0])">
+                <div *ngFor="let items of options;" class="{{props.prefixCls}}-share-list">
+                  <ng-container *ngFor="let item of items; let i = index;">
+                    <div class="{{props.prefixCls}}-share-list-item" (click)="onPress(i)">
+                      <div class="{{props.prefixCls}}-share-list-item-icon">
+                        <ng-template *ngIf="isTemplateRef(item.icon)" [ngTemplateOutlet]="item.icon"></ng-template>
+                        <div *ngIf="!isTemplateRef(item.icon)" [innerHTML]="item.icon | safeHTML"></div>
+                      </div>
+                      <div class="{{props.prefixCls}}-share-list-item-title">{{item.title}}</div>
+                    </div>
+                  </ng-container>
+                </div>
+              </ng-container>
+              <div class="{{props.prefixCls}}-share-cancel-button">{{props.cancelButtonText}}</div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
