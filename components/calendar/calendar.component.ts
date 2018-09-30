@@ -15,7 +15,7 @@ import PropsType from './calendar.props.component';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { mergeDateTime } from './util/index';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 export { PropsType };
 

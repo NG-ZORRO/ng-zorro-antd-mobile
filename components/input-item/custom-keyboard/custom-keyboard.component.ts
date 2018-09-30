@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, OnDestroy, HostBinding } from '@angular/core';
 import { LocaleProviderService } from '../../locale-provider/locale-provider.service';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 const classnames = require('classnames');
 
 @Component({
