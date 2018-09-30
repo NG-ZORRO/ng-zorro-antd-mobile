@@ -39,7 +39,7 @@ Ant Design 的样式使用了 [Less](http://lesscss.org/) 作为开发语言，�
 
 > 在样例中通过修改 `@primary-color` 的数值将 `ng-zorro-antd-mobile` 的基础色修改为 `#f5222d`，开发者可以根据实际需求自由修改。
 
-```css
+```less
 // -------- 引入官方提供的 less 样式入口文件 -----------
 @import '../node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.less';
 
@@ -55,7 +55,7 @@ Ant Design 的样式使用了 [Less](http://lesscss.org/) 作为开发语言，�
 
 例如通过以下设置可以将字体文件的部署位置指向 `assets/fonts` 文件夹下的 `iconfont` 文件
 
-```css
+```less
 // -------- 引入官方提供的 less 样式入口文件 -----------
 @import '../node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.less';
 

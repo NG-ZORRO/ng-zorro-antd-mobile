@@ -165,7 +165,7 @@ Please read our [CONTRIBUTING.md](https://github.com/NG-ZORRO/ng-zorro-antd-mobi
 
 If you'd like to help us improve ng-zorro-antd-mobile, just create a [Pull Request](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pulls). Feel free to report bugs and issues [here](http://ng.mobile.ant.design/issue-helper/#/en).
 
-> If you're new to posting issues, we ask that you read [_How To Ask Questions The Smart Way_](http://www.catb.org/~esr/faqs/smart-questions.html)(This guide does not provide actual support services for this project!) and [How to Ask a Question in Open Source Community](https://github.com/seajs/seajs/issues/545) and [How to Report Bugs Effectively](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html) prior to posting. Well written bug reports help us help you!
+> If you're new to posting issues, we ask that you read [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html)(This guide does not provide actual support services for this project!) and [How to Ask a Question in Open Source Community](https://github.com/seajs/seajs/issues/545) and [How to Report Bugs Effectively](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html) prior to posting. Well written bug reports help us help you!
 
 ## Need Help?
 

@@ -7,6 +7,10 @@
 
 [English README](README.md)
 
+## 扫码体验
+
+![ng-zorro-mobile](https://gw.alicdn.com/tfs/TB1KPm6dSzqK1RjSZFjXXblCFXa-260-260.png)
+
 ## 特性
 
 - 开箱即用的高质量 **Angular** 无线端组件

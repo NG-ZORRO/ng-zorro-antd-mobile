@@ -39,7 +39,7 @@ Here is an example of `theme.less`
 
 > The base color is changed to `#f5222d` in the example below.
 
-```css
+```less
 // -------- import official less file -----------
 @import '../node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.less';
 
@@ -54,7 +54,7 @@ All less vars can be checked [here](https://github.com/NG-ZORRO/ng-zorro-antd-mo
 You can modify `@icon-url` to make a locally deployed version of the icon font, the newest iconfont file could be downloaded [here](https://github.com/ant-design/ant-design/releases/download/resource/iconfont-3.x.zip).
 Here is an example set icon url to the folder `assets/fonts`
 
-```css
+```less
 // -------- import official less file -----------
 @import '../node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.less';
 
