@@ -116,6 +116,7 @@ describe('pagination', () => {
                 [total]="total"
                 [simple]="simple"
                 [disabled]="disabled"
+                [locale]="locale"
                 (onChange)="onChange($event)"
     ></Pagination>
     <Pagination [mode]="mode"

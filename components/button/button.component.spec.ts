@@ -1,10 +1,9 @@
 /* tslint:disable:no-unused-variable */
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, TestBed } from '@angular/core/testing';
 import { Button } from './button.component';
 import { ButtonModule } from './button.module';
-import { DemoButtonBasicComponent } from './demo/basic';
 import { IconModule, WingBlankModule, WhiteSpaceModule, ListModule } from '../..';
 import { dispatchTouchEvent } from '../core/testing';
 
@@ -160,7 +159,7 @@ describe('button', () => {
   </ng-template>
   `
 })
-export class TestButton implements OnDestroy {
+export class TestButton implements OnInit, OnDestroy {
   type = 'primary';
   size = 'small';
   inline = true;
@@ -172,6 +171,8 @@ export class TestButton implements OnDestroy {
   onClick() {
     console.log('click');
   }
+
+  ngOnInit() {}
 
   ngOnDestroy() {
     clearTimeout(this.closeTimer);

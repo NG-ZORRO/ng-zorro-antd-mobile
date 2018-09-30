@@ -18,6 +18,7 @@ import {
 })
 export class Button implements AfterViewInit {
   prefixCls: string = 'am-button';
+  ngTemplate: boolean = false;
   iconType: any;
 
   private _el: HTMLElement;
@@ -59,10 +60,10 @@ export class Button implements AfterViewInit {
   }
   set icon(value: string | TemplateRef<any>) {
     if (value instanceof TemplateRef) {
-      this.iconType = false;
+      this.ngTemplate = true;
       this._icon = value;
     } else {
-      this.iconType = true;
+      this.ngTemplate = false;
       this._icon = <string>value;
       this.setClassMap();
     }
