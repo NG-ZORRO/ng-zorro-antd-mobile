@@ -90,7 +90,7 @@ export class Step implements OnInit {
         [`${this.prefixCls}-item-${this._status}`]: true,
         [`${this.prefixCls}-item-custom`]: this._icon
       });
-    }, 10);
+    }, 0);
   }
 
   ngOnInit() {

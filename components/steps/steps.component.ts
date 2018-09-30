@@ -101,6 +101,6 @@ export class Steps implements OnInit, AfterContentInit {
   ngAfterContentInit() {
     setTimeout(() => {
       this.setStepStyle();
-    }, 100);
+    }, 0);
   }
 }
