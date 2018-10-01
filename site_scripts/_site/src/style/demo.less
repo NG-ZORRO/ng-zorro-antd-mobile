@@ -100,6 +100,7 @@
       transition: background-color .4s;
       width: 100%;
       font-size: @font-size-base;
+      border-bottom: 1px dashed #ebedf0;
     }
 
     blockquote {
@@ -135,6 +136,13 @@
     height: 16px;
     line-height: 16px;
     text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ededed;
+    padding: 8px;
+    border-radius: 16px;
+    background-color: rgba(256, 256, 256, 0.6);
+    z-index: 1000;
   }
 
   .code-expand-icon-show,
@@ -168,9 +176,10 @@
   }
 
   .highlight-wrapper {
-    display: none;
+    display: block;
     overflow: auto;
     border-radius: 0 0 @border-radius-sm @border-radius-sm;
+    max-height: 150px;
 
     &-expand {
       display: block;

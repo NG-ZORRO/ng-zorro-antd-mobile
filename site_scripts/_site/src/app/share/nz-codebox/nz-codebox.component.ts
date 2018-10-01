@@ -8,44 +8,7 @@ import sdk from '@stackblitz/sdk';
 @Component({
   selector     : 'nz-code-box',
   encapsulation: ViewEncapsulation.None,
-  template     : `
-    <section class="code-box" [ngClass]="{'expand':nzExpanded, 'code-box-target':nzSelected}" [attr.id]="nzId">
-      <section class="code-box-meta markdown">
-        <div class="code-box-title">
-          <a (click)="navigateToFragment()">{{ nzTitle }}
-            <a class="edit-button" [attr.href]="nzHref" target="_blank" style="">
-              <i class="anticon anticon-edit"></i>
-            </a>
-          </a>
-        </div>
-        <ng-content select="[intro]"></ng-content>
-        <nz-tooltip [nzTitle]="nzExpanded?'Hide Code':'Show Code'">
-        <span class="code-expand-icon" nz-tooltip (click)="nzExpanded=!nzExpanded">
-            <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg" [class.code-expand-icon-show]="nzExpanded" [class.code-expand-icon-hide]="!nzExpanded">
-            <img alt="expand code" src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg" [class.code-expand-icon-show]="!nzExpanded" [class.code-expand-icon-hide]="nzExpanded">
-          </span>
-        </nz-tooltip>
-      </section>
-      <section class="highlight-wrapper" [ngClass]="{'highlight-wrapper-expand':nzExpanded}">
-        <div class="highlight">
-          <div class="code-box-actions">
-            <nz-tooltip [nzTitle]="'Edit On StackBlitz'">
-              <i nz-tooltip class="anticon anticon-form code-box-code-copy" (click)="openOnStackBlitz()"></i>
-            </nz-tooltip>
-            <nz-tooltip [nzTitle]="'Copy Code'">
-              <i nz-tooltip class="anticon anticon-copy code-box-code-copy" [class.anticon-copy]="!_copied" [class.anticon-check]="_copied" [class.ant-tooltip-open]="_copied" (click)="copyCode(nzRawCode)"></i>
-            </nz-tooltip>
-            <nz-tooltip [nzTitle]="'Copy Generate Command'" *ngIf="nzGenerateCommand">
-              <i nz-tooltip class="anticon anticon-code-o code-box-code-copy" [class.anticon-code-o]="!_commandCopied" [class.anticon-check]="_commandCopied" [class.ant-tooltip-open]="_commandCopied" (click)="copyGenerateCommand(nzGenerateCommand)"></i>
-            </nz-tooltip>
-          </div>
-          <ng-content select="[code]"></ng-content>
-
-          <nz-highlight [nzCode]="_code" [nzLanguage]="'typescript'"></nz-highlight>
-        </div>
-      </section>
-    </section>
-  `,
+  templateUrl: './nz-codebox.component.html',
   styleUrls    : [
     './nz-codebox.less'
   ]
@@ -57,6 +20,7 @@ export class NzCodeBoxComponent implements OnInit {
   showIframe: boolean;
   simulateIFrame: boolean;
   iframe: SafeUrl;
+  nzWidth = window.innerWidth  * 0.8;
   @Input() nzTitle: string;
   @Input() nzExpanded = false;
   @Input() nzSelected = false;
@@ -95,6 +59,14 @@ export class NzCodeBoxComponent implements OnInit {
         this._copied = false;
       }, 1000);
     });
+  }
+
+  handleCancel(): void {
+    this.nzExpanded = false;
+  }
+
+  handleOk(): void {
+    this.nzExpanded = false;
   }
 
   copyGenerateCommand(command) {
