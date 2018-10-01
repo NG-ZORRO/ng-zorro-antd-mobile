@@ -7,10 +7,6 @@ node_js:
 env:
   - TASK=pre-release
   - TASK=test
-  - TASK=lint
-  - TASK=integration-cli
-  - TASK=integration-webpack
-  - TASK=integration-rollup
 addons:
 apt:
   sources:
