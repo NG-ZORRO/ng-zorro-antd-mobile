@@ -160,17 +160,17 @@ export class DefaultTabBarComponent implements AfterViewInit {
     if (this.tabTitles && this.tabTitles.length > 0) {
       if ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) {
         this.inkBarOffSet = this.tabTitles.toArray()[key].nativeElement.offsetLeft;
-        this.inkBarLength = this.tabTitles.toArray()[key].nativeElement.offsetWidth;
+        this.inkBarLength = this.tabTitles.toArray()[key].nativeElement.style.width;
         this.inkBarStyle = {
-          width: this.inkBarLength + 'px',
+          width: this.inkBarLength,
           left: (this.selectedKey * 100) / this.page + '%'
         };
         Object.assign(this.inkBarStyle, this.tabBarUnderlineStyle);
       } else {
         this.inkBarOffSet = this.tabTitles.toArray()[key].nativeElement.offsetTop;
-        this.inkBarLength = this.tabTitles.toArray()[key].nativeElement.offsetHeight;
+        this.inkBarLength = this.tabTitles.toArray()[key].nativeElement.style.height;
         this.inkBarStyle = {
-          height: this.inkBarLength + 'px',
+          height: this.inkBarLength,
           top: (this.selectedKey * 100) / this.page + '%'
         };
         Object.assign(this.inkBarStyle, this.tabBarUnderlineStyle);
