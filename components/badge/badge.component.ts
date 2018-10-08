@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, HostBinding, OnChanges, ElementRef, AfterViewInit } from '@angular/core';
-const classnames = require('classnames');
+import { Component, OnInit, Input, HostBinding, OnChanges, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'Badge, nzm-badge',
@@ -11,7 +10,6 @@ export class Badge implements OnChanges, OnInit, AfterViewInit {
   style: object = {};
 
   private _text: string;
-  private _badgeCls: string;
   private _setClass: string;
   private _size: string = 'small';
   private _dot: boolean = false;
@@ -65,30 +63,37 @@ export class Badge implements OnChanges, OnInit, AfterViewInit {
   @Input()
   set className(v: string) {
     this._setClass = v;
+    const clsArr = this._setClass.split(' ');
+    clsArr.forEach(cls => {
+      this.render.addClass(this._ref.nativeElement, cls);
+    });
   }
 
-  @HostBinding('class')
-  get class(): string {
-    return 'am-badge ' + this._badgeCls;
-  }
+  @HostBinding('class.am-badge')
+  clsBadge: boolean = true;
+  @HostBinding('class.am-badge-not-a-wrapper')
+  clsBadgeWrp: boolean = !this._children;
+  @HostBinding('class.am-badge-corner-wrapper')
+  clsBadgeCornerWrp: boolean = this._corner;
+  @HostBinding('class.am-badge-hot')
+  clsBadgeHot: boolean = !!this._hot;
+  @HostBinding('class.am-badge-corner-wrapper-large')
+  clsBadgeCornerWrpLg: boolean = this._corner && this._size === 'large';
 
-  constructor(private _ref: ElementRef) {}
+  constructor(private _ref: ElementRef, private render: Renderer2) {}
 
   setCls() {
-    this.scrollNumberCls = classnames({
+    this.scrollNumberCls = {
       [`${this.prefixCls}-dot`]: this._dot,
       [`${this.prefixCls}-dot-large`]: this._dot && this._size === 'large',
       [`${this.prefixCls}-text`]: !this._dot && !this._corner,
       [`${this.prefixCls}-corner`]: this._corner,
       [`${this.prefixCls}-corner-large`]: this._corner && this._size === 'large'
-    });
-
-    this._badgeCls = classnames(this._setClass, {
-      [`${this.prefixCls}-not-a-wrapper`]: !this._children,
-      [`${this.prefixCls}-corner-wrapper`]: this._corner,
-      [`${this.prefixCls}-hot`]: !!this._hot,
-      [`${this.prefixCls}-corner-wrapper-large`]: this._corner && this._size === 'large'
-    });
+    };
+    this.clsBadgeWrp = !this._children;
+    this.clsBadgeCornerWrp = this._corner;
+    this.clsBadgeHot = !!this._hot;
+    this.clsBadgeCornerWrpLg = this._corner && this._size === 'large';
   }
 
   ngOnChanges() {

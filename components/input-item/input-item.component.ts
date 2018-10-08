@@ -8,14 +8,21 @@ import {
   OnChanges,
   HostBinding,
   Renderer2,
-  ElementRef
+  ElementRef,
+  forwardRef
 } from '@angular/core';
-import { ElementDef } from '@angular/core/src/view';
-const classnames = require('classnames');
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'InputItem, nzm-input-item',
-  templateUrl: './input-item.component.html'
+  templateUrl: './input-item.component.html',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputItem),
+      multi: true
+    }
+  ],
 })
 export class InputItem implements OnInit, OnChanges {
   prefixCls: string = 'am-input';
