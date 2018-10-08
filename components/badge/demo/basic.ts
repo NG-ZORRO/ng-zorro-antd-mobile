@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <List [renderHeader]=(renderHeader)>
       <ListItem [extra]="'extra content'" [arrow]="'horizontal'">
-        <Badge [dot]="true" [text]="77">
+        <Badge [dot]="true" [text]="77" class="dot-badge">
             <span style="width:26px ; height: 26px; background:#ddd; display:inline-block"></span>
         </Badge>
         <span style="margin-left:12px">Dot badge</span>
@@ -49,6 +49,9 @@ import { Component } from '@angular/core';
   `,
   styles: [
     `
+     /deep/ .dot-badge .am-badge-dot{
+       right:-8px;
+     }
       .corner-badge {
         height: 50px;
         width: 200px;
