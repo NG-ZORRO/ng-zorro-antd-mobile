@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
-const classnames = require('classnames');
+import { Component, OnInit, Input, HostBinding, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'ActivityIndicator , nzm-ctivity-indicator',
@@ -44,27 +43,32 @@ export class ActivityIndicator implements OnInit {
     this._text = v;
   }
 
-  @HostBinding('class')
-  get class() {
-    return this.wrapClass;
-  }
+  @HostBinding('class.am-activity-indicator')
+  clsActIndicator: boolean = true;
+  @HostBinding('class.am-activity-indicator-toast')
+  clsActIndicatorToast;
+  @HostBinding('class.am-activity-indicator-lg')
+  clsActIndicatorLg;
+  @HostBinding('class.am-activity-indicator-sm')
+  clsActIndicatorSm;
 
-  constructor() {}
+  constructor(private _el: ElementRef, private _render: Renderer2) {}
 
   setClass() {
     if (this._animating) {
-      this.wrapClass = classnames({
-        [`${this.prefixCls}`]: true,
-        [`${this.prefixCls}-lg`]: this._size === 'large',
-        [`${this.prefixCls}-sm`]: this._size === 'small',
-        [`${this.prefixCls}-toast`]: !!this._toast
-      });
+      this.clsActIndicator = true;
+      this.clsActIndicatorToast = !!this._toast;
+      this.clsActIndicatorLg = this._size === 'large';
+      this.clsActIndicatorSm = this._size === 'small';
       this.spinnerClass = {
         [`${this.prefixCls}-spinner`]: true,
         [`${this.prefixCls}-spinner-lg`]: !!this._toast || this._size === 'large'
       };
     } else {
-      this.wrapClass = '';
+      this.clsActIndicator = false;
+      this.clsActIndicatorLg = false;
+      this.clsActIndicatorSm = false;
+      this.clsActIndicatorToast = false;
     }
   }
 

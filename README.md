@@ -29,6 +29,8 @@ This is the **Angular** implementation of **Ant Design Mobile** specification, s
 ## Version
 
 [![npm package](https://img.shields.io/npm/v/ng-zorro-antd-mobile.svg?style=flat-square)](https://www.npmjs.org/package/ng-zorro-antd-mobile)
+[![Build Status](https://travis-ci.com/NG-ZORRO/ng-zorro-antd-mobile.svg?branch=master)](https://travis-ci.com/NG-ZORRO/ng-zorro-antd-mobile)
+[![codecov](https://codecov.io/gh/NG-ZORRO/ng-zorro-antd-mobile/branch/master/graph/badge.svg)](https://codecov.io/gh/NG-ZORRO/ng-zorro-antd-mobile)
 
 ## Angular Support
 
