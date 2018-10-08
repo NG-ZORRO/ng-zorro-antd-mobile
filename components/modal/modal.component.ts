@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, TemplateRef, EventEmitter, ViewEncapsulation, ViewChild } from '@angular/core';
 import { NgSwitch, NgSwitchCase } from '@angular/common';
 import { ModalOptions } from './modal-options.provider';
-const classnames = require('classnames');
 
 @Component({
   selector: 'Modal',
@@ -136,6 +135,11 @@ export class ModalComponent implements OnInit {
     this.setClassMap();
   }
   @Input()
+  set wrapClassName(value) {
+    this.defaultProps.wrapClassName = value;
+    this.setClassMap();
+  }
+  @Input()
   set actions(value) {
     this.defaultProps.footer = value;
     this.setClassMap();
@@ -169,17 +173,19 @@ export class ModalComponent implements OnInit {
   constructor(private _option: ModalOptions) {}
 
   setClassMap() {
-    this.wrapCls = classnames(this.defaultProps.wrapClassName, {
+    this.wrapCls = {
+      [this.defaultProps.wrapClassName]: true,
       [`${this.defaultProps.prefixCls}-wrap-popup`]: this.defaultProps.popup
-    });
+    };
 
-    this.cls = classnames(this.defaultProps.className, {
+    this.cls = {
+      [this.defaultProps.className]: true,
       [`${this.defaultProps.prefixCls}-transparent`]: this.defaultProps.transparent,
       [`${this.defaultProps.prefixCls}-popup`]: this.defaultProps.popup,
       [`${this.defaultProps.prefixCls}-popup-${this.defaultProps.animationType}`]:
         this.defaultProps.popup && this.defaultProps.animationType,
       [`${this.defaultProps.prefixCls}-android`]: this.defaultProps.platform === 'android'
-    });
+    };
 
     this.btnGroupClass = {
       [`${this.defaultProps.prefixCls}-button-group-${

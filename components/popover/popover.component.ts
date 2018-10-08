@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, ViewEncapsulation, OnInit} from '@angular/core';
 import { PopoverComponentOptions } from './popover-component-options.provider';
-const classnames = require('classnames');
 
 @Component({
   selector: 'Popover',
@@ -17,14 +16,14 @@ export class PopoverComponent implements OnInit, AfterViewInit {
   constructor(public options: PopoverComponentOptions) {}
 
   setClassMap() {
-    this.maskCls = classnames({
+    this.maskCls = {
       [`${this.defaultProps.prefixCls}-mask`]: this.options.mask,
       [`${this.defaultProps.prefixCls}-mask-hidden`]: !this.options.mask
-    });
-    this.popoverCls = classnames({
+    };
+    this.popoverCls = {
       [`${this.defaultProps.prefixCls}`]: true,
       [`${this.defaultProps.prefixCls}-placement-${this.options.placement}`]: true
-    });
+    };
   }
 
   ngOnInit() {

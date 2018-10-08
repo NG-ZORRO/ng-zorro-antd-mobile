@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'ActivityIndicator , nzm-ctivity-indicator',
@@ -6,7 +6,6 @@ import { Component, OnInit, Input, HostBinding, ElementRef, Renderer2 } from '@a
 })
 export class ActivityIndicator implements OnInit {
   prefixCls: string = 'am-activity-indicator';
-  wrapClass: string = '';
   spinnerClass: object = {};
 
   private _text: string;
@@ -52,7 +51,7 @@ export class ActivityIndicator implements OnInit {
   @HostBinding('class.am-activity-indicator-sm')
   clsActIndicatorSm;
 
-  constructor(private _el: ElementRef, private _render: Renderer2) {}
+  constructor() {}
 
   setClass() {
     if (this._animating) {

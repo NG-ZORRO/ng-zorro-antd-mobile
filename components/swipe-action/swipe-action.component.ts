@@ -10,7 +10,6 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 
-const classnames = require('classnames');
 
 @Component({
   selector: 'SwipeAction, nzm-swipe-action',
@@ -55,9 +54,10 @@ export class SwipeAction implements OnInit, AfterViewInit, OnDestroy {
   constructor() {}
 
   setClassMap() {
-    this.wrapCls = classnames(this.prefixCls, {
+    this.wrapCls = {
+      [this.prefixCls]: true,
       [`${this.prefixCls}-swiping`]: this._swiping
-    });
+    };
   }
 
   onCloseSwipe = () => {

@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter, OnChanges, HostBinding } from '@angular/core';
-const classnames = require('classnames');
 
 @Component({
   selector: 'Stepper , nzm-stepper',

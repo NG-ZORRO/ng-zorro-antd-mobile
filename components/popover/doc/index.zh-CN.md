@@ -15,6 +15,7 @@ subtitle: 气泡
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
+| visible    | 当前显隐状态    | Boolean |  false   |
 | onVisibleChange    | 当显隐状态变化时回调函数    | (visible: bool): void |  -   |
 | placement    | enum{'left','right','top','bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'} | String |  'bottomRight'   |
 | mask    | 是否显示遮罩背景层    | Boolean |  false  |

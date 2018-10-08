@@ -1,4 +1,4 @@
-<div *ngIf="(left.length != 0 || right.length != 0) && !disabled" class="{{wrapCls}}">
+<div *ngIf="(left.length != 0 || right.length != 0) && !disabled" [ngClass]="wrapCls">
   <div class="{{prefixCls}}-cover" #coverRef></div>
   <div *ngIf="left && left.length > 0"
        class="{{prefixCls}}-actions {{prefixCls}}-actions-left"
