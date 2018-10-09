@@ -91,9 +91,10 @@ export class CustomInput implements OnInit, OnDestroy {
   onFocus: EventEmitter<any> = new EventEmitter<any>();
 
   @HostBinding('class.fake-input-container')
-  private _fakeInputContainer;
+  clsFakeContainer: boolean = true;
   @HostBinding('class.fake-input-container-left')
-  private _fakeInputContainerLeft;
+  clsFakeContainerLeft: boolean;
+
   constructor(private _ref: ElementRef, private _customInputService: CustomInputService) {}
 
   onFakeInputClick() {
@@ -196,8 +197,7 @@ export class CustomInput implements OnInit, OnDestroy {
   };
 
   setContainerCls = () => {
-    this._fakeInputContainer = true;
-    this._fakeInputContainerLeft = this._moneyKeyboardAlign === 'left';
+    this.clsFakeContainerLeft = this._moneyKeyboardAlign === 'left';
   };
 
   onKeyboardClick = keyboardItemValue => {
