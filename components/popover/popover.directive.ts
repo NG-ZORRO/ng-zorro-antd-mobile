@@ -19,7 +19,7 @@ import {
 import { PopoverComponent } from './popover.component';
 import { PopoverOptions } from './popover-options.provider';
 import { PopoverComponentOptions } from './popover-component-options.provider';
-import { Positioning } from 'positioning';
+import * as Positioning from '../core/util/position';
 
 @Directive({
   selector: '[Popover]'
@@ -60,7 +60,6 @@ export class PopoverDirective implements OnInit, AfterViewInit, OnDestroy {
     private _elm: ElementRef,
     private _defaultOptions: PopoverOptions,
     private _cfr: ComponentFactoryResolver,
-    private _position: Positioning,
     private _renderer: Renderer2
   ) {}
 
@@ -96,7 +95,9 @@ export class PopoverDirective implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     if (this.visible) {
-      // this.showPopover();
+      setTimeout(() => {
+      this.showPopover();
+      }, 0);
     }
   }
 
@@ -190,7 +191,7 @@ export class PopoverDirective implements OnInit, AfterViewInit, OnDestroy {
   private positionPopover(): void {
     if (this.popover) {
       const popoverElement = this.popover.location.nativeElement.children[1];
-      const popoverPosition = this._position.positionElements(
+      const popoverPosition = Positioning.getPositionElements(
         this._elm.nativeElement,
         popoverElement,
         this.positionMap(this.placement) || this._defaultOptions.placement,

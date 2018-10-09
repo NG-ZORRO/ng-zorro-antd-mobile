@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, OnDestroy, 
 import { LocaleProviderService } from '../../locale-provider/locale-provider.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-const classnames = require('classnames');
 
 @Component({
   selector: 'CustomKeyboard',
@@ -12,7 +11,6 @@ const classnames = require('classnames');
 })
 export class CustomKeyboard implements OnInit, OnDestroy {
   prefixCls: string = 'am-number-keyboard';
-  wrapperCls: object;
   wrapCls: object;
   okText: string = '';
 
@@ -22,10 +20,8 @@ export class CustomKeyboard implements OnInit, OnDestroy {
   @Output()
   onClick = new EventEmitter<any>();
 
-  @HostBinding('class')
-  get class() {
-    return this.wrapperCls;
-  }
+  @HostBinding('class.am-number-keyboard-wrapper')
+  private _wrapper = true;
 
   constructor(private _localeProvider: LocaleProviderService) {}
 
@@ -34,9 +30,6 @@ export class CustomKeyboard implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.wrapperCls = classnames({
-      [`${this.prefixCls}-wrapper`]: true
-    });
     this.wrapCls = {
       [`${this.prefixCls}-item`]: true
     };

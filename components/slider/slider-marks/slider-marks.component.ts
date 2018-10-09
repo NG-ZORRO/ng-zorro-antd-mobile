@@ -9,7 +9,6 @@ import {
   HostBinding,
   ViewEncapsulation
 } from '@angular/core';
-const classnames = require('classnames');
 
 @Component({
   selector: 'SliderMarks, nzm-slider-marks',
@@ -96,10 +95,10 @@ export class SliderMarks implements OnInit, AfterViewInit {
         const isActive =
           (!this._included && point === this._upperBound) ||
           (this._included && point <= this._upperBound && point >= this._lowerBound);
-        const markClassName = classnames({
+        const markClassName = {
           [`${this._className}-text`]: true,
           [`${this._className}-text-active`]: isActive
-        });
+        };
         const bottomStyle = {
           marginBottom: '-50%',
           bottom: `${((point - this._min) / this._range) * 100}%`
@@ -113,7 +112,7 @@ export class SliderMarks implements OnInit, AfterViewInit {
         const markStyle = markPointIsObject ? { ...style, ...markPoint.style } : style;
         markItem.markLabel = markLabel;
         markItem.point = point;
-        markItem.className = markClassName;
+        markItem.className = Object.keys(markClassName).join(' ');
         markItem.style = markStyle;
         this.markArray.push(markItem);
       });
@@ -125,10 +124,10 @@ export class SliderMarks implements OnInit, AfterViewInit {
       const isActive =
         (!this._included && point === this._upperBound) ||
         (this._included && point <= this._upperBound && point >= this._lowerBound);
-      this.markArray[i].className = classnames({
+      this.markArray[i].className = {
         [`${this._className}-text`]: true,
         [`${this._className}-text-active`]: isActive
-      });
+      };
     }
   }
 

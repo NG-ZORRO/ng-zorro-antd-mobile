@@ -10,8 +10,6 @@ import {
   InjectionToken,
 } from '@angular/core';
 
-const classnames = require('classnames');
-
 export const INTERFACE_TOKEN = new InjectionToken<any>('InterfaceToken');
 
 @Directive({
@@ -39,7 +37,7 @@ export class TouchFeedbackDirective implements OnInit {
   }
 
   ngOnInit() {
-    this._className = classnames(this.className);
+    this._className = this.className;
   }
 
   @HostListener('touchstart', ['$event'])
