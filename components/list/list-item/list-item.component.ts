@@ -11,8 +11,6 @@ import {
   HostListener
 } from '@angular/core';
 
-const classnames = require('classnames');
-
 @Component({
   selector: 'ListItem, nzm-list-item',
   templateUrl: './list-item.component.html',
@@ -30,7 +28,7 @@ export class ListItem implements OnInit, OnDestroy {
   };
   arrowCls: any = {};
   lineCls: any = {};
-  wrapCls: any = {};
+  wrapCls: string = '';
   rippleCls: any = {};
   rippleClicked: boolean = false;
   debounceTimeout: any;
@@ -139,7 +137,7 @@ export class ListItem implements OnInit, OnDestroy {
 
   @HostBinding('class')
   get bingClassName(): string {
-    return 'am-list-item ' + this.wrapCls;
+    return this.wrapCls;
   }
   @HostListener('click', ['$event'])
   click(event) {
@@ -184,26 +182,53 @@ export class ListItem implements OnInit, OnDestroy {
   constructor() {}
 
   setClsMap() {
-    this.wrapCls = classnames(`${this.defaultProps.prefixCls}-item`, this._className, {
+    const classNameList = this._className.split(' ');
+    let classNameObj = {};
+    this.wrapCls = '';
+
+    for (const value of classNameList) {
+      if (value) {
+        classNameObj = {
+          ...classNameObj,
+          ...{ [`${value}`]: true }
+        };
+      }
+    }
+
+    const wrapClsObj = {
+      [`${this.defaultProps.prefixCls}-item`]: true,
       [`${this.defaultProps.prefixCls}-item-disabled`]: this._disabled,
       [`${this.defaultProps.prefixCls}-item-active`]: this._active,
       [`${this.defaultProps.prefixCls}-item-error`]: this.defaultProps.error,
       [`${this.defaultProps.prefixCls}-item-top`]: this.defaultProps.align === 'top',
       [`${this.defaultProps.prefixCls}-item-middle`]: this.defaultProps.align === 'middle',
-      [`${this.defaultProps.prefixCls}-item-bottom`]: this.defaultProps.align === 'bottom'
-    });
-    this.rippleCls = classnames(`${this.defaultProps.prefixCls}-ripple`, {
+      [`${this.defaultProps.prefixCls}-item-bottom`]: this.defaultProps.align === 'bottom',
+      ...classNameObj
+    };
+
+    for (const key in wrapClsObj) {
+      if (wrapClsObj[key]) {
+        this.wrapCls += ` ${key}`;
+      }
+    }
+
+    this.rippleCls = {
+      [`${this.defaultProps.prefixCls}-ripple`]: true,
       [`${this.defaultProps.prefixCls}-ripple-animate`]: this.rippleClicked
-    });
-    this.lineCls = classnames(`${this.defaultProps.prefixCls}-line`, {
+    };
+
+    this.lineCls = {
+      [`${this.defaultProps.prefixCls}-line`]: true,
       [`${this.defaultProps.prefixCls}-line-multiple`]: this.defaultProps.multipleLine,
       [`${this.defaultProps.prefixCls}-line-wrap`]: this.defaultProps.wrap
-    });
-    this.arrowCls = classnames(`${this.defaultProps.prefixCls}-arrow`, {
+    };
+
+    this.arrowCls = {
+      [`${this.defaultProps.prefixCls}-arrow`]: true,
       [`${this.defaultProps.prefixCls}-arrow-horizontal`]: this._arrow === 'horizontal',
       [`${this.defaultProps.prefixCls}-arrow-vertical`]: this._arrow === 'down' || this._arrow === 'up',
       [`${this.defaultProps.prefixCls}-arrow-vertical-up`]: this._arrow === 'up'
-    });
+    };
   }
 
   onItemClick(ev) {

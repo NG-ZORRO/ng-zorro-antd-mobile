@@ -40,8 +40,7 @@
   ],
   "dependencies": {
     "@angular/cdk": "^6.3.0",
-    "@angular/animations": "^6.1.9",
-    "classnames": "^2.2.5"
+    "@angular/animations": "^6.1.9"
   },
   "devDependencies": {
     "node-prismjs": "^0.1.1",
