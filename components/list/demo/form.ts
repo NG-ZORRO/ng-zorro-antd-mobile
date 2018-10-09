@@ -77,7 +77,7 @@ export class DemoListFormComponent implements OnInit {
   renderFooter: Function;
   registerForm: FormGroup;
   stepper_value: number = 20;
-  isError: boolean = true;
+  isError: boolean = false;
 
   onFocus: object = {
     focus: false
