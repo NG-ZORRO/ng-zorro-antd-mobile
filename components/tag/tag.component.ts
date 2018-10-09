@@ -6,7 +6,6 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-const classnames = require('classnames');
 
 @Component({
   selector: 'Tag, nzm-tag',
@@ -78,13 +77,14 @@ export class TagComponent implements OnInit {
   }
 
   setClassMap() {
-    this.wrapCls = classnames(this.prefixCls, {
+    this.wrapCls = {
+      [this.prefixCls]: true,
       [`${this.prefixCls}-normal`]: !this._disabled && (!this._selected || this._small || this._closable),
       [`${this.prefixCls}-small`]: this._small,
       [`${this.prefixCls}-active`]: this._selected && !this._disabled && !this._small && !this._closable,
       [`${this.prefixCls}-disabled`]: this._disabled,
       [`${this.prefixCls}-closable`]: this._closable
-    });
+    };
   }
 
   ngOnInit() {
