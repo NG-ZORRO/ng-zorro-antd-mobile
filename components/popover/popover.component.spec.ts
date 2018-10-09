@@ -4,6 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PopoverComponentOptions } from './popover-component-options.provider';
 import { PopoverModule, IconModule, PopoverItemModule } from '../..';
 import { dispatchTouchEvent } from '../core/testing';
+import { PopoverOptions } from './popover-options.provider';
 
 describe('PopoverComponent', () => {
   let component: TestPopoverComponent;
@@ -14,7 +15,7 @@ describe('PopoverComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestPopoverComponent],
-      providers: [PopoverComponentOptions],
+      providers: [PopoverComponentOptions, PopoverOptions],
       imports: [PopoverModule, PopoverItemModule, IconModule]
     }).compileComponents();
   }));

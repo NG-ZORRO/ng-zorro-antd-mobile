@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter, TemplateRef, ElementRef, HostBinding } from '@angular/core';
-const classnames = require('classnames');
 
 @Component({
   selector: 'Grid, nzm-grid',

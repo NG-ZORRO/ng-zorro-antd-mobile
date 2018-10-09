@@ -10,7 +10,6 @@ import {
   HostBinding
 } from '@angular/core';
 import { CustomInputService } from './custom-input.service';
-const classnames = require('classnames');
 
 @Component({
   selector: 'CustomInput',
@@ -21,7 +20,6 @@ const classnames = require('classnames');
 export class CustomInput implements OnInit, OnDestroy {
   keyboardPrefixCls: string = 'am-number-keyboard';
   fakeInputCls: object;
-  fakeInputContainerCls: object;
   focus: boolean = false;
 
   private _value: string = '';
@@ -92,11 +90,10 @@ export class CustomInput implements OnInit, OnDestroy {
   @Output()
   onFocus: EventEmitter<any> = new EventEmitter<any>();
 
-  @HostBinding('class')
-  get class() {
-    return this.fakeInputContainerCls;
-  }
-
+  @HostBinding('class.fake-input-container')
+  private _fakeInputContainer;
+  @HostBinding('class.fake-input-container-left')
+  private _fakeInputContainerLeft;
   constructor(private _ref: ElementRef, private _customInputService: CustomInputService) {}
 
   onFakeInputClick() {
@@ -199,10 +196,8 @@ export class CustomInput implements OnInit, OnDestroy {
   };
 
   setContainerCls = () => {
-    this.fakeInputContainerCls = classnames({
-      ['fake-input-container']: true,
-      ['fake-input-container-left']: this._moneyKeyboardAlign === 'left'
-    });
+    this._fakeInputContainer = true;
+    this._fakeInputContainerLeft = this._moneyKeyboardAlign === 'left';
   };
 
   onKeyboardClick = keyboardItemValue => {

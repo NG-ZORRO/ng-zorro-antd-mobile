@@ -10,7 +10,6 @@ import {
   EventEmitter,
   ViewEncapsulation
 } from '@angular/core';
-const classnames = require('classnames');
 
 @Component({
   selector: 'PopoverItem, nzm-popover-item',

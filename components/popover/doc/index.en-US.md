@@ -14,6 +14,7 @@ If set mask prop, it is recommended to exit by clicking on any of the mask layer
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
+| visible    | visible state    | Boolean |  false   |
 | onVisibleChange    | visible state change callback    | (visible: bool): void |  -   |
 | placement    | enum{'left','right','top','bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'} | String |  'bottomRight'   |
 | mask    | Whether to display the mask background layer  | Boolean |  false  |
