@@ -83,7 +83,7 @@ export class SliderMarks implements OnInit, AfterViewInit {
         const markItem = {
           markLabel: '',
           point: '',
-          className: '',
+          className: {},
           style: {}
         };
         const markPoint = this._marks[point];
