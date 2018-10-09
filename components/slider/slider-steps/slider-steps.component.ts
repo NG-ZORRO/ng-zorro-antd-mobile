@@ -50,14 +50,14 @@ export class SliderSteps implements OnInit {
   }
   @Input()
   set upperBound(value: number) {
-    if (value && value !== this._upperBound) {
+    if (value !== undefined && value !== this._upperBound) {
       this._upperBound = value;
       this.setActiveCls();
     }
   }
   @Input()
   set lowerBound(value: number) {
-    if (value && value !== this.lowerBound) {
+    if (value !== undefined && value !== this.lowerBound) {
       this._lowerBound = value;
       this.setActiveCls();
     }

@@ -3,7 +3,6 @@ import {
   ComponentRef,
   ComponentFactory,
   ApplicationRef,
-  Compiler,
   ComponentFactoryResolver
 } from '@angular/core';
 import { CustomKeyboard } from '../custom-keyboard/custom-keyboard.component';
