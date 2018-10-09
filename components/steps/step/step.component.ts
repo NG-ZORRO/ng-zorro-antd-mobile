@@ -9,7 +9,6 @@ import {
   HostBinding
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-const classnames = require('classnames');
 
 @Component({
   selector: 'Step, nzm-step',
@@ -25,7 +24,7 @@ const classnames = require('classnames');
 })
 export class Step implements OnInit {
   prefixCls = 'am-steps';
-  stepItemCls: object;
+  stepItemCls = {};
   iconCls: object;
   tailContent: string;
   stepNumber: number;
@@ -74,10 +73,8 @@ export class Step implements OnInit {
     }
   }
 
-  @HostBinding('class')
-  get class(): string {
-    return 'am-steps-item ' + this.stepItemCls;
-  }
+  @HostBinding('class.am-steps-item')
+  clsStepItem: boolean = true;
 
   constructor(private _el: ElementRef) {}
 
@@ -85,16 +82,15 @@ export class Step implements OnInit {
     this.iconCls = {
       [`${this.prefixCls}-icon`]: true
     };
-    setTimeout(() => {
-      this.stepItemCls = classnames(this.stepItemCls, {
-        [`${this.prefixCls}-item-${this._status}`]: true,
-        [`${this.prefixCls}-item-custom`]: this._icon
-      });
-    }, 0);
+    this.stepItemCls = Object.assign(this.stepItemCls,
+      {
+        [`${this.prefixCls}-item-${this.status}`]: true,
+        [`${this.prefixCls}-item-custom`]: this.icon
+      }
+    );
   }
 
   ngOnInit() {
-    this.setClass();
   }
 }
 
