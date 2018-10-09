@@ -1,7 +1,16 @@
-import { Component, OnInit, Input, ContentChildren, QueryList, AfterContentInit, HostBinding } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ContentChildren,
+  QueryList,
+  AfterContentInit,
+  HostBinding,
+  Renderer2,
+  ElementRef
+} from '@angular/core';
 import { StatusEnum, DirectionEnum } from './step/step.component';
 import { Step } from './step/step.component';
-const classnames = require('classnames');
 
 @Component({
   selector: 'Steps,nzm-steps',
@@ -43,12 +52,18 @@ export class Steps implements OnInit, AfterContentInit {
     this.setCls();
   }
 
-  @HostBinding('class')
-  get class(): string {
-    return 'am-steps ' + this._stepsCls;
-  }
+  @HostBinding('class.am-steps')
+  clsSteps: boolean = true;
+  @HostBinding('class.am-steps-small')
+  clsStepsSmall: boolean;
+  @HostBinding('class.am-steps-label-vertical')
+  clsStepsLabelVtl: boolean;
+  @HostBinding('class.am-steps-vertical')
+  clsStepsVtl: boolean;
+  @HostBinding('class.am-steps-horizontal')
+  clsStepsHztl: boolean;
 
-  constructor() {}
+  constructor(private _elf: ElementRef, private _render: Renderer2) {}
 
   setStepStyle() {
     const itemCount = this.stepItems.length;
@@ -57,7 +72,9 @@ export class Steps implements OnInit, AfterContentInit {
       const step = itemArr[index];
       step.stepNumber = index + 1;
       if (index < itemCount - 1 && itemArr[index + 1].status === StatusEnum.ERROR) {
-        step.stepItemCls = classnames(step.stepItemCls, { 'error-tail': true });
+        step.stepItemCls = step.stepItemCls
+          ? Object.assign(step.stepItemCls, { 'error-tail': true })
+          : { 'error-tail': true };
       }
       let icon = step.icon;
       if (!step.status) {
@@ -74,7 +91,9 @@ export class Steps implements OnInit, AfterContentInit {
           icon = 'check-circle-o';
         } else if (index > this._current) {
           icon = 'ellipsis';
-          step.stepItemCls = classnames(step.stepItemCls, { 'ellipsis-item': true });
+          step.stepItemCls = step.stepItemCls
+            ? Object.assign(step.stepItemCls, { 'ellipsis-item': true })
+            : { 'ellipsis-item': true };
         }
         if ((this._status === StatusEnum.ERROR && index === this._current) || step.status === StatusEnum.ERROR) {
           icon = 'cross-circle-o';
@@ -87,11 +106,19 @@ export class Steps implements OnInit, AfterContentInit {
   }
 
   setCls() {
-    this._stepsCls = classnames({
-      [`${this.prefixCls}-${this._size}`]: this._size === 'small',
-      [`${this.prefixCls}-${this._direction}`]: true,
-      [`${this.prefixCls}-label-vertical`]: this._direction === DirectionEnum.HORIZONTAL
-    });
+    if (this._direction === DirectionEnum.HORIZONTAL) {
+      this.clsStepsLabelVtl = true;
+      this.clsStepsHztl = true;
+      this.clsStepsVtl = false;
+    } else if (this._direction === DirectionEnum.VERTICAL) {
+      this.clsStepsVtl = true;
+      this.clsStepsHztl = false;
+    }
+    if (this._size === 'small') {
+      this.clsStepsSmall = true;
+    } else {
+      this.clsStepsSmall = false;
+    }
   }
 
   ngOnInit() {
