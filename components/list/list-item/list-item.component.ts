@@ -11,8 +11,6 @@ import {
   HostListener
 } from '@angular/core';
 
-const classnames = require('classnames');
-
 @Component({
   selector: 'ListItem, nzm-list-item',
   templateUrl: './list-item.component.html',
