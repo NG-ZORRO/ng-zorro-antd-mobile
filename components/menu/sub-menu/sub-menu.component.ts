@@ -2,26 +2,14 @@ import {
   Component,
   ViewEncapsulation,
   Input,
-  HostBinding,
-  forwardRef,
   Output,
   EventEmitter,
-  TemplateRef
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-const classnames = require('classnames');
 
 @Component({
   selector: 'SubMenu, nzm-sub-menu',
   templateUrl: './sub-menu.component.html',
   encapsulation: ViewEncapsulation.None,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SubMenuComponent),
-      multi: true
-    }
-  ]
 })
 export class SubMenuComponent {
   prefixCls = 'am-sub-menu';
