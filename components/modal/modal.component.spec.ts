@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, tick, TestBed } from '@angular/core/testing';
 import { ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule } from '../..';
 import { By } from '@angular/platform-browser';
@@ -53,11 +53,17 @@ describe('ModalComponent', () => {
   });
 
   it('should title work', () => {
-    expect(modalEle.nativeElement.querySelector('.am-modal-title').innerText).toBe('Title', 'title is Title');
     component.title = '123';
     fixture.detectChanges();
 
-    expect(modalEle.nativeElement.querySelector('.am-modal-title').innerText).toBe('123', 'title is 123');
+    expect(modalEle.nativeElement.querySelector('.am-modal-header').innerText.trim()).toBe('123', 'title is 123');
+  });
+
+  it('should title work', () => {
+    component.title = component.titleRef;
+    fixture.detectChanges();
+
+    expect(modalEle.nativeElement.querySelector('.am-modal-header').innerText.trim()).toBe('123', 'title is 123');
   });
 
   it('should footer work', () => {
@@ -70,10 +76,18 @@ describe('ModalComponent', () => {
 
   it('should popup work', () => {
     expect(modalEle.nativeElement.querySelector('.am-modal-wrap-popup')).toBeTruthy('popup is true');
+  });
+
+  it('should popup work', () => {
     component.popup = false;
     fixture.detectChanges();
-
     expect(modalEle.nativeElement.querySelector('.am-modal-wrap-popup')).toBeNull('popup is false');
+  });
+
+  it('should close work', () => {
+    component.popup = true;
+    fixture.detectChanges();
+    modalEle.nativeElement.querySelector('.am-modal-wrap-popup').click();
   });
 
   it('should animationType work', () => {
@@ -186,6 +200,7 @@ describe('ModalComponent', () => {
          [footer]="footer"
          [closable]="closable"
          [platform]="platform"
+         [wrapClassName]="'test-class'"
          [transparent]="transparent"
          [animationType]="animationType"
   >
@@ -206,16 +221,21 @@ describe('ModalComponent', () => {
   <div Button (onClick)="showSecure()">secure-text</div>
   <div Button (onClick)="showCustom()">custom buttons</div>
   <div Button (onClick)="showLogin()">login-password</div>
+  <ng-template #title>
+  <div>123</div>
+  </ng-template>
   `
 })
 export class TestModalBasicComponent {
   animationType = 'slide-down';
   platform = 'android';
+  visible = true;
   closable = true;
   popup = true;
   state = true;
   transparent = true;
-  title = 'Title';
+  vi
+  title: any = '456';
   footer = [
     {
       text: 'Ok',
@@ -225,7 +245,7 @@ export class TestModalBasicComponent {
       }
     }
   ];
-
+  @ViewChild('title') titleRef: ViewChild;
   constructor(private _modal: Modal) {}
 
   onClose(key) {
