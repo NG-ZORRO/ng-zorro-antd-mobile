@@ -2,10 +2,10 @@
 
 # compiled output
 /doc
-site/
+/site/
 /tmp
 /out-tsc
-publish/
+/publish/
 dist/
 integration/**/lib/
 integration/**/*.ngfactory.ts
