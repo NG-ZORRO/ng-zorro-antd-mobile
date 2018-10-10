@@ -1,0 +1,39 @@
+<div class="am-demo-page">
+    <div class="am-demo-hd">
+      <h1 class="am-demo-title">
+        <span>Ant Design Mobile of Angular </span>
+      </h1>
+      <h2 class="am-demo-subtitle">
+          <span>{{subTitle()}}</span>
+      </h2>
+    </div>
+
+    <div class="am-demo-bd" *ngFor="let component of routerList.components">
+      <div class="am-list " [ngClass]="{'category-open':component.active,'category-closed':!component.active}">
+        <div class="am-list-header" (click)="toggle(component)">
+          <div class="am-demo-category">
+            <div class="am-demo-category-name">{{combineCategory(component)}}</div>
+            <div class="am-demo-category-arrow">
+              <span>
+                <svg class="am-icon am-icon-down am-icon-md">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#down"></use>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="am-list-body">
+          <ng-container *ngFor="let content of component.children">
+            <div class="am-list-item am-list-item-middle {{listItemClass}}" *ngIf="isZhCN(content.path)" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+              <div class="am-list-line" (click)="routerLink(content)">
+                <a routerLink="{{content.path}}"></a>
+                <div class="am-list-content">{{combineName(content)}}</div>
+                <div class="am-list-arrow am-list-arrow-horizontal" aria-hidden="true"></div>
+              </div>
+              <div class="am-list-ripple" style="display: none;"></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
