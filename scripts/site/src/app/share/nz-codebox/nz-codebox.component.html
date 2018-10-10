@@ -15,7 +15,7 @@
             [nzWidth]="nzWidth"
             [nzTitle]="nzTitle"
             [nzCancelText]="null"
-            [nzOkText]="'返回'"
+            [nzOkText]="nzOkText()"
             (nzOnCancel)="handleCancel()"
             (nzOnOk)="handleOk()"
           >
