@@ -340,7 +340,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
             v.top = this.vertical ? (this._nodeArr.length - 1) * this._rationWidth : 0;
           }
         } else if (index === this._nodeArr.length - 2 && 0 === tempIndex) {
-          v.left = 0;
+          v.left = this.vertical ? 0 : this._nodeArr.length * this._rationWidth;
           v.top = this.vertical ? this._nodeArr.length * this._rationWidth : 0;
         } else if (index === this._nodeArr.length - 1 && tempIndex === 1 && this.autoplay) {
           v.left = this.vertical ? 0 : (this._nodeArr.length + tempIndex) * this._rationWidth;
