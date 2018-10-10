@@ -14,10 +14,31 @@ timeline: true
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
 ---
+## 0.9.4 (2018-10-10)
 
-## 0.9.0
 
-`2018-09-29`
+### Bug Fixes
+
+* **button:** 修复Button带自定义icon显示问题([a3c6150](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/a3c6150))
+* **ci:** 修复ci node版本号 ([312fce6](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/312fce6))
+* **components:** 改变Subject引用方式 ([88864ab](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/88864ab))
+* **date-picker:** 修复iOS上无效日期问题 ([6620635](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/6620635))
+* **demo:** 修复展开代码不可见问题 ([6d65ebb](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/6d65ebb))
+* **pulltorefresh:** 修复下拉刷新的Demo ([8725c4b](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8725c4b))
+* **input-item:** 修复custom-keyboard无法隐藏问题 ([#21](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/21)) ([9b8f3da](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/9b8f3da))
+* **carousel:** 修复走马灯最后一页偶现白屏问题 ([2c5cd92](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/2c5cd92))
+* **tabs:** 修复TabBar与Tabs混用导致第一次加载时Tabs高亮下划线无法正常渲染问题 ([#7](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/7)) ([6502082](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/6502082))
+* **steps:** 更新setTimeout时间 ([6da37ab](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/6da37ab))
+
+
+### Features
+
+* **ci:** 更新ci的配置 ([0b178c4](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/0b178c4))
+* **list-item:** 移除className依赖 ([#20](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/20)) ([e0850f6](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/e0850f6))
+* **modal:** 增加Modal测试 ([#18](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/18)) ([7c59b61](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/7c59b61))
+* **template:** 增加issue和PR模板 ([bc59939](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/bc59939))
+
+## 0.9.0（2018-09-29）
 
 **NG-ZORRO** 组件库从设计初期就包含了桌面端与无线端两套。
 
