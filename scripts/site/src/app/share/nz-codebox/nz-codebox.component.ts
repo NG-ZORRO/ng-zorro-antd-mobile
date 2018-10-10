@@ -69,6 +69,14 @@ export class NzCodeBoxComponent implements OnInit {
     this.nzExpanded = false;
   }
 
+  nzOkText() {
+    if (window.location.href.split('/').splice(-1)[0] === 'zh') {
+      return '返回';
+    } else {
+      return 'Back';
+    }
+  }
+
   copyGenerateCommand(command) {
     this.copy(command).then(() => {
       this._commandCopied = true;
