@@ -55,16 +55,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "./components/test.ts",
-            "karmaConfig": "./components/karma.conf.js",
-            "polyfills": "./components/polyfills.ts",
-            "tsConfig": "./components/tsconfig.spec.json",
-            "scripts": []
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -82,6 +72,30 @@
       "root": "",
       "sourceRoot": "",
       "projectType": "application"
+    },
+    "ng-zorro-antd-mobile-lib": {
+      "root": "components",
+      "projectType": "library",
+      "prefix": "",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "components/tsconfig.lib.json",
+            "project": "components/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "components/test.ts",
+            "karmaConfig": "components/karma.conf.js",
+            "polyfills": "components/polyfills.ts",
+            "tsConfig": "components/tsconfig.spec.json",
+            "scripts": []
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-zorro-antd-mobile",
