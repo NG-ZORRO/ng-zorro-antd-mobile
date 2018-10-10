@@ -36,8 +36,6 @@ let globals = {
   '@angular/cdk/stepper': 'ng.cdk.stepper',
   '@angular/cdk/table': 'ng.cdk.table',
 
-  'moment': 'moment',
-  'moment/locale/zh-cn': null,
 
   'rxjs/Observer': 'Rx',
   'rxjs/Subscriber': 'Rx',
@@ -118,7 +116,6 @@ let globals = {
 
 let plugins = [
   sourcemaps(),
-  replace({ "import * as moment": "import moment" }),
   resolve(),
 ];
 

@@ -25,7 +25,6 @@
     "@angular/platform-browser-dynamic": "file:lib/@angular/platform-browser-dynamic",
     "@angular/router": "file:lib/@angular/router",
     "core-js": "file:lib/core-js",
-    "moment": "file:lib/moment",
     "ng-zorro-antd-mobile": "file:lib/ng-zorro-antd-mobile",
     "rxjs": "file:lib/rxjs",
     "zone.js": "file:lib/zone.js"
