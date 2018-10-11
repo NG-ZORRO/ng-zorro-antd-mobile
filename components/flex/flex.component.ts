@@ -137,7 +137,7 @@ export class FlexComponent {
 }
 
 @Component({
-  selector: 'FlexItem',
+  selector: 'FlexItem, nzm-flex-item',
   template: `
     <ng-content></ng-content>
   `,

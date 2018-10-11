@@ -27,7 +27,7 @@ export class NzNavBottomComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        const url = window.location.pathname.slice(1);
+        const url = window.location.hash.slice(2);
         this.language = this.router.url.split('/')[ this.router.url.split('/').length - 1 ].split('#')[ 0 ];
         const componentsList = ROUTER_LIST.components.reduce((pre, cur) => {
           return pre.concat(cur.children);
