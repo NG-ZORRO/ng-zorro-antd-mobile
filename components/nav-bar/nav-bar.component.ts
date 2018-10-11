@@ -11,6 +11,7 @@ export class NavBarComponent {
     onLeftClick: () => {}
   };
   navbarCls = {};
+  isIconString: boolean = true;
   isLeftContentString: boolean = true;
   isRightContentString: boolean = true;
 
@@ -29,6 +30,11 @@ export class NavBarComponent {
     return this._icon;
   }
   set icon(value: TemplateRef<any>) {
+    if (value instanceof TemplateRef) {
+      this.isIconString = false;
+    } else {
+      this.isIconString = true;
+    }
     this._icon = value;
   }
   @Input()
