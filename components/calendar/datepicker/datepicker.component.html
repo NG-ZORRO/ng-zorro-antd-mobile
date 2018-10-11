@@ -1,7 +1,7 @@
 <CalendarWeekPanel [locale]="props.locale"></CalendarWeekPanel>
 <div #layout
      class="wrapper"
-     style="overflow-x:hidden;overflow-y:visible;"
+     style="overflow-x:hidden;overflow-y:visible;-webkit-overflow-scrolling:touch;"
      (touchstart)="onTouchStart($event)"
      (touchmove)="onTouchMove($event)"
      (touchend)="onTouchEnd($event)"
