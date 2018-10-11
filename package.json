@@ -86,6 +86,7 @@
     "@schematics/angular": "^0.6.0",
     "conventional-changelog-cli": "^2.0.1",
     "fs-extra": "^6.0.1",
+    "husky": "^1.0.1",
     "jasmine-core": "~2.99.1",
     "jasmine-marbles": "^0.3.1",
     "jasmine-spec-reporter": "~4.2.1",
@@ -122,6 +123,11 @@
       "tslint --fix",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "node ./scripts/git/commit-msg.js -E HUSKY_GIT_PARAMS"
+    }
   },
   "pre-commit": [
     "test"
