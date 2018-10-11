@@ -22,7 +22,8 @@ import { PopoverComponentOptions } from './popover-component-options.provider';
 import * as Positioning from '../core/util/position';
 
 @Directive({
-  selector: '[Popover]'
+  selector: '[Popover], [nzm-popover]',
+  providers: [PopoverOptions]
 })
 export class PopoverDirective implements OnInit, AfterViewInit, OnDestroy {
   popover: ComponentRef<PopoverComponent>;
