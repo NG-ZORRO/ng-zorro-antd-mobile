@@ -64,7 +64,7 @@ describe('NavBarComponent', () => {
   >
     NavBar
   </Navbar>
-  <Navbar [leftContent]="'leftContent'" [rightContent]="'rightContent'">NavBar1</Navbar>
+  <Navbar [icon]="'left'" [leftContent]="'leftContent'" [rightContent]="'rightContent'">NavBar1</Navbar>
 
   <ng-template #icon>
     <Icon [type]="'left'"></Icon>
