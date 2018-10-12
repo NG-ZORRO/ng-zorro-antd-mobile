@@ -15,7 +15,7 @@ export class NavBarComponent {
   isLeftContentString: boolean = true;
   isRightContentString: boolean = true;
 
-  private _icon: TemplateRef<any>;
+  private _icon: string | TemplateRef<any>;
   private _leftContent: string | TemplateRef<any>;
   private _rightContent: string | TemplateRef<any>;
 
@@ -26,10 +26,10 @@ export class NavBarComponent {
     this._amNavbardark = this.defaultProps.mode === 'dark';
   }
   @Input()
-  get icon(): TemplateRef<any> {
+  get icon(): string | TemplateRef<any> {
     return this._icon;
   }
-  set icon(value: TemplateRef<any>) {
+  set icon(value: string | TemplateRef<any>) {
     if (value instanceof TemplateRef) {
       this.isIconString = false;
     } else {
