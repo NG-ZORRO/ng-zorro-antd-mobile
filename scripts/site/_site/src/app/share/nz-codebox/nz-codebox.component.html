@@ -9,12 +9,19 @@
     </div>
     <ng-content select="[intro]"></ng-content>
     <nz-tooltip [nzTitle]="nzExpanded?'Hide Code':'Show Code'">
-      <span class="code-expand-icon" nz-tooltip (click)="nzExpanded=!nzExpanded">
-        <nz-modal [(nzVisible)]="nzExpanded" [nzWidth]="nzWidth" [nzTitle]="nzTitle" [nzCancelText]="null" [nzOkText]="nzOkText()"
-          (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-          <nz-highlight [nzCode]="_code" [nzLanguage]="'typescript'"></nz-highlight>
-        </nz-modal>
-      </span>
+        <span class="code-expand-icon" nz-tooltip (click)="nzExpanded=!nzExpanded">
+          <nz-modal
+            [(nzVisible)]="nzExpanded"
+            [nzWidth]="nzWidth"
+            [nzTitle]="nzTitle"
+            [nzCancelText]="null"
+            [nzOkText]="nzOkText()"
+            (nzOnCancel)="handleCancel()"
+            (nzOnOk)="handleOk()"
+          >
+            <nz-highlight [nzCode]="_code" [nzLanguage]="'typescript'"></nz-highlight>
+          </nz-modal>
+        </span>
     </nz-tooltip>
   </section>
   <div class="code-box-actions" style="position: relative; top: 0">
@@ -22,12 +29,10 @@
       <i nz-tooltip class="anticon anticon-form code-box-code-copy" style="opacity: 1;" (click)="openOnStackBlitz()"></i>
     </nz-tooltip>
     <nz-tooltip [nzTitle]="'Copy Code'">
-      <i nz-tooltip class="anticon anticon-copy code-box-code-copy" style="opacity: 1;" [class.anticon-copy]="!_copied"
-        [class.anticon-check]="_copied" [class.ant-tooltip-open]="_copied" (click)="copyCode(nzRawCode)"></i>
+      <i nz-tooltip class="anticon anticon-copy code-box-code-copy" style="opacity: 1;" [class.anticon-copy]="!_copied" [class.anticon-check]="_copied" [class.ant-tooltip-open]="_copied" (click)="copyCode(nzRawCode)"></i>
     </nz-tooltip>
     <nz-tooltip [nzTitle]="'Copy Generate Command'" *ngIf="nzGenerateCommand">
-      <i nz-tooltip class="anticon anticon-code-o code-box-code-copy" style="opacity: 1;" [class.anticon-code-o]="!_commandCopied"
-        [class.anticon-check]="_commandCopied" [class.ant-tooltip-open]="_commandCopied" (click)="copyGenerateCommand(nzGenerateCommand)"></i>
+      <i nz-tooltip class="anticon anticon-code-o code-box-code-copy" style="opacity: 1;" [class.anticon-code-o]="!_commandCopied" [class.anticon-check]="_commandCopied" [class.ant-tooltip-open]="_commandCopied" (click)="copyGenerateCommand(nzGenerateCommand)"></i>
     </nz-tooltip>
   </div>
   <section class="highlight-wrapper" [ngClass]="{'highlight-wrapper-expand':true}">
