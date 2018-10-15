@@ -195,6 +195,7 @@ export class Tabs implements DoCheck, AfterContentInit {
         if (
           this.getVelocity(distance, event.timeStamp - this._startTime) <= this._velocityThreshold &&
           this.useOnPan &&
+          this.swipeable &&
           this.animated
         ) {
           this.paneMoveStyle = 'translate3d(' + distance + 'px, 0, 0 )';
@@ -209,6 +210,7 @@ export class Tabs implements DoCheck, AfterContentInit {
         if (
           this.getVelocity(distance, event.timeStamp - this._startTime) <= this._velocityThreshold &&
           this.useOnPan &&
+          this.swipeable &&
           this.animated
         ) {
           this.paneMoveStyle = 'translate3d(0, ' + distance + 'px, 0 )';
@@ -224,7 +226,7 @@ export class Tabs implements DoCheck, AfterContentInit {
         const distanceToChangeTabPx = this.tabContent.nativeElement.offsetWidth * this.distanceToChangeTab;
         if (
           (this.getVelocity(distance, event.timeStamp - this._startTime) <= this._velocityThreshold &&
-            (this.useOnPan && Math.abs(distance) > distanceToChangeTabPx)) ||
+            (this.useOnPan && this.swipeable && Math.abs(distance) > distanceToChangeTabPx)) ||
           (this.getVelocity(distance, event.timeStamp - this._startTime) > this._velocityThreshold &&
             (this.swipeable && Math.abs(distance) > distanceToChangeTabPx / 2))
         ) {
@@ -240,7 +242,7 @@ export class Tabs implements DoCheck, AfterContentInit {
         const distanceToChangeTabPx = this.tabContent.nativeElement.offsetHeight * this.distanceToChangeTab;
         if (
           (this.getVelocity(distance, event.timeStamp - this._startTime) <= this._velocityThreshold &&
-            (this.useOnPan && Math.abs(distance) > distanceToChangeTabPx)) ||
+            (this.useOnPan && this.swipeable &&  Math.abs(distance) > distanceToChangeTabPx)) ||
           (this.getVelocity(distance, event.timeStamp - this._startTime) > this._velocityThreshold &&
             (this.swipeable && Math.abs(distance) > distanceToChangeTabPx / 2))
         ) {
