@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run site:init && ng serve --port 4300 --host 0.0.0.0 --deploy-url=/",
-    "build": "node ./scripts/site/generate-site init && ng build",
+    "build": "node ./scripts/site/generate-site init && ng build --prod --output-hashing none",
     "test": "npm run site:init && ng test --watch=false --code-coverage",
     "test-watch": "npm run site:init && ng test --watch=true --code-coverage",
     "release": "node ./scripts/publish/publish.js",
