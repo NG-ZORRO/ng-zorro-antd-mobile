@@ -14,6 +14,27 @@ timeline: true
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
 ---
+## 0.9.5 （2018-10-15）
+
+### Bug Fixes
+
+* **codebox:** 修复英文网站中弹出代码框显示中文“返回“bug ([#35](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/35)) ([0720fdc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/0720fdc))
+* **codebox:** 修复StackBliz中的问题 ([#41](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/41)) ([8adcbb0](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8adcbb0))
+* **package.json:** 取消Package Json的版本号 ([#27](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/27)) ([fc3cf65](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/fc3cf65))
+* **popover:** 为PopoverOptions加入providers ([#30](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/30)) ([8f9e1d3](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8f9e1d3))
+* **textarea:** 修复textarea test case错误 ([#36](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/36)) ([97639fc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/97639fc))
+* **package.json:** 修复npm run start在windows中无法运行的错误 ([#42](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/42)) ([68a0453](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/68a0453))
+* **tabs:** 修复swipeable为false时useOnPan依然生效的问题 ([#43](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/43)) ([2d63730](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/2d63730))
+
+### Features
+
+* **nav-bar:** 增加 icon string类型支持 ([#38](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/38)) ([4a89b0c](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/4a89b0c))
+
+### Docs
+
+* **README:** 在README中增加更多的状态指示 ([#44](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/44)) ([a59797e](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/a59797e))
+
+---
 ## 0.9.4 (2018-10-10)
 
 
