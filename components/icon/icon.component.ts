@@ -5,13 +5,6 @@ import { IconHandler } from '../core/util/icon';
   selector: 'Icon, nzm-icon',
   templateUrl: './icon.component.html',
   encapsulation: ViewEncapsulation.None,
-  styles: [
-    `
-      :host {
-        line-height: 1;
-      }
-    `
-  ],
   providers: [IconHandler]
 })
 export class IconComponent {
