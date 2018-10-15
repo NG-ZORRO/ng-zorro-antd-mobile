@@ -148,7 +148,6 @@ describe('TextareaComponent', () => {
     const textarea = textareaEle.nativeElement.querySelector('textarea');
     expect(textarea.getAttribute('style')).toContain('height');
   });
-
   it('should focus work', () => {
     component.clickTitle();
     fixture.detectChanges();
