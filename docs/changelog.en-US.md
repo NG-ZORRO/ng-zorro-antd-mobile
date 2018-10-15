@@ -14,6 +14,30 @@ timeline: true
 - Major version release is not included in this schedule for breadking change and new features.
 
 ---
+## 0.9.5 （2018-10-15）
+
+### Bug Fixes
+
+* **codebox:** fix show code window back title always show '返回' ([#35](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/35)) ([0720fdc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/0720fdc))
+* **codebox:** fix StackBlitz with dynamic component ([#41](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/41)) ([8adcbb0](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8adcbb0))
+* **package.json:** delete not use version key ([#27](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/27)) ([fc3cf65](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/fc3cf65))
+* **popover:** add provider for PopoverOptions ([#30](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/30)) ([8f9e1d3](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8f9e1d3))
+* **textarea:** fix textarea test case error ([#36](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/36)) ([97639fc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/97639fc))
+* **package.json:** change run start way ([#42](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/42)) ([68a0453](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/68a0453))
+* **codebox:** fix show code window back title always show '返回' ([#29](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/29)) ([96bf9b8](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/96bf9b8))
+* **tabs:** disable useOnPan when swipeable is false ([#43](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/43)) ([2d63730](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/2d63730))
+
+### Features
+
+* **nav-bar:** add icon string support ([#38](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/38)) ([4a89b0c](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/4a89b0c))
+
+
+### Docs
+
+* **README:** add more status indicators in README ([#44](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/44)) ([a59797e](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/a59797e))
+
+
+---
 
 ## 0.9.4 (2018-10-10)
 
