@@ -3,6 +3,16 @@
 
 # NG-ZORRO-MOBILE
 
+[![Build Status](https://travis-ci.com/NG-ZORRO/ng-zorro-antd-mobile.svg?branch=master)](https://travis-ci.com/NG-ZORRO/ng-zorro-antd-mobile)
+[![codecov](https://codecov.io/gh/NG-ZORRO/ng-zorro-antd-mobile/branch/master/graph/badge.svg)](https://codecov.io/gh/NG-ZORRO/ng-zorro-antd-mobile)
+[![Dependencies](https://img.shields.io/david/NG-ZORRO/ng-zorro-antd-mobile.svg?style=flat-square)](https://david-dm.org/NG-ZORRO/ng-zorro-antd-mobile)
+[![DevDependencies](https://img.shields.io/david/dev/NG-ZORRO/ng-zorro-antd-mobile.svg?style=flat-square)](https://david-dm.org/NG-ZORRO/ng-zorro-antd-mobile?type=dev)
+[![GitHub Release Date](https://img.shields.io/github/release-date/NG-ZORRO/ng-zorro-antd-mobile.svg?style=flat-square)](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/releases)
+[![npm package](https://img.shields.io/npm/v/ng-zorro-antd-mobile.svg?style=flat-square)](https://www.npmjs.org/package/ng-zorro-antd-mobile)
+[![NPM downloads](http://img.shields.io/npm/dm/ng-zorro-antd-mobile.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd-mobile)
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/blob/master/LICENSE)
+[![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd-mobile.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd-mobile)
+
 这里是 **Ant Design** 移动规范的 **Angular** 实现，服务于阿里巴巴集团数据无线业务。
 
 [English README](README.md)
@@ -45,12 +55,6 @@ $ ng add ng-zorro-antd-mobile
 - [TypeScript](https://www.typescriptlang.org/)
 - [RxJS](https://github.com/ReactiveX/rxjs)
 
-## 谁在使用
-
-- [阿里巴巴](http://www.alibaba.com/)
-
-> 如果你的公司和产品使用了 **NG-ZORRO-MOBILE**，欢迎到 [这里](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/3) 留言。
-
 ## 如何贡献
 
 在任何形式的参与前，请先阅读 [贡献者文档](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/blob/master/CONTRIBUTING.md)。如果你希望参与贡献，欢迎 [Pull Request](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pulls)，或给我们 [报告 Bug](http://ng.mobile.ant.design/issue-helper/#/zh)。
@@ -68,3 +72,13 @@ $ ng add ng-zorro-antd-mobile
 3. [![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd-mobile.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd-mobile)（English & 中文）
 4. 加入钉钉 **NG-ZORRO-MOBILE** 自助服务群（中文）<br/>
 <img src="https://img.alicdn.com/tfs/TB1fEDvdAvoK1RjSZPfXXXPKFXa-375-495.png" width="300">
+
+## 谁在使用
+
+- [阿里巴巴](http://www.alibaba.com/)
+
+> 如果你的公司和产品使用了 **NG-ZORRO-MOBILE**，欢迎到 [这里](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/3) 留言。
+
+## 授权协议
+
+MIT

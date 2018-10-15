@@ -19,6 +19,7 @@
     "packaging",
     "changelog",
     "schematics",
-    "module:*"
+    "module:*",
+    "README"
   ]
 }
