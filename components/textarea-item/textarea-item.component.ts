@@ -166,6 +166,7 @@ export class TextareaItem implements OnInit, AfterContentChecked {
   set focus(value) {
     if (value && value.focus) {
       this.textRef.nativeElement.focus();
+      this.inputFocus('');
     }
   }
   @Input()
