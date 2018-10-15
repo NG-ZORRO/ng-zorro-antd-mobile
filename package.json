@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run site:init && node --max_old_space_size=8192 ./node_modules/.bin/ng serve --port 4300 --host 0.0.0.0 --deploy-url=/",
+    "start": "npm run site:init && ng serve --port 4300 --host 0.0.0.0 --deploy-url=/",
     "build": "node ./scripts/site/generate-site init && ng build",
     "test": "npm run site:init && ng test --watch=false --code-coverage",
     "test-watch": "npm run site:init && ng test --watch=true --code-coverage",
