@@ -100,7 +100,7 @@ export class PullToRefreshComponent {
       this.state.drag = undefined;
     } else {
       this.startY = e && e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientY;
-      this._clientHeight = this._pullToRefresh.element.nativeElement._clientHeight;
+      this._clientHeight = this._pullToRefresh.element.nativeElement.clientHeight;
       this._currentContentHeight = document.getElementsByTagName('pulltorefresh')[0].clientHeight;
     }
     this.transtionCls = '';
