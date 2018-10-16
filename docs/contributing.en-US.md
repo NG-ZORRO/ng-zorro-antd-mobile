@@ -19,7 +19,7 @@ We are using [GitHub Issues](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/is
 
 ## Proposing a Change
 
-If you intend to change the public API or introduce new feature, we also recommend using our [issue helper](https://ng.mobile.ant.design/issue-helper/#/en) to create a feature request issue.
+If you intend to change the public API or introduce a new feature, we also recommend using our [issue helper](https://ng.mobile.ant.design/issue-helper/#/en) to create a feature request issue.
 
 ## Your First Pull Request
 

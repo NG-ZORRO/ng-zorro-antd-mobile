@@ -3,7 +3,7 @@ order: 4
 title: Customize Theme
 ---
 
-**NG-ZORRO-MOBILE** allows to customize some basic design aspects in order to meet the needs of UI diversity from business and brand, including primary color, border radius, border color, etc.
+**NG-ZORRO-MOBILE** allows customizing some basic design aspects in order to meet the needs of UI diversity from business and brand, including primary color, border radius, border color, etc.
 
 ![](https://gw.alipayobjects.com/zos/rmsportal/bvJhBmAfTWsUixLpGLbL.png)
 
@@ -11,7 +11,7 @@ title: Customize Theme
 
 We are using [Less](http://lesscss.org/) as the development language for styling. A set of less variables are defined for each design aspect that can be customized to your needs.
 
-> You can use the theme define file of react version in ng-zorro-antd-mobile too.
+> You can use the theme definition file of react version in ng-zorro-antd-mobile too.
 
 ### Customize theme with schematics
 
@@ -52,7 +52,7 @@ All less vars can be checked [here](https://github.com/NG-ZORRO/ng-zorro-antd-mo
 ## Local deployment fonts
 
 You can modify `@icon-url` to make a locally deployed version of the icon font, the newest iconfont file could be downloaded [here](https://github.com/ant-design/ant-design/releases/download/resource/iconfont-3.x.zip).
-Here is an example set icon url to the folder `assets/fonts`
+Here is an example set icon URL to the folder `assets/fonts`
 
 ```less
 // -------- import official less file -----------
