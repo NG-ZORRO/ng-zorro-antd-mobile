@@ -33,7 +33,7 @@ You can get component generation code in our doc after expand the code panel bel
 ng g ng-zorro-antd-mobile:[template] --name=NAME [options]
 ```
 
-For example, you can generate a nav bar with the follow command.`nav-bar-basic` represents the selector in the demo code which removes the 'demo-' prefix.
+For example, you can generate a nav bar with the following command.`nav-bar-basic` represents the selector in the demo code which removes the 'demo-' prefix.
 
 ```bash
 ng g ng-zorro-antd-mobile:nav-bar-basic -p app --styleext='less' --name=navbar
@@ -55,11 +55,11 @@ The prefix name of the component.
 
 **_--inlineStyle_**, **_-s_**
 
-Using inline style.
+Using the inline style.
 
 **_--inlineTemplate_**, **_-t_**
 
-Using inline template.
+Using the inline template.
 
 **_--path_**
 
@@ -67,7 +67,7 @@ Specify the path of the created component.
 
 **_--spec_**
 
-Create test file.
+Create the test file.
 
 **_--skipImport_**
 
@@ -75,11 +75,11 @@ Skip module import.
 
 **_--selector_**
 
-The name of selector.
+The name of the selector.
 
 **_--export_**
 
-Should add component to `exports` part.
+Should add the component to `exports` part.
 
 **_--module_**, **_-m_**
 

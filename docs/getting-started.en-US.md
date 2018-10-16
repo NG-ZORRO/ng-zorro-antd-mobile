@@ -9,7 +9,7 @@ title: Getting Started
 
 ## Playground
 
-The following StackBlitz demo is the simplest use case, and it's also a good habit to fork this demo to provide a re-producible demo while reporting a bug. Please don't use this demo as a scaffold in production.
+The following StackBlitz demo is the simplest use case, and it's also a good habit to fork this demo to provide a reproducible demo while reporting a bug. Please don't use this demo as a scaffold in production.
 
 - [NG-ZORRO-MOBILE StackBlitz](https://stackblitz.com/edit/ng-zorro-antd-mobile-start?file=src/app/app.component.ts)
 
@@ -17,7 +17,7 @@ The following StackBlitz demo is the simplest use case, and it's also a good hab
 
 During development, you may need to compile and debug TypeScript code, and even proxy some of the requests to mock data or other external services. All of these can be done with quick feedback provided through hot reloading of changes.
 
-Such features, together with packaging the production version, are covered in this work flow.
+Such features, together with packaging the production version, are covered in this workflow.
 
 ### 1. Installation
 
@@ -50,7 +50,7 @@ $ ng add ng-zorro-antd-mobile
 
 ### 4. Development & Debugging
 
-Run your project now, you can see the img below now.
+Run your project now, you can see the image below now.
 
 ```bash
 $ ng serve --port 0 --open
@@ -68,7 +68,7 @@ Entry files will be built and generated in `dist` directory, where we can deploy
 
 ## Customized Work Flow
 
-If you want to customize your work flow, you can use any scaffold available in the Angular ecosystem. If you encounter problems, you can use our [config](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/tree/master/integration) and modify it.
+If you want to customize your workflow, you can use any scaffold available in the Angular ecosystem. If you encounter problems, you can use our [config](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/tree/master/integration) and modify it.
 
 ### 1. Install `ng-zorro-antd-mobile`
 
