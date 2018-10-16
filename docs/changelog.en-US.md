@@ -65,10 +65,10 @@ timeline: true
 
 ## 0.9.0 (2018-09-29)
 
-**NG-ZORRO** has a blue print for both desktop and mobile at the very beginning of the project.
+**NG-ZORRO** has a blueprint for both desktop and mobile at the very beginning of the project.
 
-According to the specification of **Ant Design Mobile**, **Alibaba Data Technology and Product** terminal team started to develop **NG-ZORRO-MOBILE** based on **Angular >=2** in June, 2016. To prove its ability also integrate it into production.
+According to the specification of **Ant Design Mobile**, **Alibaba Data Technology and Product** terminal team started to develop **NG-ZORRO-MOBILE** based on **Angular >=2** in June 2016. To prove its ability also integrate it into production.
 
- In the last half year of 2017, **Ant Design Mobile of React** implementation started to redesign and implement with a brand new version **2.x**. To keep in pace with the React edtion, **NG-ZORRO-MOBILE** terminated the onging development and started a tight development of the all new **NG-ZORRO-MOBILE** corresponding to the **Ant Design Mobile of React 2.x**.
+In the last half year of 2017, **Ant Design Mobile of React** implementation started to redesign and implement with a brand new version **2.x**. To keep in pace with the React edition, **NG-ZORRO-MOBILE** terminated the ongoing development and started a tight development of the all-new **NG-ZORRO-MOBILE** corresponding to the **Ant Design Mobile of React 2.x**.
 
 For now, based on the latest **Angular ^6.0.0** and **RxJS ^6.0.0** , **NG-ZORRO-MOBILE** have finished all the 45 components which exist in **Ant Design Mobile React 2.x**, and have integrated with **@angular/cli** for ease of use. Meanwhile, we share the same docs&website build system with **NG-ZORRO-DESKTOP** as a uniform style.

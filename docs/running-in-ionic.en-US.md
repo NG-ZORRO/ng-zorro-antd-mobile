@@ -19,7 +19,7 @@ $ npm install -g ionic
 
 > Please make sure `ionic` has been installed before use.
 
-A new project can be created using ionic CLI tools with following command.
+A new project can be created using ionic CLI tools with the following command.
 
 ```bash
 $ ionic start PROJECT-NAME
@@ -37,7 +37,7 @@ $ ng add ng-zorro-antd-mobile
 
 ### 4. Development & Debugging
 
-Run your project now, you can see the img below now.
+Run your project now, you can see the image below now.
 
 ```bash
 $ ionic serve
