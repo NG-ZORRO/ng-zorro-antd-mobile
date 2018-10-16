@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, HostBinding, ViewEncapsulation, Input } from '@angular/core';
 import { Models } from '../date/DataTypes';
 
 @Component({
@@ -6,21 +6,17 @@ import { Models } from '../date/DataTypes';
   templateUrl: './week-panel.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class WeekPanelComponent implements OnInit {
+export class WeekPanelComponent {
   constructor() {}
 
   week: string[] = ['日', '一', '二', '三', '四', '五', '六'];
 
-  private _locale: Models.Locale;
-
   @Input()
-  set locale(value) {
-    this._locale = value;
+  set locale(value: Models.Locale) {
+    if (value) {
+      this.week = value.week;
+    }
   }
 
   @HostBinding('class.week-panel') weekPanel: boolean = true;
-
-  ngOnInit() {
-    this.week = this._locale.week;
-  }
 }
