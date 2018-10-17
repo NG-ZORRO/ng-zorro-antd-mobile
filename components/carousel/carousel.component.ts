@@ -465,7 +465,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
             this._spaceWidth = ((this.vertical ? this.slideHeight : this._currentSlideWidth) - this._rationWidth) / 2;
             this.getListStyles();
           }
-          }
+        }
       }
     };
 
