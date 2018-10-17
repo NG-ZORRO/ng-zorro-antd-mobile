@@ -70,7 +70,7 @@ If you'd like to help us improve **NG-ZORRO-MOBILE**, just create a [Pull Reques
 
 ## Help from the Community
 
-For questions on how to use **NG-ZORRO-MOBILE**, please post questions to [<img alt="Stack Overflow" src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.svg?v=2bb144720a66" width="140" />](http://stackoverflow.com/questions/tagged/ng-zorro-mobile) using the `ng-zorro-mobile` tag. If you're not finding what you need on stackoverflow, you can find us on [![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd-mobile.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd-mobile) as well.
+For questions on how to use **NG-ZORRO-MOBILE**, please post questions to [<img alt="Stack Overflow" src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.svg?v=2bb144720a66" width="140" />](http://stackoverflow.com/questions/tagged/ng-zorro-mobile) using the `ng-zorro-mobile` tag. If you're not finding what you need on StackOverflow, you can find us on [![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd-mobile.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd-mobile) as well.
 
 As always, we encourage experienced users to help those who are not familiar with **NG-ZORRO-MOBILE**!
 
