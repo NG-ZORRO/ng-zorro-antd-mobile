@@ -12,13 +12,17 @@ import {
   AfterViewInit,
   ViewEncapsulation
 } from '@angular/core';
+import { trigger } from '@angular/animations';
 import { CarouselSlideComponent } from './carousel-slide/carousel-slide.component';
 import * as touchEvent from '../core/util/touch-event';
 
 @Component({
   selector: 'Carousel, nzm-carousel',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './carousel.component.html'
+  templateUrl: './carousel.component.html',
+  animations: [
+    trigger('', []) // 利用动画增加的css类ng-star-inserted首次触发MutationObserver
+  ]
 })
 export class CarouselComponent implements AfterViewInit, OnDestroy {
   slideHeight;
@@ -468,7 +472,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
             this._spaceWidth = ((this.vertical ? this.slideHeight : this._currentSlideWidth) - this._rationWidth) / 2;
             this.getListStyles();
           }
-          }
+        }
       }
     };
 
