@@ -85,6 +85,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @HostListener('mousedown', ['$event'])
   @HostListener('touchstart', ['$event'])
   panstart(event) {
+    event.stopPropagation();
     if (!this.dragging) {
       return;
     }
@@ -99,6 +100,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @HostListener('mousemove', ['$event'])
   @HostListener('touchmove', ['$event'])
   panmove(event) {
+    event.stopPropagation();
     if (!this.dragging && !this._isMouseDown) {
       return;
     }
@@ -136,6 +138,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @HostListener('mouseup', ['$event'])
   @HostListener('touchend', ['$event'])
   panend() {
+    event.stopPropagation();
     if (!this.dragging && !this._isMouseDown) {
       return;
     }
