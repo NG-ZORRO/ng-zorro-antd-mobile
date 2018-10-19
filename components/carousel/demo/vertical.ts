@@ -12,8 +12,8 @@ import { Component } from '@angular/core';
                   [dots]="false"
                   [dragging]="false"
         >
-          <CarouselSlide *ngFor="let item of state.data;let i = index">
-            <div class="v-item">carousel {{i}}</div>
+          <CarouselSlide *ngFor="let item of state.data">
+            <div class="v-item">carousel {{item}}</div>
           </CarouselSlide>
         </Carousel>
     </WingBlank>
@@ -29,29 +29,7 @@ import { Component } from '@angular/core';
   ]
 })
 export class DemoCarouselVerticalComponent {
-  colors = [];
-  data = [];
-
   state = {
-    data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-    imgHeight: '184px',
-    slideIndex: 0
+    data: ['1', '2', '3']
   };
-
-  dataOutPut(event) {
-    this.data = event;
-  }
-
-  clickEvent(event) {
-    console.log(event);
-  }
-
-  beforeChange(event) {
-    console.log('slide ' + event.from + ' to ' + event.to);
-  }
-
-  afterChange(event) {
-    this.state.slideIndex = event;
-    console.log('slide to ' + event);
-  }
 }

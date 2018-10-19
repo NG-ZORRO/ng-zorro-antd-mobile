@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
               (beforeChange)="beforeChange($event)"
               (afterChange)="afterChange($event)"
     >
-      <CarouselSlide *ngFor="let item of state.data;let i = index">
+      <CarouselSlide *ngFor="let item of state.data">
         <div style="display: inline-block; width: 100%;" [ngStyle]="{'height': state.imgHeight}">
           <img src="https://zos.alipayobjects.com/rmsportal/{{item}}.png" style="width: 100%;"/>
         </div>
@@ -19,21 +19,10 @@ import { Component } from '@angular/core';
   `
 })
 export class DemoCarouselBasicComponent {
-  colors = [];
-  data = [];
-
   state = {
     data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
     imgHeight: '184px'
   };
-
-  dataOutPut(event) {
-    this.data = event;
-  }
-
-  clickEvent(event) {
-    console.log(event);
-  }
 
   beforeChange(event) {
     console.log('slide ' + event.from + ' to ' + event.to);
