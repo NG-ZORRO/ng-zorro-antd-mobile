@@ -15,7 +15,7 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
   public path = '{{component}}';
   public demoUrl = `${this.protocol}/#/components/${this.path}/{{component}}-demo-{{language}}`;
   public safeUrl; // iframe 使用
-
+  public mobileWrapperHeight = 620;
 
   public container;
   public wrapper;
@@ -23,6 +23,7 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
   public demoTop;
   public demoLeft;
   public demoScrollListener;
+  public fixThreshold;
 
   @ViewChildren(NzCodeBoxComponent) codeBoxes: QueryList<NzCodeBoxComponent>;
 
@@ -56,8 +57,8 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-{{code}};
-{{rawCode}};
+  {{code}};
+  {{rawCode}};
 
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -76,14 +77,19 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngAfterViewInit() {
-    this.container = <HTMLElement>document.querySelector('.demo-code-container');
-    this.wrapper = <HTMLElement>document.querySelector('.mobile-wrapper');
-    this.codeDiv = <HTMLElement>document.getElementById('demo-code').children[1].firstChild;
-    this.demoTop = this.wrapper.getBoundingClientRect().top + window.pageYOffset;
-    this.demoLeft = this.wrapper.getBoundingClientRect().left;
     if (this.codeBoxes.length > 1) {
+      this.container = <HTMLElement>document.querySelector('.demo-code-container');
+      this.wrapper = <HTMLElement>document.querySelector('.mobile-wrapper');
+      this.codeDiv = <HTMLElement>document.getElementById('demo-code').children[1].firstChild;
+      this.demoTop = this.wrapper.getBoundingClientRect().top + window.pageYOffset;
+      this.demoLeft = this.wrapper.getBoundingClientRect().left;
       this.container.classList.add('demo-code-container-mutli');
+      this.fixThreshold = this.demoTop + this.container.clientHeight - this.mobileWrapperHeight;
       window.addEventListener('scroll', this.demoScrollListener );
+      window.addEventListener('resize', () => {
+        this.demoLeft = document.querySelector('.main-menu').clientWidth + this.container.firstElementChild.clientWidth + this.container.firstElementChild.offsetLeft;
+        this.wrapper.style.left = this.demoLeft + 'px';
+      });
     }
   }
 
@@ -92,8 +98,6 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
   }
 
   handleDemoScroll() {
-    // 400: .demo-code-container-mutli padding-bottom = 400px;
-    // 620: mobile-wrapper height
     const yOffset = window.pageYOffset;
     this.container.classList.add('demo-code-container-mutli');
     if (yOffset < this.demoTop) {
@@ -101,17 +105,17 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
       this.wrapper.style.top = '0px';
       this.wrapper.style.left = '0px';
       this.container.classList.remove('demo-code-container-fixed');
-    } else if (yOffset < (this.demoTop + 400)) {
+    } else if (yOffset < this.fixThreshold) {
       // 吸附顶部
       this.codeDiv.style.paddingBottom = '620px';
       this.container.classList.add('demo-code-container-fixed');
       this.wrapper.style.top = '0px';
       this.wrapper.style.left = this.demoLeft + 'px';
-    } else if (yOffset < (this.demoTop + 400 + 620)) {
+    } else if (yOffset < (this.fixThreshold + this.mobileWrapperHeight)) {
       // 跟随滑动
       this.codeDiv.style.paddingBottom = '620px';
       this.container.classList.add('demo-code-container-fixed');
-      this.wrapper.style.top = (this.demoTop + 400 - yOffset) + 'px';
+      this.wrapper.style.top = (this.fixThreshold - yOffset) + 'px';
       this.wrapper.style.left = this.demoLeft + 'px';
     } else {
       this.container.classList.remove('demo-code-container-fixed');
