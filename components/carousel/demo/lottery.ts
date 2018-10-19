@@ -31,29 +31,7 @@ import { Component } from '@angular/core';
   ]
 })
 export class DemoCarouselLotteryComponent {
-  colors = [];
-  data = [];
-
   state = {
-    data: ['ring', 'ruby', 'iPhone', 'iPod', 'sorry', 'tourism', 'coke', 'ticket', 'note'],
-    imgHeight: '184px',
-    slideIndex: 0
+    data: ['ring', 'ruby', 'iPhone', 'iPod', 'sorry', 'tourism', 'coke', 'ticket', 'note']
   };
-
-  dataOutPut(event) {
-    this.data = event;
-  }
-
-  clickEvent(event) {
-    console.log(event);
-  }
-
-  beforeChange(event) {
-    console.log('slide ' + event.from + ' to ' + event.to);
-  }
-
-  afterChange(event) {
-    this.state.slideIndex = event;
-    console.log('slide to ' + event);
-  }
 }

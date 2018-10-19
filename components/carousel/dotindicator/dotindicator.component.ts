@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation, OnInit, HostBinding } from '@angular/core';
+import { Component, Input, ViewEncapsulation, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'DotIndicator, nzm-dot-indicator',
