@@ -12,17 +12,13 @@ import {
   AfterViewInit,
   ViewEncapsulation
 } from '@angular/core';
-import { trigger } from '@angular/animations';
 import { CarouselSlideComponent } from './carousel-slide/carousel-slide.component';
 import * as touchEvent from '../core/util/touch-event';
 
 @Component({
   selector: 'Carousel, nzm-carousel',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './carousel.component.html',
-  animations: [
-    trigger('', []) // 利用动画增加的css类ng-star-inserted首次触发MutationObserver
-  ]
+  templateUrl: './carousel.component.html'
 })
 export class CarouselComponent implements AfterViewInit, OnDestroy {
   slideHeight;
@@ -165,6 +161,18 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   }
 
   constructor(private _ele: ElementRef) {}
+
+  initCarouselSize() {
+    const nativeElement = this._ele.nativeElement;
+    if (this.slideHeight !== nativeElement.querySelector('carouselslide').clientHeight) {
+      this.slideHeight = nativeElement.querySelector('carouselslide').clientHeight;
+      this._currentSlideHeight = this.slideHeight * this.slideWidth;
+      this._currentSlideWidth = nativeElement.clientWidth;
+      this._rationWidth = this.vertical ? this._currentSlideHeight : this._currentSlideWidth * this.slideWidth;
+      this._spaceWidth = ((this.vertical ? this.slideHeight : this._currentSlideWidth) - this._rationWidth) / 2;
+      this.getListStyles();
+    }
+  }
 
   carouselInit(items) {
     this.infinite = this.infinite === undefined ? true : this.infinite;
@@ -456,7 +464,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     this.items.changes.subscribe(items => {
       this.carouselInit(items);
     });
-    this.getListStyles();
+    this.initCarouselSize();
     this.carouselInit(this.items);
     const nativeElement = this._ele.nativeElement;
     const targetNode = nativeElement.querySelector('carouselslide');
@@ -464,14 +472,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     const callback = (mutationsList) => {
       for (const mutation of mutationsList) {
         if (mutation.type == 'attributes') {
-          if (this.slideHeight !== nativeElement.querySelector('carouselslide').clientHeight) {
-            this.slideHeight = nativeElement.querySelector('carouselslide').clientHeight;
-            this._currentSlideHeight = this.slideHeight * this.slideWidth;
-            this._currentSlideWidth = nativeElement.clientWidth;
-            this._rationWidth = this.vertical ? this._currentSlideHeight : this._currentSlideWidth * this.slideWidth;
-            this._spaceWidth = ((this.vertical ? this.slideHeight : this._currentSlideWidth) - this._rationWidth) / 2;
-            this.getListStyles();
-          }
+          this.initCarouselSize();
         }
       }
     };
