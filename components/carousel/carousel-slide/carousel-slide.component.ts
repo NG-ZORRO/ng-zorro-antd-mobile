@@ -1,4 +1,4 @@
-import { Component, HostBinding, ViewEncapsulation, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, HostBinding, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'CarouselSlide, nzm-carousel-slide',
