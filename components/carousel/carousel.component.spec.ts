@@ -75,19 +75,33 @@ describe('CarouselComponent', () => {
   selector: 'test-carousel',
   template: `
   <Carousel
-  [autoplay]="autoplay"
-  [infinite]="true"
-  [vertical]="false"
-  [dragging]="dragging"
-  (beforeChange)="beforeChange($event)"
-  (afterChange)="afterChange($event)"
-  >
-    <CarouselSlide *ngFor="let item of state.data;let i = index">
-      <div style="display: inline-block; width: 100%;" [ngStyle]="{'height': state.imgHeight}">
-        <img src="https://zos.alipayobjects.com/rmsportal/{{item}}.png" style="width: 100%;"/>
-      </div>
-    </CarouselSlide>
-</Carousel>
+    [autoplay]="autoplay"
+    [infinite]="true"
+    [vertical]="false"
+    [dragging]="dragging"
+    (beforeChange)="beforeChange($event)"
+    (afterChange)="afterChange($event)"
+    >
+      <CarouselSlide *ngFor="let item of state.data;let i = index">
+        <div style="display: inline-block; width: 100%;" [ngStyle]="{'height': state.imgHeight}">
+          <img src="https://zos.alipayobjects.com/rmsportal/{{item}}.png" style="width: 100%;"/>
+        </div>
+      </CarouselSlide>
+  </Carousel>
+  <Carousel
+    [autoplay]="autoplay"
+    [infinite]="true"
+    [vertical]="true"
+    [dragging]="dragging"
+    (beforeChange)="beforeChange($event)"
+    (afterChange)="afterChange($event)"
+    >
+      <CarouselSlide *ngFor="let item of state.data;let i = index">
+        <div style="display: inline-block; width: 100%;" [ngStyle]="{'height': state.imgHeight}">
+          <img src="https://zos.alipayobjects.com/rmsportal/{{item}}.png" style="width: 100%;"/>
+        </div>
+      </CarouselSlide>
+  </Carousel>
   `
 })
 export class TestCarouselComponent {
