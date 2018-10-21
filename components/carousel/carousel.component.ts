@@ -165,6 +165,15 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
   constructor(private _ele: ElementRef) {}
 
+  initCarouselSize() {
+    const nativeElement = this._ele.nativeElement;
+    this.slideHeight = nativeElement.querySelector('carouselslide').clientHeight;
+    this._currentSlideHeight = this.slideHeight * this.slideWidth;
+    this._currentSlideWidth = nativeElement.clientWidth;
+    this._rationWidth = this.vertical ? this._currentSlideHeight : this._currentSlideWidth * this.slideWidth;
+    this._spaceWidth = ((this.vertical ? this.slideHeight : this._currentSlideWidth) - this._rationWidth) / 2;
+  }
+
   carouselInit(items) {
     this.infinite = this.infinite || true;
     this._nodeArr = items['_results'];
@@ -456,6 +465,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     this.items.changes.subscribe(items => {
       this.carouselInit(items);
     });
+    this.initCarouselSize();
     this.getListStyles();
     this.carouselInit(this.items);
     const nativeElement = this._ele.nativeElement;
@@ -465,11 +475,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
       for (const mutation of mutationsList) {
         if (mutation.type == 'attributes') {
           if (this.slideHeight !== nativeElement.querySelector('carouselslide').clientHeight) {
-            this.slideHeight = nativeElement.querySelector('carouselslide').clientHeight;
-            this._currentSlideHeight = this.slideHeight * this.slideWidth;
-            this._currentSlideWidth = nativeElement.clientWidth;
-            this._rationWidth = this.vertical ? this._currentSlideHeight : this._currentSlideWidth * this.slideWidth;
-            this._spaceWidth = ((this.vertical ? this.slideHeight : this._currentSlideWidth) - this._rationWidth) / 2;
+            this.initCarouselSize();
             this.getListStyles();
           }
         }
