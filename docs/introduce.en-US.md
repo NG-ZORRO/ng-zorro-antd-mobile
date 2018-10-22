@@ -118,7 +118,7 @@ This is the **Angular** implementation of **Ant Design Mobile** specification, s
 - The UI is fully Configurable and Scalable, easily adapt to all kinds of product style.
 - Use **TypeScript** to develop, provide type definition files, support type and attribute smart tips for easy business development.
 - Provide "Components are loaded on demand" / "Web page HD display" / "SVG Icon" optimization features, integrated development.
-- Support running in Ionic[[Guide]](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/4).
+- Support running in Ionic[[Guide]](/#/docs/running-in-ionic/en).
 
 ## Environment Support
 
