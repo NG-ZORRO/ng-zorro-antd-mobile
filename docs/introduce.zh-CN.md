@@ -118,7 +118,7 @@ title: Ant Design Mobile of Angular <div class="github-btn"><a class="gh-btn" hr
 - UI 样式高度可配置，拓展性更强，轻松适应各类产品风格
 - 使用 **TypeScript** 开发，提供类型定义文件，支持类型及属性智能提示，方便业务开发
 - 提供 "组件按需加载" / "Web 页面高清显示" / "SVG Icon" 等优化方案，一体式开发
-- 支持在 Ionic 中运行[[指南]](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/4)
+- 支持在 Ionic 中运行[[指南]](/#/docs/running-in-ionic/zh)
 
 ## 支持环境
 
