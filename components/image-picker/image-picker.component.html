@@ -24,7 +24,7 @@
                type="file"
                [accept]="accept"
                [multiple]="multiple"
-               (change)="fileChange()"
+               (change)="fileChange($event)"
         />
       </div>
       <div *ngIf="item && 'white' === item.type" class="{{prefixCls}}-item-white">
