@@ -1,11 +1,5 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ViewContainerRef } from '@angular/core';
 
-export interface FileItem {
-  url: string;
-  orientation?: any;
-  type?: string; // 'img' | 'select' | 'white'
-}
-
 export interface ElementType {
   type: string; // 'img' | 'select' | 'white'
   backgroundImage: string;
@@ -186,16 +180,12 @@ export class ImagePicker {
     reader.readAsDataURL(file);
   }
 
-  fileChange() {
-    const fileSelectorEl = this._fileSelectorInput.element.nativeElement;
-    if (fileSelectorEl && fileSelectorEl.files && fileSelectorEl.files.length) {
-      const files = fileSelectorEl.files;
-      for (let i = 0; i < files.length; i++) {
-        this.parseFile(files[i], i);
+  fileChange(event) {
+    const fileList: FileList = event.target.files;
+    if (fileList && fileList.length) {
+      for (let i = 0; i < fileList.length; i++) {
+        this.parseFile(fileList[i], i);
       }
-    }
-    if (fileSelectorEl) {
-      fileSelectorEl.value = '';
     }
   }
 

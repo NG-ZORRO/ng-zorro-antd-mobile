@@ -87,13 +87,6 @@ export class DemoImagePickerBasicComponent {
     this.files = files;
   }
 
-  addImageClick(e) {
-    e.preventDefault();
-    this.files = this.files.concat({
-      url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg'
-    });
-  }
-
   imageClick(params) {
     console.log(params);
   }
