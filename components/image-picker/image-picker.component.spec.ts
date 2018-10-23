@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ImagePickerModule } from './image-picker.module';
+import { ImagePicker } from './image-picker.component';
 
 const data = [
   {
@@ -27,7 +28,7 @@ describe('ImagePicker', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestImagePicker);
     component = fixture.componentInstance;
-    ImagePickers = fixture.debugElement.queryAll(By.css('ImagePicker'));
+    ImagePickers = fixture.debugElement.query(By.css('ImagePicker'));
     fixture.detectChanges();
   });
 
@@ -35,137 +36,129 @@ describe('ImagePicker', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should files work', () => {
-    const imageDiv = ImagePickers[0].nativeElement.querySelector('.am-image-picker-item-content');
-    expect(imageDiv.style['background-image']).toBe(
-      'url("https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg")'
-    );
-  });
-
   it('should imageClick work', () => {
-    const imageDiv = ImagePickers[0].nativeElement.querySelector('.am-image-picker-item-content');
+    const imageDiv = ImagePickers.nativeElement.querySelector('.am-image-picker-item-content');
     imageDiv.click();
     expect(component.imageClickCallback).toHaveBeenCalled();
   });
 
   it('should imageChange work', () => {
-    const removeDiv = ImagePickers[0].nativeElement.querySelector('.am-image-picker-item-remove');
+    const removeDiv = ImagePickers.nativeElement.querySelector('.am-image-picker-item-remove');
     removeDiv.click();
     fixture.detectChanges();
     expect(component.imageChangeCallback).toHaveBeenCalled();
   });
 
   it('should selectable work', () => {
-    const inputBtn = ImagePickers[0].nativeElement.querySelector('input[type=file]');
+    const inputBtn = ImagePickers.nativeElement.querySelector('input[type=file]');
     expect(inputBtn).toBeTruthy();
-    const inputBtn2 = ImagePickers[1].nativeElement.querySelector('input[type=file]');
-    expect(inputBtn2).toBeNull();
+    expect(component.imagePicker.selectable).toBe(component.selectable);
   });
 
-  it('should multiple work', () => {
-    //
-  });
-
-  it('should addImageClick2 work', () => {
-    // 自定义选择图片的方法
-    const inputBtn = ImagePickers[2].nativeElement.querySelector('input[type=file]');
+  it('should addImageClick work', () => {
+    const inputBtn = ImagePickers.nativeElement.querySelector('input[type=file]');
     inputBtn.click();
     fixture.detectChanges();
-    expect(component.files2.length).toBe(3);
+    expect(component.files.length).toBe(3);
   });
 
-  it('should accept work', () => {
-    // 自定义文件类型
+  it('fileChange work', () => {
+    const inputBtn = ImagePickers.nativeElement.querySelector('input[type=file]');
+    spyOn(component.imagePicker, 'fileChange');
+    inputBtn.dispatchEvent(new Event('change'));
+    expect(component.imagePicker.fileChange).toHaveBeenCalled();
+  });
+
+  it('parseFile work', () => {
+    const mockFile = new File([''], 'filename', { type: 'image/png' });
+    const mockEvt = { target: { files: [mockFile] } };
+    const mockOnLoadEvt = { target: { result: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg' } };
+    const mockReader: FileReader = jasmine.createSpyObj('FileReader', ['readAsDataURL', 'onload', 'readAsArrayBuffer']);
+    spyOn(window as any, 'FileReader').and.returnValue(mockReader);
+    component.imagePicker.fileChange(mockEvt as any);
+    mockReader.onload(mockOnLoadEvt as any);
+
+    expect((window as any).FileReader).toHaveBeenCalled();
+    expect(mockReader.readAsDataURL).toHaveBeenCalledWith(mockFile);
+  });
+
+  it('getOrientation work', () => {
+    const mockOnLoadEvt = { target: { result: new ArrayBuffer(100) } };
+    const mockReader: FileReader = jasmine.createSpyObj('FileReader', ['readAsDataURL', 'onload', 'readAsArrayBuffer']);
+    const mockCallback = (num) => num;
+    const mockFile = new File([''], 'filename', { type: 'image/png' });
+    spyOn(window as any, 'FileReader').and.returnValue(mockReader);
+    mockReader.onload(mockOnLoadEvt as any);
+    component.imagePicker.getOrientation(mockFile, mockCallback)
+
+    expect((window as any).FileReader).toHaveBeenCalled();
+    expect(mockReader.readAsArrayBuffer).toHaveBeenCalled();
+  });
+
+  it('addImage work', () => {
+    const mockItem = {
+      'url': 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
+      'orientation': 0
+    };
+    component.imagePicker.addImage(mockItem);
+    expect(component.imageChangeCallback).toHaveBeenCalled();
+  });
+
+  it('getRotation work', () => {
+    expect(component.imagePicker.getRotation(1)).toBe(0);
+    expect(component.imagePicker.getRotation(3)).toBe(180);
+    expect(component.imagePicker.getRotation(6)).toBe(90);
+    expect(component.imagePicker.getRotation(8)).toBe(270);
+    expect(component.imagePicker.getRotation(2)).toBe(0);
   });
 
   it('should length work', () => {
-    // 自定义长度
-    const flexBox = ImagePickers[4].nativeElement.querySelector('.am-flexbox');
-    const flexItem = flexBox.querySelectorAll('.am-flexbox-item');
+    expect(component.imagePicker.length).toBe(3);
+    component.len = -1;
     fixture.detectChanges();
-    expect(flexItem.length).toBe(6);
+    expect(component.imagePicker.length).toBe(4);
+  });
+
+
+  it('should files work', () => {
+    const imageDiv = ImagePickers.nativeElement.querySelector('.am-image-picker-item-content');
+    expect(imageDiv.style['background-image']).toBe(
+      'url("https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg")'
+    );
+    expect(component.imagePicker.files.length).toBe(2);
   });
 });
 
 @Component({
   selector: 'test-image-picker-child',
   template: `
-  <div class="am-demo-page">
-    <div class="demo-preview-item">
-      <div class="demo-title">单选图片选择组件</div>
-      <div class="demo-container">
-        <ImagePicker [files]="files1"
-                     [multiple]="false"
-                     [selectable]="true"
-                     (onChange)="imageChangeCallback()"
-                     (onImageClick)="imageClickCallback()"
-        >
-        </ImagePicker>
-      </div>
-    </div>
-    <div class="demo-preview-item">
-      <div class="demo-title">多选图片选择组件</div>
-      <div class="demo-container">
-        <ImagePicker [files]="files2"
-                     [multiple]="true"
-                     [selectable]="false"
-        >
-        </ImagePicker>
-      </div>
-    </div>
-    <div class="demo-preview-item">
-      <div class="demo-title">自定义选择图片的方法</div>
-      <div class="demo-container">
-      <ImagePicker [files]="files2"
-                   [multiple]="multiple2"
-                   [selectable]="files2.length < 5"
-                   (onChange)="fileChange2($event)"
-                   (onImageClick)="imageClick($event)"
-                   (onAddImageClick)="addImageClick2($event)"
-        >
-        </ImagePicker>
-      </div>
-    </div>
-    <div class="demo-preview-item">
-      <div class="demo-title">自定义文件类型</div>
-      <div class="demo-container">
-        <ImagePicker [files]="files3"
-                     [multiple]="multiple3"
-                     [selectable]="files3.length < 5"
-                     [accept]="'image/gif,image/jpeg,image/jpg,image/png'"
-                     (onChange)="fileChange3($event)"
-                     (onImageClick)="imageClick($event)"
-        >
-        </ImagePicker>
-      </div>
-    </div>
-    <div class="demo-preview-item">
-      <div class="demo-title">自定义数量</div>
-      <div class="demo-container">
-        <ImagePicker [files]="files4"
-                     [length]="6"
-                     [selectable]="files4.length < 7"
-                     (onImageClick)="imageClick($event)"
-        >
-        </ImagePicker>
-      </div>
-    </div>
-  </div>
- `
+    <ImagePicker [files]="files"
+                 [multiple]="multiple"
+                 [selectable]="selectable"
+                 [length]="len"
+                 [accept]="'image/gif,image/jpeg,image/jpg,image/png'"
+                 (onChange)="imageChangeCallback($event)"
+                 (onImageClick)="imageClickCallback($event)"
+                 (onAddImageClick)="addImageClick($event)"
+    >
+    </ImagePicker>
+  `
 })
 export class TestImagePicker {
-  files1 = data.slice(0);
-  files2 = data.slice(0);
-  files3 = data.slice(0);
-  files4 = data.slice(0);
+  files = data.slice(0);
+  multiple = true;
+  selectable = true;
+  len = 3;
+  @ViewChild(ImagePicker) imagePicker: ImagePicker;
   imageChangeCallback = jasmine.createSpy('imageChangeCallback is callback');
   imageClickCallback = jasmine.createSpy('imageClickCallback is callback');
 
-  constructor() {}
+  constructor() {
+  }
 
-  addImageClick2(e) {
+  addImageClick(e) {
     e.preventDefault();
-    this.files2 = this.files2.concat({
+    this.files = this.files.concat({
       url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg'
     });
   }

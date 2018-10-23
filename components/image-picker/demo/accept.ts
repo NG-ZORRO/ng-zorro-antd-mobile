@@ -26,10 +26,6 @@ export class DemoImagePickerAcceptComponent {
   multiple = false;
   multipleTab = 0;
 
-  changeMultiple(value: number) {
-    this.multipleTab = value;
-  }
-
   ImageChange(params) {
     const { files, type, index } = params;
     this.files = files;
