@@ -13,6 +13,18 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+
+## 0.9.6 (2018-10-24)
+
+### Bug Fixes
+* **carousel:** 触摸响应时禁止冒泡传递([#61](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/61)) ([c44ba59](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/c44ba59))
+* **carousel:** 当vertical:false时修复走马灯无宽度问题([#67](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/67)) ([8dd703f](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8dd703f))
+* **carousel:** 只有2页幻灯片时修复 mousemove 问题 ([#56](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/56)) ([bc02951](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/bc02951))
+* **icon:** 修复 icon 的 line-height ([#46](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/46)) ([#47](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/47)) ([28d76f2](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/28d76f2))
+* **pulltorefresh:** 修复 drag up touch 问题 ([#51](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/51)) ([8b905cc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8b905cc))
+* **textarea:** 修复 textarea-item test case 错误 ([#50](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/50)) ([f2bbdfb](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/f2bbdfb))
+* **showcase:** 替换正确的钉钉QR码 ([#74](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/74)) ([b4e7483](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/b4e7483))
+
 ---
 ## 0.9.5 （2018-10-15）
 
