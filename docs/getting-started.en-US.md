@@ -102,9 +102,21 @@ import { AppComponent } from './app.component';
 export class AppModule {}
 ```
 
-### 5. Add Styles
+### 3. Add Styles
 
-Add `node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css` in your global style. You can get more info about how to customize styles at [customize theme](/#/docs/customize-theme/en) part.
+Add `node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css` in `angular.json`. You can get more info about how to customize styles at [customize theme](/#/docs/customize-theme/en) part.
+```json
+{
+ "assets": [
+    "src/favicon.ico",
+    "src/assets"
+  ],
+  "styles": [
+    "node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css",
+    "src/styles.css"
+  ],
+}
+```
 
 ## Customization
 
