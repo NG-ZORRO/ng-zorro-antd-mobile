@@ -13,6 +13,17 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 0.9.6 (2018-10-24)
+
+### Bug Fixes
+* **carousel:** add stopPropagation when touch action is triggered ([#61](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/61)) ([c44ba59](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/c44ba59))
+* **carousel:** fix carouselslide no width when vertical:false ([#67](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/67)) ([8dd703f](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8dd703f))
+* **carousel:** fix mousemove action when carousel only has two carouselslide ([#56](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/56)) ([bc02951](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/bc02951))
+* **icon:** fix icon line-height([#46](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/46)) ([#47](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/47)) ([28d76f2](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/28d76f2))
+* **pulltorefresh:** fix drag up touch bug ([#51](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/51)) ([8b905cc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8b905cc))
+* **textarea:** fixed textarea-item test case error ([#50](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/50)) ([f2bbdfb](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/f2bbdfb))
+* **showcase:** replace dingtalk qrcode ([#74](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/74)) ([b4e7483](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/b4e7483))
+
 ---
 ## 0.9.5 （2018-10-15）
 

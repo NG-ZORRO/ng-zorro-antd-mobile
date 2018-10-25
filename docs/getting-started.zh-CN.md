@@ -105,7 +105,19 @@ export class AppModule {}
 
 ### 3. 引入样式
 
-在全局样式中引入 `node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css` 文件。如果需要自定义主题样式，请参考[自定义主题](/#/docs/customize-theme/zh)部分。
+在`angular.json`中引入 `node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css` 文件。如果需要自定义主题样式，请参考[自定义主题](/#/docs/customize-theme/zh)部分。
+```json
+{
+ "assets": [
+    "src/favicon.ico",
+    "src/assets"
+  ],
+  "styles": [
+    "node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css",
+    "src/styles.css"
+  ],
+}
+```
 
 ## 配置主题和字体
 
