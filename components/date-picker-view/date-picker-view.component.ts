@@ -36,7 +36,6 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
   set locale(value) {
     this.options.locale = value;
     this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
   @Output()
   onValueChange: EventEmitter<any> = new EventEmitter();
