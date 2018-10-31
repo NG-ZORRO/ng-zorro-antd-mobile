@@ -26,7 +26,7 @@ export class DemoDatePickerViewBasicComponent {
     const pad = (n: number): string => (n < 10 ? `0${n}` : n.toString());
     return format
       .replace('yyyy', date.getFullYear())
-      .replace('mm', pad(date.getMonth()))
+      .replace('mm', pad(date.getMonth() + 1))
       .replace('dd', pad(date.getDate()))
       .replace('HH', pad(date.getHours()))
       .replace('MM', pad(date.getMinutes()))
