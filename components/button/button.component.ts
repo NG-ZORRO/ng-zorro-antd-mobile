@@ -31,6 +31,7 @@ export class Button implements AfterViewInit {
   private _active = false;
   private _inline = false;
   private _disabled = false;
+  private _isTouchend = true;
   private _icon: string | TemplateRef<any> = '';
   private _userAgent = (<any>navigator).userAgent || (<any>navigator).vendor || (<any>window).opera;
 
@@ -82,6 +83,7 @@ export class Button implements AfterViewInit {
     if (this._disabled) {
       return;
     }
+    this._isTouchend = true;
     if (/iPad|iPhone|iPod|Android/.test(this._userAgent) && event.type === 'touchstart') {
       this._clicked = true;
       this._active = true;
@@ -95,7 +97,7 @@ export class Button implements AfterViewInit {
   @HostListener('touchend', ['$event'])
   @HostListener('mouseup', ['$event'])
   touchEnd(event) {
-    if (this._disabled) {
+    if (this._disabled || !this._isTouchend) {
       return;
     }
     if (/iPad|iPhone|iPod|Android/.test(this._userAgent) && event.type === 'mouseup') {
@@ -105,6 +107,29 @@ export class Button implements AfterViewInit {
     this._active = false;
     this.setClassMap();
     this.onClick.emit();
+  }
+
+  @HostListener('touchmove', ['$event'])
+  @HostListener('mousemove', ['$event'])
+  touchMove(event) {
+    if (this._disabled) {
+      return;
+    }
+    this._isTouchend = false;
+    this._clicked = false;
+    this._active = false;
+    this.setClassMap();
+  }
+
+  @HostListener('touchcancel', ['$event'])
+  touchCancel(event) {
+    if (this._disabled) {
+      return;
+    }
+    this._isTouchend = false;
+    this._clicked = false;
+    this._active = false;
+    this.setClassMap();
   }
 
   constructor(private _elementRef: ElementRef, private _render: Renderer2) {
