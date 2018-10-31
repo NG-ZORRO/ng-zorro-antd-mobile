@@ -170,14 +170,13 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     this.slideHeight = nativeElement.querySelector('carouselslide').clientHeight;
     this._currentSlideHeight = this.slideHeight * this.slideWidth;
     this._currentSlideWidth = nativeElement.clientWidth;
-    this._rationWidth = this.vertical ? this._currentSlideHeight : this._currentSlideWidth * this.slideWidth;
+    this._rationWidth = this.vertical ? this._currentSlideWidth : this._currentSlideWidth * this.slideWidth;
     this._spaceWidth = ((this.vertical ? this.slideHeight : this._currentSlideWidth) - this._rationWidth) / 2;
   }
 
   carouselInit(items) {
     this.infinite = this.infinite || true;
     this._nodeArr = items['_results'];
-    // this.dragging = this._nodeArr.length > 1 && this.dragging ? this.dragging : false;
     this.dragging = this.dragging ? this.dragging : false;
     if (this._nodeArr.length > 1) {
       this._lastIndex = this._nodeArr.length - 1;
