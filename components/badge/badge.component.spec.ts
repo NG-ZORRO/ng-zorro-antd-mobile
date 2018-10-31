@@ -33,7 +33,7 @@ describe('BadgeComponent', () => {
   it('should corner work ', () => {
     component.text = 'corner is false';
     fixture.detectChanges();
-    expect(badgeEle.nativeElement.querySelector('.am-badge-text').innerText).toBe(
+    expect(badgeEle.nativeElement.querySelector('.am-badge-text').innerText.trim()).toBe(
       'corner is false',
       'dot is false,corner is false'
     );
@@ -41,7 +41,7 @@ describe('BadgeComponent', () => {
     component.corner = true;
     fixture.detectChanges();
     expect(badgeEle.nativeElement.querySelector('.am-badge-text')).toBeNull('dot=false,corner is true');
-    expect(badgeEle.nativeElement.querySelector('.am-badge-corner').innerText).toBe(
+    expect(badgeEle.nativeElement.querySelector('.am-badge-corner').innerText.trim()).toBe(
       'corner is false',
       'dot is false,corner is true'
     );
@@ -49,7 +49,7 @@ describe('BadgeComponent', () => {
 
     component.size = 'large';
     fixture.detectChanges();
-    expect(badgeEle.nativeElement.querySelector('.am-badge-corner-large').innerText).toBe(
+    expect(badgeEle.nativeElement.querySelector('.am-badge-corner-large').innerText.trim()).toBe(
       'corner is false',
       'dot is false,corner is true'
     );
@@ -69,16 +69,16 @@ describe('BadgeComponent', () => {
     component.dot = false;
     component.text = 'test';
     fixture.detectChanges();
-    expect(badgeEle.nativeElement.querySelector('.am-badge-text').innerText).toBe('test', 'dot=false,text is show');
+    expect(badgeEle.nativeElement.querySelector('.am-badge-text').innerText.trim()).toBe('test', 'dot=false,text is show');
   });
   it('when text is number,should overflowCount work', () => {
     component.text = 11;
     fixture.detectChanges();
-    expect(badgeEle.nativeElement.querySelector('.am-badge-text').innerText).toBe('11', 'test is 11');
+    expect(badgeEle.nativeElement.querySelector('.am-badge-text').innerText.trim()).toBe('11', 'test is 11');
 
     component.text = 35;
     fixture.detectChanges();
-    expect(badgeEle.nativeElement.querySelector('.am-badge-text').innerText).toBe('33+', 'test is 33+');
+    expect(badgeEle.nativeElement.querySelector('.am-badge-text').innerText.trim()).toBe('33+', 'test is 33+');
   });
   it('should hot work', () => {
     expect(badgeEle.nativeElement.querySelector('.am-badge-hot')).toBeNull('hot is false');
