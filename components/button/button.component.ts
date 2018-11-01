@@ -86,27 +86,10 @@ export class Button implements AfterViewInit {
   }
   @HostListener('touchend', ['$event'])
   @HostListener('mouseup', ['$event'])
-  touchEnd(event) {
-    if (this._disabled) {
-      return;
-    }
-    this._active = false;
-    this.setClassMap();
-    this.onClick.emit();
-  }
-
   @HostListener('touchmove', ['$event'])
   @HostListener('mousemove', ['$event'])
-  touchMove(event) {
-    if (this._disabled) {
-      return;
-    }
-    this._active = false;
-    this.setClassMap();
-  }
-
   @HostListener('touchcancel', ['$event'])
-  touchCancel(event) {
+  touchEnd(event) {
     if (this._disabled) {
       return;
     }
