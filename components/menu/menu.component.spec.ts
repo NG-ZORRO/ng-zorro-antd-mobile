@@ -70,7 +70,7 @@ describe('MenuComponent', () => {
 
     const ok = menuEle.nativeElement.querySelector('.am-multi-select-btns').lastElementChild;
     component.onOk = jasmine.createSpy('onOk is callback');
-    dispatchTouchEvent(ok, 'touchend');
+    ok.click();
     fixture.detectChanges();
     expect(component.onOk).toHaveBeenCalledTimes(1);
   });
@@ -82,7 +82,7 @@ describe('MenuComponent', () => {
 
     const cancel = menuEle.nativeElement.querySelector('.am-multi-select-btns').firstElementChild;
     component.onCancel = jasmine.createSpy('onCancel is callback');
-    dispatchTouchEvent(cancel, 'touchend');
+    cancel.click();
     fixture.detectChanges();
     expect(component.onCancel).toHaveBeenCalledTimes(1);
   });

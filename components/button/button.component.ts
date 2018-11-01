@@ -106,7 +106,6 @@ export class Button implements AfterViewInit {
     this._clicked = false;
     this._active = false;
     this.setClassMap();
-    this.onClick.emit();
   }
 
   @HostListener('touchmove', ['$event'])
@@ -130,6 +129,14 @@ export class Button implements AfterViewInit {
     this._clicked = false;
     this._active = false;
     this.setClassMap();
+  }
+
+  @HostListener('click', ['$event'])
+  click(event) {
+    if (this._disabled || !this._isTouchend) {
+      return;
+    }
+    this.onClick.emit();
   }
 
   constructor(private _elementRef: ElementRef, private _render: Renderer2) {
