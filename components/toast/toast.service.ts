@@ -19,7 +19,7 @@ export interface ConfigInterface {
 @Injectable()
 export class Toast {
   static timeout = null;
-  static _zone: NgZone;
+  static _zone: NgZone = null;
   static compRef: ComponentRef<any> = null;
   static _toastCompFactory: ComponentFactory<ToastComponent> = null;
   static _appRef: ApplicationRef = null;
