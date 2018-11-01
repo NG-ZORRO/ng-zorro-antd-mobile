@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input, TemplateRef, HostBinding } from '@angular/core';
+import { Component, ViewEncapsulation, Input, TemplateRef, HostBinding, NgZone } from '@angular/core';
 
 @Component({
   selector: 'Toast',
@@ -26,14 +26,18 @@ export class ToastComponent {
     } else {
       this.isContentString = true;
     }
-    this._content = value;
+    this._zone.run(() => {
+      this._content = value;
+    });
   }
   @Input()
   get iconType(): string {
     return this._iconType;
   }
   set iconType(value: string) {
-    this._iconType = value;
+    this._zone.run(() => {
+      this._iconType = value;
+    });
   }
 
   @HostBinding('class.am-toast')
@@ -47,5 +51,5 @@ export class ToastComponent {
     return !this.mask;
   }
 
-  constructor() {}
+  constructor(private _zone: NgZone) {}
 }
