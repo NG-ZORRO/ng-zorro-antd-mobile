@@ -4,6 +4,7 @@ import {
   ComponentFactory,
   ApplicationRef,
   Compiler,
+  NgZone,
   ComponentFactoryResolver,
 } from '@angular/core';
 import { ToastComponent } from './toast.component';
@@ -18,11 +19,13 @@ export interface ConfigInterface {
 @Injectable()
 export class Toast {
   static timeout = null;
+  static _zone: NgZone = null;
   static compRef: ComponentRef<any> = null;
   static _toastCompFactory: ComponentFactory<ToastComponent> = null;
   static _appRef: ApplicationRef = null;
 
-  constructor(private _appRef: ApplicationRef, private _compiler: Compiler, private _cfr: ComponentFactoryResolver) {
+  constructor(private _appRef: ApplicationRef, private _compiler: Compiler, private _cfr: ComponentFactoryResolver, private _zone: NgZone) {
+    Toast._zone = this._zone;
     Toast._appRef = this._appRef;
     Toast._toastCompFactory = this._cfr.resolveComponentFactory(ToastComponent);
   }
@@ -141,7 +144,9 @@ export class Toast {
       clearTimeout(Toast.timeout);
     }
     if (Toast.compRef) {
-      Toast.compRef.destroy();
+      Toast._zone.run(() => {
+        Toast.compRef.destroy();
+      });
       Toast.compRef = null;
     }
   }
