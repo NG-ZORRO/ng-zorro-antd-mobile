@@ -99,6 +99,7 @@ export { SwipeActionModule } from './swipe-action/swipe-action.module';
 export { PullToRefreshModule } from './pull-to-refresh/pull-to-refresh.module';
 export { LocaleProviderModule } from './locale-provider/locale-provider.module';
 export { LocaleProviderService } from './locale-provider/locale-provider.service';
+export { LOCAL_PROVIDER_TOKEN } from './locale-provider/locale-provider.token';
 export { LocaleProviderPipe } from './locale-provider/locale-provider.pipe';
 export * from './locale-provider/languages';
 
@@ -171,11 +172,7 @@ export class NgZorroAntdMobileModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: NgZorroAntdMobileModule,
-      providers: [
-        ActionSheet,
-        Toast,
-        Modal
-      ]
+      providers: [ActionSheet, Toast, Modal]
     };
   }
 }
