@@ -67,7 +67,7 @@ describe('ToastComponent', () => {
 
   it('should showToast work', () => {
     const button = buttons[0].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain(
@@ -78,7 +78,7 @@ describe('ToastComponent', () => {
 
   it('should showToastNoMask work', () => {
     const button = buttons[1].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain(
@@ -89,7 +89,7 @@ describe('ToastComponent', () => {
 
   it('should showCustomIcon work', () => {
     const button = buttons[2].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.innerText).toContain('toast的内容', 'showCustomIcon work');
@@ -97,7 +97,7 @@ describe('ToastComponent', () => {
 
   it('should successToast work', () => {
     const button = buttons[3].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain('Load success !!!', 'successToast work');
@@ -105,7 +105,7 @@ describe('ToastComponent', () => {
 
   it('should failToast work', () => {
     const button = buttons[4].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain('Load failed !!!', 'failToast work');
@@ -113,7 +113,7 @@ describe('ToastComponent', () => {
 
   it('should offline work', () => {
     const button = buttons[5].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain(
@@ -124,7 +124,7 @@ describe('ToastComponent', () => {
 
   it('should loadingToast work', () => {
     const button = buttons[6].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain('Loading...', 'loadingToast work');

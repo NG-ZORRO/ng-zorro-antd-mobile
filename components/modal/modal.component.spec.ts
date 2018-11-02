@@ -126,7 +126,7 @@ describe('ModalComponent', () => {
 
   it('should showOpeartion work', () => {
     const button = buttons[0].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modal');
     const buttonOk =  modal.querySelector('.am-modal-button');
@@ -136,13 +136,13 @@ describe('ModalComponent', () => {
 
   it('should showAlert work', () => {
     const button = buttons[1].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
   });
 
   it('should showPromptDefault work', () => {
     const button = buttons[2].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modal');
     const buttonOk =  modal.querySelector('.am-modal-button');
@@ -152,7 +152,7 @@ describe('ModalComponent', () => {
 
   it('should showPromptPromise work', () => {
     const button = buttons[3].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modal');
     const buttonOk =  modal.querySelector('.am-modal-button');
@@ -162,7 +162,7 @@ describe('ModalComponent', () => {
 
   it('should showSecure work', () => {
     const button = buttons[4].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modal');
     const buttonOk =  modal.querySelector('.am-modal-button');
@@ -172,7 +172,7 @@ describe('ModalComponent', () => {
 
   it('should showCustom work', () => {
     const button = buttons[5].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modal');
     const buttonOk =  modal.querySelector('.am-modal-button');
@@ -182,7 +182,7 @@ describe('ModalComponent', () => {
 
   it('should showLogin work', () => {
     const button = buttons[6].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modal');
     const buttonOk =  modal.querySelector('.am-modal-button');

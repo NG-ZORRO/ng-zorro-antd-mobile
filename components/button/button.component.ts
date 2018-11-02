@@ -27,11 +27,9 @@ export class Button implements AfterViewInit {
   private _type: string;
   private _size = 'large';
   private _loading = false;
-  private _clicked = false;
   private _active = false;
   private _inline = false;
   private _disabled = false;
-  private _isTouchend = true;
   private _icon: string | TemplateRef<any> = '';
   private _userAgent = (<any>navigator).userAgent || (<any>navigator).vendor || (<any>window).opera;
 
@@ -83,53 +81,28 @@ export class Button implements AfterViewInit {
     if (this._disabled) {
       return;
     }
-    this._isTouchend = true;
-    if (/iPad|iPhone|iPod|Android/.test(this._userAgent) && event.type === 'touchstart') {
-      this._clicked = true;
       this._active = true;
       this.setClassMap();
-    } else if (!/iPad|iPhone|iPod|Android/.test(this._userAgent) && event.type === 'mousedown') {
-      this._clicked = true;
-      this._active = true;
-      this.setClassMap();
-    }
   }
   @HostListener('touchend', ['$event'])
   @HostListener('mouseup', ['$event'])
-  touchEnd(event) {
-    if (this._disabled || !this._isTouchend) {
-      return;
-    }
-    if (/iPad|iPhone|iPod|Android/.test(this._userAgent) && event.type === 'mouseup') {
-      return;
-    }
-    this._clicked = false;
-    this._active = false;
-    this.setClassMap();
-    this.onClick.emit();
-  }
-
   @HostListener('touchmove', ['$event'])
   @HostListener('mousemove', ['$event'])
-  touchMove(event) {
+  @HostListener('touchcancel', ['$event'])
+  touchEnd(event) {
     if (this._disabled) {
       return;
     }
-    this._isTouchend = false;
-    this._clicked = false;
     this._active = false;
     this.setClassMap();
   }
 
-  @HostListener('touchcancel', ['$event'])
-  touchCancel(event) {
+  @HostListener('click', ['$event'])
+  click(event) {
     if (this._disabled) {
       return;
     }
-    this._isTouchend = false;
-    this._clicked = false;
-    this._active = false;
-    this.setClassMap();
+    this.onClick.emit();
   }
 
   constructor(private _elementRef: ElementRef, private _render: Renderer2) {
@@ -190,7 +163,6 @@ export class Button implements AfterViewInit {
       this._size === 'small' && `${this.prefixCls}-${this._size}`,
       this._disabled && `${this.prefixCls}-disabled`,
       this._loading && `${this.prefixCls}-loading`,
-      this._clicked && `${this.prefixCls}-clicked`,
       this.iconType && `${this.prefixCls}-icon`,
       this._active && `${this.prefixCls}-active`,
       this._inline && `${this.prefixCls}-inline`

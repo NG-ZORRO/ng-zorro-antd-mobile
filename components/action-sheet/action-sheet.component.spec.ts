@@ -32,7 +32,7 @@ describe('ActionSheetComponent', () => {
 
   it('should actionsheet work', () => {
     const button = buttons[0].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     actionSheetEle = document.querySelector('actionsheet');
     expect(actionSheetEle.querySelector('.am-action-sheet-wrap').classList).toContain(
@@ -68,7 +68,7 @@ describe('ActionSheetComponent', () => {
 
   it('should shareActionSheet work', () => {
     const button = buttons[1].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     actionSheetEle = document.querySelector('actionsheet');
     expect(actionSheetEle.querySelector('.am-action-sheet-share-list')).toBeTruthy('shareactionsheet is work');
@@ -76,7 +76,7 @@ describe('ActionSheetComponent', () => {
 
   it('should shareActionSheetMulpitleLine work', () => {
     const button = buttons[2].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     actionSheetEle = document.querySelector('actionsheet');
     expect(actionSheetEle.querySelector('.am-action-sheet-share-content').children.length).toBe(
@@ -87,7 +87,7 @@ describe('ActionSheetComponent', () => {
 
   it('should close work', () => {
     const button = buttons[1].nativeElement;
-    dispatchTouchEvent(button, 'touchend');
+    button.click();
     fixture.detectChanges();
     actionSheetEle = document.querySelector('actionsheet');
     actionSheetEle.querySelector('.am-action-sheet-share-list-item').click();

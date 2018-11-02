@@ -53,7 +53,7 @@ describe('pagination', () => {
     component.total = 3;
     nextButton = paginationEle.nativeElement.querySelector('.am-pagination-wrap-btn-next').firstElementChild;
     fixture.detectChanges();
-    dispatchTouchEvent(nextButton, 'touchend');
+    nextButton.click();
     expect(component.current).toBe(3, 'current = total');
   });
 
@@ -91,10 +91,10 @@ describe('pagination', () => {
     fixture.detectChanges();
     nextButton = paginationEle.nativeElement.querySelector('.am-pagination-wrap-btn-next').firstElementChild;
     prevButton = paginationEle.nativeElement.querySelector('.am-pagination-wrap-btn-prev').firstElementChild;
-    dispatchTouchEvent(nextButton, 'touchend');
+    nextButton.click();
     fixture.detectChanges();
     expect(component.current).toBe(3, 'current = 3');
-    dispatchTouchEvent(prevButton, 'touchend');
+    prevButton.click();
     fixture.detectChanges();
     expect(component.current).toBe(2, 'current = 2');
   });
