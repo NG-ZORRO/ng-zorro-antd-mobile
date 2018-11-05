@@ -9,19 +9,23 @@
     </div>
     <ng-content select="[intro]"></ng-content>
     <nz-tooltip [nzTitle]="nzExpanded?'Hide Code':'Show Code'">
-        <span class="code-expand-icon" nz-tooltip (click)="nzExpanded=!nzExpanded">
-          <nz-modal
-            [(nzVisible)]="nzExpanded"
-            [nzWidth]="nzWidth"
-            [nzTitle]="nzTitle"
-            [nzCancelText]="null"
-            [nzOkText]="nzOkText()"
-            (nzOnCancel)="handleCancel()"
-            (nzOnOk)="handleOk()"
-          >
-            <nz-highlight [nzCode]="_code" [nzLanguage]="'typescript'"></nz-highlight>
-          </nz-modal>
-        </span>
+      <span class="code-expand-icon" nz-tooltip (click)="nzExpanded=!nzExpanded">
+        <img alt="expand code"
+             class="code-expand-icon-show"
+             src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg"
+        />
+        <nz-modal
+          [(nzVisible)]="nzExpanded"
+          [nzWidth]="nzWidth"
+          [nzTitle]="nzTitle"
+          [nzCancelText]="null"
+          [nzOkText]="nzOkText()"
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk()"
+        >
+          <nz-highlight [nzCode]="_code" [nzLanguage]="'typescript'"></nz-highlight>
+        </nz-modal>
+      </span>
     </nz-tooltip>
   </section>
   <div class="code-box-actions" style="position: relative; top: 0">
