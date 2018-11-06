@@ -1,5 +1,5 @@
 <div class="{{props.prefixCls}}-mask {{maskTransitionName}}"></div>
-<div class="{{props.prefixCls}}-wrap {{transitionName}}" (click)="onPress(-1)">
+<div class="{{props.prefixCls}}-wrap {{transitionName}}" (click)="onPress(-1, 0, $event)">
   <div role="document"
        class="{{props.prefixCls}}"
        [ngClass]="showShare(flag)">
@@ -19,7 +19,7 @@
                   <TouchFeedBack class="{{props.prefixCls}}-button-list-item" [activeClassName]="activeClassName" >
                       <div *ngIf="destructiveButtonIndex !== i && cancelButtonIndex !== i"
                            class="{{props.prefixCls}}-button-list-item"
-                           (click)="onPress(i)"
+                           (click)="onPress(i, 0, $event)"
                       >
                         {{item}}
                       </div>
@@ -31,7 +31,7 @@
                       </div>
                       <div *ngIf="cancelButtonIndex === i"
                            class="{{props.prefixCls}}-button-list-item {{props.prefixCls}}-cancel-button"
-                           (click)="onPress(i)"
+                           (click)="onPress(i, 0, $event)"
                       >
                         {{item}}
                         <span class="{{props.prefixCls}}-cancel-button-mask"></span>
