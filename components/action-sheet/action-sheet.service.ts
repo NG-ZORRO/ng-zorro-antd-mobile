@@ -70,7 +70,8 @@ export class ActionSheet {
     options.maskTransitionName = `${maskTransitionName}-enter ${maskTransitionName}-enter-active`;
     const props = ActionSheet._initConfig(config, options);
     Object.assign(props, { onPress: cb }, { flag: flag });
-    function cb(index: any, rowIndex = 0) {
+    function cb(index: any, rowIndex = 0, event) {
+      event.stopPropagation();
       const res = callback(index, rowIndex);
       if (res && res.then) {
         res.then(() => {
