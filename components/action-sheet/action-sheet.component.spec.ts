@@ -83,6 +83,8 @@ describe('ActionSheetComponent', () => {
       3,
       'shareActionSheetMulpitleLine is work'
     );
+    actionSheetEle.querySelector('.am-action-sheet-share-list-item').click();
+    fixture.detectChanges();
   });
 
   it('should close work', () => {

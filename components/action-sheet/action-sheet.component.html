@@ -25,7 +25,7 @@
                       </div>
                       <div *ngIf="destructiveButtonIndex === i"
                            class="{{props.prefixCls}}-button-list-item {{props.prefixCls}}-destructive-button"
-                           (click)="onPress(i)"
+                           (click)="onPress(i, 0, $event)"
                       >
                         {{item}}
                       </div>
@@ -42,7 +42,7 @@
             <div *ngSwitchCase="'SHARE'" class="{{props.prefixCls}}-share {{props.prefixCls}}-share-content">
               <div *ngIf="!isArray(options, options[0])" class="{{props.prefixCls}}-share-list">
                 <ng-container *ngFor="let item of options; let i = index;">
-                  <div class="{{props.prefixCls}}-share-list-item" (click)="onPress(i)">
+                  <div class="{{props.prefixCls}}-share-list-item" (click)="onPress(i, 0, $event)">
                     <div class="{{props.prefixCls}}-share-list-item-icon">
                       <ng-template *ngIf="isTemplateRef(item.icon)" [ngTemplateOutlet]="item.icon"></ng-template>
                       <div *ngIf="!isTemplateRef(item.icon)" [innerHTML]="item.icon | safeHTML"></div>
@@ -52,9 +52,9 @@
                 </ng-container>
               </div>
               <ng-container *ngIf="isArray(options, options[0])">
-                <div *ngFor="let items of options;" class="{{props.prefixCls}}-share-list">
+                <div *ngFor="let items of options; let rowIndex = index" class="{{props.prefixCls}}-share-list">
                   <ng-container *ngFor="let item of items; let i = index;">
-                    <div class="{{props.prefixCls}}-share-list-item" (click)="onPress(i)">
+                    <div class="{{props.prefixCls}}-share-list-item" (click)="onPress(i, rowIndex, $event)">
                       <div class="{{props.prefixCls}}-share-list-item-icon">
                         <ng-template *ngIf="isTemplateRef(item.icon)" [ngTemplateOutlet]="item.icon"></ng-template>
                         <div *ngIf="!isTemplateRef(item.icon)" [innerHTML]="item.icon | safeHTML"></div>
