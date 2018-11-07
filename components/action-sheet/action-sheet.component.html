@@ -25,7 +25,7 @@
                       </div>
                       <div *ngIf="destructiveButtonIndex === i"
                            class="{{props.prefixCls}}-button-list-item {{props.prefixCls}}-destructive-button"
-                           (click)="onPress(i)"
+                           (click)="onPress(i, 0, $event)"
                       >
                         {{item}}
                       </div>
