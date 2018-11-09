@@ -7,7 +7,8 @@ import {
   OnInit,
   OnDestroy,
   ViewEncapsulation,
-  HostBinding
+  HostBinding,
+  NgZone
 } from '@angular/core';
 import { CustomInputService } from './custom-input.service';
 
@@ -95,7 +96,7 @@ export class CustomInput implements OnInit, OnDestroy {
   @HostBinding('class.fake-input-container-left')
   clsFakeContainerLeft: boolean;
 
-  constructor(private _ref: ElementRef, private _customInputService: CustomInputService) {}
+  constructor(private _ref: ElementRef, private _customInputService: CustomInputService, private _ngZone: NgZone) {}
 
   onFakeInputClick() {
     if (this._preventKeyboard) {
@@ -228,7 +229,9 @@ export class CustomInput implements OnInit, OnDestroy {
         this.onChange.emit(valueAfterChange);
       }
     }
-    this._value = valueAfterChange;
+    this._ngZone.run(() => {
+      this._value = valueAfterChange;
+    });
   };
 
   ngOnInit() {
