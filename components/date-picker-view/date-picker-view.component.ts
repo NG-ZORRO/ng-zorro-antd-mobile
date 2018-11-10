@@ -30,6 +30,8 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
   @Input()
   disabled: boolean = false;
   @Input()
+  indicatorStyle: object = {};
+  @Input()
   get locale() {
     return this.options.locale;
   }

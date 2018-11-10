@@ -18,3 +18,4 @@ Properties | Descrition | Type | Default
 | disabled   | 是否不可用      | Boolean |    false  |
 | onChange  | change handler | (date: Object): void |  -  |
 | onValueChange | fire when picker col change | (vals: any, index: number) => void | - |
+| indicatorStyle  | style of indicator | Object | - |
