@@ -26,3 +26,4 @@ Properties | Descrition | Type | Default
 | title  | title | String | - |
 | disabled  | set disabled | Boolean | false |
 | cascade  | whether is cascade mode | Boolean | true |
+| indicatorStyle  | style of indicator | Object | - |
