@@ -1,36 +1,16 @@
-import { Injectable, Injector, ViewContainerRef } from '@angular/core';
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { Injectable, Injector } from '@angular/core';
 import { PickerComponent } from './picker.component';
 import { PickerCallBack, PickerOptions } from './picker-options.provider';
-
+import { PopupService } from '../core/core.module';
 @Injectable()
-export class Picker {
+export class Picker extends PopupService {
   static defaultOptions: PickerOptions = new PickerOptions();
-  static viewContainerRef: ViewContainerRef = null;
-  static overlay: Overlay = null;
-  static overlayRef: OverlayRef = null;
-
-  constructor(
-    private _overlay: Overlay,
-    public _viewContainerRef: ViewContainerRef
-  ) {
-    Picker.viewContainerRef = this._viewContainerRef;
-    Picker.overlay = this._overlay;
-  }
 
   static showPicker(
     config: PickerOptions = Picker.defaultOptions,
     confirmCallback?: PickerCallBack,
     cancelCallback?: PickerCallBack
   ): void {
-    let overlayConfig = new OverlayConfig();
-    overlayConfig.hasBackdrop = true;
-    Picker.overlayRef = Picker.overlay.create(overlayConfig);
-    Picker.overlayRef.backdropClick().subscribe(() => {
-      Picker.overlayRef.dispose();
-    });
-
     const options = new PickerOptions();
     Object.assign(options, config, {
       hidePicker: (event): void => {
@@ -73,12 +53,10 @@ export class Picker {
         useValue: options
       }
     ]);
-    Picker.overlayRef.attach(new ComponentPortal(PickerComponent, Picker.viewContainerRef, childInjector));
+    Picker.showPopup(PickerComponent, childInjector);
   }
 
   static hidePicker(): void {
-    if (Picker.overlayRef) {
-      Picker.overlayRef.dispose();
-    }
+    Picker.hidePopup();
   }
 }
