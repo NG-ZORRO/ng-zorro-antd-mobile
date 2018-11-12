@@ -28,3 +28,9 @@ subtitle: 选择器
 | disabled  | 是否不可用 | Boolean | false |
 | cascade  | 是否联动 | Boolean | true |
 
+### Picker.showPicker(config, confirm?, cancel?)
+属性 | 说明 | 类型 | 默认值
+----|-----|------|------
+| config    | 初始化配置       | {data: [], value: [],...}    | 无           |
+| confirm    | 选中后的回调       | (val): void     | 无           |
+| cancel    | 点击取消时执行的回调       | (): void     | 无           |
