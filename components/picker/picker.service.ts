@@ -6,17 +6,15 @@ import { PickerCallBack, PickerOptions } from './picker-options.provider';
 
 @Injectable()
 export class Picker {
-  static defaultOptions: PickerOptions;
+  static defaultOptions: PickerOptions = new PickerOptions();
   static viewContainerRef: ViewContainerRef = null;
   static overlay: Overlay = null;
   static overlayRef: OverlayRef = null;
 
   constructor(
-    private _defaultOptions: PickerOptions,
     private _overlay: Overlay,
     public _viewContainerRef: ViewContainerRef
   ) {
-    Picker.defaultOptions = this._defaultOptions;
     Picker.viewContainerRef = this._viewContainerRef;
     Picker.overlay = this._overlay;
   }
