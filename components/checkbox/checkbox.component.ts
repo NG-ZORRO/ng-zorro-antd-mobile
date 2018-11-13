@@ -72,8 +72,8 @@ export class Checkbox implements OnInit, OnChanges, ControlValueAccessor {
   checkBoxWrapper: boolean = true;
 
   @HostListener('click', ['$event'])
-  onClick(e: TouchEvent): void {
-    e.preventDefault();
+  onClick(event): void {
+    event.preventDefault();
     if (!this._disabled) {
       this.updateValue(!this._checked);
     }
