@@ -15,7 +15,7 @@ Properties | Descrition | Type | Default
 | minDate   | minimum date | Date  |  2000-1-1  |
 | maxDate   | maximum date | Date  |  2030-1-1  |
 | locale   | international, can override the configuration of the global `[LocaleProvider](https://ng.mobile.ant.design/components/locale-provider/en)` | Object: {DatePickerLocale: {year, month, day, hour, minute, am?, pm?}, okText, dismissText} |  -  |
-| disabled   | 是否不可用      | Boolean |    false  |
+| disabled   | disabled      | Boolean |    false  |
 | onChange  | change handler | (date: Object): void |  -  |
 | onValueChange | fire when picker col change | (vals: any, index: number) => void | - |
 | indicatorStyle  | style of indicator | Object | - |
