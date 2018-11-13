@@ -16,7 +16,5 @@ PickerView 的功能类似于 Picker ，但它是直接渲染在区域中，而�
 | cascade  | 是否级联   | Boolean| true|
 | cols     | 列数    | Number | `3` |
 | onChange | 选中后的回调 | (val): void      | -   |
-| prefixCls    | prefix class         | string | am-picker     |
-| pickerPrefixCls  | picker prefix class  | string | am-picker-col |
 | itemStyle| 每列样式   | Object | -   |
 | indicatorStyle  | indicator 样式  | Object | -  |
