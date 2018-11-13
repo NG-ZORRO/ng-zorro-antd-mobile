@@ -170,7 +170,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     public elementRef: ElementRef,
     public options: DatePickerOptions,
     public localeProviderService: LocaleProviderService
-  ) {}
+  ) { }
 
   init() {
     this.initResult();
@@ -384,12 +384,12 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
             case 2:
               this.localMinDate[_indexArrayIndex] = min_date[i] =
                 this.localMinDate[_indexArrayIndex] > 0 &&
-                this.localMinDate[_indexArrayIndex] <= new Date(min_date[0], min_date[1], 0).getDate()
+                  this.localMinDate[_indexArrayIndex] <= new Date(min_date[0], min_date[1], 0).getDate()
                   ? this.localMinDate[_indexArrayIndex]
                   : 1;
               this.localMaxDate[_indexArrayIndex] = max_date[i] =
                 this.localMaxDate[_indexArrayIndex] > 0 &&
-                this.localMaxDate[_indexArrayIndex] <= new Date(max_date[0], max_date[1], 0).getDate()
+                  this.localMaxDate[_indexArrayIndex] <= new Date(max_date[0], max_date[1], 0).getDate()
                   ? this.localMaxDate[_indexArrayIndex]
                   : new Date(max_date[0], max_date[1], 0).getDate();
               current_time[i] = this.currentTime[_indexArrayIndex];
@@ -642,8 +642,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       this.dataWithStr[checkIdx] =
         this.options.locale.locale === 'zh_CN'
           ? arr.map(item => {
-              return item + str;
-            })
+            return item + str;
+          })
           : arr;
       setTimeout(() => {
         this.selectedTarget.forEach((item, i) => {
