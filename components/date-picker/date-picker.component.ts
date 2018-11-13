@@ -520,7 +520,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this.data.push(tempArr);
     }
-    if (this.options.locale.locale === 'zh_CN') {
+    if (this.options.locale === undefined || this.options.locale.locale === 'zh_CN') {
       if (this.dataWithStr.length > idx && this.dataWithStr[idx].toString() !== dataWithStr.toString()) {
         this.dataWithStr[idx] = dataWithStr;
       } else if (this.dataWithStr.length > idx && this.dataWithStr[idx].toString() === dataWithStr.toString()) {
