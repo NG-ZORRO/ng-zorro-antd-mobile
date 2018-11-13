@@ -70,8 +70,8 @@ export class Radio implements OnInit, OnChanges, ControlValueAccessor {
   radioWrapper: boolean = true;
 
   @HostListener('click', ['$event'])
-  onClick(e: TouchEvent): void {
-    e.preventDefault();
+  onClick(event): void {
+    event.preventDefault();
     if (!this._disabled && !this._checked) {
       this.updateValue(true);
     }
