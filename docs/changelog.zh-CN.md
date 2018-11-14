@@ -13,6 +13,23 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.9.7 (2018-11-14)
+
+* **action-sheet:** 修复点击item事件会响应背景点击事件 ([#98](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/98)) ([b24bcbc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/b24bcbc))
+* **action-sheet:** 修复遗漏点击item事件 ([#99](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/99)) ([1697cda](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/1697cda))
+* **badge:** 修复 badge 单测错误 ([#83](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/83)) ([43eb155](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/43eb155))
+* **carousel:** 修复只有一个 item 时宽度不对的问题 ([#86](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/86)) ([bb59fe7](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/bb59fe7))
+* **date-picker:** 修复没有 locale 输入时报错 ([#103](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/103)) ([2aa43aa](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/2aa43aa))
+* **input-item:** 使用 ngzone.run set value ([#101](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/101)) ([ed2b243](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/ed2b243))
+* **LocaleProvider:** 导出 LOCAL_PROVIDER_TOKEN ([#96](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/96)) ([16922a2](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/16922a2))
+* **tabs:** 修复 MacOS Safari及 iOS 9.3以下版本的显示问题 ([#106](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/106)) ([ba9e43b](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/ba9e43b))
+* **Toast:** 修复 toast 在 init 初始化时报错 ([#93](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/93)) ([49d52be](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/49d52be))
+* **showcase:** 更改展开代码 icon ([#97](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/97)) ([8bcfda5](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8bcfda5))
+
+### Features
+
+* **date-picker-view:** 增加indicatorStyle参数 ([#104](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/104)) ([e97acbd](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/e97acbd))
+* **picker:** 增加动态初始化方式 ([#105](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/105)) ([90866df](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/90866df))
 
 ## 0.9.6 (2018-10-24)
 
@@ -33,7 +50,7 @@ timeline: true
 * **codebox:** 修复英文网站中弹出代码框显示中文“返回“bug ([#35](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/35)) ([0720fdc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/0720fdc))
 * **codebox:** 修复StackBliz中的问题 ([#41](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/41)) ([8adcbb0](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8adcbb0))
 * **package.json:** 取消Package Json的版本号 ([#27](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/27)) ([fc3cf65](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/fc3cf65))
-* **popover:** 为PopoverOptions加入providers ([#30](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/30)) ([8f9e1d3](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8f9e1d3))
+* **popover:** 为 PopoverOptions 加入providers ([#30](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/30)) ([8f9e1d3](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8f9e1d3))
 * **textarea:** 修复textarea test case错误 ([#36](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/36)) ([97639fc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/97639fc))
 * **package.json:** 修复npm run start在windows中无法运行的错误 ([#42](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/42)) ([68a0453](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/68a0453))
 * **tabs:** 修复swipeable为false时useOnPan依然生效的问题 ([#43](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/43)) ([2d63730](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/2d63730))
