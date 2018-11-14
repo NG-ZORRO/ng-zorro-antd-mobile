@@ -19,3 +19,4 @@ DatePickerView 的功能类似于 DatePicker ，但它是直接渲染在区域�
 | disabled   | 是否不可用      | Boolean |    false  |
 | onChange   | 时间发生变化的回调函数  | (date: Object): void | - |
 | onValueChange | 每列 picker 改变时的回调 | (vals: any, index: number) => void | - |
+| indicatorStyle  | style of indicator | Object | - |
