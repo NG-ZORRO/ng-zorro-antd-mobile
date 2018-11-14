@@ -20,6 +20,7 @@ export type TabPanelPositionState =
 @Component({
   selector: 'TabPane, nzm-tab-pane',
   templateUrl: './tab-pane.component.html',
+  styles: [`:host {touch-action: auto}`],
   host: {
     '[@translateTabPane]': 'position',
     '(@translateTabPane.start)': 'onTranslateTabStarted($event)',
@@ -30,7 +31,6 @@ export type TabPanelPositionState =
       state(
         'left-with-animation',
         style({
-          'touch-action': 'auto',
           transform: 'translate3d(-100%, 0, 0)',
           transition: '.3s cubic-bezier(0.35, 0, 0.25, 1)'
         })
@@ -39,16 +39,14 @@ export type TabPanelPositionState =
         'left-with-animation-with-higher-zindex',
         style({
           'z-index': 100,
-          'touch-action': 'auto',
           transform: 'translate3d(-100%, 0, 0)',
           transition: '.3s cubic-bezier(0.35, 0, 0.25, 1)'
         })
       ),
-      state('left-without-animation', style({ 'touch-action': 'auto', transform: 'translate3d(-100%, 0, 0)' })),
+      state('left-without-animation', style({transform: 'translate3d(-100%, 0, 0)' })),
       state(
         'right-with-animation',
         style({
-          'touch-action': 'auto',
           transform: 'translate3d(100%, 0, 0)',
           transition: '.3s cubic-bezier(0.35, 0, 0.25, 1)'
         })
@@ -57,16 +55,14 @@ export type TabPanelPositionState =
         'right-with-animation-with-higher-zindex',
         style({
           'z-index': 100,
-          'touch-action': 'auto',
           transform: 'translate3d(100%, 0, 0)',
           transition: '.3s cubic-bezier(0.35, 0, 0.25, 1)'
         })
       ),
-      state('right-without-animation', style({ 'touch-action': 'auto', transform: 'translate3d(100%, 0, 0)' })),
+      state('right-without-animation', style({transform: 'translate3d(100%, 0, 0)' })),
       state(
         'top-with-animation',
         style({
-          'touch-action': 'auto',
           transform: 'translate3d(0, -100%, 0)',
           transition: '.3s cubic-bezier(0.35, 0, 0.25, 1)'
         })
@@ -75,16 +71,14 @@ export type TabPanelPositionState =
         'top-with-animation-with-higher-zindex',
         style({
           'z-index': 100,
-          'touch-action': 'auto',
           transform: 'translate3d(0, -100%, 0)',
           transition: '.3s cubic-bezier(0.35, 0, 0.25, 1)'
         })
       ),
-      state('top-without-animation', style({ 'touch-action': 'auto', transform: 'translate3d(0, -100%, 0)' })),
+      state('top-without-animation', style({ transform: 'translate3d(0, -100%, 0)' })),
       state(
         'bottom-with-animation',
         style({
-          'touch-action': 'auto',
           transform: 'translate3d(0, 100%, 0)',
           transition: '.3s cubic-bezier(0.35, 0, 0.25, 1)'
         })
@@ -93,22 +87,20 @@ export type TabPanelPositionState =
         'bottom-with-animation-with-higher-zindex',
         style({
           'z-index': 100,
-          'touch-action': 'auto',
           transform: 'translate3d(0, 100%, 0)',
           transition: '.3s cubic-bezier(0.35, 0, 0.25, 1)'
         })
       ),
-      state('bottom-without-animation', style({ 'touch-action': 'auto', transform: 'translate3d(0, 100%, 0)' })),
+      state('bottom-without-animation', style({ transform: 'translate3d(0, 100%, 0)' })),
       state(
         'center-with-animation',
         style({
           'z-index': 100,
-          'touch-action': 'auto',
           transform: 'translate3d(0, 0, 0)',
           transition: '.3s cubic-bezier(0.35, 0, 0.25, 1)'
         })
       ),
-      state('center-without-animation', style({ 'touch-action': 'auto', transform: 'translate3d(0, 0, 0)' }))
+      state('center-without-animation', style({ transform: 'translate3d(0, 0, 0)' }))
     ])
   ]
 })
