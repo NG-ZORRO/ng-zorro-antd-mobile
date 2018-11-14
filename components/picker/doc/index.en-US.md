@@ -26,3 +26,11 @@ Properties | Descrition | Type | Default
 | title  | title | String | - |
 | disabled  | set disabled | Boolean | false |
 | cascade  | whether is cascade mode | Boolean | true |
+| indicatorStyle  | style of indicator | Object | - |
+
+### Picker.showPicker(config, confirm?, cancel?)
+Properties | Descrition | Type | Default
+-----------|------------|------|--------
+| config    | init config       | {data: [], value: [],...}    | -           |
+| confirm    | handler called when click ok       | (val): void     | -           |
+| cancel    | handler called when click cancel       | (): void     | -           |

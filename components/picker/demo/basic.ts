@@ -1,50 +1,53 @@
 import { Component } from '@angular/core';
-
+import { Picker } from 'ng-zorro-antd-mobile';
 @Component({
   selector: 'demo-picker-basic',
   template: `
-    <List className="my-list">
-      <ListItem Picker
-                [extra]="name1"
-                [arrow]="'horizontal'"
-                [mask]=true
-                [title]="'Areas'"
-                [value]="value1"
-                (onOk)="onOk1($event)"
-      >
-        Multiple & cascader
-      </ListItem>
-      <ListItem Picker
-                [extra]="name2"
-                [arrow]="'horizontal'"
-                [cascade]="false"
-                [data]="seasons"
-                [title]="'选择季节'"
-                [value]="value2"
-                (onOk)="onOk2($event)"
-      >
-        Multiple
-      </ListItem>
-      <ListItem Picker
-                [extra]="name3"
-                [arrow]="'horizontal'"
-                [data]="singleArea"
-                [value]="value3"
-                (onOk)="onOk3($event)"
-      >
-        Single
-      </ListItem>
-      <ListItem Picker
-                [extra]="name4"
-                [arrow]="'horizontal'"
-                [value]="value4"
-                (onPickerChange)="onPickerChange($event)"
-                (onOk)="onOk4($event)"
-      >
-        Multiple & async
-      </ListItem>
-    </List>
-  `
+  <div Button (click)="showPicker()">{{name}}</div>
+  <WhiteSpace></WhiteSpace>
+  <List className="my-list">
+    <ListItem Picker
+              [extra]="name1"
+              [arrow]="'horizontal'"
+              [mask]=true
+              [title]="'Areas'"
+              [value]="value1"
+              (onOk)="onOk1($event)"
+    >
+      Multiple & cascader
+    </ListItem>
+    <ListItem Picker
+              [extra]="name2"
+              [arrow]="'horizontal'"
+              [cascade]="false"
+              [data]="seasons"
+              [title]="'选择季节'"
+              [value]="value2"
+              (onOk)="onOk2($event)"
+    >
+      Multiple
+    </ListItem>
+    <ListItem Picker
+              [extra]="name3"
+              [arrow]="'horizontal'"
+              [data]="singleArea"
+              [value]="value3"
+              (onOk)="onOk3($event)"
+    >
+      Single
+    </ListItem>
+    <ListItem Picker
+              [extra]="name4"
+              [arrow]="'horizontal'"
+              [value]="value4"
+              (onPickerChange)="onPickerChange($event)"
+              (onOk)="onOk4($event)"
+    >
+      Multiple & async
+    </ListItem>
+  </List>
+  `,
+  providers: [Picker]
 })
 export class DemoPickerBasicComponent {
   singleArea = [
@@ -93,6 +96,7 @@ export class DemoPickerBasicComponent {
       ]
     }
   ];
+  name  = '选择';
   name1 = '选择';
   name2 = '选择';
   name3 = '选择';
@@ -102,6 +106,10 @@ export class DemoPickerBasicComponent {
   value2 = [];
   value3 = [];
   value4 = [];
+
+  constructor (private _picker: Picker ) {
+
+  }
 
   onOk1(result) {
     this.name1 = this.getResult(result);
@@ -146,5 +154,12 @@ export class DemoPickerBasicComponent {
       temp += item.label || item;
     });
     return value;
+  }
+
+  showPicker() {
+    Picker.showPicker({value: this.value, data: this.singleArea}, (result) => {
+      this.name = this.getResult(result);
+      this.value = this.getValue(result);
+    });
   }
 }

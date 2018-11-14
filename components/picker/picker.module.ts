@@ -5,12 +5,10 @@ import { PickerDirective } from './picker.directive';
 import { PickerOptions } from './picker-options.provider';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [PickerComponent, PickerDirective],
   declarations: [PickerComponent, PickerDirective],
   providers: [PickerOptions],
   entryComponents: [PickerComponent]
 })
-export class PickerModule { }
+export class PickerModule {}

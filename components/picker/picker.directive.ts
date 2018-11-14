@@ -48,6 +48,8 @@ export class PickerDirective implements OnDestroy, OnChanges, OnInit {
   cascade: boolean;
   @Input()
   appendToBody: boolean;
+  @Input()
+  indicatorStyle: object;
   @Output()
   onVisibleChange: EventEmitter<boolean> = new EventEmitter(true);
   @Output()
@@ -129,6 +131,7 @@ export class PickerDirective implements OnDestroy, OnChanges, OnInit {
         'disabled',
         'cascade',
         'appendToBody',
+        'indicatorStyle',
         'onOk',
         'onPickerChange'
       ];
