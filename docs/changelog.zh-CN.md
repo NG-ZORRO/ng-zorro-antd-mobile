@@ -15,6 +15,8 @@ timeline: true
 
 ## 0.9.7 (2018-11-14)
 
+### Bug Fixes
+
 * **action-sheet:** 修复点击item事件会响应背景点击事件 ([#98](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/98)) ([b24bcbc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/b24bcbc))
 * **action-sheet:** 修复遗漏点击item事件 ([#99](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/99)) ([1697cda](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/1697cda))
 * **badge:** 修复 badge 单测错误 ([#83](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/83)) ([43eb155](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/43eb155))
@@ -34,6 +36,7 @@ timeline: true
 ## 0.9.6 (2018-10-24)
 
 ### Bug Fixes
+
 * **carousel:** 触摸响应时禁止冒泡传递([#61](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/61)) ([c44ba59](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/c44ba59))
 * **carousel:** 当vertical:false时修复走马灯无宽度问题([#67](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/67)) ([8dd703f](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8dd703f))
 * **carousel:** 只有2页幻灯片时修复 mousemove 问题 ([#56](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/56)) ([bc02951](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/bc02951))
