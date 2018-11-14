@@ -1,3 +1,27 @@
+## [0.9.7](https://github.com/fisherspy/ng-zorro-antd-mobile/compare/0.9.6...0.9.7) (2018-11-14)
+
+
+### Bug Fixes
+
+* **action-sheet:** fix click item will response background click event ([#98](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/98)) ([b24bcbc](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/b24bcbc))
+* **action-sheet:** fix click item without event ([#99](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/99)) ([1697cda](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/1697cda))
+* **badge:** fixed badge test case error ([#83](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/83)) ([43eb155](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/43eb155))
+* **carousel:** fix carouselslide when set one item and vertical:true, width not right ([#86](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/86)) ([bb59fe7](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/bb59fe7))
+* **date-picker:** fix no locale input will trigger error ([#103](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/103)) ([2aa43aa](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/2aa43aa))
+* **input-item:** fix set value by ngzone.run ([#101](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/101)) ([ed2b243](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/ed2b243))
+* **LocaleProvider:** export LOCAL_PROVIDER_TOKEN ([#96](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/96)) ([16922a2](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/16922a2))
+* **tabs:** fix tabs display error in macos safari ([#106](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/106)) ([ba9e43b](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/ba9e43b))
+* **Toast:**  fix tasks can reenter the Angular zone via run ([#93](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/93)) ([49d52be](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/49d52be))
+* **showcase:** change expand icon ([#97](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/97)) ([8bcfda5](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/8bcfda5))
+
+
+### Features
+
+* **date-picker-view:** feat indicatorStyle ([#104](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/104)) ([e97acbd](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/e97acbd))
+* **picker:** feat create 'Picker' with dynamic ([#105](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/105)) ([90866df](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/90866df))
+
+
+
 <a name="0.9.6"></a>
 ## [0.9.6](https://github.com/fisherspy/ng-zorro-antd-mobile/compare/0.9.5...0.9.6) (2018-10-24)
 
