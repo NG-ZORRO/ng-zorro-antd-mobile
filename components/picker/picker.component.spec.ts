@@ -1,22 +1,29 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
-import { ListModule, PickerModule } from '../..';
+import { ListModule, PickerModule, PickerComponent } from '../..';
 import { PickerOptions } from './picker-options.provider';
+import { Picker } from './picker.service';
 import { dispatchTouchEvent } from '../core/testing';
 import { LocaleProviderService, LocaleProviderModule } from '../..';
-
+import { Button } from '../button/button.component';
+import { ButtonModule } from '../button/button.module';
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 describe('PickerComponent', () => {
   let component: TestPickerBasicComponent;
   let fixture: ComponentFixture<TestPickerBasicComponent>;
   let lists;
+  let buttons;
   let pickerEle;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestPickerBasicComponent],
-      providers: [PickerOptions, LocaleProviderService],
-      imports: [ListModule, PickerModule, LocaleProviderModule]
+      providers: [PickerOptions, LocaleProviderService, Picker, Overlay],
+      imports: [ListModule, PickerModule, LocaleProviderModule, ButtonModule]
+    }).compileComponents();
+    TestBed.overrideModule(PickerModule, {
+      set: { entryComponents: [PickerComponent] }
     }).compileComponents();
   }));
 
@@ -24,6 +31,7 @@ describe('PickerComponent', () => {
     fixture = TestBed.createComponent(TestPickerBasicComponent);
     component = fixture.componentInstance;
     lists = fixture.debugElement.queryAll(By.css('listitem'));
+    buttons = fixture.debugElement.queryAll(By.directive(Button));
     fixture.detectChanges();
   });
 
@@ -101,6 +109,18 @@ describe('PickerComponent', () => {
     fixture.detectChanges();
   });
 
+
+  it('should showPicker work', () => {
+    const button = buttons[0].nativeElement;
+    button.click();
+    fixture.detectChanges();
+    const picker = document.querySelector('picker');
+    expect(picker.querySelector('.am-picker-popup-header-right')).toBeTruthy('showPicker is work');
+    const buttonOk = picker.querySelector('.am-picker-popup-header-right');
+    dispatchTouchEvent(buttonOk, 'touchend');
+    fixture.detectChanges();
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -122,7 +142,9 @@ describe('PickerComponent', () => {
       Multiple & cascader
     </ListItem>
   </List>
-  `
+  <div Button (click)="showPicker()">operation</div>
+  `,
+  providers: [Picker]
 })
 export class TestPickerBasicComponent {
   singleArea = [
@@ -150,6 +172,10 @@ export class TestPickerBasicComponent {
   value1 = ['宣武区'];
   title = 'result';
   mask = true;
+
+  constructor (private _picker: Picker ) {
+
+  }
 
   onOk1(result) {
     this.name1 = this.getResult(result);
@@ -179,5 +205,11 @@ export class TestPickerBasicComponent {
       temp += item.label || item;
     });
     return value;
+  }
+
+  showPicker() {
+    Picker.showPicker({value: this.value, data: this.singleArea}, (result) => {
+
+    });
   }
 }

@@ -106,6 +106,7 @@ export * from './locale-provider/languages';
 import { Toast } from './toast/toast.service';
 import { Modal } from './modal/modal.service';
 import { ActionSheet } from './action-sheet/action-sheet.service';
+import { Picker } from './picker/picker.service';
 
 export { Toast } from './toast/toast.service';
 export { ToastComponent } from './toast/toast.component';
@@ -113,6 +114,8 @@ export { Modal } from './modal/modal.service';
 export { ModalComponent } from './modal/modal.component';
 export { ActionSheet } from './action-sheet/action-sheet.service';
 export { ActionSheetComponent } from './action-sheet/action-sheet.component';
+export { Picker } from './picker/picker.service';
+export { PickerComponent } from './picker/picker.component';
 
 @NgModule({
   providers: [],
@@ -172,7 +175,7 @@ export class NgZorroAntdMobileModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: NgZorroAntdMobileModule,
-      providers: [ActionSheet, Toast, Modal]
+      providers: [ActionSheet, Toast, Modal, Picker]
     };
   }
 }

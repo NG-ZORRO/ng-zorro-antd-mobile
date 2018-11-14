@@ -234,7 +234,6 @@ export class TestModalBasicComponent {
   popup = true;
   state = true;
   transparent = true;
-  vi
   title: any = '456';
   footer = [
     {
