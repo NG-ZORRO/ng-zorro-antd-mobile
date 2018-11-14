@@ -20,7 +20,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'Picker, nzm-picker',
+  selector: 'Picker',
   templateUrl: './picker.component.html',
   encapsulation: ViewEncapsulation.None
 })
@@ -228,6 +228,9 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ok() {
     this.options.onOk.emit(this.combineReslut());
+    if (this.options.confirm) {
+      this.options.confirm(this.combineReslut());
+    }
     this.setTransitionName();
   }
 
@@ -242,6 +245,9 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
   cancel() {
     this.setTransitionName();
     this.options.onDismiss.emit();
+    if (this.options.cancel) {
+      this.options.cancel();
+    }
   }
 
   setTransitionName() {
