@@ -10,6 +10,7 @@
     "test": "npm run site:init && ng test --watch=false --code-coverage",
     "test-watch": "npm run site:init && ng test --watch=true --code-coverage",
     "release": "node ./scripts/publish/publish.js",
+    "publish": "bash ./scripts/publish/publish.sh",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --pkg components/package.json && node ./scripts/site/replace-scope-prefix.js",
     "site": "node ./scripts/site/generate-site",
     "site:start": "node ./scripts/site/generate-site init && node ./scripts/site/generateColorLess && ng serve --port 0 --open",
