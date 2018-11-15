@@ -4,9 +4,11 @@ import { TouchFeedbackDirective } from './directive/touch-feedback.directive';
 import { TouchFeedBackComponent } from './directive/touch-feedback.component';
 import { PopupService } from './services/popup.service';
 export { PopupService } from './services/popup.service';
+import { OverlayModule } from '@angular/cdk/overlay';
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    OverlayModule
   ],
   exports: [TouchFeedbackDirective, TouchFeedBackComponent],
   declarations: [TouchFeedbackDirective, TouchFeedBackComponent],
