@@ -1,6 +1,5 @@
 #!/bin/sh
-echo please input publish version
-read version
+
 cd `dirname $0`
 cd "../../"
 BASE_HOME="`pwd`"
@@ -14,3 +13,4 @@ DIR_TARGET="$BASE_HOME/$PUBLISH_DIST"
 cd "$DIR_TARGET"
 `npm publish`
 echo "publish finish!!!"
+rm -fr "$DIR_TARGET"
