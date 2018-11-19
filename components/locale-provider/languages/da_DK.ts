@@ -14,7 +14,7 @@ export default {
   DatePicker,
   DatePickerView,
   Menu,
-  // Calendar,
+  Calendar,
   SearchBar,
   InputItem,
   Pagination,
