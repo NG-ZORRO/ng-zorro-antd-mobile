@@ -23,7 +23,7 @@ export default {
     confirm: 'Bekræft',
     monthTitle: 'MM yyyy',
     loadPrevMonth: 'Indlæs forrige måned',
-    yesterday: 'I gr',
+    yesterday: 'I går',
     lastWeek: 'Sidste uge',
     lastMonth: 'Sidste måned'
   };
