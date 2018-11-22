@@ -13,6 +13,7 @@ Use to show important information for the system, and ask for user feedback. eg:
 - Generally put the most likely clicked button on the right side. In addition, the cancel button should always be on the left.
 
 ## API
+Before use，entryComponents should be added in corresponding module，such as：`entryComponents: [ModalComponent]`.
 
 ### Modal
 

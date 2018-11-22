@@ -15,6 +15,7 @@ subtitle: 动作面板
 
 
 ## API
+组件使用前，需要在对应module中加入entryComponents，如：`entryComponents: [ActionSheetComponent]`。
 
 #### static showActionSheetWithOptions(options: Object, callback: Function)
 

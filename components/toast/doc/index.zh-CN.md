@@ -15,6 +15,7 @@ subtitle: 轻提示
 
 
 ## API
+组件使用前，需要在对应module中加入entryComponents，如：`entryComponents: [ToastComponent]`。
 
 - `Toast.success(content, duration, onClose, mask)`
 - `Toast.fail(content, duration, onClose, mask)`
