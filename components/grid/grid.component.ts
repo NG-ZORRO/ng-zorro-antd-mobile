@@ -133,7 +133,7 @@ export class GridComponent implements OnInit {
     const columnNum = this.columnNum;
     const rowArr = new Array();
     for (let i = 0; i < rowCount; i++) {
-      rowArr[i] = new Array(i);
+      rowArr[i] = new Array();
       for (let j = 0; j < columnNum; j++) {
         const dataIndex = i * columnNum + j;
         if (dataIndex < dataLength) {
