@@ -14,6 +14,7 @@ The modal box pops up from the bottom, providing more than two actions related t
 
 
 ## API
+Before use，entryComponents should be added in corresponding module，such as：`entryComponents: [ActionSheetComponent]`.
 
 #### static showActionSheetWithOptions(options: Object, callback: Function)
 
