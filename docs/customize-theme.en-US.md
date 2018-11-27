@@ -44,7 +44,7 @@ Here is an example of `theme.less`
 @import '../node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.less';
 
 // -------- override less var -----------
-@primary-color : #f5222d;
+@brand-primary : #f5222d;
 ```
 
 All less vars can be checked [here](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/blob/master/site_scripts/_site/src/theme.less) is a sample of theme define file.
