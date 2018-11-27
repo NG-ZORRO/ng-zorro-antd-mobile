@@ -1,3 +1,19 @@
+## [0.9.9](https://github.com/fisherspy/ng-zorro-antd-mobile/compare/0.9.7...0.9.9) (2018-11-27)
+
+
+### Bug Fixes
+
+* **locale-provider:** make locale-provider available cross modules; ([#113](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/113)) ([e09f0a3](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/e09f0a3))
+* **picker:** import OverlayModule ([#111](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/111)) ([722ee27](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/722ee27))
+* **grid:** fix when input item more than 13 would trigger bug ([#119](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/119)) ([34e1dd7](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/34e1dd7))
+
+
+### Features
+
+* **locale:** Adds danish locale ([5361536](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/5361536))
+
+
+
 ## [0.9.8](https://github.com/fisherspy/ng-zorro-antd-mobile/compare/0.9.7...0.9.8) (2018-11-14)
 
 
