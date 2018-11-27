@@ -13,6 +13,20 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.9.9 (2018-11-27)
+
+### Bug Fixes
+
+* **locale-provider:** 让 locale-provider 跨模块生效; ([#113](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/113)) ([e09f0a3](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/e09f0a3))
+* **picker:** 引入 OverlayModule ([#111](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/111)) ([722ee27](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/722ee27))
+* **grid:** 修复item数超过数量会出错的bug ([#119](https://github.com/fisherspy/ng-zorro-antd-mobile/issues/119)) ([34e1dd7](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/34e1dd7))
+
+
+### Features
+
+* **locale:** 增加丹麦语 locale ([5361536](https://github.com/fisherspy/ng-zorro-antd-mobile/commit/5361536))
+
+
 ## 0.9.7 (2018-11-14)
 
 ### Bug Fixes
