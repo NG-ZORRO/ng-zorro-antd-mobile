@@ -14,7 +14,8 @@ import {
   Renderer2,
   TemplateRef,
   ComponentFactory,
-  AfterViewInit
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
 import { PopoverComponent } from './popover.component';
 import { PopoverOptions } from './popover-options.provider';
@@ -25,7 +26,7 @@ import * as Positioning from '../core/util/position';
   selector: '[Popover], [nzm-popover]',
   providers: [PopoverOptions]
 })
-export class PopoverDirective implements OnInit, AfterViewInit, OnDestroy {
+export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
   popover: ComponentRef<PopoverComponent>;
 
   private _eventListeners: Array<() => void> = [];
@@ -90,14 +91,16 @@ export class PopoverDirective implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
-
-  ngAfterViewInit() {
-    if (this.visible) {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.visible && changes.visible.currentValue) {
       setTimeout(() => {
-      this.showPopover();
+        this.showPopover();
+      }, 0);
+    } else {
+      setTimeout(() => {
+        this.hidePopover();
       }, 0);
     }
   }
