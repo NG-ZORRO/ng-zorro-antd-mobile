@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { en_US, ru_RU, zh_CN, sv_SE } from 'ng-zorro-antd-mobile';
+import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
 
 @Component({
   selector: 'demo-date-picker-basic',
