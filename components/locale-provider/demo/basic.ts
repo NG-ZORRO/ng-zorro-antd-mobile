@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LocaleProviderService } from 'ng-zorro-antd-mobile';
-import { en_US, ru_RU, zh_CN, sv_SE } from 'ng-zorro-antd-mobile';
+import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
 
 @Component({
   selector: 'demo-locale-provider-basic',
@@ -111,6 +111,11 @@ export class DemoLocaleProviderBasicComponent {
       value: 'Swedish',
       label: 'Swedish',
       language: sv_SE
+    },
+    {
+      value: 'Danish',
+      label: 'Danish',
+      language: da_DK
     }
   ];
 
