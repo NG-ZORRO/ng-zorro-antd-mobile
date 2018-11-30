@@ -13,6 +13,13 @@
     "framework",
     "frontend"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NG-ZORRO/ng-zorro-antd-mobile"
+  },
+  "bugs": {
+    "url": "https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues"
+  },
   "dependencies": {
     "@angular/cdk": "^6.3.0",
     "@angular/animations": "^6.1.9"
