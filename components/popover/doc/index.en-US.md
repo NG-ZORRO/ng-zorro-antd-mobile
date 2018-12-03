@@ -20,6 +20,7 @@ Properties | Descrition | Type | Default
 | mask    | Whether to display the mask background layer  | Boolean |  false  |
 | overlay   | Popup layer content  | TemplateRef |  -   |
 | onSelect   | when an option is selected    | (node: any, index?: number): void |  -   |
+| className | Custom popover class, e.g. "am-popover-${your className}" | string | am-popover | 
 
 ### Popover.Item
 
