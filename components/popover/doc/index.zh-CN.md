@@ -21,6 +21,7 @@ subtitle: 气泡
 | mask    | 是否显示遮罩背景层    | Boolean |  false  |
 | overlay   | 弹出层内容    | TemplateRef |  -   |
 | onSelect   | 选中某选项时的回调函数    | (node: any, index?: number): void |  -   |
+| className | 传入自定义class, e.g. "am-popover-${your className}"  | string | am-popover | 
 
 ### Popover.Item
 

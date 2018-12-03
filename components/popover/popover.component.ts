@@ -22,7 +22,8 @@ export class PopoverComponent implements OnInit, AfterViewInit {
     };
     this.popoverCls = {
       [`${this.defaultProps.prefixCls}`]: true,
-      [`${this.defaultProps.prefixCls}-placement-${this.options.placement}`]: true
+      [`${this.defaultProps.prefixCls}-placement-${this.options.placement}`]: true,
+      [`${this.defaultProps.prefixCls}-${this.options.className}`]: true
     };
   }
 
