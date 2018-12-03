@@ -3,7 +3,7 @@ export interface PopoverOptionsInterface {
   visible?: boolean;
   placement?: string;
   appendToBody?: boolean;
-  customClass?: string;
+  className?: string;
 }
 
 export class PopoverOptions implements PopoverOptionsInterface {
@@ -11,5 +11,5 @@ export class PopoverOptions implements PopoverOptionsInterface {
   mask: boolean = false;
   placement: string = 'bottom';
   appendToBody: boolean = false;
-  customClass: string = '';
+  className: string = '';
 }

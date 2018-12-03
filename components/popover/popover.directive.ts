@@ -48,7 +48,7 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
   @Input()
   appendToBody: boolean;
   @Input()
-  customClass: string;
+  className: string;
 
   @HostListener('click')
   togglePopover(): void {
@@ -165,7 +165,7 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
         'placement',
         'appendToBody',
         'overlay',
-        'customClass'
+        'className'
       ];
       optionalParams.forEach(param => {
         if (typeof this[param] !== 'undefined') {
