@@ -21,6 +21,7 @@ Properties | Descrition | Type | Default
 | overlay   | Popup layer content  | TemplateRef |  -   |
 | onSelect   | when an option is selected    | (node: any, index?: number): void |  -   |
 | className | Custom popover class, e.g. "am-popover-${your className}" | string | am-popover | 
+| autoClose | set click popover item to close popvoer | Boolean | true |
 
 ### Popover.Item
 
