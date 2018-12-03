@@ -4,6 +4,7 @@ export interface PopoverOptionsInterface {
   placement?: string;
   appendToBody?: boolean;
   className?: string;
+  autoClose?: boolean;
 }
 
 export class PopoverOptions implements PopoverOptionsInterface {
@@ -12,4 +13,5 @@ export class PopoverOptions implements PopoverOptionsInterface {
   placement: string = 'bottom';
   appendToBody: boolean = false;
   className: string = '';
+  autoClose: boolean = true;
 }
