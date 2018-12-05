@@ -132,5 +132,10 @@
   },
   "pre-commit": [
     "test"
+  ],
+  "browserslist": [
+    "last 2 versions",
+    "not ie <= 10",
+    "not ie_mob <= 10"
   ]
 }
