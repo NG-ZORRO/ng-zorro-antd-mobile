@@ -64,6 +64,7 @@ export { SwitchModule } from './switch/switch.module';
 export { SearchBarModule } from './search-bar/search-bar.module';
 export { StepperModule } from './stepper/stepper.module';
 export { StepsModule } from './steps/steps.module';
+export { CalendarModule } from './calendar/calendar.module';
 export { CarouselModule } from './carousel/carousel.module';
 export { CheckboxModule } from './checkbox/checkbox.module';
 export { RadioModule } from './radio/radio.module';
