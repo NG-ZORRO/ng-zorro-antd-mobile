@@ -10,7 +10,7 @@ import { SubMenuComponent } from './sub-menu/sub-menu.component';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
 
 @NgModule({
-  imports: [CommonModule, FlexModule, ListModule, RadioModule, CheckboxModule, ButtonModule],
+  imports: [CommonModule, FlexModule, ListModule, RadioModule, CheckboxModule, ButtonModule, LocaleProviderModule],
   exports: [MenuComponent, SubMenuComponent],
   declarations: [MenuComponent, SubMenuComponent],
   providers: [LocaleProviderModule]
