@@ -56,5 +56,9 @@
   },
   "pre-commit": [
     "test"
+  ],
+  "browserslist": [
+    "iOS >= 7",
+    "Android >= 4.4"
   ]
 }
