@@ -5,6 +5,8 @@ import { Tabs } from './tabs.component';
 import { TabPane } from './tab-pane.component';
 import { DefaultTabBarComponent } from './default-tab-bar.component';
 
+export { TabPane } from './tab-pane.component';
+
 @NgModule({
   imports: [CommonModule, ObserversModule],
   declarations: [TabPane, Tabs, DefaultTabBarComponent],

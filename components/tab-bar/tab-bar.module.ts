@@ -5,6 +5,8 @@ import { TabBar } from './tab-bar.component';
 import { BadgeModule } from '../badge/badge.module';
 import { TabBarTab } from './tab-bar-tab.component';
 
+export { TabPane } from '../tabs/tabs.module';
+
 @NgModule({
   imports: [CommonModule, TabsModule, BadgeModule],
   exports: [TabBar, TabBarTab],
