@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import { AccordionService } from './accordion.service';
 import { AccordionGroupComponent } from './accordion-group/accordion-group.component';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'Accordion, nzm-accordion',
