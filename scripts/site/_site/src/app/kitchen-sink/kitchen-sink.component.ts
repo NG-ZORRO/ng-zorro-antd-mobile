@@ -3,7 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ROUTER_LIST } from '../router';
 import { IconHandler } from '../../../../components/core/util/icon';
-import { concat } from 'rxjs/observable/concat';
+import { concat } from 'rxjs';
 
 @Component({
   selector: 'kitchen-sink',
