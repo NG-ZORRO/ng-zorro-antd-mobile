@@ -7,7 +7,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
       <div>
         <Navbar class="single-top-nav-bar"
                 [leftContent]="'Menu'"
-                [mode]="'light'"
                 (onLeftClick)="handleClick($event)"
         >
           Here is title
