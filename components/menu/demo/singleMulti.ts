@@ -6,7 +6,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
     <div [ngClass]="[show ? 'single-multi-menu-active' : '']">
       <div>
         <Navbar [leftContent]="'Menu'"
-                [mode]="'light'"
                 (onLeftClick)="handleClick($event)"
                 class="single-multi-top-nav-bar">
           Here is title
@@ -45,10 +44,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
         position: relative;
         background-color: #008ae6;
         color: #fff;
-      }
-
-      .am-navbar-title {
-        color: #fff !important;
       }
 
       .menu-mask4 {

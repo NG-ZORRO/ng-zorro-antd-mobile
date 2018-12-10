@@ -46,10 +46,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
         color: #fff;
       }
 
-      .am-navbar-title {
-        color: #fff !important;
-      }
-
       .menu-mask1 {
         content: ' ';
         position: absolute;
