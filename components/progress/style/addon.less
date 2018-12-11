@@ -23,11 +23,17 @@ progress::-webkit-progress-value {
   position: relative;
 }
 .@{pickerPrefixClass} {
+  display: block;
+  &-outer {
+    background-color: @border-color-base;
+  }
+  &-outer&-hide-outer {
+    background-color: transparent;
+  }
+  &-outer&-exceedance {
+    background-color: @brand-warning;
+  }
   &-hide-outer::-webkit-progress-bar {
     background-color: transparent;
   }
-}
-
-.@{pickerPrefixClass} {
-  display: block;
 }
