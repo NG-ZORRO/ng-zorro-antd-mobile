@@ -17,6 +17,7 @@ subtitle: 滑动开关
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
+| ngModel | 	当前值，可双向绑定 | Boolean | false |
 | checked    | 是否默认选中    | Boolean       |   false  |
 | disabled   | 是否不可修改    | Boolean       |   false  |
 | onChange   | change 事件触发的回调函数 | (checked: bool): void |  无  |
