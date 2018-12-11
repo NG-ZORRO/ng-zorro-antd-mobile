@@ -9,7 +9,7 @@ import {
   AfterContentChecked,
   forwardRef
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'TextareaItem , nzm-textarea-item',
@@ -20,9 +20,9 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       useExisting: forwardRef(() => TextareaItem),
       multi: true
     }
-  ],
+  ]
 })
-export class TextareaItem implements OnInit, AfterContentChecked {
+export class TextareaItem implements OnInit, AfterContentChecked, ControlValueAccessor {
   prefixCls: string = 'am-textarea';
   wrapCls: object;
   labelCls: object;
@@ -187,6 +187,8 @@ export class TextareaItem implements OnInit, AfterContentChecked {
 
   constructor() {}
 
+  _onChange = (_: any) => {};
+
   setCls() {
     this.hasCount = this._count > 0 && this._rows > 1;
     this.wrapCls = {
@@ -269,6 +271,18 @@ export class TextareaItem implements OnInit, AfterContentChecked {
     const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
     return text.replace(regexAstralSymbols, '_').length;
   }
+
+
+  writeValue(value: any): void {
+    if (value) {
+      this._value = value;
+    }
+  }
+  registerOnChange(fn: (_: any) => void): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {}
 
   ngOnInit() {
     this.setCls();
