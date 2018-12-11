@@ -37,6 +37,9 @@ export class ProgressComponent {
   get value(): number {
     return this.percent;
   }
+
+  @HostBinding('class.am-progress')
+  amProgress: boolean = true;
   @HostBinding('class.am-progress-outer')
   outer: boolean = true;
   @HostBinding('class.am-progress-fixed-outer')

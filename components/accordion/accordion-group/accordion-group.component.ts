@@ -40,9 +40,9 @@ export class AccordionGroupComponent {
   @Output()
   onChange = new EventEmitter();
 
-  @HostBinding('class.am-accordion-item') private _amItem = true;
-  @HostBinding('class.am-accordion-item-active') private _isActive = this.isOpened;
-  @HostBinding('class.addon') private _addon = true;
+  @HostBinding('class.am-accordion-item') public amItem = true;
+  @HostBinding('class.am-accordion-item-active') public isActive = this.isOpened;
+  @HostBinding('class.addon') public addon = true;
 
   constructor(private _accordionService: AccordionService, private _cdr: ChangeDetectorRef) {}
 
