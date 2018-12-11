@@ -29,6 +29,7 @@ export class Step implements OnInit {
   tailContent: string;
   stepNumber: number;
   isIconString: boolean = true;
+  iconSize: string;
 
   private _status: StatusEnum;
   private _title: string;
@@ -82,16 +83,13 @@ export class Step implements OnInit {
     this.iconCls = {
       [`${this.prefixCls}-icon`]: true
     };
-    this.stepItemCls = Object.assign(this.stepItemCls,
-      {
-        [`${this.prefixCls}-item-${this.status}`]: true,
-        [`${this.prefixCls}-item-custom`]: this.icon
-      }
-    );
+    this.stepItemCls = Object.assign(this.stepItemCls, {
+      [`${this.prefixCls}-item-${this.status}`]: true,
+      [`${this.prefixCls}-item-custom`]: this.icon
+    });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
 
 export enum StatusEnum {
