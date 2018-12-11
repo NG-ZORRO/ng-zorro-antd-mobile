@@ -34,6 +34,8 @@ export class Switch {
   private _color: string = '';
   private _platform: string = 'ios';
   private _disabled: boolean = false;
+  private onChanged = Function.prototype;
+  private onTouched = Function.prototype;
 
   @Input()
   set color(value) {
@@ -75,6 +77,7 @@ export class Switch {
   constructor() {}
 
   changeSwitch(checkedValue) {
+    this.onChanged(checkedValue);
     this.switchChecked = checkedValue;
     this.colorStyle = { background: checkedValue ? this._color : '' };
     this.onChange.emit(checkedValue);
@@ -83,4 +86,17 @@ export class Switch {
   click() {
     this.onClick.emit(this.switchChecked);
   }
+
+  writeValue(value: boolean): void {
+    this.switchChecked = value;
+  }
+
+  registerOnChange(fn: (_: boolean) => {}): void {
+    this.onChanged = fn;
+  }
+
+  registerOnTouched(fn: () => {}): void {
+    this.onTouched = fn;
+  }
+
 }
