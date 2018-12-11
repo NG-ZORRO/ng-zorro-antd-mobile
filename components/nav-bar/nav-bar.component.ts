@@ -22,8 +22,8 @@ export class NavBarComponent {
   @Input()
   set mode(value) {
     this.defaultProps.mode = value;
-    this._amNavbarLight = this.defaultProps.mode === 'light';
-    this._amNavbardark = this.defaultProps.mode === 'dark';
+    this.amNavbarLight = this.defaultProps.mode === 'light';
+    this.amNavbardark = this.defaultProps.mode === 'dark';
   }
   @Input()
   get icon(): string | TemplateRef<any> {
@@ -65,11 +65,11 @@ export class NavBarComponent {
   onLeftClick: EventEmitter<any> = new EventEmitter();
 
   @HostBinding('class.am-navbar')
-  private _amNavbar = true;
+  public amNavbar = true;
   @HostBinding('class.am-navbar-light')
-  private _amNavbarLight;
+  public amNavbarLight;
   @HostBinding('class.am-navbar-dark')
-  private _amNavbardark;
+  public amNavbardark;
 
   constructor() {}
 
