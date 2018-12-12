@@ -17,6 +17,7 @@ subtitle: 多行输入
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
+| ngModel |  value, 双向绑定| String | 无 |
 | value    | value  | String |  无  |
 | defaultValue    | 设置初始默认值        | String |  -  |
 | placeholder      | placeholder        | String | ''  |
