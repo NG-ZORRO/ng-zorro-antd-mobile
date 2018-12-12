@@ -130,10 +130,9 @@ export class Button implements AfterViewInit {
 
   set loading(value: boolean) {
     this._loading = value;
-    if (value) {
-      if (this._el.querySelector('icon')) {
-        this._el.querySelector('icon').parentNode.removeChild(this._el.querySelector('icon'));
-      }
+    if (this._el.querySelector('icon')) {
+      const icon =  this._el.querySelector('icon') as HTMLElement;
+      icon.style.display = value ? '' : 'none';
     }
     this.setClassMap();
   }
