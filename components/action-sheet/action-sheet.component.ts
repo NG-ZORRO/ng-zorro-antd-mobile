@@ -16,10 +16,13 @@ export class ActionSheetComponent {
   transitionName: string = '';
   maskTransitionName: string = '';
   activeClassName = [`${this.props.prefixCls}-button-list-item-active`];
-  onPress;
+  options?: string[];
+  cancelButtonIndex?: number;
+  destructiveButtonIndex?: number;
 
   constructor() {}
 
+  onPress(index: any, rowIndex = 0, event) {}
   showShare(flag) {
     const cls = { [`${this.props.prefixCls}-share`]: flag === 'SHARE' };
     return cls;
