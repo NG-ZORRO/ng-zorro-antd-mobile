@@ -65,6 +65,7 @@ export class TextareaItem implements OnInit, AfterContentChecked, ControlValueAc
     }
     this._value = v;
     this.textRef.nativeElement.value = this._value;
+    this._onChange(this._value);
   }
   @Input()
   get defaultValue(): string {
@@ -225,6 +226,7 @@ export class TextareaItem implements OnInit, AfterContentChecked, ControlValueAc
     this._value = e;
     this.textRef.nativeElement.value = this._value;
     this.setCharacterLength();
+    this._onChange(this._value);
     this.onChange.emit(this._value);
   }
 
