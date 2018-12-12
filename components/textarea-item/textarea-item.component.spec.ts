@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { TextareaItemModule } from './textarea-item.module';
@@ -12,11 +13,12 @@ describe('TextareaComponent', () => {
   let textareaCustomEle;
   let textareaDirective;
   let textareaItem;
+  let textareaModel;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestTextareaItemComponent],
-      imports: [TextareaItemModule]
+      imports: [TextareaItemModule,FormsModule]
     }).compileComponents();
   }));
 
@@ -25,6 +27,7 @@ describe('TextareaComponent', () => {
     component = fixture.componentInstance;
     textareaEle = fixture.debugElement.query(By.css('.text-1'));
     textareaCustomEle = fixture.debugElement.query(By.css('.text-2'));
+    textareaModel = fixture.debugElement.query(By.css('.text-3'));
     textareaDirective = fixture.debugElement.query(By.directive(TextareaItem));
     textareaItem = textareaDirective.nativeElement.querySelector('textarea');
     fixture.detectChanges();
@@ -40,6 +43,15 @@ describe('TextareaComponent', () => {
     fixture.detectChanges();
     textarea = textareaEle.nativeElement.querySelector('textarea');
     expect(textarea.value).toBe('');
+  });
+  it('should ngModel work', () => {
+    // component.valueModel = 'ngmodel test';
+    // fixture.detectChanges();
+    let textarea = textareaModel.nativeElement.querySelector('textarea');
+    textarea.value = 'test-ng-model';
+    textarea.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    expect(component.valueModel).toBe('test-ng-model');
   });
   it('should defaultValue work', () => {
     component.defaultValue = 'test';
@@ -193,42 +205,45 @@ describe('TextareaComponent', () => {
 @Component({
   selector: 'test-steps',
   template: `
-  <TextareaItem class="text-1"
-                [value]="value"
-                [name]="name"
-                [title]="title"
-                [placeholder]="placeholder"
-                [editable]="editable"
-                [disabled]="disabled"
-                [clear]="clear"
-                [error]="error"
-                [rows]="rows"
-                [count]="count"
-                [focus]="focus"
-                [autoFocus]="autoFocus"
-                [autoHeight]="autoHeight"
-                [labelNumber]="labelNumber"
-                [prefixListCls]="prefixListCls"
-                [defaultValue]="defaultValue"
-                (onChange)="changeFn($event)"
-                (onBlur)="blurFn()"
-                (onFocus)="focusFn()"
-                (onErrorClick)="errorClickFn()">
-  </TextareaItem>
-  <TextareaItem class="text-2"
-                [title]="customTitle"
-                [autoHeight]="true"
-                [labelNumber]="5">
-  </TextareaItem>
-  <ng-template #customTitle>
-     <img src="https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png" 
-          style="width:28px;height:28px" alt="" />
-  </ng-template>
-  <span (click)="clickTitle()">标题</span>
- `
+    <TextareaItem
+      class="text-1"
+      [value]="value"
+      [name]="name"
+      [title]="title"
+      [placeholder]="placeholder"
+      [editable]="editable"
+      [disabled]="disabled"
+      [clear]="clear"
+      [error]="error"
+      [rows]="rows"
+      [count]="count"
+      [focus]="focus"
+      [autoFocus]="autoFocus"
+      [autoHeight]="autoHeight"
+      [labelNumber]="labelNumber"
+      [prefixListCls]="prefixListCls"
+      [defaultValue]="defaultValue"
+      (onChange)="changeFn($event)"
+      (onBlur)="blurFn()"
+      (onFocus)="focusFn()"
+      (onErrorClick)="errorClickFn()"
+    >
+    </TextareaItem>
+    <TextareaItem class="text-2" [title]="customTitle" [autoHeight]="true" [labelNumber]="5"> </TextareaItem>
+    <TextareaItem class="text-3" [(ngModel)]="valueModel"> </TextareaItem>
+    <ng-template #customTitle>
+      <img
+        src="https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png"
+        style="width:28px;height:28px"
+        alt=""
+      />
+    </ng-template>
+    <span (click)="clickTitle()">标题</span>
+  `
 })
 export class TestTextareaItemComponent {
   value: string;
+  valueModel: string = 'ngmodel test';
   defaultValue: string = '';
   placeholder: string = '';
   editable: boolean = true;
