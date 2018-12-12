@@ -32,6 +32,7 @@ export class CustomInput implements OnInit, OnDestroy {
   private _setFocus: boolean = false;
   private _preventKeyboard: boolean;
   private _moneyKeyboardAlign: string;
+  private _fontColor:string;
 
   @Input()
   get value(): string {
@@ -69,6 +70,13 @@ export class CustomInput implements OnInit, OnDestroy {
   @Input()
   set disabled(value: boolean) {
     this._disabled = value;
+  }
+  @Input()
+  get fontColor() {
+    return this._fontColor;
+  }
+  set fontColor(value: string) {
+    this._fontColor = value;
   }
   @Input()
   set moneyKeyboardAlign(value: string) {

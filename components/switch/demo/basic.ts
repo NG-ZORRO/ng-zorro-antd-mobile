@@ -52,7 +52,7 @@ import { Component } from '@angular/core';
       </ng-template>
 
       <ng-template #iOS>
-      <Switch [checked]="checked" [platform]="'ios'" (onChange)="check($event)"></Switch>
+      <Switch [(ngModel)]="checked" [platform]="'ios'" (onChange)="check($event)"></Switch>
       </ng-template>
 
       <ng-template #colorAndroid>
