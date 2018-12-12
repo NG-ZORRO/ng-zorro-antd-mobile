@@ -9,6 +9,7 @@
                  [placeholder]="placeholder"
                  [disabled]="disabled"
                  [editable]="editable"
+                 [fontColor]="fontColor"
                  [moneyKeyboardAlign]="moneyKeyboardAlign"
                  [setFocus]="setFocus"
                  [maxLength]="maxLength"
@@ -28,6 +29,7 @@
              [autofocus]="autoFocus"
              [maxlength]="maxLength"
              [pattern]="pattern"
+             [style.color]='fontColor'
              (ngModelChange)="inputChange($event)"
              (blur)="inputBlur(value , $event)"
              (focus)="inputFocus(value)"

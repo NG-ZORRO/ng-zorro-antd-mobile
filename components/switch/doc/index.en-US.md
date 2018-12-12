@@ -17,6 +17,7 @@ Select between two status, e.g. Select On or Off.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
+| ngModel | 	Current selected value, double binding| Boolean | false |
 | checked    | Whether is checked by default    | Boolean       |   false  |
 | disabled   | whether is disabled    | Boolean       |   false  |
 | color | Background color when the switch is turned on. | String | #4dd865 |

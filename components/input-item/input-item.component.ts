@@ -22,7 +22,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       useExisting: forwardRef(() => InputItem),
       multi: true
     }
-  ],
+  ]
 })
 export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   prefixCls: string = 'am-input';
@@ -53,6 +53,7 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   private _locale;
   private _focus: boolean = false;
   private _isClear: boolean = false;
+  private _fontColor: string;
 
   @ViewChild('lableContent')
   lableRef;
@@ -186,6 +187,13 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   @Input()
   set locale(value) {
     this._locale = value;
+  }
+  @Input()
+  get fontColor() {
+    return this._fontColor;
+  }
+  set fontColor(value: string) {
+    this._fontColor = value;
   }
   @Input()
   set focus(value) {

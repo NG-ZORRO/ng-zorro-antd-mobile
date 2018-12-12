@@ -137,6 +137,19 @@ describe('InputComponent', () => {
     const fakeInput = inputItem.nativeElement.querySelector('.fake-input-placeholder');
     expect(fakeInput.innerText).toBe('test', 'type is money');
   });
+  it('should fontColor work', () => {
+    component.fontColor = '#2026e2';
+    fixture.detectChanges();
+    inputEle = inputItem.nativeElement.querySelector('input');
+    expect(inputEle.getAttribute('style')).toContain('color: rgb(32, 38, 226)', 'fontColor is text');
+
+    component.type = 'money';
+    fixture.detectChanges();
+    component.fontColor = '#eee';
+    fixture.detectChanges();
+    const fakeInput = inputItem.nativeElement.querySelector('.fake-input');
+    expect(fakeInput.getAttribute('style')).toBe('color: rgb(238, 238, 238);', 'fontColor is money');
+  });
 
   it('should maxLength work', () => {
     component.maxLength = 7;
@@ -357,6 +370,7 @@ describe('InputComponent', () => {
                [updatePlaceholder]="updatePlaceholder"
                [prefixListCls]="prefixListCls"
                [name]="name"
+               [fontColor]="fontColor"
                [moneyKeyboardAlign]="moneyKeyboardAlign"
                [locale]="locale"
                [focus]="focus"
@@ -380,6 +394,7 @@ export class TestInputComponent {
   disabled: boolean = false;
   clear: boolean = false;
   maxLength: number;
+  fontColor:string;
   error: boolean = false;
   extra: string = '';
   labelNumber: number = 5;
