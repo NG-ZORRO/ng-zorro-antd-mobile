@@ -16,6 +16,7 @@ A foundational component for inputting multi-line text into the app via a keyboa
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
+| ngModel | 	Current value, double binding| String | false |
 | value | the value to show for the textarea for more information about controlled component)  | String | <span> </span> |
 | defaultValue | provides an initial value that will change when the user starts typing.  | String |  -  |
 | placeholder      | the string that will be rendered before text input has been entered. | String | ''  |

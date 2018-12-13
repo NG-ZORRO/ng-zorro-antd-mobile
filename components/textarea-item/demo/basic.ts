@@ -137,15 +137,6 @@ export class DemoTextareaItemBasicComponent {
 
   inputErrorClick(e) {}
 
-  inputChange(e) {
-    if (e.replace(/\s/g, '').length < 11) {
-      this.error = true;
-    } else {
-      this.error = false;
-    }
-    this.value = e;
-  }
-
   clickFocus() {
     this.numberFocus = {
       focus: true,

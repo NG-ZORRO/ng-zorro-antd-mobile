@@ -69,31 +69,40 @@ describe('button', () => {
       expect(buttons[14].nativeElement.classList.contains('am-button-disabled')).toBe(true);
     });
 
-    it ('shoulg touchstart work', () => {
+    it ('should touchstart work', () => {
       dispatchTouchEvent(buttons[0].nativeElement, 'touchstart');
       fixture.detectChanges();
     });
 
-    it ('shoulg mousedown work', () => {
+    it ('should mousedown work', () => {
       dispatchTouchEvent(buttons[0].nativeElement, 'mousedown');
       fixture.detectChanges();
     });
 
-    it ('shoulg touchend work', () => {
+    it ('should touchend work', () => {
       dispatchTouchEvent(buttons[0].nativeElement, 'touchend');
       fixture.detectChanges();
       dispatchTouchEvent(buttons[0].nativeElement, 'mouseup');
       fixture.detectChanges();
     });
 
-    it ('shoulg touchstart disable work', () => {
+    it ('should touchstart disable work', () => {
       dispatchTouchEvent(buttons[1].nativeElement, 'touchstart');
       fixture.detectChanges();
       dispatchTouchEvent(buttons[1].nativeElement, 'mousedown');
       fixture.detectChanges();
     });
 
-    it ('shoulg touchend disable work', () => {
+    it ('should loading work', () => {
+      dispatchTouchEvent(buttons[6].nativeElement, 'touchstart');
+      component.loading = false;
+      fixture.detectChanges();
+      expect(buttons[6].nativeElement.classList.contains('am-button-loading')).toBe(false);
+      dispatchTouchEvent(buttons[6].nativeElement, 'mousedown');
+      fixture.detectChanges();
+    });
+
+    it ('should touchend disable work', () => {
       dispatchTouchEvent(buttons[1].nativeElement, 'touchend');
       fixture.detectChanges();
       dispatchTouchEvent(buttons[1].nativeElement, 'mouseup');
@@ -118,7 +127,7 @@ describe('button', () => {
   <WhiteSpace ></WhiteSpace>
   <div Button [type]="'warning'" [disabled]="true">warning</div>
   <WhiteSpace ></WhiteSpace>
-  <div Button [loading]="true" >loading</div>
+  <div Button [loading]="loading" >loading</div>
   <WhiteSpace ></WhiteSpace>
   <div Button [icon]="'check-circle-o'">with icon</div>
   <WhiteSpace ></WhiteSpace>
@@ -164,6 +173,7 @@ export class TestButton implements OnInit, OnDestroy {
   size = 'small';
   inline = true;
   disabled = true;
+  loading = true;
   closeTimer;
 
   constructor() {}
