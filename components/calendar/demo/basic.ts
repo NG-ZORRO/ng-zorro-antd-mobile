@@ -28,6 +28,9 @@ for (let key in extra) {
         <ListItem className="item" [extra]="_switch">
           {{this.state.en ? 'Chinese' : '中文'}}
         </ListItem>
+        <ListItem [arrow]="'horizontal'" (onClick)="onClick_0()">
+          {{this.state.en ? 'ngModel' : 'ngModel'}}
+        </ListItem>
         <ListItem [arrow]="'horizontal'" (onClick)="onClick_1()">
           {{this.state.en ? 'Select Date Range' : '选择日期区间'}}
         </ListItem>
@@ -71,7 +74,8 @@ for (let key in extra) {
       <ng-template #_switch>
         <Switch className="right" [checked]="!this.state.en" (onChange)="this.changeLanguage()"></Switch>
       </ng-template>
-      <Calendar [locale]="this.state.en ? 'enUS' : 'zhCN'"
+      <Calendar [(ngModel)]="this.state.date"
+                [locale]="this.state.en ? 'enUS' : 'zhCN'"
                 [enterDirection]="this.state.enterDirection"
                 [visible]="this.state.show"
                 [getDateExtra]="this.state.getDateExtra"
@@ -95,6 +99,7 @@ for (let key in extra) {
 export class DemoCalendarBasicComponent {
   state: any = {
     en: false,
+    date: null,
     show: false,
     pickTime: false,
     now: new Date(),
@@ -119,6 +124,7 @@ export class DemoCalendarBasicComponent {
       ...this.state,
       ...{
         show: false,
+        date: null,
         pickTime: false,
         now: new Date(),
         type: 'range',
@@ -139,6 +145,13 @@ export class DemoCalendarBasicComponent {
 
   changeLanguage() {
     this.state.en = !this.state.en;
+  }
+
+  onClick_0() {
+    this.initPara();
+    this.state.show = true;
+    this.state.type = 'one';
+    this.state.date = new Date();
   }
 
   onClick_1() {

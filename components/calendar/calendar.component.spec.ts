@@ -58,6 +58,31 @@ describe('CalendarComponent', () => {
     );
   });
 
+  it('should ngModel one', () => {
+    component.state.show = true;
+    component.state.type = 'one';
+    component.state.date = new Date();
+    const displayDay = new Date().getDate();
+    fixture.detectChanges();
+    expect(calendarEle.nativeElement.querySelectorAll('.row .cell .date.date-selected')[0].innerText).toContain(
+      displayDay,
+      'ngModel one is right'
+    );
+  });
+
+
+  it('should ngModel range', () => {
+    component.state.show = true;
+    component.state.type = 'range';
+    component.state.date = [new Date(), new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)];
+    const displayDay = new Date().getDate();
+    fixture.detectChanges();
+    expect(calendarEle.nativeElement.querySelectorAll('.row .cell .date.date-selected')[0].innerText).toContain(
+      displayDay,
+      'ngModel range is right'
+    );
+  });
+
   it('should min date', () => {
     component.state.show = true;
     component.state.now = new Date(2018, 8, 2);
