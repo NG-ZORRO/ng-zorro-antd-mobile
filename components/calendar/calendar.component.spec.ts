@@ -70,6 +70,22 @@ describe('CalendarComponent', () => {
     );
   });
 
+  it('should write ngModel one', () => {
+    component.state.show = true;
+    component.state.type = 'one';
+    component.state.date = new Date(2018, 11, 3);
+    const displayDay = '2';
+    fixture.detectChanges();
+    calendarEle.nativeElement
+      .querySelectorAll('.date .row')[1]
+      .querySelector('.cell')
+      .click();
+    fixture.detectChanges();
+    expect(calendarEle.nativeElement.querySelectorAll('.row .cell .date.date-selected')[0].innerText).toContain(
+      displayDay,
+      'write ngModel one is right'
+    );
+  });
 
   it('should ngModel range', () => {
     component.state.show = true;
@@ -80,6 +96,27 @@ describe('CalendarComponent', () => {
     expect(calendarEle.nativeElement.querySelectorAll('.row .cell .date.date-selected')[0].innerText).toContain(
       displayDay,
       'ngModel range is right'
+    );
+  });
+
+  it('should write ngModel range', () => {
+    component.state.show = true;
+    component.state.type = 'range';
+    component.state.date = [new Date(2018, 11, 3), new Date(new Date(2018, 11, 3).getFullYear(), new Date(2018, 11, 3).getMonth(), new Date(2018, 11, 3).getDate() + 1)];
+    const displayDay = '2';
+    fixture.detectChanges();
+    calendarEle.nativeElement
+      .querySelectorAll('.date .row')[1]
+      .querySelector('.cell')
+      .click();
+    calendarEle.nativeElement
+      .querySelectorAll('.date .row')[2]
+      .querySelector('.cell')
+      .click();
+    fixture.detectChanges();
+    expect(calendarEle.nativeElement.querySelectorAll('.row .cell .date.date-selected')[0].innerText).toContain(
+      displayDay,
+      'write ngModel range is right'
     );
   });
 
