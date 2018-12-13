@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
 import { CalendarModule } from './calendar.module';
 
-describe('CalendarComponent', () => {
+fdescribe('CalendarComponent', () => {
   let component: TestCalendarBasicComponent;
   let fixture: ComponentFixture<TestCalendarBasicComponent>;
   let calendarEle;
@@ -14,7 +15,7 @@ describe('CalendarComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TestCalendarBasicComponent],
       providers: [LocaleProviderService],
-      imports: [LocaleProviderModule, CalendarModule]
+      imports: [LocaleProviderModule, CalendarModule, FormsModule]
     }).compileComponents();
   }));
 
@@ -59,10 +60,16 @@ describe('CalendarComponent', () => {
   });
 
   it('should ngModel one', () => {
+    component.state.date = new Date(2018, 8, 2);
     component.state.show = true;
+    component.state.now = new Date(2018, 8, 2);
     component.state.type = 'one';
-    component.state.date = new Date();
-    const displayDay = new Date().getDate();
+    const displayDay = '2';
+    fixture.detectChanges();
+    calendarEle.nativeElement
+    .querySelectorAll('.date .row')[1]
+    .querySelector('.cell')
+    .click();
     fixture.detectChanges();
     expect(calendarEle.nativeElement.querySelectorAll('.row .cell .date.date-selected')[0].innerText).toContain(
       displayDay,
@@ -71,9 +78,10 @@ describe('CalendarComponent', () => {
   });
 
   it('should write ngModel one', () => {
-    component.state.show = true;
+    component.state.date = new Date(2018, 8, 2);
+    component.state.now = new Date(2018, 8, 2);
     component.state.type = 'one';
-    component.state.date = new Date(2018, 11, 3);
+    component.state.show = true;
     const displayDay = '2';
     fixture.detectChanges();
     calendarEle.nativeElement
@@ -89,9 +97,15 @@ describe('CalendarComponent', () => {
 
   it('should ngModel range', () => {
     component.state.show = true;
+    component.state.now = new Date(2018, 8, 2);
     component.state.type = 'range';
-    component.state.date = [new Date(), new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)];
-    const displayDay = new Date().getDate();
+    component.state.date = [new Date(2018, 8, 2), new Date(new Date(2018, 8, 2).getFullYear(), new Date(2018, 8, 2).getMonth(), new Date(2018, 8, 2).getDate() + 1)];
+    const displayDay = '2';
+    fixture.detectChanges();
+    calendarEle.nativeElement
+    .querySelectorAll('.date .row')[1]
+    .querySelector('.cell')
+    .click();
     fixture.detectChanges();
     expect(calendarEle.nativeElement.querySelectorAll('.row .cell .date.date-selected')[0].innerText).toContain(
       displayDay,
@@ -101,8 +115,9 @@ describe('CalendarComponent', () => {
 
   it('should write ngModel range', () => {
     component.state.show = true;
+    component.state.now = new Date(2018, 8, 2);
     component.state.type = 'range';
-    component.state.date = [new Date(2018, 11, 3), new Date(new Date(2018, 11, 3).getFullYear(), new Date(2018, 11, 3).getMonth(), new Date(2018, 11, 3).getDate() + 1)];
+    component.state.date = [new Date(2018, 8, 2), new Date(new Date(2018, 8, 2).getFullYear(), new Date(2018, 8, 2).getMonth(), new Date(2018, 8, 2).getDate() + 1)];
     const displayDay = '2';
     fixture.detectChanges();
     calendarEle.nativeElement
@@ -265,7 +280,8 @@ for (const key in extra) {
 @Component({
   selector: 'demo-calendar',
   template: `
-    <Calendar [locale]="this.state.en ? 'enUS' : 'zhCN'"
+    <Calendar [(ngModel)]="this.state.date"
+              [locale]="this.state.en ? 'enUS' : 'zhCN'"
               [enterDirection]="this.state._enterDirection"
               [visible]="this.state.show"
               [getDateExtra]="this.state.getDateExtra"
@@ -287,6 +303,7 @@ for (const key in extra) {
 export class TestCalendarBasicComponent {
   state: any = {
     en: false,
+    date: null,
     show: false,
     pickTime: false,
     now: new Date(2018, 8, 2),
@@ -309,6 +326,7 @@ export class TestCalendarBasicComponent {
       ...this.state,
       ...{
         show: false,
+        date: null,
         pickTime: false,
         now: new Date(),
         type: 'range',
