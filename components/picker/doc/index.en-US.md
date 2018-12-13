@@ -14,6 +14,7 @@ Choose from a set of data, e.g. Country choice.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
+| ngModel | Current selected value, double binding | Array | Array | - |
 | data    | data source      | `Array<{value, label, children: Array}>` |   -  |
 | value   | the value, the format is `[value1, value2, value3]`, corresponds to the level value of the data source   | Array  | - |
 | cols    | col numbers   | Number |  `3`  |

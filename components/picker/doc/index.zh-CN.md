@@ -15,6 +15,7 @@ subtitle: 选择器
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
+| ngModel | 当前值，可双向绑定 | Array | - |
 | data    | 数据源        | `Array<{value, label, children: Array}>` |   -  |
 | value   | 值, 格式是`[value1, value2, value3]`, 对应数据源的相应级层value    | Array  | - |
 | cols    | 列数        | Number |  `3`  |
