@@ -14,15 +14,24 @@ import {
   ComponentFactoryResolver,
   Renderer2,
   ComponentFactory,
-  SimpleChanges
+  SimpleChanges,
+  forwardRef
 } from '@angular/core';
 import { PickerComponent } from './picker.component';
 import { PickerOptions } from './picker-options.provider';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: '[Picker], [nzm-picker]'
+  selector: '[Picker], [nzm-picker]',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => PickerDirective),
+      multi: true
+    }
+  ]
 })
-export class PickerDirective implements OnDestroy, OnChanges, OnInit {
+export class PickerDirective implements OnDestroy, OnChanges, OnInit, ControlValueAccessor {
   picker: ComponentRef<PickerComponent>;
   private _eventListeners: Array<() => void> = [];
 
@@ -58,6 +67,9 @@ export class PickerDirective implements OnDestroy, OnChanges, OnInit {
   onOk: EventEmitter<any> = new EventEmitter();
   @Output()
   onDismiss: EventEmitter<any> = new EventEmitter();
+
+  onChange: (value: any[]) => void = () => null;
+  onTouched: () => void = () => null;
 
   @HostListener('click')
   togglePicker(): void {
@@ -117,6 +129,9 @@ export class PickerDirective implements OnDestroy, OnChanges, OnInit {
       Object.assign(options, this._defaultOptions, {
         hidePicker: (event): void => {
           this.hidePicker();
+        },
+        updateNgModel: (value: any[]): void => {
+          this.onChange(value);
         }
       });
 
@@ -167,5 +182,21 @@ export class PickerDirective implements OnDestroy, OnChanges, OnInit {
       this._eventListeners.forEach(fn => fn());
       this._eventListeners = [];
     }
+  }
+
+  writeValue(value: any[]): void {
+    this.value = Array.isArray(value) ? value : [];
+  }
+
+  registerOnChange(fn: (value: any[]) => void): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 }

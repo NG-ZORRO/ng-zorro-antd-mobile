@@ -45,6 +45,15 @@ import { Picker } from 'ng-zorro-antd-mobile';
     >
       Multiple & async
     </ListItem>
+    <ListItem Picker
+              [extra]="name5"
+              [arrow]="'horizontal'"
+              [data]="singleArea"
+              [(ngModel)]="value5"
+              (ngModelChange)="onOk5($event)"
+    >
+      double binding
+    </ListItem>
   </List>
   `,
   providers: [Picker]
@@ -101,11 +110,13 @@ export class DemoPickerBasicComponent {
   name2 = '选择';
   name3 = '选择';
   name4 = '选择';
+  name5 = '选择';
   value = [];
   value1 = [];
   value2 = [];
   value3 = [];
   value4 = [];
+  value5 = [];
 
   constructor (private _picker: Picker ) {
 
@@ -129,6 +140,10 @@ export class DemoPickerBasicComponent {
   onOk4(result) {
     this.name4 = this.getResult(result);
     this.value4 = this.getValue(result);
+  }
+
+  onOk5(result) {
+    this.name5 = this.getResult(result);
   }
 
   onPickerChange(result) {
