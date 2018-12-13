@@ -15,6 +15,7 @@ subtitle: 日历
 
 属性 | 说明 | 类型 | 默认值 | 必选
 ----|-----|------|------|------
+\[(ngModel)\]|ngModel|Array\<Date\> \| Date|<span> </span>|false
 enterDirection | 入场方向 vertical: 垂直 horizontal: 水平 | 'horizontal' \| 'vertical'| vertical | false
 locale | 本地化 | Models.Locale | <span> </span> | false
 onCancel | 关闭时回调 | () => void | <span> </span>  | false

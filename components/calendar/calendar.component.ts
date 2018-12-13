@@ -1,5 +1,6 @@
 import {
   Component,
+  forwardRef,
   OnInit,
   OnDestroy,
   ViewEncapsulation,
@@ -8,6 +9,7 @@ import {
   HostBinding,
   EventEmitter
 } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Models } from './date/DataTypes';
 import zhCN from './locale/zh_CN';
 import enUS from './locale/en_US';
@@ -31,9 +33,10 @@ export interface StateType {
 @Component({
   selector: 'Calendar, nzm-calendar',
   templateUrl: './calendar.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CalendarComponent), multi: true }]
 })
-export class CalendarComponent implements OnInit, OnDestroy {
+export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestroy {
   isShow: boolean = false;
   contentAnimateClass: string;
   maskAnimateClass: string;
@@ -61,6 +64,11 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   private _unsubscribe$ = new Subject<void>();
   private _enterDirection: string;
+  private _dateModelType: number;
+  private _dateModelValue: any;
+  private _dateModelTime: number = 0;
+  private onChangeFn: (date: Date|Array<Date>) => void = () => {};
+  private onTouchFn: (date: Date|Array<Date>) => void = () => {};
 
   @Input()
   set locale(value) {
@@ -165,6 +173,39 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   constructor(private _localeProviderService: LocaleProviderService) {}
 
+  writeValue(value: Date|Array<Date>|null): void {
+    this._dateModelType = null;
+    if (value && value instanceof Array) {
+      if (value.length === 0) {
+        console.error('[ng-zorro-antd-mobile]: calendar ngModel array need params!');
+        return;
+      }
+      if (this.props.type === 'one' && value.length >= 2) {
+        this._dateModelType = 1;
+        console.error('[ng-zorro-antd-mobile]: type is one, but ngmodel has more than one param, just use first one');
+        this.onSelectedDate(value[0]);
+      } else if (value.length === 1) {
+        this._dateModelType = 1;
+        this.onSelectedDate(value[0]);
+      } else {
+        this._dateModelType = 2;
+        this.onSelectedDate(value[0]);
+        this.onSelectedDate(value[1]);
+      }
+    } else if (value && value instanceof Date) {
+      this._dateModelType = 3;
+      this.onSelectedDate(value);
+    }
+  }
+
+  registerOnChange(fn: (date: Date|Array<Date>) => void): void {
+    this.onChangeFn = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this.onTouchFn = fn;
+  }
+
   receiveProps(nextProps: PropsType) {
     if (nextProps.visible && nextProps.defaultValue) {
       this.shortcutSelect(nextProps.defaultValue[0], nextProps.defaultValue[1], nextProps);
@@ -247,7 +288,43 @@ export class CalendarComponent implements OnInit, OnDestroy {
         }
         break;
     }
+
+    this.writeModelData(date);
     return newState;
+  }
+
+  writeModelData(date) {
+    if (this._dateModelValue instanceof Array) {
+      this._dateModelTime = this._dateModelValue.length;
+    } else {
+      this._dateModelTime = 0;
+    }
+
+    switch (this._dateModelType) {
+      case 1:
+        this._dateModelValue = [date];
+        this.onChangeFn(this._dateModelValue);
+        break;
+      case 2:
+        if (this._dateModelTime === 1) {
+          if (+date < +this._dateModelValue[0]) {
+            this._dateModelValue.unshift(date);
+          } else {
+            this._dateModelValue.push(date);
+          }
+          this.onChangeFn(this._dateModelValue);
+        } else {
+          this._dateModelValue = [];
+          this._dateModelValue.push(date);
+        }
+        break;
+      case 3:
+        this._dateModelValue = date;
+        this.onChangeFn(this._dateModelValue);
+        break;
+      default:
+        break;
+    }
   }
 
   onSelectedDate = (date: Date) => {

@@ -11,8 +11,9 @@ Used to select a date range.
 
 ## API
 
-Properties | Descrition | Type | Default | Required
+Properties | Description | Type | Default | Required
 -----------|------------|------|--------|--------
+\[(ngModel)\]|ngModel|Array\<Date\> \| Date|<span> </span>|false
 enterDirection|enter direction |'horizontal' \| 'vertical'| vertical|false
 locale|locale|Models.Locale|<span> </span>|false
 onCancel|on cancel|() => void|<span> </span>|false
