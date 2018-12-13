@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
 import { CalendarModule } from './calendar.module';
 
-fdescribe('CalendarComponent', () => {
+describe('CalendarComponent', () => {
   let component: TestCalendarBasicComponent;
   let fixture: ComponentFixture<TestCalendarBasicComponent>;
   let calendarEle;
