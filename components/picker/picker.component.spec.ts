@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { ListModule, PickerModule, PickerComponent } from '../..';
@@ -9,6 +10,7 @@ import { LocaleProviderService, LocaleProviderModule } from '../..';
 import { Button } from '../button/button.component';
 import { ButtonModule } from '../button/button.module';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+
 describe('PickerComponent', () => {
   let component: TestPickerBasicComponent;
   let fixture: ComponentFixture<TestPickerBasicComponent>;
@@ -20,7 +22,7 @@ describe('PickerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TestPickerBasicComponent],
       providers: [PickerOptions, LocaleProviderService, Picker, Overlay],
-      imports: [ListModule, PickerModule, LocaleProviderModule, ButtonModule]
+      imports: [ListModule, PickerModule, LocaleProviderModule, ButtonModule, FormsModule]
     }).compileComponents();
     TestBed.overrideModule(PickerModule, {
       set: { entryComponents: [PickerComponent] }
@@ -84,6 +86,16 @@ describe('PickerComponent', () => {
     pickerEle.querySelector('.am-picker-popup-header-right').click();
   });
 
+  it('should ngModel work', () => {
+    const list = lists[0].nativeElement;
+    list.click();
+    fixture.detectChanges();
+    pickerEle = document.querySelector('picker');
+    pickerEle.querySelector('.am-picker-popup-header-right').click();
+    fixture.detectChanges();
+    expect(component.modelChange).toHaveBeenCalledTimes(1);
+  });
+
   it('onOk work', () => {
     const list = lists[0].nativeElement;
     list.click();
@@ -135,9 +147,11 @@ describe('PickerComponent', () => {
               [extra]="name1"
               [title]="title"
               [value]="value1"
+              [(ngModel)]="value1"
               [data]="singleArea"
               [arrow]="'horizontal'"
               (onOk)="onOk1($event)"
+              (ngModelChange)="modelChange($event)"
     >
       Multiple & cascader
     </ListItem>
@@ -172,6 +186,7 @@ export class TestPickerBasicComponent {
   value1 = ['宣武区'];
   title = 'result';
   mask = true;
+  modelChange = jasmine.createSpy('ngModel change callback');
 
   constructor (private _picker: Picker ) {
 
