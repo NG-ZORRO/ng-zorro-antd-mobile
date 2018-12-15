@@ -11,9 +11,9 @@ import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
                 [arrow]="'horizontal'"
                 [cols]="1"
                 [extra]="locale"
-                [value]="[locale]"
+                [(ngModel)]="lang"
                 [data]="languages"
-                (onOk)="onChange($event)"
+                (ngModelChange)="onChange($event)"
       >
         Choose language
       </ListItem>
@@ -47,6 +47,13 @@ import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
   providers: []
 })
 export class DemoLocaleProviderBasicComponent {
+  lang = [
+    {
+      value: '中文',
+      label: '中文',
+      language: zh_CN
+    }
+  ];
   locale = '中文';
   data = [
     {
@@ -121,9 +128,9 @@ export class DemoLocaleProviderBasicComponent {
 
   constructor(private _localeProviderService: LocaleProviderService) {}
 
-  onChange = item => {
+  onChange = (item) => {
     this.locale = item[0].value;
     const currentLocale = this.languages.find(i => i.value === this.locale).language;
     this._localeProviderService.setLocale(currentLocale);
-  };
+  }
 }
