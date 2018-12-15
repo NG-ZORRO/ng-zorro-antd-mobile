@@ -121,7 +121,8 @@ export class DemoLocaleProviderBasicComponent {
 
   constructor(private _localeProviderService: LocaleProviderService) {}
 
-  onChange = () => {
+  onChange = (item) => {
+    this.locale = item[0].value;
     const currentLocale = this.languages.find(i => i.value === this.locale).language;
     this._localeProviderService.setLocale(currentLocale);
   }
