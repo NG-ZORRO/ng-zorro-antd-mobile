@@ -33,12 +33,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class PickerDirective implements OnDestroy, OnChanges, OnInit, ControlValueAccessor {
   picker: ComponentRef<PickerComponent>;
+  value: Array<any>;
   private _eventListeners: Array<() => void> = [];
 
   @Input()
   data: Array<any>;
-  @Input()
-  value: Array<any>;
   @Input()
   cols: Number;
   @Input()
@@ -63,8 +62,6 @@ export class PickerDirective implements OnDestroy, OnChanges, OnInit, ControlVal
   onVisibleChange: EventEmitter<boolean> = new EventEmitter(true);
   @Output()
   onPickerChange: EventEmitter<any> = new EventEmitter();
-  @Output()
-  onOk: EventEmitter<any> = new EventEmitter();
   @Output()
   onDismiss: EventEmitter<any> = new EventEmitter();
 
@@ -147,7 +144,6 @@ export class PickerDirective implements OnDestroy, OnChanges, OnInit, ControlVal
         'cascade',
         'appendToBody',
         'indicatorStyle',
-        'onOk',
         'onPickerChange'
       ];
       optionalParams.forEach(param => {

@@ -14,15 +14,14 @@ Choose from a set of data, e.g. Country choice.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| ngModel | Current selected value, double binding | Array | - |
+| ngModel | Current selected value, the format is `[value1, value2, value3]`, corresponds to the level value of the data source,double binding | Array | - |
 | data    | data source      | `Array<{value, label, children: Array}>` |   -  |
-| value   | the value, the format is `[value1, value2, value3]`, corresponds to the level value of the data source   | Array  | - |
 | cols    | col numbers   | Number |  `3`  |
 | onChange | selected callback function | (val): void | - |
 | onPickerChange | trigger on each column of selected data is changed  | (val): void | - |
 | okText  | ok text | String |  `确定`  |
 | dismissText  | dismiss text | String |  `取消`  |
-| onOk  | handler called when click ok | (val): void  |  - |
+| ngModelChange | handler called when click ok | EventEmitter<any[]>  |  - |
 | onDismiss  | handler called when click cancel | (): void  |  -  |
 | title  | title | String | - |
 | disabled  | set disabled | Boolean | false |

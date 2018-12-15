@@ -96,17 +96,6 @@ describe('PickerComponent', () => {
     expect(component.modelChange).toHaveBeenCalledTimes(1);
   });
 
-  it('onOk work', () => {
-    const list = lists[0].nativeElement;
-    list.click();
-    fixture.detectChanges();
-    pickerEle = document.querySelector('picker');
-    component.onOk1 = jasmine.createSpy('onOk1 is callback');
-    pickerEle.querySelector('.am-picker-popup-header-right').click();
-    fixture.detectChanges();
-    expect(component.onOk1).toHaveBeenCalledTimes(1);
-  });
-
   it ('should touch event work', () => {
     const list = lists[0].nativeElement;
     list.click();
@@ -146,11 +135,9 @@ describe('PickerComponent', () => {
               [mask]="mask"
               [extra]="name1"
               [title]="title"
-              [value]="value1"
               [(ngModel)]="value1"
               [data]="singleArea"
               [arrow]="'horizontal'"
-              (onOk)="onOk1($event)"
               (ngModelChange)="modelChange($event)"
     >
       Multiple & cascader
@@ -188,18 +175,8 @@ export class TestPickerBasicComponent {
   mask = true;
   modelChange = jasmine.createSpy('ngModel change callback');
 
-  constructor (private _picker: Picker ) {
+  constructor (private _picker: Picker) {
 
-  }
-
-  onOk1(result) {
-    this.name1 = this.getResult(result);
-    this.value1 = this.getValue(result);
-  }
-
-  onPickerChange(result) {
-    this.name1 = this.getResult(result);
-    this.value1 = this.getValue(result);
   }
 
   getResult(result) {
