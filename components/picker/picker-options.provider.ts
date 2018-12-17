@@ -22,13 +22,13 @@ export class PickerOptions implements PickerOptionsInterface {
   disabled?: boolean = false;
   cascade?: boolean = true;
   appendToBody?: boolean = false;
-  onOk?: EventEmitter<any> = new EventEmitter();
   onDismiss?: EventEmitter<any> = new EventEmitter();
   onPickerChange?: EventEmitter<any> = new EventEmitter();
   indicatorStyle?: object = {};
   hidePicker?: () => void;
   confirm?: (result) => void;
   cancel?: () => void;
+  updateNgModel?: (value: any[]) => void;
 }
 
 export type PickerCallBack = (result?: any) => PromiseLike<any> | void;

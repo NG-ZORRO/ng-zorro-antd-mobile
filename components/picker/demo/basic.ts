@@ -11,8 +11,8 @@ import { Picker } from 'ng-zorro-antd-mobile';
               [arrow]="'horizontal'"
               [mask]=true
               [title]="'Areas'"
-              [value]="value1"
-              (onOk)="onOk1($event)"
+              [(ngModel)]="value1"
+              (ngModelChange)="onOk1($event)"
     >
       Multiple & cascader
     </ListItem>
@@ -22,8 +22,8 @@ import { Picker } from 'ng-zorro-antd-mobile';
               [cascade]="false"
               [data]="seasons"
               [title]="'选择季节'"
-              [value]="value2"
-              (onOk)="onOk2($event)"
+              [(ngModel)]="value2"
+              (ngModelChange)="onOk2($event)"
     >
       Multiple
     </ListItem>
@@ -31,17 +31,17 @@ import { Picker } from 'ng-zorro-antd-mobile';
               [extra]="name3"
               [arrow]="'horizontal'"
               [data]="singleArea"
-              [value]="value3"
-              (onOk)="onOk3($event)"
+              [(ngModel)]="value3"
+              (ngModelChange)="onOk3($event)"
     >
       Single
     </ListItem>
     <ListItem Picker
               [extra]="name4"
               [arrow]="'horizontal'"
-              [value]="value4"
+              [(ngModel)]="value4"
               (onPickerChange)="onPickerChange($event)"
-              (onOk)="onOk4($event)"
+              (ngModelChange)="onOk4($event)"
     >
       Multiple & async
     </ListItem>
@@ -113,22 +113,18 @@ export class DemoPickerBasicComponent {
 
   onOk1(result) {
     this.name1 = this.getResult(result);
-    this.value1 = this.getValue(result);
   }
 
   onOk2(result) {
     this.name2 = this.getResult(result);
-    this.value2 = this.getValue(result);
   }
 
   onOk3(result) {
     this.name3 = this.getResult(result);
-    this.value3 = this.getValue(result);
   }
 
   onOk4(result) {
     this.name4 = this.getResult(result);
-    this.value4 = this.getValue(result);
   }
 
   onPickerChange(result) {
