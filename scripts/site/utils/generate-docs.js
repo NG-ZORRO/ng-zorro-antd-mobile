@@ -30,7 +30,7 @@ function wrapperDocs(toc, title, content) {
 
 function generateToc(meta, raw) {
   if (meta.timeline) return '';
-  const remark = require('remark')();
+  const remark = require('zorro-remark')();
   const ast = remark.parse(raw);
   let links = '';
   for (let i = 0; i < ast.children.length; i++) {

@@ -51,7 +51,7 @@
     "node-prismjs": "^0.1.1",
     "prismjs": "^1.10.0",
     "codecov": "^3.0.0",
-    "remark": "^8.0.0",
+    "zorro-remark": "^8.0.0",
     "rxjs": "^6.3.3",
     "yaml-front-matter": "^3.4.0",
     "zone.js": "^0.8.24",
