@@ -3,7 +3,7 @@ import {
   ViewEncapsulation,
   Input,
   Output,
-  EventEmitter,
+  EventEmitter, OnChanges, SimpleChanges
 } from '@angular/core';
 
 @Component({
@@ -11,7 +11,7 @@ import {
   templateUrl: './sub-menu.component.html',
   encapsulation: ViewEncapsulation.None,
 })
-export class SubMenuComponent {
+export class SubMenuComponent implements OnChanges {
   prefixCls = 'am-sub-menu';
 
   private _subMenuPrefixCls: string;
@@ -82,5 +82,11 @@ export class SubMenuComponent {
     name += this.selected(dataItem) ? this._subMenuPrefixCls + '-item-selected' : '';
     name += dataItem.disabled ? this._subMenuPrefixCls + '-item-disabled' : '';
     return name;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this._subMenuData.map(item => {
+      item.checked = this.selected(item);
+    });
   }
 }

@@ -9,14 +9,14 @@
     <ng-template #extra>
       <label Radio
              *ngIf="!multiSelect"
-             [checked]="selected(dataItem)"
+             [checked]="dataItem.checked"
              [disabled]="dataItem.disabled"
              (onChange)="onClick(dataItem)"
       >
       </label>
       <label Checkbox
              *ngIf="multiSelect"
-             [checked]="selected(dataItem)"
+             [checked]="dataItem.checked"
              [disabled]="dataItem.disabled"
              (onChange)="onClick(dataItem)"
       >
