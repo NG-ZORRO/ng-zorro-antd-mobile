@@ -33,10 +33,11 @@ The encapsulation about `Checkbox` based on `ListItem`, the property `thumb` of 
 ### AgreeItem
 
 Almost the same as CheckboxItem and be used for special scenes. See demo for details.
-Properties | Descrition | Type | Default
------------|------------|------|--------
-| name | name | String | - |
-| value | value | String | - |
-| ngModel | whether is checked now, double binding | Boolean | <span> false </span> |
-| disabled | whether is been disabled | Boolean | false |
-| onChange | callback when check status is changed | (name: string, value: string, checked: boolean) => void | - |
+
+| Properties | Descrition                             | Type                                                    | Default              |
+| ---------- | -------------------------------------- | ------------------------------------------------------- | -------------------- |
+| name       | name                                   | String                                                  | -                    |
+| value      | value                                  | String                                                  | -                    |
+| ngModel    | whether is checked now, double binding | Boolean                                                 | <span> false </span> |
+| disabled   | whether is been disabled               | Boolean                                                 | false                |
+| onChange   | callback when check status is changed  | (name: string, value: string, checked: boolean) => void | -                    |
