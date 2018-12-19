@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
       </List>
       <WhiteSpace [size]="'lg'"></WhiteSpace>
       <List>
-        <RadioItemGroup [(ngModel)]="selectedStatus2" [disabled]="disabled" (ngModelChange)="onChange2($event)">
+        <RadioItemGroup [(ngModel)]="selectedStatus2" (ngModelChange)="onChange2($event)">
           <RadioItem *ngFor="let i of data2"
                      [name]="i.name"
                      [value]="i.value"
@@ -43,7 +43,7 @@ import { Component } from '@angular/core';
           <RadioItem *ngFor="let i of data2"
                      [name]="i.name"
                      [value]="i.value"
-                     [disabled]="true"
+                     [disabled]="disabled"
           >
             {{i.name}}
             <Brief>{{i.extra}}</Brief>
