@@ -19,7 +19,12 @@
             "assets": [
               "site/src/assets",
               "site/src/favicon.ico",
-              "site/src/404.html"
+              "site/src/404.html",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "site/src/styles.less"
@@ -28,10 +33,12 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "./site/src/environments/environment.ts",
-                "with": "./site/src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "./site/src/environments/environment.ts",
+                  "with": "./site/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
