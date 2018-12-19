@@ -1,44 +1,47 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-
-export interface OnChangeEvent {
-  name: string;
-  value: string;
-  checked: boolean;
-}
+import { Component, ChangeDetectorRef, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'RadioItem, nzm-radio-item',
-  templateUrl: './radio-item.component.html'
+  templateUrl: './radio-item.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RadioItem {
+  select$ = new Subject<RadioItem>();
   prefixCls: string = 'am-radio';
+  private _checked: boolean = false;
+  private _disabled: boolean = false;
+
+  get checked(): boolean {
+    return this._checked;
+  }
+  set checked(value: boolean) {
+    this._checked = value;
+    this.cdr.markForCheck();
+  }
 
   @Input()
   name: string;
   @Input()
   value: string;
   @Input()
-  checked: boolean = false;
-  @Input()
-  disabled: boolean = false;
-  @Output()
-  onClick = new EventEmitter();
-  @Output()
-  onChange = new EventEmitter<OnChangeEvent>();
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = value;
+    this.cdr.markForCheck();
+  }
 
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
-  onRadioItemClick(event) {
+  onRadioItemClick(event) {}
+
+  change(event) {
     if (!this.disabled && !this.checked) {
       this.checked = true;
-      this.onChange.emit({
-        name: this.name,
-        value: this.value,
-        checked: true
-      });
-    }
-    if (this.onClick.observers.length > 0) {
-      this.onClick.emit(event);
+      this.select$.next(this);
     }
   }
 }

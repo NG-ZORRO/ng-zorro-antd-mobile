@@ -3,20 +3,16 @@ import {
   Input,
   Output,
   OnInit,
-  OnChanges,
-  forwardRef,
   HostBinding,
   HostListener,
   EventEmitter,
-  ViewEncapsulation
+  ViewEncapsulation,
+  ChangeDetectionStrategy
 } from '@angular/core';
-import { toBoolean } from '../core/util/convert';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-export interface OnChangeEvent {
+export interface RadioStatus {
   name: string;
   value: string;
-  checked: boolean;
 }
 
 @Component({
@@ -24,25 +20,17 @@ export interface OnChangeEvent {
   templateUrl: './radio.component.html',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Radio),
-      multi: true
-    }
-  ]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Radio implements OnInit, OnChanges, ControlValueAccessor {
+export class Radio implements OnInit {
   prefixCls: string = 'am-radio';
   classMap: object = {
     [this.prefixCls]: true,
     [`${this.prefixCls}-checked`]: this.checked,
     [`${this.prefixCls}-disabled`]: this.disabled
   };
-  private _checked = false;
-  private _disabled = false;
-  private _ngModelOnChange: any = Function.prototype;
-  private _ngModelOnTouched: any = Function.prototype;
+  private _checked: boolean = false;
+  private _disabled: boolean = false;
 
   @Input()
   name: string;
@@ -61,10 +49,11 @@ export class Radio implements OnInit, OnChanges, ControlValueAccessor {
     return this._disabled;
   }
   set disabled(value: boolean) {
-    this._disabled = toBoolean(value);
+    this._disabled = value;
+    this.updateClassMap();
   }
   @Output()
-  onChange = new EventEmitter<OnChangeEvent>();
+  onChange = new EventEmitter<RadioStatus>();
 
   @HostBinding('class.am-radio-wrapper')
   radioWrapper: boolean = true;
@@ -77,37 +66,17 @@ export class Radio implements OnInit, OnChanges, ControlValueAccessor {
     }
   }
 
-  constructor() {}
+  constructor() { }
 
   updateValue(checkValue: boolean): void {
-    this._ngModelOnChange(checkValue);
+    this.checked = checkValue;
     this.onChange.emit({
       name: this.name,
-      value: this.value,
-      checked: checkValue
+      value: this.value
     });
-    this.checked = checkValue;
-  }
-
-  writeValue(value: boolean): void {
-    if (null !== value) {
-      this.checked = value;
-    }
-  }
-
-  registerOnChange(fn: (_: boolean) => {}): void {
-    this._ngModelOnChange = fn;
-  }
-
-  registerOnTouched(fn: () => {}): void {
-    this._ngModelOnTouched = fn;
   }
 
   ngOnInit() {
-    this.updateClassMap();
-  }
-
-  ngOnChanges(): void {
     this.updateClassMap();
   }
 
