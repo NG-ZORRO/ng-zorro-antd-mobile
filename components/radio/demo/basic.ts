@@ -5,51 +5,50 @@ import { Component } from '@angular/core';
   template: `
     <div>
       <List [renderHeader]=(renderHeader)>
-        <RadioItem *ngFor="let i of data"
-                   [name]="i.label"
-                   [value]="i.value"
-                   [checked]="value === i.value"
-                   (onChange)="onChange($event)"
-                   (onClick)="clickTest($event)"
-        >
-          {{i.label}}
-        </RadioItem>
+        <RadioItemGroup [(ngModel)]="selectedStatus1" (ngModelChange)="onChange($event)">
+          <RadioItem *ngFor="let i of data"
+                     [name]="i.name"
+                     [value]="i.value"
+          >
+            {{i.name}}
+          </RadioItem>
+        </RadioItemGroup>
       </List>
       <WhiteSpace [size]="'lg'"></WhiteSpace>
       <List>
-        <RadioItem *ngFor="let i of data2"
-                   [name]="i.label"
-                   [value]="i.value"
-                   [checked]="value2 === i.value"
-                   (onChange)="onChange2($event)"
-        >
-          {{i.label}}
-          <Brief>{{i.extra}}</Brief>
-        </RadioItem>
+        <RadioItemGroup [(ngModel)]="selectedStatus2" (ngModelChange)="onChange2($event)">
+          <RadioItem *ngFor="let i of data2"
+                     [name]="i.name"
+                     [value]="i.value"
+          >
+            {{i.name}}
+            <Brief>{{i.extra}}</Brief>
+          </RadioItem>
+        </RadioItemGroup>
       </List>
       <List [renderHeader]=(renderHeader2)>
-        <RadioItem *ngFor="let i of data"
-                   [name]="i.label"
-                   [value]="i.value"
-                   [disabled]="true"
-                   [checked]="value3 === i.value"
-                   (onChange)="onChange3($event)"
-        >
-          {{i.label}}
-        </RadioItem>
+        <RadioItemGroup [(ngModel)]="selectedStatus1" (ngModelChange)="onChange($event)">
+          <RadioItem *ngFor="let i of data"
+                     [name]="i.name"
+                     [value]="i.value"
+                     [disabled]="true"
+          >
+            {{i.name}}
+          </RadioItem>
+        </RadioItemGroup>
       </List>
       <WhiteSpace [size]="'lg'"></WhiteSpace>
       <List>
-        <RadioItem *ngFor="let i of data2"
-                   [name]="i.label"
-                   [value]="i.value"
-                   [disabled]="true"
-                   [checked]="value4 === i.value"
-                   (onChange)="onChange4($event)"
-        >
-          {{i.label}}
-          <Brief>{{i.extra}}</Brief>
-        </RadioItem>
+        <RadioItemGroup [(ngModel)]="selectedStatus2" (ngModelChange)="onChange2($event)">
+          <RadioItem *ngFor="let i of data2"
+                     [name]="i.name"
+                     [value]="i.value"
+                     [disabled]="disabled"
+          >
+            {{i.name}}
+            <Brief>{{i.extra}}</Brief>
+          </RadioItem>
+        </RadioItemGroup>
       </List>
       <Flex style="padding: 15px">
         <FlexItem style="padding: 15px 0; color: #888; flex: none">Radio demo(dustomized style)</FlexItem>
@@ -58,7 +57,7 @@ import { Component } from '@angular/core';
                  class="my-radio"
                  [name]="'Last Agree Item'"
                  [value]="'Agree Submit'"
-                 (onChange)="onChange5($event)"
+                 (onChange)="onChange3($event)"
           >Agree</label>
         </FlexItem>
       </Flex>
@@ -82,8 +81,12 @@ export class DemoRadioBasicComponent {
   value3 = 0;
   value4 = 0;
 
-  data = [{ value: 0, label: 'doctor' }, { value: 1, label: 'bachelor' }];
-  data2 = [{ value: 0, label: 'basketball', extra: 'details' }, { value: 1, label: 'football', extra: 'details' }];
+  disabled: boolean = true;
+
+  selectedStatus1 = {value: 0, name: 'doctor'};
+  selectedStatus2 = { value: 0, name: 'basketball', extra: 'details' };
+  data = [{ value: 0, name: 'doctor' }, { value: 1, name: 'bachelor' }];
+  data2 = [{ value: 0, name: 'basketball', extra: 'details' }, { value: 1, name: 'football', extra: 'details' }];
 
   constructor() {}
 
@@ -92,34 +95,21 @@ export class DemoRadioBasicComponent {
   }
 
   renderHeader2() {
-    return 'Disabled';
+    return 'dd';
   }
 
   onChange = event => {
-    console.log('choosen radio: ', event.name);
-    this.value = event.value;
-  };
+    console.log('ngmodel value: ', JSON.stringify(this.selectedStatus1));
+    console.log('output radio status: ', JSON.stringify(event));
+  }
 
   onChange2 = event => {
-    console.log('choosen radio: ', event.name);
-    this.value2 = event.value;
-  };
+    console.log('ngmodel value: ', JSON.stringify(this.selectedStatus2));
+    console.log('output radio status:  ', JSON.stringify(event));
+  }
 
-  onChange3 = event => {
-    console.log('choosen radio: ', event.name);
-    this.value3 = event.value;
-  };
-
-  onChange4 = value => {
-    console.log('choosen radio: ', value.name);
-    this.value4 = value;
-  };
-
-  onChange5 = e => {
+  onChange3 = e => {
+    this.disabled = false;
     console.log('agree submit', e);
-  };
-
-  clickTest(event) {
-    console.log('onClick', event);
   }
 }

@@ -69,24 +69,6 @@ describe('checkbox', () => {
     // expect(component.onChange).toHaveBeenCalledTimes(1);
   });
 
-  it('checkbox item onClick work', () => {
-    const checkboxItem = fixture.debugElement.query(By.css('ListItem'));
-    component.onClick = jasmine.createSpy('onClick callback');
-    component.disabled = false;
-    component.checked = false;
-    fixture.detectChanges();
-    checkboxItem.nativeElement.click();
-    fixture.detectChanges();
-    expect(component.onClick).toHaveBeenCalledTimes(1);
-
-    component.disabled = true;
-    component.checked = false;
-    fixture.detectChanges();
-    checkboxItem.nativeElement.click();
-    fixture.detectChanges();
-    expect(component.onClick).toHaveBeenCalledTimes(2);
-  });
-
   it('agreeItem onChange work', () => {
     const agreeItem = fixture.debugElement.query(By.css('AgreeItem')).nativeElement;
     component.onChange = jasmine.createSpy('onChange callback');
@@ -111,23 +93,21 @@ describe('checkbox', () => {
     <label Checkbox
            [disabled]="disabled"
            [checked]="checked"
-           [(ngModel)]="checked"
            (onChange)= "onChange($event)"
     ></label>
     <CheckboxItem [disabled]="disabled"
-                  [checked]="checked"
+                  [(ngModel)]="checked"
                   (onChange)="onChange($event)"
-                  (onClick)="onClick($event)"
     ></CheckboxItem>
     <AgreeItem [disabled]="disabled"
-               [checked]="checked"
+               [(ngModel)]="checked"
                (onChange)= "onChange($event)"
     ></AgreeItem>
   `
 })
 export class TestCheckboxComponent {
-  checked = false;
-  disabled = false;
+  checked: boolean = false;
+  disabled: boolean = false;
 
   @ViewChild(Checkbox)
   checkbox: Checkbox;
@@ -136,7 +116,4 @@ export class TestCheckboxComponent {
     console.log('onChange', e);
   }
 
-  onClick(e) {
-    console.log('onClick', e);
-  }
 }

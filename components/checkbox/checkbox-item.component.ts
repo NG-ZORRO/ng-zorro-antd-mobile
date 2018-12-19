@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-export interface OnChangeEvent {
+export interface CheckboxStatus {
   name: string;
   value: string;
   checked: boolean;
@@ -8,36 +9,56 @@ export interface OnChangeEvent {
 
 @Component({
   selector: 'CheckboxItem, nzm-checkbox-item',
-  templateUrl: './checkbox-item.component.html'
+  templateUrl: './checkbox-item.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CheckboxItem),
+      multi: true
+    }
+  ]
 })
-export class CheckboxItem {
+export class CheckboxItem implements ControlValueAccessor {
   prefixCls = 'am-checkbox';
+  checked: boolean = false;
+  private _disabled: boolean = false;
+  private _ngModelOnChange: (value: boolean) => {};
+  private _ngModelOnTouched: () => {};
 
   @Input()
   name: string;
   @Input()
   value: string;
   @Input()
-  checked: boolean = false;
-  @Input()
-  disabled: boolean = false;
-  @Output()
-  onChange = new EventEmitter<OnChangeEvent>();
-  @Output()
-  onClick = new EventEmitter();
-
-  constructor() {}
-
-  onCheckboxClick(event) {
-    if (!this.disabled) {
-      this.checked = !this.checked;
-    }
-    if (this.onClick.observers.length > 0) {
-      this.onClick.emit(event);
-    }
+  get disabled(): boolean {
+    return this._disabled;
   }
+  set disabled(value: boolean) {
+    this._disabled = value;
+  }
+  @Output()
+  onChange = new EventEmitter<CheckboxStatus>();
+
+  constructor() { }
+
+  onCheckboxClick(event) { }
 
   change(event) {
+    this._ngModelOnChange(event.checked);
     this.onChange.emit(event);
+  }
+
+  writeValue(value: boolean): void {
+    this.checked = value;
+  }
+
+  registerOnChange(fn: (_: boolean) => {}): void {
+    this._ngModelOnChange = fn;
+  }
+
+  registerOnTouched(fn: () => {}): void {
+    this._ngModelOnTouched = fn;
   }
 }

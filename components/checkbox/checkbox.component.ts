@@ -3,15 +3,12 @@ import {
   Input,
   Output,
   OnInit,
-  OnChanges,
   EventEmitter,
   HostBinding,
   HostListener,
   ViewEncapsulation,
-  forwardRef
+  ChangeDetectionStrategy
 } from '@angular/core';
-import { toBoolean } from '../core/util/convert';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export interface OnChangeEvent {
   name: string;
@@ -24,25 +21,17 @@ export interface OnChangeEvent {
   templateUrl: './checkbox.component.html',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Checkbox),
-      multi: true
-    }
-  ]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Checkbox implements OnInit, OnChanges, ControlValueAccessor {
+export class Checkbox implements OnInit {
   prefixCls: string = 'am-checkbox';
   classMap: object = {
     [this.prefixCls]: true,
-    [`${this.prefixCls}-checked`]: this.checked,
-    [`${this.prefixCls}-disabled`]: this.disabled
+    [`${this.prefixCls}-checked`]: false,
+    [`${this.prefixCls}-disabled`]: false
   };
-  private _checked = false;
-  private _disabled = false;
-  private _ngModelOnChange: any = Function.prototype;
-  private _ngModelOnTouched: any = Function.prototype;
+  private _checked: boolean = false;
+  private _disabled: boolean = false;
 
   @Input()
   name: string;
@@ -53,17 +42,16 @@ export class Checkbox implements OnInit, OnChanges, ControlValueAccessor {
     return this._checked;
   }
   set checked(value: boolean) {
-    if (!this._disabled) {
-      this._checked = value;
-      this.updateClassMap();
-    }
+    this._checked = value;
+    this.updateClassMap();
   }
   @Input()
   get disabled(): boolean {
     return this._disabled;
   }
   set disabled(value: boolean) {
-    this._disabled = toBoolean(value);
+    this._disabled = value;
+    this.updateClassMap();
   }
   @Output()
   onChange = new EventEmitter<OnChangeEvent>();
@@ -75,41 +63,26 @@ export class Checkbox implements OnInit, OnChanges, ControlValueAccessor {
   onClick(event): void {
     event.preventDefault();
     if (!this._disabled) {
-      this.updateValue(!this._checked);
+      this.updateValue(!this.checked);
     }
   }
 
-  constructor() {}
+  constructor() { }
 
   updateValue(value: boolean): void {
-    this._ngModelOnChange(value);
-    this.onChange.emit({ name: this.name, value: this.value, checked: value });
     this.checked = value;
-  }
-
-  writeValue(value: boolean): void {
-    if (null !== value) {
-      this.checked = value;
-    }
-  }
-
-  registerOnChange(fn: (_: boolean) => {}): void {
-    this._ngModelOnChange = fn;
-  }
-
-  registerOnTouched(fn: () => {}): void {
-    this._ngModelOnTouched = fn;
+    this.onChange.emit({
+      name: this.name,
+      value: this.value,
+      checked: value
+    });
   }
 
   ngOnInit() {
     this.updateClassMap();
   }
 
-  ngOnChanges(): void {
-    this.updateClassMap();
-  }
-
-  private updateClassMap(): void {
+  private updateClassMap() {
     this.classMap = {
       [this.prefixCls]: true,
       [`${this.prefixCls}-checked`]: this.checked,
