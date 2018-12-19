@@ -33,3 +33,10 @@ subtitle: 复选框
 ### AgreeItem
 
 用于同意协议这种场景的复选框
+属性 | 说明 | 类型 | 默认值
+----|-----|------|------
+| name | name | String | - |
+| value | value | String | - |
+| ngModel | 指定当前是否选中，可双向绑定 | Boolean | false |
+| disabled | 是否禁用 | Boolean | false |
+| onChange | change 事件触发的回调函数 | (name: string, value: string, checked: boolean) => void | 无 |
