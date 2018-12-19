@@ -46,6 +46,7 @@ export class CheckboxItem implements ControlValueAccessor {
   onCheckboxClick(event) { }
 
   change(event) {
+    this.checked = event.checked;
     this._ngModelOnChange(event.checked);
     this.onChange.emit(event);
   }
