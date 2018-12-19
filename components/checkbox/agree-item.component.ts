@@ -57,6 +57,7 @@ export class AgreeItem implements ControlValueAccessor {
   constructor() { }
 
   change(event) {
+    this.checked = event.checked;
     this._ngModelOnChange(event.checked);
     this.onChange.emit(event);
   }
