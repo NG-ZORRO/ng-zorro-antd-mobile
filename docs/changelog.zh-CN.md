@@ -13,6 +13,23 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.9.11 (2018-12-19)
+
+### Bug Fixes
+
+* **step and slider-marks:** 修复AOT build 错误 ([#157](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/157)) ([94cb387](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/94cb387))
+* **button:** 修复 loading input 只在第一次启动时生效的问题. ([#161](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/161)) ([b54bd04](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b54bd04))
+
+### Features
+
+* **calendar:** ngModel 支持 ([#164](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/164)) ([327d33b](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/327d33b))
+* **checkbox&radio:** ngModel&Onpush 支持 ([#167](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/167)) ([b1b4807](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b1b4807))
+* **inputitem:** 增加 fontColor input ([#156](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/156)) ([0ef2620](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0ef2620))
+* **picker:** ngModel 支持 ([#165](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/165)) ([b4af7c7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b4af7c7))
+* **progress:** nzm-progress 支持 大于100%的进度 ([#152](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/152)) ([021f7d8](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/021f7d8))
+* **switch:** ngModel 支持 ([#145](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/145)) ([6998e40](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6998e40))
+* **textarea-item:** ngModel 支持 ([#162](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/162)) ([6b60cca](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6b60cca))
+
 ## 0.9.10 (2018-12-06)
 
 ### Bug Fixes

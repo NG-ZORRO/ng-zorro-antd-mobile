@@ -3,19 +3,20 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-checkbox-basic',
   template: `
-    <List [renderHeader]=(renderHeader)>
-      <CheckboxItem *ngFor="let i of data"
-                    [name]="i.label"
+    <List [renderHeader]="renderHeader">
+      <CheckboxItem *ngFor="let i of checkItemListData"
+                    [name]="i.name"
                     [value]="i.value"
+                    [(ngModel)]="i.checked"
                     (onChange)="onChange($event)"
       >
-        {{i.label}}
+        {{ i.name }}
       </CheckboxItem>
       <CheckboxItem multipleLine
                     key="disabled"
                     data-seed="logId"
-                    [disabled]="true"
-                    [checked]="true"
+                    [disabled]="disabledStatus"
+                    [(ngModel)]="disabledCheckboxItemStatus"
       >
         Undergraduate<Brief>Auxiliary text</Brief>
       </CheckboxItem>
@@ -23,8 +24,9 @@ import { Component } from '@angular/core';
     <Flex>
       <FlexItem>
         <AgreeItem data-seed="logId"
-                   [name]="'Agree Item'"
-                   [value]="'Agree Submit'"
+                   [name]="agreeItemData.name"
+                   [value]="agreeItemData.value"
+                   [(ngModel)]="agreeItemData.checked"
                    (onChange)="onChange2($event)"
         >
           Agree <a (click)="onClick($event)">agreement</a>
@@ -34,18 +36,24 @@ import { Component } from '@angular/core';
   `
 })
 export class DemoCheckboxBasicComponent {
-  data = [
-    { value: 0, label: 'Ph.D.' },
-    { value: 1, label: 'Bachelor' },
-    { value: 2, label: 'College diploma' },
+  checkItemListData = [
+    { value: 0, name: 'Ph.D.', checked: false },
+    { value: 1, name: 'Bachelor', checked: false },
+    { value: 2, name: 'College diploma', checked: false }
   ];
+  disabledStatus: boolean = true;
+  disabledCheckboxItemStatus: boolean = true;
+  agreeItemData = { value: 'Agree Submit', name: 'Agree Item', checked: false };
 
   onChange = (val: any) => {
-    console.log(val);
+    console.log('onChange Event: ', val);
+    console.log('changed data: ', this.checkItemListData);
   }
 
-  onChange2 = (e) => {
-    console.log('checkbox', e);
+  onChange2 = e => {
+    this.disabledStatus = !this.disabledStatus;
+    console.log('onChange2 Event: ', e);
+    console.log('agreeItemData: ', this.agreeItemData);
   }
 
   onClick(e) {

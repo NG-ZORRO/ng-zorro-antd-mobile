@@ -8,9 +8,10 @@ import { ButtonModule } from '../button/button.module';
 import { MenuComponent } from './menu.component';
 import { SubMenuComponent } from './sub-menu/sub-menu.component';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, FlexModule, ListModule, RadioModule, CheckboxModule, ButtonModule, LocaleProviderModule],
+  imports: [CommonModule, FlexModule, ListModule, RadioModule, CheckboxModule, ButtonModule, LocaleProviderModule, FormsModule],
   exports: [MenuComponent, SubMenuComponent],
   declarations: [MenuComponent, SubMenuComponent],
   providers: [LocaleProviderModule]
