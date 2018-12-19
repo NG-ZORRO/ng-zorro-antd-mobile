@@ -8,7 +8,7 @@ module.exports = function parseDocMd(file, path) {
   const content = meta.__content;
   delete meta.__content;
 
-  const remark = require('zorro-remark')();
+  const remark = require('remark')();
   const ast = remark.parse(content);
   // 分离前后两部分
   let isAfterAPIHeading = false;
