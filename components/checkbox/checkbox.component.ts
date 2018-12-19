@@ -42,8 +42,10 @@ export class Checkbox implements OnInit {
     return this._checked;
   }
   set checked(value: boolean) {
-    this._checked = value;
-    this.updateClassMap();
+    if (!this._disabled) {
+      this._checked = value;
+      this.updateClassMap();
+    }
   }
   @Input()
   get disabled(): boolean {
