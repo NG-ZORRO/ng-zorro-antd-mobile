@@ -37,8 +37,8 @@ export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValue
   private destroy$ = new Subject();
   private selectSubscription: Subscription;
 
-  onChange: (value: RadioStatus) => {};
-  onTouched: () => {};
+  private _ngModelOnChange: (value: RadioStatus) => {};
+  private _ngModelOnTouched: () => {};
 
   @ContentChildren(forwardRef(() => RadioItem)) radioItems: QueryList<RadioItem>;
 
@@ -53,8 +53,8 @@ export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValue
   }
 
   notifyValueChange(): void {
-    if (this.onChange) {
-      this.onChange(this.selectedStatus);
+    if (this._ngModelOnChange) {
+      this._ngModelOnChange(this.selectedStatus);
     }
   }
 
@@ -95,10 +95,10 @@ export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValue
   }
 
   registerOnChange(fn: any): void {
-    this.onChange = fn;
+    this._ngModelOnChange = fn;
   }
 
   registerOnTouched(fn: any): void {
-    this.onTouched = fn;
+    this._ngModelOnTouched = fn;
   }
 }

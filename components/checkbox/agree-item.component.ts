@@ -34,8 +34,8 @@ export class AgreeItem implements ControlValueAccessor {
   checked: boolean = false;
   private _disabled: boolean = false;
 
-  private _ngModelOnChange = Function.prototype;
-  private _ngModelOnTouched = Function.prototype;
+  private _ngModelOnChange: (value: boolean) => {};
+  private _ngModelOnTouched: () => {};
 
   @Input()
   name: string;
