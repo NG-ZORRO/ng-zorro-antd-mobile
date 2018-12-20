@@ -227,7 +227,9 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ok() {
-    this.options.updateNgModel(this.combineReslut());
+    if (this.options.updateNgModel) {
+      this.options.updateNgModel(this.combineReslut());
+    }
     if (this.options.confirm) {
       this.options.confirm(this.combineReslut());
     }
