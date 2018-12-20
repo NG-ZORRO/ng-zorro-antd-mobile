@@ -13,10 +13,11 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
-## 0.9.11 (2018-12-19)
+## 0.10.1 (2018-12-20)
 
 ### Bug Fixes
 
+* **checkbox:** disabled 状态为 true 时 checked 状态应该锁定 ([#170](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/170)) ([5fe311f](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5fe311f))
 * **step and slider-marks:** 修复AOT build 错误 ([#157](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/157)) ([94cb387](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/94cb387))
 * **button:** 修复 loading input 只在第一次启动时生效的问题. ([#161](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/161)) ([b54bd04](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b54bd04))
 
