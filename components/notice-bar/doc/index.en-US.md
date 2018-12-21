@@ -16,6 +16,7 @@ Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | mode    | Type of NoticeBar, options: `closable` `link`   | String |  ''  |
 | icon    | Set the icon at the start position  |  TemplateRef | `<Icon type={require('./trips.svg')} size="xxs" />`|
+| content | Set notice content | String| |
 | onClick | A callback function, can be executed when you close the notice or click on the operating area   | (): void | <span> </span> |
 | marqueeProps | marquee params       | Object | `{loop: false, leading: 500, trailing: 800, fps: 40, style: {}}`  |
 | action | text which is used to replace icon | TemplateRef | <span> </span> |

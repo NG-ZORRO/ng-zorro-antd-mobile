@@ -16,6 +16,7 @@ subtitle: 通告栏
 ----|-----|------|------
 | mode    | 提示类型，可选 `closable`,`link`   | String |  ''  |
 | icon    | 在开始位置设置图标  |  TemplateRef | `<Icon type={require('./trips.svg')} size="xxs" />`|
+| content | 设置公告内容 | String| |
 | onClick | 点击关闭或者操作区域的回调函数        | (): void | <span> </span> |
 | marqueeProps | marquee 参数       | Object | `{loop: false, leading: 500, trailing: 800, fps: 40, style: {}}`  |
 | action | 用于替换操作 icon 的文案 | TemplateRef | <span> </span> |

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <NoticeBar *ngIf="!isMobile"
                style="margin-bottom: 10px"
-               [noticeBarcontent]="'该组件只支持Touch事件，请使用移动模式/设备打开此页。'"
+               [content]="'该组件只支持Touch事件，请使用移动模式/设备打开此页。'"
                [marqueeProps]="{fps: 100}"
     ></NoticeBar>
     <br/>

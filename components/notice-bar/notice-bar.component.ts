@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { IconHandler } from '../core/util/icon';
 
 @Component({
@@ -6,7 +6,7 @@ import { IconHandler } from '../core/util/icon';
   templateUrl: './notice-bar.component.html',
   providers: [IconHandler]
 })
-export class NoticeBarComponent implements OnInit {
+export class NoticeBarComponent implements OnInit, OnDestroy {
   actionDom: any;
 
   isShow = false;
@@ -15,6 +15,7 @@ export class NoticeBarComponent implements OnInit {
   rate;
   marqueeScroll = 'scrolling';
   style = {};
+  private _content;
   private _mode;
   private _icon;
   private _action;
@@ -57,6 +58,9 @@ export class NoticeBarComponent implements OnInit {
   marqueeProps = { loop: true, leading: 500, trailing: 8000, fps: 200, style: {} };
   @Input()
   noticeBarcontent = '';
+  }
+    this.dataProcess();
+  }
   @Output()
   onClick: EventEmitter<any> = new EventEmitter();
 
@@ -80,11 +84,12 @@ export class NoticeBarComponent implements OnInit {
       const count = this.marqueeProps.loop ? 'infinite' : 1;
       this.style = {
         width: this._width * 2 + 'px',
+        'animation-name': `noticebarmarquee_${this._width}`,
         'animation-delay': `${this.marqueeProps.leading}ms`,
-        'animation-duration': `${(1 / this.marqueeProps.fps) * 1000}s`,
+        'animation-duration': `${(1 / this.marqueeProps.fps) * this._width / window.innerWidth * 1000}s`,
         'animation-iteration-count': `${count}`
       };
-
+      this.marqueeScroll = 'scrolling';
       scroll.call(this);
     } else {
       this.marqueeScroll = 'scrolling-stop';
@@ -99,19 +104,20 @@ export class NoticeBarComponent implements OnInit {
     document.addEventListener('touchend', () => {
       this.marqueeScroll = 'scrolling';
     });
-    this._width = getRectWidth(this.noticeBarcontent);
-    this.dataProcess();
+  }
+
+  ngOnDestroy() {
+    const styleDom = document.getElementsByClassName('notice_bar_animation_cls');
+    while (styleDom.length > 0) {
+      styleDom[0].remove();
+    }
   }
 }
 
 function scroll() {
-  let styleDom = document.getElementById('notice_bar_animation_cls');
-  if (styleDom) {
-    return;
-  }
-  styleDom = document.createElement('style');
-  styleDom.setAttribute('id', 'notice_bar_animation_cls');
-  styleDom.innerHTML = `@-webkit-keyframes noticebarmarquee{ 0% { left: 0px; } 100% { left: -${this._width}px; }}`;
+  let styleDom = document.createElement('style');
+  styleDom.setAttribute('class', 'notice_bar_animation_cls');
+  styleDom.innerHTML = `@-webkit-keyframes noticebarmarquee_${this._width}{ 0% { left: 0px; } 100% { left: -${this._width}px; }}`;
   document.body.appendChild(styleDom);
 }
 
@@ -121,9 +127,9 @@ function getRectWidth(text) {
   _dom.style.position = 'absolute';
   _dom.style.left = '-9999';
   _dom.style.whiteSpace = 'nowrap';
-  _dom.style.fontSize = '14px';
+  _dom.style.fontSize = getComputedStyle(window.document.documentElement)['font-size'];
   document.body.appendChild(_dom);
-  const _w = _dom.clientWidth + 20;
+  const _w = _dom.clientWidth;
   document.body.removeChild(_dom);
   return _w;
 }

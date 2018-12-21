@@ -66,7 +66,7 @@ describe('NoticeBarComponent', () => {
                 [action]="action"
                 [mode]="'closable'"
                 [stopScrolling]="stopScrolling"
-                [noticeBarcontent]= "noticeBarcontent"
+                [content]= "content"
                 (onClick)="onClick()"
     >
       <ng-template #iconDom>
@@ -81,7 +81,7 @@ describe('NoticeBarComponent', () => {
 export class TestNoticeBarComponent {
   mode = 'link';
   stopScrolling = true;
-  noticeBarcontent = '我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！';
+  content = '我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！';
 
   @ContentChild('iconDom')
   icon: TemplateRef<void>;
