@@ -1,11 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, tick, TestBed } from '@angular/core/testing';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { async, ComponentFixture, fakeAsync, tick, TestBed, flush } from '@angular/core/testing';
 import { ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule } from '../..';
 import { By } from '@angular/platform-browser';
-import { Modal, ModalComponent } from '../..';
+import { Modal, ModalServiceComponent } from '../..';
 import { Button } from '../button/button.component';
 import { dispatchTouchEvent } from '../core/testing';
-
+import { ModalOptions, AlertOptions } from './modal-options.provider';
+import { Overlay } from '@angular/cdk/overlay';
 describe('ModalComponent', () => {
   let component: TestModalBasicComponent;
   let fixture: ComponentFixture<TestModalBasicComponent>;
@@ -15,11 +17,11 @@ describe('ModalComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestModalBasicComponent],
-      imports: [ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule],
-      providers: [Modal]
+      imports: [ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule, FormsModule, ReactiveFormsModule],
+      providers: [Overlay, Modal, ModalOptions, AlertOptions]
     }).compileComponents();
     TestBed.overrideModule(ModalModule, {
-      set: { entryComponents: [ModalComponent] }
+      set: { entryComponents: [ModalServiceComponent] }
     }).compileComponents();
   }));
 
@@ -35,62 +37,85 @@ describe('ModalComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should visable work', fakeAsync(() => {
-    expect(modalEle.nativeElement.children.length).toBe(1, 'visable is true');
-    component.state = false;
+  it('should transparent work', fakeAsync(() => {
+    component.state = true;
     fixture.detectChanges();
-    tick(200);
+    flush();
     fixture.detectChanges();
-    expect(modalEle.nativeElement.children.length).toBe(0, 'visable is false');
-  }));
-
-  it('should transparent work', () => {
     expect(modalEle.nativeElement.querySelector('.am-modal-transparent')).toBeTruthy('transparent is true');
     component.transparent = false;
     fixture.detectChanges();
 
     expect(modalEle.nativeElement.querySelector('.am-modal-transparent')).toBeNull('transparent is false');
-  });
+  }));
 
-  it('should title work', () => {
+  it('should title work', fakeAsync(() => {
+    component.state = true;
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
     component.title = '123';
     fixture.detectChanges();
 
     expect(modalEle.nativeElement.querySelector('.am-modal-header').innerText.trim()).toBe('123', 'title is 123');
-  });
+  }));
 
-  it('should title work', () => {
+  it('should title work', fakeAsync(() => {
+    component.state = true;
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
     component.title = component.titleRef;
     fixture.detectChanges();
 
     expect(modalEle.nativeElement.querySelector('.am-modal-header').innerText.trim()).toBe('123', 'title is 123');
-  });
+  }));
 
-  it('should footer work', () => {
+  it('should footer work', fakeAsync(() => {
+    component.state = true;
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
     expect(modalEle.nativeElement.querySelector('.am-modal-button')).toBeTruthy('footer is true');
     component.footer = [];
     fixture.detectChanges();
 
     expect(modalEle.nativeElement.querySelector('.am-modal-button')).toBeNull('footer is false');
-  });
+  }));
 
-  it('should popup work', () => {
+  it('should popup work', fakeAsync(() => {
+    component.state = true;
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
     expect(modalEle.nativeElement.querySelector('.am-modal-wrap-popup')).toBeTruthy('popup is true');
-  });
+  }));
 
-  it('should popup work', () => {
+  it('should popup work', fakeAsync(() => {
+    component.state = true;
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
     component.popup = false;
     fixture.detectChanges();
     expect(modalEle.nativeElement.querySelector('.am-modal-wrap-popup')).toBeNull('popup is false');
-  });
+  }));
 
-  it('should close work', () => {
+  it('should close work', fakeAsync(() => {
+    component.state = true;
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
     component.popup = true;
     fixture.detectChanges();
     modalEle.nativeElement.querySelector('.am-modal-wrap-popup').click();
-  });
+  }));
 
-  it('should animationType work', () => {
+  it('should animationType work', fakeAsync(() => {
+    component.state = true;
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
     expect(modalEle.nativeElement.querySelector('.am-modal-popup-slide-down')).toBeTruthy(
       'animationType is slide-down'
     );
@@ -98,39 +123,47 @@ describe('ModalComponent', () => {
     fixture.detectChanges();
 
     expect(modalEle.nativeElement.querySelector('.am-modal-popup-slide-up')).toBeTruthy('animationType is slide-up');
-  });
+  }));
 
-  it('should platform work', () => {
+  it('should platform work', fakeAsync(() => {
+    component.state = true;
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
     expect(modalEle.nativeElement.querySelector('.am-modal-android')).toBeTruthy('platform is android');
     component.platform = 'ios';
     fixture.detectChanges();
 
     expect(modalEle.nativeElement.querySelector('.am-modal-android')).toBeNull('platform is ios');
-  });
+  }));
 
-  it('should closable work', () => {
+  it('should closable work', fakeAsync(() => {
+    component.state = true;
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
     expect(modalEle.nativeElement.querySelector('.am-modal-close')).toBeTruthy('closable is true');
     component.closable = false;
     fixture.detectChanges();
 
     expect(modalEle.nativeElement.querySelector('.am-modal-close')).toBeNull('closable is false');
-  });
+  }));
 
-  it('should closable work', () => {
+  it('should closable work', fakeAsync(() => {
+    component.state = true;
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
     expect(modalEle.nativeElement.querySelector('.am-modal-close')).toBeTruthy('closable is true');
     component.closable = false;
     fixture.detectChanges();
 
     expect(modalEle.nativeElement.querySelector('.am-modal-close')).toBeNull('closable is false');
-  });
+  }));
 
   it('should showOpeartion work', () => {
     const button = buttons[0].nativeElement;
     button.click();
-    fixture.detectChanges();
-    const modal = document.querySelector('modal');
-    const buttonOk =  modal.querySelector('.am-modal-button');
-    dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
   });
 
@@ -144,8 +177,8 @@ describe('ModalComponent', () => {
     const button = buttons[2].nativeElement;
     button.click();
     fixture.detectChanges();
-    const modal = document.querySelector('modal');
-    const buttonOk =  modal.querySelector('.am-modal-button');
+    const modal = document.querySelector('modalservice');
+    const buttonOk = modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
   });
@@ -154,7 +187,7 @@ describe('ModalComponent', () => {
     const button = buttons[3].nativeElement;
     button.click();
     fixture.detectChanges();
-    const modal = document.querySelector('modal');
+    const modal = document.querySelector('modalservice');
     const buttonOk =  modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
@@ -164,7 +197,7 @@ describe('ModalComponent', () => {
     const button = buttons[4].nativeElement;
     button.click();
     fixture.detectChanges();
-    const modal = document.querySelector('modal');
+    const modal = document.querySelector('modalservice');
     const buttonOk =  modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
@@ -174,7 +207,7 @@ describe('ModalComponent', () => {
     const button = buttons[5].nativeElement;
     button.click();
     fixture.detectChanges();
-    const modal = document.querySelector('modal');
+    const modal = document.querySelector('modalservice');
     const buttonOk =  modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
@@ -184,7 +217,7 @@ describe('ModalComponent', () => {
     const button = buttons[6].nativeElement;
     button.click();
     fixture.detectChanges();
-    const modal = document.querySelector('modal');
+    const modal = document.querySelector('modalservice');
     const buttonOk =  modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
@@ -196,7 +229,7 @@ describe('ModalComponent', () => {
   template: `
   <Modal [title]="title"
          [popup]="popup"
-         [visible]="state"
+         [(ngModel)]="state"
          [footer]="footer"
          [closable]="closable"
          [platform]="platform"
@@ -224,15 +257,14 @@ describe('ModalComponent', () => {
   <ng-template #title>
   <div>123</div>
   </ng-template>
-  `
+  `, providers: [Modal]
 })
 export class TestModalBasicComponent {
   animationType = 'slide-down';
   platform = 'android';
-  visible = true;
   closable = true;
   popup = true;
-  state = true;
+  state = false;
   transparent = true;
   title: any = '456';
   footer = [
@@ -303,7 +335,7 @@ export class TestModalBasicComponent {
       'defaultValue for prompt',
       [{ text: 'Cancel' }, { text: 'Submit', onPress: value => console.log(`输入的内容:${value}`) }],
       'default',
-      '100'
+      ['100']
     );
   }
 

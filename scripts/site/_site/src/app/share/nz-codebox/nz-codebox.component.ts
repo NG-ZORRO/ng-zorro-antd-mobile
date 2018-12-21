@@ -330,7 +330,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgZorroAntdMobileModule, ModalComponent, ToastComponent, ActionSheetComponent } from 'ng-zorro-antd-mobile';
+import { NgZorroAntdMobileModule, ModalServiceComponent, ToastComponent, ActionSheetComponent } from 'ng-zorro-antd-mobile';
 
 import { ${this.nzComponentName} } from './app.component';
 
@@ -341,7 +341,7 @@ registerLocaleData(en);
   imports:      [ BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, NgZorroAntdMobileModule.forRoot(), BrowserAnimationsModule ],
   declarations: [ ${this.nzComponentName} ],
   bootstrap:    [ ${this.nzComponentName} ],
-  entryComponents: [ModalComponent, ToastComponent, ActionSheetComponent]
+  entryComponents: [ModalServiceComponent, ToastComponent, ActionSheetComponent]
 })
 export class AppModule { }
 `,
