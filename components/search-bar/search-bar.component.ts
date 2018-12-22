@@ -150,7 +150,7 @@ export class SearchBar implements OnInit, AfterViewInit, AfterViewChecked, OnDes
   @Output()
   onClear = new EventEmitter<any>();
   private onChangeFn: (value: string) => void = () => {};
-  private onTouchFn: (date: string) => void = () => {};
+  private onTouchFn: (value: string) => void = () => {};
 
   constructor(private _elementRef: ElementRef, private _localeProvider: LocaleProviderService) {}
 
