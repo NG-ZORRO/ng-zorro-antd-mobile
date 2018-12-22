@@ -16,6 +16,8 @@ subtitle: 搜索栏
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
+| \[ngModel\]  | 当前值，可双向绑定 | String|<span> </span> |
+| (ngModelChange)  | 值改变时回调 | `EventEmitter<string>`|<span> </span> |
 | defaultValue |    搜索框的默认值     | String | <span> </span> |
 | value      |  搜索框的当前值  | String | <span> </span> |
 | placeholder    |    placeholder     | String | <span> </span> |

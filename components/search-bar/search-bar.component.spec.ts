@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { SearchBarModule } from './search-bar.module';
@@ -16,7 +17,7 @@ describe('SearchBarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestSearchBarComponent],
-      imports: [SearchBarModule, BrowserAnimationsModule, LocaleProviderModule]
+      imports: [SearchBarModule, BrowserAnimationsModule, LocaleProviderModule, FormsModule]
     }).compileComponents();
   }));
 
@@ -40,6 +41,11 @@ describe('SearchBarComponent', () => {
     component.defaultValue = '34';
     fixture.detectChanges();
     expect(inputEle.value).toBe('34');
+  });
+  it('should ngModel work', () => {
+    component.value = '36';
+    fixture.detectChanges();
+    expect(inputEle.value).toBe('36');
   });
   it('should placeholder work', () => {
     component.placeholder = 'search';
@@ -112,6 +118,15 @@ describe('SearchBarComponent', () => {
     clearEle.click();
     expect(component.change).toHaveBeenCalledTimes(1);
   });
+
+  it('should ngModelChange work', () => {
+    component.handleClick();
+    component.value = '搜索';
+    fixture.detectChanges();
+    const clearEle = searchBarEle.nativeElement.querySelector('.am-search-clear');
+    clearEle.click();
+    expect(component.change).toHaveBeenCalledTimes(1);
+  });
 });
 
 @Component({
@@ -131,6 +146,8 @@ describe('SearchBarComponent', () => {
              (onFocus)="focus()"
              (onCancel)="cancel()"
              (onChange)="change($event)"
+             [(ngModel)]="value"
+             (ngModelChange)="modelChange($event)"
   ></SearchBar>
   <a role="button" class="am-button" (click)="handleClick()"><span>click to focus</span></a>
  `
@@ -153,6 +170,7 @@ export class TestSearchBarComponent {
   focus = jasmine.createSpy('focus callback');
   blur = jasmine.createSpy('blur callback');
   change = jasmine.createSpy('change callback');
+  modelChange = jasmine.createSpy('ngModelChange callback');
 
   constructor() {}
 

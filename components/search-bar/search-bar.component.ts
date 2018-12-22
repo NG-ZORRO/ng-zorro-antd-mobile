@@ -16,7 +16,7 @@ import { trigger, state, animate, transition, style } from '@angular/animations'
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'SearchBar, nzm-search-bar',
@@ -38,7 +38,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     ])
   ]
 })
-export class SearchBar implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
+export class SearchBar implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy, ControlValueAccessor {
   prefixCls: string = 'am-search';
   clearCls: object;
   wrapCls: object;
@@ -149,6 +149,8 @@ export class SearchBar implements OnInit, AfterViewInit, AfterViewChecked, OnDes
   onCancel = new EventEmitter<any>();
   @Output()
   onClear = new EventEmitter<any>();
+  private onChangeFn: (value: string) => void = () => {};
+  private onTouchFn: (date: string) => void = () => {};
 
   constructor(private _elementRef: ElementRef, private _localeProvider: LocaleProviderService) {}
 
@@ -210,6 +212,7 @@ export class SearchBar implements OnInit, AfterViewInit, AfterViewChecked, OnDes
   onSearchbarChange(e) {
     this._focus = true;
     this.onChange.emit(e);
+    this.onChangeFn(e);
     this.setClass();
   }
 
@@ -243,6 +246,22 @@ export class SearchBar implements OnInit, AfterViewInit, AfterViewChecked, OnDes
       this.setClass();
     }, 100);
     this.onSearchbarFocus();
+  }
+
+  writeValue(value: any): void {
+    if (value) {
+      this._value = value;
+      this.inputElementRef.nativeElement.value = this._value;
+      this.setClass();
+    }
+  }
+
+  registerOnChange(fn: (value: string) => void): void {
+    this.onChangeFn = fn;
+  }
+
+  registerOnTouched(fn: (value: string) => void): void {
+    this.onTouchFn = fn;
   }
 
   ngOnInit() {
