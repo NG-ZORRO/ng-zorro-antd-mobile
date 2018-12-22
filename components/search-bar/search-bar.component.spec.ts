@@ -42,11 +42,6 @@ describe('SearchBarComponent', () => {
     fixture.detectChanges();
     expect(inputEle.value).toBe('34');
   });
-  it('should ngModel work', () => {
-    component.value = '36';
-    fixture.detectChanges();
-    expect(inputEle.value).toBe('36');
-  });
   it('should placeholder work', () => {
     component.placeholder = 'search';
     fixture.detectChanges();
@@ -119,13 +114,13 @@ describe('SearchBarComponent', () => {
     expect(component.change).toHaveBeenCalledTimes(1);
   });
 
-  it('should ngModelChange work', () => {
+  it('should ngModel work', () => {
     component.handleClick();
     component.value = '搜索';
     fixture.detectChanges();
     const clearEle = searchBarEle.nativeElement.querySelector('.am-search-clear');
     clearEle.click();
-    expect(component.change).toHaveBeenCalledTimes(1);
+    expect(component.modelChange).toHaveBeenCalledTimes(1);
   });
 });
 
