@@ -27,27 +27,21 @@ describe('NoticeBarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should mode work', () => {
-    expect(noticeBarEle.nativeElement.querySelector('.am-notice-bar-operation').classList).toContain(
-      'am-notice-bar-operation',
-      'mode is not set'
-    );
-    component.mode = 'closable';
+  it('should option work', () => {
+    component.option = {
+      'content': '我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！',
+      'fontSize': '14px',
+      'icon': component.icon,
+      'action': component.action,
+      'mode': 'closable',
+      'scrolling': false,
+      'marqueeProps': { loop: false, leading: 500, trailing: 8000, fps: 200, style: {} }
+      };
     fixture.detectChanges();
     expect(noticeBarEle.nativeElement.querySelector('.am-notice-bar-operation').classList).toContain(
       'am-notice-bar-operation',
       'mode is work'
     );
-  });
-
-  it('should icon work', () => {
-    expect(noticeBarEle.nativeElement.querySelector('.am-notice-bar-icon').classList).toContain(
-      'am-notice-bar-icon',
-      'icon is work'
-    );
-    component.icon = null;
-    fixture.detectChanges();
-    expect(noticeBarEle.nativeElement.querySelector('.am-notice-bar-icon')).toBeNull('icon is not set');
   });
 
   it('OnClick work', () => {
@@ -62,13 +56,7 @@ describe('NoticeBarComponent', () => {
 @Component({
   selector: 'demo-notice-bar-basic',
   template: `
-    <NoticeBar [icon]="icon"
-                [action]="action"
-                [mode]="'closable'"
-                [stopScrolling]="stopScrolling"
-                [content]= "content"
-                (onClick)="onClick()"
-    >
+    <NoticeBar [option]="option" (onClick)="onClick()" >
       <ng-template #iconDom>
         <Icon [type]="'check-circle-o'" [size]="'xxs'"></Icon>
       </ng-template>
@@ -79,14 +67,19 @@ describe('NoticeBarComponent', () => {
   `
 })
 export class TestNoticeBarComponent {
-  mode = 'link';
-  stopScrolling = true;
-  content = '我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！';
-
   @ContentChild('iconDom')
   icon: TemplateRef<void>;
   @ContentChild('action')
   action: TemplateRef<void>;
+  option = {
+    'content': '我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！',
+    'fontSize': '24px',
+    'icon': this.icon,
+    'action': this.action,
+    'mode': 'closable',
+    'scrolling': true,
+    'marqueeProps': { loop: true, leading: 500, trailing: 8000, fps: 200, style: {} }
+    };
 
   onClick() {
     console.log('1');
