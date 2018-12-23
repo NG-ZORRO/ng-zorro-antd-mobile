@@ -249,11 +249,9 @@ export class SearchBar implements OnInit, AfterViewInit, AfterViewChecked, OnDes
   }
 
   writeValue(value: any): void {
-    if (value) {
-      this._value = value;
-      this.inputElementRef.nativeElement.value = this._value;
-      this.setClass();
-    }
+    this._value = value || '';
+    this.inputElementRef.nativeElement.value = this._value;
+    this.setClass();
   }
 
   registerOnChange(fn: (value: string) => void): void {

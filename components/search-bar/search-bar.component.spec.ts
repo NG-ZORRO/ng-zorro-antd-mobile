@@ -10,6 +10,7 @@ describe('SearchBarComponent', () => {
   let component: TestSearchBarComponent;
   let fixture: ComponentFixture<TestSearchBarComponent>;
   let searchBarEle;
+  let searchBarEles;
   let inputEle;
   let formEle;
   let buttonEle;
@@ -25,6 +26,7 @@ describe('SearchBarComponent', () => {
     fixture = TestBed.createComponent(TestSearchBarComponent);
     component = fixture.componentInstance;
     searchBarEle = fixture.debugElement.query(By.css('SearchBar'));
+    searchBarEles = fixture.debugElement.queryAll(By.css('SearchBar'));
     inputEle = searchBarEle.nativeElement.querySelector('input');
     formEle = searchBarEle.nativeElement.querySelector('form');
     buttonEle = fixture.debugElement.query(By.css('.am-button')).nativeElement;
@@ -114,11 +116,21 @@ describe('SearchBarComponent', () => {
     expect(component.change).toHaveBeenCalledTimes(1);
   });
 
-  it('should ngModel work', () => {
-    component.handleClick();
-    component.value = '搜索';
+  it('should ngModel work', fakeAsync(() => {
+    const inputEleNext = searchBarEles[1].nativeElement.querySelector('input');
+    component.modelValue = 'test';
     fixture.detectChanges();
-    const clearEle = searchBarEle.nativeElement.querySelector('.am-search-clear');
+    tick();
+    expect(inputEleNext.value).toBe('test', 'value is test');
+
+    component.modelValue = null;
+    fixture.detectChanges();
+    tick();
+    expect(inputEleNext.value).toBe('', 'value is undefined');
+  }));
+
+  it('should ngModelChange work', () => {
+    const clearEle = searchBarEles[1].nativeElement.querySelector('a');
     clearEle.click();
     expect(component.modelChange).toHaveBeenCalledTimes(1);
   });
@@ -141,7 +153,12 @@ describe('SearchBarComponent', () => {
              (onFocus)="focus()"
              (onCancel)="cancel()"
              (onChange)="change($event)"
-             [(ngModel)]="value"
+  ></SearchBar>
+  <SearchBar [ngModel]="modelValue"
+             [maxLength]="maxLength"
+             [cancelText]="cancelText"
+             [placeholder]="placeholder"
+             [showCancelButton]="showCancelButton"
              (ngModelChange)="modelChange($event)"
   ></SearchBar>
   <a role="button" class="am-button" (click)="handleClick()"><span>click to focus</span></a>
@@ -150,6 +167,7 @@ describe('SearchBarComponent', () => {
 export class TestSearchBarComponent {
   defaultValue = '';
   value = '';
+  modelValue = '';
   placeholder = '';
   showCancelButton = false;
   cancelText = '取消';
