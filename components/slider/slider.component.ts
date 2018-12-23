@@ -6,15 +6,24 @@ import {
   EventEmitter,
   ElementRef,
   ViewEncapsulation,
-  HostBinding
+  HostBinding,
+  forwardRef
 } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'Slider , nzm-slider',
   templateUrl: './slider.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => Slider),
+      multi: true
+    }
+  ]
 })
-export class Slider implements OnInit {
+export class Slider implements OnInit, ControlValueAccessor {
   prefixCls = 'am-slider';
   sliderLength: number;
   sliderStart: number;
@@ -127,6 +136,9 @@ export class Slider implements OnInit {
   @HostBinding('class.am-slider-wrapper')
   amSliderWrapper: boolean = true;
 
+  private onChangeFn: (value: number) => void = () => {};
+  private onTouchFn: (value: number) => void = () => {};
+
   constructor(private _elf: ElementRef) {}
 
   setCls() {
@@ -142,6 +154,7 @@ export class Slider implements OnInit {
       this._value = e;
     }, 10);
     this.onChange.emit(e);
+    this.onChangeFn(e);
   }
 
   handleAfterChange(e) {
@@ -168,5 +181,18 @@ export class Slider implements OnInit {
     const sliderCoords = this._elf.nativeElement.getElementsByClassName('am-slider')[0].getBoundingClientRect();
     this.sliderLength = sliderCoords.width;
     this.sliderStart = sliderCoords.left;
+  }
+
+  writeValue(value: number): void {
+    this._value = value;
+    this.valueRange();
+  }
+
+  registerOnChange(fn: (value: number) => void): void {
+    this.onChangeFn = fn;
+  }
+
+  registerOnTouched(fn: (value: number) => void): void {
+    this.onTouchFn = fn;
   }
 }

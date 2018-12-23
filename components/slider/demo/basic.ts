@@ -10,6 +10,19 @@ import { Component, OnInit } from '@angular/core';
             <div class="sub-title">Small size</div>
           </div>
           <div>
+            <Slider [ngModel]="value"
+                    [min]=-10
+                    [max]=100
+                    (ngModelChange)="change($event)"
+                    (onAfterChange)="afterChange($event)"
+            ></Slider>
+          </div>
+      </div>
+      <div class="am-demo-bd am-wingblank am-wingblank-lg">
+          <div>
+            <div class="sub-title">Small size</div>
+          </div>
+          <div>
             <Slider [defaultValue]=26
                     [min]=-10
                     [max]=100
