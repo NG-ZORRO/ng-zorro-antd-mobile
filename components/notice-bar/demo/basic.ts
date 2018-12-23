@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <NoticeBar [option]="{'content': '我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！', 'font': '14px'}">
     </NoticeBar>
-    <NoticeBar  [option]="{'content': '我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！', 'font': '14px', mode: 'link'}" (onClick)="onClick()">
+    <NoticeBar [option]="{'content': '我是小黄条，小黄条的小，小黄条的黄！！！', 'font': '14px', mode: 'link'}" (onClick)="onClick()">
     </NoticeBar>
     <NoticeBar [option]="{'content': '我是小黄条，小黄条的小，小黄条的黄！！！', 'icon': null, mode: 'closable'}">
     </NoticeBar>
