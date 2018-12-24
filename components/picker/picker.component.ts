@@ -48,9 +48,6 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('picker', { read: ViewContainerRef })
   private _picker: ViewContainerRef;
 
-  @Output()
-  onChange: EventEmitter<any> = new EventEmitter();
-
   @HostListener('mousedown', ['$event'])
   @HostListener('touchstart', ['$event'])
   panstart(event) {
@@ -139,7 +136,6 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.dom.style.transform = `translateY(${this.currentY * this.lineHeight}px)`;
     this.index = Math.floor(Math.abs(this.currentY / 1));
     this.setCurrentSelected(parseInt(event.target.id, 0), this.index);
-    this.onChange.emit(this.combineReslut());
     this.options.onPickerChange.emit(this.combineReslut());
     this.onChange(this.combineReslut());
   }
