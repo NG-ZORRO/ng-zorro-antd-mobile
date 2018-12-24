@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, AfterViewInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, Input, EventEmitter, forwardRef } from '@angular/core';
 import { PickerComponent } from '../picker/picker.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
@@ -18,8 +18,6 @@ export class PickerViewComponent extends PickerComponent implements OnInit, Afte
   @Input()
   data: Array<any> = [];
   @Input()
-  value: Array<any> = [];
-  @Input()
   cols: number = 3;
   @Input()
   cascade: boolean;
@@ -27,8 +25,6 @@ export class PickerViewComponent extends PickerComponent implements OnInit, Afte
   indicatorStyle: object = {};
   @Input()
   itemStyle: object = {};
-  @Output()
-  onChange: EventEmitter<any> = new EventEmitter();
 
   pickerViewInit() {
     this.options.data = this.data;
