@@ -1,12 +1,19 @@
-import { Component, OnInit, ViewEncapsulation, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, Input, EventEmitter, forwardRef } from '@angular/core';
 import { PickerComponent } from '../picker/picker.component';
-
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'PickerView, nzm-picker-view',
   templateUrl: './picker-view.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => PickerViewComponent),
+      multi: true
+    }
+  ]
 })
-export class PickerViewComponent extends PickerComponent implements OnInit, AfterViewInit {
+export class PickerViewComponent extends PickerComponent implements OnInit, AfterViewInit, ControlValueAccessor {
   options;
   @Input()
   data: Array<any> = [];
@@ -20,8 +27,6 @@ export class PickerViewComponent extends PickerComponent implements OnInit, Afte
   indicatorStyle: object = {};
   @Input()
   itemStyle: object = {};
-  @Output()
-  onChange: EventEmitter<any> = new EventEmitter();
 
   pickerViewInit() {
     this.options.data = this.data;
@@ -30,6 +35,18 @@ export class PickerViewComponent extends PickerComponent implements OnInit, Afte
     this.options.cascade = this.cascade;
     this.init();
   }
+
+  writeValue(value: any[]): void {
+    if (value) {
+      this.value = value;
+    }
+  }
+
+  registerOnChange(fn: (_: any[]) => void): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any[]): void { }
 
   ngOnInit() {
     this.pickerViewInit();

@@ -5,8 +5,13 @@ import { Component } from '@angular/core';
   template: `
     <PickerView [data]="seasons"
                 [cascade]="false"
-                [value]="value"
-                (onChange)="onChange($event)"
+                [ngModel]="value"
+                (ngModelChange)="onChange($event)"
+    ></PickerView>
+    <PickerView [data]="seasons"
+                [cascade]="false"
+                [ngModel]="value2"
+                (ngModelChange)="onChange2($event)"
     ></PickerView>
   `
 })
@@ -38,9 +43,14 @@ export class DemoPickerViewBasicComponent {
     }
   ];
   value = [];
+  value2 = [];
 
   onChange(result) {
     this.value = this.getValue(result);
+  }
+
+  onChange2(result) {
+    this.value2 = this.getValue(result);
   }
 
   getValue(result) {
