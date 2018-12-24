@@ -13,6 +13,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { DatePickerOptions } from './date-picker-options.provider';
+import { Modal } from '../modal/modal.service';
 import * as velocity from '../core/util/velocity';
 export type DateMode = 'date' | 'time' | 'datetime' | 'year' | 'month';
 
@@ -56,8 +57,9 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   currentPicker: any;
   localeNew: any = {};
   unsubscribe$ = new Subject<void>();
-
   Velocity = velocity.getVelocity();
+
+  private errorMessage = '';
 
   @ViewChild('picker', { read: ViewContainerRef })
   picker: ViewContainerRef;
@@ -169,14 +171,29 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     public elementRef: ElementRef,
     public options: DatePickerOptions,
+    public modal: Modal,
     public localeProviderService: LocaleProviderService
   ) { }
 
   init() {
     this.initResult();
-    this.checkTime();
-    this.initReady();
-    this.getInitValueIndex();
+    if (this.checkTime()) {
+      this.initReady();
+      this.getInitValueIndex();
+    } else {
+      setTimeout(() => {
+        Modal.close();
+        Modal.alert('Error', this.errorMessage, [
+          {
+            text: this.localeNew.okText,
+            onPress: () => {
+              this.setTransitionName();
+              Modal.close();
+            }
+          }
+        ]);
+      }, 0);
+    }
   }
 
   reloadPicker() {
@@ -325,8 +342,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     if (
       this.indexArray.length === this.localMinDate.length &&
-      this.localMinDate.length === this.localMaxDate.length &&
-      this.localMaxDate.length === this.currentTime.length
+      this.localMinDate.length === this.localMaxDate.length
+      // this.localMaxDate.length === this.currentTime.length
     ) {
       let _indexArrayIndex = 0;
       for (let i = 0; i < this.modeSwitch.length; i++) {
@@ -424,8 +441,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
               current_time[i] = this.currentTime[_indexArrayIndex];
               break;
           }
-          _indexArrayIndex++;
         }
+        _indexArrayIndex++;
       }
 
       const minT = new Date(min_date[0], min_date[1], min_date[2], min_date[3], min_date[4]).getTime();
@@ -437,8 +454,15 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
         current_time[3],
         current_time[4]
       ).getTime();
+      if (curT < minT) {
+        this.errorMessage = this.localeNew.curTLessthanMin;
+      }
+      if (curT > maxT) {
+        this.errorMessage = this.localeNew.curTMorethanMax;
+      }
       return minT <= curT && curT <= maxT;
     } else {
+      this.errorMessage = this.localeNew.errorMessage;
       return false;
     }
   }
@@ -674,7 +698,6 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
-    this.localeProvider();
     this.checkMode(this.options.mode);
     const value = this.transformDateFormat(this.options.value).split('-');
     if (value.length > 0) {
@@ -682,7 +705,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
         return parseInt(item, 0);
       });
     }
-    this.init();
+    this.localeProvider();
   }
 
   ngAfterViewInit() {

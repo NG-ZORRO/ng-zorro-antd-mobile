@@ -82,7 +82,6 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
 
   ngOnInit() {
     this.localeProvider();
-    this.init();
   }
 
   ngAfterViewInit() {
