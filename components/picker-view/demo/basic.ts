@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <PickerView [data]="seasons"
                 [cascade]="false"
-                [value]="value"
-                (onChange)="onChange($event)"
+                [ngModel]="value"
+                (ngModelChange)="onChange($event)"
     ></PickerView>
     <PickerView [data]="seasons"
                 [cascade]="false"
