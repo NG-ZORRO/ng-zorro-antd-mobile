@@ -43,6 +43,7 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
   currentPicker: any;
 
   private _unsubscribe$: Subject<void> = new Subject<void>();
+  private _onChange = (_: any[]) => { };
 
   @ViewChild('picker', { read: ViewContainerRef })
   private _picker: ViewContainerRef;
@@ -142,8 +143,6 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.options.onPickerChange.emit(this.combineReslut());
     this._onChange(this.combineReslut());
   }
-
-  _onChange = (_: any[]) => { };
 
   constructor(public elementRef: ElementRef, public options: PickerOptions, private _localeProviderService: LocaleProviderService) {
   }
