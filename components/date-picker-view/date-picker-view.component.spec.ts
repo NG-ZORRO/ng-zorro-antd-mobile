@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DatePickerOptions } from '../date-picker/date-picker-options.provider';
 import { DatePickerViewModule } from './date-picker-view.module';
-import { DatePickerModule } from '../date-picker/date-picker.module';
-import { LocaleProviderService, LocaleProviderModule } from '../..';
+import { DatePickerOptions, DatePickerModule } from '../date-picker/index';
+import { LocaleProviderService, LocaleProviderModule, ModalModule, Modal, ModalComponent } from '../..';
 import { en_US } from '../locale-provider/languages';
 
 describe('DatePickerViewComponent', () => {
@@ -19,8 +18,11 @@ describe('DatePickerViewComponent', () => {
     // service.setLocale(zh_CN);
     TestBed.configureTestingModule({
       declarations: [TestDatePickerViewBasicComponent],
-      providers: [DatePickerOptions, LocaleProviderService],
-      imports: [DatePickerModule, DatePickerViewModule, LocaleProviderModule]
+      providers: [DatePickerOptions, LocaleProviderService, Modal],
+      imports: [DatePickerModule, DatePickerViewModule, LocaleProviderModule, ModalModule]
+    }).compileComponents();
+    TestBed.overrideModule(DatePickerViewModule, {
+      set: { entryComponents: [ModalComponent] }
     }).compileComponents();
   }));
 

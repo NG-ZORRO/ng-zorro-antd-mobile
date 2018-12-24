@@ -2,8 +2,16 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { en_US, zh_CN } from '../locale-provider/languages';
-import { DatePickerOptions } from './date-picker-options.provider';
-import { LocaleProviderService, LocaleProviderModule, DatePickerModule, ButtonModule, ListModule } from '../..';
+import { DatePickerOptions, DatePickerModule, DatePickerComponent } from './index';
+import {
+  Modal,
+  ListModule,
+  ModalModule,
+  ButtonModule,
+  ModalComponent,
+  LocaleProviderModule,
+  LocaleProviderService
+} from '../..';
 import { dispatchTouchEvent } from '../core/testing';
 
 describe('DatePickerComponent', () => {
@@ -16,8 +24,11 @@ describe('DatePickerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestDatePickerBasicComponent],
-      providers: [DatePickerOptions, LocaleProviderService],
-      imports: [DatePickerModule, LocaleProviderModule, ButtonModule, ListModule]
+      providers: [DatePickerOptions, LocaleProviderService, Modal],
+      imports: [DatePickerModule, LocaleProviderModule, ButtonModule, ListModule, ModalModule]
+    }).compileComponents();
+    TestBed.overrideModule(DatePickerModule, {
+      set: { entryComponents: [ModalComponent, DatePickerComponent] }
     }).compileComponents();
   }));
 
