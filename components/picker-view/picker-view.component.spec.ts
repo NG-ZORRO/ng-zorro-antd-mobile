@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PickerViewModule } from './picker-view.module';
@@ -9,11 +10,12 @@ describe('PickerViewComponent', () => {
   let component: TestPickerViewBasicComponent;
   let fixture: ComponentFixture<TestPickerViewBasicComponent>;
   let pickerEle;
+  let pickerEleForNgModel;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestPickerViewBasicComponent],
-      imports: [PickerViewModule, LocaleProviderModule],
+      imports: [PickerViewModule, LocaleProviderModule, FormsModule],
       providers: [PickerOptions, LocaleProviderService]
     }).compileComponents();
   }));
@@ -22,7 +24,14 @@ describe('PickerViewComponent', () => {
     fixture = TestBed.createComponent(TestPickerViewBasicComponent);
     component = fixture.componentInstance;
     pickerEle = fixture.debugElement.query(By.css('pickerview'));
+    pickerEleForNgModel = fixture.debugElement.queryAll(By.css('pickerview'))[1];
     fixture.detectChanges();
+  });
+
+  it('should ngModel work', () => {
+    component.value2 = [];
+    fixture.detectChanges();
+    expect(component.value2.length).toBe(0);
   });
 
   it('should create', () => {
@@ -65,10 +74,16 @@ describe('PickerViewComponent', () => {
   template: `
     <PickerView [data]="seasons"
                 [cascade]="cascade"
-                [value]="value"
+                [ngModel]="value"
                 [itemStyle]="itemStyle"
                 [indicatorStyle]="indicatorStyle"
-                (onChange)="onChange($event)"
+                (ngModelChange)="onChange($event)"
+    ></PickerView>
+
+    <PickerView [data]="seasons"
+                [cascade]="false"
+                [ngModel]="value2"
+                (ngModelChange)="onChange2($event)"
     ></PickerView>
   `
 })
@@ -103,9 +118,14 @@ export class TestPickerViewBasicComponent {
     }
   ];
   value = [];
+  value2 = [];
 
   onChange(result) {
     this.value = this.getValue(result);
+  }
+
+  onChange2(result) {
+    this.value2 = this.getValue(result);
   }
 
   getValue(result) {
