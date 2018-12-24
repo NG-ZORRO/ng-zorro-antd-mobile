@@ -41,9 +41,9 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
   isMouseDown: boolean = false;
   Velocity = velocity.getVelocity();
   currentPicker: any;
+  onChange = (_: any[]) => { };
 
   private _unsubscribe$: Subject<void> = new Subject<void>();
-  private _onChange = (_: any[]) => { };
 
   @ViewChild('picker', { read: ViewContainerRef })
   private _picker: ViewContainerRef;
@@ -141,7 +141,7 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.setCurrentSelected(parseInt(event.target.id, 0), this.index);
     this.onChange.emit(this.combineReslut());
     this.options.onPickerChange.emit(this.combineReslut());
-    this._onChange(this.combineReslut());
+    this.onChange(this.combineReslut());
   }
 
   constructor(public elementRef: ElementRef, public options: PickerOptions, private _localeProviderService: LocaleProviderService) {
