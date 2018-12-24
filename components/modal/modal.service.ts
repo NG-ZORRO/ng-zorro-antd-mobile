@@ -9,7 +9,7 @@ import { BaseOptions, ModalOptions, AlertOptions, Action } from './modal-options
 import { PopupService } from '../core/core.module';
 @Injectable()
 export class Modal extends PopupService {
-  static modalRef: ComponentRef<ModalServiceComponent>;
+  static modalRef: ComponentRef<ModalServiceComponent> = null;
   static _initConfig(config: BaseOptions, options: any): BaseOptions {
     const props: BaseOptions = new BaseOptions();
     const optionalParams: string[] = [
