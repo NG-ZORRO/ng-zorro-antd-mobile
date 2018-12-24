@@ -18,6 +18,8 @@ export class PickerViewComponent extends PickerComponent implements OnInit, Afte
   @Input()
   data: Array<any> = [];
   @Input()
+  value: Array<any> = [];
+  @Input()
   cols: number = 3;
   @Input()
   cascade: boolean;
