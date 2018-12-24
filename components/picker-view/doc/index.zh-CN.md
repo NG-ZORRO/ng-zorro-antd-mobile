@@ -13,10 +13,8 @@ PickerView 的功能类似于 Picker ，但它是直接渲染在区域中，而�
 ----|-----|------|------
 | data  | 数据源     | `Array<{value, label}>` / `Array<Array<{value, label}>>` | -   |
 | ngModel  | 值, 格式是`[value1, value2, value3]`, 对应数据源的相应级层 value  | Array  | -   |
-| value  | 值, 格式是`[value1, value2, value3]`, 对应数据源的相应级层 value  | Array  | -   |
 | cascade  | 是否级联   | Boolean| true|
 | cols     | 列数    | Number | `3` |
-| onChange | 选中后的回调 | (val): void      | -   |
 | ngModelChange | 选中后的回调 | (val): void      | -   |
 | itemStyle| 每列样式   | Object | -   |
 | indicatorStyle  | indicator 样式  | Object | -  |
