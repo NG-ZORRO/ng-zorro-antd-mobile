@@ -74,10 +74,10 @@ describe('PickerViewComponent', () => {
   template: `
     <PickerView [data]="seasons"
                 [cascade]="cascade"
-                [value]="value"
+                [ngModel]="value"
                 [itemStyle]="itemStyle"
                 [indicatorStyle]="indicatorStyle"
-                (onChange)="onChange($event)"
+                (ngModelChange)="onChange($event)"
     ></PickerView>
 
     <PickerView [data]="seasons"
