@@ -15,7 +15,7 @@ subtitle: 对话框
 
 
 ## API
-组件使用前，需要在对应module中加入entryComponents，如：`entryComponents: [ModalComponent]`。
+组件使用前，需要在对应module中加入entryComponents，如：`entryComponents: [ModalServiceComponent]`。
 
 ### Modal
 
@@ -51,7 +51,7 @@ subtitle: 对话框
 | message  | 提示信息  | String 或 TemplateRef | 无  |
 | callbackOrActions  | 按钮组 [{text, onPress}] 或回调函数  | Array or Function | 无  |
 | type | prompt 的样式 | String (`default`, `secure-text`, `login-password`)|  `default`  |
-| defaultValue | 默认值(input 为 password 类型不支持) | String | -  |
+| defaultValue  | ['', ''] | String[] | -  |
 | placeholders | ['', '']  | String[] | -  |
 | platform  |  设定组件的平台特有样式, 可选值为 `android`, `ios`， 默认为 `ios`  | String | `'ios'`|
 
