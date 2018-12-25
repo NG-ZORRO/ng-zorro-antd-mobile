@@ -13,7 +13,7 @@ Use to show important information for the system, and ask for user feedback. eg:
 - Generally put the most likely clicked button on the right side. In addition, the cancel button should always be on the left.
 
 ## API
-Before use，entryComponents should be added in corresponding module，such as：`entryComponents: [ModalComponent]`.
+Before use，entryComponents should be added in corresponding module，such as：`entryComponents: [ModalServiceComponent]`.
 
 ### Modal
 
@@ -48,8 +48,8 @@ Properties | Descrition | Type | Default
 | message | message  | String or TemplateRef  | -  |
 | callbackOrActions  | button group [{text, onPress}] or callback | Array or Function | -  |
 | type  | prompt style | String (`default`, `secure-text`, `login-password`)|  `default`  |
-| defaultValue  | Default(input whick type is password is not supported) | String | -  |
-| placeholders  | ['', '']  | String[] | -  |
+| defaultValue  | ['', ''] | String[] | -  |
+| placeholders  | ['', ''] | String[] | -  |
 
 call Modal.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?).close()` can close prompt Modal outside anywhere as you wish.
 
