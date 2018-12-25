@@ -1,62 +1,38 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { IconHandler } from '../core/util/icon';
-
+import * as util from './util';
 @Component({
   selector: 'NoticeBar, nzm-notice-bar',
   templateUrl: './notice-bar.component.html',
   providers: [IconHandler]
 })
-export class NoticeBarComponent implements OnInit {
-  actionDom: any;
-
-  isShow = false;
-  isStopScroll = false;
-  styleDom: any;
-  rate;
+export class NoticeBarComponent implements OnInit, OnDestroy {
+  visiable = false;
   marqueeScroll = 'scrolling';
   style = {};
-  private _mode;
-  private _icon;
-  private _action;
-  private _timer = null;
   private _width;
-
+  private _option = {
+    mode: '',
+    icon: '',
+    action: '',
+    content: '',
+    fontSize: '14px',
+    scrolling: true,
+    marqueeProps: { loop: true, leading: 500, trailing: 8000, fps: 200, style: {} }
+  };
   @Input()
-  set stopScrolling(value) {
-    this.isStopScroll = value;
-    if (value) {
+  get option() {
+    return this._option;
+  }
+  set option(value) {
+    Object.assign(this._option, value);
+    this.dataProcess();
+    if (this._option.scrolling) {
+      this.marqueeScroll = 'scrolling';
+    } else {
       this.marqueeScroll = 'scrolling-stop';
-      clearTimeout(this._timer);
-      this._timer = setTimeout(function() {
-        this.marqueeScroll = 'scrolling';
-      }, 1000);
     }
   }
-  @Input()
-  get mode() {
-    return this._mode;
-  }
-  set mode(value) {
-    this._mode = value;
-  }
-  @Input()
-  get icon() {
-    return this._icon;
-  }
-  set icon(value) {
-    this._icon = value;
-  }
-  @Input()
-  get action() {
-    return this._action;
-  }
-  set action(value) {
-    this._action = value;
-  }
-  @Input()
-  marqueeProps = { loop: true, leading: 500, trailing: 8000, fps: 200, style: {} };
-  @Input()
-  noticeBarcontent = '';
   @Output()
   onClick: EventEmitter<any> = new EventEmitter();
 
@@ -65,30 +41,52 @@ export class NoticeBarComponent implements OnInit {
   }
 
   click() {
-    this.onClick.emit(this._mode);
-    if (this._mode === 'closable') {
-      this.isShow = false;
+    this.onClick.emit(this._option.mode);
+    if (this._option.mode === 'closable') {
+      this.visiable = false;
     }
   }
 
   dataProcess() {
-    this.isShow = true;
+    this.visiable = true;
     this.style = {
       width: '200%'
     };
-    if (window.innerWidth < this._width) {
-      const count = this.marqueeProps.loop ? 'infinite' : 1;
+    this._width = util.getTextWidth(this._option.content, this._option.fontSize);
+    if (util.getWidthHeight().width < this._width) {
+      const count = this._option.marqueeProps.loop ? 'infinite' : 1;
+      let animationName = `noticebarmarquee_${this._width}`;
       this.style = {
         width: this._width * 2 + 'px',
-        'animation-delay': `${this.marqueeProps.leading}ms`,
-        'animation-duration': `${(1 / this.marqueeProps.fps) * 1000}s`,
+        'animation-name': animationName,
+        'animation-delay': `${this._option.marqueeProps.leading}ms`,
+        'animation-duration': `${(1 / this._option.marqueeProps.fps) * this._width / util.getWidthHeight().width * 1000}s`,
         'animation-iteration-count': `${count}`
       };
-
-      scroll.call(this);
+      this.marqueeScroll = 'scrolling';
+      this.insetKeyframe(animationName);
     } else {
       this.marqueeScroll = 'scrolling-stop';
     }
+  }
+
+  insetKeyframe(animationName) {
+    util.insertKeyFrame(`@keyframes ${animationName} {
+      0% { left: 0px; }
+      100% { left: -${this._width}px }
+    }`, 'notice_bar_animation_cls');
+    util.insertKeyFrame(`@-webkit-keyframes ${animationName} {
+      0% { left: 0px; }
+      100% { left: -${this._width}px }
+    }`, 'notice_bar_animation_cls');
+    util.insertKeyFrame(`@-moz-keyframes ${animationName} {
+      0% { left: 0px; }
+      100% { left: -${this._width}px }
+    }`, 'notice_bar_animation_cls');
+    util.insertKeyFrame(`@-o-keyframes ${animationName} {
+      0% { left: 0px; }
+      100% { left: -${this._width}px }
+    }`, 'notice_bar_animation_cls');
   }
 
   ngOnInit() {
@@ -99,31 +97,9 @@ export class NoticeBarComponent implements OnInit {
     document.addEventListener('touchend', () => {
       this.marqueeScroll = 'scrolling';
     });
-    this._width = getRectWidth(this.noticeBarcontent);
-    this.dataProcess();
   }
-}
 
-function scroll() {
-  let styleDom = document.getElementById('notice_bar_animation_cls');
-  if (styleDom) {
-    return;
+  ngOnDestroy() {
+    util.deleteKeyFrame('notice_bar_animation_cls');
   }
-  styleDom = document.createElement('style');
-  styleDom.setAttribute('id', 'notice_bar_animation_cls');
-  styleDom.innerHTML = `@-webkit-keyframes noticebarmarquee{ 0% { left: 0px; } 100% { left: -${this._width}px; }}`;
-  document.body.appendChild(styleDom);
-}
-
-function getRectWidth(text) {
-  const _dom = document.createElement('div');
-  _dom.innerHTML = text;
-  _dom.style.position = 'absolute';
-  _dom.style.left = '-9999';
-  _dom.style.whiteSpace = 'nowrap';
-  _dom.style.fontSize = '14px';
-  document.body.appendChild(_dom);
-  const _w = _dom.clientWidth + 20;
-  document.body.removeChild(_dom);
-  return _w;
 }
