@@ -28,6 +28,10 @@ export class ActionSheetComponent {
     return cls;
   }
 
+  isNoTitle(value: string | TemplateRef<any>) {
+    return value === '' || value === null || value === undefined;
+  }
+
   isTemplateRef(value) {
     if (value) {
       return value instanceof TemplateRef;
