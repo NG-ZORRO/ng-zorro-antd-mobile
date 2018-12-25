@@ -276,9 +276,10 @@ export class TextareaItem implements OnInit, AfterContentChecked, ControlValueAc
 
 
   writeValue(value: any): void {
-    if (value) {
-      this._value = value;
+    if (typeof value === undefined || value === null) {
+      this._value = '';
     }
+    this._value = value;
   }
   registerOnChange(fn: (_: any) => void): void {
     this._onChange = fn;
