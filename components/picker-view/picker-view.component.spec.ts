@@ -79,12 +79,6 @@ describe('PickerViewComponent', () => {
                 [indicatorStyle]="indicatorStyle"
                 (ngModelChange)="onChange($event)"
     ></PickerView>
-
-    <PickerView [data]="seasons"
-                [cascade]="false"
-                [ngModel]="value2"
-                (ngModelChange)="onChange2($event)"
-    ></PickerView>
   `
 })
 export class TestPickerViewBasicComponent {
