@@ -1,11 +1,14 @@
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import {
   Component,
+  Output,
   AfterContentInit,
   OnDestroy,
   QueryList,
   forwardRef,
+  EventEmitter,
   ContentChildren,
+  ChangeDetectorRef,
   ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
@@ -33,28 +36,25 @@ export const RADIO_ITEM_GROUP_VALUE_ACCESSOR: any = {
   providers: [RADIO_ITEM_GROUP_VALUE_ACCESSOR]
 })
 export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValueAccessor {
-  private selectedStatus: RadioStatus;
+  private selectedValue: string | number;
   private destroy$ = new Subject();
   private selectSubscription: Subscription;
 
-  private _ngModelOnChange: (value: RadioStatus) => {};
+  private _ngModelOnChange: (value: string | number) => {};
   private _ngModelOnTouched: () => {};
 
   @ContentChildren(forwardRef(() => RadioItem)) radioItems: QueryList<RadioItem>;
 
-  constructor() {}
+  @Output()
+  onChange = new EventEmitter<RadioStatus>();
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   updateChildrenStatus() {
-    if (this.radioItems && this.selectedStatus) {
+    if (this.radioItems && typeof(this.selectedValue) !== 'undefined' && null !== this.selectedValue) {
       this.radioItems.forEach(radioItem => {
-        radioItem.checked = radioItem.value === this.selectedStatus.value;
+        radioItem.checked = radioItem.value === this.selectedValue;
       });
-    }
-  }
-
-  notifyValueChange(): void {
-    if (this._ngModelOnChange) {
-      this._ngModelOnChange(this.selectedStatus);
     }
   }
 
@@ -72,11 +72,13 @@ export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValue
         this.selectSubscription = merge(...this.radioItems.map(radioItem => radioItem.select$))
           .pipe(takeUntil(this.destroy$))
           .subscribe(radioItem => {
-            if (this.selectedStatus && this.selectedStatus.value !== radioItem.value) {
-              this.selectedStatus.name = radioItem.name;
-              this.selectedStatus.value = radioItem.value;
+            if (typeof(this.selectedValue) !== 'undefined' && null !== this.selectedValue) {
+              this.selectedValue = radioItem.value;
+              this._ngModelOnChange(radioItem.value);
               this.updateChildrenStatus();
-              this.notifyValueChange();
+              if (this.onChange) {
+                this.onChange.emit({name: radioItem.name, value: radioItem.value});
+              }
             }
           });
       });
@@ -87,10 +89,11 @@ export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValue
     this.destroy$.complete();
   }
 
-  writeValue(value: RadioStatus): void {
-    if (value) {
-      this.selectedStatus = value;
+  writeValue(value: string | number): void {
+    if (typeof(value) !== 'undefined' && null !== value) {
+      this.selectedValue = value;
       this.updateChildrenStatus();
+      this.cdr.markForCheck();
     }
   }
 

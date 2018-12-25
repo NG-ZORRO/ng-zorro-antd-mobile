@@ -16,7 +16,7 @@ Properties | Descrition | Type | Default
 | value    |  value  | String |   -  |
 | checked    |   to set the current checked state  | Boolean  | -  |
 | disabled      |  whether disabled  | Boolean |  false  |
-| onChange    | a callback function, can be executed when the checked state changes | (name: string, value: string, checked: boolean) => void |  -  |
+| onChange    | a callback function, can be executed when the checked state changes | (name: string, value: string) => void |  -  |
 
 ###RadioItemGroup
 
@@ -24,8 +24,8 @@ RadioItems group，wrap a group of RadioItem.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| ngModel    |   Specifies which RadioItem is selected, double binding  | Object: {name, value} |   无  |
-| ngModelChange    | the callback function when current selected RadioItem change  | EventEmitter<Object: {name, value}> |   无  |
+| ngModel    |   Specifies which value is selected, double binding  | string / number |   无  |
+| onChange    | the callback function when current selected RadioItem change  | EventEmitter<Object: {name, value}> |   无  |
 
 ### RadioItem
 
