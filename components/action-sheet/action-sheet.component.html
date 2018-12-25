@@ -9,10 +9,14 @@
       </button>
       <div class="{{props.prefixCls}}-body">
         <div>
-          <ng-template *ngIf="isTemplateRef(title)" [ngTemplateOutlet]="title"></ng-template>
-          <h3 *ngIf="!isTemplateRef(title)" class="{{props.prefixCls}}-title">{{title}}</h3>
-          <ng-template *ngIf="isTemplateRef(message)" [ngTemplateOutlet]="message"></ng-template>
-          <div *ngIf="!isTemplateRef(message)" class="{{props.prefixCls}}-message">{{message}}</div>
+          <ng-container *ngIf="!isNoTitle(title)">
+            <ng-template *ngIf="isTemplateRef(title)" [ngTemplateOutlet]="title"></ng-template>
+            <h3 *ngIf="!isTemplateRef(title)" class="{{props.prefixCls}}-title">{{title}}</h3>
+          </ng-container>
+          <ng-container *ngIf="!isNoTitle(title)">
+            <ng-template *ngIf="isTemplateRef(message)" [ngTemplateOutlet]="message"></ng-template>
+            <div *ngIf="!isTemplateRef(message)" class="{{props.prefixCls}}-message">{{message}}</div>
+          </ng-container>
           <ng-container [ngSwitch]="flag">
             <div *ngSwitchCase="'NORMAL'" class="{{props.prefixCls}}-button-list" role="group">
               <ng-container *ngFor="let item of options; let i = index;">

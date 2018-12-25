@@ -15,6 +15,8 @@ Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | min     | Specifies the minimum value   | Number | -Infinity        |
 | max     | Specifies the maximum value       | Number      | Infinity           |
+| ngModel     | Specifies the value of the `Stepper`, dobule binding       | Number      | <span> </span> |
+| ngModelChange     | Called when value of the `Stepper` changed      | (): void      |   <span> </span>     |
 | value     | Specifies the value of the `Stepper`       | Number      | <span> </span> |
 | step     | Specifies the legal number intervals  | Number or String      |  1      |
 | defaultValue     | Specifies the defaultValue of the `Stepper`       | Number      |    <span> </span>   |

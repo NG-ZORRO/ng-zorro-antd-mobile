@@ -29,7 +29,7 @@ import { Component, ElementRef, Renderer } from '@angular/core';
           <div class="sub-title">Show cancel button</div>
         </div>
           <div style="border-bottom: 1px solid #ddd;">
-            <SearchBar [value]="value"
+            <SearchBar [(ngModel)]="value"
                        [placeholder]="'Search'"
                        [showCancelButton]="true"
                        (onBlur)="blur()"
