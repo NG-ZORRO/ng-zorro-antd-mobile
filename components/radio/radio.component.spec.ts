@@ -90,7 +90,7 @@ describe('radio', () => {
            [disabled]="disabled"
            (onChange)="onChange($event)"
     ></label>
-    <RadioItemGroup [(ngModel)]="selectedStatus" (ngModelChange)="onChange($event)">
+    <RadioItemGroup [(ngModel)]="selectedStatus.value" (onChange)="onChange($event)">
       <RadioItem [name]="data[0].name" [value]="data[0].value">
         {{data[0].name}}
       </RadioItem>
