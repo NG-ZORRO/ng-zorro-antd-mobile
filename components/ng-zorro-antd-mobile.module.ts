@@ -112,7 +112,7 @@ import { Picker } from './picker/picker.service';
 export { Toast } from './toast/toast.service';
 export { ToastComponent } from './toast/toast.component';
 export { Modal } from './modal/modal.service';
-export { ModalComponent } from './modal/modal.component';
+export { ModalServiceComponent } from './modal/modal.component';
 export { ActionSheet } from './action-sheet/action-sheet.service';
 export { ActionSheetComponent } from './action-sheet/action-sheet.component';
 export { Picker } from './picker/picker.service';
