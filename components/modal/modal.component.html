@@ -34,6 +34,7 @@
                  role="button"
                  *ngFor="let button of option.footer"
                  [className]="'am-modal-button'"
+                 [ngStyle]="button.style"
                  (onClick)="button.onPress()"
             >
               {{button.text}}
