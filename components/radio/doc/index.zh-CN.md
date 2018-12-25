@@ -25,8 +25,8 @@ subtitle: 单选框
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| ngModel    | 指定选中的 RadioItem 对象, 可双向绑定  | Object: {name, value} |   无  |
-| ngModelChange    | RadioItem选中变化时的回调  | EventEmitter<Object: {name, value}> |   无  |
+| ngModel    | 指定选中的RadioItem对应的value, 可双向绑定  | string / number |   无  |
+| onChange    | RadioItem选中变化时的回调  | EventEmitter<Object: {name, value}> |   无  |
 
 ### RadioItem
 

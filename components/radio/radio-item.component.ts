@@ -40,7 +40,6 @@ export class RadioItem {
 
   change(event) {
     if (!this.disabled && !this.checked) {
-      this.checked = true;
       this.select$.next(this);
     }
   }

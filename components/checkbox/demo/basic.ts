@@ -38,12 +38,12 @@ import { Component } from '@angular/core';
 export class DemoCheckboxBasicComponent {
   checkItemListData = [
     { value: 0, name: 'Ph.D.', checked: false },
-    { value: 1, name: 'Bachelor', checked: false },
+    { value: 1, name: 'Bachelor', checked: true },
     { value: 2, name: 'College diploma', checked: false }
   ];
   disabledStatus: boolean = true;
   disabledCheckboxItemStatus: boolean = true;
-  agreeItemData = { value: 'Agree Submit', name: 'Agree Item', checked: false };
+  agreeItemData = { value: 'Agree Submit', name: 'Agree Item', checked: true };
 
   onChange = (val: any) => {
     console.log('onChange Event: ', val);
