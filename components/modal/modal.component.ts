@@ -116,19 +116,17 @@ export class ModalComponent implements ControlValueAccessor {
   @HostListener('mouseup', ['$event'])
   @HostListener('touchend', ['$event'])
   panend(event) {
-    event.preventDefault();
-    if ((!this.option.closable || !this.option.maskClosable) && !this.option.popup) {
-      return;
-    }
-    if (
-      (event && event.target && event.target.getAttribute('role') === 'dialog') ||
-      event.target.getAttribute('role') === 'close'
-    ) {
-      if (this.option.close) {
-        this.option.close();
-      } else {
-        this.onClose.emit();
-        this.leaveAnimation();
+    if (this.option.closable || this.option.maskClosable  || this.option.popup) {
+      if (
+        (event && event.target && event.target.getAttribute('role') === 'dialog') ||
+        event.target.getAttribute('role') === 'close'
+      ) {
+        if (this.option.close) {
+          this.option.close();
+        } else {
+          this.onClose.emit();
+          this.leaveAnimation();
+        }
       }
     }
   }
