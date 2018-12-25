@@ -343,7 +343,6 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     if (
       this.indexArray.length === this.localMinDate.length &&
       this.localMinDate.length === this.localMaxDate.length
-      // this.localMaxDate.length === this.currentTime.length
     ) {
       let _indexArrayIndex = 0;
       for (let i = 0; i < this.modeSwitch.length; i++) {
