@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-picker-view-basic',
   template: `
+    <div>{{getValue(value)}}</div>
     <PickerView [data]="seasons"
                 [cascade]="false"
-                [value]="value"
-                (onChange)="onChange($event)"
+                [(ngModel)]="value"
+                (ngModelChange)="onChange($event)"
     ></PickerView>
   `
 })
@@ -37,10 +38,10 @@ export class DemoPickerViewBasicComponent {
       ]
     }
   ];
-  value = [];
+  value = ['2014', '夏'];
 
   onChange(result) {
-    this.value = this.getValue(result);
+    console.log(this.value, result);
   }
 
   getValue(result) {
