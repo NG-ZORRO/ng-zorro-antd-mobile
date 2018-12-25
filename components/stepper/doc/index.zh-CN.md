@@ -16,6 +16,8 @@ subtitle: 步进器
 ----|-----|------|------
 | min     | 最小值   | Number | -Infinity        |
 | max     | 最大值       | Number      | Infinity           |
+| ngModel     | 当前值，可双向绑定  | Number      |   <span> </span>    |
+| ngModelChange     | 变化时回调函数      | (): void      |  <span> </span>    |
 | value     | 当前值       | Number      |   <span> </span>    |
 | step     | 每次改变步数，可以为小数  | Number or String      |  1      |
 | defaultValue     | 初始值       | Number      |    <span> </span>   |
