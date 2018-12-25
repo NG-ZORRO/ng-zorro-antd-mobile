@@ -1,237 +1,269 @@
-import { Component, OnInit, Input, Output, TemplateRef, EventEmitter, ViewEncapsulation, ViewChild } from '@angular/core';
-import { NgSwitch, NgSwitchCase } from '@angular/common';
+import {
+  Component,
+  HostListener,
+  Input,
+  Output,
+  TemplateRef,
+  EventEmitter,
+  ViewEncapsulation,
+  forwardRef
+} from '@angular/core';
 import { ModalOptions } from './modal-options.provider';
-
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'Modal',
   templateUrl: './modal.component.html',
   encapsulation: ViewEncapsulation.None,
-  providers: [NgSwitch, NgSwitchCase, ModalOptions]
+  providers: [
+    ModalOptions,
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ModalComponent),
+      multi: true
+    }
+  ]
 })
-export class ModalComponent implements OnInit {
-  defaultProps = {
-    visible: false,
-    prefixCls: 'am-modal',
-    transparent: false,
-    popup: false,
-    animationType: 'slide-down',
-    animated: true,
-    style: {},
-    footer: [],
-    closable: false,
-    maskClosable: false,
-    operation: false,
-    platform: 'ios',
-    className: '',
-    wrapClassName: '',
-    message: '',
-    actions: [],
-    callbackOrActions: [],
-    type: '',
-    defaultValue: '',
-    placeholders: []
-  };
-  value: string = '';
-  passwordValue: string = '';
+export class ModalComponent implements ControlValueAccessor {
   autoFocus = { focus: true, date: new Date() };
   transitionName: string = '';
   maskTransitionName: string = '';
-  isTitleString: boolean = true;
-  isMessageString: boolean = true;
-  wrapCls = {};
-  cls = {};
-  btnGroupClass = {};
-  data = {};
+  wrapCls: object = {};
+  cls: object = {};
+  btnGroupClass: object = {};
+  data = {
+    text: '',
+    password: ''
+  };
 
-  private _title: string | TemplateRef<any> = '';
-  private _message: string | TemplateRef<any> = '';
-  private _focus: boolean = true;
-
-  @ViewChild('inputElement')
-  inputElementRef;
+  onChanged: (visiable: boolean) => {};
+  onTouched: () => {};
 
   @Input()
   get title(): string | TemplateRef<any> {
-    return this._title;
+    return this.option.title;
   }
   set title(value: string | TemplateRef<any>) {
-    if (value instanceof TemplateRef) {
-      this.isTitleString = false;
-    } else {
-      this.isTitleString = true;
-    }
-    this._title = value;
+    this.option.title = value;
+  }
+
+  @Input()
+  set closable(value: boolean) {
+    this.option.closable = value;
   }
   @Input()
-  set visible(value) {
-    if (!value) {
+  set maskClosable(value: boolean) {
+    this.option.maskClosable = value;
+  }
+  @Input()
+  set popup(value: boolean) {
+    this.option.popup = value;
+    this.setClassMap();
+  }
+  @Input()
+  set animationType(value: string) {
+    this.option.animationType = value;
+    this.setClassMap();
+  }
+  @Input()
+  set transparent(value: boolean) {
+    this.option.transparent = value;
+    this.setClassMap();
+  }
+  @Input()
+  set footer(value: Array<any>) {
+    this.option.footer = value;
+  }
+  @Input()
+  set platform(value: string) {
+    this.option.platform = value;
+    this.setClassMap();
+  }
+  @Input()
+  set className(value: string) {
+    this.option.className = value;
+    this.setClassMap();
+  }
+  @Input()
+  set wrapClassName(value: string) {
+    this.option.wrapClassName = value;
+    this.setClassMap();
+  }
+  @Input()
+  set actions(value: Array<any>) {
+    this.option.footer = value;
+    this.setClassMap();
+  }
+  @Input()
+  set defaultValue(value: Array<string>) {
+    this.option.defaultValue = value !== undefined ? value : ['', ''];
+  }
+  @Input()
+  set type(value: string) {
+    this.option.type = value;
+  }
+  @Input()
+  set placeholders(value: Array<string>) {
+    this.option.placeholders = value;
+  }
+  @Input()
+  set operation(value: boolean) {
+    this.option.operation = value;
+    this.setClassMap();
+  }
+  @Output()
+  onClose: EventEmitter<any> = new EventEmitter();
+
+  @HostListener('mouseup', ['$event'])
+  @HostListener('touchend', ['$event'])
+  panend(event) {
+    event.preventDefault();
+    if ((!this.option.closable || !this.option.maskClosable) && !this.option.popup) {
+      return;
+    }
+    if (
+      (event && event.target && event.target.getAttribute('role') === 'dialog') ||
+      event.target.getAttribute('role') === 'close'
+    ) {
+      if (this.option.close) {
+        this.option.close();
+      } else {
+        this.onClose.emit();
+        this.leaveAnimation();
+      }
+    }
+  }
+
+  constructor(public option: ModalOptions) {}
+
+  isTemplateRef(value: string | TemplateRef<any>) {
+    return value instanceof TemplateRef;
+  }
+
+  isNoTitle(value: string | TemplateRef<any>) {
+    return value === '' || value === null || value === undefined;
+  }
+
+  setTransitionName(visible: boolean) {
+    if (!visible) {
       this.leaveAnimation();
     } else {
-      this.defaultProps.visible = value;
-      if (this.defaultProps.animated) {
-        if (this.defaultProps.transparent) {
-          this.transitionName = this.maskTransitionName = 'am-fade-enter am-fade-enter-active';
+      if (this.option.animated) {
+        if (this.option.transparent) {
+          if (this.setActiveName(this.option.transitionName)) {
+            this.transitionName = this.setActiveName(this.option.transitionName);
+            this.maskTransitionName = this.setActiveName(this.option.maskTransitionName);
+          } else {
+            this.transitionName = this.maskTransitionName = this.setActiveName('am-fade');
+          }
         } else {
-          this.transitionName = this.maskTransitionName = 'am-slide-up-enter am-slide-up-enter-active';
+          if (this.setActiveName(this.option.transitionName)) {
+            this.transitionName = this.setActiveName(this.option.transitionName);
+            this.maskTransitionName = this.setActiveName(this.option.maskTransitionName);
+          } else {
+            this.transitionName = this.maskTransitionName = this.setActiveName('am-slide-up');
+          }
         }
-        if (this.defaultProps.popup) {
+        if (this.option.popup) {
           this.transitionName =
-            this.defaultProps.animationType === 'slide-up'
-              ? 'am-slide-up-enter am-slide-up-enter-active'
-              : 'am-slide-down-enter am-slide-down-enter-active';
-          this.maskTransitionName = 'am-fade-enter am-fade-enter-active';
+            this.option.animationType === 'slide-up'
+              ? this.setActiveName('am-slide-up')
+              : this.setActiveName('am-slide-down');
+          this.maskTransitionName = this.setActiveName('am-fade');
         }
       }
       this.setClassMap();
     }
   }
-  @Input()
-  set closable(value) {
-    this.defaultProps.closable = value;
-  }
-  @Input()
-  set maskClosable(value) {
-    this.defaultProps.maskClosable = value;
-  }
-  @Input()
-  set popup(value) {
-    this.defaultProps.popup = value;
-    this.setClassMap();
-  }
-  @Input()
-  set animationType(value) {
-    this.defaultProps.animationType = value;
-    this.setClassMap();
-  }
-  @Input()
-  set transparent(value) {
-    this.defaultProps.transparent = value;
-    this.setClassMap();
-  }
-  @Input()
-  set footer(value) {
-    this.defaultProps.footer = value;
-  }
-  @Input()
-  set platform(value) {
-    this.defaultProps.platform = value;
-    this.setClassMap();
-  }
-  @Input()
-  get message(): string | TemplateRef<any> {
-    return this._message;
-  }
-  set message(value: string | TemplateRef<any>) {
-    if (value instanceof TemplateRef) {
-      this.isMessageString = false;
-    } else {
-      this.isMessageString = true;
-    }
-    this._message = value;
-  }
-  @Input()
-  set className(value) {
-    this.defaultProps.className = value;
-    this.setClassMap();
-  }
-  @Input()
-  set wrapClassName(value) {
-    this.defaultProps.wrapClassName = value;
-    this.setClassMap();
-  }
-  @Input()
-  set actions(value) {
-    this.defaultProps.footer = value;
-    this.setClassMap();
-  }
-  @Input()
-  set defaultValue(value) {
-    this.defaultProps.defaultValue = value !== undefined ? value : '';
-  }
-  @Input()
-  set type(value) {
-    this.defaultProps.type = value;
-  }
-  @Input()
-  set placeholders(value: Array<string>) {
-    this.defaultProps.placeholders = value;
-  }
-  @Input()
-  set operation(value) {
-    this.defaultProps.operation = value;
-    this.setClassMap();
-  }
-  @Input()
-  set focus(value) {
-    if (value) {
-      this._focus = value;
-    }
-  }
-  @Output()
-  onClose: EventEmitter<any> = new EventEmitter();
 
-  constructor(private _option: ModalOptions) {}
+  setActiveName(name: string) {
+    return name.length > 0 ? `${name}-enter ${name}-enter-active` : null;
+  }
+
+  setLeaveActiveName(name: string) {
+    return name.length > 0 ? `${name}-leave ${name}-leave-active` : null;
+  }
 
   setClassMap() {
     this.wrapCls = {
-      [this.defaultProps.wrapClassName]: true,
-      [`${this.defaultProps.prefixCls}-wrap-popup`]: this.defaultProps.popup
+      [this.option.wrapClassName]: true,
+      [`${this.option.prefixCls}-wrap-popup`]: this.option.popup
     };
 
     this.cls = {
-      [this.defaultProps.className]: true,
-      [`${this.defaultProps.prefixCls}-transparent`]: this.defaultProps.transparent,
-      [`${this.defaultProps.prefixCls}-popup`]: this.defaultProps.popup,
-      [`${this.defaultProps.prefixCls}-popup-${this.defaultProps.animationType}`]:
-        this.defaultProps.popup && this.defaultProps.animationType,
-      [`${this.defaultProps.prefixCls}-android`]: this.defaultProps.platform === 'android'
+      [this.option.className]: true,
+      [`${this.option.prefixCls}-transparent`]: this.option.transparent,
+      [`${this.option.prefixCls}-popup`]: this.option.popup,
+      [`${this.option.prefixCls}-popup-${this.option.animationType}`]: this.option.popup && this.option.animationType,
+      [`${this.option.prefixCls}-android`]: this.option.platform === 'android'
     };
 
     this.btnGroupClass = {
-      [`${this.defaultProps.prefixCls}-button-group-${
-        this.defaultProps.footer.length === 2 && !this.defaultProps.operation ? 'h' : 'v'
+      [`${this.option.prefixCls}-button-group-${
+        this.option.footer.length === 2 && !this.option.operation ? 'h' : 'v'
       }`]: true,
-      [`${this.defaultProps.prefixCls}-button-group-${this.defaultProps.operation ? 'operation' : 'normal'}`]: true
+      [`${this.option.prefixCls}-button-group-${this.option.operation ? 'operation' : 'normal'}`]: true
     };
   }
 
-  inputChange(type, value) {
+  inputChange(type: string, value: string) {
     this.data[type] = value;
   }
 
   leaveAnimation() {
-    if (this.defaultProps.animated) {
-      if (this.defaultProps.transparent) {
-        this.transitionName = this.maskTransitionName = 'am-fade-leave am-fade-leave-active';
+    if (this.option.animated) {
+      if (this.option.transparent) {
+        if (this.setLeaveActiveName(this.option.transitionName)) {
+          this.transitionName = this.setLeaveActiveName(this.option.transitionName);
+          this.maskTransitionName = this.setLeaveActiveName(this.option.maskTransitionName);
+        } else {
+          this.transitionName = this.maskTransitionName = this.setLeaveActiveName('am-fade');
+        }
       } else {
-        this.transitionName = this.maskTransitionName = 'am-slide-up-leave am-slide-up-leave-active';
+        if (this.setLeaveActiveName(this.option.transitionName)) {
+          this.transitionName = this.setLeaveActiveName(this.option.transitionName);
+          this.maskTransitionName = this.setLeaveActiveName(this.option.maskTransitionName);
+        } else {
+          this.transitionName = this.maskTransitionName = this.setLeaveActiveName('am-slide-up');
+        }
       }
-      if (this.defaultProps.popup) {
+      if (this.option.popup) {
         this.transitionName =
-          this.defaultProps.animationType === 'slide-up'
-            ? 'am-slide-up-leave am-slide-up-leave-active'
-            : 'am-slide-down-leave am-slide-down-leave-active';
-        this.maskTransitionName = 'am-fade-leave am-fade-leave-active';
+          this.option.animationType === 'slide-up'
+            ? this.setLeaveActiveName('am-slide-up')
+            : this.setLeaveActiveName('am-slide-down');
+        this.maskTransitionName = this.setLeaveActiveName('am-fade');
       }
     }
     setTimeout(() => {
-      this.defaultProps.visible = false;
+      this.option.visible = false;
+      this.onChanged(this.option.visible);
     }, 200);
   }
 
-  close() {
-    if ((!this.defaultProps.closable || !this.defaultProps.maskClosable) && !this.defaultProps.popup) {
-      return;
+  writeValue(value: boolean): void {
+    if (value) {
+      this.option.visible = value;
     }
-    if (this._option.close) {
-      this._option.close();
-    } else {
-      this.leaveAnimation();
-      this.onClose.emit();
-    }
+    this.setTransitionName(value);
   }
 
-  ngOnInit() {
-    this.setClassMap();
+  registerOnChange(fn: (_: boolean) => {}): void {
+    this.onChanged = fn;
+  }
+
+  registerOnTouched(fn: () => {}): void {
+    this.onTouched = fn;
+  }
+}
+
+@Component({
+  selector: 'ModalService',
+  templateUrl: './modal.component.html',
+  encapsulation: ViewEncapsulation.None
+})
+export class ModalServiceComponent extends ModalComponent {
+  constructor(public option: ModalOptions) {
+    super(option);
+    this.setTransitionName(this.option.visible);
   }
 }

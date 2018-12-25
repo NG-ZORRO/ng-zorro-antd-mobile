@@ -1,5 +1,5 @@
-import { Injectable, Injector, ViewContainerRef } from '@angular/core';
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+import { Injectable, Injector, ViewContainerRef, ComponentRef } from '@angular/core';
+import { Overlay, OverlayConfig, OverlayRef, GlobalPositionStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 
 @Injectable()
@@ -16,15 +16,21 @@ export class PopupService {
     PopupService.overlay = this._overlay;
   }
 
-  static showPopup(component, childInjector?: Injector): void {
+  static showPopup(
+    component,
+    childInjector?: Injector,
+    hasBackdrop?: boolean,
+    positionStrategy: GlobalPositionStrategy =
+    PopupService.overlay.position().global().centerVertically().centerHorizontally()): ComponentRef<any> {
     let overlayConfig = new OverlayConfig();
-    overlayConfig.hasBackdrop = true;
+    overlayConfig.hasBackdrop = hasBackdrop;
+    overlayConfig.positionStrategy = positionStrategy;
     PopupService.overlayRef = PopupService.overlay.create(overlayConfig);
     PopupService.overlayRef.backdropClick().subscribe(() => {
       PopupService.overlayRef.dispose();
     });
 
-    PopupService.overlayRef.attach(new ComponentPortal(component, PopupService.viewContainerRef, childInjector));
+    return PopupService.overlayRef.attach(new ComponentPortal(component, PopupService.viewContainerRef, childInjector));
   }
 
   static hidePopup(): void {
