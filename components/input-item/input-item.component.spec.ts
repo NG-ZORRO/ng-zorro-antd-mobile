@@ -4,17 +4,19 @@ import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core
 import { InputItemModule } from './input-item.module';
 import { createFakeEvent, dispatchFakeEvent } from '../core/testing';
 import { InputItem } from './input-item.component';
+import { FormsModule } from '@angular/forms';
 
 describe('InputComponent', () => {
   let component: TestInputComponent;
   let fixture: ComponentFixture<TestInputComponent>;
   let inputItem;
   let inputEle;
+  let inputModel;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestInputComponent],
-      imports: [InputItemModule]
+      imports: [InputItemModule, FormsModule]
     }).compileComponents();
   }));
 
@@ -22,6 +24,7 @@ describe('InputComponent', () => {
     fixture = TestBed.createComponent(TestInputComponent);
     component = fixture.componentInstance;
     inputItem = fixture.debugElement.query(By.css('InputItem'));
+    inputModel = fixture.debugElement.query(By.css('.input-item-1'));
     fixture.detectChanges();
   });
 
@@ -351,6 +354,14 @@ describe('InputComponent', () => {
     const fakeInput = inputItem.nativeElement.querySelector('.fake-input');
     expect(fakeInput.classList).toContain('focus');
   });
+
+  it('should ngModel work', () => {
+    const inputModelEle = inputModel.nativeElement.querySelector('input');
+    inputModelEle.value = 'test-ng-model';
+    inputModelEle.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    expect(component.modelValue).toBe('test-ng-model');
+  });
 });
 
 @Component({
@@ -382,12 +393,14 @@ describe('InputComponent', () => {
     >
       <span (click)="clickTitle()">标题</span>
     </InputItem>
+    <InputItem class="input-item-1" [(ngModel)]="modelValue"></InputItem>
     <div class="am-list-content" click = "blurFocus()">click to focus</div>
  `
 })
 export class TestInputComponent {
   type: string = 'text';
   value;
+  modelValue;
   defaultValue: string = '';
   placeholder: string = '';
   editable: boolean = true;
