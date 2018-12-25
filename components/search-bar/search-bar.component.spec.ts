@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { SearchBarModule } from './search-bar.module';
@@ -9,6 +10,7 @@ describe('SearchBarComponent', () => {
   let component: TestSearchBarComponent;
   let fixture: ComponentFixture<TestSearchBarComponent>;
   let searchBarEle;
+  let searchBarEles;
   let inputEle;
   let formEle;
   let buttonEle;
@@ -16,7 +18,7 @@ describe('SearchBarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestSearchBarComponent],
-      imports: [SearchBarModule, BrowserAnimationsModule, LocaleProviderModule]
+      imports: [SearchBarModule, BrowserAnimationsModule, LocaleProviderModule, FormsModule]
     }).compileComponents();
   }));
 
@@ -24,6 +26,7 @@ describe('SearchBarComponent', () => {
     fixture = TestBed.createComponent(TestSearchBarComponent);
     component = fixture.componentInstance;
     searchBarEle = fixture.debugElement.query(By.css('SearchBar'));
+    searchBarEles = fixture.debugElement.queryAll(By.css('SearchBar'));
     inputEle = searchBarEle.nativeElement.querySelector('input');
     formEle = searchBarEle.nativeElement.querySelector('form');
     buttonEle = fixture.debugElement.query(By.css('.am-button')).nativeElement;
@@ -112,6 +115,25 @@ describe('SearchBarComponent', () => {
     clearEle.click();
     expect(component.change).toHaveBeenCalledTimes(1);
   });
+
+  it('should ngModel work', fakeAsync(() => {
+    const inputEleNext = searchBarEles[1].nativeElement.querySelector('input');
+    component.modelValue = 'test';
+    fixture.detectChanges();
+    tick();
+    expect(inputEleNext.value).toBe('test', 'value is test');
+
+    component.modelValue = null;
+    fixture.detectChanges();
+    tick();
+    expect(inputEleNext.value).toBe('', 'value is undefined');
+  }));
+
+  it('should ngModelChange work', () => {
+    const clearEle = searchBarEles[1].nativeElement.querySelector('a');
+    clearEle.click();
+    expect(component.modelChange).toHaveBeenCalledTimes(1);
+  });
 });
 
 @Component({
@@ -132,12 +154,20 @@ describe('SearchBarComponent', () => {
              (onCancel)="cancel()"
              (onChange)="change($event)"
   ></SearchBar>
+  <SearchBar [ngModel]="modelValue"
+             [maxLength]="maxLength"
+             [cancelText]="cancelText"
+             [placeholder]="placeholder"
+             [showCancelButton]="showCancelButton"
+             (ngModelChange)="modelChange($event)"
+  ></SearchBar>
   <a role="button" class="am-button" (click)="handleClick()"><span>click to focus</span></a>
  `
 })
 export class TestSearchBarComponent {
   defaultValue = '';
   value = '';
+  modelValue = '';
   placeholder = '';
   showCancelButton = false;
   cancelText = '取消';
@@ -153,6 +183,7 @@ export class TestSearchBarComponent {
   focus = jasmine.createSpy('focus callback');
   blur = jasmine.createSpy('blur callback');
   change = jasmine.createSpy('change callback');
+  modelChange = jasmine.createSpy('ngModelChange callback');
 
   constructor() {}
 

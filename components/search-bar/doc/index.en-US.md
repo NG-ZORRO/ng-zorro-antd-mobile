@@ -15,6 +15,8 @@ Normally located below NavBar, the activation status is exited by the Cancel but
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
+| ngModel      |  the controlled current value, dobule binding  | String | <span> </span> |
+| ngModelChange    |  event callback     | (val: string): void | <span> </span> |
 | defaultValue |  the uncontrolled default value    | String | <span> </span> |
 | value      |  the controlled current value  | String | <span> </span> |
 | placeholder    |    placeholder   | String | <span> </span> |
