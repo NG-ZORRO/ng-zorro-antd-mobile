@@ -48,7 +48,11 @@ export class DemoModalAlertComponent {
           new Promise(resolve => {
             Toast.info('onPress Promise', 1000);
             setTimeout(resolve, 1000);
-          })
+          }),
+          style: {
+            color: '#ffffff',
+            background: '#00ff00'
+          }
       }
     ]);
   }
