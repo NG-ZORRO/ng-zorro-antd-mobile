@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { StepperModule } from './stepper.module';
@@ -7,13 +8,14 @@ describe('StepperComponent', () => {
   let component: TestStepperComponent;
   let fixture: ComponentFixture<TestStepperComponent>;
   let stepperEle;
+  let stepperEles;
   let upButton;
   let downButton;
   let inputEle;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestStepperComponent],
-      imports: [StepperModule]
+      imports: [StepperModule, FormsModule]
     }).compileComponents();
   }));
 
@@ -21,6 +23,7 @@ describe('StepperComponent', () => {
     fixture = TestBed.createComponent(TestStepperComponent);
     component = fixture.componentInstance;
     stepperEle = fixture.debugElement.query(By.css('Stepper'));
+    stepperEles = fixture.debugElement.queryAll(By.css('Stepper'));
     fixture.detectChanges();
     upButton = stepperEle.nativeElement.querySelector('.am-stepper-handler-up');
     downButton = stepperEle.nativeElement.querySelector('.am-stepper-handler-down');
@@ -169,6 +172,13 @@ describe('StepperComponent', () => {
     downButton.click();
     expect(component.change).toHaveBeenCalledTimes(1);
   });
+
+  it('should ngModel work', () => {
+    const downEl = stepperEles[1].nativeElement.querySelector('.am-stepper-handler-down');
+    component.modelChange = jasmine.createSpy('modelChange callback');
+    downEl.click();
+    expect(component.modelChange).toHaveBeenCalledTimes(1);
+  });
 });
 
 @Component({
@@ -184,12 +194,23 @@ describe('StepperComponent', () => {
               [readOnly]="readOnly"
               (onChange)="change($event)">
      </Stepper>
+     <Stepper [defaultValue]="defaultValue"
+              [ngModel]="modelValue"
+              [min]="min"
+              [max]="max"
+              [step]="step"
+              [showNumber]="showNumber"
+              [disabled]="disabled"
+              [readOnly]="readOnly"
+              (ngModelChange)="modelChange($event)">
+     </Stepper>
  `
 })
 export class TestStepperComponent {
   max = Infinity;
   min = -Infinity;
   value;
+  modelValue;
   step = 1;
   defaultValue;
   disabled = false;
@@ -200,5 +221,9 @@ export class TestStepperComponent {
 
   change(event) {
     this.value = event;
+  }
+
+  modelChange(event) {
+    this.modelValue = event;
   }
 }
