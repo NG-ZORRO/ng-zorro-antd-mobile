@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { DEMOComponent } from './_demo/demo.component';
 import { routes } from './app.routing.module';
 import { environment } from '../environments/environment';
-import { NgZorroAntdMobileModule, ModalComponent, ToastComponent, ActionSheetComponent  } from 'ng-zorro-antd-mobile';
+import { NgZorroAntdMobileModule, ModalServiceComponent, ToastComponent, ActionSheetComponent  } from 'ng-zorro-antd-mobile';
 
 import { LeftOutline, RightOutline } from '@ant-design/icons-angular/icons';
 
@@ -38,7 +38,7 @@ const icons: IconDefinition[] = [ LeftOutline, RightOutline ];
     { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#1890ff' }
   ],
   bootstrap   : [ AppComponent ],
-  entryComponents: [ModalComponent, ToastComponent, ActionSheetComponent]
+  entryComponents: [ToastComponent, ActionSheetComponent, ModalServiceComponent]
 })
 export class AppModule {
 }
