@@ -338,9 +338,10 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   writeValue(value: any): void {
-    if (value) {
-      this._value = value;
+    if (typeof value === undefined || value === null) {
+      this._value = '';
     }
+    this._value = value;
   }
 
   registerOnChange(fn: (_: any) => void): void {

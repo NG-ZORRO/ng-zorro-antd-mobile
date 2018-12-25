@@ -63,7 +63,7 @@ export class DemoModalPromptComponent {
       'defaultValue for prompt',
       [{ text: 'Cancel' }, { text: 'Submit', onPress: value => console.log(`输入的内容:${value}`) }],
       'default',
-      '100'
+      ['100']
     );
   }
 
@@ -86,7 +86,7 @@ export class DemoModalPromptComponent {
       'Please input login information',
       (login, password) => console.log(`login: ${login}, password: ${password}`),
       'login-password',
-      null,
+      ['default', '123456'],
       ['Please input name', 'Please input password']
     );
   }
