@@ -1,10 +1,18 @@
-import { Component, Input, Output, EventEmitter, OnChanges, HostBinding } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, HostBinding, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'Stepper , nzm-stepper',
-  templateUrl: './stepper.component.html'
+  templateUrl: './stepper.component.html',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => Stepper),
+      multi: true
+    }
+  ],
 })
-export class Stepper implements OnChanges {
+export class Stepper implements OnChanges, ControlValueAccessor {
   prefixCls: string = 'am-stepper';
   upDisableCls: object;
   downDisableCls: object;
@@ -91,6 +99,8 @@ export class Stepper implements OnChanges {
   clsStpDisabled: boolean = this._disabled;
   @HostBinding('class.showNumber')
   clsShowNum: boolean = this._showNumber;
+  private onChangeFn: (value: number) => void = () => {};
+  private onTouchFn: (value: number) => void = () => {};
 
   constructor() {}
 
@@ -98,6 +108,7 @@ export class Stepper implements OnChanges {
     if (!this._upDisabled) {
       this._value = this._value + this._step;
       this.onChange.emit(this._value);
+      this.onChangeFn(this._value);
       if (this._value + this._step > this._max) {
         this._upDisabled = true;
       }
@@ -117,6 +128,7 @@ export class Stepper implements OnChanges {
     if (!this._downDisabled) {
       this._value = this._value - this._step;
       this.onChange.emit(this._value);
+      this.onChangeFn(this._value);
       if (this._value - this._step < this._min) {
         this._downDisabled = true;
       }
@@ -142,6 +154,7 @@ export class Stepper implements OnChanges {
       this._value = this._max;
     }
     this.onChange.emit(this._value);
+    this.onChangeFn(this._value);
   }
 
   setCls() {
@@ -163,5 +176,18 @@ export class Stepper implements OnChanges {
       this._downDisabled = true;
     }
     this.setCls();
+  }
+
+  writeValue(value: number): void {
+    this._value = value;
+    this.ngOnChanges();
+  }
+
+   registerOnChange(fn: (value: number) => void): void {
+    this.onChangeFn = fn;
+  }
+
+   registerOnTouched(fn: (value: number) => void): void {
+    this.onTouchFn = fn;
   }
 }
