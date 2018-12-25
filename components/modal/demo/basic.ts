@@ -28,6 +28,24 @@ import { Modal, Toast } from 'ng-zorro-antd-mobile';
           <ListItem> <div Button [type]="'primary'" (onClick)="onClose('modal2')">买入</div> </ListItem>
         </List>
       </Modal>
+      <div Button (onClick)="showModal('modal3')">maskClosable</div>
+      <WhiteSpace></WhiteSpace>
+      <Modal [(ngModel)]="this.state.modal3" [transparent]="true" [title]="'Title'" [maskClosable]="true" (onClose)="onClose('modal3')">
+        <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
+          scoll content... <br />
+          scoll content... <br />
+          scoll content... <br />
+        </div>
+      </Modal>
+      <div Button (onClick)="showModal('modal4')">closable</div>
+      <WhiteSpace></WhiteSpace>
+      <Modal [(ngModel)]="this.state.modal4" [transparent]="true" [title]="'Title'" [closable]="true" (onClose)="onClose('modal4')">
+        <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
+          scoll content... <br />
+          scoll content... <br />
+          scoll content... <br />
+        </div>
+      </Modal>
     </WingBlank>
   `,
   styles: [
@@ -43,7 +61,9 @@ import { Modal, Toast } from 'ng-zorro-antd-mobile';
 export class DemoModalBasicComponent {
   state = {
     modal1: false,
-    modal2: false
+    modal2: false,
+    modal3: false,
+    modal4: false
   };
   footer = [
     {
