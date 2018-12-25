@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export interface CheckboxStatus {
@@ -41,7 +41,7 @@ export class CheckboxItem implements ControlValueAccessor {
   @Output()
   onChange = new EventEmitter<CheckboxStatus>();
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   onCheckboxClick(event) { }
 
@@ -53,6 +53,7 @@ export class CheckboxItem implements ControlValueAccessor {
 
   writeValue(value: boolean): void {
     this.checked = value;
+    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: (_: boolean) => {}): void {
