@@ -18,8 +18,6 @@ export class PickerViewComponent extends PickerComponent implements OnInit, Afte
   @Input()
   data: Array<any> = [];
   @Input()
-  value: Array<any> = [];
-  @Input()
   cols: number = 3;
   @Input()
   cascade: boolean;
@@ -30,7 +28,6 @@ export class PickerViewComponent extends PickerComponent implements OnInit, Afte
 
   pickerViewInit() {
     this.options.data = this.data;
-    this.options.value = this.value;
     this.options.cols = this.cols;
     this.options.cascade = this.cascade;
     this.init();
@@ -38,7 +35,8 @@ export class PickerViewComponent extends PickerComponent implements OnInit, Afte
 
   writeValue(value: any[]): void {
     if (value) {
-      this.value = value;
+      this.options.value = value;
+      this.init();
     }
   }
 
