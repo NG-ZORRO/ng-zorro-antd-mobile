@@ -88,8 +88,9 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   set value(v: string) {
     if (typeof v === undefined || v === null) {
       this._value = '';
+    } else {
+      this._value = v;
     }
-    this._value = v;
   }
   @Input()
   get defaultValue(): string {
@@ -340,8 +341,9 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   writeValue(value: any): void {
     if (typeof value === undefined || value === null) {
       this._value = '';
+    } else {
+      this._value = value;
     }
-    this._value = value;
   }
 
   registerOnChange(fn: (_: any) => void): void {
