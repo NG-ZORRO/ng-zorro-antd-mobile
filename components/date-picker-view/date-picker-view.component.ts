@@ -11,12 +11,13 @@ import {
   HostBinding
 } from '@angular/core';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
-import { zh_CN } from '../locale-provider/languages';
+import { Toast } from '../toast/toast.service';
 
 @Component({
   selector: 'DatePickerView, nzm-date-picker-view',
   templateUrl: './date-picker-view.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [Toast]
 })
 export class DatePickerViewComponent extends DatePickerComponent implements OnInit, AfterViewInit, OnChanges {
   @Input()
@@ -40,6 +41,10 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
+  @Input()
+  showErrorToast: boolean = true;
+  @Input()
+  showErrorToastInterval: number = 2000;
   @Output()
   onValueChange: EventEmitter<any> = new EventEmitter();
 
@@ -53,6 +58,8 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
     this.options.disabled = this.disabled;
     this.options.locale = this.locale;
     this.options.value = this.value;
+    this.options.showErrorToast = this.showErrorToast;
+    this.options.showErrorToastInterval = this.showErrorToastInterval;
     this.options.onValueChange = this.onValueChange;
     this.checkMode(this.options.mode);
     const value = this.transformDateFormat(this.options.value).split('-');
@@ -61,8 +68,12 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
         return parseInt(item, 0);
       });
     }
+    if (!this.checkTime() && this.options.showErrorToast) {
+      setTimeout(() => {
+        Toast.fail(this.errorMessage, this.options.showErrorToastInterval);
+      }, 0);
+    }
     this.initResult();
-    this.checkTime();
     this.initReady();
     this.getInitValueIndex();
   }

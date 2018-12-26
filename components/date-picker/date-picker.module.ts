@@ -4,15 +4,14 @@ import { DatePickerComponent } from './date-picker.component';
 import { DatePickerDirective } from './date-picker.directive';
 import { DatePickerOptions } from './date-picker-options.provider';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
-import { ModalModule } from '../modal/modal.module';
-import { Modal } from '../modal/modal.service';
-import { ModalComponent } from '../modal/modal.component';
+import { ToastModule } from '../toast/toast.module';
+import { ToastComponent } from '../toast/toast.component';
 
 @NgModule({
-  imports: [CommonModule, LocaleProviderModule, ModalModule],
+  imports: [CommonModule, LocaleProviderModule, ToastModule],
   exports: [DatePickerComponent, DatePickerDirective],
   declarations: [DatePickerComponent, DatePickerDirective],
-  entryComponents: [DatePickerComponent, ModalComponent],
-  providers: [DatePickerOptions, LocaleProviderModule, Modal]
+  entryComponents: [DatePickerComponent, ToastComponent],
+  providers: [DatePickerOptions, LocaleProviderModule]
 })
 export class DatePickerModule {}

@@ -14,6 +14,8 @@ export interface DatePickerOptionsInterface {
   okText: string;
   dismissText: string;
   appendToBody: boolean;
+  showErrorToast: boolean;
+  showErrorToastInterval: number;
 }
 
 export class DatePickerOptions implements DatePickerOptionsInterface {
@@ -31,6 +33,8 @@ export class DatePickerOptions implements DatePickerOptionsInterface {
   disabled = false;
   locale;
   appendToBody = false;
+  showErrorToast = true;
+  showErrorToastInterval = 2000;
   onOk: EventEmitter<any> = new EventEmitter();
   onDismiss: EventEmitter<any> = new EventEmitter();
   onValueChange: EventEmitter<any> = new EventEmitter();

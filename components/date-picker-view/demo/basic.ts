@@ -19,7 +19,7 @@ export class DemoDatePickerViewBasicComponent {
   name2 = '选择';
   mode = 'date';
 
-  value1 = new Date(2018, 8, 15, 8, 0);
+  value1 = new Date(1918, 8, 15, 8, 0);
   value2 = new Date();
 
   currentDateFormat(date, format: string = 'yyyy-mm-dd HH:MM:ss'): any {

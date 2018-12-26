@@ -4,11 +4,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { en_US, zh_CN } from '../locale-provider/languages';
 import { DatePickerOptions, DatePickerModule, DatePickerComponent } from './index';
 import {
-  Modal,
+  Toast,
   ListModule,
-  ModalModule,
+  ToastModule,
   ButtonModule,
-  ModalComponent,
+  ToastComponent,
   LocaleProviderModule,
   LocaleProviderService
 } from '../..';
@@ -24,11 +24,11 @@ describe('DatePickerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestDatePickerBasicComponent],
-      providers: [DatePickerOptions, LocaleProviderService, Modal],
-      imports: [DatePickerModule, LocaleProviderModule, ButtonModule, ListModule, ModalModule]
+      providers: [DatePickerOptions, LocaleProviderService, Toast],
+      imports: [DatePickerModule, LocaleProviderModule, ButtonModule, ListModule, ToastModule]
     }).compileComponents();
     TestBed.overrideModule(DatePickerModule, {
-      set: { entryComponents: [ModalComponent, DatePickerComponent] }
+      set: { entryComponents: [ToastComponent, DatePickerComponent] }
     }).compileComponents();
   }));
 
@@ -42,6 +42,26 @@ describe('DatePickerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should value lessthen min work', () => {
+    component.value1 = new Date(999, 1, 1, 0, 0, 0);
+    fixture.detectChanges();
+    button.click();
+    fixture.detectChanges();
+    datePickerEle = document.querySelector('datepicker');
+    expect(datePickerEle.querySelector('.am-picker-col-item').innerText).toBe('2018', 'minDate is 2000');
+    datePickerEle.querySelector('.am-picker-popup-header-right').click();
+  });
+
+  it('should value morethan max work', () => {
+    component.value1 = new Date(2999, 1, 1, 0, 0, 0);
+    fixture.detectChanges();
+    button.click();
+    fixture.detectChanges();
+    datePickerEle = document.querySelector('datepicker');
+    expect(datePickerEle.querySelector('.am-picker-col-item').innerText).toBe('2018', 'minDate is 2000');
+    datePickerEle.querySelector('.am-picker-popup-header-right').click();
   });
 
   it('should minDate work', () => {
@@ -97,12 +117,12 @@ describe('DatePickerComponent', () => {
   });
 
   it('should mode work', () => {
-    component.mode = 'date';
+    component.mode = 'datetime';
     fixture.detectChanges();
     button.click();
     fixture.detectChanges();
     datePickerEle = document.querySelector('datepicker');
-    expect(datePickerEle.querySelector('.am-picker').children.length).toBe(3, 'mode is date');
+    expect(datePickerEle.querySelector('.am-picker').children.length).toBe(5, 'mode is datetime');
     datePickerEle.querySelector('.am-picker-popup-header-right').click();
   });
 
@@ -180,7 +200,7 @@ describe('DatePickerComponent', () => {
     const target =  datePickerEle.querySelector('.am-picker-col-mask');
     dispatchTouchEvent(target, 'mousedown', 0, 100);
     fixture.detectChanges();
-    dispatchTouchEvent(target, 'mousemove', 0, 0);
+    dispatchTouchEvent(target, 'mousemove', 0, 1000);
     fixture.detectChanges();
     dispatchTouchEvent(target, 'mouseup', 0, 0);
     fixture.detectChanges();
@@ -266,7 +286,7 @@ export class TestDatePickerBasicComponent {
   title = 'result';
   mask = true;
   mode = 'datetime';
-  minDate = new Date(1000, 1, 1, 0, 0, 0);
+  minDate = new Date(1000, 2, 1, 0, 0, 0);
   maxDate = new Date(2031, 1, 1, 0, 0, 0);
 
   onOk1(result) {

@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DatePickerViewModule } from './date-picker-view.module';
 import { DatePickerOptions, DatePickerModule } from '../date-picker/index';
-import { LocaleProviderService, LocaleProviderModule, ModalModule, Modal, ModalComponent } from '../..';
+import { LocaleProviderService, LocaleProviderModule, ToastModule, Toast, ToastComponent } from '../..';
 import { en_US } from '../locale-provider/languages';
 
 describe('DatePickerViewComponent', () => {
@@ -18,11 +18,11 @@ describe('DatePickerViewComponent', () => {
     // service.setLocale(zh_CN);
     TestBed.configureTestingModule({
       declarations: [TestDatePickerViewBasicComponent],
-      providers: [DatePickerOptions, LocaleProviderService, Modal],
-      imports: [DatePickerModule, DatePickerViewModule, LocaleProviderModule, ModalModule]
+      providers: [DatePickerOptions, LocaleProviderService, Toast],
+      imports: [DatePickerModule, DatePickerViewModule, LocaleProviderModule, ToastModule]
     }).compileComponents();
     TestBed.overrideModule(DatePickerViewModule, {
-      set: { entryComponents: [ModalComponent] }
+      set: { entryComponents: [ToastComponent] }
     }).compileComponents();
   }));
 

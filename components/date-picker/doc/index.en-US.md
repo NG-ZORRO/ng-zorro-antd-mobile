@@ -21,6 +21,8 @@ Properties | Descrition | Type | Default
 | minuteStep |   The amount of time, in minutes, between each minute item.    | Number | 1 |
 | locale   | international, can override the configuration of the global `[LocaleProvider](https://ng.mobile.ant.design/components/locale-provider/en)` | Object: {DatePickerLocale: {year, month, day, hour, minute, am?, pm?}, okText, dismissText} |  -  |
 | disabled   | set disabled  | Boolean |    false  |
+| showErrorToast | Toast error message | Boolean | true |
+| showErrorToastInterval | Toast error message interval | number | 2000 |
 | onValueChange | fire when picker col change | (vals: any, index: number) => void | - |
 | title  | title | string/React.TemplateRef |  -  |
 | onOk  | handler called when click ok | (val): void  |  - |

@@ -19,3 +19,5 @@ Properties | Descrition | Type | Default
 | onChange  | change handler | (date: Object): void |  -  |
 | onValueChange | fire when picker col change | (vals: any, index: number) => void | - |
 | indicatorStyle  | style of indicator | Object | - |
+| showErrorToast | Toast error message | Boolean | true |
+| showErrorToastInterval | Toast error message interval | number | 2000 |

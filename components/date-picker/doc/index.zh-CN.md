@@ -22,6 +22,8 @@ subtitle: 日期选择
 | minuteStep |  分钟数递增步长设置   | Number | 1 |
 | locale   | 国际化，可覆盖全局`[LocaleProvider](https://ng.mobile.ant.design/components/locale-provider/zh)`的配置 | Object: {DatePickerLocale: {year, month, day, hour, minute, am?, pm?}, okText, dismissText } | - |
 | disabled   | 是否不可用      | Boolean |    false  |
+| showErrorToast | 显示Toast错误信息 | Boolean | true |
+| showErrorToastInterval | Toast错误信息显示时间 | number | 2000 |
 | onValueChange | 每列 picker 改变时的回调 | (vals: any, index: number) => void | - |
 | title  | 弹框的标题 | string/React.TemplateRef |  无  |
 | onOk  | 点击选中时执行的回调 | (val): void  |  无 |
