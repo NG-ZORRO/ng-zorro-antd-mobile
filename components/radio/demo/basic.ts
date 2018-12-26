@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <div>
       <List [renderHeader]=(renderHeader)>
-        <RadioItemGroup [(ngModel)]="selectedStatus1" (ngModelChange)="onChange($event)">
+        <RadioItemGroup [(ngModel)]="selectedStatus1.value" (onChange)="onChange($event)">
           <RadioItem *ngFor="let i of data"
                      [name]="i.name"
                      [value]="i.value"
@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
       </List>
       <WhiteSpace [size]="'lg'"></WhiteSpace>
       <List>
-        <RadioItemGroup [(ngModel)]="selectedStatus2" (ngModelChange)="onChange2($event)">
+        <RadioItemGroup [(ngModel)]="selectedStatus2.value" (onChange)="onChange2($event)">
           <RadioItem *ngFor="let i of data2"
                      [name]="i.name"
                      [value]="i.value"
@@ -27,7 +27,7 @@ import { Component } from '@angular/core';
         </RadioItemGroup>
       </List>
       <List [renderHeader]=(renderHeader2)>
-        <RadioItemGroup [(ngModel)]="selectedStatus1" (ngModelChange)="onChange($event)">
+        <RadioItemGroup [(ngModel)]="selectedStatus1.value" (onChange)="onChange($event)">
           <RadioItem *ngFor="let i of data"
                      [name]="i.name"
                      [value]="i.value"
@@ -39,7 +39,7 @@ import { Component } from '@angular/core';
       </List>
       <WhiteSpace [size]="'lg'"></WhiteSpace>
       <List>
-        <RadioItemGroup [(ngModel)]="selectedStatus2" (ngModelChange)="onChange2($event)">
+        <RadioItemGroup [(ngModel)]="selectedStatus2.value" (onChange)="onChange2($event)">
           <RadioItem *ngFor="let i of data2"
                      [name]="i.name"
                      [value]="i.value"
@@ -76,13 +76,7 @@ import { Component } from '@angular/core';
   ]
 })
 export class DemoRadioBasicComponent {
-  value = 0;
-  value2 = 0;
-  value3 = 0;
-  value4 = 0;
-
   disabled: boolean = true;
-
   selectedStatus1 = {value: 0, name: 'doctor'};
   selectedStatus2 = { value: 0, name: 'basketball', extra: 'details' };
   data = [{ value: 0, name: 'doctor' }, { value: 1, name: 'bachelor' }];

@@ -5,6 +5,7 @@ import {
   Output,
   EventEmitter,
   HostBinding,
+  ChangeDetectorRef,
   ViewEncapsulation,
   ChangeDetectionStrategy
 } from '@angular/core';
@@ -54,7 +55,7 @@ export class AgreeItem implements ControlValueAccessor {
   @HostBinding('class.am-checkbox-agree')
   checkboxAgree: boolean = true;
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   change(event) {
     this.checked = event.checked;
@@ -64,6 +65,7 @@ export class AgreeItem implements ControlValueAccessor {
 
   writeValue(value: boolean): void {
     this.checked = value;
+    this.cdr.markForCheck();
   }
 
   registerOnChange(fn: (_: boolean) => {}): void {
