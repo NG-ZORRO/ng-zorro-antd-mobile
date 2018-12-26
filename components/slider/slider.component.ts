@@ -70,8 +70,7 @@ export class Slider implements OnInit, ControlValueAccessor {
     return this._value;
   }
   set value(value: number) {
-    this._value = value;
-    this.valueRange();
+    this.setValue(value);
   }
   @Input()
   set defaultValue(value) {
@@ -147,6 +146,42 @@ export class Slider implements OnInit, ControlValueAccessor {
     };
   }
 
+  setValue(val: number, isWriteValue: boolean = false) {
+    if (isWriteValue) {
+      setTimeout(() => {
+        this._value = this.formatValue(val);
+        this.valueRange();
+        this.updateTrack();
+      }, 10);
+    } else {
+      this._value = this.formatValue(val);
+      this.valueRange();
+      this.updateTrack();
+    }
+  }
+
+  formatValue(value: number): number {
+    let res = value;
+    if (!this.checkValidValue(value)) {
+      res = this.checkValidValue(this._defaultValue) ? this._defaultValue : this._min;
+    }
+    return res;
+  }
+
+  checkValidValue(value: number): boolean {
+    if (value === null || value === undefined) {
+      return false;
+    }
+    let parsedValue: number = value;
+    if (typeof value !== 'number') {
+      parsedValue = parseFloat(value);
+    }
+    if (isNaN(parsedValue)) {
+      return false;
+    }
+    return true;
+  }
+
   handleChange(e) {
     setTimeout(() => {
       this.offset = 0;
@@ -166,6 +201,11 @@ export class Slider implements OnInit, ControlValueAccessor {
     this.onAfterChange.emit(e);
   }
 
+  updateTrack() {
+    this.offset = 0;
+    this.length = ((this._value - this._min) * 100) / (this._max - this._min);
+  }
+
   valueRange() {
     if (this._value < this._min) {
       this._value = this._min;
@@ -178,14 +218,14 @@ export class Slider implements OnInit, ControlValueAccessor {
   ngOnInit() {
     this.setCls();
     this.valueRange();
+    this.updateTrack();
     const sliderCoords = this._elf.nativeElement.getElementsByClassName('am-slider')[0].getBoundingClientRect();
     this.sliderLength = sliderCoords.width;
     this.sliderStart = sliderCoords.left;
   }
 
   writeValue(value: number): void {
-    this._value = value;
-    this.valueRange();
+    this.setValue(value, true);
   }
 
   registerOnChange(fn: (value: number) => void): void {

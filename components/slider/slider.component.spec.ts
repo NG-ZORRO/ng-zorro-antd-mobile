@@ -160,6 +160,21 @@ describe('SliderComponent', () => {
           (ngModelChange)="modelChange($event)"
           (onAfterChange)="afterChange($event)"
   ></Slider>
+  <Slider [min]= "min"
+          [max]="max"
+          [dots]="dots"
+          [step]="step"
+          [marks]="marks"
+          [(ngModel)]="value1"
+          [defaultValue]="defaultValue"
+          [disabled]="disabled"
+          [included]="included"
+          [railStyle]="railStyle"
+          [trackStyle]="trackStyle"
+          [handleStyle]="handleStyle"
+          (ngModelChange)="modelChange($event)"
+          (onAfterChange)="afterChange($event)"
+  ></Slider>
  `
 })
 export class TestSliderComponent implements OnInit {
@@ -167,6 +182,7 @@ export class TestSliderComponent implements OnInit {
   max = 100;
   step = 1;
   value;
+  value1 = {value: 1};
   defaultValue = 20;
   disabled = false;
   marks = {};
