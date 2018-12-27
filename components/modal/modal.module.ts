@@ -8,6 +8,7 @@ import { ButtonModule } from '../button/button.module';
 import { InputItemModule } from '../input-item/input-item.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertOptions } from './modal-options.provider';
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 @NgModule({
   imports: [CommonModule, ListModule, WingBlankModule, WhiteSpaceModule, ButtonModule, InputItemModule, FormsModule, ReactiveFormsModule],
   exports: [ModalComponent, ModalServiceComponent],

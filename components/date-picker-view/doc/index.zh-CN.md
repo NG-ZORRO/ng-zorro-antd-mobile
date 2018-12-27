@@ -20,3 +20,5 @@ DatePickerView 的功能类似于 DatePicker ，但它是直接渲染在区域�
 | onChange   | 时间发生变化的回调函数  | (date: Object): void | - |
 | onValueChange | 每列 picker 改变时的回调 | (vals: any, index: number) => void | - |
 | indicatorStyle  | style of indicator | Object | - |
+| showErrorToast | 显示Toast错误信息 | Boolean | true |
+| showErrorToastInterval | Toast错误信息显示时间 | number | 2000 |

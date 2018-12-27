@@ -51,6 +51,10 @@ export class DatePickerDirective implements OnDestroy, OnChanges, OnInit {
   locale: any;
   @Input()
   appendToBody: boolean;
+  @Input()
+  showErrorToast: boolean;
+  @Input()
+  showErrorToastInterval: number;
   @Output()
   onVisibleChange: EventEmitter<boolean> = new EventEmitter(true);
   @Output()
@@ -101,6 +105,8 @@ export class DatePickerDirective implements OnDestroy, OnChanges, OnInit {
         'disabled',
         'locale',
         'appendToBody',
+        'showErrorToast',
+        'showErrorToastInterval',
         'onOk',
         'onDismiss',
         'onValueChange'
