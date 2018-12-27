@@ -26,9 +26,7 @@ import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
           <ListItem DatePicker
                     [arrow]="'horizontal'"
                     [mode]="'date'"
-                    [title]="'Select date'"
-                    [minDate]="minDate"
-                    [maxDate]="maxDate">datePicker
+                    [title]="'Select date'">datePicker
           </ListItem>
           <ListItem Picker
                     [arrow]="'horizontal'"
@@ -70,8 +68,6 @@ export class DemoLocaleProviderBasicComponent {
       isLeaf: true
     }
   ];
-  maxDate = new Date(2018, 11, 3, 22, 0);
-  minDate = new Date(2015, 7, 6, 8, 30);
   seasons = [
     {
       label: '2013',
