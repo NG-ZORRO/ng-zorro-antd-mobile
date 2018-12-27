@@ -1,4 +1,5 @@
 import { OnInit, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SliderModule } from './slider.module';
@@ -8,6 +9,7 @@ describe('SliderComponent', () => {
   let component: TestSliderComponent;
   let fixture: ComponentFixture<TestSliderComponent>;
   let sliderEle;
+  let sliderEles;
   let amSlider;
   let sliderHandler;
   let sliderSteps;
@@ -16,7 +18,7 @@ describe('SliderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestSliderComponent],
-      imports: [SliderModule]
+      imports: [SliderModule, FormsModule]
     }).compileComponents();
   }));
 
@@ -24,6 +26,7 @@ describe('SliderComponent', () => {
     fixture = TestBed.createComponent(TestSliderComponent);
     component = fixture.componentInstance;
     sliderEle = fixture.debugElement.query(By.css('Slider'));
+    sliderEles = fixture.debugElement.queryAll(By.css('Slider'));
     amSlider = sliderEle.nativeElement.querySelector('.am-slider');
     sliderHandler = sliderEle.nativeElement.querySelector('.am-slider-handle');
     sliderSteps = sliderEle.nativeElement.querySelector('.am-slider-step');
@@ -105,6 +108,24 @@ describe('SliderComponent', () => {
     expect(component.change).toHaveBeenCalled();
     expect(component.afterChange).toHaveBeenCalled();
   });
+  it('should ngModel work', () => {
+    amSlider = sliderEles[1].nativeElement.querySelector('.am-slider');
+    sliderHandler = sliderEles[1].nativeElement.querySelector('.am-slider-handle');
+    sliderSteps = sliderEles[1].nativeElement.querySelector('.am-slider-step');
+    const sliderCoords = amSlider.getBoundingClientRect();
+    const sliderLength = sliderCoords.width;
+    const sliderStart = sliderCoords.left;
+    const offset = Math.round(((230 - sliderStart) / sliderLength) * 100);
+
+    const sliderHandlerNode = sliderEles[1].nativeElement.querySelector('sliderhandle');
+    dispatchTouchEvent(sliderHandlerNode, 'touchstart');
+    fixture.detectChanges();
+    dispatchTouchEvent(sliderHandlerNode, 'touchmove', 230);
+    fixture.detectChanges();
+    dispatchTouchEvent(sliderHandlerNode, 'touchend');
+    expect(sliderHandler.getAttribute('style')).toContain('left: ' + offset + '%');
+    expect(component.modelChange).toHaveBeenCalled();
+  });
 });
 
 @Component({
@@ -125,6 +146,20 @@ describe('SliderComponent', () => {
           (onChange)="change($event)"
           (onAfterChange)="afterChange($event)"
   ></Slider>
+  <Slider [min]= "min"
+          [max]="max"
+          [dots]="dots"
+          [step]="step"
+          [marks]="marks"
+          [(ngModel)]="value"
+          [disabled]="disabled"
+          [included]="included"
+          [railStyle]="railStyle"
+          [trackStyle]="trackStyle"
+          [handleStyle]="handleStyle"
+          (ngModelChange)="modelChange($event)"
+          (onAfterChange)="afterChange($event)"
+  ></Slider>
  `
 })
 export class TestSliderComponent implements OnInit {
@@ -143,7 +178,7 @@ export class TestSliderComponent implements OnInit {
 
   afterChange = jasmine.createSpy('afterChange callback');
   change = jasmine.createSpy('change callback');
-
+  modelChange = jasmine.createSpy('ngModelChange callback');
   constructor() {}
 
   ngOnInit() {

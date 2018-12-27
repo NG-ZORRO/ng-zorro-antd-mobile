@@ -6,15 +6,24 @@ import {
   EventEmitter,
   ElementRef,
   ViewEncapsulation,
-  HostBinding
+  HostBinding,
+  forwardRef
 } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'Slider , nzm-slider',
   templateUrl: './slider.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => Slider),
+      multi: true
+    }
+  ]
 })
-export class Slider implements OnInit {
+export class Slider implements OnInit, ControlValueAccessor {
   prefixCls = 'am-slider';
   sliderLength: number;
   sliderStart: number;
@@ -25,8 +34,8 @@ export class Slider implements OnInit {
   private _min: number = 0;
   private _max: number = 100;
   private _step: number = 1;
-  private _value: number = 10;
-  private _defaultValue: number;
+  private _value: number;
+  private _defaultValue: number = 0;
   private _disabled: boolean = false;
   private _marks: object = {};
   private _dots: boolean = false;
@@ -61,13 +70,12 @@ export class Slider implements OnInit {
     return this._value;
   }
   set value(value: number) {
-    this._value = value;
-    this.valueRange();
+    this.setValue(value);
   }
   @Input()
   set defaultValue(value) {
     this._defaultValue = value;
-    this._value = this._defaultValue;
+    this.setValue(value);
   }
   @Input()
   get disabled(): boolean {
@@ -119,13 +127,17 @@ export class Slider implements OnInit {
   set railStyle(value: object) {
     this._railStyle = value;
   }
-  @Output()
-  onChange = new EventEmitter<any>();
+
   @Output()
   onAfterChange = new EventEmitter<any>();
+  @Output()
+  onChange = new EventEmitter<any>();
 
   @HostBinding('class.am-slider-wrapper')
   amSliderWrapper: boolean = true;
+
+  private _ngModelOnChange: (value: number) => void = () => {};
+  private _ngModelOnTouched: (value: number) => void = () => {};
 
   constructor(private _elf: ElementRef) {}
 
@@ -137,17 +149,16 @@ export class Slider implements OnInit {
 
   handleChange(e) {
     setTimeout(() => {
-      this.offset = 0;
-      this.length = ((e - this._min) * 100) / (this._max - this._min);
+      this.setTrack(e);
       this._value = e;
     }, 10);
     this.onChange.emit(e);
+    this._ngModelOnChange(e);
   }
 
   handleAfterChange(e) {
     setTimeout(() => {
-      this.offset = 0;
-      this.length = ((e - this._min) * 100) / (this._max - this._min);
+      this.setTrack(e);
       this._value = e;
     }, 10);
     this.onAfterChange.emit(e);
@@ -164,9 +175,41 @@ export class Slider implements OnInit {
 
   ngOnInit() {
     this.setCls();
-    this.valueRange();
+    this.setValue(this._value);
     const sliderCoords = this._elf.nativeElement.getElementsByClassName('am-slider')[0].getBoundingClientRect();
     this.sliderLength = sliderCoords.width;
     this.sliderStart = sliderCoords.left;
+  }
+
+  writeValue(value: number): void {
+    this.setValue(value, true);
+  }
+
+  setValue(value: number, isWriteValue = false) {
+    if (value === 0 || value) {
+      this._value = value;
+    } else {
+      this._value = this._defaultValue;
+    }
+    this.valueRange();
+    this.setTrack(this._value);
+    if (isWriteValue) {
+      this._ngModelOnChange(this._value);
+    } else {
+      this.onAfterChange.emit(this._value);
+    }
+  }
+
+  setTrack(e) {
+    this.offset = 0;
+    this.length = ((e - this._min) * 100) / (this._max - this._min);
+  }
+
+  registerOnChange(fn: (value: number) => void): void {
+    this._ngModelOnChange = fn;
+  }
+
+  registerOnTouched(fn: (value: number) => void): void {
+    this._ngModelOnTouched = fn;
   }
 }
