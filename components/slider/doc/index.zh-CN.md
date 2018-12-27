@@ -18,6 +18,8 @@ subtitle: 滑动输入条
 
 属性 | 类型 | 默认值 | 说明
 ----|-----|------|------
+| ngModel|  Number  |     | 设置当前取值，可双向绑定。 |
+| ngModelChange |  Function     | Noop    | 当 Slider 的值发生改变时，会触发 ngModelChange 事件，并把改变后的值作为参数传入。 |
 | min    |  Number     | 0     | 最小值 |
 | max    |  Number     | 100    | 最大值 |
 | step    |  Number or null     | 1    | 步长，取值必须大于 0，并且可被 (max - min) 整除。当 `marks` 不为空对象时，可以设置 `step` 为 `null`，此时 Slider 的可选值仅有 marks 标出来的部分。 |
