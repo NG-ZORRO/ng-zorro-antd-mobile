@@ -70,7 +70,7 @@ export class Slider implements OnInit, ControlValueAccessor {
     return this._value;
   }
   set value(value: number) {
-     this.setValue(value);
+    this.setValue(value);
   }
   @Input()
   set defaultValue(value) {
@@ -127,16 +127,17 @@ export class Slider implements OnInit, ControlValueAccessor {
   set railStyle(value: object) {
     this._railStyle = value;
   }
-  @Output()
-  onChange = new EventEmitter<any>();
+
   @Output()
   onAfterChange = new EventEmitter<any>();
+  @Output()
+  onChange = new EventEmitter<any>();
 
   @HostBinding('class.am-slider-wrapper')
   amSliderWrapper: boolean = true;
 
-  private onChangeFn: (value: number) => void = () => {};
-  private onTouchFn: (value: number) => void = () => {};
+  private _ngModelOnChange: (value: number) => void = () => {};
+  private _ngModelOnTouched: (value: number) => void = () => {};
 
   constructor(private _elf: ElementRef) {}
 
@@ -152,7 +153,7 @@ export class Slider implements OnInit, ControlValueAccessor {
       this._value = e;
     }, 10);
     this.onChange.emit(e);
-    this.onChangeFn(e);
+    this._ngModelOnChange(e);
   }
 
   handleAfterChange(e) {
@@ -193,7 +194,7 @@ export class Slider implements OnInit, ControlValueAccessor {
     this.valueRange();
     this.setTrack(this._value);
     if (isWriteValue) {
-      this.onChangeFn(this._value);
+      this._ngModelOnChange(this._value);
     } else {
       this.onAfterChange.emit(this._value);
     }
@@ -205,10 +206,10 @@ export class Slider implements OnInit, ControlValueAccessor {
   }
 
   registerOnChange(fn: (value: number) => void): void {
-    this.onChangeFn = fn;
+    this._ngModelOnChange = fn;
   }
 
   registerOnTouched(fn: (value: number) => void): void {
-    this.onTouchFn = fn;
+    this._ngModelOnTouched = fn;
   }
 }
