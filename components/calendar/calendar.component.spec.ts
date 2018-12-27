@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
+import { ModalModule } from '../modal/modal.module';
+import { Modal } from '../modal/modal.service';
+import { ModalComponent } from '../modal/modal.component';
 import { CalendarModule } from './calendar.module';
 
 describe('CalendarComponent', () => {
@@ -14,8 +17,11 @@ describe('CalendarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestCalendarBasicComponent],
-      providers: [LocaleProviderService],
-      imports: [LocaleProviderModule, CalendarModule, FormsModule]
+      providers: [LocaleProviderService, Modal],
+      imports: [LocaleProviderModule, CalendarModule, FormsModule, ModalModule]
+    }).compileComponents();
+    TestBed.overrideModule(CalendarModule, {
+      set: { entryComponents: [ModalComponent] }
     }).compileComponents();
   }));
 
