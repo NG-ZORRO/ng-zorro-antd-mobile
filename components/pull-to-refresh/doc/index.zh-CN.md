@@ -15,9 +15,14 @@ subtitle: 拉动刷新
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| direction  | 拉动方向，可以是 `up` 或 `down` | String | `down` |
+| direction  | 拉动方向，可以是 `up` 或 `down` | String | - |
 | distanceToRefresh | 刷新距离 | number | 25 |
 | refreshing | 是否显示刷新状态 | bool | false |
 | onRefresh | 必选, 刷新回调函数 | () => void | - |
-| indicator  | 指示器配置 `{ activate: any, deactivate: any, release: any, finish: any }` | Object | - |
+| ngModel | 刷新的状态 `{ currentState : deactivate , drag: false}` | Object | deactivate |
+| headerIndicator  | 头部指示器配置 `{ activate: any, deactivate: any, release: any, finish: any }` | Object | - |
+| footerIndicator  | 脚部指示器配置 `{ activate: any, deactivate: any, release: any, finish: any }` | Object | - |
+| endReachedRefresh| 滚动到底自动刷新（direction=down） | bool | false | 
+
+> **注：**  Need to set the height to use this component, otherwise it will not display correctly.
 

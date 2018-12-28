@@ -1,15 +1,18 @@
 import {
-  ViewContainerRef,
-  ViewChild,
-  HostListener,
-  Component,
-  TemplateRef,
   Input,
-  EventEmitter,
   Output,
+  Component,
+  ViewChild,
+  forwardRef,
+  TemplateRef,
+  HostBinding,
+  EventEmitter,
+  HostListener,
+  ViewContainerRef,
   ViewEncapsulation,
-  HostBinding
+  ElementRef
 } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export interface Indicator {
   activate?: any;
   deactivate?: any;
@@ -20,9 +23,16 @@ export interface Indicator {
 @Component({
   selector: 'PullToRefresh, nzm-pull-to-refresh',
   templateUrl: './pull-to-refresh.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => PullToRefreshComponent),
+      multi: true
+    }
+  ]
 })
-export class PullToRefreshComponent {
+export class PullToRefreshComponent implements ControlValueAccessor {
   transtionCls: any = {};
   style: object = {
     '-webkit-transform': 'translate3d( 0, 0, 0 )',
@@ -30,53 +40,68 @@ export class PullToRefreshComponent {
   };
   startY: number;
   state: any = {
-    currSt: 'deactivate',
+    currentState: 'deactivate',
     drag: false
   };
 
-  private _indicator: Indicator = {
+  private _headerIndicator: Indicator = {
     activate: '松开立即刷新',
     deactivate: '下拉可以刷新',
     release: '刷新中。。。',
     finish: '完成刷新'
   };
-  private _direction: string = 'down';
+
+  private _footerIndicator: Indicator = {
+    activate: '松开立即刷新',
+    deactivate: '上拉可以刷新',
+    release: '刷新中。。。',
+    finish: '完成刷新'
+  };
+
+  private _startTime = 0;
+  private _endTime = 0;
+  private _endRreach = false;
+  private _direction: string = '';
   private _clientHeight: number = 0;
   private _currentContentHeight: number = 0;
-  private _footerHeight: number = 54;
   private _lastcontentOffset: number = 0;
-  private _viewHeight: number = Math.max(window.innerHeight, window.innerWidth);
+  private _onChanged: (value: object) => {};
+  private _onTouched: () => {};
 
   @ViewChild('pullToRefresh', { read: ViewContainerRef })
   private _pullToRefresh: ViewContainerRef;
 
   @Input()
-  scrollRefresh: boolean = false;
-  @Input()
   distanceToRefresh: number = 25; //触发刷新距离
   @Input()
   damping: number = 100; // 下拉的最大距离
+  @Input()
+  endReachedRefresh: boolean = false;
+  @Input()
+  refreshing: boolean = false;
   @Input()
   get direction(): string {
     return this._direction;
   }
   set direction(value: string) {
     this._direction = value;
-    this.refreshUp = this._direction === 'up';
-    this.refreshDown = this._direction === 'down';
+    this.refreshUp = this._direction === 'up' || this._direction === '';
+    this.refreshDown = this._direction === 'down' || this._direction === '';
   }
   @Input()
-  get indicator(): Indicator {
-    return this._indicator;
+  get headerIndicator(): Indicator {
+    return this._headerIndicator;
   }
-  set indicator(value: Indicator) {
-    this._indicator.activate = value.activate ? value.activate : this._indicator.activate;
-    this._indicator.deactivate = value.deactivate ? value.deactivate : this._indicator.deactivate;
-    this._indicator.release = value.release ? value.release : this._indicator.release;
-    this._indicator.finish = value.finish ? value.finish : this._indicator.finish;
+  set headerIndicator(value: Indicator) {
+    Object.assign(this._headerIndicator, value);
   }
-  @Output()
-  footerRefresh: EventEmitter<any> = new EventEmitter();
+  @Input()
+  get footerIndicator(): Indicator {
+    return this._footerIndicator;
+  }
+  set footerIndicator(value: Indicator) {
+    Object.assign(this._footerIndicator, value);
+  }
   @Output()
   onRefresh: EventEmitter<any> = new EventEmitter();
 
@@ -91,7 +116,8 @@ export class PullToRefreshComponent {
 
   @HostListener('touchstart', ['$event'])
   touchstart(e) {
-    if (this._direction === 'down') {
+    this._startTime = Date.now();
+    if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
       if (document.getElementsByTagName('pulltorefresh')[0].scrollTop > 0) {
         this.startY = undefined;
         return;
@@ -107,7 +133,7 @@ export class PullToRefreshComponent {
   }
   @HostListener('touchmove', ['$event'])
   touchmove(e) {
-    if (this._direction === 'down') {
+    if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
       if (!this.startY) {
         return;
       }
@@ -121,7 +147,9 @@ export class PullToRefreshComponent {
       }
       if (this.state.drag) {
         // 禁止滚动
-        e.preventDefault();
+        if (e.cancelable) {
+          e.preventDefault();
+        }
       } else {
         return;
       }
@@ -132,7 +160,8 @@ export class PullToRefreshComponent {
         distanceY = 0;
       }
       if (distanceY > this.distanceToRefresh) {
-        this.state.currSt = 'activate';
+        this.state.currentState = 'activate';
+        this._onChanged(this.state);
       }
       this.style = {
         '-webkit-transform': 'translate3d( 0, ' + distanceY + 'px, 0 )',
@@ -153,14 +182,17 @@ export class PullToRefreshComponent {
       }
       if (this.state.drag) {
         // 禁止滚动
-        e.preventDefault();
+        if (e.cancelable) {
+          e.preventDefault();
+        }
       } else {
         return;
       }
       //如果滑动到底部了，滑动距离随着拉动的距离增加缓慢增加
       distanceY = -(distanceY / (distanceY - this.damping)) * this.damping;
       if (Math.abs(distanceY) > this.distanceToRefresh) {
-        this.state.currSt = 'activate';
+        this.state.currentState = 'activate';
+        this._onChanged(this.state);
       }
       this.style = {
         '-webkit-transform': 'translate3d( 0, ' + distanceY + 'px, 0 )',
@@ -175,17 +207,25 @@ export class PullToRefreshComponent {
     }
     const distanceY = e.changedTouches[0].clientY - this.startY;
     if (Math.abs(distanceY) >= this.distanceToRefresh) {
-      this.state.currSt = 'release';
-      if (this._direction === 'down') {
+      this.state.currentState = 'release';
+      if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
         this.translateY(this.distanceToRefresh + 1);
       } else {
         this.translateY(-this.distanceToRefresh - 1);
       }
+      this._onChanged(this.state);
       setTimeout(() => {
-        this.state.currSt = 'finish';
-        this.onRefresh.emit();
+        this.state.currentState = 'finish';
+        this._onChanged(this.state);
+        if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
+          this.onRefresh.emit('down');
+        } else {
+          this.translateY(-this.distanceToRefresh - 1);
+          this.onRefresh.emit('up');
+        }
         setTimeout(() => {
-          this.state.currSt = 'deactivate';
+          this.state.currentState = 'deactivate';
+          this._onChanged(this.state);
           this.translateY(0);
         }, 0);
       }, 500);
@@ -199,24 +239,64 @@ export class PullToRefreshComponent {
   }
   @HostListener('scroll', ['$event'])
   scroll(evt) {
+    this._endTime = Date.now();
     const contentOffset = evt.target.scrollTop;
     const offset = contentOffset - this._lastcontentOffset;
     this._lastcontentOffset = contentOffset;
-    if (!this.scrollRefresh) {
+    if (this._direction === '') {
+      if (
+        offset > 0 &&
+        contentOffset > 0 &&
+        evt.target.scrollTop + this.ele.nativeElement.clientHeight === evt.target.scrollHeight
+        ) {
+          setTimeout(() => {
+            this._endRreach = true;
+          }, 500);
+      } else {
+        this._endRreach = false;
+      }
+    }
+    if (!this.endReachedRefresh) {
       return;
     }
     if (
+      this._direction === 'down' &&
       offset > 0 &&
       contentOffset > 0 &&
-      evt.target.scrollTop + this._viewHeight > evt.target.scrollHeight - this._footerHeight / 2
-    ) {
+      evt.target.scrollTop + this.ele.nativeElement.clientHeight > evt.target.scrollHeight - this.distanceToRefresh &&
+      this._endTime - this._startTime >= 100
+      ) {
+        this._startTime = this._endTime;
+        if (this.refreshing) {
+          this.state.currentState = 'release';
+          this._onChanged(this.state);
+        }
+        setTimeout(() => {
+          if (this._direction === '') {
+            this._endRreach = true;
+          }
+          if (this.endReachedRefresh) {
+            this.onRefresh.emit('endReachedRefresh');
+          }
+          if (this.refreshing) {
+            this.state.currentState = 'finish';
+            this._onChanged(this.state);
+          }
+        }, 500);
+    } else {
       setTimeout(() => {
-        this.footerRefresh.emit('finished');
+        if (this._direction === '') {
+          this._endRreach = false;
+        }
+        if (this.refreshing) {
+          this.state.currentState = 'finish';
+          this._onChanged(this.state);
+        }
       }, 500);
     }
   }
 
-  constructor() {}
+  constructor(private ele: ElementRef) {}
 
   isTemplateRef(value) {
     if (value) {
@@ -230,5 +310,19 @@ export class PullToRefreshComponent {
       '-webkit-transform': 'translate3d( 0, ' + distanceY + 'px, 0 )',
       transform: 'translate3d( 0, ' + distanceY + 'px, 0 )'
     };
+  }
+
+  writeValue(value: object): void {
+    if (value !== null) {
+      this.state = value;
+    }
+  }
+
+  registerOnChange(fn: (_: object) => {}): void {
+    this._onChanged = fn;
+  }
+
+  registerOnTouched(fn: () => {}): void {
+    this._onTouched = fn;
   }
 }
