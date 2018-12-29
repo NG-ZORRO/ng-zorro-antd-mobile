@@ -1,10 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, HostBinding, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'Range , nzm-range',
-  templateUrl: './range.component.html'
+  templateUrl: './range.component.html',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => Range),
+      multi: true
+    }
+  ]
 })
-export class Range implements OnInit {
+export class Range implements OnInit, ControlValueAccessor {
   prefixCls: string = 'am-slider';
   offset: any[] = [];
   length: any[] = [];
@@ -59,12 +67,13 @@ export class Range implements OnInit {
     return this._value;
   }
   set value(value: [number]) {
-    this._value = value;
+    this.setValue(value);
   }
   @Input()
   set defaultValue(value) {
     this._defaultValue = value;
     this._value = this._defaultValue;
+    this.setValue(value);
   }
   @Input()
   get disabled(): boolean {
@@ -139,6 +148,9 @@ export class Range implements OnInit {
   @HostBinding('class.am-slider-wrapper')
   amWrapper: boolean = true;
 
+  private _ngModelOnChange: (value: number[]) => void = () => {};
+  private _ngModelOnTouched: (value: number) => void = () => {};
+
   constructor(private _elf: ElementRef) {}
 
   setCls() {
@@ -149,11 +161,25 @@ export class Range implements OnInit {
 
   initialValue() {
     const minTemp = this._min;
+    if (!this.verifyPushable()) {
+      this._pushable = 0;
+      console.log('pushable设置无效，已大于有些value间隔，被强制设为0');
+   }
     const initialValue = Array.apply(null, Array(this._count + 1)).map(function() {
       return minTemp;
     });
     this._defaultValue = this._defaultValue !== undefined ? this._defaultValue : initialValue;
     this._value = this._value !== undefined ? this._value : this._defaultValue;
+    // 验证count值
+    this._count = this._value.length - 1;
+    // 验证value区间
+    for (let i = 0; i < this._value.length; i++) {
+      if (this._value[i] < this._min) {
+        this._value[i] = this._min;
+      } else if (this._value[i] > this._max) {
+        this._value[i] = this._max;
+      }
+    }
     if (this._count > 0) {
       this.upperBound = Math.max(...this._value);
       this.lowerBound = Math.min(...this._value);
@@ -162,12 +188,7 @@ export class Range implements OnInit {
 
   handleChange(e, i) {
     let temp = [...this._value];
-    if (typeof this._pushable === 'boolean' && this._pushable) {
-      const diff = e - this._value[i];
-      temp = temp.map(v => (v = v + diff));
-    } else {
-      temp[i] = e;
-    }
+    temp[i] = e;
     this.upperBound = Math.max(...temp);
     this.lowerBound = Math.min(...temp);
     this.setTrackStyle(temp);
@@ -181,6 +202,7 @@ export class Range implements OnInit {
       this.lowerBound = Math.min(...this._value);
       this.setTrackStyle(this._value);
       this.onAfterChange.emit(this._value);
+      this._ngModelOnChange(this._value);
       this.setValueBound();
     }, 0);
   }
@@ -198,13 +220,13 @@ export class Range implements OnInit {
   setValueBound() {
     this.maxBound = [];
     this.minBound = [];
-    if (this._allowCross || this._handleCount <= 1) {
+    if ((this._allowCross && this._pushable === undefined) || this._handleCount <= 1) {
       for (let i = 0; i < this._handleCount; i++) {
         this.maxBound[i] = this._max;
         this.minBound[i] = this._min;
       }
     } else {
-      if (typeof this._pushable !== 'number' || (typeof this._pushable === 'boolean' && this._pushable)) {
+      if (this._pushable === undefined) {
         this._pushable = 0;
       }
       for (let i = 0; i < this._handleCount; i++) {
@@ -215,29 +237,50 @@ export class Range implements OnInit {
   }
 
   verifyPushable() {
-    if (typeof this._pushable === 'number') {
-      for (let i = 1; i < this._handleCount; i++) {
-        const diff = this._value[i] - this._value[i - 1];
-        if (diff < this._pushable) {
-          return false;
-        }
+    for (let i = 1; i < this._handleCount; i++) {
+      const diff = this._value[i] - this._value[i - 1];
+      if (diff < this._pushable) {
+        return false;
       }
     }
     return true;
   }
 
-  ngOnInit() {
-    if (this._max === undefined || this._min === undefined) {
-      return;
-    }
-    if (this.verifyPushable()) {
-      this.setValueBound();
-      this._handleCount = this._count + 1;
-      this.setCls();
-      const sliderCoords = this._elf.nativeElement.getElementsByClassName('am-slider')[0].getBoundingClientRect();
-      this.sliderLength = sliderCoords.width;
-      this.sliderStart = sliderCoords.left;
+  writeValue(value: number[]): void {
+    this.setValue(value, true);
+  }
+
+  setValue(value: number[], isWriteValue = false) {
+    if (value) {
+      this._value = value;
+      this._handleCount = this._value.length + 1;
       this.initialValue();
+      this.setValueBound();
+      this.setCls();
+      this.setTrackStyle(this._value);
+      if (isWriteValue) {
+        this._ngModelOnChange(this._value);
+      } else {
+        this.onAfterChange.emit(this._value);
+      }
     }
+  }
+
+  registerOnChange(fn: (value: number[]) => void): void {
+    this._ngModelOnChange = fn;
+  }
+
+  registerOnTouched(fn: (value: number) => void): void {
+    this._ngModelOnTouched = fn;
+  }
+
+  ngOnInit() {
+    this.initialValue();
+    this.setValueBound();
+    this._handleCount = this._count + 1;
+    this.setCls();
+    const sliderCoords = this._elf.nativeElement.getElementsByClassName('am-slider')[0].getBoundingClientRect();
+    this.sliderLength = sliderCoords.width;
+    this.sliderStart = sliderCoords.left;
   }
 }

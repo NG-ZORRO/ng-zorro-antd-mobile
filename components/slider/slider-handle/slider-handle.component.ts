@@ -90,7 +90,7 @@ export class SliderHandle implements OnInit, OnDestroy {
   /* 手势操作 */
   @HostListener('touchstart', ['$event'])
   panstart(event) {
-    event.preventDefault();
+    // event.preventDefault();
     if (!this._disabled) {
       this._startX = event && event.changedTouches && event.changedTouches[0] && event.changedTouches[0].clientX;
       this._handleStatus = 'start';

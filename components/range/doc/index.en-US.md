@@ -18,6 +18,8 @@ A `Range` component for selecting particular value in range, eg: controls the di
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
+| ngModel|  Number  |     | The value of slider, double binding. |
+| ngModelChange |  Function     | Noop    | Callback function that is called when the user changes the slider's value. |
 | min    |  Number     | 0     | The minimum value the slider can slide to. |
 | max    |  Number     | 100    | The maximum value the slider can slide to. |
 | step    |  Number or null     | 1    | The granularity the slider can step through values. Must greater than 0, and be divided by (max - min) . When `marks` no null, `step` can be `null`. |
