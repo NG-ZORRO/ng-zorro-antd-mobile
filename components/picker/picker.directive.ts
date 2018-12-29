@@ -144,7 +144,9 @@ export class PickerDirective implements OnDestroy, OnChanges, OnInit, ControlVal
         'cascade',
         'appendToBody',
         'indicatorStyle',
-        'onPickerChange'
+        'onPickerChange',
+        'onVisibleChange',
+        'onDismiss'
       ];
       optionalParams.forEach(param => {
         if (typeof this[param] !== 'undefined') {
