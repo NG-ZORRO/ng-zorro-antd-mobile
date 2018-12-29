@@ -40,4 +40,5 @@ export class DatePickerOptions implements DatePickerOptionsInterface {
   onValueChange: EventEmitter<any> = new EventEmitter();
   onChange: EventEmitter<any> = new EventEmitter();
   hidePicker: () => void;
+  updateNgModel?: (value: Date) => void;
 }

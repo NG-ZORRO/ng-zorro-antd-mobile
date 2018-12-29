@@ -1,15 +1,17 @@
 import {
-  Component,
-  OnInit,
-  ViewEncapsulation,
   Input,
+  OnInit,
   Output,
-  EventEmitter,
+  Component,
   OnChanges,
+  forwardRef,
+  HostBinding,
+  EventEmitter,
   SimpleChanges,
   AfterViewInit,
-  HostBinding
+  ViewEncapsulation
 } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
 import { Toast } from '../toast/toast.service';
 
@@ -17,9 +19,16 @@ import { Toast } from '../toast/toast.service';
   selector: 'DatePickerView, nzm-date-picker-view',
   templateUrl: './date-picker-view.component.html',
   encapsulation: ViewEncapsulation.None,
-  providers: [Toast]
+  providers: [
+    Toast,
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DatePickerViewComponent),
+      multi: true
+    }
+  ]
 })
-export class DatePickerViewComponent extends DatePickerComponent implements OnInit, AfterViewInit, OnChanges {
+export class DatePickerViewComponent extends DatePickerComponent implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {
   @Input()
   mode: string = 'date';
   @Input()
@@ -51,7 +60,38 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
   @HostBinding('class.am-picker')
   amPicker = true;
 
-  init() {
+  reloadPicker() {
+    if (this.currentPicker) {
+      const self = this;
+      setTimeout(() => {
+        self.selectedTarget.forEach((item, i) => {
+          self.currentPicker.children[i].children[2].style.transition = 'transform .3s';
+          const index = parseInt(item.currentY, 0);
+          self.currentPicker.children[i].children[2].style.transform = `translateY(${index * self.lineHeight}px)`;
+        });
+      }, 0);
+    }
+  }
+
+  writeValue(value: Date): void {
+    if (value) {
+      this.value = value;
+    }
+  }
+
+  registerOnChange(fn: (_: Date) => {}): void {
+    this.ngModelOnChange = fn;
+  }
+
+  registerOnTouched(fn: () => {}): void {
+    this.ngModelOnTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  optionInit() {
     this.options.mode = this.mode;
     this.options.minDate = this.minDate;
     this.options.maxDate = this.maxDate;
@@ -68,30 +108,10 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
         return parseInt(item, 0);
       });
     }
-    if (!this.checkTime() && this.options.showErrorToast) {
-      setTimeout(() => {
-        Toast.fail(this.errorMessage, this.options.showErrorToastInterval);
-      }, 0);
-    }
-    this.initResult();
-    this.initReady();
-    this.getInitValueIndex();
-  }
-
-  reloadPicker() {
-    if (this.currentPicker) {
-      const self = this;
-      setTimeout(() => {
-        self.selectedTarget.forEach((item, i) => {
-          self.currentPicker.children[i].children[2].style.transition = 'transform .3s';
-          const index = parseInt(item.currentY, 0);
-          self.currentPicker.children[i].children[2].style.transform = `translateY(${index * self.lineHeight}px)`;
-        });
-      }, 0);
-    }
   }
 
   ngOnInit() {
+    this.optionInit();
     this.localeProvider();
   }
 
@@ -114,11 +134,13 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
         this.judgeEqualArray(this.currentTime, this.min_date, this.currentTime.length) ||
         this.judgeTime(this.currentTime, this.max_date)
       ) {
+        this.optionInit();
         this.init();
       }
     }
 
     if (changes.mode || changes.minDate || changes.maxDate || changes.disabled || changes.locale) {
+      this.optionInit();
       this.init();
     }
   }
