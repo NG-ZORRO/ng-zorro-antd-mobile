@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PullToRefreshModule } from './pull-to-refresh.module';
 import { IconModule } from '../icon/icon.module';
 import { dispatchTouchEvent } from '../core/testing';
+import { from } from 'rxjs';
 
 describe('PullToRefreshComponent', () => {
   let component: TestPullToRefreshComponent;
@@ -13,7 +15,7 @@ describe('PullToRefreshComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestPullToRefreshComponent],
-      imports: [PullToRefreshModule, IconModule]
+      imports: [PullToRefreshModule, IconModule, FormsModule, ReactiveFormsModule]
     }).compileComponents();
   }));
 
@@ -94,16 +96,16 @@ describe('PullToRefreshComponent', () => {
   });
 
   it('should scroll work', () => {
-    component.state.down = false;
+    component.state.down = true;
     component.state.scrollRefresh = true;
     fixture.detectChanges();
     dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchstart', 0, 300);
     fixture.detectChanges();
-    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchmove', 0, 500);
+    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchmove', 0, 1000);
     fixture.detectChanges();
-    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchend', 0, 500);
+    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchend', 0, 1000);
     fixture.detectChanges();
-    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'scroll', 0, 500);
+    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'scroll', 0, 1000);
     fixture.detectChanges();
     pullToRefreshEle.nativeElement.scroll();
     fixture.detectChanges();
@@ -130,9 +132,12 @@ describe('PullToRefreshComponent', () => {
   selector: 'demo-notice-bar-basic',
   template: `
   <PullToRefresh [ngStyle]="dtPullToRefreshStyle"
-                 [scrollRefresh]="state.scrollRefresh"
+                 [endReachedRefresh]="state.scrollRefresh"
+                 [(ngModel)]="state.refreshState"
                  [direction]="state.down ? 'down' : 'up'"
-                 [indicator]="state.down ? {} : { deactivate: '上拉可以刷新' }"
+                 [refreshing]="true"
+                 [headerIndicator]="state.down ? {} : { deactivate: '下拉可以刷新' }"
+                 [footerIndicator]="state.down ? {} : { deactivate: '上拉可以刷新' }"
                  (onRefresh)="pullToRefresh($event)"
   >
     <div *ngFor="let i of this.state.data" style="text-align: center; padding: 20px">{{i}}</div>
@@ -145,7 +150,10 @@ describe('PullToRefreshComponent', () => {
 })
 export class TestPullToRefreshComponent {
   state = {
-    refreshing: false,
+    refreshState: {
+      currSt: 'deactivate',
+      drag: false
+    },
     scrollRefresh: false,
     down: true,
     height: window.innerHeight - ((63 + 47) * window.devicePixelRatio) / 2,

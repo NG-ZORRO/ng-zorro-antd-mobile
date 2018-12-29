@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
                style="margin-bottom: 10px"
                [option]="{'content':'该组件只支持Touch事件，请使用移动模式/设备打开此页。', 'marqueeProps': {fps: 100}}"
     ></NoticeBar>
-    <div Button style="marginBottom: 15px" (onClick)="onClick()">direction: {{this.state.down ? 'down' : 'up'}}</div>
+    <div Button (onClick)="onClick()">direction: {{state.directionName}}</div>
     <PullToRefresh [ngStyle]="dtPullToRefreshStyle"
-                   [direction]="this.state.down ? 'down' : 'up'"
-                   [indicator]="this.state.down ? {} : { deactivate: '上拉可以刷新' }"
+                   [direction]="state.direction"
+                   [(ngModel)]="state.refreshState"
+                   [endReachedRefresh]="state.endReachedRefresh"
                    (onRefresh)="pullToRefresh($event)"
     >
       <div *ngFor="let i of this.state.data" style="text-align: center; padding: 20px">{{i}}</div>
@@ -23,31 +24,68 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemoPullToRefreshBasicComponent implements OnInit {
   isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(window.navigator.userAgent);
-  pageLimit = 100;
+  pageLimit = 20;
+  public directionCount = 0;
   page = 0;
   state = {
-    refreshing: false,
-    down: true,
-    height: window.innerHeight - ((63 + 47) * window.devicePixelRatio) / 2,
-    data: []
+    refreshState: {
+      currentState: 'deactivate',
+      drag: false
+    },
+    direction: '',
+    endReachedRefresh: false,
+    height: 500,
+    data: [],
+    directionName: 'both up and down'
   };
   dtPullToRefreshStyle = { height: this.state.height + 'px' };
 
   constructor() {}
 
   onClick() {
-    this.state.down = !this.state.down;
+    this.directionCount ++;
+    switch (this.directionCount) {
+      case 0:
+        this.state.direction = '';
+        this.state.directionName = 'both up and down';
+      break;
+      case 1:
+        this.state.direction = 'down';
+        this.state.endReachedRefresh = true;
+        this.state.directionName = 'down';
+      break;
+      case 2:
+        this.state.direction = 'up';
+        this.state.directionName = 'up';
+      break;
+      default:
+      this.directionCount = 0;
+      this.state.direction = '';
+      this.state.directionName = 'both up and down';
+        break;
+    }
   }
 
   pullToRefresh(event) {
-    if (this.state.down) {
-      this.state.data = [];
-      this.page = 0;
-      this.addItems(0);
+    if (event === 'endReachedRefresh') {
+        if (this.page < 9) {
+          this.page++;
+          this.addItems(this.page * this.pageLimit);
+          this.state.refreshState.currentState = 'release';
+          setTimeout(() => {
+            this.state.refreshState.currentState = 'finish';
+          }, 1000);
+        }
     } else {
-      if (this.page < 9) {
-        this.page++;
-        this.addItems(this.page * this.pageLimit);
+       if (event === 'down') {
+        this.state.data = [];
+        this.page = 0;
+        this.addItems(0);
+      } else {
+        if (this.page < 9) {
+          this.page++;
+          this.addItems(this.page * this.pageLimit);
+        }
       }
     }
   }
