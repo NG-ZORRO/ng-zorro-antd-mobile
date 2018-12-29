@@ -1,3 +1,37 @@
+# [0.11.0](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.10.1...0.11.0) (2018-12-29)
+
+
+### Bug Fixes
+
+* **ActionSheet:** fix when no title or message would not show blank on header ([#192](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/192)) ([b0f41b7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b0f41b7))
+* **checkbox:** fix checkbox init status when checked is true ([#193](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/193)) ([0293e85](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0293e85))
+* **input-item:** fix input value can't be 0 or '' ([#185](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/185)) ([59e0ea8](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/59e0ea8))
+* **input-item:** fix inputitem value protect ([#196](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/196)) ([883c2ba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/883c2ba))
+* **package.json:** fix a loop of Invalid Host/Origin header -> [WDS] Disconnected! ([#199](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/199)) ([450c66a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/450c66a))
+* **picker:** click ok button will throw error when use service ([#176](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/176)) ([40a8fee](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/40a8fee))
+* **picker:** fix click cancel no response ([#205](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/205)) ([bee4fc4](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/bee4fc4))
+* **textarea-item:** fix textarea value can't be 0 or '' ([#186](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/186)) ([0759f65](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0759f65))
+* **textarea-item:** fix textarea-item value protect ([#197](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/197)) ([e2c0157](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/e2c0157))
+
+
+### Features
+
+* **date-picker:** feat support date-picker ngmodel ([#207](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/207)) ([c1e6d11](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/c1e6d11))
+* **picker-view:** picker-view add ngModel ([#180](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/180)) ([500c893](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/500c893))
+* **pulltorefresh:** feat support scrollendrefresh and support  both up and down ([#204](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/204)) ([149c461](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/149c461))
+* **range:** range add ngmodel ([#208](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/208)) ([26d019d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/26d019d))
+* **searchbar:** searchbar add ngModel ([#179](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/179)) ([8bd39d7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8bd39d7))
+* **slider:** slider add ngModel ([#202](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/202)) ([3db39ae](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3db39ae))
+* **stepper:** stepper add ngModel ([#181](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/181)) ([23f36c1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/23f36c1))
+* **modal:** feat add modal closable and maskClosable demo ([#195](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/195)) ([d3d3478](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/d3d3478))
+
+
+### Performance Improvements
+
+* **picker-view:** perf docs and demo ([#189](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/189)) ([fc9627d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/fc9627d))
+
+
+
 ## [0.10.1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.9.11...0.10.1) (2018-12-20)
 
 ### Bug Fixes
