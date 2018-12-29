@@ -13,6 +13,7 @@ import { Picker } from 'ng-zorro-antd-mobile';
               [title]="'Areas'"
               [(ngModel)]="value1"
               (ngModelChange)="onOk1($event)"
+              (onDismiss)="onDismiss1()"
     >
       Multiple & cascader
     </ListItem>
@@ -111,6 +112,10 @@ export class DemoPickerBasicComponent {
 
   }
 
+  onDismiss1() {
+    console.log('cancel');
+  }
+
   onOk1(result) {
     this.name1 = this.getResult(result);
   }
@@ -156,6 +161,8 @@ export class DemoPickerBasicComponent {
     Picker.showPicker({value: this.value, data: this.singleArea}, (result) => {
       this.name = this.getResult(result);
       this.value = this.getValue(result);
+    }, (cancel) => {
+      console.log('cancel');
     });
   }
 }
