@@ -6,47 +6,54 @@ import { Component } from '@angular/core';
     <div class="am-demo-page">
       <div style="padding: 15px;font-size: 16px;">步骤条</div>
       <div class="am-demo-bd am-wingblank am-wingblank-lg">
-          <div>
-              <div class="sub-title">Basic range</div>
-          </div>
-          <div>
-            <Range [defaultValue]=[3,10]
-                   [min]=0
-                   [max]=20
-                   (onChange)="change($event)"
-                   (onAfterChange)="afterChange($event)"
-            ></Range>
-          </div>
+      <div><div class="sub-title">Basic range ngModel</div></div>
+      <div>
+            <Range [ngModel]="valueModel"
+                   [min]="0"
+                   [max]="20"
+                   (ngModelChange)="changeModel($event)">
+            </Range>
+        </div>
+    </div>
+      <div class="am-demo-bd am-wingblank am-wingblank-lg">
+        <div><div class="sub-title">Basic range</div></div>
+        <div>
+          <Range
+            [defaultValue]="[3, 10]"
+            [min]="0"
+            [max]="20"
+            (onChange)="change($event)"
+            (onAfterChange)="afterChange($event)"
+          ></Range>
+        </div>
       </div>
       <div class="am-demo-bd am-wingblank am-wingblank-lg">
-          <div>
-              <div class="sub-title">Disabled range</div>
-          </div>
-          <div>
-            <Range [defaultValue]=[3,10]
-                   [min]=0
-                   [max]=20
-                   [disabled]=true
-                   (onChange)="change($event)"
-                   (onAfterChange)="afterChange($event)"
-            ></Range>
-          </div>
+        <div><div class="sub-title">Disabled range</div></div>
+        <div>
+          <Range
+            [defaultValue]="[3, 10]"
+            [min]="0"
+            [max]="20"
+            [disabled]="true"
+            (onChange)="change($event)"
+            (onAfterChange)="afterChange($event)"
+          ></Range>
+        </div>
       </div>
       <div class="am-demo-bd am-wingblank am-wingblank-lg">
-          <div>
-              <div class="sub-title">Range with customized style</div>
-          </div>
-          <div>
-            <Range [defaultValue]=[3,10]
-                   [min]=0
-                   [max]=20
-                   [trackStyle]="trackStyle"
-                   [railStyle]="railStyle"
-                   [handleStyle]="handleStyle"
-                   (onChange)="change($event)"
-                   (onAfterChange)="afterChange($event)"
-            ></Range>
-          </div>
+        <div><div class="sub-title">Range with customized style</div></div>
+        <div>
+          <Range
+            [defaultValue]="[3, 10]"
+            [min]="0"
+            [max]="20"
+            [trackStyle]="trackStyle"
+            [railStyle]="railStyle"
+            [handleStyle]="handleStyle"
+            (onChange)="change($event)"
+            (onAfterChange)="afterChange($event)"
+          ></Range>
+        </div>
       </div>
     </div>
   `,
@@ -69,6 +76,7 @@ import { Component } from '@angular/core';
 })
 export class DemoRangeBasicComponent {
   value = [20, 50];
+  valueModel = [4, 8];
   trackStyle = [{ 'background-color': 'red' }, { 'background-color': 'green' }];
   railStyle = {
     'background-color': 'black'
@@ -83,5 +91,10 @@ export class DemoRangeBasicComponent {
 
   afterChange(e) {
     console.log(e, 'afterChange');
+  }
+
+  changeModel(e) {
+    console.log(e, 'changeModel');
+    console.log(this.valueModel, 'valueModel');
   }
 }
