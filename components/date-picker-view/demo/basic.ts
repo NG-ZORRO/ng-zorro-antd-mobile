@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-date-picker-view-basic',
   template: `
-    <div class="sub-title">Start datetime {{name1}}</div>
-    <DatePickerView [value]="value1" (onValueChange)="onValueChange1($event)"></DatePickerView>
+    <div class="sub-title">Start datetime {{getDate(value1)}}</div>
+    <DatePickerView [(ngModel)]="value1" (onValueChange)="onValueChange($event)"></DatePickerView>
   `,
   styles: [
     `
@@ -19,7 +19,7 @@ export class DemoDatePickerViewBasicComponent {
   name2 = '选择';
   mode = 'date';
 
-  value1 = new Date(1918, 8, 15, 8, 0);
+  value1 = new Date(2018, 8, 15, 8, 0);
   value2 = new Date();
 
   currentDateFormat(date, format: string = 'yyyy-mm-dd HH:MM:ss'): any {
@@ -33,7 +33,7 @@ export class DemoDatePickerViewBasicComponent {
       .replace('ss', pad(date.getSeconds()));
   }
 
-  onValueChange1(result) {
+  getDate(result) {
     let format = 'yyyy-mm-dd';
     if (this.mode === 'year') {
       format = 'yyyy';
@@ -46,8 +46,12 @@ export class DemoDatePickerViewBasicComponent {
     } else {
       format = 'HH:MM';
     }
-    this.name1 = this.currentDateFormat(result, format);
-    this.value1 = new Date(result);
+    this.value1 = result;
+    return this.currentDateFormat(result, format);
+  }
+
+  onValueChange(event) {
+    console.log(event);
   }
 
   formatIt(date: Date, form: string) {

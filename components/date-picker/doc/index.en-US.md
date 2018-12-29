@@ -15,7 +15,7 @@ Used to select a date or time.
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | mode  | mode value, can be a `date` or `time` or `datetime` or `year` or `month` | String | `date` |
-| value | the currently selected value | Date | - |
+| ngModel | the currently selected value | Date | - |
 | minDate   | minimum date | Date  |  2000-1-1  |
 | maxDate   | maximum date | Date  |  2030-1-1  |
 | minuteStep |   The amount of time, in minutes, between each minute item.    | Number | 1 |
@@ -23,7 +23,7 @@ Properties | Descrition | Type | Default
 | disabled   | set disabled  | Boolean |    false  |
 | showErrorToast | Toast error message | Boolean | true |
 | showErrorToastInterval | Toast error message interval | number | 2000 |
-| onValueChange | fire when picker col change | (vals: any, index: number) => void | - |
+| onValueChange | fire when picker col change | ({date: any, index: number}) => void | - |
 | title  | title | string/React.TemplateRef |  -  |
 | onOk  | handler called when click ok | (val): void  |  - |
 | onDismiss  | handler called when click cancel | (): void  |  -  |
