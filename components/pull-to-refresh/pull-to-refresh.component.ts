@@ -65,8 +65,8 @@ export class PullToRefreshComponent implements ControlValueAccessor {
   private _clientHeight: number = 0;
   private _currentContentHeight: number = 0;
   private _lastcontentOffset: number = 0;
-  private _onChanged: (value: object) => {};
-  private _onTouched: () => {};
+  private _ngModelOnChange: (value: object) => {};
+  private _ngModelOnTouched: () => {};
 
   @ViewChild('pullToRefresh', { read: ViewContainerRef })
   private _pullToRefresh: ViewContainerRef;
@@ -161,7 +161,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       }
       if (distanceY > this.distanceToRefresh) {
         this.state.currentState = 'activate';
-        this._onChanged(this.state);
+        this._ngModelOnChange(this.state);
       }
       this.style = {
         '-webkit-transform': 'translate3d( 0, ' + distanceY + 'px, 0 )',
@@ -192,7 +192,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       distanceY = -(distanceY / (distanceY - this.damping)) * this.damping;
       if (Math.abs(distanceY) > this.distanceToRefresh) {
         this.state.currentState = 'activate';
-        this._onChanged(this.state);
+        this._ngModelOnChange(this.state);
       }
       this.style = {
         '-webkit-transform': 'translate3d( 0, ' + distanceY + 'px, 0 )',
@@ -213,10 +213,10 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       } else {
         this.translateY(-this.distanceToRefresh - 1);
       }
-      this._onChanged(this.state);
+      this._ngModelOnChange(this.state);
       setTimeout(() => {
         this.state.currentState = 'finish';
-        this._onChanged(this.state);
+        this._ngModelOnChange(this.state);
         if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
           this.onRefresh.emit('down');
         } else {
@@ -225,7 +225,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
         }
         setTimeout(() => {
           this.state.currentState = 'deactivate';
-          this._onChanged(this.state);
+          this._ngModelOnChange(this.state);
           this.translateY(0);
         }, 0);
       }, 500);
@@ -269,7 +269,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
         this._startTime = this._endTime;
         if (this.refreshing) {
           this.state.currentState = 'release';
-          this._onChanged(this.state);
+          this._ngModelOnChange(this.state);
         }
         setTimeout(() => {
           if (this._direction === '') {
@@ -280,7 +280,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
           }
           if (this.refreshing) {
             this.state.currentState = 'finish';
-            this._onChanged(this.state);
+            this._ngModelOnChange(this.state);
           }
         }, 500);
     } else {
@@ -290,7 +290,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
         }
         if (this.refreshing) {
           this.state.currentState = 'finish';
-          this._onChanged(this.state);
+          this._ngModelOnChange(this.state);
         }
       }, 500);
     }
@@ -319,10 +319,10 @@ export class PullToRefreshComponent implements ControlValueAccessor {
   }
 
   registerOnChange(fn: (_: object) => {}): void {
-    this._onChanged = fn;
+    this._ngModelOnChange = fn;
   }
 
   registerOnTouched(fn: () => {}): void {
-    this._onTouched = fn;
+    this._ngModelOnTouched = fn;
   }
 }
