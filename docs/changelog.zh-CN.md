@@ -13,6 +13,38 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.11.0 (2018-12-29)
+
+### Bug Fixes
+
+* **ActionSheet:** 修复当无标题或消息时头部不为空的问题 ([#192](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/192)) ([b0f41b7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b0f41b7))
+* **checkbox:** 修复初始值为选中时checkbox状态不对的问题 ([#193](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/193)) ([0293e85](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0293e85))
+* **input-item:** 修复 input 值不能为空字符串或0的问题 ([#185](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/185)) ([59e0ea8](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/59e0ea8))
+* **input-item:** 修复 inputitem 值保护问题 ([#196](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/196)) ([883c2ba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/883c2ba))
+* **package.json:** 修复 Invalid Host/Origin header 导致的循环问题 ([#199](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/199)) ([450c66a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/450c66a))
+* **picker:** 修复当使用服务并点击 OK 按钮抛错的问题 ([#176](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/176)) ([40a8fee](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/40a8fee))
+* **picker:** 修复点击取消无响应的问题 ([#205](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/205)) ([bee4fc4](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/bee4fc4))
+* **textarea-item:** 修复 textarea 值不能为空字符串或0的问题 ([#186](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/186)) ([0759f65](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0759f65))
+* **textarea-item:** 修复 textarea-item 值保护问题 ([#197](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/197)) ([e2c0157](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/e2c0157))
+
+
+### Features
+
+* **Framework:** 支持 Angular 7.0
+* **date-picker:** date-picker 支持 ngmodel ([#207](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/207)) ([c1e6d11](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/c1e6d11))
+* **picker-view:** picker-view 支持 ngModel ([#180](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/180)) ([500c893](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/500c893))
+* **pulltorefresh:** 支持 scrollendrefresh 和 上、下两个方向滑动刷新 ([#204](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/204)) ([149c461](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/149c461))
+* **range:** range 支持 ngmodel ([#208](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/208)) ([26d019d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/26d019d))
+* **searchbar:** searchbar 支持 ngModel ([#179](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/179)) ([8bd39d7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8bd39d7))
+* **slider:** slider 支持 ngModel ([#202](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/202)) ([3db39ae](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3db39ae))
+* **stepper:** stepper 支持 ngModel ([#181](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/181)) ([23f36c1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/23f36c1))
+* **modal:** 增加 modal closable 和 maskClosable 演示样例 ([#195](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/195)) ([d3d3478](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/d3d3478))
+
+
+### Performance Improvements
+
+* **picker-view:** perf docs and demo ([#189](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/189)) ([fc9627d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/fc9627d))
+
 ## 0.10.1 (2018-12-20)
 
 ### Bug Fixes
