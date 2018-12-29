@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DatePickerViewModule } from './date-picker-view.module';
 import { DatePickerOptions, DatePickerModule } from '../date-picker/index';
@@ -19,7 +20,7 @@ describe('DatePickerViewComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TestDatePickerViewBasicComponent],
       providers: [DatePickerOptions, LocaleProviderService, Toast],
-      imports: [DatePickerModule, DatePickerViewModule, LocaleProviderModule, ToastModule]
+      imports: [DatePickerModule, DatePickerViewModule, LocaleProviderModule, ToastModule, FormsModule]
     }).compileComponents();
     TestBed.overrideModule(DatePickerViewModule, {
       set: { entryComponents: [ToastComponent] }
@@ -87,7 +88,7 @@ describe('DatePickerViewComponent', () => {
   selector: 'test-date-picker-view-basic',
   template: `
     <DatePickerView [mode]="mode"
-                    [value]="value1"
+                    [ngModel]="value1"
                     [locale]="locale"
                     [maxDate]="maxDate"
                     [minDate]="minDate"
@@ -105,7 +106,7 @@ export class TestDatePickerViewBasicComponent {
   maxDate = new Date(2031, 1, 1, 0, 0, 0);
 
   onValueChange1(result) {
-    this.name1 = result;
-    this.value1 = new Date(result);
+    this.name1 = result.date;
+    this.value1 = result.date;
   }
 }

@@ -1,29 +1,39 @@
 import {
-  Directive,
   Input,
   Output,
-  EventEmitter,
-  HostListener,
-  ViewContainerRef,
-  ComponentRef,
-  OnDestroy,
-  ElementRef,
-  OnChanges,
   OnInit,
   Injector,
-  ComponentFactoryResolver,
+  OnChanges,
+  OnDestroy,
+  Directive,
+  forwardRef,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  ComponentRef,
+  SimpleChanges,
   ComponentFactory,
-  SimpleChanges
+  ViewContainerRef,
+  ComponentFactoryResolver
 } from '@angular/core';
 import { DatePickerComponent } from './date-picker.component';
 import { DatePickerOptions } from './date-picker-options.provider';
-
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Directive({
-  selector: '[DatePicker]'
+  selector: '[DatePicker]',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DatePickerDirective),
+      multi: true
+    }
+  ]
 })
-export class DatePickerDirective implements OnDestroy, OnChanges, OnInit {
+export class DatePickerDirective implements OnDestroy, OnChanges, OnInit, ControlValueAccessor {
   picker: ComponentRef<DatePickerComponent>;
   private _eventListeners: Array<() => void> = [];
+  private _ngModelOnChange: (value: Date) => {};
+  private _ngModelOnTouched: () => {};
 
   @Input()
   isOpen: boolean;
@@ -90,6 +100,11 @@ export class DatePickerDirective implements OnDestroy, OnChanges, OnInit {
       Object.assign(options, this._defaultOptions, {
         hidePicker: (event): void => {
           this.hidePicker();
+        },
+        updateNgModel: (value: Date): void => {
+          if (this._ngModelOnChange) {
+            this._ngModelOnChange(value);
+          }
         }
       });
 
@@ -145,6 +160,22 @@ export class DatePickerDirective implements OnDestroy, OnChanges, OnInit {
       this._eventListeners.forEach(fn => fn());
       this._eventListeners = [];
     }
+  }
+
+  writeValue(value: Date): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: (_: Date) => {}): void {
+    this._ngModelOnChange = fn;
+  }
+
+  registerOnTouched(fn: () => {}): void {
+    this._ngModelOnTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
   ngOnInit(): void {
