@@ -135,7 +135,7 @@ export class SliderHandle implements OnInit, OnDestroy {
       document.addEventListener('mouseup', this.mouseUp, false);
       this.pauseEvent(event);
     }
-  };
+  }
 
   mouseMove = event => {
     if (!this._disabled && this._isDraging) {
@@ -148,7 +148,7 @@ export class SliderHandle implements OnInit, OnDestroy {
         this.onChange.emit(this._value);
       }
     }
-  };
+  }
 
   mouseUp = event => {
     if (!this._disabled && this._isDraging) {
@@ -159,7 +159,7 @@ export class SliderHandle implements OnInit, OnDestroy {
       this.left = this.calcOffset(this._value);
       this.onAfterChange.emit(this._value);
     }
-  };
+  }
 
   calcValueByPos(pos) {
     const offset = pos - this._sliderStart;
@@ -240,7 +240,6 @@ export class SliderHandle implements OnInit, OnDestroy {
     this.left = this.calcOffset(this._value);
     this._minBound = this._minBound === undefined ? this._min : this._minBound;
     this._maxBound = this._maxBound === undefined ? this._max : this._maxBound;
-    this.onAfterChange.emit(this._value);
   }
 
   ngOnDestroy() {

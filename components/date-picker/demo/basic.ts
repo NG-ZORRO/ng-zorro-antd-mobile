@@ -44,6 +44,24 @@ import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
       >
         UTC Time
       </ListItem>
+      <ListItem DatePicker
+                [extra]="name5"
+                [arrow]="'horizontal'"
+                [mode]="'datetime'"
+                [value]="value5"
+                (onOk)="onOk5($event)"
+      >
+        Datetime
+      </ListItem>
+      <ListItem DatePicker
+                [extra]="name6"
+                [arrow]="'horizontal'"
+                [mode]="'datetime'"
+                [value]="value6"
+                (onOk)="onOk5($event)"
+      >
+        Datetime
+      </ListItem>
     </List>
   `,
   styles: [
@@ -60,6 +78,8 @@ export class DemoDatePickerBasicComponent {
   name2 = '选择';
   name3 = '选择';
   name4 = '选择';
+  name5 = '当前时间小于最小时间';
+  name6 = '当前时间大于最大时间';
 
   nowTimeStamp = Date.now();
   now = new Date(this.nowTimeStamp);
@@ -70,6 +90,8 @@ export class DemoDatePickerBasicComponent {
   value2 = new Date();
   value3 = new Date();
   value4 = this.utcNow;
+  value5 = new Date(1999, 1, 1, 1, 1);
+  value6 = new Date(2031, 1, 1, 1, 1);
 
   currentDateFormat(date, format: string = 'yyyy-mm-dd HH:MM'): any {
     const pad = (n: number): string => (n < 10 ? `0${n}` : n.toString());
@@ -100,6 +122,16 @@ export class DemoDatePickerBasicComponent {
   onOk4(result) {
     this.name4 = this.formatIt(result, 'HH:mm');
     this.value4 = result;
+  }
+
+  onOk5(result: Date) {
+    this.name5 = this.currentDateFormat(result);
+    this.value5 = result;
+  }
+
+  onOk6(result: Date) {
+    this.name6 = this.currentDateFormat(result);
+    this.value5 = result;
   }
 
   onValueChange(result) {

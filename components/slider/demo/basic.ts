@@ -7,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
       <div style="padding: 15px;font-size: 16px;">步骤条</div>
       <div class="am-demo-bd am-wingblank am-wingblank-lg">
           <div>
+            <div class="sub-title">Small size ngModel</div>
+          </div>
+          <div>
+            <Slider [ngModel]="value"
+                    [min]=-10
+                    [max]=100
+                    (ngModelChange)="change($event)"
+                    (onAfterChange)="afterChange($event)"
+            ></Slider>
+          </div>
+      </div>
+      <div class="am-demo-bd am-wingblank am-wingblank-lg">
+          <div>
             <div class="sub-title">Small size</div>
           </div>
           <div>
