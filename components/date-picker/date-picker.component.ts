@@ -60,6 +60,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   unsubscribe$ = new Subject<void>();
   Velocity = velocity.getVelocity();
   errorMessage = '';
+  ngModelOnChange: (value: Date) => {};
+  ngModelOnTouched: () => {};
 
   @ViewChild('picker', { read: ViewContainerRef })
   picker: ViewContainerRef;
@@ -155,16 +157,34 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.judgeTime(this.current_time, this.max_date)) {
       this.currentTime = this.current_time = this.max_date.slice(0, this.indexArray.length);
       this.resultArr = this.current_time;
-      this.options.onValueChange.emit(this.handleReslut());
+      this.options.onValueChange.emit({date: this.handleReslut(), index: event.target.id});
+      if (this.options.updateNgModel) {
+        this.options.updateNgModel(this.handleReslut());
+      }
+      if (this.ngModelOnChange) {
+        this.ngModelOnChange(this.handleReslut());
+      }
       this.init();
     } else if (this.judgeTime(this.min_date, this.current_time)) {
       this.currentTime = this.current_time = this.min_date.slice(0, this.indexArray.length);
       this.resultArr = this.currentTime;
-      this.options.onValueChange.emit(this.handleReslut());
+      this.options.onValueChange.emit({date: this.handleReslut(), index: event.target.id});
+      if (this.options.updateNgModel) {
+        this.options.updateNgModel(this.handleReslut());
+      }
+      if (this.ngModelOnChange) {
+        this.ngModelOnChange(this.handleReslut());
+      }
       this.init();
     } else {
       this.setCurrentSelected(0, this.differY < 0, this.index);
-      this.options.onValueChange.emit(this.handleReslut());
+      this.options.onValueChange.emit({date: this.handleReslut(), index: event.target.id});
+      if (this.options.updateNgModel) {
+        this.options.updateNgModel(this.handleReslut());
+      }
+      if (this.ngModelOnChange) {
+        this.ngModelOnChange(this.handleReslut());
+      }
     }
   }
 
@@ -337,8 +357,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
         current_time[0],
         current_time[1],
         current_time[2],
-        current_time[3],
-        current_time[4]
+        current_time[3] || 0,
+        current_time[4] || 0
       ).getTime();
       if (curT < minT) {
         this.currentTime = this.current_time;

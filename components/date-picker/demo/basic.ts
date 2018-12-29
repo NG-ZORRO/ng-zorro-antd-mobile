@@ -7,60 +7,65 @@ import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
   template: `
     <List [className]="'date-picker-list'">
       <ListItem DatePicker
-                [extra]="name1"
+                [extra]="currentDateFormat(value1)"
                 [arrow]="'horizontal'"
                 [mode]="'datetime'"
-                [value]="value1"
+                [(ngModel)]="value1"
                 (onOk)="onOk1($event)"
-                (onValueChange)="onValueChange($event)"
       >
         Datetime
+        <Brief>{{name1}}</Brief>
       </ListItem>
       <ListItem DatePicker
-                [extra]="name2"
+                [extra]="currentDateFormat(value2, 'yyyy-mm-dd')"
                 [arrow]="'horizontal'"
                 [mode]="'date'"
-                [value]="value2"
+                [(ngModel)]="value2"
                 (onOk)="onOk2($event)"
       >
         Date
+        <Brief>{{name2}}</Brief>
       </ListItem>
       <ListItem DatePicker
-                [extra]="name3"
+                [extra]="currentDateFormat(value3)"
                 [arrow]="'horizontal'"
                 [mode]="'time'"
-                [value]="value3"
+                [(ngModel)]="value3"
                 (onOk)="onOk3($event)"
       >
         Time
+        <Brief>{{name3}}</Brief>
       </ListItem>
       <ListItem DatePicker
-                [extra]="name4"
+                [extra]="currentDateFormat(value4)"
                 [arrow]="'horizontal'"
                 [mode]="'time'"
                 [locale]="locale"
-                [value]="value4"
+                [(ngModel)]="value4"
                 (onOk)="onOk4($event)"
       >
         UTC Time
+        <Brief>{{name4}}</Brief>
       </ListItem>
       <ListItem DatePicker
-                [extra]="name5"
+                [extra]="currentDateFormat(value5)"
                 [arrow]="'horizontal'"
                 [mode]="'datetime'"
-                [value]="value5"
+                [(ngModel)]="value5"
                 (onOk)="onOk5($event)"
       >
         Datetime
+        <Brief>{{name5}}</Brief>
       </ListItem>
       <ListItem DatePicker
-                [extra]="name6"
+                [extra]="currentDateFormat(value6)"
                 [arrow]="'horizontal'"
                 [mode]="'datetime'"
-                [value]="value6"
-                (onOk)="onOk5($event)"
+                [(ngModel)]="value6"
+                (onOk)="onOk6($event)"
       >
         Datetime
+        <Brief>{{name6}}</Brief>
       </ListItem>
     </List>
   `,
@@ -131,12 +136,7 @@ export class DemoDatePickerBasicComponent {
 
   onOk6(result: Date) {
     this.name6 = this.currentDateFormat(result);
-    this.value5 = result;
-  }
-
-  onValueChange(result) {
-    this.name1 = this.currentDateFormat(result);
-    this.value1 = result;
+    this.value6 = result;
   }
 
   formatIt(date: Date, form: string) {
