@@ -22,7 +22,7 @@
     "url": "https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues"
   },
   "dependencies": {
-    "@angular/cdk": "^7.2.00",
+    "@angular/cdk": "^7.2.0",
     "@angular/animations": "^7.1.0",
     "@ant-design/icons-angular": "2.0.0-beta.1"
   },
