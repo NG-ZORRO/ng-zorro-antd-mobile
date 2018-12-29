@@ -7,18 +7,12 @@ function compileLess(content, savePath, min) {
   return new Promise((resolve, reject) => {
     const plugins = [];
     if (min) {
-      const cleanCSSPlugin = new LessPluginCleanCSS({
-        advanced: true
-      });
+      const cleanCSSPlugin = new LessPluginCleanCSS({advanced: true});
       plugins.push(cleanCSSPlugin);
     }
     return less.render
-      .call(less, content, {
-        plugins
-      })
-      .then(({
-        css
-      }) => {
+      .call(less, content, {plugins: plugins, javascriptEnabled: true})
+      .then(({css}) => {
         fs.writeFileSync(savePath, css);
         resolve();
       })
