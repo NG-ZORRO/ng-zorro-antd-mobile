@@ -68,7 +68,7 @@
     "@angular/router": "^7.1.0",
     "@angular/service-worker": "^7.1.0",
     "@angular/upgrade": "^7.1.0",
-    "@schematics/angular": "^7.1.0",
+    "@schematics/angular": "~7.0.0",
     "@stackblitz/sdk": "^1.1.1",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
