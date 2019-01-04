@@ -364,7 +364,7 @@ export class AppModule { }
         '@angular/router'                  : '^7.1.0',
         '@angular/animations'              : '^7.1.0',
         '@ant-design/icons-angular'        : '~2.0.1',
-        'ng-zorro-antd-mobile'             : '^0.10.0'
+        'ng-zorro-antd-mobile'             : '^0.11.0'
       },
       tags        : [ 'stackblitz', 'sdk' ]
     });
