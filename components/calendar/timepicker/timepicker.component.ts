@@ -90,9 +90,9 @@ export class TimePickerComponent {
 
   constructor() {}
 
-  onDateChange = (date: Date) => {
+  onDateChange = (date: {date: Date, index: number}) => {
     const { onValueChange } = this.props;
-    onValueChange && onValueChange(date);
+    onValueChange && onValueChange(date.date);
   }
 
   getMinTime(date?: Date) {

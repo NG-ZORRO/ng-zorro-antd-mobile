@@ -8,6 +8,7 @@ import { ModalModule } from '../modal/modal.module';
 import { Modal } from '../modal/modal.service';
 import { ModalComponent } from '../modal/modal.component';
 import { CalendarModule } from './calendar.module';
+import { dispatchTouchEvent } from '../core/testing';
 
 describe('CalendarComponent', () => {
   let component: TestCalendarBasicComponent;
@@ -169,6 +170,7 @@ describe('CalendarComponent', () => {
 
   it('should show picker', () => {
     component.state.show = true;
+    component.state.type = 'one';
     component.state.pickTime = true;
     component.state.now = new Date(2018, 8, 2);
     component.state.mimDate = new Date(2018, 8, 2);
@@ -178,15 +180,26 @@ describe('CalendarComponent', () => {
       .querySelectorAll('.date .row')[1]
       .querySelector('.cell')
       .click();
-    calendarEle.nativeElement
-      .querySelectorAll('.date .row')[2]
-      .querySelector('.cell')
-      .click();
     fixture.detectChanges();
     expect(calendarEle.nativeElement.querySelector('calendartimepicker').classList).toContain(
       'time-picker',
       'timepicker is right'
     );
+    const touchEl = calendarEle.nativeElement
+      .querySelector('calendartimepicker')
+      .querySelector('.am-picker-col-mask');
+    dispatchTouchEvent(touchEl, 'touchstart', 0, 0);
+    fixture.detectChanges();
+    dispatchTouchEvent(touchEl, 'touchmove', 0, 30);
+    fixture.detectChanges();
+    dispatchTouchEvent(touchEl, 'touchend', 0, 60);
+    fixture.detectChanges();
+    calendarEle.nativeElement
+      .querySelector('calendarconfirmpanel')
+      .querySelector('.button')
+      .click();
+    fixture.detectChanges();
+    expect(component.state.startDate.toLocaleString()).toContain('12:00:00');
   });
 
   it('should change type', () => {
