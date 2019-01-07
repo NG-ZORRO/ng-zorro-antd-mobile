@@ -196,7 +196,8 @@ export class Modal extends PopupService {
 }
 
 function getFooter(actions) {
-  return actions.map((button: Action) => {
+  let action = actions ? actions :  [{ text: '确定', onPress: () => {}}];
+  return action.map((button: Action) => {
     const orginPress = button.onPress || function() {};
     button.onPress = () => {
       const res = orginPress();
