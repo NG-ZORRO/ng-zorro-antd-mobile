@@ -56,7 +56,7 @@ import { Modal, Toast } from 'ng-zorro-antd-mobile';
       }
     `
   ],
-  providers: [Toast, Modal]
+  providers: [Toast]
 })
 export class DemoModalBasicComponent {
   state = {
