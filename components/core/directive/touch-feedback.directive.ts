@@ -13,7 +13,7 @@ import {
 export const INTERFACE_TOKEN = new InjectionToken<any>('InterfaceToken');
 
 @Directive({
-  selector: '[TouchFeedback]'
+  selector: '[TouchFeedbackDirective]'
 })
 export class TouchFeedbackDirective implements OnInit {
 
