@@ -7,6 +7,9 @@ import {
 import { ModalServiceComponent } from './modal.component';
 import { BaseOptions, ModalOptions, AlertOptions, Action } from './modal-options.provider';
 import { PopupService } from '../core/core.module';
+@Injectable({
+  providedIn: 'root'
+})
 @Injectable()
 export class Modal extends PopupService {
   static modalRef: ComponentRef<ModalServiceComponent> = null;
