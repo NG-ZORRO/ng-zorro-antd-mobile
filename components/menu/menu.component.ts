@@ -3,6 +3,11 @@ import { Subject } from 'rxjs';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { takeUntil } from 'rxjs/operators';
 
+interface LocaleValue {
+  okText: string;
+  cancelText: string;
+}
+
 @Component({
   selector: 'Menu, nzm-menu',
   templateUrl: './menu.component.html',
@@ -19,7 +24,10 @@ export class MenuComponent implements OnInit, OnDestroy {
   subMenuData: Array<any>;
   showSelect: boolean;
   subSelInitItem: object;
-  locale: object = {};
+  locale: LocaleValue = {
+    okText: '',
+    cancelText: ''
+  };
 
   private _data: Array<any> = [];
   private _unsubscribe$: Subject<void> = new Subject<void>();
@@ -160,7 +168,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._localeProviderService.localeChange.pipe(takeUntil(this._unsubscribe$)).subscribe(_ => {
-      this.locale = this._localeProviderService.getLocaleSubObj('Menu');
+      this.locale = <LocaleValue>this._localeProviderService.getLocaleSubObj('Menu');
     });
 
     this.firstLevelSelectValue = this.getNewFsv();
