@@ -12,6 +12,10 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 
+interface LocaleValue {
+  prevText: string;
+  nextText: string;
+}
 @Component({
   selector: 'Pagination, nzm-pagination',
   templateUrl: './pagination.component.html',
@@ -20,7 +24,10 @@ import { LocaleProviderService } from '../locale-provider/locale-provider.servic
 export class PaginationComponent implements OnInit, OnDestroy {
   prefixCls = 'am-pagination';
 
-  private _locale: object = {};
+  private _locale: LocaleValue = {
+    prevText: '',
+    nextText: ''
+  };
   private _unsubscribe$: Subject<void> = new Subject<void>();
 
   @Input()
@@ -62,7 +69,7 @@ export class PaginationComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._localeProviderService.localeChange.pipe(takeUntil(this._unsubscribe$)).subscribe(_ => {
-      this._locale = this._localeProviderService.getLocaleSubObj('Pagination');
+      this._locale = <LocaleValue>this._localeProviderService.getLocaleSubObj('Pagination');
     });
   }
 
