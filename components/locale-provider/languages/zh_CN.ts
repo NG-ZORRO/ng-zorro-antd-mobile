@@ -7,6 +7,7 @@ import SearchBar from '../../search-bar/locale/zh_CN';
 import InputItem from '../../input-item/locale/zh_CN';
 import Pagination from '../../pagination/locale/zh_CN';
 import PullToRefresh from '../../pull-to-refresh/locale/zh_CN';
+import ActionSheet from '../../action-sheet/locale/zh_CN';
 
 export default {
   locale: 'zh_CN',
@@ -18,5 +19,6 @@ export default {
   SearchBar,
   InputItem,
   Pagination,
-  PullToRefresh
+  PullToRefresh,
+  ActionSheet
 };

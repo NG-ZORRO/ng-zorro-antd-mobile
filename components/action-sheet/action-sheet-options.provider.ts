@@ -23,6 +23,7 @@ export class ShareOption {
 export class ShareActionSheetWithOptions extends ActionSheetOptions {
   options: ShareOption[] | ShareOption[][];
   cancelButtonText?: string = 'Cancel';
+  locale?;
 }
 
 @Injectable()

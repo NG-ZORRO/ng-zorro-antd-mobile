@@ -6,9 +6,9 @@ import { NgZorroAntdMobilePipesModule } from '../pipes/ng-zorro-antd-mobile.pipe
 import { ActionSheetComponent } from './action-sheet.component';
 import { WingBlankModule } from '../wing-blank/wing-blank.module';
 import { WhiteSpaceModule} from '../white-space/white-space.module';
-
+import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
 @NgModule({
-  imports: [CommonModule, NgZorroAntdMobilePipesModule, ListModule, WhiteSpaceModule, WingBlankModule, CoreModule],
+  imports: [CommonModule, NgZorroAntdMobilePipesModule, ListModule, WhiteSpaceModule, WingBlankModule, CoreModule, LocaleProviderModule],
   declarations: [
     ActionSheetComponent
   ],
