@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   <WingBlank>
     <Carousel [infinite]="true"
               [vertical]="false"
+              [selectedIndex]="1"
               (beforeChange)="beforeChange($event)"
               (afterChange)="afterChange($event)"
     >
