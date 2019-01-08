@@ -3,7 +3,7 @@
         [justify]="'center'"
         [align]="'stretch'"
   >
-    <FlexItem TouchFeedback
+    <FlexItem TouchFeedbackDirective
               *ngFor="let subItem of item; let j = index;"
               [ngClass]="itemCls"
               [ngStyle]="itemStyle"
@@ -48,7 +48,7 @@
           [justify]="'center'"
           [align]="'stretch'"
     >
-      <FlexItem TouchFeedback
+      <FlexItem TouchFeedbackDirective
                 *ngFor="let subItem of item; let j = index;"
                 class="{{defaultProps.prefixCls}}-item"
                 [ngStyle]="itemStyle"
