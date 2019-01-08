@@ -17,15 +17,15 @@ export class TouchFeedBackComponent {
   @Input() activeClassName = '';
   @Input() activeStyle = true;
 
-  @HostListener('touchstart', ['$event'])
-  @HostListener('mousedown', ['$event'])
+  @HostListener('touchstart')
+  @HostListener('mousedown')
   touchStart() {
     if (this.activeStyle) {
       this._render.addClass(this._ele.nativeElement, this.activeClassName);
     }
   }
-  @HostListener('touchend', ['$event'])
-  @HostListener('mouseup', ['$event'])
+  @HostListener('touchend')
+  @HostListener('mouseup')
   touchEnd() {
     if (this.activeStyle) {
       this._render.removeClass(this._ele.nativeElement, this.activeClassName);

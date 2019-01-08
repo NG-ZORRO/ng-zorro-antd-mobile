@@ -156,7 +156,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     }, this.speed);
   }
 
-  @HostListener('touchcancel', ['$event'])
+  @HostListener('touchcancel')
   cancel() {
     setTimeout(() => {
       this.startTimer();
