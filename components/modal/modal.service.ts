@@ -98,8 +98,8 @@ export class Modal extends PopupService {
     const config = Object.assign({
       title: title,
       message: message,
-      footer: footer ? footer : [{ text: '确定' }],
-      actions: footer ? footer : [{ text: '确定' }],
+      footer: footer,
+      actions: footer,
       platform: platform ? platform : 'ios'
     });
 
@@ -140,9 +140,9 @@ export class Modal extends PopupService {
     let actions;
     if (typeof callbackOrActions === 'function') {
       actions = [
-        { text: '取消' },
+        { text: 'Cancel' },
         {
-          text: '确定',
+          text: 'OK',
           onPress: () => {
             getArgs(this, callbackOrActions);
           }
@@ -166,8 +166,8 @@ export class Modal extends PopupService {
       title: title,
       message: message,
       type: type ? type : 'default',
-      footer: footer ? footer : [{ text: '确定' }],
-      actions: footer ? footer : [{ text: '确定' }],
+      footer: footer,
+      actions: footer,
       platform: platform ? platform : 'ios'
     });
     const props = Modal._initConfig(config, options);
@@ -185,8 +185,8 @@ export class Modal extends PopupService {
     const footer = getFooter(actions);
 
     const config = Object.assign({
-      footer: footer ? footer : [{ text: '确定' }],
-      actions: footer ? footer : [{ text: '确定' }],
+      footer: footer,
+      actions: footer,
       platform: platform ? platform : 'ios'
     });
     const props = Modal._initConfig(config, options);
@@ -199,7 +199,8 @@ export class Modal extends PopupService {
 }
 
 function getFooter(actions) {
-  return actions.map((button: Action) => {
+  let action = actions ? actions :  [{ text: 'OK', onPress: () => {}}];
+  return action.map((button: Action) => {
     const orginPress = button.onPress || function() {};
     button.onPress = () => {
       const res = orginPress();
