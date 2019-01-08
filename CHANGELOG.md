@@ -1,3 +1,26 @@
+## [0.11.1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.0...0.11.1) (2019-01-08)
+
+
+### Bug Fixes
+
+* **calendar:** fix timepicker select error ([#216](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/216)) ([03ffa9e](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/03ffa9e))
+* **codebox:** update zorro mobile version ([#218](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/218)) ([3fb41f1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3fb41f1))
+* **modal:** fix no actions would work error. ([#222](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/222)) ([25b7aec](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/25b7aec))
+* **package.json:** make desktop website great again ([#213](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/213)) ([b53ff31](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b53ff31))
+* **showcase:** fix website icon show error bug ([#214](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/214)) ([bfe2b3d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/bfe2b3d))
+
+
+### Features
+
+* **website:** make doc website pwa ([#215](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/215)) ([ec88d97](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ec88d97))
+
+
+### Performance Improvements
+
+* **modal:** perf modal service ([#220](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/220)) ([4fca40a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/4fca40a))
+
+
+
 # [0.11.0](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.10.1...0.11.0) (2018-12-29)
 
 

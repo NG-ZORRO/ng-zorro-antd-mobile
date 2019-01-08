@@ -13,6 +13,20 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.11.1 (2019-01-08)
+
+### Bug Fixes
+
+* **calendar:** 修复 timepicker 选择报错([#216](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/216)) ([03ffa9e](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/03ffa9e))
+* **codebox:** 升级ng-zorro-antd-mobile的版本号 ([#218](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/218)) ([3fb41f1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3fb41f1))
+* **modal:** 修复无 actions 报错. ([#222](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/222)) ([25b7aec](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/25b7aec))
+* **package.json:** 升级ng-zorro-antd依赖 ([#213](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/213)) ([b53ff31](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b53ff31))
+* **showcase:** 修复文档官网 icon 显示问题 ([#214](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/214)) ([bfe2b3d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/bfe2b3d))
+
+### Performance Improvements
+
+* **modal:** 优化 modal service 的使用 ([#220](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/220)) ([4fca40a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/4fca40a))
+
 ## 0.11.0 (2018-12-29)
 
 ### Bug Fixes
