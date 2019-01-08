@@ -16,7 +16,7 @@ import { ActionSheet, Toast } from 'ng-zorro-antd-mobile';
       </ng-template>
     </WingBlank>
   `,
-  providers: [ActionSheet, Toast]
+  providers: [Toast]
 })
 export class DemoActionSheetBasicComponent {
   dataList = [
