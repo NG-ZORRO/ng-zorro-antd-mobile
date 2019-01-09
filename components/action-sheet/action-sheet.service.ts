@@ -36,7 +36,8 @@ export class ActionSheet extends PopupService {
       'className',
       'transitionName',
       'maskTransitionName',
-      'options'
+      'options',
+      'locale'
     ];
     config = Object.assign(options, config, {
       close: (): void => {

@@ -7,6 +7,7 @@ import SearchBar from '../../search-bar/locale/ru_RU';
 import InputItem from '../../input-item/locale/ru_RU';
 import Pagination from '../../pagination/locale/ru_RU';
 import PullToRefresh from '../../pull-to-refresh/locale/ru_RU';
+import ActionSheet from '../../action-sheet/locale/ru_RU';
 
 export default {
   locale: 'ru_RU',
@@ -18,5 +19,6 @@ export default {
   SearchBar,
   InputItem,
   Pagination,
-  PullToRefresh
+  PullToRefresh,
+  ActionSheet
 };

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActionSheet, Toast } from 'ng-zorro-antd-mobile';
-
+import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
 @Component({
   selector: 'demo-action-sheet-basic',
   template: `
@@ -47,13 +47,14 @@ export class DemoActionSheetBasicComponent {
         console.log(buttonIndex);
       }
     );
-  };
+  }
 
   showShareActionSheet = () => {
     ActionSheet.showShareActionSheetWithOptions(
       {
         options: this.dataList,
-        message: 'I am description, description, description'
+        message: 'I am description, description, description',
+        locale: zh_CN
       },
       buttonIndex => {
         return new Promise(resolve => {
@@ -62,18 +63,19 @@ export class DemoActionSheetBasicComponent {
         });
       }
     );
-  };
+  }
 
   showShareActionSheetMulpitleLine = () => {
     const data = [[...this.dataList, this.dataList[2]], [this.dataList[3], this.dataList[4]]];
     ActionSheet.showShareActionSheetWithOptions(
       {
         options: data,
-        message: 'I am description, description, description'
+        message: 'I am description, description, description',
+        locale: en_US
       },
       (buttonIndex, rowIndex) => {
         console.log(buttonIndex);
       }
     );
-  };
+  }
 }

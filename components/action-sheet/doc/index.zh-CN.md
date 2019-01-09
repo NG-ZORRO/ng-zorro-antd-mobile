@@ -40,8 +40,9 @@ subtitle: 动作面板
 - title (string) - 顶部标题
 - message (string/React.element) - 顶部标题下的简要消息
 - maskClosable (bool) - 点击蒙层是否允许关闭，默认允许
+- locale - 国际化，可覆盖全局`[LocaleProvider](https://ng.mobile.ant.design/components/locale-provider/zh)`的配置 | Object: { dismissText }
 
-`callback`函数支持返回 Promise 
+- `callback`函数支持返回 Promise 
 
 #### static showShareActionSheetWithOptions(options: Object, failureCallback: Function, successCallback: Function)
 

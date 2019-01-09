@@ -1,13 +1,32 @@
-import { Component, TemplateRef, ViewEncapsulation, HostListener } from '@angular/core';
-
+import { Component, TemplateRef, ViewEncapsulation, HostListener, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 @Component({
   selector: 'ActionSheet',
   templateUrl: './action-sheet.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class ActionSheetComponent {
+export class ActionSheetComponent implements OnInit {
+  unsubscribe$ = new Subject<void>();
   option: any;
-  constructor() {}
+  constructor(private localeProviderService: LocaleProviderService) {}
+
+  ngOnInit() {
+    this.localeProvider();
+  }
+
+  localeProvider() {
+    const self = this;
+    if (self.option.locale || self.option.locale !== undefined) {
+      self.localeProviderService.setLocale(self.option.locale);
+    }
+    self.localeProviderService.localeChange.pipe(takeUntil(self.unsubscribe$)).subscribe(_ => {
+      if (self.option.cancelButtonText) {
+        self.option.cancelButtonText = self.localeProviderService.getLocaleSubObj('ActionSheet')['dismissText'];
+      }
+    });
+  }
 
   onPress(index: any, rowIndex = 0, event) {}
   showShare(option) {
