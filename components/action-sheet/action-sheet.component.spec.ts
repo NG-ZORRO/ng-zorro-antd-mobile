@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { dispatchTouchEvent } from '../core/testing';
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
 import { ActionSheetComponent } from './action-sheet.component';
 import { ActionSheet, ActionSheetModule, ButtonModule } from '../..';
 import { NgZorroAntdMobilePipesModule } from '../pipes/ng-zorro-antd-mobile.pipes.module';
-
+import { Overlay } from '@angular/cdk/overlay';
 describe('ActionSheetComponent', () => {
   let component: TestActionSheetBasicComponent;
   let fixture: ComponentFixture<TestActionSheetBasicComponent>;
@@ -16,7 +16,7 @@ describe('ActionSheetComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TestActionSheetBasicComponent],
       imports: [NgZorroAntdMobilePipesModule, ActionSheetModule, ButtonModule],
-      providers: [ActionSheet]
+      providers: [ActionSheet, Overlay]
     }).compileComponents();
     TestBed.overrideModule(ActionSheetModule, {
       set: { entryComponents: [ActionSheetComponent, TestActionSheetBasicComponent] }
@@ -30,71 +30,77 @@ describe('ActionSheetComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should actionsheet work', () => {
+  it('should actionsheet work', fakeAsync(() => {
     const button = buttons[0].nativeElement;
     button.click();
     fixture.detectChanges();
+    flush();
     actionSheetEle = document.querySelector('actionsheet');
     expect(actionSheetEle.querySelector('.am-action-sheet-wrap').classList).toContain(
       'am-action-sheet-wrap',
       'actionsheet is work'
     );
-  });
+  }));
 
-  it('should options work', () => {
+  it('should options work', fakeAsync(() => {
     expect(actionSheetEle.querySelector('.am-action-sheet-button-list').children.length).toBe(
       component.dataList.length,
       'options is work'
     );
-  });
+  }));
 
-  it('should title work', () => {
+  it('should title work', fakeAsync(() => {
     expect(actionSheetEle.querySelector('.am-action-sheet-destructive-button').innerText).toBe(
       'Delete',
       'Delete is work'
     );
-  });
+  }));
 
-  it('should title work', () => {
+  it('should title work', fakeAsync(() => {
     expect(actionSheetEle.querySelector('.am-action-sheet-cancel-button').innerText).toBe('Cancel', 'Cancel is work');
-  });
+  }));
 
-  it('should maskClosable work', () => {
+  it('should maskClosable work', fakeAsync(() => {
     expect(actionSheetEle.querySelector('.am-action-sheet-mask').classList).toContain(
       'am-action-sheet-mask',
       'maskClosable is work'
     );
-  });
+  }));
 
-  it('should shareActionSheet work', () => {
+  it('should shareActionSheet work', fakeAsync(() => {
     const button = buttons[1].nativeElement;
     button.click();
     fixture.detectChanges();
-    actionSheetEle = document.querySelector('actionsheet');
+    flush();
+    actionSheetEle = document.getElementsByTagName('actionsheet')[1];
     expect(actionSheetEle.querySelector('.am-action-sheet-share-list')).toBeTruthy('shareactionsheet is work');
-  });
+  }));
 
-  it('should shareActionSheetMulpitleLine work', () => {
+  it('should shareActionSheetMulpitleLine work', fakeAsync(() => {
     const button = buttons[2].nativeElement;
     button.click();
     fixture.detectChanges();
-    actionSheetEle = document.querySelector('actionsheet');
+    flush();
+    actionSheetEle = document.getElementsByTagName('actionsheet')[2];
     expect(actionSheetEle.querySelector('.am-action-sheet-share-content').children.length).toBe(
       3,
       'shareActionSheetMulpitleLine is work'
     );
     actionSheetEle.querySelector('.am-action-sheet-share-list-item').click();
     fixture.detectChanges();
-  });
+    flush();
+  }));
 
-  it('should close work', () => {
+  it('should close work', fakeAsync(() => {
     const button = buttons[1].nativeElement;
     button.click();
     fixture.detectChanges();
-    actionSheetEle = document.querySelector('actionsheet');
+    flush();
+    actionSheetEle = document.getElementsByTagName('actionsheet')[1];
     actionSheetEle.querySelector('.am-action-sheet-share-list-item').click();
     fixture.detectChanges();
-  });
+    flush();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
