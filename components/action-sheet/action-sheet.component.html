@@ -1,74 +1,74 @@
-<div class="{{props.prefixCls}}-mask {{maskTransitionName}}"></div>
-<div class="{{props.prefixCls}}-wrap {{transitionName}}" (click)="onPress(-1, 0, $event)">
+<div class="{{option.prefixCls}}-mask {{option.maskTransitionName}}"></div>
+<div role="dialog" class="{{option.prefixCls}}-wrap {{option.transitionName}}" (click)="option.maskClose(-1, 0, $event)">
   <div role="document"
-       class="{{props.prefixCls}}"
-       [ngClass]="showShare(flag)">
-    <div class="{{props.prefixCls}}-content">
-      <button aria-label="Close" class="{{props.prefixCls}}-close">
-        <span class="{{props.prefixCls}}-close-x"></span>
+       class="{{option.prefixCls}}"
+       [ngClass]="showShare(option)">
+    <div class="{{option.prefixCls}}-content">
+      <button aria-label="Close" class="{{option.prefixCls}}-close">
+        <span class="{{option.prefixCls}}-close-x"></span>
       </button>
-      <div class="{{props.prefixCls}}-body">
+      <div class="{{option.prefixCls}}-body">
         <div>
-          <ng-container *ngIf="!isNoTitle(title)">
-            <ng-template *ngIf="isTemplateRef(title)" [ngTemplateOutlet]="title"></ng-template>
-            <h3 *ngIf="!isTemplateRef(title)" class="{{props.prefixCls}}-title">{{title}}</h3>
+          <ng-container *ngIf="!isNoTitle(option.title)">
+            <ng-template *ngIf="isTemplateRef(option.title)" [ngTemplateOutlet]="option.title"></ng-template>
+            <h3 *ngIf="!isTemplateRef(option.title)" class="{{option.prefixCls}}-title">{{option.title}}</h3>
           </ng-container>
-          <ng-container *ngIf="!isNoTitle(title)">
-            <ng-template *ngIf="isTemplateRef(message)" [ngTemplateOutlet]="message"></ng-template>
-            <div *ngIf="!isTemplateRef(message)" class="{{props.prefixCls}}-message">{{message}}</div>
+          <ng-container *ngIf="!isNoTitle(option.title)">
+            <ng-template *ngIf="isTemplateRef(option.message)" [ngTemplateOutlet]="option.message"></ng-template>
+            <div *ngIf="!isTemplateRef(option.message)" class="{{option.prefixCls}}-message">{{option.message}}</div>
           </ng-container>
-          <ng-container [ngSwitch]="flag">
-            <div *ngSwitchCase="'NORMAL'" class="{{props.prefixCls}}-button-list" role="group">
-              <ng-container *ngFor="let item of options; let i = index;">
-                  <TouchFeedBack class="{{props.prefixCls}}-button-list-item" [activeClassName]="activeClassName" >
-                      <div *ngIf="destructiveButtonIndex !== i && cancelButtonIndex !== i"
-                           class="{{props.prefixCls}}-button-list-item"
-                           (click)="onPress(i, 0, $event)"
+          <ng-container [ngSwitch]="option.flag">
+            <div *ngSwitchCase="'NORMAL'" class="{{option.prefixCls}}-button-list" role="group">
+              <ng-container *ngFor="let item of option.options; let i = index;">
+                  <div TouchFeedbackDirective class="{{option.prefixCls}}-button-list-item" [className]="setActiveClassName(option, 'button-list-item')">
+                      <div *ngIf="option.destructiveButtonIndex !== i && option.cancelButtonIndex !== i"
+                           class="{{option.prefixCls}}-button-list-item"
+                           (click)="option.onPress(i, 0, $event)"
                       >
                         {{item}}
                       </div>
-                      <div *ngIf="destructiveButtonIndex === i"
-                           class="{{props.prefixCls}}-button-list-item {{props.prefixCls}}-destructive-button"
-                           (click)="onPress(i, 0, $event)"
+                      <div *ngIf="option.destructiveButtonIndex === i"
+                           class="{{option.prefixCls}}-button-list-item {{option.prefixCls}}-destructive-button"
+                           (click)="option.onPress(i, 0, $event)"
                       >
                         {{item}}
                       </div>
-                      <div *ngIf="cancelButtonIndex === i"
-                           class="{{props.prefixCls}}-button-list-item {{props.prefixCls}}-cancel-button"
-                           (click)="onPress(i, 0, $event)"
+                      <div *ngIf="option.cancelButtonIndex === i"
+                           class="{{option.prefixCls}}-button-list-item {{option.prefixCls}}-cancel-button"
+                           (click)="option.onPress(i, 0, $event)"
                       >
                         {{item}}
-                        <span class="{{props.prefixCls}}-cancel-button-mask"></span>
+                        <span class="{{option.prefixCls}}-cancel-button-mask"></span>
                       </div>
-                  </TouchFeedBack>
+                  </div>
               </ng-container>
             </div>
-            <div *ngSwitchCase="'SHARE'" class="{{props.prefixCls}}-share {{props.prefixCls}}-share-content">
-              <div *ngIf="!isArray(options, options[0])" class="{{props.prefixCls}}-share-list">
-                <ng-container *ngFor="let item of options; let i = index;">
-                  <div class="{{props.prefixCls}}-share-list-item" (click)="onPress(i, 0, $event)">
-                    <div class="{{props.prefixCls}}-share-list-item-icon">
+            <div *ngSwitchCase="'SHARE'" class="{{option.prefixCls}}-share {{option.prefixCls}}-share-content">
+              <div *ngIf="!isArray(option.options, option.options[0])" class="{{option.prefixCls}}-share-list">
+                <ng-container *ngFor="let item of option.options; let i = index;">
+                  <div class="{{option.prefixCls}}-share-list-item" (click)="option.onPress(i, 0, $event)">
+                    <div class="{{option.prefixCls}}-share-list-item-icon">
                       <ng-template *ngIf="isTemplateRef(item.icon)" [ngTemplateOutlet]="item.icon"></ng-template>
                       <div *ngIf="!isTemplateRef(item.icon)" [innerHTML]="item.icon | safeHTML"></div>
                     </div>
-                    <div class="{{props.prefixCls}}-share-list-item-title">{{item.title}}</div>
+                    <div class="{{option.prefixCls}}-share-list-item-title">{{item.title}}</div>
                   </div>
                 </ng-container>
               </div>
-              <ng-container *ngIf="isArray(options, options[0])">
-                <div *ngFor="let items of options; let rowIndex = index" class="{{props.prefixCls}}-share-list">
+              <ng-container *ngIf="isArray(option.options, option.options[0])">
+                <div *ngFor="let items of option.options; let rowIndex = index" class="{{option.prefixCls}}-share-list">
                   <ng-container *ngFor="let item of items; let i = index;">
-                    <div class="{{props.prefixCls}}-share-list-item" (click)="onPress(i, rowIndex, $event)">
-                      <div class="{{props.prefixCls}}-share-list-item-icon">
+                    <div class="{{option.prefixCls}}-share-list-item" (click)="option.onPress(i, rowIndex, $event)">
+                      <div class="{{option.prefixCls}}-share-list-item-icon">
                         <ng-template *ngIf="isTemplateRef(item.icon)" [ngTemplateOutlet]="item.icon"></ng-template>
                         <div *ngIf="!isTemplateRef(item.icon)" [innerHTML]="item.icon | safeHTML"></div>
                       </div>
-                      <div class="{{props.prefixCls}}-share-list-item-title">{{item.title}}</div>
+                      <div class="{{option.prefixCls}}-share-list-item-title">{{item.title}}</div>
                     </div>
                   </ng-container>
                 </div>
               </ng-container>
-              <div class="{{props.prefixCls}}-share-cancel-button">{{props.cancelButtonText}}</div>
+              <div TouchFeedbackDirective [className]="setActiveClassName(option, 'share-cancel-button')" class="{{option.prefixCls}}-share-cancel-button">{{option.cancelButtonText}}</div>
             </div>
           </ng-container>
         </div>
