@@ -2,8 +2,8 @@ import { Injectable, TemplateRef } from '@angular/core';
 
 @Injectable()
 export class ActionSheetOptions {
-  prefixCls?: string;
-  maskClosable?: boolean;
+  prefixCls?: string = 'am-action-sheet';
+  maskClosable?: boolean = true;
   cancelButtonIndex?: number;
   destructiveButtonIndex?: number;
   title?: string | TemplateRef<any>;
@@ -22,6 +22,7 @@ export class ShareOption {
 @Injectable()
 export class ShareActionSheetWithOptions extends ActionSheetOptions {
   options: ShareOption[] | ShareOption[][];
+  cancelButtonText?: string = 'Cancel';
 }
 
 @Injectable()
