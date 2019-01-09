@@ -96,29 +96,57 @@ describe('PickerComponent', () => {
     expect(component.modelChange).toHaveBeenCalledTimes(1);
   });
 
-  it ('should touch event work', () => {
+  it('should touch event work', () => {
     const list = lists[0].nativeElement;
     list.click();
     fixture.detectChanges();
     pickerEle = document.querySelector('picker');
-    const target =  pickerEle.querySelector('.am-picker-col-mask');
+    const target = pickerEle.querySelector('.am-picker-col-mask');
     dispatchTouchEvent(target, 'mousedown', 0, 100);
     fixture.detectChanges();
     dispatchTouchEvent(target, 'mousemove', 0, 0);
     fixture.detectChanges();
     dispatchTouchEvent(target, 'mouseup', 0, 0);
     fixture.detectChanges();
+    pickerEle.querySelector('.am-picker-popup-header-right').click();
+    fixture.detectChanges();
   });
-
 
   it('should showPicker work', () => {
     const button = buttons[0].nativeElement;
     button.click();
     fixture.detectChanges();
-    const picker = document.querySelector('picker');
-    expect(picker.querySelector('.am-picker-popup-header-right')).toBeTruthy('showPicker is work');
-    const buttonOk = picker.querySelector('.am-picker-popup-header-right');
+    pickerEle = document.querySelector('picker');
+    expect(pickerEle.querySelector('.am-picker-popup-header-right')).toBeTruthy('showPicker is work');
+    const buttonOk = pickerEle.querySelector('.am-picker-popup-header-right');
     dispatchTouchEvent(buttonOk, 'touchend');
+    fixture.detectChanges();
+  });
+
+  it('should OK work', () => {
+    const button = buttons[0].nativeElement;
+    button.click();
+    fixture.detectChanges();
+    pickerEle.querySelector('.am-picker-popup-header-right').click();
+    fixture.detectChanges();
+  });
+
+  it('should Cancel work', () => {
+    const button = buttons[0].nativeElement;
+    button.click();
+    fixture.detectChanges();
+    pickerEle.querySelector('.am-picker-popup-header-left').click();
+    fixture.detectChanges();
+  });
+
+  it('should only one picker work', () => {
+    const list = lists[0].nativeElement;
+    list.click();
+    fixture.detectChanges();
+    pickerEle = document.querySelector('picker');
+    pickerEle.style.display = 'none';
+    fixture.detectChanges();
+    list.click();
     fixture.detectChanges();
   });
 
@@ -130,20 +158,36 @@ describe('PickerComponent', () => {
 @Component({
   selector: 'demo-picker-basic',
   template: `
-  <List className="my-list">
-    <ListItem Picker
-              [mask]="mask"
-              [extra]="name1"
-              [title]="title"
-              [(ngModel)]="value1"
-              [data]="singleArea"
-              [arrow]="'horizontal'"
-              (ngModelChange)="modelChange($event)"
-    >
-      Multiple & cascader
-    </ListItem>
-  </List>
-  <div Button (click)="showPicker()">operation</div>
+    <List className="my-list">
+      <ListItem
+        Picker
+        [mask]="mask"
+        [extra]="name1"
+        [title]="title"
+        [(ngModel)]="value1"
+        [data]="singleArea"
+        [arrow]="'horizontal'"
+        [appendToBody]="true"
+        (ngModelChange)="modelChange($event)"
+      >
+        Multiple & cascader
+      </ListItem>
+      <ListItem
+        Picker
+        [mask]="mask"
+        [extra]="name1"
+        [title]="title"
+        [disabled]="true"
+        [(ngModel)]="value1"
+        [data]="singleArea"
+        [arrow]="'horizontal'"
+        [appendToBody]="true"
+        (ngModelChange)="modelChange($event)"
+      >
+        Multiple & cascader
+      </ListItem>
+    </List>
+    <div Button (click)="showPicker()">operation</div>
   `,
   providers: [Picker]
 })
@@ -175,9 +219,7 @@ export class TestPickerBasicComponent {
   mask = true;
   modelChange = jasmine.createSpy('ngModel change callback');
 
-  constructor (private _picker: Picker) {
-
-  }
+  constructor(private _picker: Picker) {}
 
   getResult(result) {
     this.value = [];
@@ -200,8 +242,6 @@ export class TestPickerBasicComponent {
   }
 
   showPicker() {
-    Picker.showPicker({value: this.value, data: this.singleArea}, (result) => {
-
-    });
+    Picker.showPicker({ value: this.value, data: this.singleArea }, result => {}, cancel => {});
   }
 }

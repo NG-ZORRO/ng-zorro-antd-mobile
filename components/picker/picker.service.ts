@@ -28,25 +28,6 @@ export class Picker extends PopupService {
       }
     });
 
-    const optionalParams: Array<any> = [
-      'data',
-      'value',
-      'cols',
-      'mask',
-      'title',
-      'okText',
-      'dismissText',
-      'disabled',
-      'cascade',
-      'onOk',
-      'onPickerChange',
-      'indicatorStyle'
-    ];
-    optionalParams.forEach(param => {
-      if (typeof this[param] !== 'undefined') {
-        (options as any)[param] = this[param];
-      }
-    });
     const childInjector = Injector.create([
       {
         provide: PickerOptions,
