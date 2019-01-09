@@ -465,7 +465,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
       this.carouselInit(items);
     });
     this.initCarouselSize();
-    this.getListStyles();
+    this.getListStyles(-this.selectedIndex * this._rationWidth);
     this.carouselInit(this.items);
     const nativeElement = this._ele.nativeElement;
     const targetNode = nativeElement.querySelector('carouselslide');
@@ -475,7 +475,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
         if (mutation.type == 'attributes') {
           if (this.slideHeight !== nativeElement.querySelector('carouselslide').clientHeight) {
             this.initCarouselSize();
-            this.getListStyles();
+            this.getListStyles(-this.selectedIndex * this._rationWidth);
           }
         }
       }
