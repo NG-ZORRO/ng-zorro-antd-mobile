@@ -161,7 +161,9 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       }
       if (distanceY > this.distanceToRefresh) {
         this.state.currentState = 'activate';
-        this._ngModelOnChange(this.state);
+        if (this._ngModelOnChange) {
+          this._ngModelOnChange(this.state);
+        }
       }
       this.style = {
         '-webkit-transform': 'translate3d( 0, ' + distanceY + 'px, 0 )',
@@ -192,7 +194,9 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       distanceY = -(distanceY / (distanceY - this.damping)) * this.damping;
       if (Math.abs(distanceY) > this.distanceToRefresh) {
         this.state.currentState = 'activate';
-        this._ngModelOnChange(this.state);
+        if (this._ngModelOnChange) {
+          this._ngModelOnChange(this.state);
+        }
       }
       this.style = {
         '-webkit-transform': 'translate3d( 0, ' + distanceY + 'px, 0 )',
@@ -213,10 +217,14 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       } else {
         this.translateY(-this.distanceToRefresh - 1);
       }
-      this._ngModelOnChange(this.state);
+      if (this._ngModelOnChange) {
+        this._ngModelOnChange(this.state);
+      }
       setTimeout(() => {
         this.state.currentState = 'finish';
-        this._ngModelOnChange(this.state);
+        if (this._ngModelOnChange) {
+          this._ngModelOnChange(this.state);
+        }
         if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
           this.onRefresh.emit('down');
         } else {
@@ -225,7 +233,9 @@ export class PullToRefreshComponent implements ControlValueAccessor {
         }
         setTimeout(() => {
           this.state.currentState = 'deactivate';
-          this._ngModelOnChange(this.state);
+          if (this._ngModelOnChange) {
+            this._ngModelOnChange(this.state);
+          }
           this.translateY(0);
         }, 0);
       }, 500);
@@ -269,7 +279,9 @@ export class PullToRefreshComponent implements ControlValueAccessor {
         this._startTime = this._endTime;
         if (this.refreshing) {
           this.state.currentState = 'release';
-          this._ngModelOnChange(this.state);
+          if (this._ngModelOnChange) {
+            this._ngModelOnChange(this.state);
+          }
         }
         setTimeout(() => {
           if (this._direction === '') {
@@ -280,7 +292,9 @@ export class PullToRefreshComponent implements ControlValueAccessor {
           }
           if (this.refreshing) {
             this.state.currentState = 'finish';
-            this._ngModelOnChange(this.state);
+            if (this._ngModelOnChange) {
+              this._ngModelOnChange(this.state);
+            }
           }
         }, 500);
     } else {
@@ -290,7 +304,9 @@ export class PullToRefreshComponent implements ControlValueAccessor {
         }
         if (this.refreshing) {
           this.state.currentState = 'finish';
-          this._ngModelOnChange(this.state);
+          if (this._ngModelOnChange) {
+            this._ngModelOnChange(this.state);
+          }
         }
       }, 500);
     }
