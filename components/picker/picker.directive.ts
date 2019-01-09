@@ -1,21 +1,19 @@
 import {
-  Directive,
   Input,
   Output,
-  EventEmitter,
-  HostListener,
-  ViewContainerRef,
-  ComponentRef,
-  OnDestroy,
-  ElementRef,
-  OnChanges,
   OnInit,
   Injector,
-  ComponentFactoryResolver,
   Renderer2,
+  OnDestroy,
+  Directive,
+  ElementRef,
+  forwardRef,
+  HostListener,
+  EventEmitter,
+  ComponentRef,
+  ViewContainerRef,
   ComponentFactory,
-  SimpleChanges,
-  forwardRef
+  ComponentFactoryResolver
 } from '@angular/core';
 import { PickerComponent } from './picker.component';
 import { PickerOptions } from './picker-options.provider';
@@ -31,7 +29,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class PickerDirective implements OnDestroy, OnChanges, OnInit, ControlValueAccessor {
+export class PickerDirective implements OnDestroy, OnInit, ControlValueAccessor {
   picker: ComponentRef<PickerComponent>;
   value: Array<any>;
   private _eventListeners: Array<() => void> = [];
@@ -89,16 +87,6 @@ export class PickerDirective implements OnDestroy, OnChanges, OnInit, ControlVal
     this.onVisibleChange.emit(false);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.isOpen) {
-      if (changes.isOpen.currentValue === true) {
-        this.showPicker();
-      } else {
-        this.hidePicker();
-      }
-    }
-  }
-
   ngOnDestroy() {
     this.hidePicker();
   }
@@ -114,7 +102,7 @@ export class PickerDirective implements OnDestroy, OnChanges, OnInit, ControlVal
   }
 
   private showPicker(): void {
-    if (!this.picker) {
+    if (!this.picker && !this.disabled) {
       setTimeout(() => {
         this._eventListeners = [
           this._renderer.listen('document', 'click', (event: Event) => this.onDocumentClick(event)),

@@ -3,50 +3,67 @@ import { Picker } from 'ng-zorro-antd-mobile';
 @Component({
   selector: 'demo-picker-basic',
   template: `
-  <div Button (click)="showPicker()">{{name}}</div>
-  <WhiteSpace></WhiteSpace>
-  <List className="my-list">
-    <ListItem Picker
-              [extra]="name1"
-              [arrow]="'horizontal'"
-              [mask]=true
-              [title]="'Areas'"
-              [(ngModel)]="value1"
-              (ngModelChange)="onOk1($event)"
-              (onDismiss)="onDismiss1()"
-    >
-      Multiple & cascader
-    </ListItem>
-    <ListItem Picker
-              [extra]="name2"
-              [arrow]="'horizontal'"
-              [cascade]="false"
-              [data]="seasons"
-              [title]="'选择季节'"
-              [(ngModel)]="value2"
-              (ngModelChange)="onOk2($event)"
-    >
-      Multiple
-    </ListItem>
-    <ListItem Picker
-              [extra]="name3"
-              [arrow]="'horizontal'"
-              [data]="singleArea"
-              [(ngModel)]="value3"
-              (ngModelChange)="onOk3($event)"
-    >
-      Single
-    </ListItem>
-    <ListItem Picker
-              [extra]="name4"
-              [arrow]="'horizontal'"
-              [(ngModel)]="value4"
-              (onPickerChange)="onPickerChange($event)"
-              (ngModelChange)="onOk4($event)"
-    >
-      Multiple & async
-    </ListItem>
-  </List>
+    <div Button (click)="showPicker()">{{ name }}</div>
+    <WhiteSpace></WhiteSpace>
+    <List className="my-list">
+      <ListItem
+        Picker
+        [extra]="name1"
+        [arrow]="'horizontal'"
+        [mask]="true"
+        [title]="'Areas'"
+        [(ngModel)]="value1"
+        (ngModelChange)="onOk1($event)"
+        (onDismiss)="onDismiss1()"
+      >
+        Multiple & cascader
+      </ListItem>
+      <ListItem
+        Picker
+        [extra]="name2"
+        [arrow]="'horizontal'"
+        [cascade]="false"
+        [data]="seasons"
+        [title]="'选择季节'"
+        [(ngModel)]="value2"
+        (ngModelChange)="onOk2($event)"
+      >
+        Multiple
+      </ListItem>
+      <ListItem
+        Picker
+        [extra]="name3"
+        [arrow]="'horizontal'"
+        [data]="singleArea"
+        [(ngModel)]="value3"
+        (ngModelChange)="onOk3($event)"
+      >
+        Single
+      </ListItem>
+      <ListItem
+        Picker
+        [extra]="name4"
+        [arrow]="'horizontal'"
+        [(ngModel)]="value4"
+        (onPickerChange)="onPickerChange($event)"
+        (ngModelChange)="onOk4($event)"
+      >
+        Multiple & async
+      </ListItem>
+      <ListItem
+        Picker
+        [extra]="name1"
+        [disabled]="true"
+        [arrow]="'horizontal'"
+        [mask]="true"
+        [title]="'Areas'"
+        [(ngModel)]="value1"
+        (ngModelChange)="onOk1($event)"
+        (onDismiss)="onDismiss1()"
+      >
+        Disabled
+      </ListItem>
+    </List>
   `,
   providers: [Picker]
 })
@@ -97,7 +114,7 @@ export class DemoPickerBasicComponent {
       ]
     }
   ];
-  name  = '选择';
+  name = '选择';
   name1 = '选择';
   name2 = '选择';
   name3 = '选择';
@@ -108,9 +125,7 @@ export class DemoPickerBasicComponent {
   value3 = [];
   value4 = [];
 
-  constructor (private _picker: Picker ) {
-
-  }
+  constructor(private _picker: Picker) {}
 
   onDismiss1() {
     console.log('cancel');
@@ -158,11 +173,15 @@ export class DemoPickerBasicComponent {
   }
 
   showPicker() {
-    Picker.showPicker({value: this.value, data: this.singleArea}, (result) => {
-      this.name = this.getResult(result);
-      this.value = this.getValue(result);
-    }, (cancel) => {
-      console.log('cancel');
-    });
+    Picker.showPicker(
+      { value: this.value, data: this.singleArea },
+      result => {
+        this.name = this.getResult(result);
+        this.value = this.getValue(result);
+      },
+      cancel => {
+        console.log('cancel');
+      }
+    );
   }
 }
