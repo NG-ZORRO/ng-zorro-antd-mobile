@@ -35,10 +35,11 @@ Display shareable action sheet. The `options` object must contain one or more of
 
 - options (array of `{icon: TemplateRef | innerHTML, title: string}`) - a list of share buttons (required)
     - It can be a two-dimensional array, can display multi-line buttons, e.g. `[[{icon,title},...],...]` means two rows and two columns. In this case there are two parameters on `callback`, the first for the `column` sequence, the second for the `line`.
-- cancelButtonText (string) - the text of cancel button, default `取消`
+- cancelButtonText (string) - the text of cancel button, default `Cancel`
 - title (string) - a title to show above the action sheet
 - message (string/React.element) - a message to show below the title
 - maskClosable (bool) - Whether it's allowed to close when you click the mask (default true)
+- locale - international, can override the configuration of the global `[LocaleProvider](https://ng.mobile.ant.design/components/locale-provider/en)` | Object: { dismissText}
 
 The `callback` function support returns Promise 
 
