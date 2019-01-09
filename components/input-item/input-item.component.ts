@@ -301,7 +301,7 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
     this.onFocus.emit(value);
   }
 
-  inputBlur(value, event) {
+  inputBlur(value) {
     setTimeout(() => {
       if (!this._isClear) {
         this._focus = false;

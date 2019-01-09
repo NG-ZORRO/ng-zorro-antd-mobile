@@ -13,7 +13,7 @@ import {
 export const INTERFACE_TOKEN = new InjectionToken<any>('InterfaceToken');
 
 @Directive({
-  selector: '[TouchFeedback]'
+  selector: '[TouchFeedbackDirective]'
 })
 export class TouchFeedbackDirective implements OnInit {
 
@@ -40,8 +40,8 @@ export class TouchFeedbackDirective implements OnInit {
     this._className = this.className;
   }
 
-  @HostListener('touchstart', ['$event'])
-  @HostListener('mousedown', ['$event'])
+  @HostListener('touchstart')
+  @HostListener('mousedown')
   touchStart() {
     if (this.activeStyle) {
       this.addClass(this._className);
@@ -49,8 +49,8 @@ export class TouchFeedbackDirective implements OnInit {
     }
   }
 
-  @HostListener('touchend', ['$event'])
-  @HostListener('mouseup', ['$event'])
+  @HostListener('touchend')
+  @HostListener('mouseup')
   touchEnd() {
     if (this.activeStyle) {
       this.removeClass(this._className);
