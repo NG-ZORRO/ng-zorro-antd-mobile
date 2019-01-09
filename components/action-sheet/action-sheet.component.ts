@@ -1,31 +1,41 @@
-import { Component, TemplateRef, ViewEncapsulation } from '@angular/core';
-
+import { Component, TemplateRef, ViewEncapsulation, HostListener, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 @Component({
   selector: 'ActionSheet',
   templateUrl: './action-sheet.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class ActionSheetComponent {
-  props = {
-    prefixCls: 'am-action-sheet',
-    cancelButtonText: '取消'
-  };
-  flag: string = '';
-  title: string = '';
-  message: string = '';
-  transitionName: string = '';
-  maskTransitionName: string = '';
-  activeClassName = [`${this.props.prefixCls}-button-list-item-active`];
-  options?: string[];
-  cancelButtonIndex?: number;
-  destructiveButtonIndex?: number;
+export class ActionSheetComponent implements OnInit {
+  unsubscribe$ = new Subject<void>();
+  option: any;
+  constructor(private localeProviderService: LocaleProviderService) {}
 
-  constructor() {}
+  ngOnInit() {
+    this.localeProvider();
+  }
+
+  localeProvider() {
+    const self = this;
+    if (self.option.locale || self.option.locale !== undefined) {
+      self.localeProviderService.setLocale(self.option.locale);
+    }
+    self.localeProviderService.localeChange.pipe(takeUntil(self.unsubscribe$)).subscribe(_ => {
+      if (self.option.cancelButtonText) {
+        self.option.cancelButtonText = self.localeProviderService.getLocaleSubObj('ActionSheet')['dismissText'];
+      }
+    });
+  }
 
   onPress(index: any, rowIndex = 0, event) {}
-  showShare(flag) {
-    const cls = { [`${this.props.prefixCls}-share`]: flag === 'SHARE' };
+  showShare(option) {
+    const cls = { [`${option.prefixCls}-share`]: option.flag === 'SHARE' };
     return cls;
+  }
+
+  setActiveClassName(option, suffix) {
+    return [`${option.prefixCls}-${suffix}-active`];
   }
 
   isNoTitle(value: string | TemplateRef<any>) {
