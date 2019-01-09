@@ -50,7 +50,7 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostListener('mousedown', ['$event'])
   @HostListener('touchstart', ['$event'])
   panstart(event) {
-    if (!event.target.classList.contains('am-picker-col-mask')) {
+    if (!event.target.classList.contains('am-picker-col-mask') || this.options.disabled) {
       return;
     }
     this.isMouseDown = true;
@@ -75,7 +75,7 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostListener('mousemove', ['$event'])
   @HostListener('touchmove', ['$event'])
   panmove(event) {
-    if (!event.target.classList.contains('am-picker-col-mask') || !this.isMouseDown) {
+    if (!event.target.classList.contains('am-picker-col-mask') || !this.isMouseDown || this.options.disabled) {
       return;
     }
     event.preventDefault();
@@ -90,7 +90,7 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostListener('mouseleave', ['$event'])
   @HostListener('touchend', ['$event'])
   panend(event) {
-    if (!event.target.classList.contains('am-picker-col-mask') || !this.isMouseDown) {
+    if (!event.target.classList.contains('am-picker-col-mask') || !this.isMouseDown || this.options.disabled) {
       return;
     }
     this.isMouseDown = false;
