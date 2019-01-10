@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { en_US, zh_CN } from '../locale-provider/languages';
@@ -25,7 +26,7 @@ describe('DatePickerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TestDatePickerBasicComponent],
       providers: [DatePickerOptions, LocaleProviderService, Toast],
-      imports: [DatePickerModule, LocaleProviderModule, ButtonModule, ListModule, ToastModule]
+      imports: [DatePickerModule, LocaleProviderModule, ButtonModule, ListModule, ToastModule, FormsModule]
     }).compileComponents();
     TestBed.overrideModule(DatePickerModule, {
       set: { entryComponents: [ToastComponent, DatePickerComponent] }
@@ -192,12 +193,12 @@ describe('DatePickerComponent', () => {
     datePickerEle.querySelector('.am-picker-popup-header-right').click();
   });
 
-  it ('should touch event work', () => {
+  it('should touch event work', () => {
     const list = lists[0].nativeElement;
     list.click();
     fixture.detectChanges();
     datePickerEle = document.querySelector('datepicker');
-    const target =  datePickerEle.querySelector('.am-picker-col-mask');
+    const target = datePickerEle.querySelector('.am-picker-col-mask');
     dispatchTouchEvent(target, 'mousedown', 0, 100);
     fixture.detectChanges();
     dispatchTouchEvent(target, 'mousemove', 0, 1000);
@@ -210,63 +211,97 @@ describe('DatePickerComponent', () => {
 @Component({
   selector: 'test-date-picker-basic',
   template: `
-    <div DatePicker
-         [mode]="mode"
-         [mask]="mask"
-         [title]="title"
-         [value]="value1"
-         [locale]="locale"
-         class="nzm-button"
-         [minDate]="minDate"
-         [maxDate]="maxDate"
-         (onOk)="onOk1($event)"
-         (onDismiss)="onDismiss()"
-         (onValueChange)="onValueChange($event)"
-    >Datetime</div>
-    <List [className]="'date-picker-list'">
-    <ListItem DatePicker
-              [extra]="name1"
-              [arrow]="'horizontal'"
-              [mode]="'datetime'"
-              [value]="value1"
-              (onOk)="onOk1($event)"
-              (onValueChange)="onValueChange($event)"
+    <div
+      DatePicker
+      [mode]="mode"
+      [mask]="mask"
+      [title]="title"
+      [value]="value1"
+      [locale]="locale"
+      class="nzm-button"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
+      (onOk)="onOk1($event)"
+      (onDismiss)="onDismiss()"
+      (onValueChange)="onValueChange($event)"
     >
       Datetime
-    </ListItem>
-    <ListItem DatePicker
-              [extra]="name2"
-              [arrow]="'horizontal'"
-              [mode]="'date'"
-              [value]="value2"
-              (onOk)="onOk2($event)"
-    >
-      Date
-    </ListItem>
-    <ListItem DatePicker
-              [extra]="name3"
-              [arrow]="'horizontal'"
-              [mode]="'time'"
-              [value]="value3"
-              (onOk)="onOk3($event)"
-    >
-      Time
-    </ListItem>
-    <ListItem DatePicker
-              [extra]="name4"
-              [arrow]="'horizontal'"
-              [mode]="'time'"
-              [locale]="locale"
-              [value]="value4"
-              (onOk)="onOk4($event)"
-    >
-      UTC Time
-    </ListItem>
-  </List>
+    </div>
+    <List [className]="'date-picker-list'">
+      <ListItem
+        DatePicker
+        [extra]="name1"
+        [arrow]="'horizontal'"
+        [mode]="'datetime'"
+        [value]="value1"
+        (onOk)="onOk1($event)"
+        (onValueChange)="onValueChange($event)"
+      >
+        Datetime
+      </ListItem>
+      <ListItem
+        DatePicker
+        [extra]="name2"
+        [arrow]="'horizontal'"
+        [mode]="'date'"
+        [value]="value2"
+        (onOk)="onOk2($event)"
+      >
+        Date
+      </ListItem>
+      <ListItem
+        DatePicker
+        [extra]="name3"
+        [arrow]="'horizontal'"
+        [mode]="'time'"
+        [value]="value3"
+        (onOk)="onOk3($event)"
+      >
+        Time
+      </ListItem>
+      <ListItem
+        DatePicker
+        [extra]="name4"
+        [arrow]="'horizontal'"
+        [mode]="'time'"
+        [locale]="locale"
+        [value]="value4"
+        (onOk)="onOk4($event)"
+      >
+        UTC Time
+      </ListItem>
+      <ListItem
+        DatePicker
+        [extra]="name4"
+        [arrow]="'horizontal'"
+        [mode]="'time'"
+        [locale]="locale"
+        [value]="value4"
+        [isOpen]="true"
+        [appendToBody]="true"
+        [(ngModel)]="value4"
+        (onOk)="onOk4($event)"
+      >
+        UTC Time
+      </ListItem>
+      <ListItem
+        DatePicker
+        [disabled]="true"
+        [extra]="name4"
+        [arrow]="'horizontal'"
+        [mode]="'time'"
+        [locale]="locale"
+        [value]="value4"
+        [isOpen]="false"
+        [(ngModel)]="value4"
+        (onOk)="onOk4($event)"
+      >
+        UTC Time
+      </ListItem>
+    </List>
   `
 })
 export class TestDatePickerBasicComponent {
-
   name1 = '选择';
   name2 = '选择';
   name3 = '选择';
@@ -288,6 +323,7 @@ export class TestDatePickerBasicComponent {
   mode = 'datetime';
   minDate = new Date(1000, 2, 1, 0, 0, 0);
   maxDate = new Date(2031, 1, 1, 0, 0, 0);
+  isOpen = true;
 
   onOk1(result) {
     this.name1 = result;
