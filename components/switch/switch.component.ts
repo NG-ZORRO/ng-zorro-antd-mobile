@@ -28,7 +28,7 @@ export class Switch {
   checkboxCls = {
     'checkbox-disabled': false,
     'checkbox-active': false,
-    'checkbox-enactive': false
+    'checkbox-inactive': false
   };
   colorStyle = {};
   switchChecked: boolean;
@@ -59,7 +59,7 @@ export class Switch {
     this.checkboxCls = {
       'checkbox-disabled': this._disabled,
       'checkbox-active': this.switchChecked,
-      'checkbox-enactive': !this.switchChecked
+      'checkbox-inactive': !this.switchChecked
     };
     this.colorStyle = { background: value ? this._color : '' };
   }
@@ -71,8 +71,8 @@ export class Switch {
     this._disabled = value;
     this.checkboxCls = {
       'checkbox-disabled': value,
-      'checkbox-active': false,
-      'checkbox-enactive': false
+      'checkbox-active': this.switchChecked,
+      'checkbox-inactive': !this.switchChecked
     };
   }
   @Output()
@@ -91,7 +91,7 @@ export class Switch {
     this.checkboxCls = {
       'checkbox-disabled': this._disabled,
       'checkbox-active': this.switchChecked,
-      'checkbox-enactive': !this.switchChecked
+      'checkbox-inactive': !this.switchChecked
     };
     this.colorStyle = { background: checkedValue ? this._color : '' };
     this.onChange.emit(checkedValue);
