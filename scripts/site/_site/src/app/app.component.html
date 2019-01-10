@@ -163,7 +163,7 @@
       </div>
     </footer>
 </div>
-<div class="iframe-page-wrapper" *ngIf="!isHomeURL">
+<div class="iframe-page-wrapper" style="user-select: none" *ngIf="!isHomeURL">
     <div *ngIf="!isKitchenURL" class="demoName"><div class="icon" (click)="navigateToPage(kitchenUrl)"></div>{{demoTitle}}</div>
     <router-outlet></router-outlet>
 </div>
