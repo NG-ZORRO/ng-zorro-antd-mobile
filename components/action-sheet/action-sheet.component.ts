@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewEncapsulation, HostListener, OnInit } from '@angular/core';
+import { Component, TemplateRef, ViewEncapsulation, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
@@ -7,7 +7,7 @@ import { LocaleProviderService } from '../locale-provider/locale-provider.servic
   templateUrl: './action-sheet.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class ActionSheetComponent implements OnInit {
+export class ActionSheetComponent implements OnInit, OnDestroy {
   unsubscribe$ = new Subject<void>();
   option: any;
   constructor(private localeProviderService: LocaleProviderService) {}
@@ -54,5 +54,10 @@ export class ActionSheetComponent implements OnInit {
       return value instanceof Array;
     }
     return false;
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }
