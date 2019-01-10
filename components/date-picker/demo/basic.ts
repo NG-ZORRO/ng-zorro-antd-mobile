@@ -6,66 +6,83 @@ import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
   encapsulation: ViewEncapsulation.None,
   template: `
     <List [className]="'date-picker-list'">
-      <ListItem DatePicker
-                [extra]="currentDateFormat(value1)"
-                [arrow]="'horizontal'"
-                [mode]="'datetime'"
-                [(ngModel)]="value1"
-                (onOk)="onOk1($event)"
+      <ListItem
+        DatePicker
+        [extra]="currentDateFormat(value1)"
+        [arrow]="'horizontal'"
+        [mode]="'datetime'"
+        [(ngModel)]="value1"
+        (onOk)="onOk1($event)"
       >
         Datetime
-        <Brief>{{name1}}</Brief>
+        <Brief>{{ name1 }}</Brief>
       </ListItem>
-      <ListItem DatePicker
-                [extra]="currentDateFormat(value2, 'yyyy-mm-dd')"
-                [arrow]="'horizontal'"
-                [mode]="'date'"
-                [(ngModel)]="value2"
-                (onOk)="onOk2($event)"
+      <ListItem
+        DatePicker
+        [extra]="currentDateFormat(value2, 'yyyy-mm-dd')"
+        [arrow]="'horizontal'"
+        [mode]="'date'"
+        [(ngModel)]="value2"
+        (onOk)="onOk2($event)"
       >
         Date
-        <Brief>{{name2}}</Brief>
+        <Brief>{{ name2 }}</Brief>
       </ListItem>
-      <ListItem DatePicker
-                [extra]="currentDateFormat(value3)"
-                [arrow]="'horizontal'"
-                [mode]="'time'"
-                [(ngModel)]="value3"
-                (onOk)="onOk3($event)"
+      <ListItem
+        DatePicker
+        [extra]="currentDateFormat(value3)"
+        [arrow]="'horizontal'"
+        [mode]="'time'"
+        [(ngModel)]="value3"
+        (onOk)="onOk3($event)"
       >
         Time
-        <Brief>{{name3}}</Brief>
+        <Brief>{{ name3 }}</Brief>
       </ListItem>
-      <ListItem DatePicker
-                [extra]="currentDateFormat(value4)"
-                [arrow]="'horizontal'"
-                [mode]="'time'"
-                [locale]="locale"
-                [(ngModel)]="value4"
-                (onOk)="onOk4($event)"
+      <ListItem
+        DatePicker
+        [extra]="currentDateFormat(value4)"
+        [arrow]="'horizontal'"
+        [mode]="'time'"
+        [locale]="locale"
+        [(ngModel)]="value4"
+        (onOk)="onOk4($event)"
       >
         UTC Time
-        <Brief>{{name4}}</Brief>
+        <Brief>{{ name4 }}</Brief>
       </ListItem>
-      <ListItem DatePicker
-                [extra]="currentDateFormat(value5)"
-                [arrow]="'horizontal'"
-                [mode]="'datetime'"
-                [(ngModel)]="value5"
-                (onOk)="onOk5($event)"
+      <ListItem
+        DatePicker
+        [extra]="currentDateFormat(value5)"
+        [arrow]="'horizontal'"
+        [mode]="'datetime'"
+        [(ngModel)]="value5"
+        (onOk)="onOk5($event)"
       >
         Datetime
-        <Brief>{{name5}}</Brief>
+        <Brief>{{ name5 }}</Brief>
       </ListItem>
-      <ListItem DatePicker
-                [extra]="currentDateFormat(value6)"
-                [arrow]="'horizontal'"
-                [mode]="'datetime'"
-                [(ngModel)]="value6"
-                (onOk)="onOk6($event)"
+      <ListItem
+        DatePicker
+        [extra]="currentDateFormat(value6)"
+        [arrow]="'horizontal'"
+        [mode]="'datetime'"
+        [(ngModel)]="value6"
+        (onOk)="onOk6($event)"
       >
         Datetime
-        <Brief>{{name6}}</Brief>
+        <Brief>{{ name6 }}</Brief>
+      </ListItem>
+      <ListItem
+        DatePicker
+        [disabled]="true"
+        [extra]="currentDateFormat(value6)"
+        [arrow]="'horizontal'"
+        [mode]="'datetime'"
+        (onOk)="onOk6($event)"
+      >
+        Datetime
+        <Brief>{{ name6 }}</Brief>
       </ListItem>
     </List>
   `,

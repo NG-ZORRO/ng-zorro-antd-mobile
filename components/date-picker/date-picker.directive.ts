@@ -7,7 +7,6 @@ import {
   OnDestroy,
   Directive,
   forwardRef,
-  ElementRef,
   EventEmitter,
   HostListener,
   ComponentRef,
@@ -85,13 +84,12 @@ export class DatePickerDirective implements OnDestroy, OnChanges, OnInit, Contro
 
   constructor(
     private _viewContainerRef: ViewContainerRef,
-    private _elm: ElementRef,
     private _defaultOptions: DatePickerOptions,
     private _cfr: ComponentFactoryResolver
   ) {}
 
   showPicker(): void {
-    if (!this.picker) {
+    if (!this.picker && !this.disabled) {
       setTimeout(() => {
         this._eventListeners = [];
       });
