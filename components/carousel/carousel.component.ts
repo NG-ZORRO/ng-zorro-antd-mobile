@@ -39,7 +39,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   private _currentSlideHeight: number = 0;
   private _transition: string = '';
   private _spaceWidth: number = 0;
-  private observer: MutationObserver;
+  private _observer: MutationObserver;
+  private _shouldDragging: boolean = true;
 
   @ContentChildren(CarouselSlideComponent)
   items: QueryList<CarouselSlideComponent>;
@@ -177,7 +178,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   carouselInit(items) {
     this.infinite = this.infinite || true;
     this._nodeArr = items['_results'];
-    this.dragging = this.dragging ? this.dragging : false;
+    this._shouldDragging = this._nodeArr.length > 1;
+    this.dragging = this.dragging ? this._shouldDragging : this.dragging;
     if (this._nodeArr.length > 1) {
       this._lastIndex = this._nodeArr.length - 1;
       setTimeout(() => {
@@ -465,7 +467,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
       this.carouselInit(items);
     });
     this.initCarouselSize();
-    this.getListStyles(-this.selectedIndex * this._rationWidth);
+    const index = this.items.length > 1 ? this.selectedIndex : 0;
+    this.getListStyles(-index * this._rationWidth);
     this.carouselInit(this.items);
     const nativeElement = this._ele.nativeElement;
     const targetNode = nativeElement.querySelector('carouselslide');
@@ -475,19 +478,19 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
         if (mutation.type == 'attributes') {
           if (this.slideHeight !== nativeElement.querySelector('carouselslide').clientHeight) {
             this.initCarouselSize();
-            this.getListStyles(-this.selectedIndex * this._rationWidth);
+            this.getListStyles(-index * this._rationWidth);
           }
         }
       }
     };
 
-    this.observer = new MutationObserver(callback);
-    this.observer.observe(targetNode, config);
+    this._observer = new MutationObserver(callback);
+    this._observer.observe(targetNode, config);
   }
 
   ngOnDestroy() {
-    this.observer.disconnect();
-    this.observer = null;
+    this._observer.disconnect();
+    this._observer = null;
     this.stopTimer();
   }
 }
