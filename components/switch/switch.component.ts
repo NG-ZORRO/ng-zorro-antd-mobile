@@ -28,13 +28,12 @@ export class Switch {
   checkboxCls = {
     'checkbox-disabled': false,
     'checkbox-active': false,
-    'checkbox-inactive': false
+    'checkbox-inactive': true
   };
   colorStyle = {};
-  switchChecked: boolean;
+  switchChecked: boolean = false;
 
   private _color: string = '';
-  private _platform: string = 'ios';
   private _disabled: boolean = false;
   private onChanged = Function.prototype;
   private onTouched = Function.prototype;
@@ -50,7 +49,6 @@ export class Switch {
 
   @Input()
   set platform(value: string) {
-    this._platform = value;
     this.wrapCls = value === 'android' ? `${this.prefixCls}-android` : this.prefixCls;
   }
   @Input()
