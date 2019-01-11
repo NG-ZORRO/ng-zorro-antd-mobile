@@ -13,6 +13,22 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.11.2 (2019-01-11)
+
+### Features
+
+* **actionsheet:** 支持 Locale 国际化 ([#232](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/232)) ([39870da](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/39870da))
+* **carousel:** 仅有1个元素时禁止drag ([#239](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/239)) ([799ce51](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/799ce51))
+* **datepicker:** 增加disabled 属性 ([#233](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/233)) ([8f772a9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8f772a9))
+* **picker:** 增加 disabled 属性 ([#231](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/231)) ([02733b4](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/02733b4))
+* **switch:** 根据选中状态在子元素设置类名 ([#238](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/238)) ([1117c7c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/1117c7c))
+* **showcase:** 在 kitchen-sink 中设置 "user-select: none" ([#234](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/234)) ([65ad469](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/65ad469))
+
+
+### Performance Improvements
+
+* **actionsheet:** 使用 cdk 优化实现([#228](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/228)) ([9a9988a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/9a9988a))
+
 ## 0.11.1 (2019-01-08)
 
 ### Bug Fixes
