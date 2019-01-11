@@ -1,3 +1,29 @@
+## [0.11.2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.1...0.11.2) (2019-01-11)
+
+
+### Bug Fixes
+
+* **actionsheet:** fix actionsheet not destory unsubscribe for locale ([#236](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/236)) ([d719496](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/d719496))
+* **carousel:** fix carousel selectedIndex init work error ([#230](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/230)) ([5482cb2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5482cb2))
+* **pulltorefresh:** fix when not use ngmodel worked error ([#229](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/229)) ([5a3ba5d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5a3ba5d))
+
+
+### Features
+
+* **actionsheet:** feat support locale ([#232](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/232)) ([39870da](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/39870da))
+* **carousel:** feat when item=1 can not drag ([#239](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/239)) ([799ce51](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/799ce51))
+* **datepicker:** feat set disabled work ([#233](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/233)) ([8f772a9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8f772a9))
+* **picker:** feat set disabled work ([#231](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/231)) ([02733b4](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/02733b4))
+* **switch:** feat add  active an inactive class for modify css ([#238](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/238)) ([1117c7c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/1117c7c))
+* **showcase:** feat set website kitchen-sink "user-select: none" ([#234](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/234)) ([65ad469](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/65ad469))
+
+
+### Performance Improvements
+
+* **actionsheet:** perf actionsheet with cdk ([#228](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/228)) ([9a9988a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/9a9988a))
+
+
+
 ## [0.11.1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.0...0.11.1) (2019-01-08)
 
 
