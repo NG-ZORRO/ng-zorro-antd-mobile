@@ -26,13 +26,14 @@ export class Switch {
   prefixCls = 'am-switch';
   wrapCls = 'am-switch';
   checkboxCls = {
-    'checkbox-disabled': false
+    'checkbox-disabled': false,
+    'checkbox-active': false,
+    'checkbox-inactive': true
   };
   colorStyle = {};
-  switchChecked: boolean;
+  switchChecked: boolean = false;
 
   private _color: string = '';
-  private _platform: string = 'ios';
   private _disabled: boolean = false;
   private onChanged = Function.prototype;
   private onTouched = Function.prototype;
@@ -48,12 +49,16 @@ export class Switch {
 
   @Input()
   set platform(value: string) {
-    this._platform = value;
     this.wrapCls = value === 'android' ? `${this.prefixCls}-android` : this.prefixCls;
   }
   @Input()
   set checked(value: boolean) {
     this.switchChecked = value;
+    this.checkboxCls = {
+      'checkbox-disabled': this._disabled,
+      'checkbox-active': this.switchChecked,
+      'checkbox-inactive': !this.switchChecked
+    };
     this.colorStyle = { background: value ? this._color : '' };
   }
   @Input()
@@ -63,7 +68,9 @@ export class Switch {
   set disabled(value: boolean) {
     this._disabled = value;
     this.checkboxCls = {
-      'checkbox-disabled': value
+      'checkbox-disabled': value,
+      'checkbox-active': this.switchChecked,
+      'checkbox-inactive': !this.switchChecked
     };
   }
   @Output()
@@ -79,6 +86,11 @@ export class Switch {
   changeSwitch(checkedValue) {
     this.onChanged(checkedValue);
     this.switchChecked = checkedValue;
+    this.checkboxCls = {
+      'checkbox-disabled': this._disabled,
+      'checkbox-active': this.switchChecked,
+      'checkbox-inactive': !this.switchChecked
+    };
     this.colorStyle = { background: checkedValue ? this._color : '' };
     this.onChange.emit(checkedValue);
   }
