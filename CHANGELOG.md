@@ -1,3 +1,12 @@
+## [0.11.3](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.2...0.11.3) (2019-01-14)
+
+
+### Bug Fixes
+
+* **date-picker:** fix set minDate error ([#243](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/243)) ([8fdbe8f](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8fdbe8f))
+
+
+
 ## [0.11.2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.1...0.11.2) (2019-01-11)
 
 
