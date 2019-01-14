@@ -60,6 +60,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   unsubscribe$ = new Subject<void>();
   Velocity = velocity.getVelocity();
   errorMessage = '';
+  curTLessThanMin = false;
+  curTMoreThanMax = false;
   ngModelOnChange: (value: Date) => {};
   ngModelOnTouched: () => {};
 
@@ -360,12 +362,16 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
         current_time[3] || 0,
         current_time[4] || 0
       ).getTime();
+      this.curTLessThanMin = false;
+      this.curTMoreThanMax = false;
       if (curT < minT) {
-        this.currentTime = this.current_time;
+        this.curTLessThanMin = true;
+        this.currentTime = this.min_date;
         this.errorMessage = this.localeNew.curTLessthanMin;
       }
       if (curT > maxT) {
-        this.currentTime = this.current_time;
+        this.curTMoreThanMax = true;
+        this.currentTime = this.max_date;
         this.errorMessage = this.localeNew.curTMorethanMax;
       }
       let _indexArrayIndex = 0;
@@ -504,20 +510,30 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
           this.initData(tempArray, min, max, this.localeNew.month, i);
           break;
         case 2:
-          min = this.judgeEqualArray(this.min_date, this.current_time, 2) ? this.localMinDate[i] : 1;
+          min = this.judgeEqualArray(this.min_date, this.current_time, 2)
+          ? this.localMinDate[i]
+          : (this.curTLessThanMin ? this.localMinDate[i] : 1);
           max = this.judgeEqualArray(this.max_date, this.current_time, 2)
             ? this.localMaxDate[i]
             : new Date(this.current_time[0], this.current_time[1], 0).getDate();
           this.initData(tempArray, min, max, this.localeNew.day, i);
           break;
         case 3:
-          min = this.judgeEqualArray(this.min_date, this.current_time, 3) ? this.localMinDate[i] : 0;
-          max = this.judgeEqualArray(this.max_date, this.current_time, 3) ? this.localMaxDate[i] : 23;
+          min = this.judgeEqualArray(this.min_date, this.current_time, 3)
+          ? this.localMinDate[i]
+          : (this.curTLessThanMin ? this.localMinDate[i] : 0);
+          max = this.judgeEqualArray(this.max_date, this.current_time, 3)
+          ? this.localMaxDate[i]
+          : (this.curTMoreThanMax ? this.localMaxDate[i] : 23);
           this.initData(tempArray, min, max, this.localeNew.hour, i);
           break;
         case 4:
-          min = this.judgeEqualArray(this.min_date, this.current_time, 4) ? this.localMinDate[i] : 0;
-          max = this.judgeEqualArray(this.max_date, this.current_time, 4) ? this.localMaxDate[i] : 59;
+          min = this.judgeEqualArray(this.min_date, this.current_time, 4)
+          ? this.localMinDate[i]
+          : (this.curTLessThanMin ? this.localMinDate[i] : 0);
+          max = this.judgeEqualArray(this.max_date, this.current_time, 4)
+          ? this.localMaxDate[i]
+          : (this.curTMoreThanMax ? this.localMaxDate[i] : 59);
           this.initData(tempArray, min, max, this.localeNew.minute, i);
           break;
         case 5:
