@@ -118,7 +118,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
   touchstart(e) {
     this._startTime = Date.now();
     if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
-      if (document.getElementsByTagName('pulltorefresh')[0].scrollTop > 0) {
+      if (this.ele.nativeElement.scrollTop > 0) {
         this.startY = undefined;
         return;
       }
@@ -134,7 +134,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
   @HostListener('touchmove', ['$event'])
   touchmove(e) {
     if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
-      if (document.getElementsByTagName('pulltorefresh')[0].scrollTop > 0) {
+      if (this.ele.nativeElement.scrollTop > 0) {
         return;
       }
       let distanceY = e.changedTouches[0].clientY - this.startY;
