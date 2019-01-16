@@ -211,6 +211,7 @@ export class SearchBar implements OnInit, AfterViewInit, AfterViewChecked, OnDes
 
   onSearchbarChange(e) {
     this._focus = true;
+    this._value = e;
     this.onChange.emit(e);
     this.onChangeFn(e);
     this.setClass();
