@@ -54,6 +54,7 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   private _focus: boolean = false;
   private _isClear: boolean = false;
   private _fontColor: string;
+  private _inputLock = false;
 
   @ViewChild('lableContent')
   lableRef;
@@ -257,6 +258,9 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   inputChange(e) {
+    if (this._inputLock && this.inputType === 'text') {
+      return;
+    }
     let value = e;
     switch (this.inputType) {
       case 'text':
@@ -290,6 +294,14 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
 
     this._onChange(this._value);
     this.onChange.emit(this._value);
+  }
+
+  compositionStart() {
+    this._inputLock = true;
+  }
+
+  compositionEnd() {
+    this._inputLock = false;
   }
 
   inputFocus(value) {

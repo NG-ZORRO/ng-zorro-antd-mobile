@@ -71,6 +71,21 @@ describe('InputComponent', () => {
     expect(fakeInput.innerText).toBe('23', 'type is money');
   });
 
+  it('should input chinese character work', () => {
+    const inputModelEle = inputModel.nativeElement.querySelector('input');
+    inputModelEle.value = '哈哈';
+    inputModelEle.dispatchEvent(new Event('compositionstart'));
+    inputModelEle.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    expect(component.modelValue).toBe(undefined);
+
+    inputModelEle.value = '哈哈';
+    inputModelEle.dispatchEvent(new Event('compositionend'));
+    inputModelEle.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    expect(component.modelValue).toBe('哈哈');
+  });
+
   it('should defaultValue work', () => {
     component.defaultValue = 'test';
     fixture.detectChanges();
