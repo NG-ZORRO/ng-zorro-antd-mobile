@@ -21,7 +21,7 @@
       <input #inputElement
              [type]="type"
              [name]="name"
-             [(ngModel)]="value"
+             [ngModel]="value"
              [defaultValue]="defaultValue"
              [placeholder]="placeholder"
              [disabled]="disabled"
@@ -31,6 +31,8 @@
              [pattern]="pattern"
              [style.color]='fontColor'
              (ngModelChange)="inputChange($event)"
+             (compositionstart)="compositionStart($event)"
+             (compositionend)="compositionEnd($event)"
              (blur)="inputBlur(value)"
              (focus)="inputFocus(value)"
              style="outline:none" />
