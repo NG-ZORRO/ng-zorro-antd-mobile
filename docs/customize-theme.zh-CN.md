@@ -47,7 +47,7 @@ Ant Design 的样式使用了 [Less](http://lesscss.org/) 作为开发语言，�
 @brand-primary: #f5222d;
 ```
 
-全部可被自定义 less 变量可以参考 [这里](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/blob/master/site_scripts/_site/src/theme.less)。
+全部可被自定义 less 变量可以参考 [这里](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/blob/master/components/style/themes/default.less)。
 
 ## 本地部署字体
 
