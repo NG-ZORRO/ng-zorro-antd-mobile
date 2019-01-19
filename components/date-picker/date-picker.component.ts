@@ -719,10 +719,9 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     this.checkMode(this.options.mode);
     const value = this.transformDateFormat(this.options.value).split('-');
     if (value.length > 0) {
-      this.currentTime = value.map(item => {
+      this.current_time = this.currentTime = value.map(item => {
         return parseInt(item, 0);
       });
-      this.current_time = this.currentTime;
     }
     this.localeProvider();
   }
