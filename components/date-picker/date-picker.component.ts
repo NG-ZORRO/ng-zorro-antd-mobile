@@ -722,6 +722,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       this.currentTime = value.map(item => {
         return parseInt(item, 0);
       });
+      this.current_time = this.currentTime;
     }
     this.localeProvider();
   }
