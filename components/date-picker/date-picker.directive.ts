@@ -101,6 +101,7 @@ export class DatePickerDirective implements OnDestroy, OnChanges, OnInit, Contro
         },
         updateNgModel: (value: Date): void => {
           if (this._ngModelOnChange) {
+            this.value = value;
             this._ngModelOnChange(value);
           }
         }
