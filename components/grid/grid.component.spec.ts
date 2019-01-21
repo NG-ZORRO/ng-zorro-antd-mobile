@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule, FlexModule, IconModule, GridModule } from '../..';
-
+import { NgZorroAntdMobilePipesModule } from '../pipes/ng-zorro-antd-mobile.pipes.module';
 describe('GridComponent', () => {
   let component: TestGridComponent;
   let fixture: ComponentFixture<TestGridComponent>;
@@ -12,7 +12,7 @@ describe('GridComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestGridComponent],
-      imports: [BrowserAnimationsModule, CarouselModule, FlexModule, IconModule, GridModule]
+      imports: [BrowserAnimationsModule, CarouselModule, FlexModule, IconModule, GridModule, NgZorroAntdMobilePipesModule]
     }).compileComponents();
   }));
 
@@ -87,6 +87,7 @@ describe('GridComponent', () => {
           [isCarousel]="isCarousel"
           (OnClick)="OnClick($event)"
     ></Grid>
+    <Grid [activeStyle]="false" [data]="dataList" (OnClick)="click($event)"></Grid>
   `
 })
 export class TestGridComponent {
@@ -98,6 +99,11 @@ export class TestGridComponent {
   hasLine = true;
   columnNum = 3;
   isCarousel = false;
+
+  dataList = Array.from(new Array(9)).map((_val, i) => ({
+    icon: `<img src="/assets/icons/icon-72x72.png" style="width:36px"/>`,
+    text: `name${i}`
+  }));
 
   OnClick(event) {
     console.log(event);

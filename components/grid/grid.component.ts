@@ -41,7 +41,7 @@ export class GridComponent implements OnInit {
   get isCarousel(): boolean {
     return this.defaultProps.isCarousel;
   }
-  set isCarousel (value: boolean) {
+  set isCarousel(value: boolean) {
     this.defaultProps.isCarousel = value;
     this.init();
   }
@@ -72,15 +72,15 @@ export class GridComponent implements OnInit {
 
   constructor() {}
 
-  isTemplateRef(value: {}): boolean {
-    return value instanceof TemplateRef;
-  }
-
-  isURL(value: string): boolean {
-    if (value) {
-      return value.indexOf('http') >= 0;
+  getIconType(value: any): string {
+    if ((value.indexOf('http') >= 0 || value.indexOf('assets') >= 0) && value.indexOf('<') < 0) {
+      return 'url';
+    } else if (value.indexOf('<') >= 0) {
+      return 'innerHTML';
+    } else if (value instanceof TemplateRef) {
+      return 'TemplateRef';
     } else {
-      return false;
+      return 'string';
     }
   }
 
