@@ -160,33 +160,15 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       this.currentTime = this.current_time = this.max_date.slice(0, this.indexArray.length);
       this.resultArr = this.current_time;
       this.options.onValueChange.emit({date: this.handleReslut(), index: event.target.id});
-      if (this.options.updateNgModel) {
-        this.options.updateNgModel(this.handleReslut());
-      }
-      if (this.ngModelOnChange) {
-        this.ngModelOnChange(this.handleReslut());
-      }
       this.init();
     } else if (this.judgeTime(this.min_date, this.current_time)) {
       this.currentTime = this.current_time = this.min_date.slice(0, this.indexArray.length);
       this.resultArr = this.currentTime;
       this.options.onValueChange.emit({date: this.handleReslut(), index: event.target.id});
-      if (this.options.updateNgModel) {
-        this.options.updateNgModel(this.handleReslut());
-      }
-      if (this.ngModelOnChange) {
-        this.ngModelOnChange(this.handleReslut());
-      }
       this.init();
     } else {
       this.setCurrentSelected(0, this.differY < 0, this.index);
       this.options.onValueChange.emit({date: this.handleReslut(), index: event.target.id});
-      if (this.options.updateNgModel) {
-        this.options.updateNgModel(this.handleReslut());
-      }
-      if (this.ngModelOnChange) {
-        this.ngModelOnChange(this.handleReslut());
-      }
     }
   }
 
@@ -576,6 +558,12 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ok() {
+    if (this.options.updateNgModel) {
+      this.options.updateNgModel(this.handleReslut());
+    }
+    if (this.ngModelOnChange) {
+      this.ngModelOnChange(this.handleReslut());
+    }
     this.options.onOk.emit(this.handleReslut());
     this.setTransitionName();
   }
