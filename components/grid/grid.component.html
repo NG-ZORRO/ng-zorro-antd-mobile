@@ -15,14 +15,16 @@
            (click)="click(subItem,i * columnNum + j)"
       >
         <div class="{{defaultProps.prefixCls}}-item-inner-content column-num-{{columnNum}}">
-          <img *ngIf="subItem.icon && isURL(subItem.icon)"
+          <img *ngIf="subItem.icon && getIconType(subItem.icon) === 'url'"
                src="{{subItem.icon}}"
                class="{{defaultProps.prefixCls}}-icon"
           >
-          <Icon *ngIf="subItem.icon && !isURL(subItem.icon)"
+          <Icon *ngIf="subItem.icon && getIconType(subItem.icon)==='icon'"
                 [type]="subItem.icon"
                 [size]="subItem.size"
           ></Icon>
+          <div *ngIf="subItem.icon && getIconType(subItem.icon)==='innerHTML'" [innerHTML]="subItem.icon | safeHTML"></div>
+          <ng-template *ngIf="subItem.icon && getIconType(subItem.icon)==='TemplateRef'" [ngTemplateOutlet]="subItem.icon"></ng-template>
           <div class="{{defaultProps.prefixCls}}-text">{{subItem.text}}</div>
         </div>
       </div>

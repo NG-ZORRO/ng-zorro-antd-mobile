@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
     <div class="sub-title">Always square grid item </div>
     <Grid [activeStyle]="false" [data]="data" (OnClick)="click($event)"></Grid>
     <br>
+    <Grid [activeStyle]="false" [data]="dataList" (OnClick)="click($event)"></Grid>
+    <br>
     <div class="sub-title">Grid item adjust accroiding to img size </div>
     <Grid class="not-square-grid" [data]="data" [square]="false" (OnClick)="click($event)"></Grid>
     <br>
@@ -38,12 +40,17 @@ import { Component } from '@angular/core';
 })
 export class DemoGridBasicComponent {
   data = Array.from(new Array(9)).map((_val, i) => ({
-    icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png',
+    icon: '/assets/icons/icon-72x72.png',
     text: `name${i}`
   }));
 
   data1 = Array.from(new Array(9)).map(() => ({
     icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png'
+  }));
+
+  dataList = Array.from(new Array(9)).map((_val, i) => ({
+    icon: `<img src="/assets/icons/icon-72x72.png" style="width:36px"/>`,
+    text: `name${i}`
   }));
 
   click(event) {
