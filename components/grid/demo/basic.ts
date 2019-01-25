@@ -23,6 +23,21 @@ import { Component } from '@angular/core';
     <div class="sub-title">Custom content</div>
     <Grid [data]="data" [columnNum]="3" [itemStyle]="{ height: '150px', background: 'rgba(0,0,0,.05)' }" (OnClick)="click($event)"></Grid>
     <br>
+    <div class="sub-title">ng-content</div>
+    <Grid>
+      <Flex *ngFor="let item of gridData; let i = index" [justify]="'center'" [align]="'stretch'">
+        <FlexItem *ngFor="let subItem of item; let j = index">
+          <div *ngIf="subItem !== null" class="am-grid-item-content" (click)="click(subItem, i * columnNum + j)">
+            <div class="am-grid-item-inner-content column-num-{{ columnNum }}">
+              <img src="{{ subItem.icon }}" class="am-grid-icon" />
+              <div class="am-grid-text">{{ subItem.text }}</div>
+            </div>
+          </div>
+          <div *ngIf="subItem === null" class="am-grid-null-item"></div>
+        </FlexItem>
+      </Flex>
+    </Grid>
+
   `,
   styles: [
     `
@@ -39,6 +54,7 @@ import { Component } from '@angular/core';
   ]
 })
 export class DemoGridBasicComponent {
+  gridData = [];
   data = Array.from(new Array(9)).map((_val, i) => ({
     icon: '/assets/icons/icon-72x72.png',
     text: `name${i}`
@@ -55,5 +71,32 @@ export class DemoGridBasicComponent {
 
   click(event) {
     console.log(event);
+  }
+
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    const dataLength = (this.data && this.data.length) || 0;
+    let rowCount = Math.ceil(dataLength / 3);
+    this.gridData = this.getRows(rowCount, dataLength);
+  }
+
+  getRows(rowCount: number, dataLength: number) {
+    const columnNum = 3;
+    const rowArr = new Array();
+    for (let i = 0; i < rowCount; i++) {
+      rowArr[i] = new Array();
+      for (let j = 0; j < columnNum; j++) {
+        const dataIndex = i * columnNum + j;
+        if (dataIndex < dataLength) {
+          rowArr[i][j] = this.data[dataIndex];
+        } else {
+          rowArr[i][j] = null;
+        }
+      }
+    }
+    return rowArr;
   }
 }

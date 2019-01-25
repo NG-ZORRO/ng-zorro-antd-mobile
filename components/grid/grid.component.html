@@ -30,8 +30,8 @@
       </div>
       <div *ngIf="subItem === null" class="{{defaultProps.prefixCls}}-null-item"></div>
     </FlexItem>
-    <ng-content></ng-content>
   </Flex>
+  <ng-content></ng-content>
 </ng-container>
 
 <Carousel *ngIf="isCarousel && carouselDataTmp.length > 0"
