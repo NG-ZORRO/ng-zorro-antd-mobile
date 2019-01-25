@@ -22,3 +22,5 @@ Properties | Description | Type | Default
 | carouselMaxRow    |   the max number of rows to be showed each page of the Carousel   | number  | `2` |
 | square  |   whether each item restrict to a square   | boolean | true |
 | itemStyle| Custom GridCell Style| object|{} |
+
+> **注：** support dynamic ng-content in Grid.
