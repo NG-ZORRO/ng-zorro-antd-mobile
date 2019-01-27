@@ -41,14 +41,14 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   private _spaceWidth: number = 0;
   private _observer: MutationObserver;
   private _shouldDragging: boolean = true;
+  private _currentSelectedIndex: number = 0;
+  private _selectedIndex: number = 0;
 
   @ContentChildren(CarouselSlideComponent)
   items: QueryList<CarouselSlideComponent>;
 
   @Input()
   speed: number = 500;
-  @Input()
-  selectedIndex: number = 0;
   @Input()
   dots: boolean = true;
   @Input()
@@ -73,6 +73,16 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   swipeSpeed: number = 12;
   @Input()
   dragging: boolean = true;
+  @Input()
+  get selectedIndex() {
+    return this._selectedIndex;
+  }
+  set selectedIndex(value) {
+    this._selectedIndex = value;
+    if (this._nodeArr.length > 0) {
+      this.carousel(1);
+    }
+  }
   @Output()
   afterChange: EventEmitter<any> = new EventEmitter();
   @Output()
@@ -99,11 +109,12 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     };
   }
 
+
   @HostListener('mousemove', ['$event'])
   @HostListener('touchmove', ['$event'])
   panmove(event) {
     event.stopPropagation();
-    if (!this.dragging && !this._isMouseDown) {
+    if (!this.dragging || !this._isMouseDown) {
       return;
     }
     const { direction } = this.swipeDirection(
@@ -113,14 +124,10 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
       touchEvent.getEventTarget(event).pageY
     );
 
-    if (direction !== 0) {
-      event.preventDefault();
-    }
-
     const length = this.vertical
       ? Math.abs(touchEvent.getEventTarget(event).pageY - this.touchObject.startY)
       : Math.abs(touchEvent.getEventTarget(event).pageX - this.touchObject.startX);
-    const offset = -this.touchObject.direction * length - this.selectedIndex * this._rationWidth;
+    const offset = -this.touchObject.direction * length - this._currentSelectedIndex * this._rationWidth;
     this.touchObject = {
       startX: this.touchObject.startX,
       startY: this.touchObject.startY,
@@ -131,7 +138,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
       offset
     };
     if (direction !== 0) {
-      this.setSlideStyles(this.selectedIndex, this.touchObject.direction);
+      this.setSlideStyles(this._currentSelectedIndex, this.touchObject.direction);
     }
 
     this.getListStyles(offset);
@@ -142,7 +149,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @HostListener('touchend', ['$event'])
   panend(event) {
     event.stopPropagation();
-    if (!this.dragging && !this._isMouseDown) {
+    if (!this.dragging || !this._isMouseDown || !this.touchObject.length || this.touchObject.length === undefined) {
+      this._isMouseDown = false;
       return;
     }
     this._isMouseDown = false;
@@ -255,7 +263,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   getAfterNode(pre) {
     let nextIndex;
     if (pre) {
-      if (this.selectedIndex <= 0) {
+      if (this._currentSelectedIndex <= 0) {
         this.getListStyles(this._rationWidth);
         setTimeout(() => {
           this._nodeArr.forEach((v, tempIndex) => {
@@ -270,10 +278,10 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
           this.getListStyles(-this._rationWidth * (this.items.length - 1));
         }, this.speed);
         nextIndex = !this.infinite ? null : this._lastIndex;
-        this.beforeChange.emit({ from: this.selectedIndex, to: nextIndex });
+        this.beforeChange.emit({ from: this._currentSelectedIndex, to: nextIndex });
         return nextIndex;
       }
-      nextIndex = this.selectedIndex - 1;
+      nextIndex = this._currentSelectedIndex - 1;
       this.getListStyles(nextIndex * this._rationWidth * this.touchObject.direction);
       this._nodeArr.forEach((v, tempIndex) => {
         if (0 === tempIndex && nextIndex === this._nodeArr.length - 2) {
@@ -281,35 +289,35 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
           v.top = 0;
         }
       });
-      this.beforeChange.emit({ from: this.selectedIndex, to: nextIndex });
+      this.beforeChange.emit({ from: this._currentSelectedIndex, to: nextIndex });
       return nextIndex;
     } else {
-      if (this.selectedIndex >= this._lastIndex) {
-        this.setSlideStyles(this.selectedIndex, 1);
+      if (this._currentSelectedIndex >= this._lastIndex) {
+        this.setSlideStyles(this._currentSelectedIndex, 1);
         this.getListStyles(-(this._lastIndex + 1) * this._rationWidth);
         nextIndex = !this.infinite ? null : 0;
-        this.beforeChange.emit({ from: this.selectedIndex, to: nextIndex });
+        this.beforeChange.emit({ from: this._currentSelectedIndex, to: nextIndex });
         return nextIndex;
       }
-      nextIndex = this.selectedIndex + 1;
-      this.setSlideStyles(this.selectedIndex, 1);
+      nextIndex = this._currentSelectedIndex + 1;
+      this.setSlideStyles(this._currentSelectedIndex, 1);
       this.getListStyles(-nextIndex * this._rationWidth);
-      this.beforeChange.emit({ from: this.selectedIndex, to: nextIndex });
+      this.beforeChange.emit({ from: this._currentSelectedIndex, to: nextIndex });
       return nextIndex;
     }
   }
 
   caculateDirectionLeftCurrentIndex() {
-    const previousIndex = this.selectedIndex;
-    this.selectedIndex = (previousIndex + 1) % this.items.length;
+    const previousIndex = this._currentSelectedIndex;
+    this._currentSelectedIndex = (previousIndex + 1) % this.items.length;
   }
 
   caculateDirectionRightCurrentIndex() {
-    if (this.selectedIndex === 0) {
-      this.selectedIndex = this.items.length;
+    if (this._currentSelectedIndex === 0) {
+      this._currentSelectedIndex = this.items.length;
     }
-    const previousIndex = this.selectedIndex;
-    this.selectedIndex = (previousIndex - 1) % this.items.length;
+    const previousIndex = this._currentSelectedIndex;
+    this._currentSelectedIndex = (previousIndex - 1) % this.items.length;
   }
 
   gotoCarousel(afterIndex) {
@@ -333,8 +341,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
         this.getListStyles(0);
       }, this.speed);
     }
-    this.selectedIndex = afterIndex;
-    this.afterChange.emit(this.selectedIndex);
+    this._currentSelectedIndex = afterIndex;
+    this.afterChange.emit(this._currentSelectedIndex);
   }
 
   getCurrentIndex() {
@@ -449,7 +457,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   }
 
   get page() {
-    return this.dots ? this.selectedIndex : 0;
+    return this.dots ? this._currentSelectedIndex : 0;
   }
 
   get pageCount() {
@@ -468,6 +476,9 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     });
     this.initCarouselSize();
     const index = this.items.length > 1 ? this.selectedIndex : 0;
+    setTimeout(() => {
+      this._currentSelectedIndex = index;
+    }, 0);
     this.getListStyles(-index * this._rationWidth);
     this.carouselInit(this.items);
     const nativeElement = this._ele.nativeElement;
