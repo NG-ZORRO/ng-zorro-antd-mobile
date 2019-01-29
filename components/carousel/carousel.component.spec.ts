@@ -93,6 +93,7 @@ describe('CarouselComponent', () => {
     [infinite]="true"
     [vertical]="true"
     [dragging]="dragging"
+    [selectedIndex]="1"
     (beforeChange)="beforeChange($event)"
     (afterChange)="afterChange($event)"
     >
