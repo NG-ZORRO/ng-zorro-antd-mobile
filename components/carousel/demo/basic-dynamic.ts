@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
       >
         <CarouselSlide *ngFor="let item of state.data;let i = index" [ngStyle]="{'height': state.imgHeight}">
           <div style="display: inline-block; width: 100%;" [ngStyle]="{'height': state.imgHeight}">
-            <img src="https://zos.alipayobjects.com/rmsportal/{{item}}.png" style="width: 100%;"/>
+            <img src="https://zos.alipayobjects.com/rmsportal/{{item}}.png" style="pointer-events: none; width: 100%;"/>
           </div>
         </CarouselSlide>
       </Carousel>
