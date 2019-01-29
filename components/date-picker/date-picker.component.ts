@@ -632,23 +632,35 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       const realIdx = this.indexArray[checkIdx];
       switch (realIdx) {
         case 0:
-          min = 1;
-          max = 12;
+          min = this.judgeEqualArray(this.min_date, this.current_time, 1) ? this.localMinDate[checkIdx + 1] : 1;
+          max = this.judgeEqualArray(this.max_date, this.current_time, 1) ? this.localMaxDate[checkIdx + 1] : 12;
           str = '月';
           break;
         case 1:
-          min = 1;
-          max = new Date(this.current_time[0], this.current_time[1], 0).getDate();
+          min = this.judgeEqualArray(this.min_date, this.current_time, 2)
+          ? this.localMinDate[checkIdx + 1]
+          : (this.curTLessThanMin ? this.localMinDate[checkIdx + 1] : 1);
+          max = this.judgeEqualArray(this.max_date, this.current_time, 2)
+            ? this.localMaxDate[checkIdx + 1]
+          : new Date(this.current_time[0], this.current_time[1], 0).getDate();
           str = '日';
           break;
         case 2:
-          min = 0;
-          max = 23;
+          min = this.judgeEqualArray(this.min_date, this.current_time, 3)
+          ? this.localMinDate[checkIdx + 1]
+          : (this.curTLessThanMin ? this.localMinDate[checkIdx + 1] : 0);
+          max = this.judgeEqualArray(this.max_date, this.current_time, 3)
+          ? this.localMaxDate[checkIdx + 1]
+          : (this.curTMoreThanMax ? this.localMaxDate[checkIdx + 1] : 23);
           str = '时';
           break;
         case 3:
-          min = 0;
-          max = 59;
+          min = this.judgeEqualArray(this.min_date, this.current_time, 4)
+          ? this.localMinDate[checkIdx + 1]
+          : (this.curTLessThanMin ? this.localMinDate[checkIdx + 1] : 0);
+          max = this.judgeEqualArray(this.max_date, this.current_time, 4)
+          ? this.localMaxDate[checkIdx + 1]
+          : (this.curTMoreThanMax ? this.localMaxDate[checkIdx + 1] : 59);
           str = '分';
           break;
       }

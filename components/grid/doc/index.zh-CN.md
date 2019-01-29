@@ -23,3 +23,5 @@ subtitle: 宫格
 | carouselMaxRow    |   如果是跑马灯, 一页跑马灯需要展示的行数   | number  | `2` |
 | square   |   每个格子是否固定为正方形   | boolean | true |
 | itemStyle| 每个格子自定义样式| object|{} |
+
+> **注：** Grid 支持ng-content.
