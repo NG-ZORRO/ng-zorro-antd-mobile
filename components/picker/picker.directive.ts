@@ -2,8 +2,10 @@ import {
   Input,
   Output,
   OnInit,
+  NgZone,
   Injector,
   Renderer2,
+  OnChanges,
   OnDestroy,
   Directive,
   ElementRef,
@@ -29,7 +31,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class PickerDirective implements OnDestroy, OnInit, ControlValueAccessor {
+export class PickerDirective implements OnDestroy, OnInit, OnChanges, ControlValueAccessor {
   picker: ComponentRef<PickerComponent>;
   value: Array<any>;
   private _eventListeners: Array<() => void> = [];
@@ -80,11 +82,22 @@ export class PickerDirective implements OnDestroy, OnInit, ControlValueAccessor 
     private _elm: ElementRef,
     private _defaultOptions: PickerOptions,
     private _cfr: ComponentFactoryResolver,
-    private _renderer: Renderer2
+    private _renderer: Renderer2,
+    private _zone: NgZone
   ) {}
 
   ngOnInit(): void {
     this.onVisibleChange.emit(false);
+  }
+
+  ngOnChanges(value) {
+    if (value.cols && this.picker) {
+      this.picker.instance.options.cols = value.cols.currentValue;
+    }
+    if (value.data && this.picker) {
+      this.picker.instance.options.data = value.data.currentValue;
+      this.showPicker();
+    }
   }
 
   ngOnDestroy() {
@@ -102,7 +115,11 @@ export class PickerDirective implements OnDestroy, OnInit, ControlValueAccessor 
   }
 
   private showPicker(): void {
-    if (!this.picker && !this.disabled) {
+    if (this.picker) {
+      this._zone.run(() => {
+        this.picker.instance.init();
+      });
+    } else if (!this.picker && !this.disabled) {
       setTimeout(() => {
         this._eventListeners = [
           this._renderer.listen('document', 'click', (event: Event) => this.onDocumentClick(event)),
@@ -172,6 +189,11 @@ export class PickerDirective implements OnDestroy, OnInit, ControlValueAccessor 
 
   writeValue(value: any[]): void {
     this.value = Array.isArray(value) ? value : [];
+    if (this.picker) {
+      this.picker.instance.options.value = this.value;
+      this.showPicker();
+      this.picker.instance.reloadPicker();
+    }
   }
 
   registerOnChange(fn: (value: any[]) => void): void {
