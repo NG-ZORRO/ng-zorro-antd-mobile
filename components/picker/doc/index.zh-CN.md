@@ -28,6 +28,9 @@ subtitle: 选择器
 | disabled  | 是否不可用 | Boolean | false |
 | cascade  | 是否联动 | Boolean | true |
 
+> **注：** 组件不再提供默认的城市初始化数据。
+
+
 ### Picker.showPicker(config, confirm?, cancel?)
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------

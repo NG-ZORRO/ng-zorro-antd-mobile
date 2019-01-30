@@ -28,6 +28,8 @@ Properties | Descrition | Type | Default
 | cascade  | whether is cascade mode | Boolean | true |
 | indicatorStyle  | style of indicator | Object | - |
 
+> **注：** Don't support default city initialization data any more。
+
 ### Picker.showPicker(config, confirm?, cancel?)
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
