@@ -9,7 +9,7 @@ import { district, provinceLite } from 'antd-mobile-demo-data';
     <List className="my-list">
       <ListItem
         Picker
-        [data]="delayData"
+        [data]="data"
         [extra]="name1"
         [arrow]="'horizontal'"
         [mask]="true"
@@ -19,6 +19,19 @@ import { district, provinceLite } from 'antd-mobile-demo-data';
         (onDismiss)="onDismiss1()"
       >
         Multiple & cascader
+      </ListItem>
+      <ListItem
+        Picker
+        [data]="delayData"
+        [extra]="name1"
+        [arrow]="'horizontal'"
+        [mask]="true"
+        [title]="'Areas'"
+        [(ngModel)]="value1"
+        (ngModelChange)="onOk1($event)"
+        (onDismiss)="onDismiss1()"
+      >
+        Multiple & delayData
       </ListItem>
       <ListItem
         Picker
