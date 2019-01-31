@@ -1,5 +1,5 @@
 <div *ngIf="options.mask" class="am-picker-popup-mask {{maskTransitionName}}" (click)="cancel()"></div>
-<div class="am-picker-popup {{transitionName}}" style="z-index: 1001">
+<div class="am-picker-popup {{transitionName}}" style="z-index: 1001; min-height: 280px">
   <div class="am-picker-popup-content">
     <div class="am-picker-popup-body">
       <div>
@@ -9,7 +9,7 @@
           <div class="am-picker-popup-item am-picker-popup-header-right" (click)="ok()">{{options.okText}}</div>
         </div>
         <div class="am-picker" style="flex-direction: row; align-items: center;" #picker>
-          <div *ngFor="let item of data; let i = index" class="am-picker-col">
+          <div *ngFor="let item of dataForRender; let i = index" class="am-picker-col">
             <div class="am-picker-col-indicator " style="top: 102px;" [ngStyle]="options.indicatorStyle"></div>
             <div class="am-picker-col-mask" style="background-size: 100% 102px;" id={{i}}></div>
             <div class="am-picker-col-content">
