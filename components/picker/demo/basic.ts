@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Picker } from 'ng-zorro-antd-mobile';
+import { district, provinceLite } from 'antd-mobile-demo-data';
 @Component({
   selector: 'demo-picker-basic',
   template: `
@@ -8,6 +9,7 @@ import { Picker } from 'ng-zorro-antd-mobile';
     <List className="my-list">
       <ListItem
         Picker
+        [data]="data"
         [extra]="name1"
         [arrow]="'horizontal'"
         [mask]="true"
@@ -17,6 +19,19 @@ import { Picker } from 'ng-zorro-antd-mobile';
         (onDismiss)="onDismiss1()"
       >
         Multiple & cascader
+      </ListItem>
+      <ListItem
+        Picker
+        [data]="delayData"
+        [extra]="name1"
+        [arrow]="'horizontal'"
+        [mask]="true"
+        [title]="'Areas'"
+        [(ngModel)]="value1"
+        (ngModelChange)="onOk1($event)"
+        (onDismiss)="onDismiss1()"
+      >
+        Multiple & delayData
       </ListItem>
       <ListItem
         Picker
@@ -42,6 +57,8 @@ import { Picker } from 'ng-zorro-antd-mobile';
       </ListItem>
       <ListItem
         Picker
+        [data]="asynData"
+        [cols]="cols"
         [extra]="name4"
         [arrow]="'horizontal'"
         [(ngModel)]="value4"
@@ -68,6 +85,9 @@ import { Picker } from 'ng-zorro-antd-mobile';
   providers: [Picker]
 })
 export class DemoPickerBasicComponent {
+  data = district;
+  asynData = provinceLite;
+  delayData = [];
   singleArea = [
     '东城区',
     '西城区',
@@ -124,8 +144,13 @@ export class DemoPickerBasicComponent {
   value2 = [];
   value3 = [];
   value4 = [];
+  cols = 1;
 
-  constructor(private _picker: Picker) {}
+  constructor(private _picker: Picker) {
+    setTimeout(() => {
+      this.delayData = this.data;
+    }, 10000);
+  }
 
   onDismiss1() {
     console.log('cancel');
@@ -148,8 +173,44 @@ export class DemoPickerBasicComponent {
   }
 
   onPickerChange(result) {
-    this.name4 = this.getResult(result);
-    this.value4 = this.getValue(result);
+    const val = this.getValue(result);
+    console.log(val);
+    let colNum = 1;
+    const d = [...this.asynData];
+    const asyncValue = [...val];
+    if (val[0] === 'zj') {
+      d.forEach((i) => {
+        if (i.value === 'zj') {
+          colNum = 2;
+          if (!i.children) {
+            i.children = [{
+              value: 'zj-nb',
+              label: '宁波',
+            }, {
+              value: 'zj-hz',
+              label: '杭州',
+            }];
+            asyncValue.push('zj-nb');
+          } else if (val[1] === 'zj-hz') {
+            i.children.forEach((j) => {
+              if (j.value === 'zj-hz') {
+                j.children = [{
+                  value: 'zj-hz-xh',
+                  label: '西湖区',
+                }];
+                asyncValue.push('zj-hz-xh');
+              }
+            });
+            colNum = 3;
+          }
+        }
+      });
+    } else {
+      colNum = 1;
+    }
+    this.asynData = d;
+    this.cols = colNum;
+    this.value4 = asyncValue;
   }
 
   getResult(result) {
@@ -166,8 +227,8 @@ export class DemoPickerBasicComponent {
     let value = [];
     let temp = '';
     result.forEach(item => {
-      value.push(item.label || item);
-      temp += item.label || item;
+      value.push(item.value || item);
+      temp += item.value || item;
     });
     return value;
   }
