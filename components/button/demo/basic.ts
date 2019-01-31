@@ -4,21 +4,23 @@ import { Component } from '@angular/core';
   selector: 'demo-button-basic',
   template: `
     <WingBlank>
-      <div Button (onClick)="onClick()">default</div>
+    <div Button [type]="'dashed'" (onClick)="onClick()">dashed</div>
     <WhiteSpace ></WhiteSpace>
-      <div Button [disabled]="true">default diasbled</div>
+    <div Button (onClick)="onClick()">default</div>
     <WhiteSpace ></WhiteSpace>
-      <div Button [type]="'primary'">primary</div>
+    <div Button [disabled]="true">default diasbled</div>
     <WhiteSpace ></WhiteSpace>
-      <div Button [type]="'primary'" [disabled]="true">primary diasbled</div>
+    <div Button [type]="'primary'">primary</div>
     <WhiteSpace ></WhiteSpace>
-      <div Button [type]="'warning'">warning</div>
+    <div Button [type]="'primary'" [disabled]="true">primary diasbled</div>
     <WhiteSpace ></WhiteSpace>
-      <div Button [type]="'warning'" [disabled]="true">warning</div>
+    <div Button [type]="'warning'">warning</div>
     <WhiteSpace ></WhiteSpace>
-      <div Button [loading]="true" >loading</div>
+    <div Button [type]="'warning'" [disabled]="true">warning</div>
     <WhiteSpace ></WhiteSpace>
-      <div Button [icon]="'check-circle-o'">with icon</div>
+    <div Button [loading]="true" >loading</div>
+    <WhiteSpace ></WhiteSpace>
+    <div Button [icon]="'check-circle-o'">with icon</div>
     <WhiteSpace ></WhiteSpace>
     <div Button [icon]="img">
       with custom icon
