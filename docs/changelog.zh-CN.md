@@ -13,11 +13,43 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
-## 0.11.2 (2019-01-11)
+## 0.11.4 (2019-02-14)
+
+### Bug Fixes
+
+* **carousel:** 修复设置 Carousel 选中序列失败的问题 ([#269](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/269)) ([55ae6d2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/55ae6d2))
+* **input-item:** 修复 iOS9 中文字符输入问题 ([#249](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/249)) ([f421746](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f421746))
+* **notice-bar:** 修复 notice-bar-card 颜色问题 ([#274](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/274)) ([53f5b45](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/53f5b45))
+* **searchbar:** 修复 iOS9 中文字符输入问题 ([#250](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/250)) ([3e7efd4](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3e7efd4))
+* **date-picker:** 修复不使用onOK导致的下一次显示失败问题 ([#258](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/258)) ([2f5fc79](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/2f5fc79))
+* **date-picker:** 修复设置最大最小日期后打开 Picker 显示错误 ([#256](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/256)) ([41f20f5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/41f20f5))
+* **date-picker:** 修复选择最早最晚时间时的 interval ([#267](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/267)) ([3fa56dc](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3fa56dc))
+* **date-picker:** 修复设置minDate错误 ([#243](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/243)) ([8fdbe8f](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8fdbe8f))
+* **pulltorefresh:** 修复上划然后下划时导致的 refresh 信号错误 ([#248](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/248)) ([5fd57d7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5fd57d7))
+
 
 ### Features
 
-* **actionsheet:** 支持 Locale 国际化 ([#232](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/232)) ([39870da](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/39870da))
+* **button:** 增加 dashed 样式 ([#273](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/273)) ([8759db0](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8759db0))
+* **grid:** Grid 中支持动态的 ng-content ([#268](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/268)) ([2a579a2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/2a579a2))
+* **grid:** 支持 自定义 icon 和本地静态资源 ([#257](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/257)) ([eafe8ec](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/eafe8ec))
+
+
+### Performance Improvements
+
+* **picker:** 删除成员默认值 ([#272](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/272)) ([ec748c3](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ec748c3))
+
+## 0.11.2 (2019-01-11)
+
+### Bug Fixes
+
+* **actionsheet:** 修复 Actionsheet 没有销毁 locale 订阅问题 ([#236](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/236)) ([d719496](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/d719496))
+* **carousel:** 修复 Carousel 选中序列初始化失败问题 ([#230](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/230)) ([5482cb2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5482cb2))
+* **pulltorefresh:** 修复没有使用 NgModel 出现的错误 ([#229](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/229)) ([5a3ba5d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5a3ba5d))
+
+### Features
+
+* **actionsheet:** 支持 locale 国际化 ([#232](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/232)) ([39870da](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/39870da))
 * **carousel:** 仅有1个元素时禁止drag ([#239](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/239)) ([799ce51](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/799ce51))
 * **datepicker:** 增加disabled 属性 ([#233](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/233)) ([8f772a9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8f772a9))
 * **picker:** 增加 disabled 属性 ([#231](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/231)) ([02733b4](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/02733b4))
