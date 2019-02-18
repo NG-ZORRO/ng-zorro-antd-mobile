@@ -10,6 +10,18 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 
+function closest(el, selector) {
+  const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+
+  while (el) {
+    if (matchesSelector.call(el, selector)) {
+      return el;
+    } else {
+      el = el.parentElement;
+    }
+  }
+  return null;
+}
 
 @Component({
   selector: 'SwipeAction, nzm-swipe-action',
@@ -60,11 +72,15 @@ export class SwipeAction implements OnInit, AfterViewInit, OnDestroy {
     };
   }
 
-  onCloseSwipe = () => {
+  onCloseSwipe = (ev) => {
     if (!(this._openedLeft || this._openedRight)) {
       return;
     }
-    this.close();
+    const pNode = closest(ev.target, `.${this.prefixCls}-actions`);
+    if (!pNode) {
+      ev.preventDefault();
+      this.close();
+    }
   };
 
   close() {
@@ -88,7 +104,7 @@ export class SwipeAction implements OnInit, AfterViewInit, OnDestroy {
     return Math.abs(value) - Math.abs(limit) > 0 ? limit : value;
   }
 
-  onTouchStart = e => {
+  onTouchStart(e) {
     this._startX = e.changedTouches[0].clientX;
     this._swiping = true;
   };
