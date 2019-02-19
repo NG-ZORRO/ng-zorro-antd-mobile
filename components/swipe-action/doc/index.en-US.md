@@ -22,7 +22,7 @@ Properties | Descrition | Type | Default
 -----------|------------|------|--------           |
 | left       | left buttons for `swipeout`      | Array | `null` |
 | right       | right buttons for `swipeout`    | Array | `null` |
-| autoClose       | auto hide after button is pressed   | Boolean | `function() {}` |
+| autoClose       | auto hide after button is pressed   | Boolean | `false` |
 | onOpen       |    callback function that is triggered when the buttons will be opened   | (): void | `function() {}` |
 | disabled       |   whether is disabled    | Boolean | `false` |
 | onClose   |  callback function that is triggered when the buttons will be closed | (): void | `function() {}` |
