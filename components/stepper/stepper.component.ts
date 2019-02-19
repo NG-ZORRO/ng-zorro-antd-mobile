@@ -10,7 +10,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       useExisting: forwardRef(() => Stepper),
       multi: true
     }
-  ],
+  ]
 })
 export class Stepper implements OnChanges, ControlValueAccessor {
   prefixCls: string = 'am-stepper';
@@ -53,9 +53,6 @@ export class Stepper implements OnChanges, ControlValueAccessor {
     this._value = v;
   }
   @Input()
-  get step(): number {
-    return this._step;
-  }
   set step(value) {
     this._step = value;
   }
@@ -106,13 +103,13 @@ export class Stepper implements OnChanges, ControlValueAccessor {
 
   onIncrease() {
     if (!this._upDisabled) {
-      this._value = this._value + this._step;
+      this._value = this.plus(this._value, this._step);
       this.onChange.emit(this._value);
       this.onChangeFn(this._value);
-      if (this._value + this._step > this._max) {
+      if (this.plus(this._value, this._step) > this._max) {
         this._upDisabled = true;
       }
-      if (this._value - this._step >= this._min) {
+      if (this.minus(this._value, this._step) >= this._min) {
         this._downDisabled = false;
       }
       this._isUpClick = true;
@@ -126,13 +123,13 @@ export class Stepper implements OnChanges, ControlValueAccessor {
 
   onDecrease() {
     if (!this._downDisabled) {
-      this._value = this._value - this._step;
+      this._value = this.minus(this._value, this._step);
       this.onChange.emit(this._value);
       this.onChangeFn(this._value);
-      if (this._value - this._step < this._min) {
+      if (this.minus(this._value, this._step) < this._min) {
         this._downDisabled = true;
       }
-      if (this._value + this._step <= this._max) {
+      if (this.plus(this._value, this._step) <= this._max) {
         this._upDisabled = false;
       }
       this._isDownClick = true;
@@ -169,10 +166,10 @@ export class Stepper implements OnChanges, ControlValueAccessor {
   }
 
   ngOnChanges() {
-    if (this._value + this._step > this._max) {
+    if (this.plus(this._value, this._step) > this._max) {
       this._upDisabled = true;
     }
-    if (this._value - this._step < this._min) {
+    if (this.minus(this._value, this._step) < this._min) {
       this._downDisabled = true;
     }
     this.setCls();
@@ -183,11 +180,53 @@ export class Stepper implements OnChanges, ControlValueAccessor {
     this.ngOnChanges();
   }
 
-   registerOnChange(fn: (value: number) => void): void {
+  registerOnChange(fn: (value: number) => void): void {
     this.onChangeFn = fn;
   }
 
-   registerOnTouched(fn: (value: number) => void): void {
+  registerOnTouched(fn: (value: number) => void): void {
     this.onTouchFn = fn;
+  }
+
+  plus(num1: number, num2: number): number {
+    if (num1 === undefined || num1 === null || num2 === undefined || num2 === null) {
+      return;
+    }
+    const baseNum = Math.pow(10, Math.max(this.digitLength(num1), this.digitLength(num2)));
+    return (this.times(num1, baseNum) + this.times(num2, baseNum)) / baseNum;
+  }
+
+  minus(num1: number, num2: number): number {
+    if (num1 === undefined || num1 === null || num2 === undefined || num2 === null) {
+      return;
+    }
+    const baseNum = Math.pow(10, Math.max(this.digitLength(num1), this.digitLength(num2)));
+    return (this.times(num1, baseNum) - this.times(num2, baseNum)) / baseNum;
+  }
+
+  digitLength(num: number): number {
+    const eSplit = num.toString().split(/[eE]/);
+    const len = (eSplit[0].split('.')[1] || '').length - +(eSplit[1] || 0);
+    return len > 0 ? len : 0;
+  }
+
+  times(num1: number, num2: number): number {
+    const num1Changed = this.floatToFixed(num1);
+    const num2Changed = this.floatToFixed(num2);
+    const baseNum = this.digitLength(num1) + this.digitLength(num2);
+    const leftValue = num1Changed * num2Changed;
+    return leftValue / Math.pow(10, baseNum);
+  }
+
+  floatToFixed(num: number): number {
+    if (num.toString().indexOf('e') === -1) {
+      return Number(num.toString().replace('.', ''));
+    }
+    const dLen = this.digitLength(num);
+    return dLen > 0 ? this.strip(num * Math.pow(10, dLen)) : num;
+  }
+
+  strip(num: number, precision = 12): number {
+    return +parseFloat(num.toPrecision(precision));
   }
 }
