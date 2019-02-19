@@ -10,7 +10,6 @@ import { Component } from '@angular/core';
     <br/>
     <List>
       <SwipeAction style="background-color: gray"
-                   [autoClose]="true"
                    [right]="right"
                    [left]="left"
                    (onOpen)="open()"

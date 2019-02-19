@@ -136,6 +136,14 @@ describe('swipeAction', () => {
     fixture.detectChanges();
     expect(component.onClose).toHaveBeenCalledTimes(0);
   });
+
+  it('btnLength correct when btnRef is null', () => {
+    component.swipeAction.leftBtnRef = null;
+    component.swipeAction.rightBtnRef = null;
+    component.swipeAction.ngAfterViewInit();
+    expect(component.swipeAction._btnsLeftWidth).toEqual(0);
+    expect(component.swipeAction._btnsRightWidth).toEqual(0);
+  });
 });
 
 @Component({
