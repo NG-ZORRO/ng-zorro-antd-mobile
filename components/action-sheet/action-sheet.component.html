@@ -13,7 +13,7 @@
             <ng-template *ngIf="isTemplateRef(option.title)" [ngTemplateOutlet]="option.title"></ng-template>
             <h3 *ngIf="!isTemplateRef(option.title)" class="{{option.prefixCls}}-title">{{option.title}}</h3>
           </ng-container>
-          <ng-container *ngIf="!isNoTitle(option.title)">
+          <ng-container *ngIf="!isNoTitle(option.message)">
             <ng-template *ngIf="isTemplateRef(option.message)" [ngTemplateOutlet]="option.message"></ng-template>
             <div *ngIf="!isTemplateRef(option.message)" class="{{option.prefixCls}}-message">{{option.message}}</div>
           </ng-container>
