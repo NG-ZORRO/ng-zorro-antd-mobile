@@ -490,6 +490,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
           if (this.slideHeight !== nativeElement.querySelector('carouselslide').clientHeight) {
             this.initCarouselSize();
             this.getListStyles(-index * this._rationWidth);
+            this.carouselInit(this.items);
           }
         }
       }
