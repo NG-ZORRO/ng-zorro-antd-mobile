@@ -76,6 +76,8 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
   writeValue(value: Date): void {
     if (value) {
       this.value = value;
+      this.optionInit();
+      this.init();
     }
   }
 
