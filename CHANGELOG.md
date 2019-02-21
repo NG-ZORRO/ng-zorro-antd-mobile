@@ -1,3 +1,20 @@
+## [0.11.5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.4...0.11.5) (2019-02-21)
+
+
+### Bug Fixes
+
+* **actionsheet:** fix code title->message error ([#283](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/283)) ([f850e1a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f850e1a))
+* **date-picker-view:** fix value input not work ([#287](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/287)) ([7d74e54](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7d74e54))
+* **stepper:** fix stepper js float calculation bug ([#280](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/280)) ([5cd1f6c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5cd1f6c))
+* **swipe-action:** fix autoclose not work bug ([#282](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/282)) ([acb180e](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/acb180e))
+
+
+### Performance Improvements
+
+* **tabbar:** enlarge tabbartab click zone ([#286](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/286)) ([5830cd6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5830cd6))
+
+
+
 ## [0.11.4](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.2...0.11.4) (2019-02-14)
 
 
