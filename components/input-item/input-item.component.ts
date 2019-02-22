@@ -300,8 +300,9 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
     this._inputLock = true;
   }
 
-  compositionEnd() {
+  compositionEnd(e) {
     this._inputLock = false;
+    this.inputChange(e.target.value);
   }
 
   inputFocus(value) {
