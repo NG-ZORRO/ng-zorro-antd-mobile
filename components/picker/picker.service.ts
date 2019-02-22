@@ -38,6 +38,6 @@ export class Picker extends PopupService {
   }
 
   static hidePicker(): void {
-    Picker.hidePopup();
+    Picker.hidePopup('PickerComponent');
   }
 }
