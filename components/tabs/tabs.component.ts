@@ -38,7 +38,7 @@ export class Tabs implements DoCheck, AfterContentInit {
   private _tabDirection: TabDirection = 'horizontal';
   private _tabBarPosition: TabBarPositionType = 'top';
 
-  @ContentChildren(TabPane, { descendants: true })
+  @ContentChildren(TabPane, { descendants: false })
   tabPanes: QueryList<TabPane>;
 
   @ViewChild('TabContent')
