@@ -242,6 +242,7 @@ export class DemoPickerBasicComponent {
       },
       cancel => {
         console.log('cancel');
+
       }
     );
   }

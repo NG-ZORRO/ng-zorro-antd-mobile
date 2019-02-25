@@ -6,6 +6,8 @@ import { ComponentPortal } from '@angular/cdk/portal';
 export class PopupService {
   static overlay: Overlay = null;
   static overlayRef: OverlayRef = null;
+  static currentServiceName = null;
+  static serviceArray: any = [];
 
   constructor(
     public _overlay: Overlay,
@@ -24,15 +26,29 @@ export class PopupService {
     overlayConfig.positionStrategy = positionStrategy;
     PopupService.overlayRef = PopupService.overlay.create(overlayConfig);
     PopupService.overlayRef.backdropClick().subscribe(() => {
-      PopupService.overlayRef.dispose();
+      PopupService.hidePopup();
     });
-
-    return PopupService.overlayRef.attach(new ComponentPortal(component, undefined, childInjector));
+    PopupService.currentServiceName = component.name;
+    const comRef = PopupService.overlayRef.attach(new ComponentPortal(component, undefined, childInjector));
+    PopupService.serviceArray.push({key: component.name, value: PopupService.overlayRef});
+    return comRef;
   }
 
-  static hidePopup(): void {
-    if (PopupService.overlayRef) {
-      PopupService.overlayRef.dispose();
+  static hidePopup(componentName?: string): void {
+    if (PopupService.serviceArray && PopupService.currentServiceName) {
+      if (componentName) {
+        PopupService.serviceArray.forEach((element: any, index: number) => {
+          if (element.key === componentName) {
+            PopupService.serviceArray[index].value.dispose();
+            PopupService.serviceArray.splice(index, 1);
+          }
+        });
+      } else {
+        PopupService.serviceArray.forEach((element: any, index: number) => {
+          PopupService.serviceArray[index].value.dispose();
+        });
+        PopupService.serviceArray = [];
+      }
     }
   }
 }
