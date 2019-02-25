@@ -97,9 +97,8 @@ export class SwipeAction implements OnInit, AfterViewInit, OnDestroy {
 
   onTouchMove(e) {
     const deltaX = e.changedTouches[0].clientX - this._startX;
-    e.preventDefault();
-    this._needShowRight = deltaX < 0 && this.right.length > 0;
-    this._needShowLeft = deltaX > 0 && this.left.length > 0;
+    this._needShowRight = deltaX < -5 && this.right.length > 0;
+    this._needShowLeft = deltaX > 5 && this.left.length > 0;
     if (this.leftBtnRef) {
       this.leftBtnRef.nativeElement.style.visibility = this._needShowRight ? 'hidden' : 'visible';
     }
