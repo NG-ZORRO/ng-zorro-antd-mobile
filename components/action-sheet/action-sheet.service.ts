@@ -104,6 +104,6 @@ export class ActionSheet extends PopupService {
   }
 
   static close() {
-    ActionSheet.hidePopup();
+    ActionSheet.hidePopup('ActionSheetComponent');
   }
 }
