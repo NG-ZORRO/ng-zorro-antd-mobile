@@ -31,6 +31,7 @@ Properties | Descrition | Type | Default
 | error       | whether to display error         | bool |  false  |
 | onErrorClick   | callback that is called when the error icon is clicked   | (): void | <span> </span> |
 | autoHeight | auto adjust height (only use one of `autoHeight` and `rows` properties) | bool  | false  |
+| autoFocus | auto get focus when init | bool  | false  |
 | labelNumber  | number of label text, valid value is 2 to 7 | number | `5` |
 | name   | the name of textarea      | String |   -  |
 | prefixListCls   |   the class name prefix of list      | String |  `am-list`  |
