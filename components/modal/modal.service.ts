@@ -194,7 +194,7 @@ export class Modal extends PopupService {
   }
 
   static close() {
-    Modal.hidePopup();
+    Modal.hidePopup('ModalServiceComponent');
   }
 }
 
