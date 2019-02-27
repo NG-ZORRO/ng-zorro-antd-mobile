@@ -14,8 +14,6 @@ A foundational component for inputting text into the app via a keyboard.
 
 ## API
 
-**`InputItem` must wrapped by a [List](http://ng.mobile.ant.design/#/components/list/en)**
-
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | type    | can be `bankCard`; `phone`(which the maxLength is 11 and setting will be ignored); `password`; `number`(in order to evoke the 'numeric keyboard with decimal', this type is not a native number, but `<input type="text" pattern="[0-9]*"/>`); `digit`(represent the native type number); `money`; As well as other standard html input type values. | String |  `text`  |
