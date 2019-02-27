@@ -1,7 +1,8 @@
 import { Component, Input, ChangeDetectorRef, Output, EventEmitter, ViewEncapsulation, HostBinding } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AccordionService } from '../accordion.service';
-
+import { isTemplateRef } from '../../core/util/check';
+import { Template } from '@angular/compiler/src/render3/r3_ast';
 @Component({
   selector: 'AccordionPanel',
   templateUrl: './accordion-group.component.html',
@@ -28,7 +29,7 @@ export class AccordionGroupComponent {
   @Input()
   key: string;
   @Input()
-  header: string;
+  header: string | Template;
   @Input()
   isOpened: boolean = false;
   @Input()
@@ -39,6 +40,7 @@ export class AccordionGroupComponent {
   onClose = new EventEmitter();
   @Output()
   onChange = new EventEmitter();
+  isTemplateRef = isTemplateRef;
 
   @HostBinding('class.am-accordion-item') public amItem = true;
   @HostBinding('class.am-accordion-item-active') public isActive = this.isOpened;

@@ -27,6 +27,6 @@ Properties | Descrition | Type | Default
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | key  | corresponding activeKey   | String   | -   |
-| header | header content of Panel | TemplateRef or String | -   |
+| header | header content of Panel | TemplateRef or String or html(<div>header</div>) | -   |
 
 Note: Currently does not support nested use for NG.
