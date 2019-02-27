@@ -32,6 +32,7 @@ subtitle: 多行输入
 | error       | 报错样式        | bool |  false  |
 | onErrorClick       | 点击报错 icon 触发的回调   | (): void |  无  |
 | autoHeight       | 高度自适应, autoHeight 和 rows 请二选一    | bool  | false  |
+| autoFocus       | 初始化自动获得焦点   | bool  | false  |
 | labelNumber  | 定宽枚举值：`num * @input-label-width: 34px`，可用`2-7`之间的数字，一般(不能保证全部)能对应显示出相应个数的中文文字(不考虑英文字符) | number | `5` |
 | name    | textarea 的 name       | String |   -  |
 | prefixListCls    |   列表 className 前缀      | String |  `am-list`  |
