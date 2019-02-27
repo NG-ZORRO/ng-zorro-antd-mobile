@@ -28,6 +28,6 @@ subtitle: 手风琴
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
 | key  | 对应 activeKey   | String          | 无     |
-| header | 面板头内容 | TemplateRef or String | 无     |
+| header | 面板头内容 | TemplateRef or String or html(<div>header</div>) | 无     |
 
 注意: 目前暂不支持嵌套使用

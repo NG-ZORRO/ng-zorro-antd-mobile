@@ -5,13 +5,14 @@
      (click)="checkAndToggle()"
 >
   <i class="arrow"></i>
-  {{header}}
+  <div *ngIf="!isTemplateRef(header)" [innerHTML]="header | safeHTML"></div>
+  <ng-template *ngIf="isTemplateRef(header)" [ngTemplateOutlet]="header"></ng-template>
 </div>
 <div role="tabpanel"
      class="am-accordion-content"
      [ngClass]="{'am-accordion-content-active':isOpened}"
      [@slide]="slide"
-     (@slide.done)="slideAnimationDoen($event)" 
+     (@slide.done)="slideAnimationDoen($event)"
 >
   <div *ngIf="isShowChild" class="am-accordion-content-box">
     <ng-content></ng-content>
