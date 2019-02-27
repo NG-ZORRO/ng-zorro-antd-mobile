@@ -71,20 +71,22 @@ describe('InputComponent', () => {
     expect(fakeInput.innerText).toBe('23', 'type is money');
   });
 
-  it('should input chinese character work', () => {
+  it('should input chinese character work', fakeAsync(() => {
     const inputModelEle = inputModel.nativeElement.querySelector('input');
     inputModelEle.value = '哈哈';
     inputModelEle.dispatchEvent(new Event('compositionstart'));
     inputModelEle.dispatchEvent(new Event('input'));
     fixture.detectChanges();
+    tick(0);
     expect(component.modelValue).toBe(undefined);
 
     inputModelEle.value = '哈哈';
     inputModelEle.dispatchEvent(new Event('compositionend'));
     inputModelEle.dispatchEvent(new Event('input'));
     fixture.detectChanges();
+    tick(0);
     expect(component.modelValue).toBe('哈哈');
-  });
+  }));
 
   it('should defaultValue work', () => {
     component.defaultValue = 'test';
@@ -289,49 +291,48 @@ describe('InputComponent', () => {
     fixture.detectChanges();
     expect(component.focusFn).toHaveBeenCalled();
   });
-  it('should OnChange work, type is text', () => {
-    component.clear = true;
-    component.value = 'test';
-    fixture.detectChanges();
-    component.clickTitle();
-    const clearEle = inputItem.nativeElement.querySelector('.am-input-clear');
-    clearEle.click();
-    expect(component.change).toHaveBeenCalled();
-
+  it('should OnChange work, type is text', fakeAsync(() => {
     component.inputItemComp.inputType = 'phone';
     component.inputItemComp.inputChange('12334');
     component.clickTitle();
+    tick(0);
     expect(component.inputItemComp.value).toBe('123 34');
 
     component.inputItemComp.inputChange('123123123123');
     component.clickTitle();
+    tick(0);
     expect(component.inputItemComp.value).toBe('123 1231 2312');
 
     component.inputItemComp.inputType = 'bankCard';
     component.inputItemComp.inputChange('1231212312');
     component.clickTitle();
+    tick(0);
     expect(component.inputItemComp.value).toBe('1231 2123 12');
 
     component.inputItemComp.inputType = 'number';
     component.inputItemComp.inputChange('sdf12hah3');
     component.clickTitle();
+    tick(0);
     expect(component.inputItemComp.value).toBe('123');
 
     component.inputItemComp.inputType = 'text';
     component.inputItemComp.inputChange('sdf12hah3');
     component.clickTitle();
+    tick(0);
     expect(component.inputItemComp.value).toBe('sdf12hah3');
 
     component.inputItemComp.inputType = 'password';
     component.inputItemComp.inputChange('sdf12hah3');
     component.clickTitle();
+    tick(0);
     expect(component.inputItemComp.value).toBe('sdf12hah3');
 
     component.inputItemComp.inputType = 'test';
     component.inputItemComp.inputChange('sdf12hah3');
     component.clickTitle();
+    tick(0);
     expect(component.inputItemComp.value).toBe('sdf12hah3');
-  });
+  }));
   it('should OnChange work, type is money', () => {
     component.type = 'money';
     fixture.detectChanges();
@@ -370,13 +371,14 @@ describe('InputComponent', () => {
     expect(fakeInput.classList).toContain('focus');
   });
 
-  it('should ngModel work', () => {
+  it('should ngModel work',  fakeAsync(() => {
     const inputModelEle = inputModel.nativeElement.querySelector('input');
     inputModelEle.value = 'test-ng-model';
     inputModelEle.dispatchEvent(new Event('input'));
     fixture.detectChanges();
+    tick(0);
     expect(component.modelValue).toBe('test-ng-model');
-  });
+  }));
 });
 
 @Component({
