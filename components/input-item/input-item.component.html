@@ -31,8 +31,8 @@
              [pattern]="pattern"
              [style.color]='fontColor'
              (ngModelChange)="inputChange($event)"
-             (compositionstart)="compositionStart($event)"
-             (compositionend)="compositionEnd($event)"
+             (compositionstart)="compositionStart()"
+             (compositionend)="compositionEnd()"
              (blur)="inputBlur(value)"
              (focus)="inputFocus(value)"
              style="outline:none" />
