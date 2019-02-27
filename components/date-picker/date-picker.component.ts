@@ -240,7 +240,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   transformDateFormat(date): any {
-    if (!date || date === '') {
+    if (!date) {
       return '';
     } else {
       return 'yyyy-mm-dd-HH-MM'
@@ -730,10 +730,12 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     this.checkMode(this.options.mode);
     const value = this.transformDateFormat(this.options.value).split('-');
-    if (value.length > 0) {
+    if (value.length > 1) {
       this.current_time = this.currentTime = value.map(item => {
         return parseInt(item, 0);
       });
+    } else {
+      this.currentTime = this.current_time;
     }
     this.localeProvider();
   }
