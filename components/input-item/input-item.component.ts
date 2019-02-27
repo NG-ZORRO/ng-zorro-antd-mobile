@@ -258,42 +258,42 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   }
 
   inputChange(e) {
-    if (this._inputLock && this.inputType === 'text') {
-      return;
-    }
-    let value = e;
-    switch (this.inputType) {
-      case 'text':
-        break;
-      case 'bankCard':
-        value = value.replace(/\D/g, '').replace(/(....)(?=.)/g, '$1 ');
-        break;
-      case 'phone':
-        value = value.replace(/\D/g, '').substring(0, 11);
-        const valueLen = value.length;
-        if (valueLen > 3 && valueLen < 8) {
-          value = `${value.substr(0, 3)} ${value.substr(3)}`;
-        } else if (valueLen >= 8) {
-          value = `${value.substr(0, 3)} ${value.substr(3, 4)} ${value.substr(7)}`;
-        }
-        break;
-      case 'number':
-        value = value.replace(/\D/g, '');
-        break;
-      case 'password':
-        break;
-      default:
-        this._value = value;
-        break;
-    }
-    this._value = value;
-
-    if (this._type !== 'money') {
-      this.inputElementRef.nativeElement.value = this._value;
-    }
-
-    this._onChange(this._value);
-    this.onChange.emit(this._value);
+    setTimeout(() => {
+      if (this._inputLock && this.inputType === 'text') {
+        return;
+      }
+      let value = e;
+      switch (this.inputType) {
+        case 'text':
+          break;
+        case 'bankCard':
+          value = value.replace(/\D/g, '').replace(/(....)(?=.)/g, '$1 ');
+          break;
+        case 'phone':
+          value = value.replace(/\D/g, '').substring(0, 11);
+          const valueLen = value.length;
+          if (valueLen > 3 && valueLen < 8) {
+            value = `${value.substr(0, 3)} ${value.substr(3)}`;
+          } else if (valueLen >= 8) {
+            value = `${value.substr(0, 3)} ${value.substr(3, 4)} ${value.substr(7)}`;
+          }
+          break;
+        case 'number':
+          value = value.replace(/\D/g, '');
+          break;
+        case 'password':
+          break;
+        default:
+          this._value = value;
+          break;
+      }
+      this._value = value;
+      if (this._type !== 'money') {
+        this.inputElementRef.nativeElement.value = this._value;
+      }
+      this._onChange(this._value);
+      this.onChange.emit(this._value);
+    }, 0);
   }
 
   compositionStart() {
