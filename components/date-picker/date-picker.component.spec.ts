@@ -206,6 +206,18 @@ describe('DatePickerComponent', () => {
     dispatchTouchEvent(target, 'mouseup', 0, 0);
     fixture.detectChanges();
   });
+
+  it('should ngmodel default value work', () => {
+    component.value1 = null;
+    component.name1 = null;
+    fixture.detectChanges();
+    button.click();
+    fixture.detectChanges();
+    datePickerEle = document.querySelector('datepicker');
+    datePickerEle.querySelector('.am-picker-popup-header-right').click();
+    fixture.detectChanges();
+    expect(component.value1.getTime()).not.toBeNaN();
+  });
 });
 
 @Component({
