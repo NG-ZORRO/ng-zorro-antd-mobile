@@ -15,7 +15,7 @@ Used to select a date or time.
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | mode  | mode value, can be a `date` or `time` or `datetime` or `year` or `month` | String | `date` |
-| ngModel | the currently selected value | Date | - |
+| ngModel | the currently selected value | Date | current time |
 | minDate   | minimum date | Date  |  2000-1-1  |
 | maxDate   | maximum date | Date  |  2030-1-1  |
 | minuteStep |   The amount of time, in minutes, between each minute item.    | Number | 1 |
