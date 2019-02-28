@@ -26,5 +26,5 @@ subtitle: 抽屉
 | touch | 是否开启触摸手势 | Boolean | true |
 | transitions | 是否开启动画 | Boolean | true |
 | docked | 是否嵌入到正常文档流里 | Boolean | false |
-| enableDragHandle | 是否禁止 dragHandle | Boolean | false |
+| enableDragHandle | 是否启用 dragHandle | Boolean | false |
 | dragToggleDistance | 打开关闭抽屉时距 sidebar 的拖动距离 | Number | 30 |

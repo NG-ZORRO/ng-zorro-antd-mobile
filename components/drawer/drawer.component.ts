@@ -50,7 +50,7 @@ export class DrawerComponent implements AfterViewChecked, OnChanges {
   @Input()
   touch: boolean = true;
   @Input()
-  enableDragHandle: boolean = true;
+  enableDragHandle: boolean = false;
   @Input()
   dragToggleDistance: number = 30;
   @Input()
