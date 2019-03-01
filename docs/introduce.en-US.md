@@ -110,7 +110,7 @@ This is the **Angular** implementation of **Ant Design Mobile** specification, s
 
 ## Scan QR Code
 
-![ng-zorro-mobile](https://gw.alicdn.com/tfs/TB1KPm6dSzqK1RjSZFjXXblCFXa-260-260.png)
+![ng-zorro-mobile](https://img.alicdn.com/tfs/TB1QMx.JwHqK1RjSZJnXXbNLpXa-260-260.png)
 
 ## Features
 
