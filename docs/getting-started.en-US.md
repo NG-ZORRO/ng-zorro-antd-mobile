@@ -56,7 +56,7 @@ Run your project now, you can see the image below now.
 $ ng serve --port 0 --open
 ```
 
-<img style="display: block;padding: 30px 30%;height: 260px;" src="https://gw.alicdn.com/tfs/TB18hC5dPDpK1RjSZFrXXa78VXa-440-550.png">
+<img style="display: block;padding: 30px 30%;height: 260px;" src="https://img.alicdn.com/tfs/TB15EhGJwHqK1RjSZFPXXcwapXa-500-539.png">
 
 ### 5. Building & Deployment
 

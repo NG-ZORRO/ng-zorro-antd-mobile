@@ -37,7 +37,7 @@ export class DemoAccordionBasicComponent implements OnInit {
   ngOnInit() {
     this.accordions = [
       { title: this.title1, child: ['content 1', 'content 1', 'content 1'] },
-      { title: `<img src="/assets/icons/icon-72x72.png" style="width:36px"/>`, child: ['content 2', 'content 2', 'content 2'], inactive: false },
+      { title: `<img src="/assets/img/icon.svg" style="width:36px"/>`, child: ['content 2', 'content 2', 'content 2'], inactive: false },
       { title: 'Title 3', child: ['content 3', 'content 3', 'content 3'], inactive: true }
     ];
   }
