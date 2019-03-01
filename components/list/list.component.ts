@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core';
+import { Component, ViewEncapsulation, Input, HostBinding, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'List, nzm-list',
@@ -9,6 +9,9 @@ export class List {
   defaultProps: any = {
     prefixCls: 'am-list'
   };
+
+  renderHeaderType: string = '';
+  renderFooterType: string = '';
 
   private _renderHeader: any = '';
   private _renderFooter: any = '';
@@ -22,14 +25,27 @@ export class List {
   get renderHeader() {
     return this._renderHeader;
   }
-  set renderHeader(value) {
+  set renderHeader(value: string | Function | TemplateRef<any>) {
+    if (value instanceof TemplateRef) {
+      this.renderHeaderType = 'templateRef';
+    } else {
+      this.renderHeaderType = typeof value;
+    }
+    console.log('this isi rend', this.renderHeaderType);
+
     this._renderHeader = value;
   }
   @Input()
   get renderFooter() {
     return this._renderFooter;
   }
-  set renderFooter(value) {
+  set renderFooter(value: string | Function | TemplateRef<any>) {
+    if (value instanceof TemplateRef) {
+      this.renderFooterType = 'templateRef';
+    } else {
+      this.renderFooterType = typeof value;
+    }
+
     this._renderFooter = value;
   }
 

@@ -19,8 +19,8 @@ A single and continuous block content is vertically arranged to display current 
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| renderHeader       | list heder  | (): void | <span> </span> |
-| renderFooter       | list footer  | (): void | <span> </span> |
+| renderHeader       | list heder  | String/TemplateRef/Function | <span> </span> |
+| renderFooter       | list footer  | String/TemplateRef/Function | <span> </span> |
 
 ### List.Item
 
