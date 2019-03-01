@@ -248,6 +248,7 @@ describe('CalendarComponent', () => {
     component.state.show = true;
     component.state.showShortcut = true;
     const disableDay = new Date().getDate() + '';
+    component.state.now = new Date();
     fixture.detectChanges();
     calendarEle.nativeElement.querySelectorAll('calendarshortcutpanel .item')[3].click();
     calendarEle.nativeElement.querySelectorAll('calendarshortcutpanel .item')[2].click();
