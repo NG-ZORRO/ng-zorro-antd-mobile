@@ -56,7 +56,7 @@ import { Component } from '@angular/core';
 export class DemoGridBasicComponent {
   gridData = [];
   data = Array.from(new Array(9)).map((_val, i) => ({
-    icon: '/assets/icons/icon-72x72.png',
+    icon: '/assets/img/icon.svg',
     text: `name${i}`
   }));
 
@@ -65,7 +65,7 @@ export class DemoGridBasicComponent {
   }));
 
   dataList = Array.from(new Array(9)).map((_val, i) => ({
-    icon: `<img src="/assets/icons/icon-72x72.png" style="width:36px"/>`,
+    icon: `<img src="/assets/img/icon.svg" style="width:36px"/>`,
     text: `name${i}`
   }));
 

@@ -15,7 +15,7 @@ const ADD_CONFIG = {
   BOOT_PAGE_PATH     : 'src/app/app.component.html',
   BOOT_PAGE_HTML     : `<!-- NG-ZORRO-MOBILE -->
 <a href="https://github.com/NG-ZORRO/ng-zorro-antd-mobile" target="_blank" style="display: flex;align-items: center;justify-content: center;height: 100%;width: 100%;">
-  <img height="300" src="https://gw.alicdn.com/tfs/TB18hC5dPDpK1RjSZFrXXa78VXa-440-550.png">
+  <img height="300" src="https://img.alicdn.com/tfs/TB15EhGJwHqK1RjSZFPXXcwapXa-500-539.png">
 </a>`
 };
 
