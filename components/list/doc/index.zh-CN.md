@@ -20,8 +20,8 @@ subtitle: 列表
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| renderHeader       | list heder  | (): void |  无  |
-| renderFooter       | list footer  | (): void |  无  |
+| renderHeader       | list heder  | String/TemplateRef/Function |  无  |
+| renderFooter       | list footer  | String/TemplateRef/Function |  无  |
 
 ### List.Item
 

@@ -1,4 +1,4 @@
-<div align="center" ><img width="300" src="https://gw.alicdn.com/tfs/TB1U7SsecfpK1RjSZFOXXa6nFXa-1462-1399.png"></div>
+<div align="center" ><img width="300" src="https://gw.alicdn.com/tfs/TB18WVWJpzqK1RjSZSgXXcpAVXa-106-120.svg"></div>
 <br/>
 
 # NG-ZORRO-MOBILE
@@ -19,7 +19,7 @@
 
 ## 扫码体验
 
-![ng-zorro-mobile](https://gw.alicdn.com/tfs/TB1KPm6dSzqK1RjSZFjXXblCFXa-260-260.png)
+![ng-zorro-mobile](https://img.alicdn.com/tfs/TB1QMx.JwHqK1RjSZJnXXbNLpXa-260-260.png)
 
 ## 特性
 
@@ -71,7 +71,7 @@ $ ng add ng-zorro-antd-mobile
 2. [<img alt="Segment Fault" src="https://gw.alipayobjects.com/zos/rmsportal/hfYFfCvHTQTUKntlJbMF.svg" width="100" />](https://segmentfault.com/t/ng-zorro-mobile)（中文）
 3. [![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd-mobile.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd-mobile)（English & 中文）
 4. 加入钉钉 **NG-ZORRO-MOBILE** 自助服务群（中文）<br/>
-<img src="https://img.alicdn.com/tfs/TB1jMaZj3HqK1RjSZFkXXX.WFXa-1125-1485.jpg" width="300">
+<img src="https://gw.alicdn.com/tfs/TB1_8dtJCzqK1RjSZPcXXbTepXa-1125-1485.jpg" width="300">
 
 ## 谁在使用
 

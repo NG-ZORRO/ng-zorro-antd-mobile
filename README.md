@@ -1,4 +1,4 @@
-<div align="center" ><img width="300" src="https://gw.alicdn.com/tfs/TB1U7SsecfpK1RjSZFOXXa6nFXa-1462-1399.png"></div>
+<div align="center" ><img width="300" src="https://gw.alicdn.com/tfs/TB18WVWJpzqK1RjSZSgXXcpAVXa-106-120.svg"></div>
 <br/>
 
 # NG-ZORRO-Mobile
@@ -19,7 +19,7 @@ This is the **Angular** implementation of **Ant Design Mobile** specification, s
 
 ## Scan QR Code
 
-![ng-zorro-mobile](https://gw.alicdn.com/tfs/TB1KPm6dSzqK1RjSZFjXXblCFXa-260-260.png)
+![ng-zorro-mobile](https://img.alicdn.com/tfs/TB1QMx.JwHqK1RjSZJnXXbNLpXa-260-260.png)
 
 ## Features
 

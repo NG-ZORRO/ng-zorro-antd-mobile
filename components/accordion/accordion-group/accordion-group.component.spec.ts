@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionService } from '../accordion.service';
 import { AccordionGroupComponent } from './accordion-group.component';
+import { NgZorroAntdMobilePipesModule } from '../../pipes/ng-zorro-antd-mobile.pipes.module';
 
 describe('AccordionGroupComponent', () => {
   let component: AccordionGroupComponent;
@@ -10,7 +11,7 @@ describe('AccordionGroupComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AccordionGroupComponent],
-      imports: [BrowserAnimationsModule],
+      imports: [BrowserAnimationsModule, NgZorroAntdMobilePipesModule],
       providers: [AccordionService]
     }).compileComponents();
   }));
