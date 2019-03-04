@@ -13,6 +13,30 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.11.6 (2019-03-04)
+
+### Bug Fixes
+
+* **accordion:** 修复 accordion template 支持 ([#307](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/307)) ([15f90a6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/15f90a6))
+* **carousel:** 修复 carousel 检测高度变化 ([#290](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/290)) ([86be97d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/86be97d))
+* **carousel:** 修复设置selecedindex值超出当前最大值的问题 ([#315](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/315)) ([193a4d6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/193a4d6))
+* **drawer:** 更新文档 ([#311](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/311)) ([1d53a15](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/1d53a15))
+* **inputitem:** 修复输入中文时 onChange 不响应的问题 ([#299](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/299)) ([e7a925d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/e7a925d))
+* **PopupService:** 修复多 PopupService 运行错误 ([#292](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/292)) ([3717db7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3717db7))
+* **swipe-action:** 修复无法响应滚动事件问题([#300](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/300)) ([98bd525](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/98bd525))
+* **tabs:** 禁止 descendants ([#296](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/296)) ([5ed613e](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5ed613e))
+* **date-picker:** 修复当 ngmodel 为 null 时选择出错的问题 ([#310](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/310)) ([58e88ca](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/58e88ca))
+
+
+### Features
+
+* **list:** renderHeader 和 renderFooter 支持 String和 Template 输入 ([#313](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/313)) ([546b38d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/546b38d))
+
+
+### Performance Improvements
+
+* **logo:** 更换全新的logo ([#314](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/314)) ([a66be30](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/a66be30))
+
 ## 0.11.5 (2019-02-21)
 
 ### Bug Fixes

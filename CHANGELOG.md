@@ -1,3 +1,27 @@
+## [0.11.6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.5...0.11.6) (2019-03-04)
+
+### Bug Fixes
+
+* **accordion:** fix accordion support template and add support innerHtml ([#307](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/307)) ([15f90a6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/15f90a6))
+* **carousel:** fix carousel detect height change need to init carouseItem ([#290](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/290)) ([86be97d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/86be97d))
+* **carousel:** fix set Carousel component selectedIndex( = last) invalid ([#315](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/315)) ([193a4d6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/193a4d6))
+* **drawer:** synchronize code and documentation ([#311](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/311)) ([1d53a15](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/1d53a15))
+* **inputitem:** fix inputitem onChange does not trigger when typing Chinese characters ([#299](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/299)) ([e7a925d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/e7a925d))
+* **PopupService:** fix when using multiple PopupService working error ([#292](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/292)) ([3717db7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3717db7))
+* **swipe-action:** fix unable to respond to scrolling events error ([#300](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/300)) ([98bd525](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/98bd525))
+* **tabs:** disable descendants ([#296](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/296)) ([5ed613e](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5ed613e))
+* **date-picker:** fix select error when ngmodel set to null ([#310](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/310)) ([58e88ca](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/58e88ca))
+
+
+### Features
+
+* **list:** renderHeader&renderFooter support String and Temp… ([#313](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/313)) ([546b38d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/546b38d))
+
+
+### Performance Improvements
+
+* **logo:** update to the all new logo ([#314](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/314)) ([a66be30](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/a66be30))
+
 ## [0.11.5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.4...0.11.5) (2019-02-21)
 
 
