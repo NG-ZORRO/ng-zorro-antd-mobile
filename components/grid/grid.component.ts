@@ -72,7 +72,7 @@ export class GridComponent implements OnInit {
 
   constructor() {}
 
-  getIconType(value: any): string {
+  getContentType(value: any): string {
     if ((value.indexOf('http') >= 0 || value.indexOf('assets') >= 0) && value.indexOf('<') < 0) {
       return 'url';
     } else if (value.indexOf('<') >= 0) {
@@ -80,7 +80,7 @@ export class GridComponent implements OnInit {
     } else if (value instanceof TemplateRef) {
       return 'TemplateRef';
     } else {
-      return 'string';
+      return 'icon';
     }
   }
 
