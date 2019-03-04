@@ -30,7 +30,7 @@ export class Tabs implements DoCheck, AfterContentInit {
   prefixCls: string = 'am-tabs';
   selectedKey: number = 0;
   keyToSelect: number = 0;
-  paneMoveStyle: string = '';
+  paneMoveStyle: string = 'translate3d(0, 0, 0 )';
 
   private _startTime: number = 0;
   private _startPosition: number = 0;
