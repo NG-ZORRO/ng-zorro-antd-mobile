@@ -101,7 +101,7 @@ export class TestGridComponent {
   isCarousel = false;
 
   dataList = Array.from(new Array(9)).map((_val, i) => ({
-    icon: `<img src="/assets/img/icon.svg" style="width:36px"/>`,
+    icon: `<img src="/assets/img/logo.svg" style="width:36px"/>`,
     text: `name${i}`
   }));
 
