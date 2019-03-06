@@ -14,3 +14,11 @@ export const fadeAnimation: AnimationTriggerMetadata =  trigger('fadeAnimation',
   transition('* => true', animate('150ms cubic-bezier(0.0, 0.0, 0.2, 1)')),
   transition('* => void', animate('150ms cubic-bezier(0.4, 0.0, 1, 1)')),
 ]);
+
+export const collapseAnimation: AnimationTriggerMetadata =  trigger('collapseAnimation', [
+  state('true', style({ height: '*' })),
+  state('false', style({ height: 0, display: 'none' })),
+  transition('true => false', animate(`150ms cubic-bezier(0.645, 0.045, 0.355, 1)`)),
+  transition('false => true', animate(`150ms cubic-bezier(0.645, 0.045, 0.355, 1)`)),
+]);
+

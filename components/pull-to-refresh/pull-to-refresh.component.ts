@@ -13,6 +13,7 @@ import {
   ElementRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {collapseAnimation} from '../core/animation/fade-animations';
 export interface Indicator {
   activate?: any;
   deactivate?: any;
@@ -24,6 +25,7 @@ export interface Indicator {
   selector: 'PullToRefresh, nzm-pull-to-refresh',
   templateUrl: './pull-to-refresh.component.html',
   encapsulation: ViewEncapsulation.None,
+  animations: [collapseAnimation],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -43,6 +45,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
     currentState: 'deactivate',
     drag: false
   };
+  currentAction: 'up' | 'down' | '' = '';
 
   private _headerIndicator: Indicator = {
     activate: '松开立即刷新',
@@ -124,6 +127,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       }
       this.startY = e && e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientY;
       this.state.drag = undefined;
+      this.currentAction = '';
     } else {
       this.startY = e && e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientY;
       this._clientHeight = this._pullToRefresh.element.nativeElement.clientHeight;
@@ -141,9 +145,11 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       if (distanceY < 0) {
         // 滚动
         this.state.drag = false;
+        this.currentAction = '';
       } else {
         // 下拉
         this.state.drag = true;
+        this.currentAction = 'down';
       }
       if (this.state.drag) {
         // 禁止滚动
@@ -178,9 +184,11 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       ) {
         // 滚动
         this.state.drag = false;
+        this.currentAction = '';
       } else {
         // 上拉
         this.state.drag = true;
+        this.currentAction = 'up';
       }
       if (this.state.drag) {
         // 禁止滚动
@@ -233,6 +241,8 @@ export class PullToRefreshComponent implements ControlValueAccessor {
         }
         setTimeout(() => {
           this.state.currentState = 'deactivate';
+          this.state.drag = false;
+          this.currentAction = '';
           if (this._ngModelOnChange) {
             this._ngModelOnChange(this.state);
           }
@@ -258,10 +268,10 @@ export class PullToRefreshComponent implements ControlValueAccessor {
         offset > 0 &&
         contentOffset > 0 &&
         evt.target.scrollTop + this.ele.nativeElement.clientHeight === evt.target.scrollHeight
-        ) {
-          setTimeout(() => {
-            this._endRreach = true;
-          }, 500);
+      ) {
+        setTimeout(() => {
+          this._endRreach = true;
+        }, 500);
       } else {
         this._endRreach = false;
       }
@@ -275,28 +285,28 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       contentOffset > 0 &&
       evt.target.scrollTop + this.ele.nativeElement.clientHeight > evt.target.scrollHeight - this.distanceToRefresh &&
       this._endTime - this._startTime >= 100
-      ) {
-        this._startTime = this._endTime;
+    ) {
+      this._startTime = this._endTime;
+      if (this.refreshing) {
+        this.state.currentState = 'release';
+        if (this._ngModelOnChange) {
+          this._ngModelOnChange(this.state);
+        }
+      }
+      setTimeout(() => {
+        if (this._direction === '') {
+          this._endRreach = true;
+        }
+        if (this.endReachedRefresh) {
+          this.onRefresh.emit('endReachedRefresh');
+        }
         if (this.refreshing) {
-          this.state.currentState = 'release';
+          this.state.currentState = 'finish';
           if (this._ngModelOnChange) {
             this._ngModelOnChange(this.state);
           }
         }
-        setTimeout(() => {
-          if (this._direction === '') {
-            this._endRreach = true;
-          }
-          if (this.endReachedRefresh) {
-            this.onRefresh.emit('endReachedRefresh');
-          }
-          if (this.refreshing) {
-            this.state.currentState = 'finish';
-            if (this._ngModelOnChange) {
-              this._ngModelOnChange(this.state);
-            }
-          }
-        }, 500);
+      }, 500);
     } else {
       setTimeout(() => {
         if (this._direction === '') {
@@ -312,7 +322,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
     }
   }
 
-  constructor(private ele: ElementRef) {}
+  constructor(private ele: ElementRef) { }
 
   isTemplateRef(value) {
     if (value) {
