@@ -6,7 +6,9 @@ import {
   TemplateRef,
   EventEmitter,
   ViewEncapsulation,
-  forwardRef
+  forwardRef,
+  Type,
+  OnDestroy
 } from '@angular/core';
 import { ModalOptions } from './modal-options.provider';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -23,7 +25,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class ModalComponent implements ControlValueAccessor {
+export class ModalComponent implements ControlValueAccessor, OnDestroy {
   autoFocus = { focus: true, date: new Date() };
   transitionName: string = '';
   maskTransitionName: string = '';
@@ -131,10 +133,19 @@ export class ModalComponent implements ControlValueAccessor {
     }
   }
 
-  constructor(public option: ModalOptions) {}
+  constructor(public option: ModalOptions) { }
 
-  isTemplateRef(value: string | TemplateRef<any>) {
+
+  isNonEmptyString(value: {}): boolean {
+    return typeof value === 'string' && value !== '';
+  }
+
+  isTemplateRef(value: {}): boolean {
     return value instanceof TemplateRef;
+  }
+
+  isComponent(value: {}): boolean {
+    return value instanceof Type;
   }
 
   isNoTitle(value: string | TemplateRef<any>) {
@@ -198,7 +209,7 @@ export class ModalComponent implements ControlValueAccessor {
     this.btnGroupClass = {
       [`${this.option.prefixCls}-button-group-${
         this.option.footer.length === 2 && !this.option.operation ? 'h' : 'v'
-      }`]: true,
+        }`]: true,
       [`${this.option.prefixCls}-button-group-${this.option.operation ? 'operation' : 'normal'}`]: true
     };
   }
@@ -251,6 +262,14 @@ export class ModalComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: () => {}): void {
     this.onTouched = fn;
+  }
+  ngOnDestroy(): void {
+    if (this.option.close) {
+      this.option.close();
+    } else {
+      this.onClose.emit();
+      this.leaveAnimation();
+    }
   }
 }
 

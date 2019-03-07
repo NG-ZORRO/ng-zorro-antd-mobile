@@ -16,6 +16,7 @@ export class BaseOptions {
   platform?: string = 'ios';
   className?: string;
   wrapClassName?: string;
+  content?: string | TemplateRef<any>;
   message?: string | TemplateRef<any>;
   actions?: Array<any>;
   callbackOrActions?: Array<any>;

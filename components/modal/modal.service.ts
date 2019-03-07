@@ -32,6 +32,7 @@ export class Modal extends PopupService {
       'className',
       'wrapClassName',
       'message',
+      'content',
       'actions',
       'callbackOrActions',
       'type',

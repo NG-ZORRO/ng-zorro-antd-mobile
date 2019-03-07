@@ -1,18 +1,13 @@
+<ng-template #tplOriginContent>
+  <ng-content></ng-content>
+</ng-template> <!-- Compatible: the <ng-content> can appear only once -->
 <div *ngIf="option.visible">
   <div class="{{option.prefixCls}}-mask {{maskTransitionName}}"></div>
-  <div role="dialog"
-       class="{{option.prefixCls}}-wrap {{transitionName}}"
-       [ngClass]="wrapCls"
-  >
-    <div role="document"
-         class="{{option.prefixCls}}"
-         [ngClass]="cls"
-    >
+  <div role="dialog" class="{{option.prefixCls}}-wrap {{transitionName}}" [ngClass]="wrapCls">
+    <div role="document" class="{{option.prefixCls}}" [ngClass]="cls">
       <div class="{{option.prefixCls}}-content">
-        <div  *ngIf="option.closable" style="width: 100%; height: 21px;">
-          <div role="close"
-               class="{{option.prefixCls}}-close"
-        >
+        <div *ngIf="option.closable" style="width: 100%; height: 21px;">
+          <div role="close" class="{{option.prefixCls}}-close">
             <span role="close" class="{{option.prefixCls}}-close-x"></span>
           </div>
         </div>
@@ -21,7 +16,13 @@
           <ng-template *ngIf="isTemplateRef(option.title)" [ngTemplateOutlet]="option.title"></ng-template>
         </div>
         <div class="{{option.prefixCls}}-body">
-          <ng-content></ng-content>
+          <ng-container *ngIf="!isComponent(option.content)" [ngSwitch]="true">
+            <ng-container *ngSwitchCase="isTemplateRef(option.content)" [ngTemplateOutlet]="option.content"></ng-container>
+            <ng-container *ngSwitchCase="isNonEmptyString(option.content)">
+              <div [innerHTML]="option.content"></div>
+            </ng-container>
+            <ng-container *ngSwitchDefault [ngTemplateOutlet]="tplOriginContent"></ng-container>
+          </ng-container>
           <div *ngIf="!isTemplateRef(option.message)" class="{{option.prefixCls}}-alert-content">{{option.message}}</div>
           <ng-template *ngIf="isTemplateRef(option.message)" [ngTemplateOutlet]="option.message"></ng-template>
           <ng-template *ngIf="option.type === 'default'" [ngTemplateOutlet]="promptDefault"></ng-template>
@@ -30,13 +31,8 @@
         </div>
         <div class="{{option.prefixCls}}-footer">
           <div [ngClass]="btnGroupClass" role="group">
-            <div Button
-                 role="button"
-                 *ngFor="let button of option.footer"
-                 [className]="'am-modal-button'"
-                 [ngStyle]="button.style"
-                 (onClick)="button.onPress()"
-            >
+            <div Button role="button" *ngFor="let button of option.footer" [className]="'am-modal-button'" [ngStyle]="button.style"
+              (onClick)="button.onPress()">
               {{button.text}}
             </div>
           </div>
@@ -49,51 +45,28 @@
 <ng-template #promptPassword>
   <div class="{{option.prefixCls}}-input-container">
     <div class="{{option.prefixCls}}-input">
-        <input
-          #inputElement
-          autofocus
-          [type]="'text'"
-          [placeholder]="option.placeholders[0] || ''"
-          [(ngModel)]="option.defaultValue[0]"
-          (ngModelChange)="inputChange('text', $event)"
-        >
+      <input #inputElement autofocus [type]="'text'" [placeholder]="option.placeholders[0] || ''" [(ngModel)]="option.defaultValue[0]"
+        (ngModelChange)="inputChange('text', $event)">
     </div>
     <div className="{{option.prefixCls}}-input">
-        <input
-          #inputElement
-          [type]="'password'"
-          [placeholder]="option.placeholders[1] || ''"
-          [(ngModel)]="option.defaultValue[1]"
-          (ngModelChange)="inputChange('password', $event)"
-        >
+      <input #inputElement [type]="'password'" [placeholder]="option.placeholders[1] || ''" [(ngModel)]="option.defaultValue[1]"
+        (ngModelChange)="inputChange('password', $event)">
     </div>
   </div>
 </ng-template>
 <ng-template #promptSecure>
   <div className="{{option.prefixCls}}-input-container">
     <div className="{{option.prefixCls}}-input">
-        <input
-          #inputElement
-          autofocus
-          [type]="'password'"
-          [placeholder]="option.placeholders[0] || ''"
-          [(ngModel)]="option.defaultValue[0]"
-          (ngModelChange)="inputChange('password', $event)"
-        >
+      <input #inputElement autofocus [type]="'password'" [placeholder]="option.placeholders[0] || ''" [(ngModel)]="option.defaultValue[0]"
+        (ngModelChange)="inputChange('password', $event)">
     </div>
   </div>
 </ng-template>
 <ng-template #promptDefault>
   <div className="{{option.prefixCls}}-input-container">
     <div className="{{option.prefixCls}}-input">
-      <input
-        #inputElement
-        autofocus
-        [type]="'text'"
-        [placeholder]="option.placeholders[0] || ''"
-        [(ngModel)]="option.defaultValue[0]"
-        (ngModelChange)="inputChange('text', $event)"
-      >
+      <input #inputElement autofocus [type]="'text'" [placeholder]="option.placeholders[0] || ''" [(ngModel)]="option.defaultValue[0]"
+        (ngModelChange)="inputChange('text', $event)">
     </div>
   </div>
 </ng-template>
