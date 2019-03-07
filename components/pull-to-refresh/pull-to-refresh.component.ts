@@ -356,7 +356,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-     this.contentMinHeight = `${this.ele.nativeElement.clientHeight}px`;
-    });
+      this.contentMinHeight = `${this.ele.nativeElement.clientHeight}px`;
+    }, 100);
   }
 }
