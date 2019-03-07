@@ -90,7 +90,7 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
     if (typeof v === undefined || v === null) {
       this._value = '';
     } else {
-      this._value = v;
+      this._value = (v).toString();
     }
   }
   @Input()
@@ -99,7 +99,9 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   }
   set defaultValue(value: string) {
     this._defaultValue = value;
-    this._value = this._defaultValue;
+    if (this._defaultValue) {
+      this._value = (this._defaultValue).toString();
+    }
   }
   @Input()
   get placeholder(): string {
@@ -237,7 +239,7 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
     this._el = element.nativeElement;
   }
 
-  _onChange = (_: any) => {};
+  _onChange = (_: any) => { };
 
   setCls() {
     if (
@@ -362,7 +364,7 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void { }
 
   ngOnChanges() {
     if (this.inputElementRef && this._type !== 'money' && this._value !== undefined) {

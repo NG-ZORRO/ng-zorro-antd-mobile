@@ -50,7 +50,9 @@ export class CustomInput implements OnInit, OnDestroy {
   @Input()
   set defaultValue(value: string) {
     this._defaultValue = value;
-    this._value = this._defaultValue;
+    if (this._defaultValue) {
+      this._value = (this._defaultValue).toString();
+    }
   }
   @Input()
   set maxLength(value: number) {
