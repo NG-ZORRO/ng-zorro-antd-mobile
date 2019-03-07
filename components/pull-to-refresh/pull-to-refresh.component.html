@@ -1,4 +1,4 @@
-<div class="am-pull-to-refresh-content-wrapper" [ngStyle]="{'min-height': contentMinHeight}">
+<div class="am-pull-to-refresh-content-wrapper" [ngStyle]="{'min-height.px': ele.nativeElement.clientHeight}">
   <div class="am-pull-to-refresh-content" [ngClass]="transtionCls" [ngStyle]="style">
     <div *ngIf="direction === 'down' || direction === ''" class="am-pull-to-refresh-indicator am-pull-to-refresh-header-indicator"
        [@collapseAnimation]="state.drag&&currentAction==='down'">
