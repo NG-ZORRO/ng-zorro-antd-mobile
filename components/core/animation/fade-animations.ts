@@ -16,8 +16,8 @@ export const fadeAnimation: AnimationTriggerMetadata =  trigger('fadeAnimation',
 ]);
 
 export const collapseAnimation: AnimationTriggerMetadata =  trigger('collapseAnimation', [
-  state('true', style({ height: '*' })),
-  state('false', style({ height: 0, display: 'none' })),
+  state('true', style({ display: 'block' })),
+  state('false', style({ display: 'none' })),
   transition('true => false', animate(`150ms cubic-bezier(0.645, 0.045, 0.355, 1)`)),
   transition('false => true', animate(`150ms cubic-bezier(0.645, 0.045, 0.355, 1)`)),
 ]);
