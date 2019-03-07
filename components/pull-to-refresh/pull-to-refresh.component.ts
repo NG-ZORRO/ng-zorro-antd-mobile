@@ -10,10 +10,11 @@ import {
   HostListener,
   ViewContainerRef,
   ViewEncapsulation,
-  ElementRef
+  ElementRef,
+  AfterViewInit
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import {collapseAnimation} from '../core/animation/fade-animations';
+import { collapseAnimation } from '../core/animation/fade-animations';
 export interface Indicator {
   activate?: any;
   deactivate?: any;
@@ -34,7 +35,7 @@ export interface Indicator {
     }
   ]
 })
-export class PullToRefreshComponent implements ControlValueAccessor {
+export class PullToRefreshComponent implements ControlValueAccessor, AfterViewInit {
   transtionCls: any = {};
   style: object = {
     '-webkit-transform': 'translate3d( 0, 0, 0 )',
@@ -46,6 +47,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
     drag: false
   };
   currentAction: 'up' | 'down' | '' = '';
+  contentMinHeight = 'auto';
 
   private _headerIndicator: Indicator = {
     activate: '松开立即刷新',
@@ -350,5 +352,11 @@ export class PullToRefreshComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: () => {}): void {
     this._ngModelOnTouched = fn;
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+     this.contentMinHeight = `${this.ele.nativeElement.clientHeight}px`;
+    });
   }
 }
