@@ -90,7 +90,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
   }
   set direction(value: string) {
     this._direction = value;
-    this.refreshUp = this._direction === 'up' || this._direction === '' || this.endReachedRefresh;
+    this.refreshUp = this._direction === 'up' || this._direction === '';
     this.refreshDown = this._direction === 'down' || this._direction === '';
   }
   @Input()
@@ -123,7 +123,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
   touchstart(e) {
     this._startTime = Date.now();
     if ((this._direction === 'down' || (this._direction === '' && !this._endReach))) {
-      if (this.ele.nativeElement.scrollTop > 0 && !this.endReachedRefresh) {
+      if (this.ele.nativeElement.scrollTop > 0) {
         this.startY = undefined;
         return;
       }
@@ -140,7 +140,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
   @HostListener('touchmove', ['$event'])
   touchmove(e) {
     if ((this._direction === 'down' || (this._direction === '' && !this._endReach))
-      && (!this.endReachedRefresh || this.ele.nativeElement.scrollTop <= 0)) {
+      && (!this.endReachedRefresh)) {
       if (this.ele.nativeElement.scrollTop > 0) {
         return;
       }
@@ -297,7 +297,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
         }
       }
       setTimeout(() => {
-        if (this._direction === '' || this.endReachedRefresh) {
+        if (this._direction === '') {
           this._endReach = true;
         }
         if (this.endReachedRefresh) {
