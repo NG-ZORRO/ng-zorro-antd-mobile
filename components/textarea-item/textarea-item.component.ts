@@ -277,7 +277,7 @@ export class TextareaItem implements OnInit, AfterContentChecked, ControlValueAc
 
 
   writeValue(value: any): void {
-    if (typeof value === undefined || value === null) {
+    if (typeof value === 'undefined' || value === null) {
       this._value = '';
     } else {
       this._value = value;
