@@ -118,13 +118,13 @@ export class ModalComponent implements ControlValueAccessor, OnDestroy {
   @HostListener('mouseup', ['$event'])
   @HostListener('touchend', ['$event'])
   panend(event) {
-    event.preventDefault();
-    event.stopPropagation();
     if (this.option.closable || this.option.maskClosable  || this.option.popup) {
       if (
         (event && event.target && event.target.getAttribute('role') === 'dialog') ||
         event.target.getAttribute('role') === 'close'
       ) {
+        event.preventDefault();
+        event.stopPropagation();
         if (this.option.close) {
           this.option.close();
         } else {

@@ -65,7 +65,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
 
   private _startTime = 0;
   private _endTime = 0;
-  private _endRreach = false;
+  private _endReach = false;
   private _direction: string = '';
   private _clientHeight: number = 0;
   private _currentContentHeight: number = 0;
@@ -90,7 +90,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
   }
   set direction(value: string) {
     this._direction = value;
-    this.refreshUp = this._direction === 'up' || this._direction === '';
+    this.refreshUp = this._direction === 'up' || this._direction === '' || this.endReachedRefresh;
     this.refreshDown = this._direction === 'down' || this._direction === '';
   }
   @Input()
@@ -122,8 +122,8 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
   @HostListener('touchstart', ['$event'])
   touchstart(e) {
     this._startTime = Date.now();
-    if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
-      if (this.ele.nativeElement.scrollTop > 0) {
+    if ((this._direction === 'down' || (this._direction === '' && !this._endReach))) {
+      if (this.ele.nativeElement.scrollTop > 0 && !this.endReachedRefresh) {
         this.startY = undefined;
         return;
       }
@@ -139,7 +139,8 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
   }
   @HostListener('touchmove', ['$event'])
   touchmove(e) {
-    if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
+    if ((this._direction === 'down' || (this._direction === '' && !this._endReach))
+      && (!this.endReachedRefresh || this.ele.nativeElement.scrollTop <= 0)) {
       if (this.ele.nativeElement.scrollTop > 0) {
         return;
       }
@@ -222,7 +223,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
     const distanceY = e.changedTouches[0].clientY - this.startY;
     if (Math.abs(distanceY) >= this.distanceToRefresh) {
       this.state.currentState = 'release';
-      if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
+      if (this._direction === 'down' || (this._direction === '' && !this._endReach)) {
         this.translateY(this.distanceToRefresh + 1);
       } else {
         this.translateY(-this.distanceToRefresh - 1);
@@ -235,7 +236,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
         if (this._ngModelOnChange) {
           this._ngModelOnChange(this.state);
         }
-        if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
+        if (this._direction === 'down' || (this._direction === '' && !this._endReach)) {
           this.onRefresh.emit('down');
         } else {
           this.translateY(-this.distanceToRefresh - 1);
@@ -272,10 +273,10 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
         evt.target.scrollTop + this.ele.nativeElement.clientHeight === evt.target.scrollHeight
       ) {
         setTimeout(() => {
-          this._endRreach = true;
+          this._endReach = true;
         }, 500);
       } else {
-        this._endRreach = false;
+        this._endReach = false;
       }
     }
     if (!this.endReachedRefresh) {
@@ -296,8 +297,8 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
         }
       }
       setTimeout(() => {
-        if (this._direction === '') {
-          this._endRreach = true;
+        if (this._direction === '' || this.endReachedRefresh) {
+          this._endReach = true;
         }
         if (this.endReachedRefresh) {
           this.onRefresh.emit('endReachedRefresh');
@@ -312,7 +313,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
     } else {
       setTimeout(() => {
         if (this._direction === '') {
-          this._endRreach = false;
+          this._endReach = false;
         }
         if (this.refreshing) {
           this.state.currentState = 'finish';
