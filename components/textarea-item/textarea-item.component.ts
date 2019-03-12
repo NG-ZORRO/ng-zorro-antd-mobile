@@ -60,7 +60,7 @@ export class TextareaItem implements OnInit, AfterContentChecked, ControlValueAc
     return this._value;
   }
   set value(v: string) {
-    if (typeof v === undefined || v === null) {
+    if (typeof v === 'undefined' || v === null) {
       this._value = '';
     } else {
       this._value = v;
