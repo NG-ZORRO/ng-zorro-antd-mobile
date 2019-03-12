@@ -13,6 +13,16 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 0.11.7 (2019-03-12)
+
+### Bug Fixes
+
+* **assets:** fix logo name ([#319](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/319)) ([475eb14](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/475eb14))
+* (module: grid): fix return contentType error ([#320](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/320)) ([dd88a52](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/dd88a52))
+* **input-item:** fix custom keyboard input value and defaultValue ([#330](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/330)) ([a73a7e8](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/a73a7e8))
+* **popupservice:** fix popupservice get component name with build prod runtime error ([#333](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/333)) ([b69ee5a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b69ee5a))
+* **textarea-item:** fix textarea-item value protect ([#331](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/331)) ([ffe4f8d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ffe4f8d))
+
 ## 0.11.6 (2019-03-04)
 
 ### Bug Fixes
