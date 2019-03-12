@@ -34,7 +34,7 @@ export class Picker extends PopupService {
         useValue: options
       }
     ]);
-    Picker.showPopup(PickerComponent, childInjector);
+    Picker.showPopup('PickerComponent', PickerComponent, childInjector);
   }
 
   static hidePicker(): void {
