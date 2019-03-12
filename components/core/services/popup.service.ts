@@ -16,6 +16,7 @@ export class PopupService {
   }
 
   static showPopup(
+    componentName,
     component,
     childInjector?: Injector,
     hasBackdrop?: boolean,
@@ -28,9 +29,10 @@ export class PopupService {
     PopupService.overlayRef.backdropClick().subscribe(() => {
       PopupService.hidePopup();
     });
-    PopupService.currentServiceName = component.name;
+    PopupService.currentServiceName = componentName;
+    console.log(component, childInjector);
     const comRef = PopupService.overlayRef.attach(new ComponentPortal(component, undefined, childInjector));
-    PopupService.serviceArray.push({key: component.name, value: PopupService.overlayRef});
+    PopupService.serviceArray.push({key: componentName, value: PopupService.overlayRef});
     return comRef;
   }
 
