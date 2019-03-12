@@ -65,7 +65,7 @@ export class Modal extends PopupService {
       }
     ]);
     setTimeout(() => {
-      Modal.modalRef =  Modal.showPopup(ModalServiceComponent, childInjector);
+      Modal.modalRef =  Modal.showPopup('ModalServiceComponent', ModalServiceComponent, childInjector);
     }, 0);
   }
 

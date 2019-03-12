@@ -56,7 +56,7 @@ export class ActionSheet extends PopupService {
 
   static _open(props: ActionSheetOptions) {
     setTimeout(() => {
-      ActionSheet.comRef =  ActionSheet.showPopup(ActionSheetComponent);
+      ActionSheet.comRef =  ActionSheet.showPopup('ActionSheetComponent', ActionSheetComponent);
       ActionSheet.comRef.instance.option = props;
     }, 0);
   }
