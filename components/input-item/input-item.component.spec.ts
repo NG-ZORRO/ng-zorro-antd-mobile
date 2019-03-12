@@ -71,6 +71,22 @@ describe('InputComponent', () => {
     expect(fakeInput.innerText).toBe('23', 'type is money');
   });
 
+  it('should value override defaultValue work', () => {
+    component.value = 'test';
+    component.defaultValue = 'default test';
+    fixture.detectChanges();
+    inputEle = inputItem.nativeElement.querySelector('input');
+    expect(inputEle.value).toBe('test', 'type is text');
+
+    component.type = 'money';
+    fixture.detectChanges();
+    component.value = '23';
+    component.defaultValue = '26';
+    fixture.detectChanges();
+    const fakeInput = inputItem.nativeElement.querySelector('.fake-input');
+    expect(fakeInput.innerText).toBe('23', 'type is money');
+  });
+
   it('should input chinese character work', fakeAsync(() => {
     const inputModelEle = inputModel.nativeElement.querySelector('input');
     inputModelEle.value = '哈哈';
@@ -89,6 +105,7 @@ describe('InputComponent', () => {
   }));
 
   it('should defaultValue work', () => {
+    component.value = null;
     component.defaultValue = 'test';
     fixture.detectChanges();
     inputEle = inputItem.nativeElement.querySelector('input');
@@ -96,6 +113,7 @@ describe('InputComponent', () => {
 
     component.type = 'money';
     fixture.detectChanges();
+    component.value = '';
     component.defaultValue = '23';
     fixture.detectChanges();
     const fakeInput = inputItem.nativeElement.querySelector('.fake-input');

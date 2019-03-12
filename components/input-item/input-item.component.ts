@@ -87,7 +87,7 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
     return this._value;
   }
   set value(v: string) {
-    if (typeof v === undefined || v === null) {
+    if (typeof v === 'undefined' || v === null) {
       this._value = '';
     } else {
       this._value = v;
@@ -99,7 +99,9 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   }
   set defaultValue(value: string) {
     this._defaultValue = value;
-    this._value = this._defaultValue;
+    if (!this._value) {
+      this._value = this._defaultValue;
+    }
   }
   @Input()
   get placeholder(): string {
