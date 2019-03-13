@@ -6,28 +6,35 @@
 .@{stepperPrefixCls} {
   position: relative;
   margin: 0;
-  padding: 2 * @hd 0;
+  padding: 2 * @stepper-hd 0;
   display: inline-block;
   box-sizing: content-box;
-  width: 63 * @hd;
-  height: 35 * @hd;
-  line-height: 35 * @hd;
+  width: @stepper-width ;
+  height: @stepper-height ;
+  line-height: @stepper-lineheight;
   font-size: @font-size-base;
   vertical-align: middle;
   overflow: hidden;
 
+  &-icon {
+    .am-icon-xxs {
+      width: @stepper-icon-width;
+      height: @stepper-icon-height;
+    }
+  }
+
   &-handler-wrap {
     position: absolute;
     width: 100%;
-    font-size: 24 * @hd;
+    font-size: 24 * @stepper-hd;
   }
 
   &-handler,
   &-handler-up-inner,
   &-handler-down-inner {
-    width: 30 * @hd;
-    height: 30 * @hd;
-    line-height: 30 * @hd;
+    width: @stepper-handler-down-inner;
+    height: @stepper-handler-down-inner;
+    line-height: @stepper-handler-down-inner;
   }
 
   &-handler {
@@ -50,23 +57,23 @@
   &-handler-down-inner {
 
     user-select: none;
-    right: 2 * @hd;
+    right: 2 * @stepper-hd;
     color: @color-text-base;
   }
 
   &-input-wrap {
     display: none;
     width: 100%;
-    height: 30 * @hd;
-    line-height: 30 * @hd;
+    height: 30 * @stepper-hd;
+    line-height: 30 * @stepper-hd;
     text-align: center;
     overflow: hidden;
   }
 
   &-input {
     display: none;
-    width: 60 * @hd;
-    font-size: 16 * @hd;
+    width: 60 * @stepper-hd;
+    font-size: 16 * @stepper-hd;
     color: @color-text-base;
     text-align: center;
     border: 0;
@@ -81,7 +88,7 @@
   }
 
   &.showNumber {
-    width: 138 * @hd;
+    width: 138 * @stepper-hd;
 
     .@{stepperPrefixCls}-input-wrap {
       display: inline-block;
@@ -130,6 +137,7 @@
   }
 
   &-disabled {
+
     .@{stepperPrefixCls}-handler-down,
     .@{stepperPrefixCls}-handler-up {
       opacity: @opacity-disabled;

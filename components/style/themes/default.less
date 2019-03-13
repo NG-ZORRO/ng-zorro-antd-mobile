@@ -6,26 +6,26 @@
 // 色彩
 // ---
 // 文字色
-@color-text-base: #000;                  // 基本
-@color-text-base-inverse: #fff;          // 基本 - 反色
-@color-text-secondary: #a4a9b0;          // 辅助色
-@color-text-placeholder: #bbb;           // 文本框提示
-@color-text-disabled: #bbb;              // 失效
-@color-text-caption: #888;               // 辅助描述
-@color-text-paragraph: #333;             // 段落
-@color-link: @brand-primary;             // 链接
+@color-text-base: #000; // 基本
+@color-text-base-inverse: #fff; // 基本 - 反色
+@color-text-secondary: #a4a9b0; // 辅助色
+@color-text-placeholder: #bbb; // 文本框提示
+@color-text-disabled: #bbb; // 失效
+@color-text-caption: #888; // 辅助描述
+@color-text-paragraph: #333; // 段落
+@color-link: @brand-primary; // 链接
 
 // 背景色
-@fill-base: #fff;                           // 组件默认背景
-@fill-body: #f5f5f9;                        // 页面背景
-@fill-tap: #ddd;                            // 组件默认背景 - 按下
-@fill-disabled: #ddd;                       // 通用失效背景
-@fill-mask: rgba(0, 0, 0, 0.4);              // 遮罩背景
-@color-icon-base: #ccc;                      // 许多小图标的背景，比如一些小圆点，加减号
+@fill-base: #fff; // 组件默认背景
+@fill-body: #f5f5f9; // 页面背景
+@fill-tap: #ddd; // 组件默认背景 - 按下
+@fill-disabled: #ddd; // 通用失效背景
+@fill-mask: rgba(0, 0, 0, 0.4); // 遮罩背景
+@color-icon-base: #ccc; // 许多小图标的背景，比如一些小圆点，加减号
 @fill-grey: #f7f7f7;
 
 // 透明度
-@opacity-disabled: 0.3;   // switch checkbox radio 等组件禁用的透明度
+@opacity-disabled: 0.3; // switch checkbox radio 等组件禁用的透明度
 
 // 全局/品牌色
 @brand-primary: #108ee9;
@@ -33,7 +33,7 @@
 @brand-success: #6abf47;
 @brand-warning: #ffc600;
 @brand-error: #f4333c;
-@brand-important: #ff5b05;  // 用于小红点
+@brand-important: #ff5b05; // 用于小红点
 @brand-wait: #108ee9;
 
 // 边框色
@@ -78,15 +78,15 @@
 
 // 高度
 // ---
-@line-height-base: 1;           // 单行行高
-@line-height-paragraph: 1.5;    // 多行行高
+@line-height-base: 1; // 单行行高
+@line-height-paragraph: 1.5; // 多行行高
 
 // 图标尺寸
 // ---
 @icon-size-xxs: 15 * @hd;
 @icon-size-xs: 18 * @hd;
 @icon-size-sm: 21 * @hd;
-@icon-size-md: 22 * @hd;       // 导航条上的图标、grid的图标大小
+@icon-size-md: 22 * @hd; // 导航条上的图标、grid的图标大小
 @icon-size-lg: 36 * @hd;
 
 // 动画缓动
@@ -109,7 +109,7 @@
 @primary-button-fill: @brand-primary;
 @primary-button-fill-tap: @brand-primary-tap;
 
-@ghost-button-color: @brand-primary;    // 同时应用于背景、文字颜色、边框色
+@ghost-button-color: @brand-primary; // 同时应用于背景、文字颜色、边框色
 @ghost-button-fill-tap: fade(@brand-primary, 60%);
 
 @warning-button-fill: #e94f4f;
@@ -132,7 +132,7 @@
 @list-item-height: 44 * @hd;
 
 // input
-@input-label-width: 17 * @hd;       // InputItem、TextareaItem 文字长度基础值
+@input-label-width: 17 * @hd; // InputItem、TextareaItem 文字长度基础值
 @input-font-size: 17 * @hd;
 @input-color-icon: #ccc; // input clear icon 的背景色
 @input-color-icon-tap: @brand-primary;
@@ -144,7 +144,7 @@
 @tabs-ink-bar-height: @border-width-lg;
 
 // segmented-control
-@segmented-control-color: @brand-primary;  // 同时应用于背景、文字颜色、边框色
+@segmented-control-color: @brand-primary; // 同时应用于背景、文字颜色、边框色
 @segmented-control-height: 27 * @hd;
 @segmented-control-fill-tap: fade(@brand-primary, 0.1);
 
@@ -181,9 +181,18 @@
 @keyboard-confirm-tap-color: @brand-primary-tap;
 
 // picker
-@option-height: 42 * @hd;           // picker 标题的高度
+@option-height: 42 * @hd; // picker 标题的高度
 
+// stepper
+@stepper-hd: @hd;
+@stepper-width: 63 * @stepper-hd;
+@stepper-icon-width: @icon-size-xxs;
+@stepper-icon-height: @icon-size-xxs;
+@stepper-height: 35 * @stepper-hd;
+@stepper-lineheight: 35 * @stepper-hd;
+@stepper-handler-down-inner: 30 * @stepper-hd;
 // z-index
+
 @modal-zindex: 2001; // modal.alert 应该最大，其他应该较小
 @progress-zindex: 2000;
 @popover-zindex: 1999;

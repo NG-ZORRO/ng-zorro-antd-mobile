@@ -34,6 +34,7 @@ export class PickerViewComponent extends PickerComponent implements OnInit, Afte
   }
 
   init() {
+    this.dataForRender = [];
     this.selectedTarget = [];
     if (this.dataForRender.length === 0 && this.generateArrayData(this.options.data).length > 0) {
       this.dataForRender.push(this.generateArrayData(this.options.data));

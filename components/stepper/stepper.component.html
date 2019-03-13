@@ -1,19 +1,17 @@
 <div class="{{prefixCls}}-handler-wrap">
     <span role="button"
           class="{{prefixCls}}-handler {{prefixCls}}-handler-up"
-          style="line-height:28px;"
           [ngClass]="upDisableCls"
           (click)="onIncrease()">
-          <Icon [type]="'plus'"
+          <Icon class="{{prefixCls}}-icon" [type]="'plus'"
                 [size]="'xxs'">
           </Icon>
     </span>
     <span role="button"
           class="{{prefixCls}}-handler {{prefixCls}}-handler-down"
-          style="line-height:28px;"
           [ngClass]="downDisableCls"
           (click)="onDecrease()">
-          <Icon [type]="'minus'"
+          <Icon class="{{prefixCls}}-icon" [type]="'minus'"
                 [size]="'xxs'">
           </Icon>
     </span>

@@ -141,11 +141,13 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
     public elementRef: ElementRef,
     public options: PickerOptions,
     private _localeProviderService: LocaleProviderService
-  ) {}
+  ) { }
 
-  onChange = (_: any[]) => {};
+  onChange = (_: any[]) => { };
 
   init() {
+    this.dataForRender = [];
+    this.selectedTarget = [];
     if (this.dataForRender.length === 0 && this.generateArrayData(this.options.data).length > 0) {
       this.dataForRender.push(this.generateArrayData(this.options.data));
     }
@@ -183,6 +185,9 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
       const self = this;
       setTimeout(() => {
         self.selectedTarget.forEach((item, i) => {
+          if (!self.currentPicker.children[i]) {
+            return;
+          }
           self.currentPicker.children[i].children[2].style.transition = 'transform .3s';
           const index = parseInt(item.currentY, 0);
           self.currentPicker.children[i].children[2].style.transform = `translateY(${index * self.lineHeight}px)`;
@@ -213,9 +218,9 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   checkArrayDeep(parent, init: boolean = true) {
     if (parent instanceof Object && parent.children && parent.children.length > 0) {
-       if (this.generateArrayData(parent.children).length > 0 && this.dataForRender.length < this.options.cols) {
-         let hasValue = false;
-         this.dataForRender.filter((item, index) => {
+      if (this.generateArrayData(parent.children).length > 0 && this.dataForRender.length < this.options.cols) {
+        let hasValue = false;
+        this.dataForRender.filter((item, index) => {
           if (JSON.stringify(item) === JSON.stringify(parent.children)) {
             hasValue = true;
           }

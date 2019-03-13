@@ -2,6 +2,12 @@
 @import '../../style/themes/default';
 @drawerPrefixCls: am-drawer;
 
+.@{drawerPrefixCls}-loaded {
+  .@{drawerPrefixCls}-sidebar {
+    display: block
+  }
+}
+
 .@{drawerPrefixCls} {
   position: absolute;
   top: 0;
@@ -16,6 +22,7 @@
     transition: transform .3s ease-out;
     will-change: transform;
     overflow-y: auto;
+    display: none;
   }
 
   &-draghandle {
@@ -49,6 +56,7 @@
 
   &&-left,
   &&-right {
+
     .@{drawerPrefixCls}-sidebar,
     .@{drawerPrefixCls}-draghandle {
       top: 0;
@@ -63,6 +71,7 @@
 
   &&-top,
   &&-bottom {
+
     .@{drawerPrefixCls}-sidebar,
     .@{drawerPrefixCls}-draghandle {
       left: 0;

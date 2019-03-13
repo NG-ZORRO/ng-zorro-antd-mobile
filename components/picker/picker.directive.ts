@@ -96,7 +96,7 @@ export class PickerDirective implements OnDestroy, OnInit, OnChanges, ControlVal
     }
     if (value.data && this.picker) {
       this.picker.instance.options.data = value.data.currentValue;
-      this.showPicker();
+      // this.showPicker();
     }
   }
 

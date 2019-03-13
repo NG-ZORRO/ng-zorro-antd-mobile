@@ -7,7 +7,8 @@ import {
   EventEmitter,
   ElementRef,
   OnChanges,
-  AfterViewChecked
+  AfterViewChecked,
+  AfterViewInit
 } from '@angular/core';
 
 @Component({
@@ -15,7 +16,7 @@ import {
   templateUrl: './drawer.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class DrawerComponent implements AfterViewChecked, OnChanges {
+export class DrawerComponent implements AfterViewChecked, OnChanges, AfterViewInit {
   prefixCls: string = 'am-drawer';
   sidebarStyleFinal: { [k: string]: any } = {};
   contentStyleFinal: { [k: string]: any } = {};
@@ -108,8 +109,10 @@ export class DrawerComponent implements AfterViewChecked, OnChanges {
   dockedCls: boolean = this._docked;
   @HostBinding('class.am-drawer-open')
   openCls: boolean = this._open;
+  @HostBinding('class.am-drawer-loaded')
+  loaded: boolean = false;
 
-  constructor(private _el: ElementRef) {}
+  constructor(private _el: ElementRef) { }
 
   onOverlayClicked() {
     if (this._open) {
@@ -346,5 +349,11 @@ export class DrawerComponent implements AfterViewChecked, OnChanges {
 
   ngOnChanges() {
     this.update();
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.loaded = true;
+    });
   }
 }
