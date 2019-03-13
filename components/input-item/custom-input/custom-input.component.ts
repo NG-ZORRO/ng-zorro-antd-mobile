@@ -32,19 +32,19 @@ export class CustomInput implements OnInit, OnDestroy {
   private _setFocus: boolean = false;
   private _preventKeyboard: boolean;
   private _moneyKeyboardAlign: string;
-  private _fontColor:string;
+  private _fontColor: string;
 
   @Input()
   get value(): string {
     return this._value;
   }
   set value(v: string) {
-    if (typeof v === undefined || v === null) {
+    if (typeof v === 'undefined' || v === null) {
       this._value = '';
     } else if (this._maxLength !== undefined && this._maxLength >= 0) {
-      this._value = v.substr(0, this._maxLength);
+      this._value = v.toString().substr(0, this._maxLength);
     } else {
-      this._value = v;
+      this._value = v.toString();
     }
   }
   @Input()
@@ -124,7 +124,7 @@ export class CustomInput implements OnInit, OnDestroy {
     setTimeout(() => {
       this.addBlurListener();
     }, 50);
-  };
+  }
 
   doBlur = ev => {
     const value = this._value;
@@ -172,22 +172,22 @@ export class CustomInput implements OnInit, OnDestroy {
       CustomInputService.hideKeyboard();
     }
     this.setFakeInputCls();
-  };
+  }
 
   removeBlurListener = () => {
     document.removeEventListener('click', this.doBlur, false);
-  };
+  }
 
   addBlurListener = () => {
     document.addEventListener('click', this.doBlur, false);
-  };
+  }
 
   onInputBlur = value => {
     this.focus = false;
     this.setFakeInputCls();
     this.onBlur.emit(this._value);
     CustomInputService.hideKeyboard();
-  };
+  }
 
   onInputFocus = () => {
     this.onFocus.emit(this._value);
@@ -197,7 +197,7 @@ export class CustomInput implements OnInit, OnDestroy {
     setTimeout(() => {
       CustomInputService.showKeyboard();
     }, 100);
-  };
+  }
 
   setFakeInputCls = () => {
     this.fakeInputCls = {
@@ -205,11 +205,11 @@ export class CustomInput implements OnInit, OnDestroy {
       ['fake-input-disabled']: this._disabled,
       ['focus']: this.focus
     };
-  };
+  }
 
   setContainerCls = () => {
     this.clsFakeContainerLeft = this._moneyKeyboardAlign === 'left';
-  };
+  }
 
   onKeyboardClick = keyboardItemValue => {
     let valueAfterChange;
@@ -242,7 +242,7 @@ export class CustomInput implements OnInit, OnDestroy {
     this._ngZone.run(() => {
       this._value = valueAfterChange;
     });
-  };
+  }
 
   ngOnInit() {
     this._preventKeyboard = this._disabled || !this._editable;
