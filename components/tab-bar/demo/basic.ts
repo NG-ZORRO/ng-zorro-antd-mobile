@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
             [tintColor]="tintColor"
             [unselectedTintColor]="unselectedTintColor"
             [ngStyle]="tabbarStyle"
-            [activeTab]="1"
+            [activeTab]="selectedIndex"
             [hidden]="hidden"
             [tabBarPosition]="topFlag ? 'top' : 'bottom'"
     >
@@ -113,6 +113,10 @@ import { Component } from '@angular/core';
 
     <ng-template #content>
       <a style="display: block; margin-top: 40px; margin-bottom: 20px; color: #108ee9"
+        (click)="showNextTabBar($event)">
+        Click to next tab-bar
+      </a>
+      <a style="display: block; margin-top: 20px; margin-bottom: 20px; color: #108ee9"
          (click)="showTabBar($event)">
         Click to show/hide tab-bar
       </a>
@@ -134,10 +138,21 @@ export class DemoTabBarBasicComponent {
   tintColor: string = '#108ee9';
   unselectedTintColor: string = '#888';
   tabbarStyle: object = { height: '400px' };
+  selectedIndex: number = 1;
 
   showTabBar(event) {
     event.preventDefault();
     this.hidden = !this.hidden;
+  }
+
+  showNextTabBar(event) {
+    event.preventDefault();
+    const PANE_COUNT = 4;
+    if (this.selectedIndex == PANE_COUNT - 1) {
+      this.selectedIndex = 0;
+    } else {
+      this.selectedIndex++;
+    }
   }
 
   showFullScreen(event) {
