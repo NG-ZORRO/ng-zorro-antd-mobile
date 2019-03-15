@@ -10,7 +10,7 @@ export type TabBarPositionType = 'top' | 'bottom';
 })
 export class TabBar implements AfterContentInit {
   prefixCls: string = 'am-tab-bar';
-
+  private _activeTab: number = 0;
   private _tintColor: string = '#108ee9';
   private _unselectedTintColor: string = '#888';
 
@@ -22,7 +22,15 @@ export class TabBar implements AfterContentInit {
   @Input()
   hidden: boolean = false;
   @Input()
-  activeTab: number = 0;
+  get activeTab(): number {
+    return this._activeTab;
+  }
+  set activeTab(tab: number) {
+    this._activeTab = tab;
+    if (this.tabPanes && this.tabPanes.length > 0) {
+      this.selectTabPane(tab);
+    }
+  }
   @Input()
   barTintColor: string = 'white';
   @Input()
