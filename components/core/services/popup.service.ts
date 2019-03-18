@@ -30,7 +30,6 @@ export class PopupService {
       PopupService.hidePopup();
     });
     PopupService.currentServiceName = componentName;
-    console.log(component, childInjector);
     const comRef = PopupService.overlayRef.attach(new ComponentPortal(component, undefined, childInjector));
     PopupService.serviceArray.push({key: componentName, value: PopupService.overlayRef});
     return comRef;
