@@ -122,7 +122,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
   @HostListener('touchstart', ['$event'])
   touchstart(e) {
     this._startTime = Date.now();
-    if ((this._direction === 'down' || (this._direction === '' && !this._endReach))) {
+    if (this._direction === 'down' || (this._direction === '' && !this._endReach)) {
       if (this.ele.nativeElement.scrollTop > 0) {
         this.startY = undefined;
         return;
@@ -139,8 +139,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
   }
   @HostListener('touchmove', ['$event'])
   touchmove(e) {
-    if ((this._direction === 'down' || (this._direction === '' && !this._endReach))
-      && (!this.endReachedRefresh)) {
+    if (this._direction === 'down' || (this._direction === '' && !this._endReach)) {
       if (this.ele.nativeElement.scrollTop > 0) {
         return;
       }
@@ -270,7 +269,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
       if (
         offset > 0 &&
         contentOffset > 0 &&
-        evt.target.scrollTop + this.ele.nativeElement.clientHeight === evt.target.scrollHeight
+        evt.target.scrollTop + this.ele.nativeElement.clientHeight >= evt.target.scrollHeight
       ) {
         setTimeout(() => {
           this._endReach = true;
