@@ -21,3 +21,4 @@ subtitle: 走马灯
 | dotStyle  | 指示点样式 | Object | 无 |
 | dotActiveStyle  | 当前激活的指示点样式 | Object | 无 |
 | swipeSpeed | 滑动灵敏度 |  number | 12 |
+| dragging | 是否允许滑动切换 | Boolean |（子元素大于1时为true， 否则为false）|
