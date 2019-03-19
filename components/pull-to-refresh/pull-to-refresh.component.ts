@@ -265,11 +265,12 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
     const contentOffset = evt.target.scrollTop;
     const offset = contentOffset - this._lastcontentOffset;
     this._lastcontentOffset = contentOffset;
+    const scrollHeight = Math.ceil(evt.target.scrollTop + this.ele.nativeElement.clientHeight);
     if (this._direction === '') {
       if (
         offset > 0 &&
         contentOffset > 0 &&
-        evt.target.scrollTop + this.ele.nativeElement.clientHeight >= evt.target.scrollHeight
+        scrollHeight >= evt.target.scrollHeight
       ) {
         setTimeout(() => {
           this._endReach = true;
@@ -285,7 +286,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
       this._direction === 'down' &&
       offset > 0 &&
       contentOffset > 0 &&
-      evt.target.scrollTop + this.ele.nativeElement.clientHeight > evt.target.scrollHeight - this.distanceToRefresh &&
+      scrollHeight > evt.target.scrollHeight - this.distanceToRefresh &&
       this._endTime - this._startTime >= 100
     ) {
       this._startTime = this._endTime;
