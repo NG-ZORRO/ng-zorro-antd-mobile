@@ -72,7 +72,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @Input()
   swipeSpeed: number = 12;
   @Input()
-  dragging = true;
+  dragging: boolean = true;
   @Input()
   get selectedIndex() {
     return this._selectedIndex;
