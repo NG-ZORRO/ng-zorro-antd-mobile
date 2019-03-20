@@ -18,3 +18,4 @@ Properties | Descrition | Type | Default
 | dotStyle  | style of dots | Object | <span> </span> |
 | dotActiveStyle  | style of active dot | Object  | <span> </span> |
 | swipeSpeed | configure the swipe sensitivity | number | 12 |
+| dragging | whether to slide with drag | Boolean |（children more than one is true， or is false）|
