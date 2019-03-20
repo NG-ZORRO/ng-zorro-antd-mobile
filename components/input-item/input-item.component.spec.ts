@@ -429,7 +429,9 @@ describe('InputComponent', () => {
       <span (click)="clickTitle()">标题</span>
     </InputItem>
     <InputItem class="input-item-1" [(ngModel)]="modelValue"></InputItem>
+    <InputItem class="input-item-1" [extra]="extraTemplate"></InputItem>
     <div class="am-list-content" click = "blurFocus()">click to focus</div>
+    <ng-template #extraTemplate>$</ng-template>
  `
 })
 export class TestInputComponent {
@@ -442,7 +444,7 @@ export class TestInputComponent {
   disabled: boolean = false;
   clear: boolean = false;
   maxLength: number;
-  fontColor:string;
+  fontColor: string;
   error: boolean = false;
   extra: string = '';
   labelNumber: number = 5;
