@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, TemplateRef } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { InputItemModule } from './input-item.module';
@@ -214,8 +214,13 @@ describe('InputComponent', () => {
   it('should extra work', () => {
     component.extra = '$';
     fixture.detectChanges();
-    const extraEle = inputItem.nativeElement.querySelector('.am-input-extra');
+    let extraEle = inputItem.nativeElement.querySelector('.am-input-extra');
     expect(extraEle.innerText).toBe('$');
+
+    component.extra = component.extraTpl;
+    fixture.detectChanges();
+    extraEle = inputItem.nativeElement.querySelector('.am-input-extra');
+    expect(extraEle.innerText).toBe('#');
   });
   it('should labelNumber work', () => {
     component.labelNumber = 3;
@@ -429,9 +434,8 @@ describe('InputComponent', () => {
       <span (click)="clickTitle()">标题</span>
     </InputItem>
     <InputItem class="input-item-1" [(ngModel)]="modelValue"></InputItem>
-    <InputItem class="input-item-1" [extra]="extraTemplate"></InputItem>
     <div class="am-list-content" click = "blurFocus()">click to focus</div>
-    <ng-template #extraTemplate>$</ng-template>
+    <ng-template #extraTemplate>#</ng-template>
  `
 })
 export class TestInputComponent {
@@ -446,7 +450,7 @@ export class TestInputComponent {
   maxLength: number;
   fontColor: string;
   error: boolean = false;
-  extra: string = '';
+  extra: string | TemplateRef<any> = '';
   labelNumber: number = 5;
   updatePlaceholder: boolean = false;
   prefixListCls: string = 'am-list';
@@ -457,6 +461,9 @@ export class TestInputComponent {
 
   @ViewChild(InputItem)
   inputItemComp: InputItem;
+
+  @ViewChild('extraTemplate')
+  extraTpl: TemplateRef<any>;
 
   errorClick = jasmine.createSpy('errorClick callback');
   extraClick = jasmine.createSpy('extraClick callback');
