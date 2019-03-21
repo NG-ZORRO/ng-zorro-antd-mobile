@@ -32,7 +32,7 @@ subtitle: 文本输入
 | onFocus    | focus 事件触发的回调函数 | (val: string): void |  -  |
 | error       | 报错样式        | bool |  false  |
 | onErrorClick       | 点击报错 icon 触发的回调函数  | (e: Object): void |  无  |
-| extra       | 右边注释   | string or node |  ''  |
+| extra       | 右边注释   | string or TemplateRef |  ''  |
 | onExtraClick      | extra 点击事件触发的回调函数 | (e: Object): void |  无  |
 | labelNumber  | 标签的文字个数，可用`2-7`之间的数字 | number | `5` |
 | updatePlaceholder | 当清除内容时，是否将清除前的内容替换到 placeholder 中 | bool |  false  |
