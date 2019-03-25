@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, fakeAsync, tick, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -112,7 +112,7 @@ describe('AccordionComponent', () => {
     </Accordion>
   `
 })
-export class TestAccordionComponent {
+export class TestAccordionComponent implements OnInit {
   defaultActiveKey = '0';
   accordions: Array<any> = [{ title: 'Title 1', child: ['content 1', 'content 1', 'content 1'],  inactive: false },
                             { title: 'Title 2', child: ['content 2', 'content 2', 'content 2'] }];
@@ -124,5 +124,12 @@ export class TestAccordionComponent {
 
   onChange(event) {
     console.log(event);
+  }
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.accordions = [{ title: 'Title 1', child: ['content 1', 'content 1', 'content 1'],  inactive: false },
+      { title: 'Title 2', child: ['content 2', 'content 2', 'content 2'] }];
+    }, 0);
   }
 }
