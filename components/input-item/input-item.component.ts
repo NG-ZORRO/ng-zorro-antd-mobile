@@ -1,6 +1,6 @@
 import {
   Component,
-  OnInit,
+  AfterViewInit,
   Input,
   Output,
   EventEmitter,
@@ -25,7 +25,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
+export class InputItem implements AfterViewInit, OnChanges, ControlValueAccessor {
   prefixCls: string = 'am-input';
   wrapCls: object;
   labelCls: object;
@@ -379,9 +379,11 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
     }
   }
 
-  ngOnInit() {
-    this.setCls();
-    this.render.addClass(this._el, this._prefixListCls + '-item');
-    this.render.addClass(this._el, this._prefixListCls + '-item-middle');
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.setCls();
+      this.render.addClass(this._el, this._prefixListCls + '-item');
+      this.render.addClass(this._el, this._prefixListCls + '-item-middle');
+    }, 0);
   }
 }
