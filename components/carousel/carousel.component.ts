@@ -40,7 +40,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   private _transition: string = '';
   private _spaceWidth: number = 0;
   private _observer: MutationObserver;
-  private _shouldDragging: boolean = true;
+  private _dragging: boolean = true;
   private _currentSelectedIndex: number = 0;
   private _selectedIndex: number = 0;
 
@@ -97,7 +97,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @HostListener('touchstart', ['$event'])
   panstart(event) {
     event.stopPropagation();
-    if (!this.dragging) {
+    if (!this._dragging) {
       return;
     }
     this.stopTimer();
@@ -114,7 +114,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @HostListener('touchmove', ['$event'])
   panmove(event) {
     event.stopPropagation();
-    if (!this.dragging || !this._isMouseDown) {
+    if (!this._dragging || !this._isMouseDown) {
       return;
     }
     const { direction } = this.swipeDirection(
@@ -149,7 +149,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @HostListener('touchend', ['$event'])
   panend(event) {
     event.stopPropagation();
-    if (!this.dragging || !this._isMouseDown || !this.touchObject.length || this.touchObject.length === undefined) {
+    if (!this._dragging || !this._isMouseDown || !this.touchObject.length || this.touchObject.length === undefined) {
       this._isMouseDown = false;
       return;
     }
@@ -186,8 +186,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   carouselInit(items) {
     this.infinite = this.infinite || true;
     this._nodeArr = items['_results'];
-    this._shouldDragging = this._nodeArr.length > 1;
-    this.dragging = this.dragging ? this._shouldDragging : this.dragging;
+    const shouldDragging = this._nodeArr.length > 1;
+    this._dragging = (this.dragging && shouldDragging) ? true : false;
     if (this._nodeArr.length > 1) {
       this._lastIndex = this._nodeArr.length - 1;
       setTimeout(() => {

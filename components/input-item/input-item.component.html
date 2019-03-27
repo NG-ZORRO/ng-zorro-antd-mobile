@@ -48,6 +48,8 @@
   ></div>
   <div *ngIf="extra!==''"
        class="{{prefixCls}}-extra"
-       (click)="extraClick($event)"
-  >{{extra}}</div>
+       (click)="extraClick($event)">
+    <ng-container *ngIf="!ngTemplate">{{extra}}</ng-container>
+    <ng-template *ngIf="ngTemplate" [ngTemplateOutlet]="extra"></ng-template>
+  </div>
 </div>

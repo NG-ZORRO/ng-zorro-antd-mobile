@@ -25,6 +25,8 @@ import { Subscription } from 'rxjs';
 export class AccordionComponent implements AfterContentInit, OnDestroy, OnChanges {
   private _oldGroups: AccordionGroupComponent[];
   private _subscription: Subscription;
+  private groupsSubscription: Subscription;
+  private isFirstChange: boolean = true;
 
   @ContentChildren(forwardRef(() => AccordionGroupComponent))
   groups: QueryList<AccordionGroupComponent>;
@@ -95,6 +97,7 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
           if (index === parseInt(key, 0)) {
             setTimeout(() => {
               group.isOpened = true;
+              group.openOnInitialization();
             }, 0);
           }
         });
@@ -104,6 +107,7 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
         if (index === parseInt(this.defaultActiveKey, 0)) {
           setTimeout(() => {
             group.isOpened = true;
+            group.openOnInitialization();
           }, 0);
         }
       });
@@ -129,12 +133,24 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
   }
 
   ngAfterContentInit() {
-    this.init();
+    if (this.groups && this.groups.length > 0) {
+      this.init();
+    } else {
+      this.groupsSubscription = this.groups.changes.subscribe(group => {
+        if (this.isFirstChange) {
+          this.init();
+        }
+        this.isFirstChange = false;
+      });
+    }
   }
 
   ngOnDestroy() {
     if (this._subscription) {
       this._subscription.unsubscribe();
+    }
+    if (this.groupsSubscription) {
+      this.groupsSubscription.unsubscribe();
     }
   }
 }

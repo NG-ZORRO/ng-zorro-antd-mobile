@@ -29,7 +29,7 @@ Properties | Descrition | Type | Default
 | onFocus    | callback that is called when the text input is focused | (val: string): void |  -  |
 | error       | whether to display error       | bool |  false  |
 | onErrorClick   | callback that is called when the error icon is clicked  | (e: Object): void | <span> </span> |
-| extra       | the right content of `InputItem`   | string or node |  ''  |
+| extra       | the right content of `InputItem`   | string or TemplateRef |  ''  |
 | onExtraClick      | callback that is called when the extra content is clicked | (e: Object): void | <span> </span> |
 | labelNumber  | number of label text, valid value is 2 to 7 | number | `5` |
 | updatePlaceholder | whether to replace the placeholder with cleared content | bool | false|

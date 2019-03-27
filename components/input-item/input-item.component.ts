@@ -9,7 +9,8 @@ import {
   HostBinding,
   Renderer2,
   ElementRef,
-  forwardRef
+  forwardRef,
+  TemplateRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -33,6 +34,7 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   pattern: string = '';
   autoFocus: boolean = false;
   inputType: string = 'text';
+  ngTemplate: boolean = false;
 
   private _el: HTMLElement;
   private _type: string = 'text';
@@ -44,7 +46,7 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
   private _clear: boolean = false;
   private _maxLength: number;
   private _error: boolean = false;
-  private _extra: string = '';
+  private _extra: string | TemplateRef<any> = '';
   private _labelNumber: number = 5;
   private _updatePlaceholder: boolean = false;
   private _prefixListCls: string = 'am-list';
@@ -150,10 +152,15 @@ export class InputItem implements OnInit, OnChanges, ControlValueAccessor {
     this.clsError = value;
   }
   @Input()
-  get extra(): string {
+  get extra(): string | TemplateRef<any> {
     return this._extra;
   }
-  set extra(value: string) {
+  set extra(value: string | TemplateRef<any>) {
+    if (value instanceof TemplateRef) {
+      this.ngTemplate = true;
+    } else {
+      this.ngTemplate = false;
+    }
     this._extra = value;
   }
   @Input()
