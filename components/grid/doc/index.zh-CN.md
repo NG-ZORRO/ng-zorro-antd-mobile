@@ -16,12 +16,13 @@ subtitle: 宫格
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
 | data    |    传入的菜单数据     | `Array<{icon, text}>`  | [] |
-| onClick    |   点击每个菜单的回调函数   | (el: Object, index: number): void  | - |
+| OnClick    |   点击每个菜单的回调函数   | (el: Object, index: number): void  | - |
 | columnNum    |   列数     | number  |  `4` |
 | hasLine    |   是否有边框     | boolean  |  `true` |
 | isCarousel    |   是否跑马灯,     | boolean  | `false` |
 | carouselMaxRow    |   如果是跑马灯, 一页跑马灯需要展示的行数   | number  | `2` |
 | square   |   每个格子是否固定为正方形   | boolean | true |
 | itemStyle| 每个格子自定义样式| object|{} |
+| activeStyle | 是否显示点击状态 | boolean | true |
 
 > **注：** Grid 支持ng-content.
