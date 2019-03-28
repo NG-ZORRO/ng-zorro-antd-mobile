@@ -35,7 +35,7 @@ export interface Indicator {
     }
   ]
 })
-export class PullToRefreshComponent implements ControlValueAccessor, AfterViewInit {
+export class PullToRefreshComponent implements ControlValueAccessor {
   transtionCls: any = {};
   style: object = {
     '-webkit-transform': 'translate3d( 0, 0, 0 )',
@@ -47,7 +47,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
     drag: false
   };
   currentAction: 'up' | 'down' | '' = '';
-  contentMinHeight = 'auto';
+  contentMinHeight = 'calc(100% + 1px)';
 
   private _headerIndicator: Indicator = {
     activate: '松开立即刷新',
@@ -265,7 +265,7 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
     const contentOffset = evt.target.scrollTop;
     const offset = contentOffset - this._lastcontentOffset;
     this._lastcontentOffset = contentOffset;
-    const scrollHeight = Math.ceil(evt.target.scrollTop + this.ele.nativeElement.clientHeight);
+    const scrollHeight = Math.ceil(evt.target.scrollTop + this.ele.nativeElement.clientHeight + 1);
     if (this._direction === '') {
       if (
         offset > 0 &&
@@ -353,11 +353,5 @@ export class PullToRefreshComponent implements ControlValueAccessor, AfterViewIn
 
   registerOnTouched(fn: () => {}): void {
     this._ngModelOnTouched = fn;
-  }
-
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.contentMinHeight = `${this.ele.nativeElement.clientHeight}px`;
-    }, 100);
   }
 }
