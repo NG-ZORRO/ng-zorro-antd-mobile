@@ -33,7 +33,7 @@ $ ionic start PROJECT-NAME
 $ ng add ng-zorro-antd-mobile
 ```
 
-`ng-zorro-antd-mobile` supports init configuration with schematics, you can get more info in the [schematics](http://ng.mobile.ant.design/#/docs/schematics/en) part.
+`ng-zorro-antd-mobile` supports init configuration with schematics, you can get more info in the [schematics](https://ng.mobile.ant.design/#/docs/schematics/en) part.
 
 ### 4. Development & Debugging
 

@@ -50,13 +50,13 @@ and help you to craft the change so that it is successfully accepted into the pr
 
 Before you submit an issue, please search the issue tracker, maybe an issue for your problem already exists and the discussion might inform you of workarounds readily available.
 
-We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it. In order to reproduce bugs we will systematically ask you to provide a minimal reproduction scenario using http://plnkr.co. Having a live, reproducible scenario gives us wealth of important information without going back & forth to you with additional questions like:
+We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it. In order to reproduce bugs we will systematically ask you to provide a minimal reproduction scenario using https://plnkr.co. Having a live, reproducible scenario gives us wealth of important information without going back & forth to you with additional questions like:
 
 - version of **NG-ZORRO-MOBILE** used
 - 3rd-party libraries and their versions
 - and most importantly - a use-case that fails
 
-A minimal reproduce scenario using http://plnkr.co/ allows us to quickly confirm a bug (or point out coding problem) as well as confirm that we are fixing the right problem. If plunker is not a suitable way to demonstrate the problem (for example for issues related to our npm packaging), please create a standalone git repository demonstrating the problem.
+A minimal reproduce scenario using https://plnkr.co/ allows us to quickly confirm a bug (or point out coding problem) as well as confirm that we are fixing the right problem. If plunker is not a suitable way to demonstrate the problem (for example for issues related to our npm packaging), please create a standalone git repository demonstrating the problem.
 
 We will be insisting on a minimal reproduce scenario in order to save maintainers time and ultimately be able to fix more bugs. Interestingly, from our experience users often find coding problems themselves while preparing a minimal plunk. We understand that sometimes it might be hard to extract essentials bits of code from a larger code-base but we really need to isolate the problem before we can fix it.
 
@@ -235,4 +235,4 @@ A detailed explanation can be found in this [document][commit-message-format].
 [dev-doc]: https://github.com/NG-ZORRO/ng-zorro-antd-mobile/blob/master/docs/DEVELOPER.md
 [github]: https://github.com/NG-ZORRO/ng-zorro-antd-mobile
 [gitter]: https://gitter.im/ng-zorro/ng-zorro-antd-mobile
-[plunker]: http://plnkr.co/edit
+[plunker]: https://plnkr.co/edit
