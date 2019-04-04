@@ -9,7 +9,7 @@
 [![DevDependencies](https://img.shields.io/david/dev/NG-ZORRO/ng-zorro-antd-mobile.svg?style=flat-square)](https://david-dm.org/NG-ZORRO/ng-zorro-antd-mobile?type=dev)
 [![GitHub Release Date](https://img.shields.io/github/release-date/NG-ZORRO/ng-zorro-antd-mobile.svg?style=flat-square)](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/releases)
 [![npm package](https://img.shields.io/npm/v/ng-zorro-antd-mobile.svg?style=flat-square)](https://www.npmjs.org/package/ng-zorro-antd-mobile)
-[![NPM downloads](http://img.shields.io/npm/dm/ng-zorro-antd-mobile.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd-mobile)
+[![NPM downloads](https://img.shields.io/npm/dm/ng-zorro-antd-mobile.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd-mobile)
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/blob/master/LICENSE)
 [![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd-mobile.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd-mobile)
 
@@ -49,7 +49,7 @@ $ ng add ng-zorro-antd-mobile
 
 ## 链接
 
-- [首页](http://ng.mobile.ant.design)
+- [首页](https://ng.mobile.ant.design)
 - [Angular官方文档](https://angular.io/)
 - [开发脚手架](https://cli.angular.io/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -57,9 +57,9 @@ $ ng add ng-zorro-antd-mobile
 
 ## 如何贡献
 
-在任何形式的参与前，请先阅读 [贡献者文档](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/blob/master/CONTRIBUTING.md)。如果你希望参与贡献，欢迎 [Pull Request](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pulls)，或给我们 [报告 Bug](http://ng.mobile.ant.design/issue-helper/#/zh)。
+在任何形式的参与前，请先阅读 [贡献者文档](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/blob/master/CONTRIBUTING.md)。如果你希望参与贡献，欢迎 [Pull Request](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pulls)，或给我们 [报告 Bug](https://ng.mobile.ant.design/issue-helper/#/zh)。
 
-> 强烈推荐阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way)(本指南不提供此项目的实际支持服务！)、[《如何向开源社区提问题》](https://github.com/seajs/seajs/issues/545) 和 [《如何有效地报告 Bug》](http://www.chiark.greenend.org.uk/%7Esgtatham/bugs-cn.html)、[《如何向开源项目提交无法解答的问题》](https://zhuanlan.zhihu.com/p/25795393)，更好的问题更容易获得帮助。
+> 强烈推荐阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way)(本指南不提供此项目的实际支持服务！)、[《如何向开源社区提问题》](https://github.com/seajs/seajs/issues/545) 和 [《如何有效地报告 Bug》](https://www.chiark.greenend.org.uk/%7Esgtatham/bugs-cn.html)、[《如何向开源项目提交无法解答的问题》](https://zhuanlan.zhihu.com/p/25795393)，更好的问题更容易获得帮助。
 
 ## 社区互助
 
@@ -75,7 +75,7 @@ $ ng add ng-zorro-antd-mobile
 
 ## 谁在使用
 
-- [阿里巴巴](http://www.alibaba.com/)
+- [阿里巴巴](https://www.alibaba.com/)
 
 > 如果你的公司和产品使用了 **NG-ZORRO-MOBILE**，欢迎到 [这里](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/3) 留言。
 
