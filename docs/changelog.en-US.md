@@ -5,7 +5,7 @@ toc: false
 timeline: true
 ---
 
-`ng-zorro-antd-mobile` strictly follows [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/).
+`ng-zorro-antd-mobile` strictly follows [Semantic Versioning 2.0.0](https://semver.org/lang/zh-CN/).
 
 #### Release Schedule
 

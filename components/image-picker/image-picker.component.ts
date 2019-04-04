@@ -206,7 +206,7 @@ export class ImagePicker {
     return imgRotation;
   }
 
-  // http://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side
+  // https://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side
   getOrientation(file: any, callback: (_: number) => void) {
     const reader = new FileReader();
     reader.onload = e => {

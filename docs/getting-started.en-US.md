@@ -5,7 +5,7 @@ title: Getting Started
 
 **NG-ZORRO-MOBILE** is dedicated to providing a **good development experience** for programmers.
 
-> Before delving into **NG-ZORRO-MOBILE**, a good knowledge of [Angular](https://angular.io/) and [JavaScript ES2015](http://babeljs.io/docs/learn-es2015/) is needed.
+> Before delving into **NG-ZORRO-MOBILE**, a good knowledge of [Angular](https://angular.io/) and [JavaScript ES2015](https://babeljs.io/docs/learn-es2015/) is needed.
 
 ## Playground
 
