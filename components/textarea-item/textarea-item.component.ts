@@ -7,7 +7,10 @@ import {
   ViewChild,
   TemplateRef,
   AfterContentChecked,
-  forwardRef
+  forwardRef,
+  HostBinding,
+  ElementRef,
+  Renderer2
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -33,6 +36,7 @@ export class TextareaItem implements OnInit, AfterContentChecked, ControlValueAc
   isTitleString: boolean = true;
   maxLength: number = Infinity;
 
+  private _el: ElementRef;
   private _prefixListCls = 'am-list';
   private _value: string;
   private _defaultValue: string = '';
@@ -187,21 +191,33 @@ export class TextareaItem implements OnInit, AfterContentChecked, ControlValueAc
   @Output()
   onErrorClick: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {}
+  @HostBinding('class.am-textarea-item')
+  clsItem: boolean = true;
+  @HostBinding('class.am-textarea-disabled')
+  clsDisabled: boolean;
+  @HostBinding('class.am-textarea-error')
+  clsError: boolean ;
+  @HostBinding('class.am-textarea-focus')
+  clsFocus: boolean ;
+  @HostBinding('class.am-textarea-item-single-line')
+  clsSingleLine: boolean;
+  @HostBinding('class.am-textarea-has-count')
+  clsHasCount: boolean ;
+
+  constructor(private element: ElementRef, private render: Renderer2) {
+    this._el = element.nativeElement;
+  }
 
   _onChange = (_: any) => {};
 
   setCls() {
     this.hasCount = this._count > 0 && this._rows > 1;
-    this.wrapCls = {
-      [`${this._prefixListCls}-item`]: true,
-      [`${this.prefixCls}-item`]: true,
-      [`${this.prefixCls}-disabled`]: this._disabled,
-      [`${this.prefixCls}-error`]: this._error,
-      [`${this.prefixCls}-focus`]: this._focus,
-      [`${this.prefixCls}-item-single-line`]: this._rows === 1 && !this._autoHeight,
-      [`${this.prefixCls}-has-count`]: this.hasCount
-    };
+    this.render.addClass(this._el, this._prefixListCls + '-item');
+    this.clsSingleLine = this._rows === 1 && !this._autoHeight;
+    this.clsDisabled = this._disabled;
+    this.clsError = this._error;
+    this.clsFocus = this._focus;
+    this.clsHasCount = this.hasCount;
     this.labelCls = {
       [`${this.prefixCls}-label`]: true,
       [`${this.prefixCls}-label-2`]: this._labelNumber === 2,

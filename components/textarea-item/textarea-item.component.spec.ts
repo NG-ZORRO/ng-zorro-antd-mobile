@@ -96,7 +96,7 @@ describe('TextareaComponent', () => {
   it('should disabled work', () => {
     component.disabled = true;
     fixture.detectChanges();
-    textareaItem = textareaEle.nativeElement.querySelector('.am-textarea-item');
+    textareaItem = textareaEle.nativeElement;
     expect(textareaItem.classList).toContain('am-textarea-disabled');
   });
   it('should clear work', () => {
@@ -139,7 +139,7 @@ describe('TextareaComponent', () => {
   it('should prefixListCls work', () => {
     component.prefixListCls = 'am-test';
     fixture.detectChanges();
-    const inputDivEle = textareaEle.nativeElement.querySelector('.am-textarea-item');
+    const inputDivEle = textareaEle.nativeElement;
     expect(inputDivEle.classList).toContain('am-test-item');
   });
   it('should autoFocus work', () => {

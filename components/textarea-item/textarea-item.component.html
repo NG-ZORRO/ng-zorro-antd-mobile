@@ -1,5 +1,4 @@
-<div [ngClass]="wrapCls">
-  <div *ngIf="title &&  isTitleString" [ngClass]="labelCls">{{title}}</div>
+<div *ngIf="title &&  isTitleString" [ngClass]="labelCls">{{title}}</div>
   <div *ngIf="title &&  !isTitleString" [ngClass]="labelCls">
     <ng-template [ngTemplateOutlet]="title"></ng-template>
   </div>
@@ -27,4 +26,3 @@
   <span *ngIf="hasCount" class="{{prefixCls}}-count">
     <span>{{characterLength}}</span>/{{count}}
   </span>
-</div>
