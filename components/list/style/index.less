@@ -24,7 +24,7 @@
     .hairline('top');
     .hairline('bottom');
 
-    :not(:last-child) {
+    div:not(:last-child) {
       .@{listPrefixCls}-line {
         .hairline('bottom');
       }
@@ -96,7 +96,7 @@
   }
 
   &.@{listPrefixCls}-item-active {
-    background-color: @fill-tap!important;
+    background-color: @fill-tap;
   }
 
   &&-disabled {

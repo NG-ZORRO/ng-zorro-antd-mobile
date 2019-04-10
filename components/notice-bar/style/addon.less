@@ -1,3 +1,5 @@
+@import '../../style/themes/default';
+
 noticebar {
   display: block;
 }
@@ -8,4 +10,85 @@ noticebar {
 
 noticebar icon {
   display: flex;
+}
+.notice-bar-card {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 989;
+  display: block;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  -webkit-overflow-scrolling: touch;
+
+}
+
+.marquee-tips {
+  text-align: left;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.nz-yellow-bar-bg {
+  width: 100%;
+  height: 30px;
+  background: transparent;
+}
+
+.close {
+  // position: fixed;
+  // top: 0;
+  right: 0;
+  z-index: 990;
+  font-size: 15px;
+  color: #999999;
+  background: #fff9ec;
+  padding: 4.5px;
+}
+
+.marquee {
+  height: 30px;
+  // font-size: 14px;
+  overflow: hidden;
+  display: block;
+  line-height: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 899;
+  color: @notice-bar-color;
+  overflow-x: auto;
+  touch-action: none;
+
+}
+
+.marquee div {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+}
+
+.marquee div.scrolling {
+  // animation: 15s noticebarmarquee 2s linear infinite;
+  // animation-iteration-count: infinite;
+  animation-name: noticebarmarquee;
+  animation-delay: 2s;
+  animation-timing-function: linear;
+  animation-duration: 15s;
+  animation-fill-mode: forwards;
+}
+
+.marquee div.scrolling-stop {
+  animation: 15s noticebarmarquee 2s linear infinite;
+  animation-play-state: paused;
+}
+
+.marquee span {
+  float: left;
+  width: 50%;
+  white-space: nowrap;
 }

@@ -19,10 +19,16 @@
 
   &&-dir-column {
     flex-direction: column;
+    .@{flexPrefixCls}-item {
+      margin-left: 0;
+    }
   }
 
   &&-dir-column-reverse {
     flex-direction: column-reverse;
+    .@{flexPrefixCls}-item {
+      margin-left: 0;
+    }
   }
 
   &&-nowrap {
@@ -82,23 +88,23 @@
   }
 
   &&-align-content-end {
-    align-items: flex-end;
+    align-content: flex-end;
   }
 
   &&-align-content-center {
-    align-items: center;
+    align-content: center;
   }
 
   &&-align-content-between {
-    align-items: stretch;
+    align-content: space-between;
   }
 
   &&-align-content-around {
-    align-items: baseline;
+    align-content: space-around;
   }
 
   &&-align-content-stretch {
-    align-items: baseline;
+    align-content: stretch;
   }
 
   & &-item {
