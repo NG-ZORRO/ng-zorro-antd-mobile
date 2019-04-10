@@ -1,7 +1,18 @@
+@menuPrefixCls: am-menu;
+@MenuSelectContanerPrefixCls: am-menu-select-container;
+
 menu,nzm-menu {
   display: block;
 }
 
 submenu {
   display: block;
+}
+
+.@{menuPrefixCls} {
+  background-color: @fill-body;
+
+  .@{MenuSelectContanerPrefixCls} {
+    flex: 1
+  }
 }
