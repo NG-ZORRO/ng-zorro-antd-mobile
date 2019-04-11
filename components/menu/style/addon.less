@@ -1,3 +1,16 @@
+@menuPrefixCls: am-menu;
+@MenuSelectContanerPrefixCls: am-menu-select-container;
+
 menu,nzm-menu {
   display: block;
+}
+
+submenu {
+  display: block;
+}
+
+.@{menuPrefixCls} {
+  .@{MenuSelectContanerPrefixCls} {
+    flex: 1
+  }
 }

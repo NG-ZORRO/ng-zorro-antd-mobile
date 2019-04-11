@@ -2,7 +2,6 @@
 @import '../../style/mixins';
 
 @import './custom-keyboard';
-@import './input-item';
 
 @listPrefixCls: am-list;
 @inputPrefixCls: am-input;
@@ -141,4 +140,16 @@
       color: @color-text-disabled;
     }
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
