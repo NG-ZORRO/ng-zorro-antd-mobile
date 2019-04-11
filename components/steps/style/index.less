@@ -1,6 +1,6 @@
 @import '../../style/mixins';
 @import '../../style/themes/default';
-@import './variables';
+@import 'variables';
 
 @stepsPrefixCls: am-steps;
 
@@ -108,11 +108,11 @@
   .step-item-status(finish);
   .step-item-status(error);
 
-  & .@{stepsPrefixCls}-next-error .@{stepsPrefixCls}-item-title:after {
+  &.@{stepsPrefixCls}-next-error .@{stepsPrefixCls}-item-title:after {
     background: @brand-error;
   }
 
-  & .@{errorTailCls} .@{stepsPrefixCls}-item-tail:after {
+  &.@{errorTailCls} .@{stepsPrefixCls}-item-tail:after {
     background-color: @brand-error;
   }
 }
@@ -161,7 +161,7 @@
   }
 }
 
-@import './custom-icon';
-@import './vertical';
-@import './small';
-@import './label-placement';
+@import 'custom-icon';
+@import 'small';
+@import 'vertical';
+@import 'label-placement';
