@@ -1,25 +1,17 @@
-<div class="{{prefixCls}}-sidebar"
-     [ngStyle]="sidebarStyleFinal"
-     id="sidebar">
-  <ng-template [ngTemplateOutlet]="sidebar"></ng-template>
-</div>
-<div class="{{prefixCls}}-overlay"
-     [ngStyle]="overlayStyleFinal"
-     role="presentation"
-     ref="overlay"
-     (click)="onOverlayClicked()"
-></div>
-<div class="{{prefixCls}}-content"
-     [ngStyle]="contentStyleFinal"
-     ref="content">
-  <div *ngIf="touch && touchSupported && !open && !docked && enableDragHandle"
-       id="dragHandle"
-       class="{{prefixCls}}-draghandle"
-       [ngStyle]="dragHandleStyle"
-       (touchstart)="onTouchStart($event)"
-       (touchmove)="onTouchMove($event)"
-       (touchend)="onTouchEnd()"
-       (touchcancle)="onTouchEnd()"
-  ></div>
-  <ng-content></ng-content>
-</div>
+  <div class="{{prefixCls}}-sidebar" [ngStyle]="sidebarStyleFinal" id="sidebar">
+    <ng-template [ngTemplateOutlet]="sidebar"></ng-template>
+  </div>
+  <div class="{{prefixCls}}-overlay" [ngStyle]="overlayStyleFinal" role="presentation" ref="overlay"
+    (click)="onOverlayClicked()"></div>
+  <div class="{{prefixCls}}-content" [ngStyle]="contentStyleFinal" ref="content">
+    <div *ngIf="touch && touchSupported && !open && !docked && enableDragHandle" id="dragHandle"
+      class="{{prefixCls}}-draghandle" [ngStyle]="dragHandleStyle" (touchstart)="onTouchStart($event)"
+      (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()" (touchcancle)="onTouchEnd()"></div>
+    <div #drawerContent>
+      <ng-template cdkPortalOutlet></ng-template>
+      <ng-container *ngIf="isTemplateRef(content)">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+      </ng-container>
+      <ng-content *ngIf="!content"></ng-content>
+    </div>
+  </div>

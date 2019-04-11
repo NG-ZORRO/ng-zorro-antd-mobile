@@ -108,6 +108,8 @@ import { Toast } from './toast/toast.service';
 import { Modal } from './modal/modal.service';
 import { ActionSheet } from './action-sheet/action-sheet.service';
 import { Picker } from './picker/picker.service';
+import { Drawer } from './drawer/drawer.service';
+import { DrawerServiceComponent } from './drawer/drawer.component';
 
 export { Toast } from './toast/toast.service';
 export { ToastComponent } from './toast/toast.component';
@@ -117,6 +119,8 @@ export { ActionSheet } from './action-sheet/action-sheet.service';
 export { ActionSheetComponent } from './action-sheet/action-sheet.component';
 export { Picker } from './picker/picker.service';
 export { PickerComponent } from './picker/picker.component';
+export { Drawer } from './drawer/drawer.service';
+export { DrawerServiceComponent } from './drawer/drawer.component';
 
 @NgModule({
   providers: [],

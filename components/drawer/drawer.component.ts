@@ -8,16 +8,30 @@ import {
   ElementRef,
   OnChanges,
   AfterViewChecked,
-  AfterViewInit
+  AfterViewInit,
+  Type,
+  TemplateRef,
+  ViewChild,
+  Renderer2,
+  ViewContainerRef,
+  ChangeDetectorRef,
+  OnInit,
+  OnDestroy,
+  SimpleChanges
 } from '@angular/core';
+import { CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
+import { Subject, Observable } from 'rxjs';
+import { OverlayRef, Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'Drawer, nzm-drawer',
   templateUrl: './drawer.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class DrawerComponent implements AfterViewChecked, OnChanges, AfterViewInit {
+export class DrawerComponent implements OnInit, AfterViewChecked, OnChanges, AfterViewInit, OnDestroy {
   prefixCls: string = 'am-drawer';
+  styleFinal: { [k: string]: any };
   sidebarStyleFinal: { [k: string]: any } = {};
   contentStyleFinal: { [k: string]: any } = {};
   overlayStyleFinal: { [k: string]: any } = {};
@@ -32,10 +46,22 @@ export class DrawerComponent implements AfterViewChecked, OnChanges, AfterViewIn
   touchCurrentY: number = null;
   touchSupported: boolean = typeof window === 'object' && 'ontouchstart' in window;
 
+  private _afterOpen = new Subject<void>();
+  private _afterClose = new Subject<any>();
   private _docked: boolean = false;
   private _open: boolean = false;
   private _position: string = 'left';
+  get afterOpen(): Observable<void> {
+    return this._afterOpen.asObservable();
+  }
 
+  get afterClose(): Observable<any> {
+    return this._afterClose.asObservable();
+  }
+
+  @Output() readonly onViewInit = new EventEmitter<void>();
+  @Input() content: TemplateRef<any> | Type<any>;
+  @ViewChild('drawerContent') drawerContent: ElementRef;
   @Input()
   sidebar: any;
   @Input()
@@ -68,7 +94,23 @@ export class DrawerComponent implements AfterViewChecked, OnChanges, AfterViewIn
   }
   set open(v) {
     this._open = v;
-    this.openCls = v;
+    if (this._open) {
+      setTimeout(() => {
+        this.openCls = v;
+        this.update();
+        this._afterOpen.next();
+      }, 50);
+
+    } else {
+      this.openCls = v;
+      this.update();
+      setTimeout(() => {
+        this._afterClose.next();
+        this._afterClose.complete();
+      }, 300);
+
+    }
+
   }
   @Input()
   set position(v) {
@@ -112,12 +154,18 @@ export class DrawerComponent implements AfterViewChecked, OnChanges, AfterViewIn
   @HostBinding('class.am-drawer-loaded')
   loaded: boolean = false;
 
-  constructor(private _el: ElementRef) { }
+  constructor(private _el: ElementRef, private renderer: Renderer2, private changeDetectorRef: ChangeDetectorRef) { }
 
-  onOverlayClicked() {
-    if (this._open) {
-      this.onOpenChange.emit(true);
-    }
+  ngOnInit(): void {
+  }
+
+  isTemplateRef(value: {}): boolean {
+    return value instanceof TemplateRef;
+  }
+
+  onOverlayClicked = () => {
+    this.open = !this.open;
+    this.onOpenChange.emit(this.open);
   }
 
   isTouching() {
@@ -341,19 +389,45 @@ export class DrawerComponent implements AfterViewChecked, OnChanges, AfterViewIn
     return { top: _y, left: _x };
   }
 
+  resizeStyle() {
+    if (this.styleFinal) {
+      this.renderer.setProperty(this._el.nativeElement, 'style', this.styleFinal);
+    } else
+      if (this._el.nativeElement.clientHeight <= 0 && this._el.nativeElement.clientWidth <= 0) {
+        this.renderer.setStyle(this._el.nativeElement, 'height', `${document.body.clientHeight}px`);
+        this.renderer.setStyle(this._el.nativeElement, 'width', `${document.body.clientWidth}px`);
+      }
+  }
+
   ngAfterViewChecked() {
     if (!this.isTouching()) {
       this.saveSidebarSize();
     }
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     this.update();
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.loaded = true;
+      this.resizeStyle();
+      this.onViewInit.emit();
     });
+  }
+  ngOnDestroy(): void {
+  }
+
+}
+
+@Component({
+  selector: 'DrawerService',
+  templateUrl: './drawer.component.html',
+  encapsulation: ViewEncapsulation.None
+})
+export class DrawerServiceComponent extends DrawerComponent {
+  constructor(private __el: ElementRef, private __renderer: Renderer2, private __changeDetectorRef: ChangeDetectorRef) {
+    super(__el, __renderer, __changeDetectorRef);
   }
 }

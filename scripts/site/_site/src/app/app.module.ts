@@ -13,17 +13,17 @@ import { AppComponent } from './app.component';
 import { DEMOComponent } from './_demo/demo.component';
 import { routes } from './app.routing.module';
 import { environment } from '../environments/environment';
-import { NgZorroAntdMobileModule, ModalServiceComponent, ToastComponent, ActionSheetComponent  } from 'ng-zorro-antd-mobile';
+import { NgZorroAntdMobileModule, ModalServiceComponent, ToastComponent, ActionSheetComponent, DrawerServiceComponent } from 'ng-zorro-antd-mobile';
 
 import { LeftOutline, RightOutline } from '@ant-design/icons-angular/icons';
 
-const icons: IconDefinition[] = [ LeftOutline, RightOutline ];
+const icons: IconDefinition[] = [LeftOutline, RightOutline];
 
 @NgModule({
   declarations: [
     AppComponent, DEMOComponent
   ],
-  imports     : [
+  imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -31,16 +31,16 @@ const icons: IconDefinition[] = [ LeftOutline, RightOutline ];
     ShareModule,
     NgZorroAntdModule,
     NgZorroAntdMobileModule.forRoot(),
-    RouterModule.forRoot(routes, environment.production ? { useHash: true, preloadingStrategy: PreloadAllModules } : {useHash: true}),
+    RouterModule.forRoot(routes, environment.production ? { useHash: true, preloadingStrategy: PreloadAllModules } : { useHash: true }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers   : [
+  providers: [
     Title,
     { provide: NZ_ICONS, useValue: icons },
     { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#1890ff' }
   ],
-  bootstrap   : [ AppComponent ],
-  entryComponents: [ToastComponent, ActionSheetComponent, ModalServiceComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ToastComponent, ActionSheetComponent, ModalServiceComponent, DrawerServiceComponent]
 })
 export class AppModule {
 }
