@@ -28,7 +28,7 @@ subtitle: 轻提示
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
 | content    | 提示内容       | TemplateRef or String    | 无           |
-| duration   | 自动关闭的延时，单位秒 | number                 | 3          |
+| duration   | 自动关闭的延时，单位毫秒 | number                 | 3000          |
 | onClose    | 关闭后回调 |  Function                 | 无          |
 | mask    | 是否显示透明蒙层，防止触摸穿透 |  Boolean  | true          |
 

@@ -27,7 +27,7 @@ The component provide several static methods：
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | content    | Toast content       | TemplateRef or String    | -           |
-| duration   | Delay time to close, which units is second | number                 | 3          |
+| duration   | Delay time to close, which units is millisecond | number                 | 3000          |
 | onClose    | A callback function Triggered when the Toast is closed |  Function                 | -          |
 | mask    | Whether to show a transparent mask, which will prevent touch event of the whole page |  Boolean  | true          |
 
