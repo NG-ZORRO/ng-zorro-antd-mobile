@@ -1,9 +1,6 @@
 @import '../../style/mixins';
 @import '../../style/themes/default';
 
-submenu {
-  display: block;
-}
 @menuPrefixCls: am-menu;
 @subMenuPrefixCls: am-sub-menu;
 @MenuSelectContanerPrefixCls: am-menu-select-container;
@@ -17,7 +14,8 @@ submenu {
   background-color: @fill-body;
 
   .@{MenuSelectContanerPrefixCls} {
-    flex:1;
+    flex-grow: 2;
+
     .@{MenuSelectContanerPrefixCls}-submenu {
       align-self: stretch;
     }
