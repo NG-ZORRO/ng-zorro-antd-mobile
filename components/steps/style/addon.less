@@ -1,5 +1,38 @@
+@import 'variables';
 
 @stepPrefixCls: step;
 @{stepPrefixCls} {
   display: block;
+}
+.@{stepsPrefixCls}-small {
+  .@{stepsPrefixCls}-item-description {
+    font-size: @font-size-caption-sm;
+    color: @color-text-placeholder!important;
+  }
+}
+.@{stepsPrefixCls}-item {
+  .@{stepsPrefixCls}-next-error .@{stepsPrefixCls}-item-title:after {
+    background: @brand-error;
+  }
+
+  .@{errorTailCls} .@{stepsPrefixCls}-item-tail:after {
+    background-color: @brand-error;
+  }
+}
+
+.@{stepsPrefixCls}-label-vertical {
+  .@{stepsPrefixCls}-item {
+    overflow: visible;
+    &-tail {
+      padding: 0 24 * @hd!important;
+      margin-left: 48 * @hd;
+    }
+  }
+}
+
+
+.@{stepsPrefixCls}-item-custom {
+  .@{stepsPrefixCls}-item-icon {
+    background: none!important;
+  }
 }
