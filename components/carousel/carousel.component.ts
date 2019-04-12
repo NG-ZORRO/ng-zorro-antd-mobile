@@ -218,6 +218,9 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     this.stopTimer();
     this._timer = this.autoplayInterval
       ? setInterval(() => {
+        if (document.getElementsByTagName('carousel').length === 0) {
+          return;
+        }
         this.carousel(1);
       }, this.autoplayInterval)
       : 0;
