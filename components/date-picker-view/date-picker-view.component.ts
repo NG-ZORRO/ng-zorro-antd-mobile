@@ -105,10 +105,12 @@ export class DatePickerViewComponent extends DatePickerComponent implements OnIn
     this.options.onValueChange = this.onValueChange;
     this.checkMode(this.options.mode);
     const value = this.transformDateFormat(this.options.value).split('-');
-    if (value.length > 0) {
-      this.currentTime = value.map(item => {
+    if (value.length > 1) {
+      this.current_time = this.currentTime = value.map(item => {
         return parseInt(item, 0);
       });
+    } else {
+      this.currentTime = this.current_time;
     }
   }
 
