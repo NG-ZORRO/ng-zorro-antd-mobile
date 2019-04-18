@@ -1,3 +1,27 @@
+## [0.11.9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.8...0.11.9) (2019-04-18)
+
+
+### Bug Fixes
+
+* **calendar:** fix calendar concat antd mobile css bug ([#385](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/385)) ([cee534a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/cee534a))
+* **datepickerview:** fix days can't select 31 ([#383](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/383)) ([aac65b6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/aac65b6))
+* **inputitem:** fixed style flash ([#377](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/377)) ([97bf63e](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/97bf63e))
+* **picker:** fix style error. ([#387](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/387)) ([d5128af](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/d5128af))
+* **carousel:** fix if carousel Out of sight stop carousel play. ([#382](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/382)) ([362245f](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/362245f))
+
+
+### Features
+
+* **styles:** styles in sync with antd mobile of react ([#376](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/376)) ([0c4b966](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0c4b966))
+* **textarea:** modify warp style ([#379](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/379)) ([bcd5d1f](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/bcd5d1f))
+
+
+### Performance Improvements
+
+* **site:** use https by default ([#373](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/373)) ([cc693e5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/cc693e5))
+
+
+
 ## [0.11.8](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/0.11.7...0.11.8) (2019-04-04)
 
 
