@@ -13,6 +13,26 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.11.9 (2019-04-18)
+
+### Bug Fixes
+
+* **calendar:** 修复样式更新后出现的样式问题 ([#385](//github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/385)) ([cee534a](//github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/cee534a))
+* **datepickerview:** 修复日选择无法选中31号的问题 ([#383](//github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/383)) ([aac65b6](//github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/aac65b6))
+* **inputitem:** 修复样式更新后出现的样式问题 ([#377](//github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/377)) ([97bf63e](//github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/97bf63e))
+* **picker:** 修复样式更新后出现的样式问题 ([#387](//github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/387)) ([d5128af](//github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/d5128af))
+* **carousel:** 修复走马灯不在视图内且页面没重新渲染的情况下会停止轮播的问题 ([#382](//github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/382)) ([362245f](//github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/362245f))
+
+### Features
+
+* **styles:** 与React版本进行样式同步 ([#376](//github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/376)) ([0c4b966](//github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0c4b966))
+* **textarea:** 更改样式 ([#379](//github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/379)) ([bcd5d1f](//github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/bcd5d1f))
+
+
+### Performance Improvements
+
+* **site:** 资源链接默认使用https ([#373](//github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/373)) ([cc693e5](//github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/cc693e5))
+
 ## 0.11.8 (2019-04-04)
 
 ### Bug Fixes
