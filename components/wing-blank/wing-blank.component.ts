@@ -1,6 +1,6 @@
 import { Component, Input, HostBinding, ViewEncapsulation } from '@angular/core';
 
-export type sizeType = 'sm' | 'md' | 'lg';
+export type WingBlankSizeType = 'sm' | 'md' | 'lg';
 
 @Component({
   selector: 'WingBlank, nzm-wingblank',
@@ -11,7 +11,7 @@ export class WingBlank {
   prefixCls: string = 'am-wingblank';
 
   @Input()
-  size: sizeType = 'lg';
+  size: WingBlankSizeType = 'lg';
 
   @HostBinding('class.am-wingblank')
   amWingBlank: boolean = true;

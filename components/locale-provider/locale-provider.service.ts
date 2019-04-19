@@ -1,7 +1,7 @@
 import { Inject, Injectable, Provider, Optional, SkipSelf } from '@angular/core';
 import { LOCAL_PROVIDER_TOKEN } from './locale-provider.token';
 import { BehaviorSubject, Observable } from 'rxjs';
-import zh_CN from './languages/zh_CN';
+import zh_CN from './locale/zh_CN';
 
 @Injectable()
 export class LocaleProviderService {

@@ -14,7 +14,7 @@ import { Models } from '../date/DataTypes';
   templateUrl: './header.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class HeaderComponent {
+export class CalendarHeaderComponent {
   title: string;
   closeIcon_component: boolean = false;
   clearIcon: any;

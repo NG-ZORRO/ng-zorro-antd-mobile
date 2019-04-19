@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { en_US, zh_CN } from '../locale-provider/languages';
+import { en_US, zh_CN } from '../locale-provider/locale';
 import { DatePickerOptions, DatePickerModule, DatePickerComponent } from './index';
 import {
   Toast,

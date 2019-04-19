@@ -1,18 +1,13 @@
 import { Component, ViewEncapsulation, HostBinding, Input } from '@angular/core';
-import { Models } from '../date/DataTypes';
-
-export interface PropsType {
-  locale: Models.Locale;
-  onSelect: (startDate?: Date, endDate?: Date) => void;
-}
+import { CalendarShortcutPanelPropsType } from './PropsType';
 
 @Component({
   selector: 'CalendarShortcutPanel, nzm-calendar-shortcut-panel',
   templateUrl: './shortcut-panel.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class ShortcutPanelComponent {
-  props = {} as PropsType;
+export class CalendarShortcutPanelComponent {
+  props = {} as CalendarShortcutPanelPropsType;
 
   @Input()
   set locale(value) {
@@ -25,7 +20,7 @@ export class ShortcutPanelComponent {
 
   @HostBinding('class.shortcut-panel') shortcutPanel: boolean = true;
 
-  constructor() {}
+  constructor() { }
 
   onClick = (type: string) => {
     const { onSelect } = this.props;

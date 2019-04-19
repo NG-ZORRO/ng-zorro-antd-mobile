@@ -1,24 +1,16 @@
 import { Component, OnInit, ViewEncapsulation, HostBinding, Input, ElementRef, AfterViewInit } from '@angular/core';
 import { Models } from '../date/DataTypes';
-
-export interface PropsType {
-  locale: Models.Locale;
-  monthData: Models.MonthData;
-  rowSize?: 'normal' | 'xl';
-  getDateExtra?: (date: Date) => Models.ExtraData;
-  onCellClick?: (data: Models.CellData, monthData: Models.MonthData) => void;
-  ref: any;
-}
+import { CalendarSingleMonthPropsType } from './PropsType';
 
 @Component({
-  selector: 'SingleMonth, nzm-single-month',
+  selector: 'CalendarSingleMonth, nzm-single-month',
   templateUrl: './single-month.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class SingleMonthComponent implements OnInit, AfterViewInit {
+export class CalendarSingleMonthComponent implements OnInit, AfterViewInit {
   props = {
     rowSize: 'normal'
-  } as PropsType;
+  } as CalendarSingleMonthPropsType;
 
   state = {
     weekComponents: []
@@ -36,7 +28,7 @@ export class SingleMonthComponent implements OnInit, AfterViewInit {
 
   @HostBinding('class.single-month') singleMonth: boolean = true;
 
-  constructor(private _elementRef: ElementRef) {}
+  constructor(private _elementRef: ElementRef) { }
 
   genWeek = (weeksData: Models.CellData[], index: number) => {
     const { getDateExtra, monthData, onCellClick, locale, rowSize } = this.props;

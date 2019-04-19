@@ -14,12 +14,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { TabPane } from './tab-pane.component';
-
-export type TabDirection = 'horizontal' | 'vertical';
-export type TabBarPositionType = 'top' | 'bottom' | 'left' | 'right';
-export interface OnChangeEvent {
-  index: number;
-}
+import { TabDirection, TabBarPositionType, TabsOnChangeEvent } from './PropsType';
 
 @Component({
   selector: 'Tabs, nzm-tabs',
@@ -137,9 +132,9 @@ export class Tabs implements DoCheck, AfterContentInit {
     }
   }
   @Output()
-  onChange: EventEmitter<OnChangeEvent> = new EventEmitter<OnChangeEvent>();
+  onChange: EventEmitter<TabsOnChangeEvent> = new EventEmitter<TabsOnChangeEvent>();
   @Output()
-  onTabClick: EventEmitter<OnChangeEvent> = new EventEmitter<OnChangeEvent>();
+  onTabClick: EventEmitter<TabsOnChangeEvent> = new EventEmitter<TabsOnChangeEvent>();
 
   @HostBinding('class.am-tabs')
   amTabs: boolean = true;
@@ -156,7 +151,7 @@ export class Tabs implements DoCheck, AfterContentInit {
   @HostBinding('class.am-tabs-horizontal')
   amTabsHorizontal: boolean = true;
 
-  constructor() {}
+  constructor() { }
 
   clickTab(index: number) {
     if (this.selectedKey !== index) {
@@ -242,7 +237,7 @@ export class Tabs implements DoCheck, AfterContentInit {
         const distanceToChangeTabPx = this.tabContent.nativeElement.offsetHeight * this.distanceToChangeTab;
         if (
           (this.getVelocity(distance, event.timeStamp - this._startTime) <= this._velocityThreshold &&
-            (this.useOnPan && this.swipeable &&  Math.abs(distance) > distanceToChangeTabPx)) ||
+            (this.useOnPan && this.swipeable && Math.abs(distance) > distanceToChangeTabPx)) ||
           (this.getVelocity(distance, event.timeStamp - this._startTime) > this._velocityThreshold &&
             (this.swipeable && Math.abs(distance) > distanceToChangeTabPx / 2))
         ) {

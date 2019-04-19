@@ -7,7 +7,7 @@ import DatePicker from './datepicker.base.component';
   templateUrl: './datepicker.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class DatePickerComponent extends DatePicker implements OnInit {
+export class CalendarDatePickerComponent extends DatePicker implements OnInit {
   constructor() {
     super();
   }
