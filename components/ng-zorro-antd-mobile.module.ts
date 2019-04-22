@@ -159,8 +159,7 @@ export * from './activity-indicator';
 export class NgZorroAntdMobileModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: NgZorroAntdMobileModule,
-      providers: [ActionSheet, Toast, Modal, Picker]
+      ngModule: NgZorroAntdMobileModule
     };
   }
 }
