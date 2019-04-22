@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/schema",
+  "$schema": "http://json-schema.org/schema",
   "id": "AddNgZorroMobileTable",
   "title": "Add NG-ZORRO-MOBILE Table",
   "type": "object",
