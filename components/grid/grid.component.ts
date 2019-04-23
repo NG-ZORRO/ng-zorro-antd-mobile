@@ -53,7 +53,7 @@ export class GridComponent implements OnInit {
     this.init();
   }
   @Output()
-  OnClick: EventEmitter<any> = new EventEmitter();
+  onClick: EventEmitter<any> = new EventEmitter();
 
   @HostBinding('class.am-grid')
   amGrid: boolean = true;
@@ -151,7 +151,7 @@ export class GridComponent implements OnInit {
       data: data,
       index: index
     };
-    this.OnClick.emit(outputData);
+    this.onClick.emit(outputData);
   }
 
   ngOnInit() {
