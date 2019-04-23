@@ -1,7 +1,7 @@
 import { LocaleProviderPipe } from './locale-provider.pipe';
 import { LOCAL_PROVIDER_TOKEN } from './locale-provider.token';
 import { LocaleProviderService } from './locale-provider.service';
-import { ru_RU, zh_CN, en_US, sv_SE, da_DK } from './languages';
+import { ru_RU, zh_CN, en_US, sv_SE, da_DK } from './locale';
 
 describe('Unit: Testing Services', function() {
   describe('Locale-provider Service:', function() {

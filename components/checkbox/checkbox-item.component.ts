@@ -1,11 +1,6 @@
 import { Component, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
-export interface CheckboxStatus {
-  name: string;
-  value: string;
-  checked: boolean;
-}
+import { CheckboxStatus } from './PropsType';
 
 @Component({
   selector: 'CheckboxItem, nzm-checkbox-item',

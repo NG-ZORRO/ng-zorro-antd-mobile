@@ -6,7 +6,7 @@ import { Models } from '../date/DataTypes';
   templateUrl: './week-panel.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class WeekPanelComponent implements OnInit {
+export class CalendarWeekPanelComponent implements OnInit {
   constructor() {}
 
   week: string[] = ['日', '一', '二', '三', '四', '五', '六'];
