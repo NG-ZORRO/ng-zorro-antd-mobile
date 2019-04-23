@@ -34,9 +34,9 @@ export class RadioItem {
     this.cdr.markForCheck();
   }
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) { }
 
-  onRadioItemClick(event) {}
+  onRadioItemClick(event) { }
 
   change(event) {
     if (!this.disabled && !this.checked) {

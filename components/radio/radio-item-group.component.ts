@@ -16,11 +16,7 @@ import { RadioItem } from './radio-item.component';
 
 import { merge, Subject, Subscription } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
-
-export interface RadioStatus {
-  name: string;
-  value: string;
-}
+import { RadioStatus } from './PropsType';
 
 export const RADIO_ITEM_GROUP_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -48,10 +44,10 @@ export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValue
   @Output()
   onChange = new EventEmitter<RadioStatus>();
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) { }
 
   updateChildrenStatus() {
-    if (this.radioItems && typeof(this.selectedValue) !== 'undefined' && null !== this.selectedValue) {
+    if (this.radioItems && typeof (this.selectedValue) !== 'undefined' && null !== this.selectedValue) {
       this.radioItems.forEach(radioItem => {
         radioItem.checked = radioItem.value === this.selectedValue;
       });
@@ -72,12 +68,12 @@ export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValue
         this.selectSubscription = merge(...this.radioItems.map(radioItem => radioItem.select$))
           .pipe(takeUntil(this.destroy$))
           .subscribe(radioItem => {
-            if (typeof(this.selectedValue) !== 'undefined' && null !== this.selectedValue) {
+            if (typeof (this.selectedValue) !== 'undefined' && null !== this.selectedValue) {
               this.selectedValue = radioItem.value;
               this._ngModelOnChange(radioItem.value);
               this.updateChildrenStatus();
               if (this.onChange) {
-                this.onChange.emit({name: radioItem.name, value: radioItem.value});
+                this.onChange.emit({ name: radioItem.name, value: radioItem.value });
               }
             }
           });
@@ -90,7 +86,7 @@ export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValue
   }
 
   writeValue(value: string | number): void {
-    if (typeof(value) !== 'undefined' && null !== value) {
+    if (typeof (value) !== 'undefined' && null !== value) {
       this.selectedValue = value;
       this.updateChildrenStatus();
       this.cdr.markForCheck();

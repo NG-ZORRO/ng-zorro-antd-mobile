@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import zh_CN from './languages/zh_CN';
+import zh_CN from './locale/zh_CN';
 import { LocaleProviderPipe } from './locale-provider.pipe';
 import { LOCAL_PROVIDER_TOKEN } from './locale-provider.token';
 import { LOCALE_PROVIDER_SERVICE_PROVIDER } from './locale-provider.service';

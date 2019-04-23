@@ -5,7 +5,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DatePickerViewModule } from './date-picker-view.module';
 import { DatePickerOptions, DatePickerModule } from '../date-picker/index';
 import { LocaleProviderService, LocaleProviderModule, ToastModule, Toast, ToastComponent } from '../..';
-import { en_US } from '../locale-provider/languages';
+import { en_US } from '../locale-provider/locale';
 
 describe('DatePickerViewComponent', () => {
   let component: TestDatePickerViewBasicComponent;

@@ -1,9 +1,5 @@
 import { Component, Input, Output, HostBinding, EventEmitter } from '@angular/core';
-
-export interface OnChangeEvent {
-  selectedIndex: number;
-  value: string;
-}
+import { SegmentedControlOnChangeEvent } from './PropsType';
 
 @Component({
   selector: 'SegmentedControl, nz-segmented-control',
@@ -21,7 +17,7 @@ export class SegmentedControlComponent {
   @Input()
   values: Array<string>[];
   @Output()
-  onChange: EventEmitter<OnChangeEvent> = new EventEmitter<OnChangeEvent>();
+  onChange: EventEmitter<SegmentedControlOnChangeEvent> = new EventEmitter<SegmentedControlOnChangeEvent>();
 
   @HostBinding('attr.role')
   role = 'tablist';
@@ -32,7 +28,7 @@ export class SegmentedControlComponent {
     return this.disabled;
   }
 
-  constructor() {}
+  constructor() { }
 
   onClick(index: number, value: string) {
     if (!this.disabled && index !== this.selectedIndex) {

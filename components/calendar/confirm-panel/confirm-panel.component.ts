@@ -1,17 +1,6 @@
 import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core';
 import { formatDate } from '../util/index';
-import { Models } from '../date/DataTypes';
-
-export interface ConfirmPanelPropsType {
-  type?: 'one' | 'range';
-  locale: Models.Locale;
-  onlyConfirm?: boolean;
-  disableBtn?: boolean;
-  startDateTime?: Date;
-  endDateTime?: Date;
-  formatStr?: string;
-  onConfirm: () => void;
-}
+import { CalendarConfirmPanelPropsType } from './PropsType';
 
 @Component({
   selector: 'CalendarConfirmPanel, nzm-calendar-confirm-panel',
@@ -19,10 +8,10 @@ export interface ConfirmPanelPropsType {
   encapsulation: ViewEncapsulation.None
 })
 
-export class ConfirmPanelComponent {
+export class CalendarConfirmPanelComponent {
   props = {
     formatStr: 'yyyy-MM-dd hh:mm'
-  } as ConfirmPanelPropsType;
+  } as CalendarConfirmPanelPropsType;
   startTimeStr: string;
   endTimeStr: string;
   btnCls: string;
@@ -59,7 +48,7 @@ export class ConfirmPanelComponent {
 
   @HostBinding('class.confirm-panel') confirmPane: boolean = true;
 
-  constructor() {}
+  constructor() { }
 
   formatTime() {
     const { type, locale, disableBtn } = this.props;

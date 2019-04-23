@@ -2,7 +2,7 @@ import { Component, AfterContentInit, Input, ContentChildren, QueryList, HostBin
 import { TabPane } from '../tabs/tab-pane.component';
 import { TabBarTab } from './tab-bar-tab.component';
 
-export type TabBarPositionType = 'top' | 'bottom';
+export type TabBarTabPositionType = 'top' | 'bottom';
 
 @Component({
   selector: 'TabBar, nzm-tab-bar',
@@ -34,7 +34,7 @@ export class TabBar implements AfterContentInit {
   @Input()
   barTintColor: string = 'white';
   @Input()
-  tabBarPosition: TabBarPositionType = 'bottom';
+  tabBarPosition: TabBarTabPositionType = 'bottom';
   @Input()
   get tintColor(): string {
     return this._tintColor;
