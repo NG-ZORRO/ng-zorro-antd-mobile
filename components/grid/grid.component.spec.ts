@@ -60,16 +60,16 @@ describe('GridComponent', () => {
     );
   });
 
-  it('OnClick work', () => {
+  it('onClick work', () => {
     component.data = Array.from(new Array(9)).map((val, i) => ({
       icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png',
       text: `name${i}`
     }));
     fixture.detectChanges();
-    component.OnClick = jasmine.createSpy('OnClick is callback');
+    component.onClick = jasmine.createSpy('onClick is callback');
     gridEle.nativeElement.querySelector('.am-grid-item-content').click();
     fixture.detectChanges();
-    expect(component.OnClick).toHaveBeenCalledTimes(1);
+    expect(component.onClick).toHaveBeenCalledTimes(1);
   });
 
   it('should create', () => {
@@ -85,9 +85,9 @@ describe('GridComponent', () => {
           [hasLine]="hasLine"
           [columnNum]="columnNum"
           [isCarousel]="isCarousel"
-          (OnClick)="OnClick($event)"
+          (onClick)="onClick($event)"
     ></Grid>
-    <Grid [activeStyle]="false" [data]="dataList" (OnClick)="click($event)"></Grid>
+    <Grid [activeStyle]="false" [data]="dataList" (onClick)="click($event)"></Grid>
   `
 })
 export class TestGridComponent {
@@ -105,7 +105,7 @@ export class TestGridComponent {
     text: `name${i}`
   }));
 
-  OnClick(event) {
+  onClick(event) {
     console.log(event);
   }
 }

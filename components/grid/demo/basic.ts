@@ -4,24 +4,24 @@ import { Component } from '@angular/core';
   selector: 'demo-grid-basic',
   template: `
     <div class="sub-title">Always square grid item </div>
-    <Grid [activeStyle]="false" [data]="data" (OnClick)="click($event)"></Grid>
+    <Grid [activeStyle]="false" [data]="data" (onClick)="click($event)"></Grid>
     <br>
-    <Grid [activeStyle]="false" [data]="dataList" (OnClick)="click($event)"></Grid>
+    <Grid [activeStyle]="false" [data]="dataList" (onClick)="click($event)"></Grid>
     <br>
     <div class="sub-title">Grid item adjust accroiding to img size </div>
-    <Grid class="not-square-grid" [data]="data" [square]="false" (OnClick)="click($event)"></Grid>
+    <Grid class="not-square-grid" [data]="data" [square]="false" (onClick)="click($event)"></Grid>
     <br>
     <div class="sub-title">ColumnNum=3 </div>
-    <Grid [data]="data" [columnNum]="3" (OnClick)="click($event)"></Grid>
+    <Grid [data]="data" [columnNum]="3" (onClick)="click($event)"></Grid>
     <br>
     <div class="sub-title">No border </div>
-    <Grid [data]="data" [hasLine]="false" (OnClick)="click($event)"></Grid>
+    <Grid [data]="data" [hasLine]="false" (onClick)="click($event)"></Grid>
     <br>
     <div class="sub-title">Carousel</div>
-    <Grid [data]="data" [isCarousel]="true" (OnClick)="click($event)"></Grid>
+    <Grid [data]="data" [isCarousel]="true" (onClick)="click($event)"></Grid>
     <br>
     <div class="sub-title">Custom content</div>
-    <Grid [data]="data" [columnNum]="3" [itemStyle]="{ height: '150px', background: 'rgba(0,0,0,.05)' }" (OnClick)="click($event)"></Grid>
+    <Grid [data]="data" [columnNum]="3" [itemStyle]="{ height: '150px', background: 'rgba(0,0,0,.05)' }" (onClick)="click($event)"></Grid>
     <br>
     <div class="sub-title">ng-content</div>
     <Grid>
