@@ -50,12 +50,6 @@ import { SwipeActionModule } from './swipe-action/swipe-action.module';
 import { PullToRefreshModule } from './pull-to-refresh/pull-to-refresh.module';
 import { LocaleProviderModule } from './locale-provider/locale-provider.module';
 
-import { Toast } from './toast/toast.service';
-import { Modal } from './modal/modal.service';
-import { ActionSheet } from './action-sheet/action-sheet.service';
-import { Picker } from './picker/picker.service';
-import { Drawer } from './drawer/drawer.service';
-import { DrawerServiceComponent } from './drawer/drawer.component';
 
 export * from './tag';
 export * from './card';
