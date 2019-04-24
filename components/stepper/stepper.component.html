@@ -17,7 +17,7 @@
     </span>
 </div>
 <div class="{{prefixCls}}-input-wrap">
-    <input class="{{prefixCls}}-input"
+    <input #inputElement class="{{prefixCls}}-input"
            style="outline:none"
            [disabled]="disabled"
            [readonly]="readOnly"
@@ -25,5 +25,5 @@
            [max]="max"
            [min]="min"
            [(ngModel)]="value"
-           (change)="inputChange($event)">
+           (ngModelChange)="inputChange($event)">
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, HostBinding, forwardRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, HostBinding, forwardRef, ViewChild, ElementRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -17,6 +17,7 @@ export class Stepper implements OnChanges, ControlValueAccessor {
   upDisableCls: object;
   downDisableCls: object;
   stepperCls: object;
+  @ViewChild('inputElement') inputElement: ElementRef;
 
   private _max: number = Infinity;
   private _min: number = -Infinity;
@@ -104,6 +105,7 @@ export class Stepper implements OnChanges, ControlValueAccessor {
   onIncrease() {
     if (!this._upDisabled) {
       this._value = this.plus(this._value, this._step);
+      this.inputElement.nativeElement.value = this._value;
       this.onChange.emit(this._value);
       this.onChangeFn(this._value);
       if (this.plus(this._value, this._step) > this._max) {
@@ -124,6 +126,7 @@ export class Stepper implements OnChanges, ControlValueAccessor {
   onDecrease() {
     if (!this._downDisabled) {
       this._value = this.minus(this._value, this._step);
+      this.inputElement.nativeElement.value = this._value;
       this.onChange.emit(this._value);
       this.onChangeFn(this._value);
       if (this.minus(this._value, this._step) < this._min) {
@@ -150,6 +153,7 @@ export class Stepper implements OnChanges, ControlValueAccessor {
     if (value > this._max) {
       this._value = this._max;
     }
+    this.inputElement.nativeElement.value = this._value;
     this.onChange.emit(this._value);
     this.onChangeFn(this._value);
   }
