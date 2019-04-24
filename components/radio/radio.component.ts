@@ -9,11 +9,7 @@ import {
   ViewEncapsulation,
   ChangeDetectionStrategy
 } from '@angular/core';
-
-export interface RadioStatus {
-  name: string;
-  value: string;
-}
+import { RadioStatus } from './PropsType';
 
 @Component({
   selector: '[Radio], [nzm-radio]',

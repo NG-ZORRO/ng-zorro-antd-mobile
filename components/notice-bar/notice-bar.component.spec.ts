@@ -44,9 +44,9 @@ describe('NoticeBarComponent', () => {
     );
   });
 
-  it('OnClick work', () => {
+  it('onClick work', () => {
     fixture.detectChanges();
-    component.onClick = jasmine.createSpy('OnClick is callback');
+    component.onClick = jasmine.createSpy('onClick is callback');
     noticeBarEle.nativeElement.querySelector('.am-notice-bar').click();
     fixture.detectChanges();
     expect(component.onClick).toHaveBeenCalledTimes(1);

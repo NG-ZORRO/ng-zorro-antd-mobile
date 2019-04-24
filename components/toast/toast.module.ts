@@ -7,6 +7,7 @@ import { WingBlankModule } from '../wing-blank/wing-blank.module';
 @NgModule({
   imports: [CommonModule, IconModule, WingBlankModule],
   exports: [ToastComponent],
-  declarations: [ToastComponent]
+  declarations: [ToastComponent],
+  entryComponents: [ToastComponent]
 })
 export class ToastModule {}

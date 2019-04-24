@@ -10,7 +10,7 @@ import {
   ContentChildren
 } from '@angular/core';
 
-export type TabBarPositionType = 'top' | 'bottom' | 'left' | 'right';
+import { TabBarPositionType } from './PropsType';
 
 @Component({
   selector: 'DefaultTabBar, nzm-default-tab-bar',
@@ -63,7 +63,7 @@ export class DefaultTabBarComponent implements AfterViewInit {
   @HostBinding('class.am-tabs-tab-bar-wrap')
   tabBarWrap = true;
 
-  constructor(private _renderer: Renderer2) {}
+  constructor(private _renderer: Renderer2) { }
 
   onTouchStart(event) {
     if ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) {

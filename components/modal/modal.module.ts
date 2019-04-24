@@ -23,6 +23,7 @@ import { AlertOptions } from './modal-options.provider';
   ],
   exports: [ModalComponent, ModalServiceComponent],
   declarations: [ModalComponent, ModalServiceComponent],
+  entryComponents: [ModalServiceComponent],
   providers: [AlertOptions]
 })
 export class ModalModule {}

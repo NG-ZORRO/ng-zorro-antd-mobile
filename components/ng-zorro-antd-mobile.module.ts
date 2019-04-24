@@ -50,60 +50,6 @@ import { SwipeActionModule } from './swipe-action/swipe-action.module';
 import { PullToRefreshModule } from './pull-to-refresh/pull-to-refresh.module';
 import { LocaleProviderModule } from './locale-provider/locale-provider.module';
 
-export { ActivityIndicatorModule } from './activity-indicator/activity-indicator.module';
-export { CardModule } from './card/card.module';
-export { ResultModule } from './result/result.module';
-export { WhiteSpaceModule } from './white-space/white-space.module';
-export { WingBlankModule } from './wing-blank/wing-blank.module';
-export { TabsModule } from './tabs/tabs.module';
-export { TabBarModule } from './tab-bar/tab-bar.module';
-export { BadgeModule } from './badge/badge.module';
-export { InputItemModule } from './input-item/input-item.module';
-export { ButtonModule } from './button/button.module';
-export { SwitchModule } from './switch/switch.module';
-export { SearchBarModule } from './search-bar/search-bar.module';
-export { StepperModule } from './stepper/stepper.module';
-export { StepsModule } from './steps/steps.module';
-export { CalendarModule } from './calendar/calendar.module';
-export { CarouselModule } from './carousel/carousel.module';
-export { CheckboxModule } from './checkbox/checkbox.module';
-export { RadioModule } from './radio/radio.module';
-export { ProgressModule } from './progress/progress.module';
-export { AccordionModule } from './accordion/accordion.module';
-export { NoticeBarModule } from './notice-bar/notice-bar.module';
-export { IconModule } from './icon/icon.module';
-export { ToastModule } from './toast/toast.module';
-export { ModalModule } from './modal/modal.module';
-export { PopoverModule } from './popover/popover.module';
-export { NavBarModule } from './nav-bar/nav-bar.module';
-export { ListModule } from './list/list.module';
-export { PopoverItemModule } from './popover/popover-item/popover-item.module';
-export { FlexModule } from './flex/flex.module';
-export { GridModule } from './grid/grid.module';
-export { ActionSheetModule } from './action-sheet/action-sheet.module';
-export { SegmentedControlModule } from './segmented-control/segmented-control.module';
-
-export { TextareaItemModule } from './textarea-item/textarea-item.module';
-export { NgZorroAntdMobilePipesModule } from './pipes/ng-zorro-antd-mobile.pipes.module';
-export { RangeModule } from './range/range.module';
-export { SliderModule } from './slider/slider.module';
-export { PaginationModule } from './pagination/pagination.module';
-export { TagModule } from './tag/tag.module';
-export { MenuModule } from './menu/menu.module';
-export { PickerModule } from './picker/picker.module';
-export { PickerViewModule } from './picker-view/picker-view.module';
-export { ImagePickerModule } from './image-picker/image-picker.module';
-export { DatePickerModule } from './date-picker/date-picker.module';
-export { DatePickerViewModule } from './date-picker-view/date-picker-view.module';
-export { DrawerModule } from './drawer/drawer.module';
-export { SwipeActionModule } from './swipe-action/swipe-action.module';
-export { PullToRefreshModule } from './pull-to-refresh/pull-to-refresh.module';
-export { LocaleProviderModule } from './locale-provider/locale-provider.module';
-export { LocaleProviderService } from './locale-provider/locale-provider.service';
-export { LOCAL_PROVIDER_TOKEN } from './locale-provider/locale-provider.token';
-export { LocaleProviderPipe } from './locale-provider/locale-provider.pipe';
-export * from './locale-provider/languages';
-
 import { Toast } from './toast/toast.service';
 import { Modal } from './modal/modal.service';
 import { ActionSheet } from './action-sheet/action-sheet.service';
@@ -111,16 +57,52 @@ import { Picker } from './picker/picker.service';
 import { Drawer } from './drawer/drawer.service';
 import { DrawerServiceComponent } from './drawer/drawer.component';
 
-export { Toast } from './toast/toast.service';
-export { ToastComponent } from './toast/toast.component';
-export { Modal } from './modal/modal.service';
-export { ModalServiceComponent } from './modal/modal.component';
-export { ActionSheet } from './action-sheet/action-sheet.service';
-export { ActionSheetComponent } from './action-sheet/action-sheet.component';
-export { Picker } from './picker/picker.service';
-export { PickerComponent } from './picker/picker.component';
-export { Drawer } from './drawer/drawer.service';
-export { DrawerServiceComponent } from './drawer/drawer.component';
+export * from './tag';
+export * from './card';
+export * from './flex';
+export * from './grid';
+export * from './icon';
+export * from './list';
+export * from './menu';
+export * from './tabs';
+export * from './badge';
+export * from './modal';
+export * from './pipes';
+export * from './radio';
+export * from './range';
+export * from './steps';
+export * from './toast';
+export * from './button';
+export * from './drawer';
+export * from './picker';
+export * from './result';
+export * from './slider';
+export * from './switch';
+export * from './nav-bar';
+export * from './popover';
+export * from './stepper';
+export * from './tab-bar';
+export * from './calendar';
+export * from './carousel';
+export * from './checkbox';
+export * from './progress';
+export * from './accordion';
+export * from './input-item';
+export * from './notice-bar';
+export * from './pagination';
+export * from './search-bar';
+export * from './wing-blank';
+export * from './date-picker';
+export * from './white-space';
+export * from './picker-view';
+export * from './action-sheet';
+export * from './swipe-action';
+export * from './textarea-item';
+export * from './locale-provider';
+export * from './pull-to-refresh';
+export * from './date-picker-view';
+export * from './segmented-control';
+export * from './activity-indicator';
 
 @NgModule({
   providers: [],
@@ -179,8 +161,7 @@ export { DrawerServiceComponent } from './drawer/drawer.component';
 export class NgZorroAntdMobileModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: NgZorroAntdMobileModule,
-      providers: [ActionSheet, Toast, Modal, Picker]
+      ngModule: NgZorroAntdMobileModule
     };
   }
 }

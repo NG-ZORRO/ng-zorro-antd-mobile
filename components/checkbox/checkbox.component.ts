@@ -9,12 +9,7 @@ import {
   ViewEncapsulation,
   ChangeDetectionStrategy
 } from '@angular/core';
-
-export interface OnChangeEvent {
-  name: string;
-  value: string;
-  checked: boolean;
-}
+import { CheckboxOnChangeEvent } from './PropsType';
 
 @Component({
   selector: '[Checkbox], [nzm-checkbox]',
@@ -56,7 +51,7 @@ export class Checkbox implements OnInit {
     this.updateClassMap();
   }
   @Output()
-  onChange = new EventEmitter<OnChangeEvent>();
+  onChange = new EventEmitter<CheckboxOnChangeEvent>();
 
   @HostBinding('class.am-checkbox-wrapper')
   checkBoxWrapper: boolean = true;

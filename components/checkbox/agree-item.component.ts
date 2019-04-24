@@ -10,12 +10,7 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
-export interface CheckboxStatus {
-  name: string;
-  value: string;
-  checked: boolean;
-}
+import { CheckboxStatus } from './PropsType';
 
 @Component({
   selector: 'AgreeItem, nzm-agree-item',
