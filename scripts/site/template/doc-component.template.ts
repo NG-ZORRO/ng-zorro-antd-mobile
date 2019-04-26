@@ -16,8 +16,8 @@ export class NzDoc{{componentName}}Component implements OnInit{
   }
 
   getStar() {
-    this.http.get('https://api.github.com/search/repositories?q=NG-ZORRO/ng-zorro-antd-mobile').subscribe((res: any) => {
-      this.starCount = res.items[0].stargazers_count;
+    this.http.get('https://api.github.com/repos/NG-ZORRO/ng-zorro-antd-mobile').subscribe((res: any) => {
+      this.starCount = res.stargazers_count;
       (<HTMLElement>document.querySelector('.gh-count')).style.display = 'inline-block';
     })
   }
