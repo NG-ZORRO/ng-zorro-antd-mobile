@@ -73,7 +73,7 @@ rootDir.forEach(componentName => {
       });
 
       //重新排序
-      demoList = demoList.sort((pre, next) => pre.meta.order - next.meta.order);
+      demoList.sort((pre, next) => pre.meta.order - next.meta.order);
       demoList.forEach((demo, index) => {
         keys.push(demo.key)
         enTitles.push(demo.meta.title["en-US"]);
