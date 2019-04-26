@@ -32,7 +32,7 @@ function componentName(component) {
 
 function generateCard(component, keys, titles) {
   let linkArray = [];
-  for(j = 0,len = keys.length; j < len; j++) {
+  for(let j = 0,len = keys.length; j < len; j++) {
     const key = keys[j];
     const title = titles[j];
     linkArray.push(
