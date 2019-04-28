@@ -264,40 +264,21 @@ describe('tab', () => {
     expect(tabsEle.querySelector('.am-tabs-content-wrap').classList).toContain('am-tabs-content-wrap-animated');
 
 
-    // component.animated = true;
-    // component.tabDirection = 'vertical';
-    // fixture.detectChanges();
-    // component.tabs.selectTabPane(2);
-    // fixture.detectChanges();
-    // component.tabPanes.map((item, i) => {
-    //   if (i > 3) {
-    //     expect(item.position).toEqual('bottom-with-animation');
-    //   } else if (i === 3) {
-    //     expect(item.position).toEqual('bottom-with-animation-with-higher-zindex');
-    //   } else if (i === 1) {
-    //     expect(item.position).toEqual('top-with-animation-with-higher-zindex');
-    //   } else if (i < 1) {
-    //     expect(item.position).toEqual('top-with-animation');
-    //   } else {
-    //     expect(item.position).toEqual('center-with-animation');
-    //   }
-    // });
+    component.animated = false;
+    component.tabDirection = 'vertical';
+    fixture.detectChanges();
+    component.tabs.selectTabPane(2);
+    fixture.detectChanges();
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').style.transform).toContain('translate3d(0px, -200%, 0px)');
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').classList).not.toContain('am-tabs-content-wrap-animated');
 
-  //   component.animated = false;
-  //   component.tabDirection = 'vertical';
-  //   fixture.detectChanges();
-  //   component.tabs.selectTabPane(2);
-  //   fixture.detectChanges();
-  //   component.tabPanes.map((item, i) => {
-  //     if (i > 2) {
-  //       expect(item.position).toEqual('bottom-without-animation');
-  //     } else if (i < 2) {
-  //       expect(item.position).toEqual('top-without-animation');
-  //     } else {
-  //       expect(item.position).toEqual('center-without-animation');
-  //     }
-  //     component.animated = false;
-  //   });
+    component.animated = true;
+    component.tabDirection = 'vertical';
+    fixture.detectChanges();
+    component.tabs.selectTabPane(2);
+    fixture.detectChanges();
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').style.transform).toContain('translate3d(0px, -200%, 0px)');
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').classList).toContain('am-tabs-content-wrap-animated');
 
   //   component.tabDirection = 'test';
   //   fixture.detectChanges();
