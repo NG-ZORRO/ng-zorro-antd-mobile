@@ -63,8 +63,8 @@ describe('tabbar', () => {
   });
 
   it('onPress work', fakeAsync(() => {
-    debugger;
     component.selectedIndex = 1;
+    fixture.detectChanges();
     component.press = jasmine.createSpy('onPress is callback');
     const tab = tabBarEle.nativeElement.querySelectorAll('.am-tab-bar-tab')[component.selectedIndex - 1];
     tick(100);
@@ -72,12 +72,6 @@ describe('tabbar', () => {
     tab.click();
     fixture.detectChanges();
     expect(component.press).toHaveBeenCalledTimes(1);
-    expect(
-      tabBarEle.nativeElement.querySelectorAll('.am-tab-bar-tab')[1].querySelector('.am-tab-bar-tab-title').style.color
-    ).toContain('rgb(16, 142, 233)');
-    expect(
-      tabBarEle.nativeElement.querySelectorAll('.am-tab-bar-tab')[0].querySelector('.am-tab-bar-tab-title').style.color
-    ).toContain('rgb(136, 136, 136)');
   }));
 
   it('unselectedTintColor work', () => {
@@ -213,8 +207,8 @@ export class TestTabBarComponent {
   hidden: boolean = false;
   fullScreen: boolean = false;
   topFlag: boolean = false;
-  tintColor: string = '#108ee9';
-  unselectedTintColor: string = '#888';
+  tintColor: string = 'rgb(16, 142, 233)';
+  unselectedTintColor: string = 'rgb(136, 136, 136)';
   tabbarStyle: object = { height: '400px' };
   selectedIndex: number = 1;
 

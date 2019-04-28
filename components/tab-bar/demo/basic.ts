@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
             [activeTab]="selectedIndex"
             [hidden]="hidden"
             [tabBarPosition]="topFlag ? 'top' : 'bottom'"
-            (onPress)="PressFunc($event)"
+            (onPress)="tabBarTabOnPress($event)"
     >
       <TabBarItem [title]="'Life'"
                   [key]="1"
@@ -156,7 +156,7 @@ export class DemoTabBarBasicComponent {
     this.topFlag = !this.topFlag;
   }
 
-  PressFunc(pressParam: any) {
+  tabBarTabOnPress(pressParam: any) {
     console.log('onPress Params: ', pressParam);
     this.selectedIndex = pressParam.index;
   }
