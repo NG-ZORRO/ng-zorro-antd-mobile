@@ -1,9 +1,8 @@
-import { Component, Input, HostBinding, ViewChild, TemplateRef } from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'TabPane, nzm-tab-pane',
-  templateUrl: './tab-pane.component.html',
-  styles: [`:host {touch-action: auto}`]
+  templateUrl: './tab-pane.component.html'
 })
 export class TabPane {
 

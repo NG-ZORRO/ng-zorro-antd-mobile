@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
       >
         <div style="display: block; padding: 40px; text-align: center; align-items: center;justify-content: center;height: 150px;background-color: #fff">
           <div>{{tabListItem.content}}</div>
-          <div Button [type]="'primary'" (onClick)="onClick()">Add + </div>
+          <div Button [type]="'primary'" (onClick)="onClick()">Add Pane + </div>
         </div>
       </TabPane>
     </Tabs>
