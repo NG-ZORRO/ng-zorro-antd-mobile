@@ -1,10 +1,8 @@
 import {
   Component,
   Input,
-  Output,
   ViewChild,
-  TemplateRef,
-  EventEmitter
+  TemplateRef
 } from '@angular/core';
 import { TabPane } from '../tabs/tab-pane.component';
 
@@ -41,5 +39,4 @@ export class TabBarItem extends TabPane {
   isTemplateRef(value) {
     return value instanceof TemplateRef;
   }
-
 }

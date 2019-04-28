@@ -58,6 +58,8 @@ export class Tabs implements DoCheck, AfterContentInit {
   @Input()
   distanceToChangeTab: number = 0.3;
   @Input()
+  tabTitleSize: number = 0;
+  @Input()
   tabBarActiveTextColor: string = '';
   @Input()
   tabBarInactiveTextColor: string = '';
