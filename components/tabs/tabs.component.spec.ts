@@ -250,58 +250,38 @@ describe('tab', () => {
     );
   });
 
-  // it('selectTabPane function work', () => {
-  //   component.tabDirection = 'horizontal';
-  //   fixture.detectChanges();
-  //   component.tabs.selectTabPane(2);
-  //   fixture.detectChanges();
-  //   component.tabPanes.map((item, i) => {
-  //     if (i > 3) {
-  //       expect(item.position).toEqual('right-with-animation');
-  //     } else if (i === 3) {
-  //       expect(item.position).toEqual('right-with-animation-with-higher-zindex');
-  //     } else if (i === 1) {
-  //       expect(item.position).toEqual('left-with-animation-with-higher-zindex');
-  //     } else if (i < 1) {
-  //       expect(item.position).toEqual('left-with-animation');
-  //     } else {
-  //       expect(item.position).toEqual('center-with-animation');
-  //     }
-  //   });
+  it('selectTabPane function work', () => {
+    component.animated = false;
+    component.tabDirection = 'horizontal';
+    fixture.detectChanges();
+    component.tabs.selectTabPane(2);
+    fixture.detectChanges();
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').style.transform).toContain('translate3d(-200%, 0px, 0px)');
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').classList).not.toContain('am-tabs-content-wrap-animated');
 
-  //   component.animated = false;
-  //   component.tabDirection = 'horizontal';
-  //   fixture.detectChanges();
-  //   component.tabs.selectTabPane(2);
-  //   fixture.detectChanges();
-  //   component.tabPanes.map((item, i) => {
-  //     if (i > 2) {
-  //       expect(item.position).toEqual('right-without-animation');
-  //     } else if (i < 2) {
-  //       expect(item.position).toEqual('left-without-animation');
-  //     } else {
-  //       expect(item.position).toEqual('center-without-animation');
-  //     }
-  //   });
+    component.animated = true;
+    fixture.detectChanges();
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').classList).toContain('am-tabs-content-wrap-animated');
 
-  //   component.animated = true;
-  //   component.tabDirection = 'vertical';
-  //   fixture.detectChanges();
-  //   component.tabs.selectTabPane(2);
-  //   fixture.detectChanges();
-  //   component.tabPanes.map((item, i) => {
-  //     if (i > 3) {
-  //       expect(item.position).toEqual('bottom-with-animation');
-  //     } else if (i === 3) {
-  //       expect(item.position).toEqual('bottom-with-animation-with-higher-zindex');
-  //     } else if (i === 1) {
-  //       expect(item.position).toEqual('top-with-animation-with-higher-zindex');
-  //     } else if (i < 1) {
-  //       expect(item.position).toEqual('top-with-animation');
-  //     } else {
-  //       expect(item.position).toEqual('center-with-animation');
-  //     }
-  //   });
+
+    // component.animated = true;
+    // component.tabDirection = 'vertical';
+    // fixture.detectChanges();
+    // component.tabs.selectTabPane(2);
+    // fixture.detectChanges();
+    // component.tabPanes.map((item, i) => {
+    //   if (i > 3) {
+    //     expect(item.position).toEqual('bottom-with-animation');
+    //   } else if (i === 3) {
+    //     expect(item.position).toEqual('bottom-with-animation-with-higher-zindex');
+    //   } else if (i === 1) {
+    //     expect(item.position).toEqual('top-with-animation-with-higher-zindex');
+    //   } else if (i < 1) {
+    //     expect(item.position).toEqual('top-with-animation');
+    //   } else {
+    //     expect(item.position).toEqual('center-with-animation');
+    //   }
+    // });
 
   //   component.animated = false;
   //   component.tabDirection = 'vertical';
@@ -332,7 +312,7 @@ describe('tab', () => {
   //       expect(item.position).toEqual('center-without-animation');
   //     }
   //     component.animated = true;
-  //   });
+    // });
 
   //   component.tabDirection = 'test';
   //   fixture.detectChanges();
@@ -347,7 +327,7 @@ describe('tab', () => {
   //       expect(item.position).toEqual('center-with-animation');
   //     }
   //   });
-  // });
+  });
 
   it('onTabClick work', () => {
     component.animated = true;
