@@ -63,19 +63,21 @@ describe('tabbar', () => {
   });
 
   it('onPress work', fakeAsync(() => {
-    component.onPress = jasmine.createSpy('onPress is callback');
+    debugger;
+    component.selectedIndex = 1;
+    component.press = jasmine.createSpy('onPress is callback');
     const tab = tabBarEle.nativeElement.querySelectorAll('.am-tab-bar-tab')[component.selectedIndex - 1];
     tick(100);
     fixture.detectChanges();
     tab.click();
     fixture.detectChanges();
-    expect(component.onPress).toHaveBeenCalledTimes(1);
+    expect(component.press).toHaveBeenCalledTimes(1);
     expect(
       tabBarEle.nativeElement.querySelectorAll('.am-tab-bar-tab')[1].querySelector('.am-tab-bar-tab-title').style.color
-    ).toContain('rgb(136, 136, 136)');
+    ).toContain('rgb(16, 142, 233)');
     expect(
       tabBarEle.nativeElement.querySelectorAll('.am-tab-bar-tab')[0].querySelector('.am-tab-bar-tab-title').style.color
-    ).toContain('rgb(16, 142, 233)');
+    ).toContain('rgb(136, 136, 136)');
   }));
 
   it('unselectedTintColor work', () => {
@@ -104,12 +106,12 @@ describe('tabbar', () => {
             [activeTab]="selectedIndex"
             [hidden]="hidden"
             [tabBarPosition]="topFlag ? 'top' : 'bottom'"
+            (onPress)="press($event)"
     >
       <TabBarItem [title]="'Life'"
                   [key]="1"
                   [badge]="1"
                   [icon]="icon1"
-                  (onPress)="onPress(0)"
                   [selectedIcon]="icon11">
         <ng-template #icon1>
           <div style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg') center center / 21px 21px no-repeat;">
@@ -130,7 +132,6 @@ describe('tabbar', () => {
                   [key]="2"
                   [badge]="'new'"
                   [icon]="icon2"
-                  (onPress)="onPress(1)"
                   [selectedIcon]="icon22"
       >
         <ng-template #icon2>
@@ -152,7 +153,6 @@ describe('tabbar', () => {
                   [key]="3"
                   [dot]="true"
                   [icon]="icon3"
-                  (onPress)="onPress(2)"
                   [selectedIcon]="icon33">
         <ng-template #icon3>
           <div style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg') center center / 21px 21px no-repeat;">
@@ -172,7 +172,6 @@ describe('tabbar', () => {
       <TabBarItem [title]="'My'"
                   [key]="4"
                   [icon]="icon4"
-                  (onPress)="onPress(3)"
                   [selectedIcon]="icon44">
         <ng-template #icon4>
           <div style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg') center center / 21px 21px no-repeat;">
@@ -253,7 +252,9 @@ export class TestTabBarComponent {
     this.topFlag = !this.topFlag;
   }
 
-  onPress(index: number) {
-    this.selectedIndex = index;
+  press(pressParam: any) {
+    console.log('onPress Params: ', pressParam);
+    this.selectedIndex = pressParam.index;
   }
+
 }

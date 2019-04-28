@@ -23,14 +23,15 @@ Properties | Descrition | Type | Default
 | unselectedTintColor       | unselected's font color  | String | '#888'           |
 | hidden       | whether it is hidden  | Boolean | false           |
 | tabBarPosition | tabbar position | 'top'\|'bottom' | 'bottom' |
+| onPress  | on press the bar | (index: number, title: string, key: string) => void | false     |
 
-### TabBar.Item
+### TabBarItem
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | badge  | badge number  | Number \ String           | 无     |
 | dot | show red dot on right-top（invalid when set badge number）  | Boolean            |  false  |
-| onPress  | on press the bar | (title: string, key: string) => void | false     |
+
 | icon  | the default icon | ref demo | <span> </span> |
 | selectedIcon  |  the icon of selected | ref demo |  <span> </span> |
 | title  |  title | String |  <span> </span> |

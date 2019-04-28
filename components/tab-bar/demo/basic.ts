@@ -10,12 +10,12 @@ import { Component } from '@angular/core';
             [activeTab]="selectedIndex"
             [hidden]="hidden"
             [tabBarPosition]="topFlag ? 'top' : 'bottom'"
+            (onPress)="PressFunc($event)"
     >
       <TabBarItem [title]="'Life'"
                   [key]="1"
                   [badge]="1"
                   [icon]="icon1"
-                  (onPress)="onPress(0)"
                   [selectedIcon]="icon11">
         <ng-template #icon1>
           <div style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg') center center / 21px 21px no-repeat;">
@@ -36,7 +36,6 @@ import { Component } from '@angular/core';
                   [key]="2"
                   [badge]="'new'"
                   [icon]="icon2"
-                  (onPress)="onPress(1)"
                   [selectedIcon]="icon22"
       >
         <ng-template #icon2>
@@ -58,7 +57,6 @@ import { Component } from '@angular/core';
                   [key]="3"
                   [dot]="true"
                   [icon]="icon3"
-                  (onPress)="onPress(2)"
                   [selectedIcon]="icon33">
         <ng-template #icon3>
           <div style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg') center center / 21px 21px no-repeat;">
@@ -78,7 +76,6 @@ import { Component } from '@angular/core';
       <TabBarItem [title]="'My'"
                   [key]="4"
                   [icon]="icon4"
-                  (onPress)="onPress(3)"
                   [selectedIcon]="icon44">
         <ng-template #icon4>
           <div style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg') center center / 21px 21px no-repeat;">
@@ -159,7 +156,8 @@ export class DemoTabBarBasicComponent {
     this.topFlag = !this.topFlag;
   }
 
-  onPress(index: number) {
-    this.selectedIndex = index;
+  PressFunc(pressParam: any) {
+    console.log('onPress Params: ', pressParam);
+    this.selectedIndex = pressParam.index;
   }
 }

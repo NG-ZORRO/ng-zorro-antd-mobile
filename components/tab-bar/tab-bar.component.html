@@ -13,7 +13,7 @@
     <div class="{{prefixCls}}-bar"
          [ngClass]="{'am-tab-bar-bar-hidden-top': 'top' === tabBarPosition && hidden, 'am-tab-bar-bar-hidden-bottom': 'bottom' === tabBarPosition && hidden}"
          [style.background-color]="barTintColor">
-      <div class="am-tab-bar-tab" *ngFor="let tabBarItem of tabBarItems; let i = index;" (click)="activeTab = i">
+      <div class="am-tab-bar-tab" *ngFor="let tabBarItem of tabBarItems; let i = index;" (click)="tabBarTabOnPress({'index': i, 'key': tabBarItem.key, 'title': tabBarItem.title})">
         <ng-container [ngTemplateOutlet]="tabBarItem.tabBarTab"></ng-container>
       </div>
     </div>

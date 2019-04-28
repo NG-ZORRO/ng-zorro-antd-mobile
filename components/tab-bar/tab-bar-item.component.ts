@@ -8,11 +8,6 @@ import {
 } from '@angular/core';
 import { TabPane } from '../tabs/tab-pane.component';
 
-export interface OnPressEvent {
-  title: string;
-  key: string;
-}
-
 @Component({
   selector: 'TabBarItem, nzm-tab-bar-item',
   templateUrl: './tab-bar-item.component.html'
@@ -38,8 +33,6 @@ export class TabBarItem extends TabPane {
   icon: string | TemplateRef<void> = null;
   @Input()
   selectedIcon: string | TemplateRef<void> = null;
-  @Output()
-  onPress: EventEmitter<OnPressEvent> = new EventEmitter<OnPressEvent>();
 
   constructor() {
     super();

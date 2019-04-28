@@ -1,7 +1,12 @@
-import { Component, AfterContentInit, Input, ContentChildren, QueryList, HostBinding } from '@angular/core';
-import { TabPane } from '../tabs/tab-pane.component';
+import { Component, AfterContentInit, Input, Output, ContentChildren, QueryList, HostBinding, EventEmitter } from '@angular/core';
 import { TabBarItem } from './tab-bar-item.component';
+
 export type TabBarTabPositionType = 'top' | 'bottom';
+export interface OnPressEvent {
+  index: number;
+  title: string;
+  key: string;
+}
 
 @Component({
   selector: 'TabBar, nzm-tab-bar',
@@ -56,6 +61,8 @@ export class TabBar implements AfterContentInit {
       });
     }
   }
+  @Output()
+  onPress: EventEmitter<OnPressEvent> = new EventEmitter<OnPressEvent>();
 
   @HostBinding('class.am-tab-bar')
   tabBar: boolean = true;
@@ -68,11 +75,11 @@ export class TabBar implements AfterContentInit {
         tabBarItem.selected = false;
       });
       this.tabBarItems.toArray()[index].selected = true;
-      this.tabBarItems.toArray()[index].onPress.emit({
-        title: this.tabBarItems.toArray()[index].title,
-        key: this.tabBarItems.toArray()[index].key
-      });
     }
+  }
+
+  tabBarTabOnPress(pressParam: OnPressEvent) {
+    this.onPress.emit(pressParam);
   }
 
   ngAfterContentInit() {
