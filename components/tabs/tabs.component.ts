@@ -69,7 +69,7 @@ export class Tabs implements DoCheck, AfterContentInit {
   tabBarTextStyle: object = {};
   /** should be removed when https://github.com/angular/angular/issues/20810 resolved **/
   @Input()
-  tabPanesComponent: QueryList<TabPane> = null;
+  tabPanesContent: QueryList<TabPane> = null;
   @Input()
   get activeTab(): number {
     return this.selectedKey;
@@ -161,7 +161,7 @@ export class Tabs implements DoCheck, AfterContentInit {
   }
 
   getCurrentTabPanes(): QueryList<TabPane> {
-    return this.tabPanesComponent || this.tabPanes;
+    return this.tabPanesContent || this.tabPanes;
   }
 
   onTouchStart(event) {
@@ -193,7 +193,7 @@ export class Tabs implements DoCheck, AfterContentInit {
           this.swipeable &&
           this.animated
         ) {
-          this.paneMoveStyle = 'translate3d(' + distance + 'px, 0, 0 )';
+          this.paneMoveStyle = 'translate3d(calc(-' + this.selectedKey * 100 + '% + ' + distance + 'px), 0, 0 )';
         }
       } else if ('vertical' === this._tabDirection) {
         const distance = event.changedTouches[0].clientY - this._startPosition;
@@ -208,7 +208,7 @@ export class Tabs implements DoCheck, AfterContentInit {
           this.swipeable &&
           this.animated
         ) {
-          this.paneMoveStyle = 'translate3d(0, ' + distance + 'px, 0 )';
+          this.paneMoveStyle = 'translate3d(0, calc(-' + this.selectedKey * 100 + '% + ' + distance + 'px, 0 )';
         }
       }
     }
@@ -231,7 +231,7 @@ export class Tabs implements DoCheck, AfterContentInit {
             this.keyToSelect--;
           }
         }
-        this.paneMoveStyle = 'translate3d(0, 0, 0 )';
+        this.paneMoveStyle = 'translate3d(-' + this.selectedKey * 100 + '%, 0, 0 )';
       } else if ('vertical' === this._tabDirection) {
         const distance = event.changedTouches[0].clientY - this._startPosition;
         const distanceToChangeTabPx = this.tabContent.nativeElement.offsetHeight * this.distanceToChangeTab;
@@ -247,7 +247,7 @@ export class Tabs implements DoCheck, AfterContentInit {
             this.keyToSelect--;
           }
         }
-        this.paneMoveStyle = 'translate3d(0, 0, 0 )';
+        this.paneMoveStyle = 'translate3d(0, -' + this.selectedKey * 100 + '%, 0 )';
       }
     }
   }
@@ -266,65 +266,14 @@ export class Tabs implements DoCheck, AfterContentInit {
   }
 
   private selectTabPane(index: number) {
-    const keyToSelect = Math.min(this.getCurrentTabPanes().length - 1, Math.max(index || 0, 0));
-    this.getCurrentTabPanes().forEach((tabPane: TabPane, indexKey: number) => {
-      if (keyToSelect < indexKey) {
-        if (this.animated) {
-          if ('horizontal' === this._tabDirection) {
-            if (keyToSelect === indexKey - 1) {
-              tabPane.position = 'right-with-animation-with-higher-zindex';
-            } else {
-              tabPane.position = 'right-with-animation';
-            }
-          } else if ('vertical' === this._tabDirection) {
-            if (keyToSelect === indexKey - 1) {
-              tabPane.position = 'bottom-with-animation-with-higher-zindex';
-            } else {
-              tabPane.position = 'bottom-with-animation';
-            }
-          }
-        } else {
-          if ('horizontal' === this._tabDirection) {
-            tabPane.position = 'right-without-animation';
-          } else if ('vertical' === this._tabDirection) {
-            tabPane.position = 'bottom-without-animation';
-          }
-        }
-      } else if (keyToSelect > indexKey) {
-        if (this.animated) {
-          if ('horizontal' === this._tabDirection) {
-            if (keyToSelect === indexKey + 1) {
-              tabPane.position = 'left-with-animation-with-higher-zindex';
-            } else {
-              tabPane.position = 'left-with-animation';
-            }
-          } else if ('vertical' === this._tabDirection) {
-            if (keyToSelect === indexKey + 1) {
-              tabPane.position = 'top-with-animation-with-higher-zindex';
-            } else {
-              tabPane.position = 'top-with-animation';
-            }
-          }
-        } else {
-          if ('horizontal' === this._tabDirection) {
-            tabPane.position = 'left-without-animation';
-          } else if ('vertical' === this._tabDirection) {
-            tabPane.position = 'top-without-animation';
-          }
-        }
-      } else {
-        if (this.animated) {
-          tabPane.position = 'center-with-animation';
-        } else {
-          tabPane.position = 'center-without-animation';
-        }
+    if (this.getCurrentTabPanes() && this.getCurrentTabPanes().length > 0) {
+      const actualKeyToSelect = Math.min(this.getCurrentTabPanes().length - 1, Math.max(index || 0, 0));
+      if ('horizontal' === this._tabDirection) {
+        this.paneMoveStyle = 'translate3d(-' + actualKeyToSelect * 100 + '%, 0, 0 )';
+      } else if ('vertical' === this._tabDirection) {
+        this.paneMoveStyle = 'translate3d(0, -' + actualKeyToSelect * 100 + '%, 0 )';
       }
-      if (keyToSelect !== indexKey) {
-        tabPane.active = false;
-      } else {
-        tabPane.active = true;
-      }
-    });
+    }
   }
 
   private getVelocity(deltaDistance, deltaTime) {

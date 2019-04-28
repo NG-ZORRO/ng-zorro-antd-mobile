@@ -9,24 +9,18 @@ import { Component } from '@angular/core';
           (onChange)="onChange($event)"
           (onTabClick)="onTabClick($event)"
     >
-      <TabPane style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;"
-               [title]="'First Tab'"
-      >
-        <div style="height: 250px; width: 100%; line-height: 200px;">
+      <TabPane [title]="'First Tab'">
+        <div style="display: flex; align-items: center; justify-content: center; height: 250px; background-color: rgb(255, 255, 255);">
           Content of first tab
         </div>
       </TabPane>
-      <TabPane style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;"
-               [title]="'Second Tab'"
-      >
-        <div style="height: 250px; width: 100%; line-height: 200px;">
+      <TabPane [title]="'Second Tab'">
+        <div style="display: flex; align-items: center; justify-content: center; height: 250px; background-color: rgb(255, 255, 255);">
           Content of second tab
         </div>
       </TabPane>
-      <TabPane style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;"
-               [title]="'Third Tab'"
-      >
-        <div style="height: 250px; width: 100%; line-height: 200px;">
+      <TabPane [title]="'Third Tab'">
+        <div style="display: flex; align-items: center; justify-content: center; height: 250px; background-color: rgb(255, 255, 255);">
           Content of third tab
         </div>
       </TabPane>

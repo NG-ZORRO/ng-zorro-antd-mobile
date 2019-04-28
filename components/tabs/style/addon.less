@@ -6,13 +6,11 @@
 
 .@{tabs-prefix-cls} {
   &-pane-wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
+    touch-action: pan-x pan-y;
   }
-  &-pane-wrap:first-child {
-    position: relative;
-  }
+  // &-pane-wrap:first-child {
+  //   position: relative;
+  // }
 }
 
 .@{tabs-default-bar-prefix-cls}-top,

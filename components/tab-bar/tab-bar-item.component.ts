@@ -1,12 +1,10 @@
 import {
   Component,
-  AfterContentInit,
-  HostBinding,
-  EventEmitter,
   Input,
   Output,
+  ViewChild,
   TemplateRef,
-  Optional
+  EventEmitter
 } from '@angular/core';
 import { TabPane } from '../tabs/tab-pane.component';
 
@@ -16,14 +14,17 @@ export interface OnPressEvent {
 }
 
 @Component({
-  selector: 'TabBarTab, nzm-tab-bar-tab',
-  templateUrl: './tab-bar-tab.component.html'
+  selector: 'TabBarItem, nzm-tab-bar-item',
+  templateUrl: './tab-bar-item.component.html'
 })
-export class TabBarTab implements AfterContentInit {
+export class TabBarItem extends TabPane {
   prefixCls: string = 'am-tab-bar-tab';
   selected: boolean = false;
   tintColor: string = '#108ee9';
   unselectedTintColor: string = '#888';
+
+  @ViewChild('tabBarTab')
+  tabBarTab: TemplateRef<void>;
 
   @Input()
   key: string = '';
@@ -40,22 +41,12 @@ export class TabBarTab implements AfterContentInit {
   @Output()
   onPress: EventEmitter<OnPressEvent> = new EventEmitter<OnPressEvent>();
 
-  @HostBinding('class.am-tab-bar-tab')
-  tabBarTab: boolean = true;
-
-  constructor(@Optional() public tabPane: TabPane) {}
+  constructor() {
+    super();
+  }
 
   isTemplateRef(value) {
     return value instanceof TemplateRef;
   }
 
-  ngAfterContentInit() {
-    if (this.tabPane.active) {
-      this.selected = true;
-    } else {
-      this.selected = false;
-    }
-    this.tintColor = this.tabPane.tintColor;
-    this.unselectedTintColor = this.tabPane.unselectedTintColor;
-  }
 }

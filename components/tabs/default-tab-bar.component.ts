@@ -16,7 +16,7 @@ import { TabBarPositionType } from './PropsType';
   selector: 'DefaultTabBar, nzm-default-tab-bar',
   templateUrl: './default-tab-bar.component.html'
 })
-export class DefaultTabBarComponent implements AfterViewInit {
+export class DefaultTabBar implements AfterViewInit {
   prefixCls: string = 'am-tabs-default-bar';
   inkBarStyle: object = {};
   tabsBarStyle: object = {};

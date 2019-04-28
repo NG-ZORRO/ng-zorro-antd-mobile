@@ -10,7 +10,11 @@
        (touchmove)="onTouchMove($event)"
        (touchend)="onTouchEnd($event)"
   >
-    <ng-content></ng-content>
+    <div tab-pane-body
+         *ngFor="let tabPane of getCurrentTabPanes(); let i = index"
+         [active]="i === selectedKey"
+         [content]="tabPane.content"
+    ></div>
   </div>
   <ng-template *ngIf="'bottom' === tabBarPosition || 'right' === tabBarPosition"
                [ngTemplateOutlet]="renderTabBar || renderDefaultTabBar"
@@ -29,9 +33,9 @@
     <div #TabTitle
          *ngFor="let tabPane of getCurrentTabPanes(); let i = index"
          class="{{prefixCls}}-default-bar-tab"
-         [ngClass]="{'am-tabs-default-bar-tab-active': tabPane.active, 'am-tabs-default-bar-tab-disabled': tabPane.disabled}"
+         [ngClass]="{'am-tabs-default-bar-tab-active': i === selectedKey, 'am-tabs-default-bar-tab-disabled': tabPane.disabled}"
          [ngStyle]="tabBarTextStyle"
-         [style.color]="tabPane.active ? tabBarActiveTextColor : tabBarInactiveTextColor"
+         [style.color]="i === selectedKey ? tabBarActiveTextColor : tabBarInactiveTextColor"
          (click)="clickTab(i)"
     >
       <ng-container *ngIf="tabPane.isTitleString; else titleTemplate">
