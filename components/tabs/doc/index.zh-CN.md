@@ -28,7 +28,7 @@ animated  | 是否开启切换动画 | boolean |  true | false
 onChange  | tab变化时触发 | (index: number) => void | <span> </span> | false
 onTabClick  | tab 被点击的回调 | (index: number) => void | <span> </span> | false
 distanceToChangeTab | 滑动切换阈值(宽度比例) | number |  0.3 | false
-| prerenderingSiblingsNumber| 预加载相邻的tab内容, Infinity: 加载所有的tab内容, 0: 仅加载当前tab内容, 当页面较复杂时，建议设为0，提升页面加载性能  | number |   1   |
+| prerenderingSiblingsNumber| 预加载相邻的tab内容, -1: 加载所有的tab内容, 0: 仅加载当前tab内容 | number |   1   |
 tabDirection | Tab方向 | 'horizontal' \| 'vertical' |  horizontal | false
 tabBarUnderlineStyle  | tabBar下划线样式 | object | <span> </span> | false
 tabBarBackgroundColor  | tabBar背景色 | string | <span> </span> | false
