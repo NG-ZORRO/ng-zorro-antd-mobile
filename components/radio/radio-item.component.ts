@@ -26,6 +26,8 @@ export class RadioItem {
   @Input()
   value: string;
   @Input()
+  wrap: boolean = false;
+  @Input()
   get disabled(): boolean {
     return this._disabled;
   }

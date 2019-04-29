@@ -36,3 +36,4 @@ Properties | Descrition | Type | Default
 | name    |   name  | String |   -  |
 | value    |  value  | String |   -  |
 | disabled      |  whether disabled  | Boolean |  false  |
+| wrap    | Whether to wrap long texts, otherwise it will be hidden by default. | Boolean  | `false`  |

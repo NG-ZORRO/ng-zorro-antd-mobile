@@ -27,6 +27,8 @@ export class CheckboxItem implements ControlValueAccessor {
   @Input()
   value: string;
   @Input()
+  wrap: boolean = false;
+  @Input()
   get disabled(): boolean {
     return this._disabled;
   }
