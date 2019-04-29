@@ -251,102 +251,34 @@ describe('tab', () => {
   });
 
   it('selectTabPane function work', () => {
-    component.tabDirection = 'horizontal';
-    fixture.detectChanges();
-    component.tabs.selectTabPane(2);
-    fixture.detectChanges();
-    component.tabPanes.map((item, i) => {
-      if (i > 3) {
-        expect(item.position).toEqual('right-with-animation');
-      } else if (i === 3) {
-        expect(item.position).toEqual('right-with-animation-with-higher-zindex');
-      } else if (i === 1) {
-        expect(item.position).toEqual('left-with-animation-with-higher-zindex');
-      } else if (i < 1) {
-        expect(item.position).toEqual('left-with-animation');
-      } else {
-        expect(item.position).toEqual('center-with-animation');
-      }
-    });
-
     component.animated = false;
     component.tabDirection = 'horizontal';
     fixture.detectChanges();
     component.tabs.selectTabPane(2);
     fixture.detectChanges();
-    component.tabPanes.map((item, i) => {
-      if (i > 2) {
-        expect(item.position).toEqual('right-without-animation');
-      } else if (i < 2) {
-        expect(item.position).toEqual('left-without-animation');
-      } else {
-        expect(item.position).toEqual('center-without-animation');
-      }
-    });
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').style.transform).toContain('translate3d(-200%, 0px, 0px)');
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').classList).not.toContain('am-tabs-content-wrap-animated');
+
+    component.animated = true;
+    fixture.detectChanges();
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').classList).toContain('am-tabs-content-wrap-animated');
+
+
+    component.animated = false;
+    component.tabDirection = 'vertical';
+    fixture.detectChanges();
+    component.tabs.selectTabPane(2);
+    fixture.detectChanges();
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').style.transform).toContain('translate3d(0px, -200%, 0px)');
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').classList).not.toContain('am-tabs-content-wrap-animated');
 
     component.animated = true;
     component.tabDirection = 'vertical';
     fixture.detectChanges();
     component.tabs.selectTabPane(2);
     fixture.detectChanges();
-    component.tabPanes.map((item, i) => {
-      if (i > 3) {
-        expect(item.position).toEqual('bottom-with-animation');
-      } else if (i === 3) {
-        expect(item.position).toEqual('bottom-with-animation-with-higher-zindex');
-      } else if (i === 1) {
-        expect(item.position).toEqual('top-with-animation-with-higher-zindex');
-      } else if (i < 1) {
-        expect(item.position).toEqual('top-with-animation');
-      } else {
-        expect(item.position).toEqual('center-with-animation');
-      }
-    });
-
-    component.animated = false;
-    component.tabDirection = 'vertical';
-    fixture.detectChanges();
-    component.tabs.selectTabPane(2);
-    fixture.detectChanges();
-    component.tabPanes.map((item, i) => {
-      if (i > 2) {
-        expect(item.position).toEqual('bottom-without-animation');
-      } else if (i < 2) {
-        expect(item.position).toEqual('top-without-animation');
-      } else {
-        expect(item.position).toEqual('center-without-animation');
-      }
-      component.animated = false;
-    });
-
-    component.tabDirection = 'test';
-    fixture.detectChanges();
-    component.tabs.selectTabPane(2);
-    fixture.detectChanges();
-    component.tabPanes.map((item, i) => {
-      if (i > 2) {
-        expect(item.position).toEqual('bottom-without-animation');
-      } else if (i < 2) {
-        expect(item.position).toEqual('top-without-animation');
-      } else {
-        expect(item.position).toEqual('center-without-animation');
-      }
-      component.animated = true;
-    });
-
-    component.tabDirection = 'test';
-    fixture.detectChanges();
-    component.tabs.selectTabPane(2);
-    fixture.detectChanges();
-    component.tabPanes.map((item, i) => {
-      if (i > 2) {
-        expect(item.position).toEqual('bottom-without-animation');
-      } else if (i < 2) {
-        expect(item.position).toEqual('top-without-animation');
-      } else {
-        expect(item.position).toEqual('center-with-animation');
-      }
-    });
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').style.transform).toContain('translate3d(0px, -200%, 0px)');
+    expect(tabsEle.querySelector('.am-tabs-content-wrap').classList).toContain('am-tabs-content-wrap-animated');
   });
 
   it('onTabClick work', () => {
@@ -479,12 +411,10 @@ describe('tab', () => {
           [tabBarUnderlineStyle]="{'border': '1px red solid'}"
           [tabBarTextStyle]="{'font-size': '33px'}"
           [tabBarActiveTextColor]="'red'">
-      <TabPane style="display: flex; background-color: blue; height: 50px;" [title]="'Tab 1'">
+      <TabPane [title]="'Tab 1'">
         <div style="height: 100px; width: 100%">Content of 1 tab</div>
       </TabPane>
-      <TabPane style="display: flex; height: 50px; width: 100%; background-color: white; align-items: center;justify-content: center;"
-               [title]="titleTemplate"
-      >
+      <TabPane [title]="titleTemplate">
         <ng-template #titleTemplate>
           <div>Tab 2</div>
         </ng-template>
@@ -492,19 +422,19 @@ describe('tab', () => {
           Content of first tab
         </div>
       </TabPane>
-      <TabPane style="display: flex; background-color: red; align-items: center;justify-content: center;height: 50px;" [title]="'Tab 3'" >
+      <TabPane [title]="'Tab 3'" >
         Content of 3 tab
       </TabPane>
-      <TabPane style="display: flex; background-color: black; align-items: center;justify-content: center;height: 50px;" [title]="'Tab 4'">
+      <TabPane [title]="'Tab 4'">
         Content of 4 tab
       </TabPane>
-      <TabPane style="display: flex; background-color: green; align-items: center;justify-content: center;height: 50px;" [title]="'Tab 5'">
+      <TabPane [title]="'Tab 5'">
         Content of 5 tab
       </TabPane>
-      <TabPane style="display: flex; background-color: purple; align-items: center;justify-content: center;height: 50px;" [title]="'Tab 6'">
+      <TabPane [title]="'Tab 6'">
         Content of 6 tab
       </TabPane>
-      <TabPane style="display: flex; background-color: orange; align-items: center;justify-content: center;height: 50px;" [title]="'Tab 7'">
+      <TabPane [title]="'Tab 7'">
         Content of 7 tab
       </TabPane>
     </Tabs>

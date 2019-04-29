@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'demo-tabs-basic',
+  selector: 'demo-tabs-fixedtabtitlesize',
   template: `
     <Tabs [useOnPan]="true"
           [swipeable]="true"
           [activeTab]="index"
           [page]="3"
+          [tabTitleSize]="100"
           [tabBarActiveTextColor]="'#1890ff'"
           (onChange)="onChange($event)"
           (onTabClick)="onTabClick($event)"
@@ -33,36 +34,29 @@ import { Component } from '@angular/core';
           Content of second tab
         </div>
       </TabPane>
-      <TabPane [title]="titleTemplate2">
-        <ng-template #titleTemplate2>
-          <Badge [dot]="true">
-            <div>Third Tab</div>
-          </Badge>
-        </ng-template>
-        <div style="display: flex; align-items: center;justify-content: center;height: 150px;background-color: #fff">
-          Content of third tab
-        </div>
-      </TabPane>
     </Tabs>
     <WhiteSpace></WhiteSpace>
-    <Tabs [activeTab]="index"
+    <Tabs style="height: 200px;"
+          [activeTab]="index"
           [page]="3"
-          [tabBarPosition]="'bottom'"
+          [tabTitleSize]="40"
+          [tabBarPosition]="'left'"
+          [tabDirection]="'vertical'"
           (onChange)="onChange($event)"
           (onTabClick)="onTabClick($event)"
     >
       <TabPane [title]="'First Tab'">
-        <div style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;">
-          Content of first tab
-        </div>
+      <div style="display: flex; height: 200px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        Content of first tab
+      </div>
       </TabPane>
       <TabPane [title]="'Second Tab'">
-        <div style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        <div style="display: flex; height: 200px; width: 100%; background-color: white;align-items: center;justify-content: center;">
           Content of second tab
         </div>
       </TabPane>
       <TabPane [title]="'Third Tab'">
-        <div style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        <div style="display: flex; height: 200px; width: 100%; background-color: white;align-items: center;justify-content: center;">
           Content of third tab
         </div>
       </TabPane>
@@ -76,7 +70,7 @@ import { Component } from '@angular/core';
     `
   ]
 })
-export class DemoTabsBasicComponent {
+export class DemoTabsFixedtabtitlesizeComponent {
   flag = true;
   index = 1;
 

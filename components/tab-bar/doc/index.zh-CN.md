@@ -24,14 +24,15 @@ subtitle: 标签栏
 | unselectedTintColor       | 未选中的字体颜色  | String | '#888'           |
 | hidden      | 是否隐藏  | Boolean | false           |
 | tabBarPosition | tabbar 位置 | 'top'\|'bottom' | 'bottom' |
+| prerenderingSiblingsNumber| 预加载相邻的tab内容, -1: 加载所有的tab内容, 0: 仅加载当前tab内容  | number |   1   |
+| onPress  | bar 点击触发 | (index: number, title: string, key: string) => void | false    |
 
-### TabBar.Item
+### TabBarItem
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
 | badge  | 徽标数  | Number \ String           | 无     |
 | dot | 是否在右上角显示小红点（在设置badge的情况下失效）  | Boolean            |  false  |
-| onPress  | bar 点击触发 | (title: string, key: string) => void | false    |
 | icon  | 默认展示图片 | 见 demo |   <span> </span>   |
 | selectedIcon  |  选中后的展示图片 | 见 demo |   <span> </span>   |
 | title  |  标题文字 | String |   <span> </span>   |

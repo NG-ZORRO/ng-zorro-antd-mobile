@@ -10,7 +10,12 @@
        (touchmove)="onTouchMove($event)"
        (touchend)="onTouchEnd($event)"
   >
-    <ng-content></ng-content>
+    <div tab-pane-body
+         *ngFor="let tabPane of getCurrentTabPanes(); let i = index"
+         [active]="i === selectedKey"
+         [hidden]="prerenderingSiblingsNumber >= 0 && ((selectedKey - i > prerenderingSiblingsNumber) || (selectedKey - i + prerenderingSiblingsNumber < 0 ))"
+         [content]="tabPane.content"
+    ></div>
   </div>
   <ng-template *ngIf="'bottom' === tabBarPosition || 'right' === tabBarPosition"
                [ngTemplateOutlet]="renderTabBar || renderDefaultTabBar"
@@ -22,6 +27,7 @@
                  [page]="page"
                  [animated]="animated"
                  [activeTab]="selectedKey"
+                 [tabTitleSize]="tabTitleSize"
                  [tabBarPosition]="tabBarPosition"
                  [tabBarBackgroundColor]="tabBarBackgroundColor"
                  [tabBarUnderlineStyle]="tabBarUnderlineStyle"
@@ -29,9 +35,9 @@
     <div #TabTitle
          *ngFor="let tabPane of getCurrentTabPanes(); let i = index"
          class="{{prefixCls}}-default-bar-tab"
-         [ngClass]="{'am-tabs-default-bar-tab-active': tabPane.active, 'am-tabs-default-bar-tab-disabled': tabPane.disabled}"
+         [ngClass]="{'am-tabs-default-bar-tab-active': i === selectedKey, 'am-tabs-default-bar-tab-disabled': tabPane.disabled}"
          [ngStyle]="tabBarTextStyle"
-         [style.color]="tabPane.active ? tabBarActiveTextColor : tabBarInactiveTextColor"
+         [style.color]="i === selectedKey ? tabBarActiveTextColor : tabBarInactiveTextColor"
          (click)="clickTab(i)"
     >
       <ng-container *ngIf="tabPane.isTitleString; else titleTemplate">

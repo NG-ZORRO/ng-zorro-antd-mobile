@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { TabsModule } from '../tabs/tabs.module';
 import { TabBar } from './tab-bar.component';
 import { BadgeModule } from '../badge/badge.module';
-import { TabBarTab } from './tab-bar-tab.component';
+import { TabBarItem } from './tab-bar-item.component';
 
 export { TabPane } from '../tabs/tabs.module';
 
 @NgModule({
   imports: [CommonModule, TabsModule, BadgeModule],
-  exports: [TabBar, TabBarTab],
-  declarations: [TabBar, TabBarTab],
+  exports: [TabBar, TabBarItem],
+  declarations: [TabBar, TabBarItem],
   providers: []
 })
-export class TabBarModule {}
+export class TabBarModule { }

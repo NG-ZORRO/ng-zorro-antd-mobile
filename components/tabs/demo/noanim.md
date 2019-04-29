@@ -2,7 +2,7 @@
 order: 2
 title:
   zh-CN: 无动画
-  en-US: 'No animation'
+  en-US: 'No Animation'
 ---
 ## zh-CN
 

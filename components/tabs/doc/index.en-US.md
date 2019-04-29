@@ -28,6 +28,7 @@ animated | Whether to change tabs with animation | boolean |  true | false
 onChange | Callback when tab is switched | (index: number) => void | <span> </span> | false
 onTabClick  | on tab click | (index: number) => void | <span> </span> | false
 distanceToChangeTab | distance to change tab, width ratio | number |  0.3 | false
+| prerenderingSiblingsNumber| pre-render nearby sibling, -1: render all the siblings, 0: render current page  | number |   1   |
 tabDirection | tab paging direction | 'horizontal' \| 'vertical' |  horizontal | false
 tabBarUnderlineStyle | style of the default tab bar's underline | object | <span> </span> | false
 tabBarBackgroundColor | color of the default tab bar's background | string | <span> </span> | false
