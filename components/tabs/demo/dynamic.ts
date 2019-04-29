@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <Tabs [useOnPan]="true"
           [swipeable]="true"
           [activeTab]="activeTabIndex"
-          [page]="3"
+          [page]="5"
           [tabBarActiveTextColor]="'#1890ff'"
           (onChange)="onChange($event)"
           (onTabClick)="onTabClick($event)"

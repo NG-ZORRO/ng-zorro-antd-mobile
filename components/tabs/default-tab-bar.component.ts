@@ -7,7 +7,8 @@ import {
   ElementRef,
   HostBinding,
   AfterContentInit,
-  ContentChildren
+  ContentChildren,
+  ChangeDetectorRef
 } from '@angular/core';
 
 import { TabBarPositionType } from './PropsType';
@@ -65,11 +66,18 @@ export class DefaultTabBar implements AfterContentInit {
   @HostBinding('class.am-tabs-tab-bar-wrap')
   tabBarWrap = true;
 
-  constructor(private _renderer: Renderer2) { }
+  constructor(private _renderer: Renderer2, private _ref: ChangeDetectorRef) { }
 
   onTouchStart(event) {
-    if ((this.tabTitleSize > 0 && (this.tabTitleSize * this.tabTitles.length > (('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) ? this.tabsBarSwipe.nativeElement.offsetWidth : this.tabsBarSwipe.nativeElement.offsetHeight)))
-         || (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)) {
+    if ((this.tabTitleSize > 0 &&
+             (this.tabTitleSize * this.tabTitles.length >
+                 (('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) ?
+                     this.tabsBarSwipe.nativeElement.offsetWidth :
+                     this.tabsBarSwipe.nativeElement.offsetHeight
+                 )
+             )
+        ) || (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)
+    ) {
       if ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) {
         this._startPosition = event && event.changedTouches && event.changedTouches[0] && event.changedTouches[0].clientX;
       } else {
@@ -81,8 +89,15 @@ export class DefaultTabBar implements AfterContentInit {
   onTouchMove(event) {
     event.preventDefault();
     event.stopPropagation();
-    if ((this.tabTitleSize > 0 && (this.tabTitleSize * this.tabTitles.length > (('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) ? this.tabsBarSwipe.nativeElement.offsetWidth : this.tabsBarSwipe.nativeElement.offsetHeight)))
-    || (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)) {
+    if ((this.tabTitleSize > 0 &&
+            (this.tabTitleSize * this.tabTitles.length >
+                (('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) ?
+                    this.tabsBarSwipe.nativeElement.offsetWidth :
+                    this.tabsBarSwipe.nativeElement.offsetHeight
+                )
+            )
+        ) || (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)
+    ) {
       if ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) {
         this.setTabBarNavSwipingPosition(
           event.changedTouches[0].clientX - this._startPosition,
@@ -111,15 +126,22 @@ export class DefaultTabBar implements AfterContentInit {
   }
 
   onTouchEnd() {
-    if (this.tabBarNavSwipingPosition && ((this.tabTitleSize > 0 && (this.tabTitleSize * this.tabTitles.length > (('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) ? this.tabsBarSwipe.nativeElement.offsetWidth : this.tabsBarSwipe.nativeElement.offsetHeight)))
-         || (this.tabTitleSize <= 0 && this.page < this.tabTitles.length))) {
+    if ((this.tabTitleSize > 0 &&
+          (this.tabTitleSize * this.tabTitles.length >
+              (('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) ?
+                  this.tabsBarSwipe.nativeElement.offsetWidth :
+                  this.tabsBarSwipe.nativeElement.offsetHeight
+              )
+          )
+      ) || (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)
+    ) {
       this.tabBarNavSwipedPosition = this.tabBarNavSwipingPosition;
     }
   }
 
   onContentChange() {
     this.setTabsStyle();
-    this.setInkBarStatus(this.activeTab);
+    this.setInkBarStatus(this.selectedKey);
   }
 
   ngAfterContentInit() {
@@ -152,13 +174,19 @@ export class DefaultTabBar implements AfterContentInit {
 
   private setTabBarStyleCenter() {
     if ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) {
-      this.setTabBarNavSwipedPosition(this.tabTitleSize > 0 ? this.tabTitleSize : this.tabsBarSwipe.nativeElement.offsetWidth / Math.min(this.tabTitles.length, this.page), this.tabsBarSwipe.nativeElement.offsetWidth);
+      this.setTabBarNavSwipedPosition(this.tabTitleSize > 0 ? this.tabTitleSize :
+          (this.tabsBarSwipe.nativeElement.offsetWidth / Math.min(this.tabTitles.length, this.page)),
+          this.tabsBarSwipe.nativeElement.offsetWidth
+      );
       this.tabsBarStyle = {
         transform: 'translate3d(' + this.tabBarNavSwipedPosition + 'px, 0px, 0px)',
         webkitTransform: 'translate3d(' + this.tabBarNavSwipedPosition + ', 0px, 0px)'
       };
     } else {
-      this.setTabBarNavSwipedPosition(this.tabTitleSize > 0 ? this.tabTitleSize : this.tabsBarSwipe.nativeElement.offsetHeight / Math.min(this.tabTitles.length, this.page), this.tabsBarSwipe.nativeElement.offsetHeight);
+      this.setTabBarNavSwipedPosition(this.tabTitleSize > 0 ? this.tabTitleSize :
+          (this.tabsBarSwipe.nativeElement.offsetHeight / Math.min(this.tabTitles.length, this.page)),
+          this.tabsBarSwipe.nativeElement.offsetHeight
+      );
       this.tabsBarStyle = {
         transform: 'translate3d(0, ' + this.tabBarNavSwipedPosition + 'px, 0px)',
         webkitTransform: 'translate3d(0, ' + this.tabBarNavSwipedPosition + 'px, 0px)'
@@ -173,7 +201,9 @@ export class DefaultTabBar implements AfterContentInit {
         this.inkBarLength = this.tabTitles.toArray()[key].nativeElement.style.width;
         this.inkBarStyle = {
           width: this.inkBarLength,
-          left: this.tabTitleSize > 0 ? (this.selectedKey * this.tabTitleSize + 'px') : ((this.selectedKey * 100) / Math.min(this.tabTitles.length, this.page) + '%')
+          left: this.tabTitleSize > 0 ?
+                    (this.selectedKey * this.tabTitleSize + 'px') :
+                        ((this.selectedKey * 100) / Math.min(this.tabTitles.length, this.page) + '%')
         };
         Object.assign(this.inkBarStyle, this.tabBarUnderlineStyle);
       } else {
@@ -181,19 +211,21 @@ export class DefaultTabBar implements AfterContentInit {
         this.inkBarLength = this.tabTitles.toArray()[key].nativeElement.style.height;
         this.inkBarStyle = {
           height: this.inkBarLength,
-          top: this.tabTitleSize > 0 ? (this.selectedKey * this.tabTitleSize + 'px') : (this.selectedKey * 100) /  Math.min(this.tabTitles.length, this.page) + '%'
+          top: this.tabTitleSize > 0 ?
+                  (this.selectedKey * this.tabTitleSize + 'px') :
+                      ((this.selectedKey * 100) /  Math.min(this.tabTitles.length, this.page) + '%')
         };
         Object.assign(this.inkBarStyle, this.tabBarUnderlineStyle);
       }
+      this._ref.detectChanges();
     }
   }
 
   private setTabBarNavSwipingPosition(swipingDistance: number, swipingItemLength: number, viewportLength: number) {
     if (this.tabBarNavSwipedPosition + swipingDistance > 0) {
       this.tabBarNavSwipingPosition = 0;
-    } else if (
-      this.tabBarNavSwipedPosition + swipingDistance <
-      viewportLength - swipingItemLength * this.tabTitles.length
+    } else if ((this.tabBarNavSwipedPosition + swipingDistance) <
+        (viewportLength - swipingItemLength * this.tabTitles.length)
     ) {
       this.tabBarNavSwipingPosition = viewportLength - swipingItemLength * this.tabTitles.length;
       this.showNext = false;
@@ -213,9 +245,11 @@ export class DefaultTabBar implements AfterContentInit {
       if (0 === this.selectedKey) {
         this.tabBarNavSwipedPosition = 0;
       } else {
-        this.tabBarNavSwipedPosition = - (this.selectedKey - 1) * swipingItemLength;
+        this.tabBarNavSwipedPosition = (1 - this.selectedKey) * swipingItemLength;
       }
-    } else if ((this.selectedKey + 1) * swipingItemLength >= viewportLength - this.tabBarNavSwipedPosition) {
+    } else if ((this.selectedKey + 1) * swipingItemLength >=
+        (viewportLength - this.tabBarNavSwipedPosition)
+      ) {
       if (this.tabTitles.length - 1 === this.selectedKey) {
         this.tabBarNavSwipedPosition = viewportLength - (this.selectedKey + 1) * swipingItemLength;
       } else {
@@ -227,7 +261,7 @@ export class DefaultTabBar implements AfterContentInit {
     } else {
       this.showPrev = false;
     }
-    if (this.tabBarNavSwipedPosition + swipingItemLength * this.tabTitles.length - viewportLength > 0) {
+    if ((this.tabBarNavSwipedPosition + swipingItemLength * this.tabTitles.length - viewportLength) > 0) {
       this.showNext = true;
     } else {
       this.showNext = false;
