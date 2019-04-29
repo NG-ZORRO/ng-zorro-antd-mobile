@@ -28,14 +28,14 @@ animated | Whether to change tabs with animation | boolean |  true | false
 onChange | Callback when tab is switched | (index: number) => void | <span> </span> | false
 onTabClick  | on tab click | (index: number) => void | <span> </span> | false
 distanceToChangeTab | distance to change tab, width ratio | number |  0.3 | false
-| prerenderingSiblingsNumber| pre-render nearby sibling, -1: render all the siblings, 0: render current page  | number |   -1   |
+| prerenderingSiblingsNumber| pre-render nearby sibling, -1: render all the siblings, 0: render current page, n: render n siblings | number |   -1   | false
 tabDirection | tab paging direction | 'horizontal' \| 'vertical' |  horizontal | false
 tabBarUnderlineStyle | style of the default tab bar's underline | object | <span> </span> | false
 tabBarBackgroundColor | color of the default tab bar's background | string | <span> </span> | false
 tabBarActiveTextColor | color of the default tab bar's text when active | string | <span> </span> | false
 tabBarInactiveTextColor | color of the default tab bar's text when inactive | string | <span> </span> | false
 tabBarTextStyle | tional styles to the tab bar's text | object | <span> </span> | false
-renderTabBar | render for replace the tab of tabbar | TemplateRef | null
+renderTabBar | render for replace the tab of tabbar | TemplateRef | null | false
 
 ### TabPane
 

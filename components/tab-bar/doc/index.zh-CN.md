@@ -24,7 +24,7 @@ subtitle: 标签栏
 | unselectedTintColor       | 未选中的字体颜色  | String | '#888'           |
 | hidden      | 是否隐藏  | Boolean | false           |
 | tabBarPosition | tabbar 位置 | 'top'\|'bottom' | 'bottom' |
-| prerenderingSiblingsNumber| 预加载相邻的tab内容, -1: 加载所有的tab内容, 0: 仅加载当前tab内容  | number |   -1   |
+| prerenderingSiblingsNumber| 预加载两侧Tab数量, -1: 加载所有的tab内容, 0: 仅加载当前tab内容, n: 预加载两侧n个Tab | number |   -1   |
 | onPress  | bar 点击触发 | (index: number, title: string, key: string) => void | false    |
 
 ### TabBarItem
