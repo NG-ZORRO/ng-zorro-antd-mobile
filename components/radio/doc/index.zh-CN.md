@@ -37,3 +37,4 @@ subtitle: 单选框
 | name    |   name  | String |   无  |
 | value    |  value  | String |   无  |
 | disabled      |  禁用  | Boolean |  false  |
+| wrap    | 是否换行，默认情况下，文字超长会被隐藏， | Boolean  | `false`  |
