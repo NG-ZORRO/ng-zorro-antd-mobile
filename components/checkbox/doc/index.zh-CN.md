@@ -29,6 +29,7 @@ subtitle: 复选框
 | value    | value                        | String                                                  | -      |
 | ngModel  | 指定当前是否选中，可双向绑定 | Boolean                                                 | false  |
 | disabled | 是否禁用                     | Boolean                                                 | false  |
+| wrap    | 是否换行，默认情况下，文字超长会被隐藏， | Boolean  | `false`  |
 | onChange | change 事件触发的回调函数    | (name: string, value: string, checked: boolean) => void | 无     |
 
 ### AgreeItem
