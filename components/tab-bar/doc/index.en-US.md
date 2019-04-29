@@ -23,6 +23,7 @@ Properties | Descrition | Type | Default
 | unselectedTintColor       | unselected's font color  | String | '#888'           |
 | hidden       | whether it is hidden  | Boolean | false           |
 | tabBarPosition | tabbar position | 'top'\|'bottom' | 'bottom' |
+| prerenderingSiblingsNumber| pre-render nearby sibling, Infinity: render all the siblings, 0: render current page  | number |   1   |
 | onPress  | on press the bar | (index: number, title: string, key: string) => void | false     |
 
 ### TabBarItem
