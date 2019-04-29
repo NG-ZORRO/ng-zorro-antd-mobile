@@ -13,6 +13,7 @@
     <div tab-pane-body
          *ngFor="let tabPane of getCurrentTabPanes(); let i = index"
          [active]="i === selectedKey"
+         [hidden]="prerenderingSiblingsNumber > 0 && ((selectedKey - i > prerenderingSiblingsNumber) || (selectedKey - i + prerenderingSiblingsNumber < 0 ))"
          [content]="tabPane.content"
     ></div>
   </div>

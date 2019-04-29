@@ -8,6 +8,7 @@ import { Component, OnInit, Input, HostBinding, TemplateRef, ViewEncapsulation }
 export class TabPaneBody implements OnInit {
 
   @Input() active: boolean = false;
+  @Input() hidden: boolean = false;
   @Input() content: TemplateRef<void>;
 
   @HostBinding('class.am-tabs-pane-wrap')

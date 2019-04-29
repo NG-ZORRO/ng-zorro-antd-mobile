@@ -68,6 +68,8 @@ export class Tabs implements DoCheck, AfterContentInit {
   @Input()
   tabBarBackgroundColor: string = '#FFF';
   @Input()
+  prerenderingSiblingsNumber: number = 1;
+  @Input()
   tabBarTextStyle: object = {};
   /** should be removed when https://github.com/angular/angular/issues/20810 resolved **/
   @Input()

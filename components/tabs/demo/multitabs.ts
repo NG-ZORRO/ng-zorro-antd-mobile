@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <Tabs [activeTab]="index"
           [page]="3"
+          [prerenderingSiblingsNumber]="2"
           (onChange)="selectCard($event)"
           (onTabClick)="selectCard($event)"
     >
