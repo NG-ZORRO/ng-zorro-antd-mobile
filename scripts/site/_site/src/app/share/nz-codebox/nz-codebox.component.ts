@@ -353,18 +353,18 @@ export class AppModule { }
       template    : 'angular-cli',
       dependencies: {
         'rxjs'                             : '^6.3.3',
-        '@angular/cdk'                     : '^7.1.0',
-        '@angular/core'                    : '^7.1.0',
-        '@angular/forms'                   : '^7.1.0',
-        '@angular/http'                    : '^7.1.0',
-        '@angular/language-service'        : '^7.1.0',
-        '@angular/platform-browser'        : '^7.1.0',
-        '@angular/platform-browser-dynamic': '^7.1.0',
-        '@angular/common'                  : '^7.1.0',
-        '@angular/router'                  : '^7.1.0',
-        '@angular/animations'              : '^7.1.0',
-        '@ant-design/icons-angular'        : '~2.0.1',
-        'ng-zorro-antd-mobile'             : '^0.11.0'
+        '@angular/cdk'                     : '^7.3.7',
+        '@angular/core'                    : '^7.2.13',
+        '@angular/forms'                   : '^7.2.13',
+        '@angular/http'                    : '^7.2.13',
+        '@angular/language-service'        : '^7.2.13',
+        '@angular/platform-browser'        : '^7.2.13',
+        '@angular/platform-browser-dynamic': '^7.2.13',
+        '@angular/common'                  : '^7.2.13',
+        '@angular/router'                  : '^7.2.13',
+        '@angular/animations'              : '^7.2.13',
+        '@ant-design/icons-angular'        : '~2.0.3',
+        'ng-zorro-antd-mobile'             : '^0.12.0'
       },
       tags        : [ 'stackblitz', 'sdk' ]
     });

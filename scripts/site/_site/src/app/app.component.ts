@@ -21,8 +21,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   language = 'zh';
-  versionList = ['0.11.x'];
-  currentVersion = '0.11.x';
+  versionList = ['0.12.x'];
+  currentVersion = '0.12.x';
   public isHomeURL = true;
   public isKitchenURL = false;
   public demoTitle = '';
