@@ -63,7 +63,7 @@ export class DemoTabsDynamicComponent {
   onClick() {
     this.tabList.push({
       title: '' + (this.tabList.length + 1) + 'th Tab',
-      content: '' + (this.tabList.length + 1) + 'thTab Content'
+      content: '' + (this.tabList.length + 1) + 'th Tab Content'
     });
   }
 }
