@@ -10,6 +10,7 @@
   bottom: 0;
   width: 100%;
   background-color: @fill-base;
+  padding-bottom: env(safe-area-inset-bottom);
 
   &&-share {
     background-color: #f2f2f2;
@@ -37,6 +38,7 @@
 
     &-item {
       font-size: @actionsheet-item-font-size;
+      padding: 0 8 * @hd;
       padding: 0;
       margin: 0;
       position: relative;
@@ -45,6 +47,7 @@
       box-sizing: border-box;
       white-space: nowrap;
       text-overflow: ellipsis;
+      // overflow-x: hidden;
       .hairline('top');
       &&-active {
         background-color: @fill-tap;
