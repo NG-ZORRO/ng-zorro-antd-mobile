@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, ChangeDetectorRef, Input, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -26,7 +26,19 @@ export class RadioItem {
   @Input()
   value: string;
   @Input()
+  arrow: string;
+  @Input()
+  thumb: string | TemplateRef<any>;
+  @Input()
   wrap: boolean = false;
+  @Input()
+  error: boolean = false;
+  @Input()
+  multipleLine: boolean = false;
+  @Input()
+  platform: string = 'ios';
+  @Input()
+  align: string = 'middle';
   @Input()
   get disabled(): boolean {
     return this._disabled;
