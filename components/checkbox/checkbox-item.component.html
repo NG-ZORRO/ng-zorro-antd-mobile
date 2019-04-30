@@ -1,7 +1,13 @@
 <ListItem [className]="'am-checkbox-item ' + (disabled ? 'am-checkbox-item-disabled' : '')"
-          [disabled]="disabled"
-          [thumb]="checkbox"
           [wrap]="wrap"
+          [align]="align"
+          [arrow]="arrow"
+          [error]="error"
+          [extra]="extra"
+          [thumb]="checkbox"
+          [disabled]="disabled"
+          [platform]="platform"
+          [multipleLine]="multipleLine"
           (onClick)="onCheckboxClick($event)"
 >
   <ng-content></ng-content>
