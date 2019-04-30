@@ -7,9 +7,21 @@ import { Component, OnInit, Input, HostBinding, TemplateRef, ViewEncapsulation }
 })
 export class TabPaneBody implements OnInit {
 
+  private _prerender: boolean = false;
+
   @Input() active: boolean = false;
-  @Input() hidden: boolean = false;
+  @Input() loaded: boolean = false;
   @Input() content: TemplateRef<void>;
+  @Input()
+  get prerender(): boolean {
+    return this._prerender;
+  }
+  set prerender(value: boolean) {
+    this._prerender = value;
+    if (value) {
+      this.loaded = true;
+    }
+  }
 
   @HostBinding('class.am-tabs-pane-wrap')
   paneWrap: boolean = true;
