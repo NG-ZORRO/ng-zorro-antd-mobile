@@ -13,6 +13,35 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.12.0 (2019-04-30)
+
+### BreakChange
+
+* **tabbar:** 使用TabBarItem 替代 TabPane和TabBarTab, 使用上更加简单
+* **grid:** 将 OnClick 修改为 onClick
+
+### Bug Fixes
+
+* **grid:** 将 OnClick 修改为 onClick ([#394](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/394)) ([bf3039a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/bf3039a))
+* **schematics:** 将 url 从 https 切换到 http ([#393](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/393)) ([0c3ad0f](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0c3ad0f))
+* **stepper:** 修复 stepper 不可用的问题 ([#405](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/405)) ([acb2a95](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/acb2a95))
+
+### Features
+
+* **all:** 公开导出组件库 API ([#389](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/389)) ([dd9af23](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/dd9af23))
+* **checkboxitem&radioitem:** 支持 wrap API ([#406](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/406)) ([db8a6c8](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/db8a6c8))
+* **checkboxItem&radioItem:** API 与 listItem 同步 ([#408](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/408)) ([6cf232f](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6cf232f))
+* **dependencies:** 更新三方依赖 ([#401](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/401)) ([dcf4a61](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/dcf4a61))
+* **docs:** 更新 README.md ([#398](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/398)) ([80bd1b5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/80bd1b5))
+* **styles:** 与 ant design mobile of react 样式同步 ([#403](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/403)) ([5c77b8c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5c77b8c))
+* **tabs&tabbar:** tabs&tabbar 重构，支持动态增加面板、预加载以及自定义设置标签页尺寸，提升整体性能 ([#399](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/399)) ([f82ceab](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f82ceab))
+
+### Performance Improvements
+
+* **code-box:** 优化stackblitz中demo参数. ([#404](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/404)) ([9c39051](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/9c39051))
+* **site:** 更新首页 ([#397](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/397)) ([92ae470](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/92ae470))
+* **tabs&tabbar:** 默认将 prerenderingSiblingsNumber设置为-1，预加载逻辑与React版本能保持一致 ([#407](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/407)) ([1db49eb](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/1db49eb))
+
 ## 0.11.9 (2019-04-18)
 
 ### Bug Fixes
