@@ -166,11 +166,12 @@ export class Stepper implements OnChanges, ControlValueAccessor {
   }
 
   ngOnChanges() {
-    if (this.plus(this._value, this._step) > this._max) {
-      this._upDisabled = true;
-    }
-    if (this.minus(this._value, this._step) < this._min) {
+    if (this._disabled) {
       this._downDisabled = true;
+      this._upDisabled = true;
+    } else {
+      this._upDisabled = this.plus(this._value, this._step) > this._max ? true : false;
+      this._downDisabled = this.minus(this._value, this._step) < this._min ? true : false;
     }
     this.setCls();
   }
