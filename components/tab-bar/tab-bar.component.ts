@@ -24,7 +24,7 @@ export class TabBar implements AfterContentInit {
   @Input()
   hidden: boolean = false;
   @Input()
-  prerenderingSiblingsNumber: number = 1;
+  prerenderingSiblingsNumber: number = -1;
   @Input()
   get activeTab(): number {
     return this._activeTab;
