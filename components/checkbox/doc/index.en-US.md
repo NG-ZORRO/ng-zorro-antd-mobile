@@ -20,7 +20,7 @@ Checkbox
 
 ### CheckboxItem
 
-The encapsulation about `Checkbox` based on `ListItem`, the property `thumb` of `ListItem` will be passed to `Checkbox`, while other properties remain the same.
+The encapsulation about `Checkbox` based on `ListItem`, the property `thumb` of `ListItem` will be passed to `Checkbox`, while other properties remain the same (except for onClick, which has been changed to onChange).
 
 | Properties | Descrition                             | Type                                                    | Default              |
 | ---------- | -------------------------------------- | ------------------------------------------------------- | -------------------- |
@@ -28,7 +28,6 @@ The encapsulation about `Checkbox` based on `ListItem`, the property `thumb` of 
 | value      | value                                  | String                                                  | -                    |
 | ngModel    | whether is checked now, double binding | Boolean                                                 | <span> false </span> |
 | disabled   | whether is been disabled               | Boolean                                                 | false                |
-| wrap    | Whether to wrap long texts, otherwise it will be hidden by default. | Boolean  | `false`  |
 | onChange   | callback when check status is changed  | (name: string, value: string, checked: boolean) => void | -                    |
 
 ### AgreeItem
