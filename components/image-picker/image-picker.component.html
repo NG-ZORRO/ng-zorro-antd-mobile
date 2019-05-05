@@ -3,6 +3,7 @@
     <FlexItem *ngFor="let item of rowItem;let j =index;">
       <div *ngIf="item && 'img' === item.type && item.backgroundImage" class="{{prefixCls}}-item">
         <div role="button"
+             *ngIf="!disableDelete"
              aria-label="Click and Remove this image"
              class="{{prefixCls}}-item-remove"
              (click)="removeImage(i * length + j)"
@@ -24,6 +25,7 @@
                type="file"
                [accept]="accept"
                [multiple]="multiple"
+               [attr.capture]="capture ? capture : null"
                (change)="fileChange($event)"
         />
       </div>
