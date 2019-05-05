@@ -23,6 +23,8 @@ export class ImagePicker {
   @ViewChild('fileSelectorInput', { read: ViewContainerRef })
   private _fileSelectorInput: ViewContainerRef;
 
+  @Input() capture: boolean | string = false;
+  @Input() disableDelete: boolean = false;
   @Input()
   get files() {
     return this._files;
