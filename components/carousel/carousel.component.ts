@@ -31,6 +31,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   };
 
   private _timer: any;
+  private _resizeTimer: any;
   private _nodeArr: Array<any> = [];
   private _lastIndex: number = 0;
   private _isMouseDown: boolean = false;
@@ -170,6 +171,17 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     setTimeout(() => {
       this.startTimer();
     }, this.speed);
+  }
+
+  @HostListener('window:resize')
+  resize() {
+    if (this._resizeTimer) {
+      clearTimeout(this._resizeTimer);
+    }
+    this._resizeTimer = setTimeout(() => {
+      this.ngAfterViewInit();
+      clearTimeout(this._resizeTimer);
+    }, 200);
   }
 
   constructor(private _ele: ElementRef) {}
