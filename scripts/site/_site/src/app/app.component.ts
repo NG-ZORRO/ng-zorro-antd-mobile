@@ -89,8 +89,11 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
 
       if (event && event['url'] && event['url'].split('/')[2]) {
-        this.demoTitle = event['url'].split('/')[2];
-        this.demoTitle = this.demoTitle.substring(0, 1).toUpperCase() + this.demoTitle.substring(1);
+        const demoTitleArray = event['url'].split('/')[2].split('-');
+        this.demoTitle = '';
+        for (let i = 0; i < demoTitleArray.length; ++i) {
+          this.demoTitle += demoTitleArray[i].substring(0, 1).toUpperCase() + demoTitleArray[i].substring(1);
+        }
       }
       if (event instanceof NavigationEnd) {
         const currentDemoComponent = this.componentList.find(component => `/${component.path}` === this.router.url);
