@@ -59,14 +59,15 @@ describe('checkbox', () => {
     expect(component.onChange).toHaveBeenCalledTimes(1);
   });
 
-  it('checkbox item onChange work', () => {
-    // const checkboxItem = fixture.debugElement.query(By.css('CheckboxItem'));
-    // component.onChange = jasmine.createSpy('onChange callback');
-    // component.disabled = false;
-    // fixture.detectChanges();
-    // checkboxItem.nativeElement.click();
-    // fixture.detectChanges();
-    // expect(component.onChange).toHaveBeenCalledTimes(1);
+  it('checkboxItem onChange work', () => {
+    const checkboxItem = fixture.debugElement.query(By.css('.am-list-thumb>.am-checkbox-wrapper')).nativeElement;
+    component.onChange = jasmine.createSpy('onChange callback');
+    component.disabled = false;
+    component.checked = false;
+    fixture.detectChanges();
+    checkboxItem.click();
+    fixture.detectChanges();
+    expect(component.onChange).toHaveBeenCalledTimes(1);
   });
 
   it('agreeItem onChange work', () => {
