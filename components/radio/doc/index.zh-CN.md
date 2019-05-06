@@ -30,7 +30,7 @@ subtitle: 单选框
 
 ### RadioItem
 
-基于`ListItem`对`Radio`进行封装,`ListItem`的`extra`属性固定传入`Radio`,其他属性和`ListItem`一致。
+基于`ListItem`对`Radio`进行封装,`ListItem`的`extra`属性固定传入`Radio`,其他属性和`ListItem`一致(除了onClick回调事件不可用之外，因为在这里是由RadioItemGroup传递回调事件)。
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------

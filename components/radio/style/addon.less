@@ -1,3 +1,16 @@
+@radioWarpPrefixCls: am-radio;
+@listPrefixCls: am-list;
+
 radioitem {
   display: block;
+}
+
+.@{listPrefixCls} {
+  & .@{radioWarpPrefixCls}-item {
+    .@{listPrefixCls}-line {
+      .@{listPrefixCls}-content {
+        padding-right: 20px;
+      }
+    }
+  }
 }

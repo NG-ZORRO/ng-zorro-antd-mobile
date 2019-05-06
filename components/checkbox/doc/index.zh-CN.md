@@ -21,7 +21,7 @@ subtitle: 复选框
 
 ### CheckboxItem
 
-基于`ListItem`对`Checkbox`进行封装,`ListItem`的`thumb`属性固定传入`Checkbox`,其他属性和`ListItem`一致。
+基于`ListItem`对`Checkbox`进行封装,`ListItem`的`thumb`属性固定传入`Checkbox`,其他属性和`ListItem`一致(除了onClick回调事件，在这里它被onChange回调事件所替代)。
 
 | 属性     | 说明                         | 类型                                                    | 默认值 |
 | -------- | ---------------------------- | ------------------------------------------------------- | ------ |

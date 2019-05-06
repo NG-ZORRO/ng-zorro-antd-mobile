@@ -29,7 +29,7 @@ Properties | Descrition | Type | Default
 
 ### RadioItem
 
-The encapsulation about `Radio` based on `ListItem`, the property `extra` of `ListItem` will be passed to `Radio`, while other properties remain the same.
+The encapsulation about `Radio` based on `ListItem`, the property `extra` of `ListItem` will be passed to `Radio`, while other properties remain the same(except for onClick, cause RadioItemGroup will emit the onChange output).
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------

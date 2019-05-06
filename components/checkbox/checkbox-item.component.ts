@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
+import { Component, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, TemplateRef, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CheckboxStatus } from './PropsType';
 
@@ -26,6 +26,20 @@ export class CheckboxItem implements ControlValueAccessor {
   name: string;
   @Input()
   value: string;
+  @Input()
+  arrow: string;
+  @Input()
+  extra: string | TemplateRef<any>;
+  @Input()
+  wrap: boolean = false;
+  @Input()
+  error: boolean = false;
+  @Input()
+  multipleLine: boolean = false;
+  @Input()
+  platform: string = 'ios';
+  @Input()
+  align: string = 'middle';
   @Input()
   get disabled(): boolean {
     return this._disabled;
