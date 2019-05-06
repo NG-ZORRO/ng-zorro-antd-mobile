@@ -10,7 +10,7 @@ import { Modal, Toast } from 'ng-zorro-antd-mobile';
       <WhiteSpace></WhiteSpace>
     </WingBlank>
   `,
-  providers: [Toast]
+  providers: [Toast, Modal]
 })
 export class DemoModalOperationComponent {
   constructor(private _modal: Modal, private _toast: Toast) {}

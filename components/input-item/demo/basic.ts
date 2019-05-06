@@ -161,7 +161,8 @@ import { Toast } from 'ng-zorro-antd-mobile';
         padding-bottom: 7px;
       }
     `
-  ]
+  ],
+  providers: [Toast]
 })
 export class DemoInputItemBasicComponent {
   value = '';
