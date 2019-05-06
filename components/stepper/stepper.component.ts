@@ -71,9 +71,6 @@ export class Stepper implements OnChanges, ControlValueAccessor {
   }
   set disabled(value: boolean) {
     if (value) {
-      this._disabled = true;
-      this._downDisabled = true;
-      this._upDisabled = true;
       this._downDisabled = value;
       this._upDisabled = value;
     }
