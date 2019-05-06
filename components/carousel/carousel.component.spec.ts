@@ -69,6 +69,15 @@ describe('CarouselComponent', () => {
     tick(10);
     expect(component).toBeTruthy();
   }));
+
+  it('should resize work', fakeAsync(() => {
+    const myEvent = new Event('resize');
+    window.dispatchEvent(myEvent);
+    window.dispatchEvent(myEvent);
+    tick(200);
+    fixture.destroy();
+  }));
+
 });
 
 @Component({
