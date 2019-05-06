@@ -5,7 +5,7 @@ import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testi
 import { ListModule, PickerModule, PickerComponent } from '../..';
 import { PickerOptions } from './picker-options.provider';
 import { Picker } from './picker.service';
-import { dispatchTouchEvent } from '../core/testing';
+import { dispatchTouchEvent } from '../core/testing/dispatch-events';
 import { LocaleProviderService, LocaleProviderModule } from '../..';
 import { Button } from '../button/button.component';
 import { ButtonModule } from '../button/button.module';

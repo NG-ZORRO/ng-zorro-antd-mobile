@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { TextareaItemModule } from './textarea-item.module';
 import { TextareaItem } from './textarea-item.component';
-import { dispatchFakeEvent } from '../core/testing';
+import { dispatchFakeEvent } from '../core/testing/dispatch-events';
 
 describe('TextareaComponent', () => {
   let component: TestTextareaItemComponent;

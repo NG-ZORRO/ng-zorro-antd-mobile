@@ -2,7 +2,7 @@ import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { dispatchTouchEvent } from '../core/testing';
+import { dispatchTouchEvent } from '../core/testing/dispatch-events';
 import { Tabs } from './tabs.component';
 import { TabsModule } from './tabs.module';
 import { TabPane } from './tab-pane.component';

@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ListModule } from './list.module';
-import { dispatchTouchEvent } from '../core/testing';
+import { dispatchTouchEvent } from '../core/testing/dispatch-events';
 
 describe('list', () => {
   let component;

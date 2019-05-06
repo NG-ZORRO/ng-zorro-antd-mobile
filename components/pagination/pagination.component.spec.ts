@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaginationModule } from './pagination.module';
 import { IconModule } from '../icon/icon.module';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
-import { dispatchTouchEvent } from '../core/testing';
+import { dispatchTouchEvent } from '../core/testing/dispatch-events';
 
 describe('pagination', () => {
   let component;

@@ -5,7 +5,7 @@ import { async, TestBed } from '@angular/core/testing';
 import { Button } from './button.component';
 import { ButtonModule } from './button.module';
 import { IconModule, WingBlankModule, WhiteSpaceModule, ListModule } from '../..';
-import { dispatchTouchEvent } from '../core/testing';
+import { dispatchTouchEvent } from '../core/testing/dispatch-events';
 
 describe('button', () => {
   let component;

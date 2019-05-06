@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PopoverComponentOptions } from './popover-component-options.provider';
 import { PopoverModule, IconModule, PopoverItemModule } from '../..';
-import { dispatchTouchEvent } from '../core/testing';
+import { dispatchTouchEvent } from '../core/testing/dispatch-events';
 import { PopoverOptions } from './popover-options.provider';
 
 describe('PopoverComponent', () => {

@@ -13,7 +13,7 @@ import {
   LocaleProviderModule,
   LocaleProviderService
 } from '../..';
-import { dispatchTouchEvent } from '../core/testing';
+import { dispatchTouchEvent } from '../core/testing/dispatch-events';
 
 describe('DatePickerComponent', () => {
   let component: TestDatePickerBasicComponent;

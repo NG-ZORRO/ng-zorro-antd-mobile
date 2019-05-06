@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, fakeAsync, tick, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from './carousel.module';
-import { dispatchTouchEvent } from '../core/testing';
+import { dispatchTouchEvent } from '../core/testing/dispatch-events';
 import { CarouselComponent } from './carousel.component';
 
 describe('CarouselComponent', () => {

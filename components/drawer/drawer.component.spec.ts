@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DrawerModule } from './drawer.module';
 import { ListModule } from '../list/list.module';
 import { DrawerComponent } from './drawer.component';
-import { dispatchTouchEvent } from '../core/testing';
+import { dispatchTouchEvent } from '../core/testing/dispatch-events';
 
 describe('drawer', () => {
   let component;

@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { RangeModule } from './range.module';
-import { dispatchMouseEvent, dispatchTouchEvent } from '../core/testing';
+import { dispatchMouseEvent, dispatchTouchEvent } from '../core/testing/dispatch-events';
 
 describe('RangeComponent', () => {
   let component: TestRangeComponent;

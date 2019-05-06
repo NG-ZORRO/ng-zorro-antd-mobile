@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SwipeActionModule } from './swipe-action.module';
 import { SwipeAction } from './swipe-action.component';
-import { dispatchTouchEvent } from '../core/testing';
+import { dispatchTouchEvent } from '../core/testing/dispatch-events';
 
 describe('swipeAction', () => {
   let component;
