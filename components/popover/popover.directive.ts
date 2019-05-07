@@ -20,7 +20,7 @@ import {
 import { PopoverComponent } from './popover.component';
 import { PopoverOptions } from './popover-options.provider';
 import { PopoverComponentOptions } from './popover-component-options.provider';
-import * as Positioning from '../core';
+import * as Positioning from '../core/util/position';
 
 @Directive({
   selector: '[Popover], [nzm-popover]',
