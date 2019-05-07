@@ -7,6 +7,8 @@ import { ActionSheetComponent } from './action-sheet.component';
 import { WingBlankModule } from '../wing-blank/wing-blank.module';
 import { WhiteSpaceModule} from '../white-space/white-space.module';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
+import { PopupService } from '../core/services/popup.service';
+import { ActionSheet } from './action-sheet.service';
 @NgModule({
   imports: [CommonModule, NgZorroAntdMobilePipesModule, ListModule, WhiteSpaceModule, WingBlankModule, CoreModule, LocaleProviderModule],
   declarations: [
@@ -15,6 +17,7 @@ import { LocaleProviderModule } from '../locale-provider/locale-provider.module'
   exports: [
     ActionSheetComponent
   ],
-  entryComponents: [ActionSheetComponent]
+  entryComponents: [ActionSheetComponent],
+  providers: [PopupService, ActionSheet]
 })
 export class ActionSheetModule { }
