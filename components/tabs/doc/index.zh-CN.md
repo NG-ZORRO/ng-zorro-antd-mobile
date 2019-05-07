@@ -28,13 +28,14 @@ animated  | 是否开启切换动画 | boolean |  true | false
 onChange  | tab变化时触发 | (index: number) => void | <span> </span> | false
 onTabClick  | tab 被点击的回调 | (index: number) => void | <span> </span> | false
 distanceToChangeTab | 滑动切换阈值(宽度比例) | number |  0.3 | false
+| prerenderingSiblingsNumber| 预加载两侧Tab数量, -1: 加载所有的tab内容, 0: 仅加载当前tab内容, n: 预加载两侧n个Tab | number |   -1   | false
 tabDirection | Tab方向 | 'horizontal' \| 'vertical' |  horizontal | false
 tabBarUnderlineStyle  | tabBar下划线样式 | object | <span> </span> | false
 tabBarBackgroundColor  | tabBar背景色 | string | <span> </span> | false
 tabBarActiveTextColor  | tabBar激活Tab文字颜色 | string | <span> </span> | false
 tabBarInactiveTextColor  | tabBar非激活Tab文字颜色 | string | <span> </span> | false
 tabBarTextStyle  | tabBar文字样式 | object | <span> </span> | false
-renderTabBar | 替换TabBar的Tab | TemplateRef | null
+renderTabBar | 替换TabBar的Tab | TemplateRef | null | false
 
 ### TabPane
 

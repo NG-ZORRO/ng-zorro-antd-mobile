@@ -1,8 +1,12 @@
-import { Component, AfterContentInit, Input, ContentChildren, QueryList, HostBinding } from '@angular/core';
-import { TabPane } from '../tabs/tab-pane.component';
-import { TabBarTab } from './tab-bar-tab.component';
+import { Component, AfterContentInit, Input, Output, ContentChildren, QueryList, HostBinding, EventEmitter } from '@angular/core';
+import { TabBarItem } from './tab-bar-item.component';
 
 export type TabBarTabPositionType = 'top' | 'bottom';
+export interface OnPressEvent {
+  index: number;
+  title: string;
+  key: string;
+}
 
 @Component({
   selector: 'TabBar, nzm-tab-bar',
@@ -14,21 +18,21 @@ export class TabBar implements AfterContentInit {
   private _tintColor: string = '#108ee9';
   private _unselectedTintColor: string = '#888';
 
-  @ContentChildren(TabPane, { descendants: true })
-  tabPanes: QueryList<TabPane>;
-  @ContentChildren(TabBarTab, { descendants: true })
-  tabBarTabs: QueryList<TabBarTab>;
+  @ContentChildren(TabBarItem, { descendants: true })
+  tabBarItems: QueryList<TabBarItem>;
 
   @Input()
   hidden: boolean = false;
+  @Input()
+  prerenderingSiblingsNumber: number = -1;
   @Input()
   get activeTab(): number {
     return this._activeTab;
   }
   set activeTab(tab: number) {
     this._activeTab = tab;
-    if (this.tabPanes && this.tabPanes.length > 0) {
-      this.selectTabPane(tab);
+    if (this.tabBarItems && this.tabBarItems.length > 0) {
+      this.selectTabBarItem(tab);
     }
   }
   @Input()
@@ -41,9 +45,9 @@ export class TabBar implements AfterContentInit {
   }
   set tintColor(color: string) {
     this._tintColor = color;
-    if (this.tabBarTabs && this.tabBarTabs.length > 0) {
-      this.tabBarTabs.forEach((tabBarTab: TabBarTab) => {
-        tabBarTab.tintColor = this._tintColor;
+    if (this.tabBarItems && this.tabBarItems.length > 0) {
+      this.tabBarItems.forEach((tabBarItem: TabBarItem) => {
+        tabBarItem.tintColor = this._tintColor;
       });
     }
   }
@@ -53,50 +57,41 @@ export class TabBar implements AfterContentInit {
   }
   set unselectedTintColor(color: string) {
     this._unselectedTintColor = color;
-    if (this.tabBarTabs && this.tabBarTabs.length > 0) {
-      this.tabBarTabs.forEach((tabBarTab: TabBarTab) => {
-        tabBarTab.unselectedTintColor = this._unselectedTintColor;
+    if (this.tabBarItems && this.tabBarItems.length > 0) {
+      this.tabBarItems.forEach((tabBarItem: TabBarItem) => {
+        tabBarItem.unselectedTintColor = this._unselectedTintColor;
       });
     }
   }
+  @Output()
+  onPress: EventEmitter<OnPressEvent> = new EventEmitter<OnPressEvent>();
 
   @HostBinding('class.am-tab-bar')
   tabBar: boolean = true;
 
-  constructor() {}
+  constructor() { }
 
-  selectTabPane(index: number) {
-    this.tabPanes.forEach((tabPane: TabPane, indexKey: number) => {
-      if (index < indexKey) {
-        tabPane.position = 'right-without-animation';
-      } else if (index > indexKey) {
-        tabPane.position = 'left-without-animation';
-      } else {
-        tabPane.position = 'center-without-animation';
-      }
-      if (index !== indexKey) {
-        tabPane.active = false;
-      } else {
-        tabPane.active = true;
-      }
-    });
-    if (this.tabBarTabs && this.tabBarTabs.length > 0) {
-      this.tabBarTabs.forEach((tabBarTab: TabBarTab) => {
-        tabBarTab.selected = false;
+  selectTabBarItem(index: number) {
+    if (this.tabBarItems && this.tabBarItems.length > 0) {
+      this.tabBarItems.forEach((tabBarItem: TabBarItem) => {
+        tabBarItem.selected = false;
       });
-      this.tabBarTabs.toArray()[index].selected = true;
-      this.tabBarTabs.toArray()[index].onPress.emit({
-        title: this.tabBarTabs.toArray()[index].title,
-        key: this.tabBarTabs.toArray()[index].key
-      });
+      this.tabBarItems.toArray()[index].selected = true;
     }
   }
 
-  ngAfterContentInit() {
-    this.selectTabPane(this.activeTab);
-    this.tabPanes.forEach((tabPane: TabPane) => {
-      tabPane.tintColor = this.tintColor;
-      tabPane.unselectedTintColor = this.unselectedTintColor;
-    });
+  tabBarTabOnPress(pressParam: OnPressEvent) {
+    this.onPress.emit(pressParam);
   }
+
+  ngAfterContentInit() {
+    if (this.tabBarItems && this.tabBarItems.length > 0) {
+      this.tabBarItems.forEach((tabBarItem: TabBarItem) => {
+        tabBarItem.tintColor = this._tintColor;
+        tabBarItem.unselectedTintColor = this._unselectedTintColor;
+      });
+    }
+    this.selectTabBarItem(this.activeTab);
+  }
+
 }

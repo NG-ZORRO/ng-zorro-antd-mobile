@@ -1,6 +1,15 @@
 <ListItem [className]="'am-radio-item ' + (disabled ? 'am-radio-item-disabled' : '')"
+          [wrap]="wrap"
+          [align]="align"
+          [arrow]="arrow"
+          [error]="error"
           [extra]="radio"
+          [thumb]="thumb"
           [disabled]="disabled"
+          [platform]="platform"
+          [multipleLine]="multipleLine"
+          [disabled]="disabled"
+          [wrap]="wrap"
           (onClick)="onRadioItemClick($event)"
 >
   <ng-content></ng-content>
