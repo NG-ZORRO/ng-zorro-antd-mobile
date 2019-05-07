@@ -14,7 +14,7 @@ import { takeUntil } from 'rxjs/operators';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { DatePickerOptions } from './date-picker-options.provider';
 import { Toast } from '../toast/toast.service';
-import * as velocity from '../core';
+import * as velocity from '../core/util/velocity';
 export type DateMode = 'date' | 'time' | 'datetime' | 'year' | 'month';
 
 @Component({
