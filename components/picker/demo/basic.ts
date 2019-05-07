@@ -81,8 +81,7 @@ import { district, provinceLite } from 'antd-mobile-demo-data';
         Disabled
       </ListItem>
     </List>
-  `,
-  providers: [Picker]
+  `
 })
 export class DemoPickerBasicComponent {
   data = district;

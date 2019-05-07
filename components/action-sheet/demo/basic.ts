@@ -15,8 +15,7 @@ import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
         <div class="am-action-sheet-message">123</div>
       </ng-template>
     </WingBlank>
-  `,
-  providers: [Toast, ActionSheet]
+  `
 })
 export class DemoActionSheetBasicComponent {
   dataList = [
