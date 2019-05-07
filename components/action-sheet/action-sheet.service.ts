@@ -14,7 +14,6 @@ function noop() {}
 @Injectable({
   providedIn: 'root'
 })
-@Injectable()
 export class ActionSheet extends PopupService {
   static compRef: ComponentRef<any> = null;
   static _actionSheetCompFactory: ComponentFactory<ActionSheetComponent> = null;
