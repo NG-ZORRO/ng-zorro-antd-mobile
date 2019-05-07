@@ -10,8 +10,8 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { PickerOptions } from './picker-options.provider';
-import * as velocity from '../core';
-import * as touchEvent from '../core';
+import * as velocity from '../core/util/velocity';
+import * as touchEvent from '../core/util/touch-event';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
