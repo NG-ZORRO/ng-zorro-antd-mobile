@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectorRef, Output, EventEmitter, ViewEncapsulation, HostBinding } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AccordionService } from '../accordion.service';
-import { isTemplateRef } from '../../core/util/check';
+import { isTemplateRef } from '../../core';
 import { Template } from '@angular/compiler/src/render3/r3_ast';
 @Component({
   selector: 'AccordionPanel',

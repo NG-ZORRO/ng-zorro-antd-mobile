@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuModule } from './menu.module';
 import { MenuComponent } from './menu.component';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
-import { dispatchTouchEvent } from '../core/testing/dispatch-events';
+import { dispatchTouchEvent } from '../core';
 
 describe('MenuComponent', () => {
   let component: TestMenuComponent;

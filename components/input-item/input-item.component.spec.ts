@@ -2,8 +2,7 @@ import { Component, ViewChild, TemplateRef } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { InputItemModule } from './input-item.module';
-import { createFakeEvent } from '../core/testing/event-objects';
-import { dispatchFakeEvent } from '../core/testing/dispatch-events';
+import { createFakeEvent, dispatchFakeEvent } from '../core';
 import { InputItem } from './input-item.component';
 import { FormsModule } from '@angular/forms';
 

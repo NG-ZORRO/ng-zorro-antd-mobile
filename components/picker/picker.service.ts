@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { PickerComponent } from './picker.component';
 import { PickerCallBack, PickerOptions } from './picker-options.provider';
-import { PopupService } from '../core/core.module';
+import { PopupService } from '../core';
 @Injectable()
 export class Picker extends PopupService {
   static defaultOptions: PickerOptions = new PickerOptions();

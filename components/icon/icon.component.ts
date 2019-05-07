@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { IconHandler } from '../core/util/icon';
+import { IconHandler } from '../core';
 
 @Component({
   selector: 'Icon, nzm-icon',

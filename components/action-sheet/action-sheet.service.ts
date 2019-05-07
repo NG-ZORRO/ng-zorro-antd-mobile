@@ -6,7 +6,7 @@ import {
   ActionSheetWithOptions,
   ShareActionSheetWithOptions
 } from './action-sheet-options.provider';
-import { PopupService } from '../core/core.module';
+import { PopupService } from '../core';
 
 const NORMAL = 'NORMAL';
 const SHARE = 'SHARE';

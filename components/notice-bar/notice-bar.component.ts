@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { IconHandler } from '../core/util/icon';
+import { IconHandler } from '../core';
 import * as util from './util';
 @Component({
   selector: 'NoticeBar, nzm-notice-bar',

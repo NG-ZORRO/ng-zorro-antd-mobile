@@ -2,7 +2,6 @@ import {
   Component,
   Input,
   HostListener,
-  HostBinding,
   ViewEncapsulation,
   ElementRef,
   Renderer2

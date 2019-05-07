@@ -1,4 +1,3 @@
-
 export function getVelocity() {
   return ((minInterval = 30, maxInterval = 100) => {
     let _time = 0;

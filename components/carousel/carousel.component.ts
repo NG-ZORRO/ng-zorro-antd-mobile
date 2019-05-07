@@ -13,7 +13,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CarouselSlideComponent } from './carousel-slide/carousel-slide.component';
-import * as touchEvent from '../core/util/touch-event';
+import * as touchEvent from '../core';
 
 @Component({
   selector: 'Carousel, nzm-carousel',

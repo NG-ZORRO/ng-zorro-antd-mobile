@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PullToRefreshModule } from './pull-to-refresh.module';
 import { IconModule } from '../icon/icon.module';
-import { dispatchTouchEvent } from '../core/testing/dispatch-events';
+import { dispatchTouchEvent } from '../core';
 import { from } from 'rxjs';
 
 describe('PullToRefreshComponent', () => {

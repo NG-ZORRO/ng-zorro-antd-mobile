@@ -5,7 +5,7 @@ import { ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModul
 import { By } from '@angular/platform-browser';
 import { Modal, ModalServiceComponent } from '../..';
 import { Button } from '../button/button.component';
-import { dispatchTouchEvent } from '../core/testing/dispatch-events';
+import { dispatchTouchEvent } from '../core';
 import { ModalOptions, AlertOptions } from './modal-options.provider';
 import { Overlay } from '@angular/cdk/overlay';
 describe('ModalComponent', () => {

@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { ModalServiceComponent } from './modal.component';
 import { BaseOptions, ModalOptions, AlertOptions, Action } from './modal-options.provider';
-import { PopupService } from '../core/core.module';
+import { PopupService } from '../core';
 @Injectable({
   providedIn: 'root'
 })
