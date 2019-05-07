@@ -85,6 +85,12 @@ export class TabBar implements AfterContentInit {
   }
 
   ngAfterContentInit() {
+    if (this.tabBarItems && this.tabBarItems.length > 0) {
+      this.tabBarItems.forEach((tabBarItem: TabBarItem) => {
+        tabBarItem.tintColor = this._tintColor;
+        tabBarItem.unselectedTintColor = this._unselectedTintColor;
+      });
+    }
     this.selectTabBarItem(this.activeTab);
   }
 
