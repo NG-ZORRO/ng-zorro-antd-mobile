@@ -8,7 +8,7 @@ import { ModalModule } from '../modal/modal.module';
 import { Modal } from '../modal/modal.service';
 import { ModalComponent } from '../modal/modal.component';
 import { CalendarModule } from './calendar.module';
-import { dispatchTouchEvent } from '../core/testing/dispatch-events';
+import { dispatchTouchEvent } from '../core';
 
 describe('CalendarComponent', () => {
   let component: TestCalendarBasicComponent;

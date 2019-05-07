@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SliderModule } from './slider.module';
-import { dispatchMouseEvent, dispatchTouchEvent } from '../core/testing/dispatch-events';
+import { dispatchMouseEvent, dispatchTouchEvent } from '../core';
 
 describe('SliderComponent', () => {
   let component: TestSliderComponent;

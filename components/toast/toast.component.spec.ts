@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { dispatchTouchEvent } from '../core/testing/dispatch-events';
+import { dispatchTouchEvent } from '../core';
 import { Toast } from './toast.service';
 import { ToastComponent } from './toast.component';
 import { ToastModule } from './toast.module';
