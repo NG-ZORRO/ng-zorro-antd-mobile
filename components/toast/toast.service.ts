@@ -15,9 +15,7 @@ export interface ConfigInterface {
   iconType?: string;
   mask?: boolean;
 }
-@Injectable({
-  providedIn: 'root'
-})
+
 @Injectable()
 export class Toast {
   static timeout = null;
