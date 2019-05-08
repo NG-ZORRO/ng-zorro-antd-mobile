@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { dispatchTouchEvent } from '../core/testing';
 import { async, ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
 import { ActionSheetComponent } from './action-sheet.component';
 import { ActionSheet, ActionSheetModule, ButtonModule } from '../..';
