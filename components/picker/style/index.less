@@ -9,6 +9,8 @@
   bottom: 0;
   position: fixed;
   width: 100%;
+  -webkit-transform: translateZ(1px);
+  transform: translateZ(1px);
   background-color: @fill-base;
   padding-bottom: env(safe-area-inset-bottom);
 
@@ -22,7 +24,6 @@
     z-index: @picker-zindex;
     -webkit-overflow-scrolling: touch;
     outline: 0;
-    transform: translateZ(1px);
   }
 
   &-mask {
@@ -34,7 +35,6 @@
     background-color: @fill-mask;
     height: 100%;
     z-index: @picker-zindex;
-    transform: translateZ(1px);
 
     &-hidden {
       display: none;
