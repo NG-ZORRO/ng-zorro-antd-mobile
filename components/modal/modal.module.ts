@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoreModule } from '../core/core.module';
 import { ModalComponent, ModalServiceComponent } from './modal.component';
 import { ListModule } from '../list/list.module';
 import { WingBlankModule } from '../wing-blank/wing-blank.module';
@@ -12,7 +11,6 @@ import { AlertOptions } from './modal-options.provider';
 @NgModule({
   imports: [
     CommonModule,
-    CoreModule,
     ListModule,
     WingBlankModule,
     WhiteSpaceModule,
