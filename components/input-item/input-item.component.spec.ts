@@ -394,7 +394,7 @@ describe('InputComponent', () => {
     expect(fakeInput.classList).toContain('focus');
   });
 
-  it('should ngModel work',  fakeAsync(() => {
+  it('should ngModel work', fakeAsync(() => {
     const inputModelEle = inputModel.nativeElement.querySelector('input');
     inputModelEle.value = 'test-ng-model';
     inputModelEle.dispatchEvent(new Event('input'));
@@ -471,7 +471,7 @@ export class TestInputComponent {
   blur = jasmine.createSpy('blur callback');
   change = jasmine.createSpy('change callback');
 
-  constructor() {}
+  constructor() { }
 
   clickTitle() {
     this.focus = {
