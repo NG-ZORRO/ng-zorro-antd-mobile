@@ -128,6 +128,28 @@ describe('StepperComponent', () => {
     expect(component.value).toBe(5, 'click down button');
 
     expect(stepperEle.nativeElement.classList).toContain('am-stepper-disabled', 'contain am-stepper-disabled');
+
+    component.disabled = false;
+    component.value = 5;
+    fixture.detectChanges();
+
+    expect(stepperEle.nativeElement.querySelector('.am-stepper-handler-down').classList).not.toContain(
+      'am-stepper-handler-down-disabled',
+      'down-disabled'
+    );
+    expect(stepperEle.nativeElement.querySelector('.am-stepper-handler-up').classList).not.toContain(
+      'am-stepper-handler-up-disabled',
+      'up-disabled'
+    );
+
+    downButton.click();
+    expect(component.value).toBe(4, 'click down button');
+
+    upButton.click();
+    expect(component.value).toBe(5, 'click down button');
+
+    expect(stepperEle.nativeElement.classList).not.toContain('am-stepper-disabled', 'contain am-stepper-disabled');
+
   });
 
   it('should readOnly work', fakeAsync(() => {
