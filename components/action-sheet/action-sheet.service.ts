@@ -6,7 +6,7 @@ import {
   ActionSheetWithOptions,
   ShareActionSheetWithOptions
 } from './action-sheet-options.provider';
-import { PopupService } from '../core/core.module';
+import { PopupService } from '../core/services/popup.service';
 
 const NORMAL = 'NORMAL';
 const SHARE = 'SHARE';
@@ -14,7 +14,6 @@ function noop() {}
 @Injectable({
   providedIn: 'root'
 })
-@Injectable()
 export class ActionSheet extends PopupService {
   static compRef: ComponentRef<any> = null;
   static _actionSheetCompFactory: ComponentFactory<ActionSheetComponent> = null;
