@@ -1,4 +1,4 @@
 export * from './modal.module';
-export * from './modal.service';
+// export * from './modal.service';
 export * from './modal.component';
-export * from './modal-options.provider';
+// export * from './modal-options.provider';
