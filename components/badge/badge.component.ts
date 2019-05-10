@@ -29,6 +29,9 @@ export class Badge implements OnChanges, OnInit, AfterViewInit {
   }
   set text(v: string) {
     this._text = v;
+    if (v) {
+      // this._children = true;
+    }
     this.setCls();
   }
   @Input()
@@ -43,6 +46,7 @@ export class Badge implements OnChanges, OnInit, AfterViewInit {
   set dot(v: boolean) {
     this._dot = v;
     if (this._dot) {
+      this._children = true;
       this._text = '';
     }
     this.setCls();
@@ -108,7 +112,7 @@ export class Badge implements OnChanges, OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      if (this._ref.nativeElement.children.length > 1) {
+      if (this._ref.nativeElement.children.length > 1 || (this._ref.nativeElement.children.length === 1 && !this.dot && !this.text)) {
         this._children = true;
         this.setCls();
       }
