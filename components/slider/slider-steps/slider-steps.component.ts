@@ -5,7 +5,7 @@ import { Component, OnInit, ElementRef, Input, HostBinding, ViewEncapsulation } 
   templateUrl: './slider-steps.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class SliderSteps implements OnInit {
+export class SliderStepsComponent implements OnInit {
   prefixCls = 'am-slider';
   stepArray = [];
 

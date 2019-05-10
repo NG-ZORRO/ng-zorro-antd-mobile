@@ -4,7 +4,7 @@ import { Component, Input, ViewChild, TemplateRef } from '@angular/core';
   selector: 'TabPane, nzm-tab-pane',
   templateUrl: './tab-pane.component.html'
 })
-export class TabPane {
+export class TabPaneComponent {
 
   public isTitleString: boolean = true;
 

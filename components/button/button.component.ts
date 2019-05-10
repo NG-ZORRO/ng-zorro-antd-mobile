@@ -16,7 +16,7 @@ import {
   encapsulation: ViewEncapsulation.None,
   templateUrl: './button.component.html'
 })
-export class Button implements AfterViewInit {
+export class ButtonComponent implements AfterViewInit {
   prefixCls: string = 'am-button';
   ngTemplate: boolean = false;
   iconType: any;

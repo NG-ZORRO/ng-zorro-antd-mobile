@@ -7,7 +7,7 @@ export type WingBlankSizeType = 'sm' | 'md' | 'lg';
   templateUrl: './wing-blank.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class WingBlank {
+export class WingBlankComponent {
   prefixCls: string = 'am-wingblank';
 
   @Input()

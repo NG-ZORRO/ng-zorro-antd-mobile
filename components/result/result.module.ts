@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Result } from './result.component';
+import { ResultComponent } from './result.component';
 import { CommonModule } from '@angular/common';
 import { IconModule } from '../icon/icon.module';
 
 @NgModule({
-  declarations: [Result],
-  exports: [Result],
+  declarations: [ResultComponent],
+  exports: [ResultComponent],
   imports: [CommonModule, IconModule]
 })
 export class ResultModule {}

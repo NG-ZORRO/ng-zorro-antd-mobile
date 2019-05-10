@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { TextareaItemModule } from './textarea-item.module';
-import { TextareaItem } from './textarea-item.component';
+import { TextareaItemComponent } from './textarea-item.component';
 import { dispatchFakeEvent } from '../core/testing';
 
 describe('TextareaComponent', () => {
@@ -28,7 +28,7 @@ describe('TextareaComponent', () => {
     textareaEle = fixture.debugElement.query(By.css('.text-1'));
     textareaCustomEle = fixture.debugElement.query(By.css('.text-2'));
     textareaModel = fixture.debugElement.query(By.css('.text-3'));
-    textareaDirective = fixture.debugElement.query(By.directive(TextareaItem));
+    textareaDirective = fixture.debugElement.query(By.directive(TextareaItemComponent));
     textareaItem = textareaDirective.nativeElement.querySelector('textarea');
     fixture.detectChanges();
   });
@@ -265,8 +265,8 @@ export class TestTextareaItemComponent {
   blurFn = jasmine.createSpy('blur callback');
   changeFn = jasmine.createSpy('change callback');
 
-  @ViewChild(TextareaItem)
-  textareaItemComp: TextareaItem;
+  @ViewChild(TextareaItemComponent)
+  textareaItemComp: TextareaItemComponent;
 
   constructor() {}
 

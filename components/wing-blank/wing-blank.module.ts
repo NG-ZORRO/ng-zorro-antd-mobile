@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { WingBlank } from './wing-blank.component';
+import { WingBlankComponent } from './wing-blank.component';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [WingBlank],
-  exports: [WingBlank],
+  declarations: [WingBlankComponent],
+  exports: [WingBlankComponent],
   imports: [CommonModule]
 })
 export class WingBlankModule {}

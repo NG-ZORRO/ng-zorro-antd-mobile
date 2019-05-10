@@ -4,12 +4,13 @@ import { PickerComponent } from './picker.component';
 import { PickerDirective } from './picker.directive';
 import { PickerOptions } from './picker-options.provider';
 import { PopupService } from '../core/services/popup.service';
-import { Picker } from './picker.service';
+import { PickerService } from './picker.service';
+
 @NgModule({
   imports: [CommonModule],
   exports: [PickerComponent, PickerDirective],
   declarations: [PickerComponent, PickerDirective],
-  providers: [PickerOptions, PopupService, Picker],
+  providers: [PickerOptions, PopupService, PickerService],
   entryComponents: [PickerComponent]
 })
 export class PickerModule {}

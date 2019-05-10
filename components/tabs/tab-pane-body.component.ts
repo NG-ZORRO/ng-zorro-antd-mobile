@@ -5,7 +5,7 @@ import { Component, OnInit, Input, HostBinding, TemplateRef, ViewEncapsulation }
   templateUrl: './tab-pane-body.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class TabPaneBody implements OnInit {
+export class TabPaneBodyComponent implements OnInit {
 
   private _prerender: boolean = false;
 

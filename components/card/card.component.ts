@@ -5,7 +5,7 @@ import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core'
   templateUrl: './card.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class Card {
+export class CardComponent {
   @Input()
   full: boolean = false;
 

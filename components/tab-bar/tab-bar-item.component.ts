@@ -4,13 +4,13 @@ import {
   ViewChild,
   TemplateRef
 } from '@angular/core';
-import { TabPane } from '../tabs/tab-pane.component';
+import { TabPaneComponent } from '../tabs/tab-pane.component';
 
 @Component({
   selector: 'TabBarItem, nzm-tab-bar-item',
   templateUrl: './tab-bar-item.component.html'
 })
-export class TabBarItem extends TabPane {
+export class TabBarItemComponent extends TabPaneComponent {
   prefixCls: string = 'am-tab-bar-tab';
   selected: boolean = false;
   tintColor: string = '#108ee9';

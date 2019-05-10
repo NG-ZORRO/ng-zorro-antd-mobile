@@ -1,6 +1,6 @@
 import { Injectable, TemplateRef } from '@angular/core';
 
-export class BaseOptions {
+export class ModalBaseOptions {
   visible?: boolean = false;
   focus?: boolean = true;
   prefixCls?: string = 'am-modal';
@@ -29,13 +29,13 @@ export class BaseOptions {
 }
 
 @Injectable()
-export class ModalOptions extends BaseOptions {
+export class ModalOptions extends ModalBaseOptions {
   transitionName?: string = 'am-fade';
   maskTransitionName?: string = 'am-fade';
 }
 
 @Injectable()
-export class AlertOptions extends BaseOptions {
+export class AlertOptions extends ModalBaseOptions {
   message?: string | TemplateRef<any>;
   actions?: Array<any>;
 }

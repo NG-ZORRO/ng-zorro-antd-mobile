@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Radio } from './radio.component';
+import { RadioComponent } from './radio.component';
 import { RadioModule } from './radio.module';
 
 describe('radio', () => {
@@ -20,7 +20,7 @@ describe('radio', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestRadioComponent);
     component = fixture.componentInstance;
-    radioEle = fixture.debugElement.query(By.directive(Radio));
+    radioEle = fixture.debugElement.query(By.directive(RadioComponent));
     fixture.detectChanges();
   });
 
@@ -107,8 +107,8 @@ export class TestRadioComponent {
   selectedStatus = { value: 0, name: 'doctor' };
   data = [{ value: 0, name: 'doctor' }, { value: 1, name: 'bachelor' }];
 
-  @ViewChild(Radio)
-  radio: Radio;
+  @ViewChild(RadioComponent)
+  radio: RadioComponent;
 
   onChange(e) {
     console.log('onChange', e);

@@ -1,2 +1,3 @@
-export * from './segmented-control.module';
-export * from './segmented-control.component';
+export { SegmentedControlOnChangeEvent } from './PropsType';
+export { SegmentedControlModule } from './segmented-control.module';
+export { SegmentedControlComponent } from './segmented-control.component';

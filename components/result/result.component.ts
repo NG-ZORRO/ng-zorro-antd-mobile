@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter, HostBinding, TemplateRef, ViewE
   templateUrl: './result.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class Result {
+export class ResultComponent {
   prefixCls: string = 'am-result';
   isTitleString: boolean = true;
   isMessageString: boolean = true;

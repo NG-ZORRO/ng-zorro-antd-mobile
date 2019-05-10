@@ -15,7 +15,7 @@ import {
   templateUrl: './swipe-action.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class SwipeAction implements OnInit, AfterViewInit, OnDestroy {
+export class SwipeActionComponent implements OnInit, AfterViewInit, OnDestroy {
   prefixCls: string = 'am-swipe';
   wrapCls: object = {};
 

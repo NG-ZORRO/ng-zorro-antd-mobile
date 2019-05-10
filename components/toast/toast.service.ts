@@ -19,7 +19,7 @@ export interface ConfigInterface {
   providedIn: 'root'
 })
 @Injectable()
-export class Toast {
+export class ToastService {
   static timeout = null;
   static _zone: NgZone = null;
   static compRef: ComponentRef<any> = null;
@@ -27,9 +27,9 @@ export class Toast {
   static _appRef: ApplicationRef = null;
 
   constructor(private _appRef: ApplicationRef, private _compiler: Compiler, private _cfr: ComponentFactoryResolver, private _zone: NgZone) {
-    Toast._zone = this._zone;
-    Toast._appRef = this._appRef;
-    Toast._toastCompFactory = this._cfr.resolveComponentFactory(ToastComponent);
+    ToastService._zone = this._zone;
+    ToastService._appRef = this._appRef;
+    ToastService._toastCompFactory = this._cfr.resolveComponentFactory(ToastComponent);
   }
 
   static _initConfig(config: Object, options: ToastOptions): Object {
@@ -58,28 +58,28 @@ export class Toast {
 
   static notice(config: ConfigInterface, type, timeInterval = 2000, onClose, mask = true) {
     // 如果已经存在，在没有遮罩层的情况下，会响应别的toast，需要清除原来的
-    if (Toast.compRef) {
-      Toast.hide();
+    if (ToastService.compRef) {
+      ToastService.hide();
     }
     const options: ToastOptions = new ToastOptions();
     options.iconType = type;
     options.mask = mask;
-    const props = Toast._initConfig(config, options);
+    const props = ToastService._initConfig(config, options);
 
-    document.body.insertBefore(document.createElement(Toast._toastCompFactory.selector), document.body.firstChild);
+    document.body.insertBefore(document.createElement(ToastService._toastCompFactory.selector), document.body.firstChild);
     let instance: any;
     let subject: any;
 
-    Toast.compRef = Toast._appRef.bootstrap(Toast._toastCompFactory);
-    instance = Toast.compRef.instance;
+    ToastService.compRef = ToastService._appRef.bootstrap(ToastService._toastCompFactory);
+    instance = ToastService.compRef.instance;
     subject = instance.subject;
 
     if (timeInterval) {
-      Toast.timeout = setTimeout(() => {
+      ToastService.timeout = setTimeout(() => {
         if (onClose) {
           onClose();
         }
-        Toast.hide();
+        ToastService.hide();
       }, timeInterval);
     }
 
@@ -95,7 +95,7 @@ export class Toast {
       iconType: 'info',
       content: content
     });
-    return Toast.notice(config, 'info', timeInterval, onClose, mask);
+    return ToastService.notice(config, 'info', timeInterval, onClose, mask);
   }
 
   /**
@@ -106,7 +106,7 @@ export class Toast {
       iconType: 'success',
       content: content
     });
-    return Toast.notice(config, 'success', timeInterval, onClose, mask);
+    return ToastService.notice(config, 'success', timeInterval, onClose, mask);
   }
 
   static show(content?: string, timeInterval?: number, mask?: boolean) {
@@ -114,7 +114,7 @@ export class Toast {
       iconType: 'info',
       content: content
     });
-    return Toast.notice(config, 'info', timeInterval, () => {}, mask);
+    return ToastService.notice(config, 'info', timeInterval, () => {}, mask);
   }
 
   static fail(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean) {
@@ -122,7 +122,7 @@ export class Toast {
       iconType: 'fail',
       content: content
     });
-    return Toast.notice(config, 'fail', timeInterval, onClose, mask);
+    return ToastService.notice(config, 'fail', timeInterval, onClose, mask);
   }
 
   static offline(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean) {
@@ -130,7 +130,7 @@ export class Toast {
       iconType: 'offline',
       content: content
     });
-    return Toast.notice(config, 'offline', timeInterval, onClose, mask);
+    return ToastService.notice(config, 'offline', timeInterval, onClose, mask);
   }
 
   static loading(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean) {
@@ -138,18 +138,18 @@ export class Toast {
       iconType: 'loading',
       content: content
     });
-    return Toast.notice(config, 'loading', timeInterval, onClose, mask);
+    return ToastService.notice(config, 'loading', timeInterval, onClose, mask);
   }
 
   static hide() {
-    if (Toast.timeout) {
-      clearTimeout(Toast.timeout);
+    if (ToastService.timeout) {
+      clearTimeout(ToastService.timeout);
     }
-    if (Toast.compRef) {
-      Toast._zone.run(() => {
-        Toast.compRef.destroy();
+    if (ToastService.compRef) {
+      ToastService._zone.run(() => {
+        ToastService.compRef.destroy();
       });
-      Toast.compRef = null;
+      ToastService.compRef = null;
     }
   }
 }

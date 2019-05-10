@@ -5,7 +5,7 @@ import { Component, ViewEncapsulation, Input, HostBinding, TemplateRef } from '@
   templateUrl: './card-footer.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class CardFooter {
+export class CardFooterComponent {
   prefixCls: string = 'am-card-footer';
 
   @Input()

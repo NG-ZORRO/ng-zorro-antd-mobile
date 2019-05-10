@@ -3,9 +3,9 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { dispatchTouchEvent } from '../core/testing';
-import { Tabs } from './tabs.component';
+import { TabsComponent } from './tabs.component';
 import { TabsModule } from './tabs.module';
-import { TabPane } from './tab-pane.component';
+import { TabPaneComponent } from './tab-pane.component';
 
 describe('tab', () => {
   let component;
@@ -457,10 +457,10 @@ export class TestTabsComponent {
   distanceToChangeTab = 0.3;
   tabDirection = 'horizontal';
 
-  @ViewChild(Tabs)
-  tabs: Tabs;
-  @ViewChildren(TabPane)
-  tabPanes: QueryList<TabPane>;
+  @ViewChild(TabsComponent)
+  tabs: TabsComponent;
+  @ViewChildren(TabPaneComponent)
+  tabPanes: QueryList<TabPaneComponent>;
 
   constructor() {}
 
