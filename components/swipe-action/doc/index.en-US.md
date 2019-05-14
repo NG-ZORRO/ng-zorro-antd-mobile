@@ -34,4 +34,5 @@ Properties | Descrition | Type | Default
 | text       | text of button    | String | `Click` |
 | style       | style of button     | Object | `{}` |
 | onPress       | callback function that is triggered when button will be pressed   | (): void | `function() {}` |
+| className       | class name of button     | String |  |
 

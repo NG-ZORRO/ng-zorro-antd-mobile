@@ -34,4 +34,5 @@ subtitle: 滑动操作
 | text       | 按钮文案     | String | `Click` |
 | style       | 按钮样式     | Object | `{}` |
 | onPress       | 按钮点击事件     | (): void | `function() {}` |
+| className       | 按钮样式类     | String |  |
 
