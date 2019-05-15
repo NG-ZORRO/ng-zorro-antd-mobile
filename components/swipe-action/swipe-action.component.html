@@ -4,7 +4,7 @@
        class="{{prefixCls}}-actions {{prefixCls}}-actions-left"
        #leftBtnRef>
     <div *ngFor="let btn of left"
-         class="{{prefixCls}}-btn"
+         class="{{prefixCls}}-btn {{btn.className}}"
          [ngStyle]="btn.style"
          role="button"
          (click)="onBtnClick($event, btn)">
@@ -17,11 +17,11 @@
        class="{{prefixCls}}-actions {{prefixCls}}-actions-right"
        #rightBtnRef>
     <div *ngFor="let btn of right"
-         class="{{prefixCls}}-btn"
+         class="{{prefixCls}}-btn {{btn.className}}"
          [ngStyle]="btn.style"
          role="button"
          (click)="onBtnClick($event, btn)"
-         >
+    >
       <div class="{{prefixCls}}-btn-text">
         {{btn.text || 'Click'}}
       </div>
