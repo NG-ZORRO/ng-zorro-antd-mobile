@@ -79,7 +79,15 @@ import { Component } from '@angular/core';
         </ListItem>
       </SwipeAction>
     </List>
-  `
+  `,
+  styles : [
+    `
+      /deep/.btnClass {
+        background-color: #F4333C;
+        color: white
+      }
+    `
+  ]
 })
 export class DemoSwipeActionBasicComponent {
   isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(window.navigator.userAgent);
@@ -92,7 +100,7 @@ export class DemoSwipeActionBasicComponent {
     {
       text: 'Delete',
       onPress: () => console.log('delete'),
-      style: { backgroundColor: '#F4333C', color: 'white' }
+      className: 'btnClass'
     }
   ];
 
@@ -105,7 +113,7 @@ export class DemoSwipeActionBasicComponent {
     {
       text: 'long text',
       onPress: () => console.log('delete'),
-      style: { backgroundColor: '#F4333C', color: 'white' }
+      className: 'btnClass'
     }
   ];
 

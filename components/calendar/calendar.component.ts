@@ -15,7 +15,7 @@ import zhCN from './locale/zh_CN';
 import enUS from './locale/en_US';
 import { CalendarPropsType } from './calendar.props.component';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
-import { mergeDateTime } from './util/index';
+import { mergeDateTime, isSameDate } from './util/index';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -278,10 +278,10 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
         } else {
           newState = {
             ...newState,
-            timePickerTitle: +newDate >= +startDate ? locale.selectEndTime : locale.selectStartTime,
+            timePickerTitle: +newDate >= +startDate || isSameDate(startDate, newDate) ? locale.selectEndTime : locale.selectStartTime,
             disConfirmBtn: false,
             endDate:
-              pickTime && !useDateTime && +newDate >= +startDate
+              pickTime && !useDateTime && (+newDate >= +startDate || isSameDate(startDate, newDate))
                 ? new Date(+mergeDateTime(newDate, startDate) + 3600000)
                 : newDate
           };
