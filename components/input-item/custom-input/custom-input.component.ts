@@ -18,7 +18,7 @@ import { CustomInputService } from './custom-input.service';
   encapsulation: ViewEncapsulation.None,
   providers: [CustomInputService]
 })
-export class CustomInput implements OnInit, OnDestroy {
+export class CustomInputComponent implements OnInit, OnDestroy {
   keyboardPrefixCls: string = 'am-number-keyboard';
   fakeInputCls: object;
   focus: boolean = false;

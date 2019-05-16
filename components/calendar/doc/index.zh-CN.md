@@ -17,7 +17,7 @@ subtitle: 日历
 ----|-----|------|------|------
 \[(ngModel)\]|ngModel|Array\<Date\> \| Date|<span> </span>|false
 enterDirection | 入场方向 vertical: 垂直 horizontal: 水平 | 'horizontal' \| 'vertical'| vertical | false
-locale | 本地化 | Models.Locale | <span> </span> | false
+locale | 本地化 | DateModels.Locale | <span> </span> | false
 onCancel | 关闭时回调 | () => void | <span> </span>  | false
 onConfirm | 确认时回调 | (startDateTime?: Date, endDateTime?: Date) => void |  <span> </span>  | false
 pickTime|是否选择时间 | boolean | false | false
@@ -26,7 +26,7 @@ showShortcut | 快捷日期选择 | boolean | false | false
 type | 选择类型 one: 单日 range: 日期区间 | 'one' \| 'range'| range | false
 visible | 是否显示 | boolean | false | false
 defaultDate | 显示开始日期 | Date | today | false
-getDateExtra | 日期扩展数据 | (date: Date) => Models.ExtraData |  <span> </span>   | false
+getDateExtra | 日期扩展数据 | (date: Date) => DateModels.ExtraData |  <span> </span>   | false
 initalMonths | 初始化月个数 | number | 6 | false
 maxDate | 最大日期 | Date |   <span> </span>  | false
 minDate | 最小日期 | Date |  <span> </span>   | false

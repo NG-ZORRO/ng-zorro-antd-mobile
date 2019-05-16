@@ -1,7 +1,7 @@
-import { Models } from '../date/DataTypes';
+import { DateModels } from '../date/DataTypes';
 
 export interface CalendarTimePickerPropsType {
-  locale: Models.Locale;
+  locale: DateModels.Locale;
   prefixCls?: string;
   pickerPrefixCls?: string;
   title?: string;

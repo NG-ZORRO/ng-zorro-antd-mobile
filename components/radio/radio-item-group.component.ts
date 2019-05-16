@@ -12,7 +12,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
-import { RadioItem } from './radio-item.component';
+import { RadioItemComponent } from './radio-item.component';
 
 import { merge, Subject, Subscription } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
@@ -20,7 +20,7 @@ import { RadioStatus } from './PropsType';
 
 export const RADIO_ITEM_GROUP_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => RadioItemGroup),
+  useExisting: forwardRef(() => RadioItemGroupComponent),
   multi: true
 };
 
@@ -31,7 +31,7 @@ export const RADIO_ITEM_GROUP_VALUE_ACCESSOR: any = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [RADIO_ITEM_GROUP_VALUE_ACCESSOR]
 })
-export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValueAccessor {
+export class RadioItemGroupComponent implements AfterContentInit, OnDestroy, ControlValueAccessor {
   private selectedValue: string | number;
   private destroy$ = new Subject();
   private selectSubscription: Subscription;
@@ -39,7 +39,7 @@ export class RadioItemGroup implements AfterContentInit, OnDestroy, ControlValue
   private _ngModelOnChange: (value: string | number) => {};
   private _ngModelOnTouched: () => {};
 
-  @ContentChildren(forwardRef(() => RadioItem)) radioItems: QueryList<RadioItem>;
+  @ContentChildren(forwardRef(() => RadioItemComponent)) radioItems: QueryList<RadioItemComponent>;
 
   @Output()
   onChange = new EventEmitter<RadioStatus>();

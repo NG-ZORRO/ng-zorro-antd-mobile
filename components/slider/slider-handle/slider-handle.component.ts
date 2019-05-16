@@ -16,7 +16,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './slider-handle.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class SliderHandle implements OnInit, OnDestroy {
+export class SliderHandleComponent implements OnInit, OnDestroy {
   left: number;
 
   private _min: number;

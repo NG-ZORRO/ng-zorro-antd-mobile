@@ -11,7 +11,7 @@ import {
   Renderer2,
   ElementRef,
   forwardRef,
-  TemplateRef,
+  TemplateRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -21,12 +21,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputItem),
+      useExisting: forwardRef(() => InputItemComponent),
       multi: true
     }
   ]
 })
-export class InputItem implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {
+export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {
   prefixCls: string = 'am-input';
   wrapCls: object;
   labelCls: object;
@@ -388,7 +388,7 @@ export class InputItem implements OnInit, AfterViewInit, OnChanges, ControlValue
 
   ngAfterViewInit() {
     setTimeout(() => {
-       this.setCls();
+      this.setCls();
     }, 0);
   }
 }

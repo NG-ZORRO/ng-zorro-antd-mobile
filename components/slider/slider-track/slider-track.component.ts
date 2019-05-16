@@ -6,7 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './slider-track.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class SliderTrack implements OnChanges {
+export class SliderTrackComponent implements OnChanges {
   prefixCls = 'am-slider';
   elStyle: object;
 

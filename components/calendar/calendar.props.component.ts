@@ -1,9 +1,9 @@
-import { Models } from './date/DataTypes';
+import { DateModels } from './date/DataTypes';
 export type SelectDateType = [Date, Date] | [Date];
 
-export interface HeaderPropsType {
+export interface CalendarHeaderPropsType {
   title?: string;
-  locale?: Models.Locale;
+  locale?: DateModels.Locale;
   showClear?: boolean;
   onCancel?: () => void;
   onClear?: () => void;
@@ -11,16 +11,16 @@ export interface HeaderPropsType {
   clearIcon?: any;
 }
 
-export default interface PropsType {
+export interface CalendarPropsType {
   enterDirection?: 'horizontal' | 'vertical';
-  locale?: Models.Locale;
+  locale?: DateModels.Locale;
   onCancel?: () => void;
   onClear?: () => void;
   onConfirm?: (startDateTime?: Date, endDateTime?: Date) => void;
   pickTime?: boolean;
   prefixCls?: string;
   renderShortcut?: (select: (startDate?: Date, endDate?: Date) => void) => any;
-  renderHeader?: (prop: HeaderPropsType) => any;
+  renderHeader?: (prop: CalendarHeaderPropsType) => any;
   showShortcut?: boolean;
   style?: any;
   title?: string;
@@ -29,7 +29,7 @@ export default interface PropsType {
   defaultValue?: SelectDateType;
 
   defaultDate?: Date;
-  getDateExtra?: (date: Date) => Models.ExtraData;
+  getDateExtra?: (date: Date) => DateModels.ExtraData;
   infiniteOpt?: boolean;
   initalMonths?: number;
   maxDate?: Date;

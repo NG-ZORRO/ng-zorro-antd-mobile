@@ -1,2 +1,2 @@
-export * from './activity-indicator.module';
-export * from './activity-indicator.component';
+export { ActivityIndicatorModule } from './activity-indicator.module';
+export { ActivityIndicatorComponent } from './activity-indicator.component';

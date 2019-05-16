@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardModule } from './card.module';
 
-describe('card', () => {
+describe('CardComponent', () => {
   let component;
   let fixture: ComponentFixture<TestCardComponent>;
   let cardEle;

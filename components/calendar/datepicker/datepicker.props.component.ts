@@ -1,13 +1,13 @@
-import { Models } from '../date/DataTypes';
+import { DateModels } from '../date/DataTypes';
 
-export default interface PropsType {
+export interface DatepickerPropsType {
   defaultDate?: Date;
   startDate?: Date;
   endDate?: Date;
-  getDateExtra?: (date: Date) => Models.ExtraData;
+  getDateExtra?: (date: Date) => DateModels.ExtraData;
   infiniteOpt?: boolean;
   initalMonths?: number;
-  locale?: Models.Locale;
+  locale?: DateModels.Locale;
   maxDate?: Date;
   minDate?: Date;
   onCellClick?: (date: Date) => void;

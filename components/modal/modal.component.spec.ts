@@ -3,8 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { async, ComponentFixture, fakeAsync, tick, TestBed, flush } from '@angular/core/testing';
 import { ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule } from '../..';
 import { By } from '@angular/platform-browser';
-import { Modal, ModalServiceComponent } from '../..';
-import { Button } from '../button/button.component';
+import { ModalService, ModalServiceComponent } from '../..';
+import { ButtonComponent } from '../button/button.component';
 import { dispatchTouchEvent } from '../core/testing';
 import { ModalOptions, AlertOptions } from './modal-options.provider';
 import { Overlay } from '@angular/cdk/overlay';
@@ -18,7 +18,7 @@ describe('ModalComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TestModalBasicComponent],
       imports: [ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule, FormsModule, ReactiveFormsModule],
-      providers: [Overlay, Modal, ModalOptions, AlertOptions]
+      providers: [Overlay, ModalOptions, AlertOptions]
     }).compileComponents();
     TestBed.overrideModule(ModalModule, {
       set: { entryComponents: [ModalServiceComponent] }
@@ -29,7 +29,7 @@ describe('ModalComponent', () => {
     fixture = TestBed.createComponent(TestModalBasicComponent);
     component = fixture.componentInstance;
     modalEle = fixture.debugElement.query(By.css('modal'));
-    buttons = fixture.debugElement.queryAll(By.directive(Button));
+    buttons = fixture.debugElement.queryAll(By.directive(ButtonComponent));
     fixture.detectChanges();
   });
 
@@ -257,7 +257,7 @@ describe('ModalComponent', () => {
   <ng-template #title>
   <div>123</div>
   </ng-template>
-  `, providers: [Modal]
+  `
 })
 export class TestModalBasicComponent {
   animationType = 'slide-down';
@@ -277,28 +277,28 @@ export class TestModalBasicComponent {
     }
   ];
   @ViewChild('title') titleRef: ViewChild;
-  constructor(private _modal: Modal) {}
+  constructor(private _modal: ModalService) {}
 
   onClose(key) {
     this.state = false;
   }
 
   showOpeartion() {
-    Modal.operation([
+    ModalService.operation([
       { text: '标为未读', onPress: () => console.log('标为未读被点击了') },
       { text: '置顶聊天', onPress: () => console.log('置顶聊天被点击了') }
     ]);
   }
 
   showAlert() {
-    Modal.alert('Delete', 'Are you sure ?', [
+    ModalService.alert('Delete', 'Are you sure ?', [
       { text: 'Cancel', onPress: () => console.log('cancel') },
       { text: 'OK', onPress: () => console.log('ok') }
     ]);
   }
 
   showPromptPromise() {
-    Modal.prompt(
+    ModalService.prompt(
       'input name',
       'please input your name',
       [
@@ -330,7 +330,7 @@ export class TestModalBasicComponent {
   }
 
   showPromptDefault() {
-    Modal.prompt(
+    ModalService.prompt(
       'defaultValue',
       'defaultValue for prompt',
       [{ text: 'Cancel' }, { text: 'Submit', onPress: value => console.log(`输入的内容:${value}`) }],
@@ -340,11 +340,11 @@ export class TestModalBasicComponent {
   }
 
   showSecure() {
-    Modal.prompt('Password', 'Password Message', password => console.log(`password: ${password}`), 'secure-text');
+    ModalService.prompt('Password', 'Password Message', password => console.log(`password: ${password}`), 'secure-text');
   }
 
   showCustom() {
-    Modal.prompt(
+    ModalService.prompt(
       'Password',
       'You can custom buttons',
       [{ text: '取消' }, { text: '提交', onPress: password => console.log(`密码为:${password}`) }],
@@ -353,7 +353,7 @@ export class TestModalBasicComponent {
   }
 
   showLogin() {
-    Modal.prompt(
+    ModalService.prompt(
       'Login',
       'Please input login information',
       (login, password) => console.log(`login: ${login}, password: ${password}`),

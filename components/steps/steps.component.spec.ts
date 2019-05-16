@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { StepsModule } from './steps.module';
-import { StatusEnum, DirectionEnum } from './step/step.component';
+import { StepStatusEnum, StepDirectionEnum } from './step/step.component';
 
 describe('StepsComponent', () => {
   let component: TestStepsComponent;
@@ -35,7 +35,7 @@ describe('StepsComponent', () => {
 
   it('should direction work', () => {
     expect(stepsEle.nativeElement.classList).toContain('am-steps-vertical', 'vertical');
-    component.direction = DirectionEnum.HORIZONTAL;
+    component.direction = StepDirectionEnum.HORIZONTAL;
     fixture.detectChanges();
     expect(stepsEle.nativeElement.classList).toContain(
       'am-steps-label-vertical',
@@ -87,8 +87,8 @@ describe('StepsComponent', () => {
 export class TestStepsComponent {
   current = 1;
   size = 'small';
-  status = StatusEnum.PROCESS;
-  direction = DirectionEnum.VERTICAL;
+  status = StepStatusEnum.PROCESS;
+  direction = StepDirectionEnum.VERTICAL;
   title = 'start';
   description = 'this is test';
   stepStatus;

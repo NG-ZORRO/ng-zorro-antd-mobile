@@ -13,14 +13,12 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
-import { Toast } from '../toast/toast.service';
 
 @Component({
   selector: 'DatePickerView, nzm-date-picker-view',
   templateUrl: './date-picker-view.component.html',
   encapsulation: ViewEncapsulation.None,
   providers: [
-    Toast,
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DatePickerViewComponent),

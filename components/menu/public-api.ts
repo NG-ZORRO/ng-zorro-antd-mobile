@@ -1,3 +1,3 @@
-export * from './menu.module';
-export * from './menu.component';
-export * from './sub-menu/sub-menu.component';
+export { MenuModule } from './menu.module';
+export { MenuComponent } from './menu.component';
+export { SubMenuComponent } from './sub-menu/sub-menu.component';

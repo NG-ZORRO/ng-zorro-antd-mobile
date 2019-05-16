@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CustomInput } from './custom-input.component';
+import { CustomInputComponent } from './custom-input.component';
 import { InputItemModule } from '../input-item.module';
 import { CustomInputService } from './custom-input.service';
 import { LocaleProviderModule } from '../../locale-provider/locale-provider.module';
 
 describe('custom-input', () => {
-  let component: CustomInput;
-  let fixture: ComponentFixture<CustomInput>;
+  let component: CustomInputComponent;
+  let fixture: ComponentFixture<CustomInputComponent>;
   let keyboard;
 
   beforeEach(async(() => {
@@ -17,7 +17,7 @@ describe('custom-input', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomInput);
+    fixture = TestBed.createComponent(CustomInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,8 +1,8 @@
 import { Component, AfterContentInit, Input, Output, ContentChildren, QueryList, HostBinding, EventEmitter } from '@angular/core';
-import { TabBarItem } from './tab-bar-item.component';
+import { TabBarItemComponent } from './tab-bar-item.component';
 
 export type TabBarTabPositionType = 'top' | 'bottom';
-export interface OnPressEvent {
+export interface TabBarOnPressEvent {
   index: number;
   title: string;
   key: string;
@@ -12,14 +12,14 @@ export interface OnPressEvent {
   selector: 'TabBar, nzm-tab-bar',
   templateUrl: './tab-bar.component.html'
 })
-export class TabBar implements AfterContentInit {
+export class TabBarComponent implements AfterContentInit {
   prefixCls: string = 'am-tab-bar';
   private _activeTab: number = 0;
   private _tintColor: string = '#108ee9';
   private _unselectedTintColor: string = '#888';
 
-  @ContentChildren(TabBarItem, { descendants: true })
-  tabBarItems: QueryList<TabBarItem>;
+  @ContentChildren(TabBarItemComponent, { descendants: true })
+  tabBarItems: QueryList<TabBarItemComponent>;
 
   @Input()
   hidden: boolean = false;
@@ -46,7 +46,7 @@ export class TabBar implements AfterContentInit {
   set tintColor(color: string) {
     this._tintColor = color;
     if (this.tabBarItems && this.tabBarItems.length > 0) {
-      this.tabBarItems.forEach((tabBarItem: TabBarItem) => {
+      this.tabBarItems.forEach((tabBarItem: TabBarItemComponent) => {
         tabBarItem.tintColor = this._tintColor;
       });
     }
@@ -58,13 +58,13 @@ export class TabBar implements AfterContentInit {
   set unselectedTintColor(color: string) {
     this._unselectedTintColor = color;
     if (this.tabBarItems && this.tabBarItems.length > 0) {
-      this.tabBarItems.forEach((tabBarItem: TabBarItem) => {
+      this.tabBarItems.forEach((tabBarItem: TabBarItemComponent) => {
         tabBarItem.unselectedTintColor = this._unselectedTintColor;
       });
     }
   }
   @Output()
-  onPress: EventEmitter<OnPressEvent> = new EventEmitter<OnPressEvent>();
+  onPress: EventEmitter<TabBarOnPressEvent> = new EventEmitter<TabBarOnPressEvent>();
 
   @HostBinding('class.am-tab-bar')
   tabBar: boolean = true;
@@ -73,20 +73,20 @@ export class TabBar implements AfterContentInit {
 
   selectTabBarItem(index: number) {
     if (this.tabBarItems && this.tabBarItems.length > 0) {
-      this.tabBarItems.forEach((tabBarItem: TabBarItem) => {
+      this.tabBarItems.forEach((tabBarItem: TabBarItemComponent) => {
         tabBarItem.selected = false;
       });
       this.tabBarItems.toArray()[index].selected = true;
     }
   }
 
-  tabBarTabOnPress(pressParam: OnPressEvent) {
+  tabBarTabOnPress(pressParam: TabBarOnPressEvent) {
     this.onPress.emit(pressParam);
   }
 
   ngAfterContentInit() {
     if (this.tabBarItems && this.tabBarItems.length > 0) {
-      this.tabBarItems.forEach((tabBarItem: TabBarItem) => {
+      this.tabBarItems.forEach((tabBarItem: TabBarItemComponent) => {
         tabBarItem.tintColor = this._tintColor;
         tabBarItem.unselectedTintColor = this._unselectedTintColor;
       });

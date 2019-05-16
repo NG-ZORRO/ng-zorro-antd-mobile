@@ -1,3 +1,3 @@
-export * from './grid.module';
-export * from './PropsType';
-export * from './grid.component';
+export { GridModule } from './grid.module';
+export { GridDataItem, GridPropsType } from './PropsType';
+export { GridComponent } from './grid.component';

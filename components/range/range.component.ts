@@ -7,12 +7,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Range),
+      useExisting: forwardRef(() => RangeComponent),
       multi: true
     }
   ]
 })
-export class Range implements OnInit, ControlValueAccessor {
+export class RangeComponent implements OnInit, ControlValueAccessor {
   prefixCls: string = 'am-slider';
   offset: any[] = [];
   length: any[] = [];

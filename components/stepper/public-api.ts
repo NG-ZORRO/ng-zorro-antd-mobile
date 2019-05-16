@@ -1,2 +1,2 @@
-export * from './stepper.module';
-export * from './stepper.component';
+export { StepperModule } from './stepper.module';
+export { StepperComponent } from './stepper.component';

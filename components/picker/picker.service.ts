@@ -2,12 +2,13 @@ import { Injectable, Injector } from '@angular/core';
 import { PickerComponent } from './picker.component';
 import { PickerCallBack, PickerOptions } from './picker-options.provider';
 import { PopupService } from '../core/services/popup.service';
+
 @Injectable()
-export class Picker extends PopupService {
+export class PickerService extends PopupService {
   static defaultOptions: PickerOptions = new PickerOptions();
 
   static showPicker(
-    config: PickerOptions = Picker.defaultOptions,
+    config: PickerOptions = PickerService.defaultOptions,
     confirmCallback?: PickerCallBack,
     cancelCallback?: PickerCallBack
   ): void {
@@ -34,10 +35,10 @@ export class Picker extends PopupService {
         useValue: options
       }
     ]);
-    Picker.showPopup('PickerComponent', PickerComponent, childInjector);
+    PickerService.showPopup('PickerComponent', PickerComponent, childInjector);
   }
 
   static hidePicker(): void {
-    Picker.hidePopup('PickerComponent');
+    PickerService.hidePopup('PickerComponent');
   }
 }

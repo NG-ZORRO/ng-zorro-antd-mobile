@@ -1,2 +1,2 @@
-export * from './textarea-item.module';
-export * from './textarea-item.component';
+export { TextareaItemModule } from './textarea-item.module';
+export { TextareaItemComponent } from './textarea-item.component';

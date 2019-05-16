@@ -15,7 +15,7 @@ import {
   templateUrl: './slider-marks.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class SliderMarks implements OnInit, AfterViewInit {
+export class SliderMarksComponent implements OnInit, AfterViewInit {
   markArray: Array<any> = [];
 
   private _min: number = 0;

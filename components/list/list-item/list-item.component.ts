@@ -16,7 +16,7 @@ import {
   templateUrl: './list-item.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class ListItem implements OnInit, OnDestroy {
+export class ListItemComponent implements OnInit, OnDestroy {
   defaultProps = {
     prefixCls: 'am-list',
     align: 'middle',

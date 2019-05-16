@@ -25,7 +25,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SearchBar),
+      useExisting: forwardRef(() => SearchBarComponent),
       multi: true
     }
   ],
@@ -38,7 +38,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     ])
   ]
 })
-export class SearchBar implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy, ControlValueAccessor {
+export class SearchBarComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy, ControlValueAccessor {
   prefixCls: string = 'am-search';
   clearCls: object;
   wrapCls: object;

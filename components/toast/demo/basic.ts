@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Toast } from 'ng-zorro-antd-mobile';
+import { ToastService } from 'ng-zorro-antd-mobile';
 @Component({
   selector: 'demo-toast-basic',
   template: `
@@ -23,43 +23,42 @@ import { Toast } from 'ng-zorro-antd-mobile';
         <p>toast的内容</p>
       </ng-template>
     </WingBlank>
-  `,
-  providers: [Toast]
+  `
 })
 export class DemoToastBasicComponent {
-  constructor(private _toast: Toast) {}
+  constructor(private _toast: ToastService) {}
 
   showToast() {
-    const toast = Toast.show('This is a toast tips !!!', 0);
+    const toast = ToastService.show('This is a toast tips !!!', 0);
     setTimeout(() => {
-      Toast.hide();
+      ToastService.hide();
     }, 3000);
   }
 
   showToastNoMask() {
-    const toast = Toast.info('Toast without mask !!!', 4000, null, false);
+    const toast = ToastService.info('Toast without mask !!!', 4000, null, false);
   }
 
   showCustomIcon(event) {
-    const toast = Toast.info(event);
+    const toast = ToastService.info(event);
   }
 
   successToast() {
-    const toast = Toast.success('Load success !!!', 3000, () => {
+    const toast = ToastService.success('Load success !!!', 3000, () => {
       console.log('success');
     });
   }
 
   failToast() {
-    const toast = Toast.fail('Load failed !!!', 1000);
+    const toast = ToastService.fail('Load failed !!!', 1000);
   }
 
   offline() {
-    const toast = Toast.offline('Network connection failed !!!', 1000);
+    const toast = ToastService.offline('Network connection failed !!!', 1000);
   }
 
   loadingToast() {
-    const toast = Toast.loading('Loading...', 3000, () => {
+    const toast = ToastService.loading('Loading...', 3000, () => {
       console.log('Load complete !!!');
     });
   }
