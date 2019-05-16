@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SwipeAction } from './swipe-action.component';
+import { SwipeActionComponent } from './swipe-action.component';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [SwipeAction],
-  declarations: [SwipeAction],
+  exports: [SwipeActionComponent],
+  declarations: [SwipeActionComponent],
   providers: [],
 })
 

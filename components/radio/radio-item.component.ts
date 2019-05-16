@@ -7,8 +7,8 @@ import { Subject } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RadioItem {
-  select$ = new Subject<RadioItem>();
+export class RadioItemComponent {
+  select$ = new Subject<RadioItemComponent>();
   prefixCls: string = 'am-radio';
   private _checked: boolean = false;
   private _disabled: boolean = false;

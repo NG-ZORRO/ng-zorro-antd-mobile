@@ -1,13 +1,13 @@
-import { Models } from '../date/DataTypes';
-import PropsType from './datepicker.props.component';
+import { DateModels } from '../date/DataTypes';
+import { DatepickerPropsType } from './datepicker.props.component';
 import { formatDate } from '../util';
 import defaultLocale from '../locale/zh_CN';
 
-export interface StateType {
-  months: Models.MonthData[];
+export interface DatepickerStateType {
+  months: DateModels.MonthData[];
 }
 
-export default class DatePicker {
+export class CalendarDatePickerBaseComponent {
   props = {
     prefixCls: 'rmc-calendar',
     infinite: false,
@@ -15,13 +15,13 @@ export default class DatePicker {
     defaultDate: new Date(),
     initalMonths: 6,
     locale: defaultLocale
-  } as PropsType;
+  } as DatepickerPropsType;
 
   state: any = {
     months: []
   };
 
-  visibleMonth: Models.MonthData[] = [];
+  visibleMonth: DateModels.MonthData[] = [];
   genMonthComponent: (data) => {};
 
   constructor() {}
@@ -34,7 +34,7 @@ export default class DatePicker {
     this.visibleMonth = [...this.state.months];
   }
 
-  receiveProps(oldValue: PropsType, newValue: PropsType) {
+  receiveProps(oldValue: DatepickerPropsType, newValue: DatepickerPropsType) {
     if (oldValue && newValue) {
       if (oldValue.startDate !== newValue.startDate || oldValue.endDate !== newValue.endDate) {
         if (oldValue.startDate) {
@@ -83,16 +83,16 @@ export default class DatePicker {
     const minDateTime = this.getDateWithoutTime(this.props.minDate);
     const maxDateTime = this.getDateWithoutTime(this.props.maxDate) || Number.POSITIVE_INFINITY;
 
-    const weeks: Models.CellData[][] = [];
+    const weeks: DateModels.CellData[][] = [];
     const nextMonth = this.getMonthDate(firstDate, 1).firstDate;
     let currentDay = firstDate;
-    let currentWeek: Models.CellData[] = [];
+    let currentWeek: DateModels.CellData[] = [];
     weeks.push(currentWeek);
 
     let startWeekday = currentDay.getDay();
     if (startWeekday > 0) {
       for (let i = 0; i < startWeekday; i++) {
-        currentWeek.push({} as Models.CellData);
+        currentWeek.push({} as DateModels.CellData);
       }
     }
     while (currentDay < nextMonth) {
@@ -105,7 +105,7 @@ export default class DatePicker {
       currentWeek.push({
         tick,
         dayOfMonth,
-        selected: Models.SelectType.None,
+        selected: DateModels.SelectType.None,
         isFirstOfMonth: dayOfMonth === 1,
         isLastOfMonth: false,
         outOfDate: tick < minDateTime || tick > maxDateTime
@@ -132,7 +132,7 @@ export default class DatePicker {
       firstDate,
       lastDate,
       weeks
-    } as Models.MonthData;
+    } as DateModels.MonthData;
     data.component = this.genMonthComponent(data);
     if (addMonth >= 0) {
       this.state.months.push(data);
@@ -182,7 +182,7 @@ export default class DatePicker {
             .forEach(d => {
               const oldValue = d.selected;
               if (clear) {
-                d.selected = Models.SelectType.None;
+                d.selected = DateModels.SelectType.None;
               } else {
                 const info = (getDateExtra && getDateExtra(new Date(d.tick))) || {};
                 if (d.outOfDate || info.disable) {
@@ -190,18 +190,18 @@ export default class DatePicker {
                 }
                 if (this.inDate(startDateTick, d.tick)) {
                   if (type === 'one') {
-                    d.selected = Models.SelectType.Single;
+                    d.selected = DateModels.SelectType.Single;
                   } else if (!endDateTick) {
-                    d.selected = Models.SelectType.Only;
+                    d.selected = DateModels.SelectType.Only;
                   } else if (startDateTick !== endDateTick) {
-                    d.selected = Models.SelectType.Start;
+                    d.selected = DateModels.SelectType.Start;
                   } else {
-                    d.selected = Models.SelectType.All;
+                    d.selected = DateModels.SelectType.All;
                   }
                 } else if (this.inDate(endDateTick, d.tick)) {
-                  d.selected = Models.SelectType.End;
+                  d.selected = DateModels.SelectType.End;
                 } else {
-                  d.selected = Models.SelectType.Middle;
+                  d.selected = DateModels.SelectType.Middle;
                 }
               }
               needUpdate = needUpdate || d.selected !== oldValue;
@@ -226,7 +226,7 @@ export default class DatePicker {
     const MIN_VIEW_PORT = clientHeight;
 
     // 大缓冲区外过滤规则
-    const filterFunc = (vm: Models.MonthData) =>
+    const filterFunc = (vm: DateModels.MonthData) =>
       vm.y &&
       vm.height &&
       (vm.y + vm.height > scrollTop - MAX_VIEW_PORT && vm.y < scrollTop + clientHeight + MAX_VIEW_PORT);
@@ -298,7 +298,7 @@ export default class DatePicker {
     };
   };
 
-  baseOnCellClick = (day: Models.CellData) => {
+  baseOnCellClick = (day: DateModels.CellData) => {
     if (!day.tick) return;
     this.props.onCellClick && this.props.onCellClick(new Date(day.tick));
   };

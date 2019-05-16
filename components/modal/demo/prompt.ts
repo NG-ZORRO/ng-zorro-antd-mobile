@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Modal, Toast } from 'ng-zorro-antd-mobile';
+import { ModalService, ToastService } from 'ng-zorro-antd-mobile';
 
 @Component({
   selector: 'demo-modal-prompt',
@@ -17,14 +17,13 @@ import { Modal, Toast } from 'ng-zorro-antd-mobile';
       <div Button (onClick)="showLogin()">login-password</div>
       <WhiteSpace></WhiteSpace>
     </WingBlank>
-  `,
-  providers: [Toast, Modal]
+  `
 })
 export class DemoModalPromptComponent {
-  constructor(private _modal: Modal, private _toast: Toast) {}
+  constructor(private _modal: ModalService, private _toast: ToastService) {}
 
   showPromptPromise() {
-    Modal.prompt(
+    ModalService.prompt(
       'input name',
       'please input your name',
       [
@@ -32,7 +31,7 @@ export class DemoModalPromptComponent {
           text: 'Close',
           onPress: value =>
             new Promise(resolve => {
-              Toast.info('onPress promise resolve', 1000);
+              ToastService.info('onPress promise resolve', 1000);
               setTimeout(() => {
                 resolve();
                 console.log(`value:${value}`);
@@ -43,7 +42,7 @@ export class DemoModalPromptComponent {
           text: 'Hold on',
           onPress: value =>
             new Promise((resolve, reject) => {
-              Toast.info('onPress promise reject', 1000);
+              ToastService.info('onPress promise reject', 1000);
               setTimeout(() => {
                 // reject();
                 console.log(`value:${value}`);
@@ -58,7 +57,7 @@ export class DemoModalPromptComponent {
   }
 
   showPromptDefault() {
-    Modal.prompt(
+    ModalService.prompt(
       'defaultValue',
       'defaultValue for prompt',
       [{ text: 'Cancel' }, { text: 'Submit', onPress: value => console.log(`输入的内容:${value}`) }],
@@ -68,11 +67,11 @@ export class DemoModalPromptComponent {
   }
 
   showSecure() {
-    Modal.prompt('Password', 'Password Message', password => console.log(`password: ${password}`), 'secure-text');
+    ModalService.prompt('Password', 'Password Message', password => console.log(`password: ${password}`), 'secure-text');
   }
 
   showCustom() {
-    Modal.prompt(
+    ModalService.prompt(
       'Password',
       'You can custom buttons',
       [{ text: '取消' }, { text: '提交', onPress: password => console.log(`密码为:${password}`) }],
@@ -81,7 +80,7 @@ export class DemoModalPromptComponent {
   }
 
   showLogin() {
-    Modal.prompt(
+    ModalService.prompt(
       'Login',
       'Please input login information',
       (login, password) => console.log(`login: ${login}, password: ${password}`),

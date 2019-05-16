@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Checkbox } from './checkbox.component';
+import { CheckboxComponent } from './checkbox.component';
 import { CheckboxModule } from './checkbox.module';
 
 describe('checkbox', () => {
@@ -20,7 +20,7 @@ describe('checkbox', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestCheckboxComponent);
     component = fixture.componentInstance;
-    checkboxEle = fixture.debugElement.query(By.directive(Checkbox));
+    checkboxEle = fixture.debugElement.query(By.directive(CheckboxComponent));
     fixture.detectChanges();
   });
 
@@ -110,8 +110,8 @@ export class TestCheckboxComponent {
   checked: boolean = false;
   disabled: boolean = false;
 
-  @ViewChild(Checkbox)
-  checkbox: Checkbox;
+  @ViewChild(CheckboxComponent)
+  checkbox: CheckboxComponent;
 
   onChange(e) {
     console.log('onChange', e);

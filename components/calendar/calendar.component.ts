@@ -10,18 +10,18 @@ import {
   EventEmitter
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Models } from './date/DataTypes';
+import { DateModels } from './date/DataTypes';
 import zhCN from './locale/zh_CN';
 import enUS from './locale/en_US';
-import PropsType from './calendar.props.component';
+import { CalendarPropsType } from './calendar.props.component';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { mergeDateTime, isSameDate } from './util/index';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
-export { PropsType };
+export { CalendarPropsType };
 
-export interface StateType {
+export interface CalendarStateType {
   showTimePicker: boolean;
   timePickerTitle?: string;
   startDate?: Date;
@@ -51,7 +51,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     prefixCls: 'rmc-calendar',
     type: 'range',
     defaultTimeValue: new Date(2000, 0, 1, 8)
-  } as PropsType;
+  } as CalendarPropsType;
 
   state = {
     showTimePicker: false,
@@ -60,7 +60,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     endDate: undefined,
     disConfirmBtn: true,
     clientHight: 0
-  } as StateType;
+  } as CalendarStateType;
 
   private _unsubscribe$ = new Subject<void>();
   private _enterDirection: string;
@@ -206,7 +206,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     this.onTouchFn = fn;
   }
 
-  receiveProps(nextProps: PropsType) {
+  receiveProps(nextProps: CalendarPropsType) {
     if (nextProps.visible && nextProps.defaultValue) {
       this.shortcutSelect(nextProps.defaultValue[0], nextProps.defaultValue[1], nextProps);
     }
@@ -237,10 +237,10 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     props = this.props
   ) => {
     if (!date) {
-      return {} as StateType;
+      return {} as CalendarStateType;
     }
-    let newState = {} as StateType;
-    const { type, pickTime, defaultTimeValue, locale = {} as Models.Locale } = props;
+    let newState = {} as CalendarStateType;
+    const { type, pickTime, defaultTimeValue, locale = {} as DateModels.Locale } = props;
     const newDate = pickTime && !useDateTime ? mergeDateTime(date, defaultTimeValue) : date;
     const { startDate, endDate } = oldState;
 
@@ -360,7 +360,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
       endDate: undefined,
       disConfirmBtn: true,
       clientHight: 0
-    } as StateType;
+    } as CalendarStateType;
     this.showClear = !!this.state.startDate;
   }
 
@@ -424,7 +424,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     }
 
     this._localeProviderService.localeChange.pipe(takeUntil(this._unsubscribe$)).subscribe(_ => {
-      this.props.locale = { ...this._localeProviderService.getLocaleSubObj('Calendar') } as Models.Locale;
+      this.props.locale = { ...this._localeProviderService.getLocaleSubObj('Calendar') } as DateModels.Locale;
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Modal, Toast } from 'ng-zorro-antd-mobile';
+import { ModalService } from 'ng-zorro-antd-mobile';
 
 @Component({
   selector: 'demo-modal-basic',
@@ -55,8 +55,7 @@ import { Modal, Toast } from 'ng-zorro-antd-mobile';
         overflow: auto;
       }
     `
-  ],
-  providers: [Toast, Modal]
+  ]
 })
 export class DemoModalBasicComponent {
   state = {
@@ -84,7 +83,7 @@ export class DemoModalBasicComponent {
     }
   ];
 
-  constructor(private _modal: Modal, private _toast: Toast) {}
+  constructor(private _modal: ModalService) {}
 
   modelChange(event) {
     console.log('asdfasdf', event);

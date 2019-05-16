@@ -1,2 +1,2 @@
-export * from './notice-bar.module';
-export * from './notice-bar.component';
+export { NoticeBarModule } from './notice-bar.module';
+export { NoticeBarComponent } from './notice-bar.component';

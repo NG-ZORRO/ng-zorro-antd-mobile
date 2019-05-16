@@ -1,2 +1,2 @@
-export * from './white-space.module';
-export * from './white-space.component';
+export { WhiteSpaceModule } from './white-space.module';
+export { WhiteSpaceComponent } from './white-space.component';

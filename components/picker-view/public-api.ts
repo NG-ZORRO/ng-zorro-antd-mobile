@@ -1,2 +1,2 @@
-export * from './picker-view.module';
-export * from './picker-view.component';
+export { PickerViewModule } from './picker-view.module';
+export { PickerViewComponent } from './picker-view.component';

@@ -1,6 +1,6 @@
-import { Models } from '../date/DataTypes';
+import { DateModels } from '../date/DataTypes';
 
 export interface CalendarShortcutPanelPropsType {
-  locale: Models.Locale;
+  locale: DateModels.Locale;
   onSelect: (startDate?: Date, endDate?: Date) => void;
 }

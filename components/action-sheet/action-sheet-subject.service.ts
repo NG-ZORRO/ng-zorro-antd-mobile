@@ -13,7 +13,7 @@ const enum actionSheetEvent {
 }
 
 @Injectable()
-export class ActionSheetSubject extends Subject<any> {
+export class ActionSheetSubjectService extends Subject<any> {
   modalId: string;
   private _eventsQueue = {};
 

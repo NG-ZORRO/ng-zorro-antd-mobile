@@ -1,2 +1,2 @@
-export * from './tag.module';
-export * from './tag.component';
+export { TagModule } from './tag.module';
+export { TagComponent } from './tag.component';

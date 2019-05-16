@@ -31,7 +31,7 @@ subtitle: 选择器
 > **注：** 组件不再提供默认的城市初始化数据。
 
 
-### Picker.showPicker(config, confirm?, cancel?)
+### PickerService.showPicker(config, confirm?, cancel?)
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
 | config    | 初始化配置       | {data: [], value: [],...}    | 无           |

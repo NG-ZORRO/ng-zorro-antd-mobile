@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, TemplateRef, ElementRef, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'Grid, nzm-grid',

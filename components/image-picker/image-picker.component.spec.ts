@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ImagePickerModule } from './image-picker.module';
-import { ImagePicker } from './image-picker.component';
+import { ImagePickerComponent } from './image-picker.component';
 
 const data = [
   {
@@ -149,7 +149,7 @@ export class TestImagePicker {
   multiple = true;
   selectable = true;
   len = 3;
-  @ViewChild(ImagePicker) imagePicker: ImagePicker;
+  @ViewChild(ImagePickerComponent) imagePicker: ImagePickerComponent;
   imageChangeCallback = jasmine.createSpy('imageChangeCallback is callback');
   imageClickCallback = jasmine.createSpy('imageClickCallback is callback');
 

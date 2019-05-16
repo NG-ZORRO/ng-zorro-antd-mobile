@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SwipeActionModule } from './swipe-action.module';
-import { SwipeAction } from './swipe-action.component';
+import { SwipeActionComponent } from './swipe-action.component';
 import { dispatchTouchEvent } from '../core/testing';
 
 describe('swipeAction', () => {
@@ -188,8 +188,8 @@ export class TestSwipeAction {
     }
   ];
 
-  @ViewChild(SwipeAction)
-  swipeAction: SwipeAction;
+  @ViewChild(SwipeActionComponent)
+  swipeAction: SwipeActionComponent;
 
   constructor() {}
 

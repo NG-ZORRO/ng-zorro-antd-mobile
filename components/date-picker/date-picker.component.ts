@@ -13,15 +13,14 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { DatePickerOptions } from './date-picker-options.provider';
-import { Toast } from '../toast/toast.service';
+import { ToastService } from '../toast/toast.service';
 import * as velocity from '../core/util/velocity';
 export type DateMode = 'date' | 'time' | 'datetime' | 'year' | 'month';
 
 @Component({
   selector: 'DatePicker, nzm-date-picker',
   templateUrl: './date-picker.component.html',
-  encapsulation: ViewEncapsulation.None,
-  providers: [Toast]
+  encapsulation: ViewEncapsulation.None
 })
 export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   transitionName: string = 'am-slide-up-enter am-slide-up-enter-active';
@@ -193,14 +192,14 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     public elementRef: ElementRef,
     public options: DatePickerOptions,
-    public toast: Toast,
+    public toast: ToastService,
     public localeProviderService: LocaleProviderService
   ) { }
 
   init() {
     if (!this.checkTime() && this.options.showErrorToast) {
       setTimeout(() => {
-        Toast.fail(this.errorMessage, this.options.showErrorToastInterval);
+        ToastService.fail(this.errorMessage, this.options.showErrorToastInterval);
       }, 0);
     }
     this.initResult();
