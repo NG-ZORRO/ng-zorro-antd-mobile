@@ -4,7 +4,7 @@ import { PopoverDirective } from './popover.directive';
 import { PopoverComponent } from './popover.component';
 import { PopoverOptions } from './popover-options.provider';
 
-export function optionsFactory(userOptions: PopoverOptions): PopoverOptions {
+export function PopoverOptionsFactory(userOptions: PopoverOptions): PopoverOptions {
   const options: PopoverOptions = new PopoverOptions();
   Object.assign(options, userOptions);
   return options;

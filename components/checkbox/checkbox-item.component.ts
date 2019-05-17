@@ -10,12 +10,12 @@ import { CheckboxStatus } from './PropsType';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxItem),
+      useExisting: forwardRef(() => CheckboxItemComponent),
       multi: true
     }
   ]
 })
-export class CheckboxItem implements ControlValueAccessor {
+export class CheckboxItemComponent implements ControlValueAccessor {
   prefixCls = 'am-checkbox';
   checked: boolean = false;
   private _disabled: boolean = false;

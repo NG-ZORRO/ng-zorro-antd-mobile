@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Picker } from 'ng-zorro-antd-mobile';
+import { PickerService } from 'ng-zorro-antd-mobile';
 import { district, provinceLite } from 'antd-mobile-demo-data';
 @Component({
   selector: 'demo-picker-basic',
@@ -145,7 +145,7 @@ export class DemoPickerBasicComponent {
   value4 = [];
   cols = 1;
 
-  constructor(private _picker: Picker) {
+  constructor(private _picker: PickerService) {
     setTimeout(() => {
       this.delayData = this.data;
     }, 10000);
@@ -233,7 +233,7 @@ export class DemoPickerBasicComponent {
   }
 
   showPicker() {
-    Picker.showPicker(
+    PickerService.showPicker(
       { value: this.value, data: this.singleArea },
       result => {
         this.name = this.getResult(result);

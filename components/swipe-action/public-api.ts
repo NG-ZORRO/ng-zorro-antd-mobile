@@ -1,2 +1,2 @@
-export * from './swipe-action.module';
-export * from './swipe-action.component';
+export { SwipeActionModule } from './swipe-action.module';
+export { SwipeActionComponent } from './swipe-action.component';

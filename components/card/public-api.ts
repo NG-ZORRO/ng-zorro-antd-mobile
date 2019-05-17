@@ -1,5 +1,5 @@
-export * from './card.module';
-export * from './card.component';
-export * from './card-body.component';
-export * from './card-footer.component';
-export * from './card-header.component';
+export { CardComponent } from './card.component';
+export { CardModule } from './card.module';
+export { CardBodyComponent } from './card-body.component';
+export { CardFooterComponent } from './card-footer.component';
+export { CardHeaderComponent } from './card-header.component';

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Stepper } from './stepper.component';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { IconModule } from '../icon/icon.module';
+import { StepperComponent } from './stepper.component';
 
 @NgModule({
-  exports: [Stepper],
-  declarations: [Stepper],
+  exports: [StepperComponent],
+  declarations: [StepperComponent],
   imports: [CommonModule, FormsModule, IconModule]
 })
 export class StepperModule {}

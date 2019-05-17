@@ -1,10 +1,10 @@
-import { Models } from '../date/DataTypes';
+import { DateModels } from '../date/DataTypes';
 
 export interface CalendarSingleMonthPropsType {
-  locale: Models.Locale;
-  monthData: Models.MonthData;
+  locale: DateModels.Locale;
+  monthData: DateModels.MonthData;
   rowSize?: 'normal' | 'xl';
-  getDateExtra?: (date: Date) => Models.ExtraData;
-  onCellClick?: (data: Models.CellData, monthData: Models.MonthData) => void;
+  getDateExtra?: (date: Date) => DateModels.ExtraData;
+  onCellClick?: (data: DateModels.CellData, monthData: DateModels.MonthData) => void;
   ref: any;
 }

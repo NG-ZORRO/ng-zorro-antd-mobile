@@ -30,7 +30,7 @@ Properties | Descrition | Type | Default
 
 > **注：** Don't support default city initialization data any more。
 
-### Picker.showPicker(config, confirm?, cancel?)
+### PickerService.showPicker(config, confirm?, cancel?)
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | config    | init config       | {data: [], value: [],...}    | -           |

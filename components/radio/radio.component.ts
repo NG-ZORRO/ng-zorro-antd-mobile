@@ -18,7 +18,7 @@ import { RadioStatus } from './PropsType';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Radio implements OnInit {
+export class RadioComponent implements OnInit {
   prefixCls: string = 'am-radio';
   classMap: object = {
     [this.prefixCls]: true,

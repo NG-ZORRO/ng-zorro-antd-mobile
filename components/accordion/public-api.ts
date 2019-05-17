@@ -1,4 +1,4 @@
-export * from './accordion.module';
-export * from './accordion.service';
-export * from './accordion.component';
-export * from './accordion-group/accordion-group.component';
+export { AccordionModule } from './accordion.module';
+export { AccordionService } from './accordion.service';
+export { AccordionComponent } from './accordion.component';
+export { AccordionGroupComponent } from './accordion-group/accordion-group.component';

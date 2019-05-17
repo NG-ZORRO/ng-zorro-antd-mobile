@@ -9,24 +9,24 @@ import {
   Renderer2,
   ElementRef
 } from '@angular/core';
-import { StatusEnum, DirectionEnum } from './step/step.component';
-import { Step } from './step/step.component';
+import { StepStatusEnum, StepDirectionEnum } from './step/step.component';
+import { StepComponent } from './step/step.component';
 
 @Component({
   selector: 'Steps,nzm-steps',
   templateUrl: './steps.component.html'
 })
-export class Steps implements OnInit, AfterContentInit {
+export class StepsComponent implements OnInit, AfterContentInit {
   prefixCls: string = 'am-steps';
 
   private _current: number = 0;
   private _size: string;
-  private _status: StatusEnum = StatusEnum.PROCESS;
-  private _direction: DirectionEnum = DirectionEnum.VERTICAL;
+  private _status: StepStatusEnum = StepStatusEnum.PROCESS;
+  private _direction: StepDirectionEnum = StepDirectionEnum.VERTICAL;
   private _stepsCls: object;
 
-  @ContentChildren(Step)
-  stepItems: QueryList<Step>;
+  @ContentChildren(StepComponent)
+  stepItems: QueryList<StepComponent>;
 
   @Input()
   set current(value) {
@@ -40,14 +40,14 @@ export class Steps implements OnInit, AfterContentInit {
     this.setCls();
   }
   @Input()
-  set status(value: StatusEnum) {
+  set status(value: StepStatusEnum) {
     this._status = value;
     if (this.stepItems) {
       this.setStepStyle();
     }
   }
   @Input()
-  set direction(value: DirectionEnum) {
+  set direction(value: StepDirectionEnum) {
     this._direction = value;
     this.setCls();
   }
@@ -71,7 +71,7 @@ export class Steps implements OnInit, AfterContentInit {
     for (let index = 0; index < itemCount; index++) {
       const step = itemArr[index];
       step.stepNumber = index + 1;
-      if (index < itemCount - 1 && itemArr[index + 1].status === StatusEnum.ERROR) {
+      if (index < itemCount - 1 && itemArr[index + 1].status === StepStatusEnum.ERROR) {
         step.stepItemCls = step.stepItemCls
           ? Object.assign(step.stepItemCls, { 'error-tail': true })
           : { 'error-tail': true };
@@ -81,9 +81,9 @@ export class Steps implements OnInit, AfterContentInit {
         if (index === this._current) {
           step.status = this._status;
         } else if (index < this._current) {
-          step.status = StatusEnum.FINISH;
+          step.status = StepStatusEnum.FINISH;
         } else {
-          step.status = StatusEnum.WAIT;
+          step.status = StepStatusEnum.WAIT;
         }
       }
       if (!icon) {
@@ -95,22 +95,22 @@ export class Steps implements OnInit, AfterContentInit {
             ? Object.assign(step.stepItemCls, { 'ellipsis-item': true })
             : { 'ellipsis-item': true };
         }
-        if ((this._status === StatusEnum.ERROR && index === this._current) || step.status === StatusEnum.ERROR) {
+        if ((this._status === StepStatusEnum.ERROR && index === this._current) || step.status === StepStatusEnum.ERROR) {
           icon = 'cross-circle-o';
         }
       }
       step.icon = icon;
-      step.iconSize = this._size === 'small' ? (this._status === StatusEnum.WAIT ? 'xxs' : 'xs') : 'md';
+      step.iconSize = this._size === 'small' ? (this._status === StepStatusEnum.WAIT ? 'xxs' : 'xs') : 'md';
       step.setClass();
     }
   }
 
   setCls() {
-    if (this._direction === DirectionEnum.HORIZONTAL) {
+    if (this._direction === StepDirectionEnum.HORIZONTAL) {
       this.clsStepsLabelVtl = true;
       this.clsStepsHztl = true;
       this.clsStepsVtl = false;
-    } else if (this._direction === DirectionEnum.VERTICAL) {
+    } else if (this._direction === StepDirectionEnum.VERTICAL) {
       this.clsStepsVtl = true;
       this.clsStepsHztl = false;
     }

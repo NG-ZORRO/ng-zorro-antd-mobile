@@ -1,7 +1,7 @@
-export * from './popover.module';
-export * from './popover.directive';
-export * from './popover.component';
-export * from './popover-options.provider';
-export * from './popover-component-options.provider';
-export * from './popover-item/popover-item.module';
-export * from './popover-item/popover-item.component';
+export { PopoverDirective } from './popover.directive';
+export { PopoverComponent } from './popover.component';
+export { PopoverItemModule } from './popover-item/popover-item.module';
+export { PopoverOptionsFactory, PopoverModule } from './popover.module';
+export { PopoverItemComponent } from './popover-item/popover-item.component';
+export { PopoverComponentOptions } from './popover-component-options.provider';
+export { PopoverOptionsInterface, PopoverOptions } from './popover-options.provider';

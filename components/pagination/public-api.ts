@@ -1,2 +1,2 @@
-export * from './pagination.module';
-export * from './pagination.component';
+export { PaginationModule } from './pagination.module';
+export { PaginationComponent } from './pagination.component';

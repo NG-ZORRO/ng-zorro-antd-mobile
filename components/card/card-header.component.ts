@@ -5,7 +5,7 @@ import { Component, ViewEncapsulation, Input, HostBinding, TemplateRef } from '@
   templateUrl: './card-header.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class CardHeader {
+export class CardHeaderComponent {
   prefixCls: string = 'am-card-header';
 
   @Input()

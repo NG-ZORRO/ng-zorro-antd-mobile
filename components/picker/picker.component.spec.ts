@@ -4,10 +4,10 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { ListModule, PickerModule, PickerComponent } from '../..';
 import { PickerOptions } from './picker-options.provider';
-import { Picker } from './picker.service';
+import { PickerService } from './picker.service';
 import { dispatchTouchEvent } from '../core/testing';
 import { LocaleProviderService, LocaleProviderModule } from '../..';
-import { Button } from '../button/button.component';
+import { ButtonComponent } from '../button/button.component';
 import { ButtonModule } from '../button/button.module';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 
@@ -21,7 +21,7 @@ describe('PickerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestPickerBasicComponent],
-      providers: [PickerOptions, LocaleProviderService, Picker, Overlay],
+      providers: [PickerOptions, LocaleProviderService, Overlay],
       imports: [ListModule, PickerModule, LocaleProviderModule, ButtonModule, FormsModule]
     }).compileComponents();
     TestBed.overrideModule(PickerModule, {
@@ -33,7 +33,7 @@ describe('PickerComponent', () => {
     fixture = TestBed.createComponent(TestPickerBasicComponent);
     component = fixture.componentInstance;
     lists = fixture.debugElement.queryAll(By.css('listitem'));
-    buttons = fixture.debugElement.queryAll(By.directive(Button));
+    buttons = fixture.debugElement.queryAll(By.directive(ButtonComponent));
     fixture.detectChanges();
   });
 
@@ -188,8 +188,7 @@ describe('PickerComponent', () => {
       </ListItem>
     </List>
     <div Button (click)="showPicker()">operation</div>
-  `,
-  providers: [Picker]
+  `
 })
 export class TestPickerBasicComponent {
   singleArea = [
@@ -219,7 +218,7 @@ export class TestPickerBasicComponent {
   mask = true;
   modelChange = jasmine.createSpy('ngModel change callback');
 
-  constructor(private _picker: Picker) {}
+  constructor(private _picker: PickerService) {}
 
   getResult(result) {
     this.value = [];
@@ -242,6 +241,6 @@ export class TestPickerBasicComponent {
   }
 
   showPicker() {
-    Picker.showPicker({ value: this.value, data: this.singleArea }, result => {}, cancel => {});
+    PickerService.showPicker({ value: this.value, data: this.singleArea }, result => {}, cancel => {});
   }
 }

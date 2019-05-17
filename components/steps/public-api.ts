@@ -1,3 +1,3 @@
-export * from './steps.module';
-export * from './steps.component';
-export * from './step/step.component';
+export { StepsModule } from './steps.module';
+export { StepsComponent } from './steps.component';
+export { StepComponent, StepStatusEnum, StepDirectionEnum } from './step/step.component';

@@ -1,2 +1,2 @@
-export * from './range.module';
-export * from './range.component';
+export { RangeModule } from './range.module';
+export { RangeComponent } from './range.component';

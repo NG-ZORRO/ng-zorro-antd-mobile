@@ -5,7 +5,7 @@ import { Component, ViewEncapsulation, Input, HostBinding, TemplateRef } from '@
   templateUrl: './list.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class List {
+export class ListComponent {
   defaultProps: any = {
     prefixCls: 'am-list'
   };

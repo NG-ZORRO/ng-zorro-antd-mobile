@@ -18,7 +18,7 @@ import { CheckboxOnChangeEvent } from './PropsType';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Checkbox implements OnInit {
+export class CheckboxComponent implements OnInit {
   prefixCls: string = 'am-checkbox';
   classMap: object = {
     [this.prefixCls]: true,

@@ -4,7 +4,7 @@ import { Component, OnInit, Input, HostBinding, OnChanges, ElementRef, AfterView
   selector: 'Badge, nzm-badge',
   templateUrl: './badge.component.html'
 })
-export class Badge implements OnChanges, OnInit, AfterViewInit {
+export class BadgeComponent implements OnChanges, OnInit, AfterViewInit {
   prefixCls: string = 'am-badge';
   scrollNumberCls: object = {};
   style: object = {};

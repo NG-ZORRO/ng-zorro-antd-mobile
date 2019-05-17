@@ -1,2 +1,2 @@
-export * from './image-picker.module';
-export * from './image-picker.component';
+export { ImagePickerModule } from './image-picker.module';
+export { ImagePickerComponent } from './image-picker.component';
