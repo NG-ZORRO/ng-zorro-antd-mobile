@@ -22,7 +22,7 @@ describe('CalendarComponent', () => {
       imports: [LocaleProviderModule, CalendarModule, FormsModule, ModalModule]
     }).compileComponents();
     TestBed.overrideModule(CalendarModule, {
-      set: { entryComponents: [ModalComponent] }
+      set: { entryComponents: [] }
     }).compileComponents();
   }));
 

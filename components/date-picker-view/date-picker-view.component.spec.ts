@@ -23,7 +23,7 @@ describe('DatePickerViewComponent', () => {
       imports: [DatePickerModule, DatePickerViewModule, LocaleProviderModule, ToastModule, FormsModule]
     }).compileComponents();
     TestBed.overrideModule(DatePickerViewModule, {
-      set: { entryComponents: [ToastComponent] }
+      set: { entryComponents: [] }
     }).compileComponents();
   }));
 

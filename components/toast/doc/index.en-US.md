@@ -14,7 +14,6 @@ A lightweight feedback or tips, used to display content that does not interrupt 
 
 
 ## API
-Before use，entryComponents should be added in corresponding module，such as：`entryComponents: [ToastComponent]`.
 
 - `ToastService.success(content, duration, onClose, mask)`
 - `ToastService.fail(content, duration, onClose, mask)`
