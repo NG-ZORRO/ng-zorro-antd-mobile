@@ -15,7 +15,6 @@ subtitle: 对话框
 
 
 ## API
-组件使用前，需要在对应module中加入entryComponents，如：`entryComponents: [ModalServiceComponent]`。
 
 ### Modal
 
