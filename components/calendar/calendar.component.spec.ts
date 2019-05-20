@@ -21,9 +21,6 @@ describe('CalendarComponent', () => {
       providers: [LocaleProviderService],
       imports: [LocaleProviderModule, CalendarModule, FormsModule, ModalModule]
     }).compileComponents();
-    TestBed.overrideModule(CalendarModule, {
-      set: { entryComponents: [ModalComponent] }
-    }).compileComponents();
   }));
 
   beforeEach(() => {
