@@ -34,7 +34,7 @@ export class ToastService {
 
   static _initConfig(config: Object, options: ToastOptions): Object {
     const props = {};
-    const optionalParams: string[] = ['content', 'iconType', 'mask'];
+    const optionalParams: string[] = ['content', 'iconType', 'mask', 'position'];
 
     config = Object.assign(options, config);
     optionalParams.forEach(key => {
@@ -53,10 +53,11 @@ export class ToastService {
 
     props['iconType'] = iconType;
     props['mask'] = options.mask;
+    props['position'] = options.position;
     return props;
   }
 
-  static notice(config: ConfigInterface, type, timeInterval = 2000, onClose, mask = true) {
+  static notice(config: ConfigInterface, type, timeInterval = 2000, onClose, mask = true, position = 'middle') {
     // 如果已经存在，在没有遮罩层的情况下，会响应别的toast，需要清除原来的
     if (ToastService.compRef) {
       ToastService.hide();
@@ -64,6 +65,7 @@ export class ToastService {
     const options: ToastOptions = new ToastOptions();
     options.iconType = type;
     options.mask = mask;
+    options.position = position;
     const props = ToastService._initConfig(config, options);
 
     document.body.insertBefore(document.createElement(ToastService._toastCompFactory.selector), document.body.firstChild);
@@ -90,55 +92,55 @@ export class ToastService {
   /**
    * Open info dialog
    */
-  static info(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean) {
+  static info(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'info',
       content: content
     });
-    return ToastService.notice(config, 'info', timeInterval, onClose, mask);
+    return ToastService.notice(config, 'info', timeInterval, onClose, mask, position);
   }
 
   /**
    * Open success dialog
    */
-  static success(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean) {
+  static success(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'success',
       content: content
     });
-    return ToastService.notice(config, 'success', timeInterval, onClose, mask);
+    return ToastService.notice(config, 'success', timeInterval, onClose, mask, position);
   }
 
-  static show(content?: string, timeInterval?: number, mask?: boolean) {
+  static show(content?: string, timeInterval?: number, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'info',
       content: content
     });
-    return ToastService.notice(config, 'info', timeInterval, () => {}, mask);
+    return ToastService.notice(config, 'info', timeInterval, () => {}, mask, position);
   }
 
-  static fail(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean) {
+  static fail(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'fail',
       content: content
     });
-    return ToastService.notice(config, 'fail', timeInterval, onClose, mask);
+    return ToastService.notice(config, 'fail', timeInterval, onClose, mask, position);
   }
 
-  static offline(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean) {
+  static offline(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'offline',
       content: content
     });
-    return ToastService.notice(config, 'offline', timeInterval, onClose, mask);
+    return ToastService.notice(config, 'offline', timeInterval, onClose, mask, position);
   }
 
-  static loading(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean) {
+  static loading(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'loading',
       content: content
     });
-    return ToastService.notice(config, 'loading', timeInterval, onClose, mask);
+    return ToastService.notice(config, 'loading', timeInterval, onClose, mask, position);
   }
 
   static hide() {

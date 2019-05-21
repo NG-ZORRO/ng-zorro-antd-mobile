@@ -8,6 +8,10 @@ import { ToastService } from 'ng-zorro-antd-mobile';
       <WhiteSpace></WhiteSpace>
       <div Button (onClick)="showToastNoMask()">without mask</div>
       <WhiteSpace></WhiteSpace>
+      <div Button (onClick)="showToastTop()">position top</div>
+      <WhiteSpace></WhiteSpace>
+      <div Button (onClick)="showToastBottom()">position bottom</div>
+      <WhiteSpace></WhiteSpace>
       <div Button (onClick)="showCustomIcon(content)">custom content</div>
       <WhiteSpace></WhiteSpace>
       <div Button (onClick)="successToast()">success</div>
@@ -37,6 +41,14 @@ export class DemoToastBasicComponent {
 
   showToastNoMask() {
     const toast = ToastService.info('Toast without mask !!!', 4000, null, false);
+  }
+
+  showToastTop() {
+    const toast = ToastService.info('Toast position top', 4000, null, false, 'top');
+  }
+
+  showToastBottom() {
+    const toast = ToastService.info('Toast position top', 4000, null, false, 'bottom');
   }
 
   showCustomIcon(event) {
