@@ -13,6 +13,17 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 0.12.2 (2019-05-21)
+
+### Bug Fixes
+
+* **popupservice:** set popupservice providers in referenced components. ([#449](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/449)) ([a14ea6b](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/a14ea6b))
+
+
+### Features
+
+* **toast:** support position top and bottom ([#450](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/450)) ([77c326a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/77c326a))
+
 ## 0.12.1 (2019-05-20)
 
 ### Bug Fixes
