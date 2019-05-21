@@ -9,7 +9,8 @@ import { ButtonModule } from '../button/button.module';
 import { InputItemModule } from '../input-item/input-item.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertOptions } from './modal-options.provider';
-
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PopupService } from '../core/services/popup.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,11 +20,12 @@ import { AlertOptions } from './modal-options.provider';
     ButtonModule,
     InputItemModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OverlayModule
   ],
   exports: [ModalComponent, ModalServiceComponent],
   declarations: [ModalComponent, ModalServiceComponent],
   entryComponents: [ModalServiceComponent],
-  providers: [AlertOptions, ModalService]
+  providers: [AlertOptions, ModalService, PopupService]
 })
 export class ModalModule {}
