@@ -64,6 +64,26 @@ describe('ToastComponent', () => {
     expect(toastEle.nativeElement.classList).toContain('am-toast-nomask', 'mask is false');
   });
 
+  it('position should work', () => {
+    expect(toastEle.nativeElement.classList).toContain('am-toast-mask-middle');
+    component.position = 'top';
+    fixture.detectChanges();
+    expect(toastEle.nativeElement.classList).toContain('am-toast-mask-top');
+    component.position = 'bottom';
+    fixture.detectChanges();
+    expect(toastEle.nativeElement.classList).toContain('am-toast-mask-bottom');
+    component.mask = false;
+    component.position = 'top';
+    fixture.detectChanges();
+    expect(toastEle.nativeElement.classList).toContain('am-toast-nomask-top');
+    component.position = 'middle';
+    fixture.detectChanges();
+    expect(toastEle.nativeElement.classList).toContain('am-toast-nomask-middle');
+    component.position = 'bottom';
+    fixture.detectChanges();
+    expect(toastEle.nativeElement.classList).toContain('am-toast-nomask-bottom');
+  });
+
   it('should showToast work', () => {
     const button = buttons[0].nativeElement;
     button.click();
@@ -133,7 +153,7 @@ describe('ToastComponent', () => {
 @Component({
   selector: 'test-toast',
   template: `
-    <Toast [content]="content" [iconType]="iconType" [mask]="mask"></Toast>
+    <Toast [content]="content" [iconType]="iconType" [mask]="mask" [position]="position"></Toast>
     <div Button (onClick)="showToast()">text only</div>
     <div Button (onClick)="showToastNoMask()">without mask</div>
     <div Button (onClick)="showCustomIcon(content1)">custom content</div>
@@ -156,6 +176,7 @@ export class TestToastComponent {
   content: any = '123';
   iconType = '';
   mask = true;
+  position = 'middle';
 
   @ViewChild('contentTpl')
   contentTpl: ViewChild;
@@ -163,7 +184,7 @@ export class TestToastComponent {
   constructor(private _toast: ToastService) {}
 
   showToast() {
-    const toast = ToastService.show('This is a toast tips !!!', 0);
+    const toast = ToastService.show('This is a toast tips !!!', 0, true, this.position);
     setTimeout(() => {
       ToastService.hide();
     }, 3000);

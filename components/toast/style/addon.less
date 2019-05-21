@@ -1,5 +1,41 @@
+@import '../../style/themes/default';
+
 @toastPrefixCls: am-toast;
 
 .@{toastPrefixCls} {
   display: block;
+  &&-mask {
+    &&&-top {
+      align-items: flex-start;
+      padding-top: @v-spacing-md;
+    }
+    &&&-middle {
+      align-items: center;
+    }
+    &&&-bottom {
+      align-items: flex-end;
+      padding-bottom: @v-spacing-md;
+    }
+  }
+
+  &&-nomask {
+    &&&-top {
+      top: 0%;
+      .@{toastPrefixCls}-notice {
+        transform: translateX(-50%) translateY(calc(0% + @v-spacing-md));
+      }
+    }
+    &&&-middle {
+      top: 50%;
+      .@{toastPrefixCls}-notice {
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+    &&&-bottom {
+      top: 100%;
+      .@{toastPrefixCls}-notice {
+        transform: translateX(-50%) translateY(calc(-100% - @v-spacing-md));
+      }
+    }
+  }
 }
