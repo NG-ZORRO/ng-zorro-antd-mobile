@@ -30,6 +30,7 @@ subtitle: 轻提示
 | duration   | 自动关闭的延时，单位毫秒 | number                 | 3000          |
 | onClose    | 关闭后回调 |  Function                 | 无          |
 | mask    | 是否显示透明蒙层，防止触摸穿透 |  Boolean  | true          |
+| position    | enum{'top', 'middle', 'bottom'} |  string  | 'middle'      |
 
 > **注：**  duration = 0 时，onClose 无效，toast 不会消失；隐藏 toast 需要手动调用 hide
 
