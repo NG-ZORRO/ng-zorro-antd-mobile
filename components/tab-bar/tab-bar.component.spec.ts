@@ -88,6 +88,34 @@ describe('tabbar', () => {
         .style.color
     ).toContain('rgb(16, 142, 233)');
   });
+
+  it('activeTab change work', () => {
+    component.selectedIndex = 0;
+    fixture.detectChanges();
+    expect(
+      tabBarEle.nativeElement.querySelectorAll('.am-tab-bar-tab')[0].querySelector('.am-tab-bar-tab-title')
+        .style.color
+    ).toContain('rgb(16, 142, 233)');
+  });
+
+  it('tintColor change work', () => {
+    component.tintColor = 'red';
+    fixture.detectChanges();
+    expect(
+      tabBarEle.nativeElement.querySelectorAll('.am-tab-bar-tab')[component.selectedIndex].querySelector('.am-tab-bar-tab-title')
+        .style.color
+    ).toContain('red');
+  });
+
+  it('unselectedTintColor change work', () => {
+    component.unselectedTintColor = 'green';
+    fixture.detectChanges();
+    expect(
+      tabBarEle.nativeElement.querySelectorAll('.am-tab-bar-tab')[0].querySelector('.am-tab-bar-tab-title')
+        .style.color
+    ).toContain('green');
+  });
+
 });
 
 @Component({
