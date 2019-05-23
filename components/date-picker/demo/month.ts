@@ -1,19 +1,19 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'demo-date-picker-basic',
+  selector: 'demo-date-picker-month',
   encapsulation: ViewEncapsulation.None,
   template: `
     <List [className]="'date-picker-list'">
       <ListItem
         DatePicker
-        [extra]="currentDateFormat(value)"
+        [extra]="currentDateFormat(value, 'yyyy-mm')"
         [arrow]="'horizontal'"
-        [mode]="'datetime'"
+        [mode]="'month'"
         [(ngModel)]="value"
         (onOk)="onOk($event)"
       >
-        Datetime
+        Month
         <Brief>{{ name }}</Brief>
       </ListItem>
     </List>
@@ -26,9 +26,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
     `
   ]
 })
-export class DemoDatePickerBasicComponent {
+export class DemoDatePickerMonthComponent {
   name = '选择';
-  value = new Date();
+  value = new Date(2019, 4);
 
   currentDateFormat(date, format: string = 'yyyy-mm-dd HH:MM'): any {
     const pad = (n: number): string => (n < 10 ? `0${n}` : n.toString());
