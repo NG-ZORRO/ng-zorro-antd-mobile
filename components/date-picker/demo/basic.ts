@@ -46,11 +46,6 @@ export class DemoDatePickerBasicComponent {
     this.value = result;
   }
 
-  onOk7(result: Date) {
-    this.name7 = this.currentDateFormat(result, 'yyyy-mm');
-    this.value7 = result;
-  }
-
   formatIt(date: Date, form: string) {
     const pad = (n: number) => (n < 10 ? `0${n}` : n);
     const dateStr = `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
