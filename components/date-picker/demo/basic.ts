@@ -19,6 +19,17 @@ import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
       </ListItem>
       <ListItem
         DatePicker
+        [extra]="currentDateFormat(value7,'yyyy-mm')"
+        [arrow]="'horizontal'"
+        [mode]="'month'"
+        [(ngModel)]="value7"
+        (onOk)="onOk7($event)"
+      >
+        Month
+        <Brief>{{ name7 }}</Brief>
+      </ListItem>
+      <ListItem
+        DatePicker
         [extra]="currentDateFormat(value2, 'yyyy-mm-dd')"
         [arrow]="'horizontal'"
         [mode]="'date'"
@@ -102,6 +113,7 @@ export class DemoDatePickerBasicComponent {
   name4 = '选择';
   name5 = '当前时间小于最小时间';
   name6 = '当前时间大于最大时间';
+  name7 = '选择';
 
   nowTimeStamp = Date.now();
   now = new Date(this.nowTimeStamp);
@@ -114,6 +126,7 @@ export class DemoDatePickerBasicComponent {
   value4 = this.utcNow;
   value5 = new Date(1999, 1, 1, 1, 1);
   value6 = new Date(2031, 1, 1, 1, 1);
+  value7 = new Date(2019, 1);
 
   currentDateFormat(date, format: string = 'yyyy-mm-dd HH:MM'): any {
     const pad = (n: number): string => (n < 10 ? `0${n}` : n.toString());
@@ -154,6 +167,11 @@ export class DemoDatePickerBasicComponent {
   onOk6(result: Date) {
     this.name6 = this.currentDateFormat(result);
     this.value6 = result;
+  }
+
+  onOk7(result: Date) {
+    this.name7 = this.currentDateFormat(result, 'yyyy-mm');
+    this.value7 = result;
   }
 
   formatIt(date: Date, form: string) {
