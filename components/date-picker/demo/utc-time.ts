@@ -1,7 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { en_US } from 'ng-zorro-antd-mobile';
 
 @Component({
-  selector: 'demo-date-picker-basic',
+  selector: 'demo-date-picker-utc-time',
   encapsulation: ViewEncapsulation.None,
   template: `
     <List [className]="'date-picker-list'">
@@ -9,11 +10,12 @@ import { Component, ViewEncapsulation } from '@angular/core';
         DatePicker
         [extra]="currentDateFormat(value)"
         [arrow]="'horizontal'"
-        [mode]="'datetime'"
+        [mode]="'time'"
+        [locale]="locale"
         [(ngModel)]="value"
         (onOk)="onOk($event)"
       >
-        Datetime
+        UTC Time
         <Brief>{{ name }}</Brief>
       </ListItem>
     </List>
@@ -26,9 +28,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
     `
   ]
 })
-export class DemoDatePickerBasicComponent {
+export class DemoDatePickerUtcTimeComponent {
+  locale = en_US;
   name = '选择';
-  value = new Date();
+  nowTimeStamp = Date.now();
+  now = new Date(this.nowTimeStamp);
+  utcNow = new Date(this.now.getTime() + this.now.getTimezoneOffset() * 60000);
+  value = this.utcNow;
 
   currentDateFormat(date, format: string = 'yyyy-mm-dd HH:MM'): any {
     const pad = (n: number): string => (n < 10 ? `0${n}` : n.toString());

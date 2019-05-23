@@ -1,19 +1,19 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'demo-date-picker-basic',
+  selector: 'demo-date-picker-date',
   encapsulation: ViewEncapsulation.None,
   template: `
     <List [className]="'date-picker-list'">
       <ListItem
         DatePicker
-        [extra]="currentDateFormat(value)"
+        [extra]="currentDateFormat(value, 'yyyy-mm-dd')"
         [arrow]="'horizontal'"
-        [mode]="'datetime'"
+        [mode]="'date'"
         [(ngModel)]="value"
         (onOk)="onOk($event)"
       >
-        Datetime
+        Date
         <Brief>{{ name }}</Brief>
       </ListItem>
     </List>
@@ -26,7 +26,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     `
   ]
 })
-export class DemoDatePickerBasicComponent {
+export class DemoDatePickerDateComponent {
   name = '选择';
   value = new Date();
 
@@ -42,7 +42,7 @@ export class DemoDatePickerBasicComponent {
   }
 
   onOk(result: Date) {
-    this.name = this.currentDateFormat(result);
+    this.name = this.currentDateFormat(result, 'yyyy-mm-dd');
     this.value = result;
   }
 

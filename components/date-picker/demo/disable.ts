@@ -1,16 +1,16 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'demo-date-picker-basic',
+  selector: 'demo-date-picker-disable',
   encapsulation: ViewEncapsulation.None,
   template: `
     <List [className]="'date-picker-list'">
       <ListItem
         DatePicker
+        [disabled]="true"
         [extra]="currentDateFormat(value)"
         [arrow]="'horizontal'"
         [mode]="'datetime'"
-        [(ngModel)]="value"
         (onOk)="onOk($event)"
       >
         Datetime
@@ -26,7 +26,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     `
   ]
 })
-export class DemoDatePickerBasicComponent {
+export class DemoDatePickerDisableComponent {
   name = '选择';
   value = new Date();
 

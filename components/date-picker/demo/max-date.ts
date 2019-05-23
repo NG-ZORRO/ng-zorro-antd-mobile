@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'demo-date-picker-basic',
+  selector: 'demo-date-picker-max-date',
   encapsulation: ViewEncapsulation.None,
   template: `
     <List [className]="'date-picker-list'">
@@ -13,7 +13,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
         [(ngModel)]="value"
         (onOk)="onOk($event)"
       >
-        Datetime
+        Max Date
         <Brief>{{ name }}</Brief>
       </ListItem>
     </List>
@@ -26,9 +26,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
     `
   ]
 })
-export class DemoDatePickerBasicComponent {
-  name = '选择';
-  value = new Date();
+export class DemoDatePickerMaxDateComponent {
+  name = '当前时间大于最大时间';
+  value = new Date(2031, 1, 1, 1, 1);
 
   currentDateFormat(date, format: string = 'yyyy-mm-dd HH:MM'): any {
     const pad = (n: number): string => (n < 10 ? `0${n}` : n.toString());
