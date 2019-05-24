@@ -694,8 +694,14 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       this.selectedTarget[checkIdx].currentY = -arr.indexOf(this.resultArr[checkIdx]);
     }
     if (this.data[checkIdx].toString() !== arr.toString()) {
-      this.current_time[realIdx] = -targetLong / this.lineHeight + 1;
-      this.resultArr[checkIdx] = -targetLong / this.lineHeight + 1;
+      if (checkIdx >= 3) {
+        this.current_time[realIdx] = -targetLong / this.lineHeight;
+        this.resultArr[checkIdx] = -targetLong / this.lineHeight;
+      }else {
+        this.current_time[realIdx] = -targetLong / this.lineHeight + 1;
+        this.resultArr[checkIdx] = -targetLong / this.lineHeight + 1;
+      }
+
       this.data[checkIdx] = arr;
       this.dataWithStr[checkIdx] =
         this.options.locale.locale === 'zh_CN'
