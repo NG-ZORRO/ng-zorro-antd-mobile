@@ -48,8 +48,11 @@ export class RadioItemGroupComponent implements AfterContentInit, OnDestroy, Con
 
   updateChildrenStatus() {
     if (this.radioItems && typeof (this.selectedValue) !== 'undefined' && null !== this.selectedValue) {
-      this.radioItems.forEach(radioItem => {
-        radioItem.checked = radioItem.value === this.selectedValue;
+      Promise.resolve().then(() => {
+        this.radioItems.forEach(radioItem => {
+          radioItem.checked = radioItem.value === this.selectedValue;
+          radioItem.markForCheck();
+        });
       });
     }
   }
