@@ -7,7 +7,7 @@ import {
   TemplateRef,
   EventEmitter
 } from '@angular/core';
-import { Models } from '../date/DataTypes';
+import { DateModels } from '../date/DataTypes';
 
 @Component({
   selector: 'CalendarHeader, nzm-calendar-header',
@@ -19,7 +19,7 @@ export class CalendarHeaderComponent {
   closeIcon_component: boolean = false;
   clearIcon: any;
 
-  private _locale: Models.Locale;
+  private _locale: DateModels.Locale;
   private _showClear: boolean;
   private _closeIcon: any = 'X';
 

@@ -1,13 +1,13 @@
 import { Component, HostBinding, OnInit, ViewEncapsulation, Input, ElementRef, ViewChild } from '@angular/core';
-import { Models } from '../date/DataTypes';
-import DatePicker from './datepicker.base.component';
+import { DateModels } from '../date/DataTypes';
+import { CalendarDatePickerBaseComponent } from './datepicker.base.component';
 
 @Component({
   selector: 'CalendarDatePicker, nzm-calendar-date-picker',
   templateUrl: './datepicker.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class CalendarDatePickerComponent extends DatePicker implements OnInit {
+export class CalendarDatePickerComponent extends CalendarDatePickerBaseComponent implements OnInit {
   constructor() {
     super();
   }
@@ -58,7 +58,7 @@ export class CalendarDatePickerComponent extends DatePicker implements OnInit {
   @HostBinding('class.am-calendar') amCalendar: boolean = true;
   @HostBinding('class.date-picker') datePicker: boolean = true;
 
-  genMonthComponent = (data?: Models.MonthData) => {
+  genMonthComponent = (data?: DateModels.MonthData) => {
     if (!data) return;
     return {
       monthData: data,
@@ -74,9 +74,9 @@ export class CalendarDatePickerComponent extends DatePicker implements OnInit {
         data.updateLayout();
       }
     };
-  }
+  };
 
-  computeHeight = (data: Models.MonthData, singleMonth) => {
+  computeHeight = (data: DateModels.MonthData, singleMonth) => {
     if (singleMonth && singleMonth.wrapperDivDOM) {
       if (!data.height && !singleMonth.wrapperDivDOM.clientHeight) {
         setTimeout(() => this.computeHeight(data, singleMonth), 500);
@@ -85,7 +85,7 @@ export class CalendarDatePickerComponent extends DatePicker implements OnInit {
       data.height = singleMonth.wrapperDivDOM.clientHeight || data.height || 0;
       data.y = singleMonth.wrapperDivDOM.offsetTop || data.y || 0;
     }
-  }
+  };
 
   setLayout = (dom: HTMLDivElement) => {
     if (dom) {
@@ -101,11 +101,11 @@ export class CalendarDatePickerComponent extends DatePicker implements OnInit {
         });
       };
     }
-  }
+  };
 
   setPanel = (dom: HTMLDivElement) => {
     this._panel = dom;
-  }
+  };
 
   onTouchStart(event) {
     this._lastY = event.touches[0].screenY;

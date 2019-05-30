@@ -13,7 +13,6 @@ Use to show important information for the system, and ask for user feedback. eg:
 - Generally put the most likely clicked button on the right side. In addition, the cancel button should always be on the left.
 
 ## API
-Before use，entryComponents should be added in corresponding module，such as：`entryComponents: [ModalServiceComponent]`.
 
 ### Modal
 
@@ -30,7 +29,7 @@ Properties | Descrition | Type | Default
 | footer | footer content | Array [{text, onPress}] | [] |
 | platform  | set the special style depends on platform, Options `android`, `ios` | String | `ios` |
 
-### Modal.alert(title, message, actions?)
+### ModalService.alert(title, message, actions?)
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
@@ -38,9 +37,9 @@ Properties | Descrition | Type | Default
 | message | message  | String or TemplateRef  | -  |
 | actions | button group, [{text, onPress, style}]  | Array | -  |
 
-call `Modal.alert(title, message, actions?).close()`  can close Alert Modal outside anywhere as you wish.
+call `ModalService.alert(title, message, actions?).close()`  can close Alert Modal outside anywhere as you wish.
 
-### Modal.prompt(title, message, callbackOrActions, type?, defaultValue?)
+### ModalService.prompt(title, message, callbackOrActions, type?, defaultValue?)
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
@@ -51,12 +50,12 @@ Properties | Descrition | Type | Default
 | defaultValue  | ['', ''] | String[] | -  |
 | placeholders  | ['', ''] | String[] | -  |
 
-call Modal.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?).close()` can close prompt Modal outside anywhere as you wish.
+call ModalService.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?).close()` can close prompt Modal outside anywhere as you wish.
 
-### Modal.operation(actions?) ( Support Platform：WEB )
+### ModalService.operation(actions?) ( Support Platform：WEB )
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | actions | button group, [{text, onPress, style}]  | Array | -  |
 
-call Modal.operation(actions?).close()` can close Operation Modal outside anywhere as you wish.
+call ModalService.operation(actions?).close()` can close Operation Modal outside anywhere as you wish.

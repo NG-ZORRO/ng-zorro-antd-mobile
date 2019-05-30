@@ -1,7 +1,9 @@
 import { Injectable, Injector, ComponentRef } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef, GlobalPositionStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-
+@Injectable({
+  providedIn: 'root'
+})
 @Injectable()
 export class PopupService {
   static overlay: Overlay = null;

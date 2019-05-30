@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
   providers: [LocaleProviderService]
 })
-export class CustomKeyboard implements OnInit, OnDestroy {
+export class CustomKeyboardComponent implements OnInit, OnDestroy {
   prefixCls: string = 'am-number-keyboard';
   wrapCls: object;
   okText: string = '';

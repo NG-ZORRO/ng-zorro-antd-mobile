@@ -1,9 +1,20 @@
-import { Component, ViewEncapsulation, Input, TemplateRef, HostBinding, NgZone } from '@angular/core';
+import { Component, ViewEncapsulation, Input, TemplateRef, NgZone } from '@angular/core';
 
 @Component({
   selector: 'Toast',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './toast.component.html'
+  templateUrl: './toast.component.html',
+  host: {
+    '[class.am-toast]': 'true',
+    '[class.am-toast-mask]': 'mask',
+    '[class.am-toast-mask-top]': `mask && position === 'top'`,
+    '[class.am-toast-mask-middle]': `mask && position === 'middle'`,
+    '[class.am-toast-mask-bottom]': `mask && position === 'bottom'`,
+    '[class.am-toast-nomask]': '!mask',
+    '[class.am-toast-nomask-top]': `!mask && position === 'top'`,
+    '[class.am-toast-nomask-middle]': `!mask && position === 'middle'`,
+    '[class.am-toast-nomask-bottom]': `!mask && position === 'bottom'`,
+  }
 })
 export class ToastComponent {
   prefixCls: string = 'am-toast';
@@ -39,17 +50,8 @@ export class ToastComponent {
       this._iconType = value;
     });
   }
-
-  @HostBinding('class.am-toast')
-  amToast: boolean = true;
-  @HostBinding('class.am-toast-mask')
-  get amToastMask(): boolean {
-    return this.mask;
-  }
-  @HostBinding('class.am-toast-nomask')
-  get amToastNoMask(): boolean {
-    return !this.mask;
-  }
+  @Input()
+  position: string = 'middle';
 
   constructor(private _zone: NgZone) {}
 }

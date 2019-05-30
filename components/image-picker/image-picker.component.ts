@@ -10,7 +10,7 @@ export interface ElementType {
   selector: 'ImagePicker, nzm-image-picker',
   templateUrl: './image-picker.component.html'
 })
-export class ImagePicker {
+export class ImagePickerComponent {
   prefixCls: string = 'am-image-picker';
   flexEl: ElementType[][] = [];
 

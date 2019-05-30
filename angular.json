@@ -59,8 +59,8 @@
             "browserTarget": "ng-zorro-antd-mobile:build"
           },
           "configurations": {
-            "prod": {
-              "browserTarget": "ng-zorro-antd-mobile:build:prod"
+            "production": {
+              "browserTarget": "ng-zorro-antd-mobile:build:production"
             }
           }
         },

@@ -2,7 +2,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, TestBed } from '@angular/core/testing';
-import { Button } from './button.component';
+import { ButtonComponent } from './button.component';
 import { ButtonModule } from './button.module';
 import { IconModule, WingBlankModule, WhiteSpaceModule, ListModule } from '../..';
 import { dispatchTouchEvent } from '../core/testing';
@@ -23,7 +23,7 @@ describe('button', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(TestButton);
       component = fixture.componentInstance;
-      buttons = fixture.debugElement.queryAll(By.directive(Button));
+      buttons = fixture.debugElement.queryAll(By.directive(ButtonComponent));
       fixture.detectChanges();
     });
 

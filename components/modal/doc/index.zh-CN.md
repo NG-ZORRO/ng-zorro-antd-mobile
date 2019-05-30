@@ -15,7 +15,6 @@ subtitle: 对话框
 
 
 ## API
-组件使用前，需要在对应module中加入entryComponents，如：`entryComponents: [ModalServiceComponent]`。
 
 ### Modal
 
@@ -32,7 +31,7 @@ subtitle: 对话框
 | footer | 底部内容 | Array [{text, onPress}] | [] |
 | platform (`Web Only`) | 设定组件的平台特有样式, 可选值为 `android`, `ios`， 默认为 `ios` | String | `ios'`|
 
-### Modal.alert(title, message, actions?, platform?)
+### ModalSerivce.alert(title, message, actions?, platform?)
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
@@ -41,9 +40,9 @@ subtitle: 对话框
 | actions | 按钮组, [{text, onPress, style}] | Array | 无  |
 | platform  |  设定组件的平台特有样式, 可选值为 `android`, `ios`， 默认为 `ios`  | String | `'ios'`|
 
-`Modal.alert(title, message, actions?, platform?).close()` 可以在外部关闭 Alert
+`ModalSerivce.alert(title, message, actions?, platform?).close()` 可以在外部关闭 Alert
 
-### Modal.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?, platform?)
+### ModalSerivce.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?, platform?)
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
@@ -56,13 +55,13 @@ subtitle: 对话框
 | platform  |  设定组件的平台特有样式, 可选值为 `android`, `ios`， 默认为 `ios`  | String | `'ios'`|
 
 
-`Modal.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?, platform?).close()` 可以在外部关闭 prompt`
+`ModalSerivce.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?, platform?).close()` 可以在外部关闭 prompt`
 
-### Modal.operation(actions?, platform?)
+### ModalSerivce.operation(actions?, platform?)
 
 属性 | 说明 | 类型 | 默认值
 ----|-----|------|------
 | actions | 按钮组, [{text, onPress, style}] | Array | 无  |
 | platform  |  设定组件的平台特有样式, 可选值为 `android`, `ios`， 默认为 `ios`  | String | `'ios'`|
 
-`Modal.operation(actions?, platform?).close()` 可以在外部关闭 operation`
+`ModalSerivce.operation(actions?, platform?).close()` 可以在外部关闭 operation`

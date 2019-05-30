@@ -1,4 +1,4 @@
-import { Models } from '../date/DataTypes';
+import { DateModels } from '../date/DataTypes';
 
 export const mergeDateTime = (date?: Date, time?: Date) => {
   date = date || new Date();
@@ -13,7 +13,7 @@ export const mergeDateTime = (date?: Date, time?: Date) => {
   );
 };
 
-export const formatDate = (date: Date, format: string, locale?: Models.Locale) => {
+export const formatDate = (date: Date, format: string, locale?: DateModels.Locale) => {
   const week = locale && locale.week;
 
   let o: { [key: string]: any } = {
@@ -33,4 +33,16 @@ export const formatDate = (date: Date, format: string, locale?: Models.Locale) =
     }
   }
   return format;
+};
+
+export const isSameDate = (day_one: Date, day_two: Date) => {
+  if (!day_one || !day_two) {
+    console.error('isSameDate function need two params');
+    return 'need two params';
+  }
+  const compareDate = day_one.getDate() === day_two.getDate();
+  const compareMonth = day_one.getMonth() === day_two.getMonth();
+  const compareYear = day_one.getFullYear() === day_two.getFullYear();
+
+  return compareDate && compareMonth && compareYear;
 };

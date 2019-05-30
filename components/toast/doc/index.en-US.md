@@ -14,13 +14,12 @@ A lightweight feedback or tips, used to display content that does not interrupt 
 
 
 ## API
-Before use，entryComponents should be added in corresponding module，such as：`entryComponents: [ToastComponent]`.
 
-- `Toast.success(content, duration, onClose, mask)`
-- `Toast.fail(content, duration, onClose, mask)`
-- `Toast.info(content, duration, onClose, mask)`
-- `Toast.loading(content, duration, onClose, mask)`
-- `Toast.offline(content, duration, onClose, mask)`
+- `ToastService.success(content, duration, onClose, mask)`
+- `ToastService.fail(content, duration, onClose, mask)`
+- `ToastService.info(content, duration, onClose, mask)`
+- `ToastService.loading(content, duration, onClose, mask)`
+- `ToastService.offline(content, duration, onClose, mask)`
 
 The component provide several static methods：
 
@@ -30,9 +29,10 @@ Properties | Descrition | Type | Default
 | duration   | Delay time to close, which units is millisecond | number                 | 3000          |
 | onClose    | A callback function Triggered when the Toast is closed |  Function                 | -          |
 | mask    | Whether to show a transparent mask, which will prevent touch event of the whole page |  Boolean  | true          |
+| position    | enum{'top', 'middle', 'bottom'} |  string  | 'middle'      |
 
 > **Notice：** OnClose is invalid and Toast does not hide, If set duration = 0, toast will not auto hide, you have to manually do it.
 
 Provides global configuration and global destroy methods:
 
-- `Toast.hide()`
+- `ToastService.hide()`

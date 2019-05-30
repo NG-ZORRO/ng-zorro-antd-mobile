@@ -1,2 +1,2 @@
-export * from './wing-blank.module';
-export * from './wing-blank.component';
+export { WingBlankModule } from './wing-blank.module';
+export { WingBlankComponent } from './wing-blank.component';

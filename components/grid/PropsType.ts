@@ -1,18 +1,18 @@
-import { Injectable, TemplateRef } from '@angular/core';
+import { TemplateRef } from '@angular/core';
 
-export interface DataItem {
+export interface GridDataItem {
   icon?: any;
   text?: any;
   [key: string]: any;
 }
 
-export interface GridProps {
-  data?: Array<DataItem | undefined>;
+export interface GridPropsType {
+  data?: Array<GridDataItem | undefined>;
   hasLine?: boolean;
   columnNum?: number;
   isCarousel?: boolean;
   carouselMaxRow?: number;
   itemStyle?: any;
-  onClick?: (dataItem: DataItem | undefined, itemIndex: number) => void;
-  renderItem?: (dataItem: DataItem | undefined, itemIndex: number) => TemplateRef<any>;
+  onClick?: (dataItem: GridDataItem | undefined, itemIndex: number) => void;
+  renderItem?: (dataItem: GridDataItem | undefined, itemIndex: number) => TemplateRef<any>;
 }

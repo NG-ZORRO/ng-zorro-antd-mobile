@@ -2,17 +2,17 @@ import { Component, Input, Output, EventEmitter, OnChanges, HostBinding, forward
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'Stepper , nzm-stepper',
+  selector: 'Stepper, nzm-stepper',
   templateUrl: './stepper.component.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Stepper),
+      useExisting: forwardRef(() => StepperComponent),
       multi: true
     }
   ]
 })
-export class Stepper implements OnChanges, ControlValueAccessor {
+export class StepperComponent implements OnChanges, ControlValueAccessor {
   prefixCls: string = 'am-stepper';
   upDisableCls: object;
   downDisableCls: object;

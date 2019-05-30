@@ -4,7 +4,7 @@ import { Component, OnInit, Input, HostBinding, OnChanges, ElementRef, AfterView
   selector: 'Badge, nzm-badge',
   templateUrl: './badge.component.html'
 })
-export class Badge implements OnChanges, OnInit, AfterViewInit {
+export class BadgeComponent implements OnChanges, OnInit, AfterViewInit {
   prefixCls: string = 'am-badge';
   scrollNumberCls: object = {};
   style: object = {};
@@ -108,7 +108,7 @@ export class Badge implements OnChanges, OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      if (this._ref.nativeElement.children.length > 1) {
+      if (this._ref.nativeElement.children.length > 1 || (this._ref.nativeElement.children.length === 1 && !this.dot && !this.text)) {
         this._children = true;
         this.setCls();
       }

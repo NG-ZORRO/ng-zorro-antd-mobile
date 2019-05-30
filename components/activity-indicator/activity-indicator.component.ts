@@ -4,7 +4,7 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
   selector: 'ActivityIndicator , nzm-ctivity-indicator',
   templateUrl: './activity-indicator.component.html'
 })
-export class ActivityIndicator implements OnInit {
+export class ActivityIndicatorComponent implements OnInit {
   prefixCls: string = 'am-activity-indicator';
   spinnerClass: object = {};
 

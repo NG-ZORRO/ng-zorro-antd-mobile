@@ -1,2 +1,2 @@
-export * from './flex.module';
-export * from './flex.component';
+export { FlexModule } from './flex.module';
+export { FlexComponent, FlexItemComponent } from './flex.component';

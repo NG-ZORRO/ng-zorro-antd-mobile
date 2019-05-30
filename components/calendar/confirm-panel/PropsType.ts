@@ -1,8 +1,8 @@
-import { Models } from '../date/DataTypes';
+import { DateModels } from '../date/DataTypes';
 
 export interface CalendarConfirmPanelPropsType {
   type?: 'one' | 'range';
-  locale: Models.Locale;
+  locale: DateModels.Locale;
   onlyConfirm?: boolean;
   disableBtn?: boolean;
   startDateTime?: Date;

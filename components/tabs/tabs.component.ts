@@ -13,7 +13,7 @@ import {
   ContentChildren,
   ViewEncapsulation
 } from '@angular/core';
-import { TabPane } from './tab-pane.component';
+import { TabPaneComponent } from './tab-pane.component';
 import { TabDirection, TabBarPositionType, TabsOnChangeEvent } from './PropsType';
 
 @Component({
@@ -21,7 +21,7 @@ import { TabDirection, TabBarPositionType, TabsOnChangeEvent } from './PropsType
   templateUrl: './tabs.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class Tabs implements DoCheck, AfterContentInit {
+export class TabsComponent implements DoCheck, AfterContentInit {
   prefixCls: string = 'am-tabs';
   selectedKey: number = 0;
   keyToSelect: number = 0;
@@ -33,8 +33,8 @@ export class Tabs implements DoCheck, AfterContentInit {
   private _tabDirection: TabDirection = 'horizontal';
   private _tabBarPosition: TabBarPositionType = 'top';
 
-  @ContentChildren(TabPane, { descendants: false })
-  tabPanes: QueryList<TabPane>;
+  @ContentChildren(TabPaneComponent, { descendants: false })
+  tabPanes: QueryList<TabPaneComponent>;
 
   @ViewChild('TabContent')
   tabContent: ElementRef;
@@ -73,7 +73,7 @@ export class Tabs implements DoCheck, AfterContentInit {
   tabBarTextStyle: object = {};
   /** should be removed when https://github.com/angular/angular/issues/20810 resolved **/
   @Input()
-  tabPanesContent: QueryList<TabPane> = null;
+  tabPanesContent: QueryList<TabPaneComponent> = null;
   @Input()
   get activeTab(): number {
     return this.selectedKey;
@@ -164,7 +164,7 @@ export class Tabs implements DoCheck, AfterContentInit {
     }
   }
 
-  getCurrentTabPanes(): QueryList<TabPane> {
+  getCurrentTabPanes(): QueryList<TabPaneComponent> {
     return this.tabPanesContent || this.tabPanes;
   }
 

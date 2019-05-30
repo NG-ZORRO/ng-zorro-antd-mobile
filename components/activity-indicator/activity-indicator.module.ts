@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { ActivityIndicator } from './activity-indicator.component';
+import { ActivityIndicatorComponent } from './activity-indicator.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  exports: [ActivityIndicator],
-  declarations: [ActivityIndicator],
+  exports: [ActivityIndicatorComponent],
+  declarations: [ActivityIndicatorComponent],
   imports: [CommonModule, FormsModule]
 })
 export class ActivityIndicatorModule {}

@@ -15,13 +15,12 @@ subtitle: 轻提示
 
 
 ## API
-组件使用前，需要在对应module中加入entryComponents，如：`entryComponents: [ToastComponent]`。
 
-- `Toast.success(content, duration, onClose, mask)`
-- `Toast.fail(content, duration, onClose, mask)`
-- `Toast.info(content, duration, onClose, mask)`
-- `Toast.loading(content, duration, onClose, mask)`
-- `Toast.offline(content, duration, onClose, mask)`
+- `ToastService.success(content, duration, onClose, mask)`
+- `ToastService.fail(content, duration, onClose, mask)`
+- `ToastService.info(content, duration, onClose, mask)`
+- `ToastService.loading(content, duration, onClose, mask)`
+- `ToastService.offline(content, duration, onClose, mask)`
 
 组件提供了五个静态方法，参数如下：
 
@@ -31,9 +30,10 @@ subtitle: 轻提示
 | duration   | 自动关闭的延时，单位毫秒 | number                 | 3000          |
 | onClose    | 关闭后回调 |  Function                 | 无          |
 | mask    | 是否显示透明蒙层，防止触摸穿透 |  Boolean  | true          |
+| position    | enum{'top', 'middle', 'bottom'} |  string  | 'middle'      |
 
 > **注：**  duration = 0 时，onClose 无效，toast 不会消失；隐藏 toast 需要手动调用 hide
 
 还提供了全局配置和全局销毁方法：
 
-- `Toast.hide()`
+- `ToastService.hide()`

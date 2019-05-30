@@ -12,7 +12,7 @@ import { ToastComponent } from '../toast/toast.component';
   imports: [CommonModule, LocaleProviderModule, ToastModule, FormsModule],
   exports: [DatePickerComponent, DatePickerDirective],
   declarations: [DatePickerComponent, DatePickerDirective],
-  entryComponents: [DatePickerComponent, ToastComponent],
+  entryComponents: [DatePickerComponent],
   providers: [DatePickerOptions, LocaleProviderModule]
 })
 export class DatePickerModule {}

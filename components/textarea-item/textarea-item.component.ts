@@ -20,12 +20,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TextareaItem),
+      useExisting: forwardRef(() => TextareaItemComponent),
       multi: true
     }
   ]
 })
-export class TextareaItem implements OnInit, AfterContentChecked, ControlValueAccessor {
+export class TextareaItemComponent implements OnInit, AfterContentChecked, ControlValueAccessor {
   prefixCls: string = 'am-textarea';
   wrapCls: object;
   labelCls: object;

@@ -6,7 +6,7 @@ export type WhiteSpaceSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   selector: 'WhiteSpace, nzm-whitespace',
   template: ``
 })
-export class WhiteSpace {
+export class WhiteSpaceComponent {
   prefixCls: string = 'am-whitespace';
 
   @Input()

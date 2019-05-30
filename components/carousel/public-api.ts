@@ -1,4 +1,4 @@
-export * from './carousel.module';
-export * from './carousel.component';
-export * from './dotindicator/dotindicator.component';
-export * from './carousel-slide/carousel-slide.component';
+export { CarouselModule } from './carousel.module';
+export { CarouselComponent } from './carousel.component';
+export { DotIndicatorComponent } from './dotindicator/dotindicator.component';
+export { CarouselSlideComponent } from './carousel-slide/carousel-slide.component';

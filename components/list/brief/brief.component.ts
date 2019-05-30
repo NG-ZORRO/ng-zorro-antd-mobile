@@ -5,7 +5,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   templateUrl: './brief.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class Brief {
+export class BriefComponent {
   defaultProps = {
     prefixCls: 'am-list'
   };

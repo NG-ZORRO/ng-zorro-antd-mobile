@@ -13,6 +13,35 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 0.12.2 (2019-05-21)
+
+### Bug Fixes
+
+* **popupservice:** set popupservice providers in referenced components. ([#449](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/449)) ([a14ea6b](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/a14ea6b))
+
+
+### Features
+
+* **toast:** support position top and bottom ([#450](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/450)) ([77c326a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/77c326a))
+
+## 0.12.1 (2019-05-20)
+
+### Bug Fixes
+
+* **calendar:** fix calendar timepicker display title error bug ([#444](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/444)) ([7ad01ba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7ad01ba))
+* **mobile site:** correct component name in mobile site ([#415](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/415)) ([f106942](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f106942))
+* **modal&input-item:** add essential providers to make demo work ([#421](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/421)) ([66057cf](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/66057cf))
+* **picker:** fix picker style error ([#434](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/434)) ([c09b85e](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/c09b85e))
+* **badge:** fix badge when text value form empty to non empty ([#441](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/441)) ([fab7312](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/fab7312))
+* **carousel:** fix adaptive when switching screens ([#411](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/411)) ([4ff06d9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/4ff06d9))
+
+
+### Features
+
+* **imagepicker:** add capture&disableDelete API ([#410](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/410)) ([cfd733e](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/cfd733e))
+* **swipe-action:** add className api ([#436](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/436)) ([3a976c5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3a976c5))
+* **toast:** provides a way for angular new API to self-inject ([#426](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/426)) ([ad31989](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ad31989))
+
 ## 0.12.0 (2019-04-30)
 
 ### BreakChange

@@ -13,6 +13,34 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.12.2 (2019-05-21)
+
+### Bug Fixes
+
+* **popupservice:** 在相关组件的providers里添加 popupservice ([#449](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/449)) ([a14ea6b](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/a14ea6b))
+
+
+### Features
+
+* **toast:** 支持 top 和 bottom 两种位置 ([#450](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/450)) ([77c326a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/77c326a))
+
+## 0.12.1 (2019-05-20)
+
+### Bug Fixes
+
+* **calendar:** 修复 calendar timepicker 显示标题错误 ([#444](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/444)) ([7ad01ba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7ad01ba))
+* **mobile site:** 修复无线站点中的组件名称格式错误 ([#415](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/415)) ([f106942](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f106942))
+* **picker:** 修复 picker 样式错误 ([#434](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/434)) ([c09b85e](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/c09b85e))
+* **badge:** 修复文案从空到非空时 badge 错误 ([#441](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/441)) ([fab7312](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/fab7312))
+* **carousel:** 修复横竖屏切换时未动态调整的错误 ([#411](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/411)) ([4ff06d9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/4ff06d9))
+
+
+### Features
+
+* **imagepicker:** 增加 capture&disableDelete API ([#410](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/410)) ([cfd733e](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/cfd733e))
+* **swipe-action:** 增加 className api ([#436](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/436)) ([3a976c5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3a976c5))
+* **toast:** 提供一种新的API方案自注入 ([#426](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/426)) ([ad31989](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ad31989))
+
 ## 0.12.0 (2019-04-30)
 
 ### BreakChange

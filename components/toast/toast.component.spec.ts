@@ -1,12 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { dispatchTouchEvent } from '../core/testing';
-import { Toast } from './toast.service';
+import { ToastService } from './toast.service';
 import { ToastComponent } from './toast.component';
 import { ToastModule } from './toast.module';
 import { IconModule, ButtonModule } from '../..';
-import { Button } from '../button/button.component';
+import { ButtonComponent } from '../button/button.component';
 
 describe('ToastComponent', () => {
   let component: TestToastComponent;
@@ -29,7 +28,7 @@ describe('ToastComponent', () => {
     fixture = TestBed.createComponent(TestToastComponent);
     component = fixture.componentInstance;
     toastEle = fixture.debugElement.query(By.css('toast'));
-    buttons = fixture.debugElement.queryAll(By.directive(Button));
+    buttons = fixture.debugElement.queryAll(By.directive(ButtonComponent));
     fixture.detectChanges();
   });
 
@@ -63,6 +62,26 @@ describe('ToastComponent', () => {
     component.mask = false;
     fixture.detectChanges();
     expect(toastEle.nativeElement.classList).toContain('am-toast-nomask', 'mask is false');
+  });
+
+  it('position should work', () => {
+    expect(toastEle.nativeElement.classList).toContain('am-toast-mask-middle');
+    component.position = 'top';
+    fixture.detectChanges();
+    expect(toastEle.nativeElement.classList).toContain('am-toast-mask-top');
+    component.position = 'bottom';
+    fixture.detectChanges();
+    expect(toastEle.nativeElement.classList).toContain('am-toast-mask-bottom');
+    component.mask = false;
+    component.position = 'top';
+    fixture.detectChanges();
+    expect(toastEle.nativeElement.classList).toContain('am-toast-nomask-top');
+    component.position = 'middle';
+    fixture.detectChanges();
+    expect(toastEle.nativeElement.classList).toContain('am-toast-nomask-middle');
+    component.position = 'bottom';
+    fixture.detectChanges();
+    expect(toastEle.nativeElement.classList).toContain('am-toast-nomask-bottom');
   });
 
   it('should showToast work', () => {
@@ -134,7 +153,7 @@ describe('ToastComponent', () => {
 @Component({
   selector: 'test-toast',
   template: `
-    <Toast [content]="content" [iconType]="iconType" [mask]="mask"></Toast>
+    <Toast [content]="content" [iconType]="iconType" [mask]="mask" [position]="position"></Toast>
     <div Button (onClick)="showToast()">text only</div>
     <div Button (onClick)="showToastNoMask()">without mask</div>
     <div Button (onClick)="showCustomIcon(content1)">custom content</div>
@@ -151,36 +170,36 @@ describe('ToastComponent', () => {
     <ng-template #contentTpl>
     contentTpl
     </ng-template>
-  `,
-  providers: [Toast]
+  `
 })
 export class TestToastComponent {
   content: any = '123';
   iconType = '';
   mask = true;
+  position = 'middle';
 
   @ViewChild('contentTpl')
   contentTpl: ViewChild;
 
-  constructor(private _toast: Toast) {}
+  constructor(private _toast: ToastService) {}
 
   showToast() {
-    const toast = Toast.show('This is a toast tips !!!', 0);
+    const toast = ToastService.show('This is a toast tips !!!', 0, true, this.position);
     setTimeout(() => {
-      Toast.hide();
+      ToastService.hide();
     }, 3000);
   }
 
   showToastNoMask() {
-    const toast = Toast.info('Toast without mask !!!', 4000, null, false);
+    const toast = ToastService.info('Toast without mask !!!', 4000, null, false);
   }
 
   showCustomIcon(event) {
-    const toast = Toast.info(event);
+    const toast = ToastService.info(event);
   }
 
   successToast() {
-    const toast = Toast.success('Load success !!!', 3000, () => {
+    const toast = ToastService.success('Load success !!!', 3000, () => {
       this.onClose();
     });
   }
@@ -190,15 +209,15 @@ export class TestToastComponent {
   }
 
   failToast() {
-    const toast = Toast.fail('Load failed !!!', 1000);
+    const toast = ToastService.fail('Load failed !!!', 1000);
   }
 
   offline() {
-    const toast = Toast.offline('Network connection failed !!!', 1000);
+    const toast = ToastService.offline('Network connection failed !!!', 1000);
   }
 
   loadingToast() {
-    const toast = Toast.loading('Loading...', 3000, () => {
+    const toast = ToastService.loading('Loading...', 3000, () => {
       console.log('Load complete !!!');
     });
   }
