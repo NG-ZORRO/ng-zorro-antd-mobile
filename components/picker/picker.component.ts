@@ -279,8 +279,12 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.checkArrayDeep(this.dataForRender[target][index]);
     if (this.selectedTarget.length > 0 && this.selectedTarget.length < this.dataForRender.length) {
       for (let i = 0; i < this.dataForRender.length; i++) {
-        if (target !== i) {
-          this.selectedTarget.push({ targetId: `${i}`, currentY: 0 });
+        if (i > target) {
+          if (i < this.selectedTarget.length) {
+            this.selectedTarget[i] = { targetId: `${i}`, currentY: 0 };
+          } else {
+            this.selectedTarget.push({ targetId: `${i}`, currentY: 0 });
+          }
         }
       }
     }
