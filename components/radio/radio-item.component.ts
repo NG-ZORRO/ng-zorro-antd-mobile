@@ -57,4 +57,8 @@ export class RadioItemComponent {
       this.select$.next(this);
     }
   }
+
+  markForCheck(): void {
+    this.cdr.markForCheck();
+  }
 }
