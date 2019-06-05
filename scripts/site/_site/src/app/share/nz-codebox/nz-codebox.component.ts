@@ -351,7 +351,6 @@ export class AppModule { }
       description : 'Created with <3 by the StackBlitz SDK!',
       template    : 'angular-cli',
       dependencies: {
-        'rxjs'                             : '^6.3.3',
         '@angular/cdk'                     : '^7.3.7',
         '@angular/core'                    : '^7.2.13',
         '@angular/forms'                   : '^7.2.13',
@@ -362,7 +361,9 @@ export class AppModule { }
         '@angular/common'                  : '^7.2.13',
         '@angular/router'                  : '^7.2.13',
         '@angular/animations'              : '^7.2.13',
+        '@angular/compiler'                : '^7.2.13',
         '@ant-design/icons-angular'        : '~2.0.3',
+        'rxjs'                             : '^6.3.3',
         'ng-zorro-antd-mobile'             : '^0.12.0'
       },
       tags        : [ 'stackblitz', 'sdk' ]
