@@ -144,6 +144,19 @@ describe('swipeAction', () => {
     expect(component.swipeAction._btnsLeftWidth).toEqual(0);
     expect(component.swipeAction._btnsRightWidth).toEqual(0);
   });
+
+  it('onCloseSwipe not trigger when touch in range am-swipe-action', () => {
+    component.autoClose = false;
+    //先模拟打开左侧按钮
+    const leftBtns = swipeActionEle.nativeElement.querySelector('.am-swipe-actions-left');
+    component.swipeToOpenBtn(leftBtns.offsetWidth + 50, leftBtns.offsetWidth + 100);
+
+    fixture.detectChanges();
+    dispatchTouchEvent(swipeActionEle.nativeElement.querySelector('.am-swipe-actions'), 'touchstart');
+    component.onClose = jasmine.createSpy('onClose is callback');
+    fixture.detectChanges();
+    expect(component.onClose).toHaveBeenCalledTimes(0);
+  });
 });
 
 @Component({
