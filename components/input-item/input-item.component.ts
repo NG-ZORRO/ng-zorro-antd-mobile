@@ -340,7 +340,8 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
       this._placeholder = this._value;
     }
     this._value = '';
-    this.onChange.emit('');
+    this.onChange.emit(this._value);
+    this._onChange(this._value);
     this._isClear = true;
     if (this._type !== 'money') {
       this.inputElementRef.nativeElement.value = this._value;
