@@ -269,15 +269,6 @@ describe('drawer', () => {
     dispatchTouchEvent(sidebar, 'touchend');
     fixture.detectChanges();
     expect(drawerEle.nativeElement.classList).toContain('am-drawer-open');
-
-    //test when enable drag to shrink sidebar
-    // dispatchTouchEvent(sidebar, 'touchstart',100, 0);
-    // fixture.detectChanges();
-    // dispatchTouchEvent(sidebar, 'touchmove',50, 0);
-    // fixture.detectChanges();
-    // dispatchTouchEvent(sidebar, 'touchend');
-    // fixture.detectChanges();
-    // expect(drawerEle.nativeElement.classList).not.toContain('am-drawer-open');
   });
 
   it('sidebar drag work when position = right', () => {
@@ -304,15 +295,6 @@ describe('drawer', () => {
     dispatchTouchEvent(sidebar, 'touchend');
     fixture.detectChanges();
     expect(drawerEle.nativeElement.classList).toContain('am-drawer-open');
-
-    //test when enable drag to shrink sidebar
-    // dispatchTouchEvent(sidebar, 'touchstart',100);
-    // fixture.detectChanges();
-    // dispatchTouchEvent(sidebar, 'touchmove',160);
-    // fixture.detectChanges();
-    // dispatchTouchEvent(sidebar, 'touchend');
-    // fixture.detectChanges();
-    // expect(drawerEle.nativeElement.classList).not.toContain('am-drawer-open');
   });
 
   it('sidebar drag work when position = top', () => {
@@ -339,15 +321,6 @@ describe('drawer', () => {
     dispatchTouchEvent(sidebar, 'touchend');
     fixture.detectChanges();
     expect(drawerEle.nativeElement.classList).toContain('am-drawer-open');
-
-    //test when enable drag to shrink sidebar
-    // dispatchTouchEvent(sidebar, 'touchstart',0,sidebar.offsetTop + 100);
-    // fixture.detectChanges();
-    // dispatchTouchEvent(sidebar, 'touchmove',0,sidebar.offsetTop + 50);
-    // fixture.detectChanges();
-    // dispatchTouchEvent(sidebar, 'touchend');
-    // fixture.detectChanges();
-    // expect(drawerEle.nativeElement.classList).not.toContain('am-drawer-open');
   });
 
   it('sidebar drag work when position = bottom', () => {
@@ -373,16 +346,7 @@ describe('drawer', () => {
     fixture.detectChanges();
     dispatchTouchEvent(sidebar, 'touchend');
     fixture.detectChanges();
-    expect(drawerEle.nativeElement.classList).toContain('am-drawer-open');
-
-    //test when enable drag to shrink sidebar
-    // dispatchTouchEvent(sidebar, 'touchstart',0,sidebar.offsetTop + 100);
-    // fixture.detectChanges();
-    // dispatchTouchEvent(sidebar, 'touchmove',0,sidebar.offsetTop + 150);
-    // fixture.detectChanges();
-    // dispatchTouchEvent(sidebar, 'touchend');
-    // fixture.detectChanges();
-    // expect(drawerEle.nativeElement.classList).not.toContain('am-drawer-open');
+    expect(drawerEle.nativeElement.classList).toContain('am-drawer-open')
   });
 });
 

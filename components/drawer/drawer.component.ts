@@ -143,18 +143,12 @@ export class DrawerComponent implements AfterViewChecked, OnChanges {
 
   onTouchEnd() {
     const touchWidth = this.touchSidebarWidth();
-    if (
-      (this._open && touchWidth < this.sidebarWidth - this.dragToggleDistance) ||
-      (!this._open && touchWidth > this.dragToggleDistance)
-    ) {
+    if (!this._open && touchWidth > this.dragToggleDistance) {
       this.onOpenChange.emit(!this._open);
     }
 
     const touchHeight = this.touchSidebarHeight();
-    if (
-      (this._open && touchHeight < this.sidebarHeight - this.dragToggleDistance) ||
-      (!this._open && touchHeight > this.dragToggleDistance)
-    ) {
+    if (!this._open && touchHeight > this.dragToggleDistance) {
       this.onOpenChange.emit(!this._open);
     }
     this.touchIdentifier = null;
@@ -190,37 +184,16 @@ export class DrawerComponent implements AfterViewChecked, OnChanges {
 
   touchSidebarWidth() {
     if (this._position === 'right') {
-      if (this._open && window.innerWidth - this.touchStartX < this.sidebarWidth) {
-        if (this.touchCurrentX > this.touchStartX) {
-          return this.sidebarWidth + this.touchStartX - this.touchCurrentX;
-        }
-        return this.sidebarWidth;
-      }
       return Math.min(window.innerWidth - this.touchCurrentX, this.sidebarWidth);
     }
 
     if (this._position === 'left') {
-      if (this._open && this.touchStartX < this.sidebarWidth) {
-        if (this.touchCurrentX > this.touchStartX) {
-          return this.sidebarWidth;
-        }
-        return this.sidebarWidth - this.touchStartX + this.touchCurrentX;
-      }
       return Math.min(this.touchCurrentX, this.sidebarWidth);
     }
   }
 
   touchSidebarHeight() {
     if (this._position === 'bottom') {
-      if (
-        this._open &&
-        this._el.nativeElement.offsetHeight - this.touchStartY + this._el.nativeElement.offsetTop < this.sidebarHeight
-      ) {
-        if (this.touchCurrentY > this.touchStartY) {
-          return this.sidebarHeight + this.touchStartY - this.touchCurrentY;
-        }
-        return this.sidebarHeight;
-      }
       return Math.min(
         this._el.nativeElement.offsetHeight - this.touchCurrentY + this._el.nativeElement.offsetTop,
         this.sidebarHeight
@@ -228,13 +201,6 @@ export class DrawerComponent implements AfterViewChecked, OnChanges {
     }
 
     if (this._position === 'top') {
-      const touchStartOffsetY = this.touchStartY - this.sidebarTop;
-      if (this._open && touchStartOffsetY < this.sidebarHeight) {
-        if (this.touchCurrentY > this.touchStartY) {
-          return this.sidebarHeight;
-        }
-        return this.sidebarHeight - this.touchStartY + this.touchCurrentY;
-      }
       return Math.min(this.touchCurrentY - this.dragHandleTop, this.sidebarHeight);
     }
   }
