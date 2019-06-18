@@ -7,7 +7,8 @@ import {
   Input,
   Output,
   HostBinding,
-  EventEmitter
+  EventEmitter,
+  ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateModels } from './date/DataTypes';
@@ -17,6 +18,7 @@ import { CalendarPropsType } from './calendar.props.component';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { mergeDateTime, isSameDate } from './util/index';
 import { takeUntil } from 'rxjs/operators';
+import { CalendarDatePickerComponent } from './datepicker/datepicker.component';
 import { Subject } from 'rxjs';
 
 export { CalendarPropsType };
@@ -41,6 +43,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   contentAnimateClass: string;
   maskAnimateClass: string;
   showClear: boolean = false;
+  isSameDate: Function = isSameDate;
 
   props = {
     visible: false,
@@ -69,6 +72,9 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   private _dateModelTime: number = 0;
   private onChangeFn: (date: Date|Array<Date>) => void = () => {};
   private onTouchFn: (date: Date|Array<Date>) => void = () => {};
+
+  @ViewChild(CalendarDatePickerComponent)
+  datepicker: CalendarDatePickerComponent;
 
   @Input()
   set locale(value) {
@@ -278,10 +284,10 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
         } else {
           newState = {
             ...newState,
-            timePickerTitle: +newDate >= +startDate || isSameDate(startDate, newDate) ? locale.selectEndTime : locale.selectStartTime,
+            timePickerTitle: +newDate >= +startDate || this.isSameDate(startDate, newDate) ? locale.selectEndTime : locale.selectStartTime,
             disConfirmBtn: false,
             endDate:
-              pickTime && !useDateTime && (+newDate >= +startDate || isSameDate(startDate, newDate))
+              pickTime && !useDateTime && (+newDate >= +startDate || this.isSameDate(startDate, newDate))
                 ? new Date(+mergeDateTime(newDate, startDate) + 3600000)
                 : newDate
           };
