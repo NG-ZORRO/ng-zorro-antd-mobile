@@ -108,7 +108,7 @@ export class CalendarDatePickerComponent extends CalendarDatePickerBaseComponent
   };
 
   onTouchStart(event) {
-    this._lastY = event.touches[0].screenY;
+    this._lastY = event.touches[0].screenY || event.touches[0].pageY;
     this._delta = this._initDelta;
   }
 
@@ -117,7 +117,7 @@ export class CalendarDatePickerComponent extends CalendarDatePickerBaseComponent
     const isReachTop = ele.scrollTop === 0;
 
     if (isReachTop) {
-      this._delta = event.touches[0].screenY - this._lastY;
+      this._delta = (event.touches[0].screenY || event.touches[0].pageY) - this._lastY;
       if (this._delta > 0) {
         event.preventDefault();
         if (this._delta > 80) {
