@@ -417,7 +417,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
       this.cellSpacing;
     this.style = {
       height: this._currentSlideHeight + 'px',
-      width: this.items.length * this._rationWidth + 'px',
+      width: this.vertical ? this._currentSlideWidth + 'px' : this.items.length * this._rationWidth + 'px',
       transform: this.vertical
         ? `translate3d(0px, ${positionOffset}px, 0px)`
         : `translate3d(${positionOffset}px, 0px, 0px)`,
