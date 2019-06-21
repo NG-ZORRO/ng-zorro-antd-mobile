@@ -18,4 +18,6 @@ export class CarouselSlideComponent {
   top;
   @HostBinding('style.margin')
   margin;
+  @HostBinding('style.overflow')
+  overflow = 'hidden';
 }
