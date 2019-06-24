@@ -109,6 +109,23 @@ describe('DatePickerComponent', () => {
     datePickerEle.querySelector('.am-picker-popup-header-right').click();
   });
 
+  it('should minuteStep work', () => {
+    component.mode = 'datetime';
+    component.minuteStep = 5;
+    fixture.detectChanges();
+    button.click();
+    fixture.detectChanges();
+    datePickerEle = document.querySelector('datepicker');
+    const contentEles = datePickerEle.querySelectorAll('.am-picker-col-content');
+    const minuteEles = contentEles[contentEles.length - 1].querySelectorAll('.am-picker-col-item');
+    const step =  minuteEles[1].innerText - minuteEles[0].innerText;
+    expect(step).toBe(
+      5,
+      'minuteStep is 5'
+    );
+    datePickerEle.querySelector('.am-picker-popup-header-right').click();
+  });
+
   it('should mode work', () => {
     button.click();
     fixture.detectChanges();
@@ -230,6 +247,7 @@ describe('DatePickerComponent', () => {
       [title]="title"
       [value]="value1"
       [locale]="locale"
+      [minuteStep]="minuteStep"
       class="nzm-button"
       [minDate]="minDate"
       [maxDate]="maxDate"
@@ -329,6 +347,7 @@ export class TestDatePickerBasicComponent {
   value3 = new Date();
   value4 = this.utcNow;
 
+  minuteStep = 1;
   locale = en_US;
   title = 'result';
   mask = true;
