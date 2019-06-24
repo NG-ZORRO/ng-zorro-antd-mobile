@@ -45,6 +45,8 @@ export class DatePickerDirective implements OnDestroy, OnChanges, OnInit, Contro
   @Input()
   use12Hours: boolean;
   @Input()
+  minuteStep: number = 1;
+  @Input()
   value: Date = new Date();
   @Input()
   mask: boolean;
@@ -111,6 +113,7 @@ export class DatePickerDirective implements OnDestroy, OnChanges, OnInit, Contro
         'mode',
         'minDate',
         'maxDate',
+        'minuteStep',
         'value',
         'mask',
         'title',
