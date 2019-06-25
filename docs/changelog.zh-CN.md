@@ -13,6 +13,12 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 0.12.5(2019-06-25)
+
+### Bug Fixes
+
+* **carousel:** 修复只包含一个元素时的宽度错误 ([#482](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/482)) ([7ab3cba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7ab3cba))
+
 ## 0.12.4 (2019-06-24)
 
 ### Bug Fixes
