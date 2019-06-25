@@ -13,6 +13,12 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 0.12.5(2019-06-25)
+
+### Bug Fixes
+
+* **carousel:** fix carousel has one item width error. ([#482](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/482)) ([7ab3cba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7ab3cba))
+
 ## 0.12.4 (2019-06-24)
 
 ### Bug Fixes
