@@ -1,6 +1,6 @@
 export const ROUTER_LIST = {
   'intro'     : {{intro}},
-  'components';: {{components}}
+  'components': {{components}}
 };
 export const DEMO_ROUTES = [
 {{routes}}
