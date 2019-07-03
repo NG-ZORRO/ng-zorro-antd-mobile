@@ -2,7 +2,7 @@ import { DateModels } from '../date/DataTypes';
 
 export const mergeDateTime = (date?: Date, time?: Date) => {
   date = date || new Date();
-  if (!time) return date;
+  if (!time) { return date; }
   return new Date(
     date.getFullYear(),
     date.getMonth(),
@@ -26,7 +26,7 @@ export const formatDate = (date: Date, format: string, locale?: DateModels.Local
     'w+': week && week[date.getDay()],
     S: date.getMilliseconds()
   };
-  if (/(y+)/.test(format)) format = format.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+  if (/(y+)/.test(format)) { format = format.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length)); }
   for (let k in o) {
     if (new RegExp('(' + k + ')').test(format)) {
       format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length));

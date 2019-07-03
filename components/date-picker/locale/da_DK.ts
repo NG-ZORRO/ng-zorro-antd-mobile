@@ -13,4 +13,3 @@ export default {
     am: 'AM',
     pm: 'PM'
   };
-  

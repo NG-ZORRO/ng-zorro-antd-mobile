@@ -18,7 +18,7 @@ describe('TextareaComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestTextareaItemComponent],
-      imports: [TextareaItemModule,FormsModule]
+      imports: [TextareaItemModule, FormsModule]
     }).compileComponents();
   }));
 
