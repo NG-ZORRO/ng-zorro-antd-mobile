@@ -6,10 +6,10 @@ import { HttpClient } from '@angular/common/http';
   templateUrl  : './{{component}}-{{language}}.html',
   preserveWhitespaces: false
 })
-export class NzDoc{{componentName}}Component; implements; OnInit;{
+export class NzDoc{{componentName}}Component implements OnInit;{
   starCount: number = 0;
 
-  constructor(private http: HttpClient); { }
+  constructor(private http: HttpClient) { }
 
   goLink(link: string) {
     window.location.hash = window.location.hash.split(';')[0] + ';' + link;
