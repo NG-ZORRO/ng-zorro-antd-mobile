@@ -68,5 +68,5 @@ export class DemoDrawerDockComponent {
   onDockedChange = event => {
     console.log('dockedChanged', event);
     this.state.docked = !this.state.docked;
-  };
+  }
 }

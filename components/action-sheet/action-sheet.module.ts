@@ -11,7 +11,7 @@ import { ActionSheetService } from './action-sheet.service';
 import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
-  imports: [CommonModule,OverlayModule, NgZorroAntdMobilePipesModule, ListModule, WhiteSpaceModule, WingBlankModule, LocaleProviderModule],
+  imports: [CommonModule, OverlayModule, NgZorroAntdMobilePipesModule, ListModule, WhiteSpaceModule, WingBlankModule, LocaleProviderModule],
   declarations: [
     ActionSheetComponent
   ],
