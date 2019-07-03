@@ -70,12 +70,10 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   private _dateModelType: number;
   private _dateModelValue: any;
   private _dateModelTime: number = 0;
-  private onChangeFn: (date: Date|Array<Date>) => void = () => {};
-  private onTouchFn: (date: Date|Array<Date>) => void = () => {};
 
   @ViewChild(CalendarDatePickerComponent)
   datepicker: CalendarDatePickerComponent;
-
+    
   @Input()
   set locale(value) {
     if (value === 'enUS') {
@@ -167,16 +165,17 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   set onSelect(value) {
     this.props.onSelect = value;
   }
+
   @Output()
   onCancel: EventEmitter<any> = new EventEmitter<any>();
   @Output()
   onConfirm: EventEmitter<any> = new EventEmitter<any>();
   @Output()
   onSelectHasDisableDate: EventEmitter<any> = new EventEmitter<any>();
-
+  
   @HostBinding('class')
   class: string = 'am-calendar';
-
+  
   constructor(private _localeProviderService: LocaleProviderService) {}
 
   writeValue(value: Date|Array<Date>|null): void {
@@ -438,4 +437,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     this._unsubscribe$.next();
     this._unsubscribe$.complete();
   }
+  
+  private onChangeFn: (date: Date|Array<Date>) => void = () => {};
+  private onTouchFn: (date: Date|Array<Date>) => void = () => {};
 }

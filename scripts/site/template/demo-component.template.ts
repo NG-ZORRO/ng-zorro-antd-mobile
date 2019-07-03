@@ -37,7 +37,7 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
         code.nzSelected = true;
         if (this.codeBoxes.length > 1) {
           setTimeout(() => {
-            if(window.frames['demoFrame'] && window.frames['demoFrame'].document){
+            if (window.frames['demoFrame'] && window.frames['demoFrame'].document) {
               const scrollContent = window.frames['demoFrame'].document.getElementById(`${this.path}-demo-${index}`);
               if (scrollContent) {
                 scrollContent.scrollIntoView(true);
@@ -63,9 +63,9 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    if(window.location.href.split('/').splice(-1)[0] === 'en'){
+    if (window.location.href.split('/').splice(-1)[0] === 'en') {
       this.demoUrl  += '?lang=en-US';
-    }else{
+    } else {
       this.demoUrl  += '?lang=zh-CN';
     }
     this.safeUrl =  this.sanitizer.bypassSecurityTrustResourceUrl(this.demoUrl);

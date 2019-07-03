@@ -3,4 +3,3 @@ export default {
     backspaceLabel: 'Backspace',
     cancelKeyboardLabel: 'CancelKeyboard',
   };
-  
