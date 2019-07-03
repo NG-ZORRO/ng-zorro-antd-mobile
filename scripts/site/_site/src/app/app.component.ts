@@ -25,15 +25,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   isKitchenURL = false;
   demoTitle = '';
   qrcode: string = '';
-  
+
   private listenerQRCode: any;
-  
+
   constructor(private router: Router, private title: Title) {}
-  
+
   get useDocsearch(): boolean {
     return true; //window && window.location.href.indexOf('/version') === -1;
   }
-  
+
   switchLanguage(language) {
     const url = this.router.url.split('/');
     url.splice(-1);
@@ -91,7 +91,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       });
     });
   }
-  
+
   initColor() {
     const node = document.createElement('link');
     node.rel = 'stylesheet/less';
@@ -99,7 +99,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     node.href = '/assets/color.less';
     document.getElementsByTagName('head')[0].appendChild(node);
   }
-  
+
   changeColor(res: any) {
     const changeColor = () => {
       (window as any).less
@@ -138,7 +138,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       document.head.appendChild(script);
     });
   }
-  
+
   ngOnInit(): void {
     this.routerList.components.forEach(group => {
       this.componentList = this.componentList.concat([...group.children]);
