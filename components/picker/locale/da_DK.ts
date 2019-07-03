@@ -3,4 +3,3 @@ export default {
     dismissText: 'Annuller',
     extra: 'Vælg venligst',
   };
-  

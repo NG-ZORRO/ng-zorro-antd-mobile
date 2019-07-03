@@ -75,9 +75,9 @@ export class CalendarDatePickerBaseComponent {
   }
 
   getDateWithoutTime = (date?: Date) => {
-    if (!date) return 0;
+    if (!date) { return 0; }
     return +new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  };
+  }
 
   genWeekData = (firstDate: Date) => {
     const minDateTime = this.getDateWithoutTime(this.props.minDate);
@@ -114,7 +114,7 @@ export class CalendarDatePickerBaseComponent {
     }
     currentWeek[currentWeek.length - 1].isLastOfMonth = true;
     return weeks;
-  };
+  }
 
   genMonthData(date?: Date, addMonth: number = 0) {
     if (!date) {
@@ -218,7 +218,7 @@ export class CalendarDatePickerBaseComponent {
         console.warn('Unusable date. You can handle by onSelectHasDisableDate.', unuseable);
       }
     }
-  };
+  }
 
   computeVisible = (clientHeight: number, scrollTop: number) => {
     let needUpdate = false;
@@ -268,7 +268,7 @@ export class CalendarDatePickerBaseComponent {
     }
 
     return needUpdate;
-  };
+  }
 
   createOnScroll = () => {
     // let timer: any;
@@ -296,11 +296,11 @@ export class CalendarDatePickerBaseComponent {
       //   }
       // }, 50);
     };
-  };
+  }
 
   baseOnCellClick = (day: DateModels.CellData) => {
-    if (!day.tick) return;
+    if (!day.tick) { return; }
     this.props.onCellClick && this.props.onCellClick(new Date(day.tick));
-  };
+  }
 
 }

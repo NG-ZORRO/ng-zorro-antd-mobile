@@ -10,15 +10,17 @@ declare const docsearch: any;
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  get useDocsearch(): boolean {
+    return true; //window && window.location.href.indexOf('/version') === -1;
+  }
+
+  constructor(private router: Router, private title: Title) {}
   hide = true;
   routerList = ROUTER_LIST;
   componentList = [];
   searchComponent = null;
   docsearch = null;
   public kitchenUrl = window.location.origin + '/#/kitchen-sink?lang=zh-CN';
-  get useDocsearch(): boolean {
-    return true; //window && window.location.href.indexOf('/version') === -1;
-  }
 
   language = 'zh';
   versionList = ['0.12.x'];
@@ -28,6 +30,17 @@ export class AppComponent implements OnInit, AfterViewInit {
   public demoTitle = '';
   public qrcode: string = '';
   private listenerQRCode: any;
+
+  // @HostListener('document:keyup.s', ['$event'])
+  // onKeyUp(event: KeyboardEvent) {
+  //   if (this.useDocsearch && this.searchInput && this.searchInput.nativeElement && event.target === document.body) {
+  //     this.searchInput.nativeElement.focus();
+  //   }
+  // }
+
+  // region: color
+  color = `#1890ff`;
+  lessLoaded = false;
   // @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
   switchLanguage(language) {
     const url = this.router.url.split('/');
@@ -38,10 +51,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   toggleHide() {
     this.hide = !this.hide;
   }
-
-  constructor(private router: Router, private title: Title) // private nzI18nService: NzI18nService,
-  // private msg: NzMessageService
-  {}
 
   navigateToPage(url) {
     if (url) {
@@ -188,16 +197,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       });
     });
   }
-
-  // @HostListener('document:keyup.s', ['$event'])
-  // onKeyUp(event: KeyboardEvent) {
-  //   if (this.useDocsearch && this.searchInput && this.searchInput.nativeElement && event.target === document.body) {
-  //     this.searchInput.nativeElement.focus();
-  //   }
-  // }
-
-  // region: color
-  color = `#1890ff`;
   initColor() {
     const node = document.createElement('link');
     node.rel = 'stylesheet/less';
@@ -205,7 +204,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     node.href = '/assets/color.less';
     document.getElementsByTagName('head')[0].appendChild(node);
   }
-  lessLoaded = false;
   changeColor(res: any) {
     const changeColor = () => {
       (window as any).less

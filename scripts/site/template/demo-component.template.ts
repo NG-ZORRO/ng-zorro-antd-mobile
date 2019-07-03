@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   preserveWhitespaces: false,
   templateUrl  : './{{language}}.html'
 })
-export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
+export class {{componentName; }} implements; OnInit, AfterViewInit, OnDestroy; {
   expanded = false;
   public demoTitle = '{{demoTitleTemp}}';
   public protocol = window.location.origin;
@@ -27,17 +27,17 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChildren(NzCodeBoxComponent) codeBoxes: QueryList<NzCodeBoxComponent>;
 
-  goLink(link: string) {
+  goLink(link: string); {
     window.location.hash = window.location.hash.split(';')[0] + ';' + link;
   }
 
-  selectedCard(nzId) {
+  selectedCard(nzId); {
     this.codeBoxes.forEach((code, index) => {
       if (nzId === code.nzId) {
         code.nzSelected = true;
         if (this.codeBoxes.length > 1) {
           setTimeout(() => {
-            if(window.frames['demoFrame'] && window.frames['demoFrame'].document){
+            if (window.frames['demoFrame'] && window.frames['demoFrame'].document) {
               const scrollContent = window.frames['demoFrame'].document.getElementById(`${this.path}-demo-${index}`);
               if (scrollContent) {
                 scrollContent.scrollIntoView(true);
@@ -50,22 +50,22 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  expandAllCode(): void {
+  expandAllCode(); : void {
     this.expanded = !this.expanded;
     this.codeBoxes.forEach(code => {
       code.nzExpanded = this.expanded;
     });
-  }
+  };
 
-  {{code}};
-  {{rawCode}};
+  {{code; }}
+  {{rawCode; }}
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer); { }
 
-  ngOnInit() {
-    if(window.location.href.split('/').splice(-1)[0] === 'en'){
+  ngOnInit(); {
+    if (window.location.href.split('/').splice(-1)[0] === 'en') {
       this.demoUrl  += '?lang=en-US';
-    }else{
+    } else {
       this.demoUrl  += '?lang=zh-CN';
     }
     this.safeUrl =  this.sanitizer.bypassSecurityTrustResourceUrl(this.demoUrl);
@@ -76,7 +76,7 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
   }
 
 
-  ngAfterViewInit() {
+  ngAfterViewInit(); {
     if (this.codeBoxes.length > 1) {
       this.container = <HTMLElement>document.querySelector('.demo-code-container');
       this.wrapper = <HTMLElement>document.querySelector('.mobile-wrapper');
@@ -93,11 +93,11 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(); {
     window.removeEventListener('scroll', this.demoScrollListener);
   }
 
-  handleDemoScroll() {
+  handleDemoScroll(); {
     const yOffset = window.pageYOffset;
     this.container.classList.add('demo-code-container-mutli');
     if (yOffset < this.demoTop) {

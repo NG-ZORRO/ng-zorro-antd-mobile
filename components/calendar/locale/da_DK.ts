@@ -27,4 +27,4 @@ export default {
     lastWeek: 'Sidste uge',
     lastMonth: 'Sidste måned'
   };
-  
+

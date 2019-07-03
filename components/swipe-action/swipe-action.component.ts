@@ -63,11 +63,11 @@ export class SwipeActionComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!(this._openedLeft || this._openedRight)) {
       return;
     }
-    const pNode = ev.target.closest(`.${this.prefixCls}-actions`)
+    const pNode = ev.target.closest(`.${this.prefixCls}-actions`);
     if (!pNode) {
       this.close();
     }
-  };
+  }
 
   close() {
     if (this._openedLeft || this._openedRight) {
@@ -93,7 +93,7 @@ export class SwipeActionComponent implements OnInit, AfterViewInit, OnDestroy {
   onTouchStart(e) {
     this._startX = e.changedTouches[0].clientX;
     this._swiping = true;
-  };
+  }
 
   onTouchMove(e) {
     const deltaX = e.changedTouches[0].clientX - this._startX;

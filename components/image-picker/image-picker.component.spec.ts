@@ -89,7 +89,7 @@ describe('ImagePicker', () => {
     const mockFile = new File([''], 'filename', { type: 'image/png' });
     spyOn(window as any, 'FileReader').and.returnValue(mockReader);
     mockReader.onload(mockOnLoadEvt as any);
-    component.imagePicker.getOrientation(mockFile, mockCallback)
+    component.imagePicker.getOrientation(mockFile, mockCallback);
 
     expect((window as any).FileReader).toHaveBeenCalled();
     expect(mockReader.readAsArrayBuffer).toHaveBeenCalled();
