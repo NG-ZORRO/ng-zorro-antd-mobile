@@ -10,26 +10,24 @@ declare const docsearch: any;
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  color = `#1890ff`;
+  lessLoaded = false;
   hide = true;
   routerList = ROUTER_LIST;
   componentList = [];
   searchComponent = null;
   docsearch = null;
-  public kitchenUrl = window.location.origin + '/#/kitchen-sink?lang=zh-CN';
-
+  kitchenUrl = window.location.origin + '/#/kitchen-sink?lang=zh-CN';
   language = 'zh';
   versionList = ['0.12.x'];
   currentVersion = '0.12.x';
-  public isHomeURL = true;
-  public isKitchenURL = false;
-  public demoTitle = '';
-  public qrcode: string = '';
+  isHomeURL = true;
+  isKitchenURL = false;
+  demoTitle = '';
+  qrcode: string = '';
+  
   private listenerQRCode: any;
-
-  // region: color
-  color = `#1890ff`;
-  lessLoaded = false;
-
+  
   constructor(private router: Router, private title: Title) {}
   
   get useDocsearch(): boolean {
