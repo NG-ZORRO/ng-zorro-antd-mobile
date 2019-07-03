@@ -3,15 +3,15 @@
 
 # NG-ZORRO-MOBILE
 
+[![CodeFactor](https://www.codefactor.io/repository/github/ng-zorro/ng-zorro-antd-mobile/badge?style=flat-square)](https://www.codefactor.io/repository/github/ng-zorro/ng-zorro-antd-mobile)
 [![Build Status](https://travis-ci.com/NG-ZORRO/ng-zorro-antd-mobile.svg?branch=master)](https://travis-ci.com/NG-ZORRO/ng-zorro-antd-mobile)
 [![codecov](https://codecov.io/gh/NG-ZORRO/ng-zorro-antd-mobile/branch/master/graph/badge.svg)](https://codecov.io/gh/NG-ZORRO/ng-zorro-antd-mobile)
-[![Dependencies](https://img.shields.io/david/NG-ZORRO/ng-zorro-antd-mobile.svg?style=flat-square)](https://david-dm.org/NG-ZORRO/ng-zorro-antd-mobile)
-[![DevDependencies](https://img.shields.io/david/dev/NG-ZORRO/ng-zorro-antd-mobile.svg?style=flat-square)](https://david-dm.org/NG-ZORRO/ng-zorro-antd-mobile?type=dev)
 [![GitHub Release Date](https://img.shields.io/github/release-date/NG-ZORRO/ng-zorro-antd-mobile.svg?style=flat-square)](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/releases)
 [![npm package](https://img.shields.io/npm/v/ng-zorro-antd-mobile.svg?style=flat-square)](https://www.npmjs.org/package/ng-zorro-antd-mobile)
 [![NPM downloads](https://img.shields.io/npm/dm/ng-zorro-antd-mobile.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd-mobile)
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/blob/master/LICENSE)
 [![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd-mobile.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd-mobile)
+[![Twitter](https://img.shields.io/badge/Twitter-NG--ZORRO-blue.svg?style=flat-square&logo=twitter)](https://twitter.com/NG_ZORRO)
 
 这里是 **Ant Design** 移动规范的 **Angular** 实现，服务于阿里巴巴集团数据无线业务。
 
