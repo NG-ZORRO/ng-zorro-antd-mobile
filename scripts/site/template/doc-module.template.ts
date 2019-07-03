@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ShareModule } from '../share/share.module';
 
-{{imports;}}
+{{imports}}
 
 @NgModule({
   imports     : [
@@ -13,7 +13,7 @@ import { ShareModule } from '../share/share.module';
   ],
   declarations: [
 {{declarations}}
-  ];
+  ]
 })
 export class NzDocsModule {
 
