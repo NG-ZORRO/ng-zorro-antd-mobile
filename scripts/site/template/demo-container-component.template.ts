@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   preserveWhitespaces: false,
   templateUrl  : './{{template}}.html'
 })
-export class {{componentName}} {
+export class {{componentName;}} {
 
 }
