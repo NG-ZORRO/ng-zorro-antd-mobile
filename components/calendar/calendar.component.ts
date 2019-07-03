@@ -39,7 +39,52 @@ export interface CalendarStateType {
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CalendarComponent), multi: true }]
 })
 export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestroy {
+  isShow: boolean = false;
+  contentAnimateClass: string;
+  maskAnimateClass: string;
+  showClear: boolean = false;
+  isSameDate: Function = isSameDate;
 
+  props = {
+    visible: false,
+    showHeader: true,
+    locale: zhCN,
+    pickTime: false,
+    showShortcut: false,
+    prefixCls: 'rmc-calendar',
+    type: 'range',
+    defaultTimeValue: new Date(2000, 0, 1, 8)
+  } as CalendarPropsType;
+
+  state = {
+    showTimePicker: false,
+    timePickerTitle: '',
+    startDate: undefined,
+    endDate: undefined,
+    disConfirmBtn: true,
+    clientHight: 0
+  } as CalendarStateType;
+
+  private _unsubscribe$ = new Subject<void>();
+  private _enterDirection: string;
+  private _dateModelType: number;
+  private _dateModelValue: any;
+  private _dateModelTime: number = 0;
+
+  @ViewChild(CalendarDatePickerComponent)
+  datepicker: CalendarDatePickerComponent;
+  @Output()
+  onCancel: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
+  onConfirm: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
+  onSelectHasDisableDate: EventEmitter<any> = new EventEmitter<any>();
+
+  @HostBinding('class')
+  class: string = 'am-calendar';
+  private onChangeFn: (date: Date|Array<Date>) => void = () => {};
+  private onTouchFn: (date: Date|Array<Date>) => void = () => {};
+  
   @Input()
   set locale(value) {
     if (value === 'enUS') {
@@ -133,51 +178,6 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   }
 
   constructor(private _localeProviderService: LocaleProviderService) {}
-  isShow: boolean = false;
-  contentAnimateClass: string;
-  maskAnimateClass: string;
-  showClear: boolean = false;
-  isSameDate: Function = isSameDate;
-
-  props = {
-    visible: false,
-    showHeader: true,
-    locale: zhCN,
-    pickTime: false,
-    showShortcut: false,
-    prefixCls: 'rmc-calendar',
-    type: 'range',
-    defaultTimeValue: new Date(2000, 0, 1, 8)
-  } as CalendarPropsType;
-
-  state = {
-    showTimePicker: false,
-    timePickerTitle: '',
-    startDate: undefined,
-    endDate: undefined,
-    disConfirmBtn: true,
-    clientHight: 0
-  } as CalendarStateType;
-
-  private _unsubscribe$ = new Subject<void>();
-  private _enterDirection: string;
-  private _dateModelType: number;
-  private _dateModelValue: any;
-  private _dateModelTime: number = 0;
-
-  @ViewChild(CalendarDatePickerComponent)
-  datepicker: CalendarDatePickerComponent;
-  @Output()
-  onCancel: EventEmitter<any> = new EventEmitter<any>();
-  @Output()
-  onConfirm: EventEmitter<any> = new EventEmitter<any>();
-  @Output()
-  onSelectHasDisableDate: EventEmitter<any> = new EventEmitter<any>();
-
-  @HostBinding('class')
-  class: string = 'am-calendar';
-  private onChangeFn: (date: Date|Array<Date>) => void = () => {};
-  private onTouchFn: (date: Date|Array<Date>) => void = () => {};
 
   writeValue(value: Date|Array<Date>|null): void {
     this._dateModelType = null;
