@@ -50,12 +50,12 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  expandAllCode() : void {
+  expandAllCode(): void {
     this.expanded = !this.expanded;
     this.codeBoxes.forEach(code => {
       code.nzExpanded = this.expanded;
     });
-  };
+  }
 
   {{code}};
   {{rawCode}};
