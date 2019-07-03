@@ -22,6 +22,6 @@ import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 {{entryComponents}}
   ]
 })
-export class Demo {{component}}Module {
+export class Demo{{component}}Module {
 
 }
