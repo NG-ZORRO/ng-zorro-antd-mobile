@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl  : './{{component}}-{{language}}.html',
   preserveWhitespaces: false
 })
-export class NzDoc{{componentName}}Component implements OnInit;{
+export class NzDoc{{componentName}}Component implements OnInit {
   starCount: number = 0;
 
   constructor(private http: HttpClient) { }
@@ -19,7 +19,7 @@ export class NzDoc{{componentName}}Component implements OnInit;{
     this.http.get('https://api.github.com/repos/NG-ZORRO/ng-zorro-antd-mobile').subscribe((res: any) => {
       this.starCount = res.stargazers_count;
       (<HTMLElement>document.querySelector('.gh-count')).style.display = 'inline-block';
-    });
+    })
   }
 
   ngOnInit() {
