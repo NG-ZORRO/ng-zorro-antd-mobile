@@ -74,7 +74,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.currentVersion = version;
   }
 
-    initDocsearch() {
+  initDocsearch() {
     this.loadScript('https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js').then(() => {
       this.docsearch = docsearch({
         appId: 'HJT534L0Q7',
@@ -93,6 +93,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       });
     });
   }
+  
   initColor() {
     const node = document.createElement('link');
     node.rel = 'stylesheet/less';
@@ -100,6 +101,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     node.href = '/assets/color.less';
     document.getElementsByTagName('head')[0].appendChild(node);
   }
+  
   changeColor(res: any) {
     const changeColor = () => {
       (window as any).less
@@ -236,6 +238,4 @@ export class AppComponent implements OnInit, AfterViewInit {
     //   this.initDocsearch();
     // }
   }
-  
-  // endregion
 }
