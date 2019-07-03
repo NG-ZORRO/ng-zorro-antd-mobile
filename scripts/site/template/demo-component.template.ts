@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   preserveWhitespaces: false,
   templateUrl  : './{{language}}.html'
 })
-export class {{componentName; }} implements; OnInit, AfterViewInit, OnDestroy; {
+export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
   expanded = false;
   public demoTitle = '{{demoTitleTemp}}';
   public protocol = window.location.origin;
@@ -27,11 +27,11 @@ export class {{componentName; }} implements; OnInit, AfterViewInit, OnDestroy; {
 
   @ViewChildren(NzCodeBoxComponent) codeBoxes: QueryList<NzCodeBoxComponent>;
 
-  goLink(link: string); {
+  goLink(link: string) {
     window.location.hash = window.location.hash.split(';')[0] + ';' + link;
   }
 
-  selectedCard(nzId); {
+  selectedCard(nzId) {
     this.codeBoxes.forEach((code, index) => {
       if (nzId === code.nzId) {
         code.nzSelected = true;
@@ -50,19 +50,19 @@ export class {{componentName; }} implements; OnInit, AfterViewInit, OnDestroy; {
     });
   }
 
-  expandAllCode(); : void {
+  expandAllCode() : void {
     this.expanded = !this.expanded;
     this.codeBoxes.forEach(code => {
       code.nzExpanded = this.expanded;
     });
   };
 
-  {{code; }}
-  {{rawCode; }}
+  {{code}};
+  {{rawCode}};
 
-  constructor(private sanitizer: DomSanitizer); { }
+  constructor(private sanitizer: DomSanitizer) { }
 
-  ngOnInit(); {
+  ngOnInit() {
     if (window.location.href.split('/').splice(-1)[0] === 'en') {
       this.demoUrl  += '?lang=en-US';
     } else {
@@ -76,7 +76,7 @@ export class {{componentName; }} implements; OnInit, AfterViewInit, OnDestroy; {
   }
 
 
-  ngAfterViewInit(); {
+  ngAfterViewInit() {
     if (this.codeBoxes.length > 1) {
       this.container = <HTMLElement>document.querySelector('.demo-code-container');
       this.wrapper = <HTMLElement>document.querySelector('.mobile-wrapper');
@@ -93,11 +93,11 @@ export class {{componentName; }} implements; OnInit, AfterViewInit, OnDestroy; {
     }
   }
 
-  ngOnDestroy(); {
+  ngOnDestroy() {
     window.removeEventListener('scroll', this.demoScrollListener);
   }
 
-  handleDemoScroll(); {
+  handleDemoScroll() {
     const yOffset = window.pageYOffset;
     this.container.classList.add('demo-code-container-mutli');
     if (yOffset < this.demoTop) {
