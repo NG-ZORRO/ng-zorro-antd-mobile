@@ -312,6 +312,9 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   }
 
   inputFocus(value) {
+    if (!this._editable && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     setTimeout(() => {
       this._focus = true;
       this.clsFocus = true;
