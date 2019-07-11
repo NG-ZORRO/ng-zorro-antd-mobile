@@ -346,7 +346,7 @@ describe('drawer', () => {
     fixture.detectChanges();
     dispatchTouchEvent(sidebar, 'touchend');
     fixture.detectChanges();
-    expect(drawerEle.nativeElement.classList).toContain('am-drawer-open')
+    expect(drawerEle.nativeElement.classList).toContain('am-drawer-open');
   });
 });
 

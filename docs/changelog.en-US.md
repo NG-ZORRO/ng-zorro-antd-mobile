@@ -13,12 +13,30 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 0.12.5(2019-06-25)
+
+### Bug Fixes
+
+* **carousel:** fix carousel has one item width error. ([#482](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/482)) ([7ab3cba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7ab3cba))
+
+## 0.12.4 (2019-06-24)
+
+### Bug Fixes
+
+* **carousel:** fix vertical mode width error. ([#477](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/477)) ([b0ca5ba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b0ca5ba))
+* **date-picker:** add minuteStep support ([#479](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/479)) ([246c222](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/246c222))
+
+### Features
+
+* **calendar:** update testing coverage ([#474](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/474)) ([7dd77ba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7dd77ba))
+* **input-item:** fix value bug when clear ([#472](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/472)) ([51772f7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/51772f7))
+
 ## 0.12.3 (2019-06-05)
 
 ### Bug Fixes
 
 * **date-picker:** fix caculate time error. ([#456](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/456)) ([413178d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/413178d))
-* **datepicker:** fix new Date init in safari would be invlid date. ([#454](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/454)) ([87c62a3](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/87c62a3))
+* **date-picker:** fix new Date init in safari would be invlid date. ([#454](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/454)) ([87c62a3](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/87c62a3))
 * **radio-item-group:** fix checked error. ([#458](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/458)) ([#463](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/463)) ([0e3ca04](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0e3ca04))
 * **stackblitz:** set right version for @angular/compiler ([#466](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/466)) ([3bc4053](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3bc4053))
 * **picker:** fix return result error ([#462](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/462)) ([eeabc11](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/eeabc11))

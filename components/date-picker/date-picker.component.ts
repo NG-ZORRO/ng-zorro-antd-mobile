@@ -546,7 +546,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
   initData(tempArr, min, max, str, idx) {
     const dataWithStr = [];
-    for (min; min < max + 1; min++) {
+    const increaseValue = str === this.localeNew.minute ? this.options.minuteStep : 1;
+    for (min; min < max + 1; min += increaseValue) {
       tempArr.push(min);
       dataWithStr.push(min + str);
     }
@@ -678,8 +679,9 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     const realIdx = this.indexArray[checkIdx];
     const arr = [];
     let targetLong = 0;
+    const increaseValue = str === this.localeNew.minute ? this.options.minuteStep : 1;
 
-    for (let index = min; index < max + 1; index++) {
+    for (let index = min; index < max + 1; index += increaseValue) {
       arr.push(index);
     }
 
@@ -697,7 +699,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       if (checkIdx >= 3) {
         this.current_time[realIdx] = -targetLong / this.lineHeight;
         this.resultArr[checkIdx] = -targetLong / this.lineHeight;
-      }else {
+      } else {
         this.current_time[realIdx] = -targetLong / this.lineHeight + 1;
         this.resultArr[checkIdx] = -targetLong / this.lineHeight + 1;
       }

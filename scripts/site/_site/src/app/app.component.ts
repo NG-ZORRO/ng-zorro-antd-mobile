@@ -10,25 +10,30 @@ declare const docsearch: any;
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  color = `#1890ff`;
+  lessLoaded = false;
   hide = true;
   routerList = ROUTER_LIST;
   componentList = [];
   searchComponent = null;
   docsearch = null;
-  public kitchenUrl = window.location.origin + '/#/kitchen-sink?lang=zh-CN';
+  kitchenUrl = window.location.origin + '/#/kitchen-sink?lang=zh-CN';
+  language = 'zh';
+  versionList = ['0.12.x'];
+  currentVersion = '0.12.x';
+  isHomeURL = true;
+  isKitchenURL = false;
+  demoTitle = '';
+  qrcode: string = '';
+
+  private listenerQRCode: any;
+
+  constructor(private router: Router, private title: Title) {}
+
   get useDocsearch(): boolean {
     return true; //window && window.location.href.indexOf('/version') === -1;
   }
 
-  language = 'zh';
-  versionList = ['0.12.x'];
-  currentVersion = '0.12.x';
-  public isHomeURL = true;
-  public isKitchenURL = false;
-  public demoTitle = '';
-  public qrcode: string = '';
-  private listenerQRCode: any;
-  // @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
   switchLanguage(language) {
     const url = this.router.url.split('/');
     url.splice(-1);
@@ -38,10 +43,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   toggleHide() {
     this.hide = !this.hide;
   }
-
-  constructor(private router: Router, private title: Title) // private nzI18nService: NzI18nService,
-  // private msg: NzMessageService
-  {}
 
   navigateToPage(url) {
     if (url) {
@@ -69,6 +70,73 @@ export class AppComponent implements OnInit, AfterViewInit {
       window.location.href = window.location.origin;
     }
     this.currentVersion = version;
+  }
+
+  initDocsearch() {
+    this.loadScript('https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js').then(() => {
+      this.docsearch = docsearch({
+        appId: 'HJT534L0Q7',
+        apiKey: 'a2b6ce695bdb11db826d43d983d418e4',
+        indexName: 'dev_ng_zorro_mobile',
+        inputSelector: '#search-box input',
+        algoliaOptions: { hitsPerPage: 5, facetFilters: [`tags:${this.language}`] },
+        transformData(hits) {
+          hits.forEach(hit => {
+            hit.url = hit.url.replace('ng.mobile.ant.design', location.host);
+            hit.url = hit.url.replace('https:', location.protocol);
+          });
+          return hits;
+        },
+        debug: false
+      });
+    });
+  }
+
+  initColor() {
+    const node = document.createElement('link');
+    node.rel = 'stylesheet/less';
+    node.type = 'text/css';
+    node.href = '/assets/color.less';
+    document.getElementsByTagName('head')[0].appendChild(node);
+  }
+
+  changeColor(res: any) {
+    const changeColor = () => {
+      (window as any).less
+        .modifyVars({
+          '@primary-color': res.color.hex
+        })
+        .then(() => {
+          // this.msg.success(`应用成功`);
+          this.color = res.color.hex;
+          window.scrollTo(0, 0);
+        });
+    };
+
+    const lessUrl = 'https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js';
+
+    if (this.lessLoaded) {
+      changeColor();
+    } else {
+      (window as any).less = {
+        async: true
+      };
+      this.loadScript(lessUrl).then(() => {
+        this.lessLoaded = true;
+        changeColor();
+      });
+    }
+  }
+
+  loadScript(src: string) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
   }
 
   ngOnInit(): void {
@@ -168,81 +236,4 @@ export class AppComponent implements OnInit, AfterViewInit {
     //   this.initDocsearch();
     // }
   }
-
-  initDocsearch() {
-    this.loadScript('https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js').then(() => {
-      this.docsearch = docsearch({
-        appId: 'HJT534L0Q7',
-        apiKey: 'a2b6ce695bdb11db826d43d983d418e4',
-        indexName: 'dev_ng_zorro_mobile',
-        inputSelector: '#search-box input',
-        algoliaOptions: { hitsPerPage: 5, facetFilters: [`tags:${this.language}`] },
-        transformData(hits) {
-          hits.forEach(hit => {
-            hit.url = hit.url.replace('ng.mobile.ant.design', location.host);
-            hit.url = hit.url.replace('https:', location.protocol);
-          });
-          return hits;
-        },
-        debug: false
-      });
-    });
-  }
-
-  // @HostListener('document:keyup.s', ['$event'])
-  // onKeyUp(event: KeyboardEvent) {
-  //   if (this.useDocsearch && this.searchInput && this.searchInput.nativeElement && event.target === document.body) {
-  //     this.searchInput.nativeElement.focus();
-  //   }
-  // }
-
-  // region: color
-  color = `#1890ff`;
-  initColor() {
-    const node = document.createElement('link');
-    node.rel = 'stylesheet/less';
-    node.type = 'text/css';
-    node.href = '/assets/color.less';
-    document.getElementsByTagName('head')[0].appendChild(node);
-  }
-  lessLoaded = false;
-  changeColor(res: any) {
-    const changeColor = () => {
-      (window as any).less
-        .modifyVars({
-          '@primary-color': res.color.hex
-        })
-        .then(() => {
-          // this.msg.success(`应用成功`);
-          this.color = res.color.hex;
-          window.scrollTo(0, 0);
-        });
-    };
-
-    const lessUrl = 'https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js';
-
-    if (this.lessLoaded) {
-      changeColor();
-    } else {
-      (window as any).less = {
-        async: true
-      };
-      this.loadScript(lessUrl).then(() => {
-        this.lessLoaded = true;
-        changeColor();
-      });
-    }
-  }
-
-  loadScript(src: string) {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = src;
-      script.onload = resolve;
-      script.onerror = reject;
-      document.head.appendChild(script);
-    });
-  }
-  // endregion
 }
