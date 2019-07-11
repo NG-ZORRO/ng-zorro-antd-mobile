@@ -122,7 +122,8 @@ import { Component } from '@angular/core';
 export class DemoTextareaItemBasicComponent {
   value;
   error;
-  readonlyValue = 'This is a very very very very very very very very very very very very very very very very very very long paragraph of read-only text';
+  readonlyValue = 'This is a very very very very very very very very' +
+    ' very very very very very very very very very very long paragraph of read-only text';
   numberFocus = {
     focus: false,
     date: new Date()
