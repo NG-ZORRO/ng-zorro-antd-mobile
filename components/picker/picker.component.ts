@@ -302,8 +302,8 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.init();
     this._localeProviderService.localeChange.pipe(takeUntil(this._unsubscribe$)).subscribe(_ => {
       const locale: any = this._localeProviderService.getLocaleSubObj('Picker');
-      this.options.okText = locale.okText;
-      this.options.dismissText = locale.dismissText;
+      this.options.okText = this.options.okText === '确定' ? locale.okText : this.options.okText;
+      this.options.dismissText = this.options.dismissText === '取消' ? locale.dismissText : this.options.dismissText;
     });
   }
 
