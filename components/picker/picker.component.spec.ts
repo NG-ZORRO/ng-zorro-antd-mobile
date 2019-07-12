@@ -112,6 +112,16 @@ describe('PickerComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should okText dismissText work', () => {
+    const list = lists[0].nativeElement;
+    list.click();
+    fixture.detectChanges();
+    pickerEle = document.querySelector('picker');
+    expect(pickerEle.querySelector('.am-picker-popup-header-left').innerText).toEqual('dismissText');
+    expect(pickerEle.querySelector('.am-picker-popup-header-right').innerText).toEqual('okText');
+    fixture.detectChanges();
+  });
+
   it('should showPicker work', () => {
     const button = buttons[0].nativeElement;
     button.click();
@@ -168,6 +178,8 @@ describe('PickerComponent', () => {
         [data]="singleArea"
         [arrow]="'horizontal'"
         [appendToBody]="true"
+        [okText]="'okText'"
+        [dismissText]="'dismissText'"
         (ngModelChange)="modelChange($event)"
       >
         Multiple & cascader
