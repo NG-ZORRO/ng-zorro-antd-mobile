@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  AfterViewInit,
   Input,
   Output,
   EventEmitter,
@@ -25,7 +26,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class TextareaItemComponent implements OnInit, AfterContentChecked, ControlValueAccessor {
+export class TextareaItemComponent implements OnInit, AfterContentChecked, ControlValueAccessor, AfterViewInit {
   prefixCls: string = 'am-textarea';
   wrapCls: object;
   labelCls: object;
@@ -196,19 +197,19 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
   @HostBinding('class.am-textarea-disabled')
   clsDisabled: boolean;
   @HostBinding('class.am-textarea-error')
-  clsError: boolean ;
+  clsError: boolean;
   @HostBinding('class.am-textarea-focus')
-  clsFocus: boolean ;
+  clsFocus: boolean;
   @HostBinding('class.am-textarea-item-single-line')
   clsSingleLine: boolean;
   @HostBinding('class.am-textarea-has-count')
-  clsHasCount: boolean ;
+  clsHasCount: boolean;
 
   constructor(private element: ElementRef, private render: Renderer2) {
     this._el = element.nativeElement;
   }
 
-  _onChange = (_: any) => {};
+  _onChange = (_: any) => { };
 
   setCls() {
     this.hasCount = this._count > 0 && this._rows > 1;
@@ -303,12 +304,20 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void { }
 
   ngOnInit() {
     this.setCls();
     this.setCharacterLength();
     this.textRef.nativeElement.value = this._value;
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      if (this._autoHeight) {
+        this.reAlignHeight();
+      }
+    }, 100);
   }
 
   ngAfterContentChecked() {
