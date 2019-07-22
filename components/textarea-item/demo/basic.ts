@@ -33,6 +33,8 @@ import { Component } from '@angular/core';
         <div class="am-list-body">
           <TextareaItem [title]="'高度自适应'" [autoHeight]="true" [labelNumber]="5">
           </TextareaItem>
+          <TextareaItem [editable]="false" [autoHeight]="true" [value]="readonlyValue">
+          </TextareaItem>
           <TextareaItem [rows]="3" [placeholder]="'fixed number of lines'">
           </TextareaItem>
         </div>
@@ -120,6 +122,8 @@ import { Component } from '@angular/core';
 export class DemoTextareaItemBasicComponent {
   value;
   error;
+  readonlyValue = 'This is a very very very very very very very very' +
+    ' very very very very very very very very very very long paragraph of read-only text';
   numberFocus = {
     focus: false,
     date: new Date()
@@ -135,7 +139,7 @@ export class DemoTextareaItemBasicComponent {
   };
   autoFocus = { focus: true, date: new Date() };
 
-  inputErrorClick(e) {}
+  inputErrorClick(e) { }
 
   clickFocus() {
     this.numberFocus = {
