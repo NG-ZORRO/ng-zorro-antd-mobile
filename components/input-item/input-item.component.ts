@@ -26,7 +26,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {
+export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAccessor {
   prefixCls: string = 'am-input';
   wrapCls: object;
   labelCls: object;
@@ -298,9 +298,6 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
           break;
       }
       this._value = value;
-      if (this._type !== 'money') {
-        this.inputElementRef.nativeElement.value = this._value;
-      }
       this._onChange(this._value);
       this.onChange.emit(this._value);
     }, 0);
@@ -315,6 +312,9 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
   }
 
   inputFocus(value) {
+    if (!this._editable && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     setTimeout(() => {
       this._focus = true;
       this.clsFocus = true;
@@ -343,9 +343,6 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
     this.onChange.emit(this._value);
     this._onChange(this._value);
     this._isClear = true;
-    if (this._type !== 'money') {
-      this.inputElementRef.nativeElement.value = this._value;
-    }
     this.inputFocus(this._value);
   }
 
@@ -374,12 +371,6 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
   }
 
   registerOnTouched(fn: any): void {}
-
-  ngOnChanges() {
-    if (this.inputElementRef && this._type !== 'money' && this._value !== undefined) {
-      this.inputElementRef.nativeElement.value = this._value;
-    }
-  }
 
   ngOnInit() {
     this.setCls();

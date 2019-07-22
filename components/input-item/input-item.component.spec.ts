@@ -56,12 +56,12 @@ describe('InputComponent', () => {
     component.value = 'test';
     fixture.detectChanges();
     inputEle = inputItem.nativeElement.querySelector('input');
-    expect(inputEle.value).toBe('test', 'type is text');
+    expect(inputEle.getAttribute('ng-reflect-model')).toBe('test', 'type is text');
 
     component.value = null;
     fixture.detectChanges();
     inputEle = inputItem.nativeElement.querySelector('input');
-    expect(inputEle.value).toBe('', 'value is undefined');
+    expect(inputEle.getAttribute('ng-reflect-model')).toBe('', 'value is undefined');
 
     component.type = 'money';
     fixture.detectChanges();
@@ -76,7 +76,7 @@ describe('InputComponent', () => {
     component.defaultValue = 'default test';
     fixture.detectChanges();
     inputEle = inputItem.nativeElement.querySelector('input');
-    expect(inputEle.value).toBe('test', 'type is text');
+    expect(inputEle.getAttribute('ng-reflect-model')).toBe('test', 'type is text');
 
     component.type = 'money';
     fixture.detectChanges();
@@ -109,7 +109,7 @@ describe('InputComponent', () => {
     component.defaultValue = 'test';
     fixture.detectChanges();
     inputEle = inputItem.nativeElement.querySelector('input');
-    expect(inputEle.value).toBe('test', 'type is text');
+    expect(inputEle.getAttribute('ng-reflect-model')).toBe('test', 'type is text');
 
     component.type = 'money';
     fixture.detectChanges();
