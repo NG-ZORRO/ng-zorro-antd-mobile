@@ -4,6 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule, FlexModule, IconModule, GridModule } from '../..';
 import { NgZorroAntdMobilePipesModule } from '../pipes/ng-zorro-antd-mobile.pipes.module';
+import { dispatchTouchEvent } from '../core/testing';
 describe('GridComponent', () => {
   let component: TestGridComponent;
   let fixture: ComponentFixture<TestGridComponent>;
@@ -48,6 +49,18 @@ describe('GridComponent', () => {
     expect(gridEle.nativeElement.classList).not.toContain('am-grid-line', 'square is false');
   });
 
+  it('should touch start', () => {
+    dispatchTouchEvent(gridEle.nativeElement, 'mousedown', 0, 100);
+    fixture.detectChanges();
+  });
+
+  it('should touch end', () => {
+    dispatchTouchEvent(gridEle.nativeElement, 'touchstart');
+    dispatchTouchEvent(gridEle.nativeElement, 'touchend');
+    fixture.detectChanges();
+    expect(gridEle.nativeElement.classList).not.toContain('am-grid-item-active');
+  });
+
   it('should isCarousel work', () => {
     component.isCarousel = true;
     fixture.detectChanges();
@@ -81,6 +94,7 @@ describe('GridComponent', () => {
   selector: 'test-grid',
   template: `
     <Grid [data]="data"
+          [activeStyle]="true"
           [square]="square"
           [hasLine]="hasLine"
           [columnNum]="columnNum"

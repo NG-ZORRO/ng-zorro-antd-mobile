@@ -5,6 +5,5 @@ export function getEventTarget(event) {
       if (event && event.changedTouches && event.changedTouches[0]) {
         return event.changedTouches[0];
       }
-      return null;
     }
   }
