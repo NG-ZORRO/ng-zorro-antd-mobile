@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, fakeAsync, tick, TestBed, flush } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, tick, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from './carousel.module';
 import { dispatchTouchEvent } from '../core/testing';
@@ -53,6 +53,7 @@ describe('CarouselComponent', () => {
     dispatchTouchEvent(carouselEle, 'mousedown', 300, 0);
     fixture.detectChanges();
     dispatchTouchEvent(carouselEle, 'mousemove', 0, 300);
+    fixture.detectChanges();
     dispatchTouchEvent(carouselEle, 'mouseup', 0, 0);
     fixture.detectChanges();
   });
@@ -80,6 +81,7 @@ describe('CarouselComponent', () => {
     expect(component).toBeTruthy();
   }));
 
+  it ('should direction work', () => {
     component.vertical = false;
     component.carouselComponent.currentSelectedIndex = 0;
     component.carouselComponent.lastIndex = 0;
@@ -102,7 +104,6 @@ describe('CarouselComponent', () => {
     window.dispatchEvent(myEvent);
     tick(200);
     fixture.destroy();
-    flush();
   }));
 
 });
