@@ -38,6 +38,13 @@ describe('PopoverComponent', () => {
     expect(popoverEle.childElementCount).toBeGreaterThan(0, 'popover is show');
   });
 
+  it('should appendToBody work', () => {
+    component.state.appendToBody = false;
+    button.click();
+    fixture.detectChanges();
+    popoverEle = document.querySelector('popover');
+  });
+
   it('should mask work', () => {
     component.state.mask = false;
     button.click();
