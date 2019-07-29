@@ -29,11 +29,12 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     transform: 'translate3d(0px, 0px, 0px)',
     margin: ''
   };
+  lastIndex: number = 0;
+  currentSelectedIndex: number = 0;
 
   private _timer: any;
   private _resizeTimer: any;
   private _nodeArr: Array<any> = [];
-  private _lastIndex: number = 0;
   private _isMouseDown: boolean = false;
   private _rationWidth: number = 0;
   private _currentSlideWidth: number = 0;
@@ -42,7 +43,6 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   private _spaceWidth: number = 0;
   private _observer: MutationObserver;
   private _dragging: boolean = true;
-  private _currentSelectedIndex: number = 0;
   private _selectedIndex: number = 0;
 
   @ContentChildren(CarouselSlideComponent)
@@ -128,7 +128,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     const length = this.vertical
       ? Math.abs(touchEvent.getEventTarget(event).pageY - this.touchObject.startY)
       : Math.abs(touchEvent.getEventTarget(event).pageX - this.touchObject.startX);
-    const offset = -this.touchObject.direction * length - this._currentSelectedIndex * this._rationWidth;
+    const offset = -this.touchObject.direction * length - this.currentSelectedIndex * this._rationWidth;
     this.touchObject = {
       startX: this.touchObject.startX,
       startY: this.touchObject.startY,
@@ -139,7 +139,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
       offset
     };
     if (direction !== 0) {
-      this.setSlideStyles(this._currentSelectedIndex, this.touchObject.direction);
+      this.setSlideStyles(this.currentSelectedIndex, this.touchObject.direction);
     }
 
     this.getListStyles(offset);
@@ -201,12 +201,12 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     const shouldDragging = this._nodeArr.length > 1;
     this._dragging = (this.dragging && shouldDragging) ? true : false;
     if (this._nodeArr.length > 1) {
-      this._lastIndex = this._nodeArr.length - 1;
+      this.lastIndex = this._nodeArr.length - 1;
       setTimeout(() => {
         this._nodeArr.forEach((v, index) => {
           v.width = this.vertical ? 'auto' : this._rationWidth - this.cellSpacing;
-          v.left = this.vertical ? 0 : index === this._lastIndex ? -this._rationWidth : index * this._rationWidth;
-          v.top = this.vertical ? (index === this._lastIndex ? -this._rationWidth : index * this._rationWidth) : 0;
+          v.left = this.vertical ? 0 : index === this.lastIndex ? -this._rationWidth : index * this._rationWidth;
+          v.top = this.vertical ? (index === this.lastIndex ? -this._rationWidth : index * this._rationWidth) : 0;
           v.margin = this.vertical ? `${this.cellSpacing / 2}px auto` : `auto ${this.cellSpacing / 2}px`;
         });
         this.startTimer();
@@ -278,7 +278,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   getAfterNode(pre) {
     let nextIndex;
     if (pre) {
-      if (this._currentSelectedIndex <= 0) {
+      if (this.currentSelectedIndex <= 0) {
         this.getListStyles(this._rationWidth);
         setTimeout(() => {
           this._nodeArr.forEach((v, tempIndex) => {
@@ -292,11 +292,11 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
           });
           this.getListStyles(-this._rationWidth * (this.items.length - 1));
         }, this.speed);
-        nextIndex = !this.infinite ? null : this._lastIndex;
-        this.beforeChange.emit({ from: this._currentSelectedIndex, to: nextIndex });
+        nextIndex = !this.infinite ? null : this.lastIndex;
+        this.beforeChange.emit({ from: this.currentSelectedIndex, to: nextIndex });
         return nextIndex;
       }
-      nextIndex = this._currentSelectedIndex - 1;
+      nextIndex = this.currentSelectedIndex - 1;
       this.getListStyles(nextIndex * this._rationWidth * this.touchObject.direction);
       this._nodeArr.forEach((v, tempIndex) => {
         if (0 === tempIndex && nextIndex === this._nodeArr.length - 2) {
@@ -304,35 +304,35 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
           v.top = 0;
         }
       });
-      this.beforeChange.emit({ from: this._currentSelectedIndex, to: nextIndex });
+      this.beforeChange.emit({ from: this.currentSelectedIndex, to: nextIndex });
       return nextIndex;
     } else {
-      if (this._currentSelectedIndex >= this._lastIndex) {
-        this.setSlideStyles(this._currentSelectedIndex, 1);
-        this.getListStyles(-(this._lastIndex + 1) * this._rationWidth);
+      if (this.currentSelectedIndex >= this.lastIndex) {
+        this.setSlideStyles(this.currentSelectedIndex, 1);
+        this.getListStyles(-(this.lastIndex + 1) * this._rationWidth);
         nextIndex = !this.infinite ? null : 0;
-        this.beforeChange.emit({ from: this._currentSelectedIndex, to: nextIndex });
+        this.beforeChange.emit({ from: this.currentSelectedIndex, to: nextIndex });
         return nextIndex;
       }
-      nextIndex = this._currentSelectedIndex + 1;
-      this.setSlideStyles(this._currentSelectedIndex, 1);
+      nextIndex = this.currentSelectedIndex + 1;
+      this.setSlideStyles(this.currentSelectedIndex, 1);
       this.getListStyles(-nextIndex * this._rationWidth);
-      this.beforeChange.emit({ from: this._currentSelectedIndex, to: nextIndex });
+      this.beforeChange.emit({ from: this.currentSelectedIndex, to: nextIndex });
       return nextIndex;
     }
   }
 
   caculateDirectionLeftCurrentIndex() {
-    const previousIndex = this._currentSelectedIndex;
-    this._currentSelectedIndex = (previousIndex + 1) % this.items.length;
+    const previousIndex = this.currentSelectedIndex;
+    this.currentSelectedIndex = (previousIndex + 1) % this.items.length;
   }
 
   caculateDirectionRightCurrentIndex() {
-    if (this._currentSelectedIndex === 0) {
-      this._currentSelectedIndex = this.items.length;
+    if (this.currentSelectedIndex === 0) {
+      this.currentSelectedIndex = this.items.length;
     }
-    const previousIndex = this._currentSelectedIndex;
-    this._currentSelectedIndex = (previousIndex - 1) % this.items.length;
+    const previousIndex = this.currentSelectedIndex;
+    this.currentSelectedIndex = (previousIndex - 1) % this.items.length;
   }
 
   gotoCarousel(afterIndex) {
@@ -356,8 +356,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
         this.getListStyles(0);
       }, this.speed);
     }
-    this._currentSelectedIndex = afterIndex;
-    this.afterChange.emit(this._currentSelectedIndex);
+    this.currentSelectedIndex = afterIndex;
+    this.afterChange.emit(this.currentSelectedIndex);
   }
 
   getCurrentIndex() {
@@ -472,7 +472,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   }
 
   get page() {
-    return this.dots ? this._currentSelectedIndex : 0;
+    return this.dots ? this.currentSelectedIndex : 0;
   }
 
   get pageCount() {
@@ -493,7 +493,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     this.selectedIndex = this.items.length - 1 < this.selectedIndex ? 0 : this.selectedIndex;
     const index = this.items.length > 1 ? ((this.items.length - 1) === this.selectedIndex ? -1 : this.selectedIndex) : 0;
     setTimeout(() => {
-      this._currentSelectedIndex = this.selectedIndex;
+      this.currentSelectedIndex = this.selectedIndex;
     }, 0);
     this.getListStyles(-index * this._rationWidth);
     this.carouselInit(this.items);
