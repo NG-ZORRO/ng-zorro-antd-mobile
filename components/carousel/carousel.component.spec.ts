@@ -47,6 +47,17 @@ describe('CarouselComponent', () => {
     dispatchTouchEvent(carouselEle, 'touchcancel');
   });
 
+  it ('should mousedown work', () => {
+    component.autoplay = false;
+    fixture.detectChanges();
+    dispatchTouchEvent(carouselEle, 'mousedown', 300, 0);
+    fixture.detectChanges();
+    dispatchTouchEvent(carouselEle, 'mousemove', 0, 300);
+    fixture.detectChanges();
+    dispatchTouchEvent(carouselEle, 'mouseup', 0, 0);
+    fixture.detectChanges();
+  });
+
   it ('should move work', () => {
     component.carouselComponent.selectedIndex = 0;
     expect(component.carouselComponent.carousel(-1));
@@ -70,6 +81,23 @@ describe('CarouselComponent', () => {
     expect(component).toBeTruthy();
   }));
 
+  it ('should direction work', () => {
+    component.vertical = false;
+    component.carouselComponent.currentSelectedIndex = 0;
+    component.carouselComponent.lastIndex = 0;
+    fixture.detectChanges();
+    component.carouselComponent.carousel(1);
+    component.carouselComponent.carousel(-1);
+    component.vertical = true;
+    component.carouselComponent.carousel(1);
+    component.carouselComponent.currentSelectedIndex = 0;
+    fixture.detectChanges();
+    component.carouselComponent.carousel(-1);
+    component.carouselComponent.currentSelectedIndex = 0;
+    fixture.detectChanges();
+    component.carouselComponent.caculateDirectionRightCurrentIndex();
+  });
+
   it('should resize work', fakeAsync(() => {
     const myEvent = new Event('resize');
     window.dispatchEvent(myEvent);
@@ -86,23 +114,8 @@ describe('CarouselComponent', () => {
   <Carousel
     [autoplay]="autoplay"
     [infinite]="true"
-    [vertical]="false"
+    [vertical]="vertical"
     [dragging]="dragging"
-    (beforeChange)="beforeChange($event)"
-    (afterChange)="afterChange($event)"
-    >
-      <CarouselSlide *ngFor="let item of state.data;let i = index">
-        <div style="display: inline-block; width: 100%;" [ngStyle]="{'height': state.imgHeight}">
-          <img src="https://zos.alipayobjects.com/rmsportal/{{item}}.png" style="width: 100%;"/>
-        </div>
-      </CarouselSlide>
-  </Carousel>
-  <Carousel
-    [autoplay]="autoplay"
-    [infinite]="true"
-    [vertical]="true"
-    [dragging]="dragging"
-    [selectedIndex]="1"
     (beforeChange)="beforeChange($event)"
     (afterChange)="afterChange($event)"
     >
@@ -117,6 +130,7 @@ describe('CarouselComponent', () => {
 export class TestCarouselComponent {
   autoplay = true;
   dragging = true;
+  vertical = false;
   colors = [];
   data = [];
   state = {
