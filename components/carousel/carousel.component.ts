@@ -29,6 +29,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     transform: 'translate3d(0px, 0px, 0px)',
     margin: ''
   };
+  lastIndex: number = 0;
+  currentSelectedIndex: number = 0;
 
   private _timer: any;
   private _resizeTimer: any;
@@ -42,8 +44,6 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   private _observer: MutationObserver;
   private _dragging: boolean = true;
   private _selectedIndex: number = 0;
-  lastIndex: number = 0;
-  currentSelectedIndex: number = 0;
 
   @ContentChildren(CarouselSlideComponent)
   items: QueryList<CarouselSlideComponent>;
