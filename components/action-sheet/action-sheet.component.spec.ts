@@ -5,6 +5,7 @@ import { ActionSheetComponent } from './action-sheet.component';
 import { ActionSheet, ActionSheetModule, ButtonModule } from '../..';
 import { NgZorroAntdMobilePipesModule } from '../pipes/ng-zorro-antd-mobile.pipes.module';
 import { Overlay } from '@angular/cdk/overlay';
+import { en_US } from '../locale-provider/locale';
 describe('ActionSheetComponent', () => {
   let component: TestActionSheetBasicComponent;
   let fixture: ComponentFixture<TestActionSheetBasicComponent>;
@@ -73,6 +74,17 @@ describe('ActionSheetComponent', () => {
     flush();
     actionSheetEle = document.getElementsByTagName('actionsheet')[1];
     expect(actionSheetEle.querySelector('.am-action-sheet-share-list')).toBeTruthy('shareactionsheet is work');
+    actionSheetEle.querySelector('.am-action-sheet-share-list-item').click();
+    fixture.detectChanges();
+    flush();
+  }));
+
+  it('should shareActionSheet work', fakeAsync(() => {
+    component.dataList = [];
+    const button = buttons[1].nativeElement;
+    button.click();
+    fixture.detectChanges();
+    flush();
   }));
 
   it('should shareActionSheetMulpitleLine work', fakeAsync(() => {
@@ -131,6 +143,17 @@ export class TestActionSheetBasicComponent {
     icon: `<img src="https://gw.alipayobjects.com/zos/rmsportal/${obj.url}.png" style="width:36px"/>`,
     title: obj.title
   }));
+  dataList1 = [
+    { url: 'OpHiXAcYzmPQHcdlLFrc', title: '发送给朋友' },
+    { url: 'wvEzCMiDZjthhAOcwTOu', title: '新浪微博' },
+    { url: 'cTTayShKtEIdQVEMuiWt', title: '生活圈' },
+    { url: 'umnHwvEgSyQtXlZjNJTt', title: '微信好友' },
+    { url: 'SxpunpETIwdxNjcJamwB', title: 'QQ' }
+  ].map(obj => ({
+    icon: `<img src="https://gw.alipayobjects.com/zos/rmsportal/${obj.url}.png" style="width:36px"/>`,
+    title: obj.title
+  }));
+  locale = en_US;
 
   @ViewChild('message')
   message: ViewChild;
@@ -144,9 +167,10 @@ export class TestActionSheetBasicComponent {
         options: BUTTONS,
         cancelButtonIndex: BUTTONS.length - 1,
         destructiveButtonIndex: BUTTONS.length - 2,
-        title: 'action-title',
+        title: null,
         message: message,
-        maskClosable: true
+        maskClosable: true,
+        locale: this.locale
       },
       buttonIndex => {
         console.log(buttonIndex);
@@ -170,7 +194,7 @@ export class TestActionSheetBasicComponent {
   }
 
   showShareActionSheetMulpitleLine = () => {
-    const data = [[...this.dataList, this.dataList[2]], [this.dataList[3], this.dataList[4]]];
+    const data = [[...this.dataList1, this.dataList1[2]], [this.dataList1[3], this.dataList1[4]]];
     ActionSheet.showShareActionSheetWithOptions(
       {
         options: data,
