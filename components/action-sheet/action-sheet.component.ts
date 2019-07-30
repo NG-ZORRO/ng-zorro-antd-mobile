@@ -43,10 +43,7 @@ export class ActionSheetComponent implements OnInit, OnDestroy {
   }
 
   isTemplateRef(value) {
-    if (value) {
-      return value instanceof TemplateRef;
-    }
-    return false;
+    return value instanceof TemplateRef;
   }
 
   isArray(options: any, value: any) {
