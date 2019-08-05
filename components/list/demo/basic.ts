@@ -13,17 +13,19 @@ import { Component } from '@angular/core';
       </ListItem>
       <ListItem multipleLine [arrow]="'horizontal'" [platform]="'android'" (onClick)="onClick()">
         ListItem （Android）
-        <Brief
-          >There may have water ripple effect of <br />
-          material if you set the onClick event.</Brief
-        >
+        <Brief>
+          There may have water ripple effect of
+          <br />
+          material if you set the onClick event.
+        </Brief>
       </ListItem>
       <ListItem
         [arrow]="'horizontal'"
         [thumb]="'https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png'"
         multipleLine
         (onClick)="onClick()"
-        >Title
+      >
+        Title
         <Brief>subtitle</Brief>
       </ListItem>
     </List>
@@ -52,7 +54,8 @@ import { Component } from '@angular/core';
         [thumb]="'https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png'"
         [arrow]="'horizontal'"
         (onClick)="onClick()"
-        >My wallet
+      >
+        My wallet
       </ListItem>
       <ListItem
         [thumb]="'https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png'"
@@ -64,9 +67,9 @@ import { Component } from '@angular/core';
     </List>
     <List [className]="'my-list'" [renderHeader]="renderHeader5">
       <ListItem data-seed="logId">Single line，long text will be hidden with ellipsis；</ListItem>
-      <ListItem wrap
-        >Multiple line，long text will wrap；Long Text Long Text Long Text Long Text Long Text Long Text</ListItem
-      >
+      <ListItem wrap>
+        Multiple line，long text will wrap；Long Text Long Text Long Text Long Text Long Text Long Text
+      </ListItem>
       <ListItem [extra]="'extra content'" multipleLine [align]="'top'" wrap>
         Multiple line and long text will wrap. Long Text Long Text Long Text
       </ListItem>

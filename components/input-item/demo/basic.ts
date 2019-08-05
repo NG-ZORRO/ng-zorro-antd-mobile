@@ -9,13 +9,13 @@ import { ToastService } from 'ng-zorro-antd-mobile';
       <div class="am-list" style="margin:0;">
         <div class="am-list-header">Money input</div>
         <div class="am-list-body">
-          <InputItem [type]="'money'" [clear]="true" [placeholder]="'start from left'" [moneyKeyboardAlign]="'left'"
-            >光标在左</InputItem
-          >
+          <InputItem [type]="'money'" [clear]="true" [placeholder]="'start from left'" [moneyKeyboardAlign]="'left'">
+            光标在左
+          </InputItem>
           <InputItem [type]="'money'" [clear]="true" [placeholder]="'start from rigth'">光标在右</InputItem>
-          <InputItem [type]="'money'" [clear]="true" [placeholder]="'money format'" [focus]="numberFocus"
-            >数字键盘</InputItem
-          >
+          <InputItem [type]="'money'" [clear]="true" [placeholder]="'money format'" [focus]="numberFocus">
+            数字键盘
+          </InputItem>
           <div class="am-list-item am-list-item-middle">
             <div class="am-list-line">
               <div class="am-list-content" style="width:100%;color:#108ee9;text-align:center" (click)="clickFocus()">
@@ -30,9 +30,9 @@ import { ToastService } from 'ng-zorro-antd-mobile';
         <div class="am-list-header">Customize to focus</div>
         <div class="am-list-body">
           <InputItem [clear]="true" [placeholder]="'auto focus'" [focus]="autoFocus">标题</InputItem>
-          <InputItem [clear]="true" [placeholder]="'click the button below to focus'" [focus]="inputFocus"
-            >标题</InputItem
-          >
+          <InputItem [clear]="true" [placeholder]="'click the button below to focus'" [focus]="inputFocus">
+            标题
+          </InputItem>
           <div class="am-list-item am-list-item-middle">
             <div class="am-list-line">
               <div
@@ -64,9 +64,9 @@ import { ToastService } from 'ng-zorro-antd-mobile';
       <div class="am-list" style="margin:0;">
         <div class="am-list-header">Number of words for the title</div>
         <div class="am-list-body">
-          <InputItem [clear]="true" [labelNumber]="5" [placeholder]="'limited title length'"
-            >标题过长超过5个字符</InputItem
-          >
+          <InputItem [clear]="true" [labelNumber]="5" [placeholder]="'limited title length'">
+            标题过长超过5个字符
+          </InputItem>
         </div>
       </div>
       <div class="am-list" style="margin:0;">
@@ -90,9 +90,9 @@ import { ToastService } from 'ng-zorro-antd-mobile';
         <div class="am-list-header">Format</div>
         <div class="am-list-body">
           <InputItem [type]="'bankCard'" [defaultValue]="'8888 8888 8888 8888'">银行卡</InputItem>
-          <InputItem [type]="'phone'" [placeholder]="'186 1234 1234'" (onChange)="inputChange($event)"
-            >手机号码</InputItem
-          >
+          <InputItem [type]="'phone'" [placeholder]="'186 1234 1234'" (onChange)="inputChange($event)">
+            手机号码
+          </InputItem>
           <InputItem [type]="'password'" [placeholder]="'****'">密码</InputItem>
           <InputItem [type]="'number'" [placeholder]="'click to show number keyboard'">数字键盘</InputItem>
         </div>
@@ -114,8 +114,9 @@ import { ToastService } from 'ng-zorro-antd-mobile';
             [error]="error"
             (onErrorClick)="inputErrorClick($event)"
             (onChange)="inputChange($event)"
-            >手机号码</InputItem
           >
+            手机号码
+          </InputItem>
         </div>
       </div>
     </div>
