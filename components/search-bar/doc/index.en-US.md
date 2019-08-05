@@ -24,7 +24,7 @@ Properties | Descrition | Type | Default
 | onChange    |    change event callback     | (val: string): void | <span> </span> |
 | onFocus    |    focus event callback     | (): void | <span> </span> |
 | onBlur    |    blur event callback     | (): void | <span> </span> |
-| onCancel  | Click the `Cancel` button to trigger (The text of the input box is no longer automatically cleared) | (val: string): void | <span> </span> |
+| onCancel  | Click the `Cancel` button to trigger | (val: string): void | <span> </span> |
 | showCancelButton |  Whether the `Cancel` button is always displayed  | bool |  `false`  |
 | cancelText  |  Customize the text of the `Cancel` button   | String |  `Cancel`  |
 | disabled    |   Set disabled  | bool |  `false`  |
