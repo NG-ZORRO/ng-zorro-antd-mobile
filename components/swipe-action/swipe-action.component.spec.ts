@@ -162,13 +162,14 @@ describe('swipeAction', () => {
 @Component({
   selector: 'test-swipe-action',
   template: `
-    <SwipeAction style="background-color: gray"
-                 [left]="left"
-                 [right]="right"
-                 [disabled]="disabled"
-                 [autoClose]="autoClose"
-                 (onOpen)="onOpen()"
-                 (onClose)="onClose()"
+    <SwipeAction
+      style="background-color: gray"
+      [left]="left"
+      [right]="right"
+      [disabled]="disabled"
+      [autoClose]="autoClose"
+      (onOpen)="onOpen()"
+      (onClose)="onClose()"
     >
       Have left and right buttons
     </SwipeAction>

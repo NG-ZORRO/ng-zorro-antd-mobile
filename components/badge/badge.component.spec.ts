@@ -9,10 +9,8 @@ describe('BadgeComponent', () => {
   let badgeEle;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations:
-      [TestBadgeComponent],
-      imports:
-      [BadgeModule]
+      declarations: [TestBadgeComponent],
+      imports: [BadgeModule]
     }).compileComponents();
   }));
 
@@ -69,7 +67,10 @@ describe('BadgeComponent', () => {
     component.dot = false;
     component.text = 'test';
     fixture.detectChanges();
-    expect(badgeEle.nativeElement.querySelector('.am-badge-text').innerText.trim()).toBe('test', 'dot=false,text is show');
+    expect(badgeEle.nativeElement.querySelector('.am-badge-text').innerText.trim()).toBe(
+      'test',
+      'dot=false,text is show'
+    );
   });
   it('when text is number,should overflowCount work', () => {
     component.text = 11;
@@ -91,16 +92,10 @@ describe('BadgeComponent', () => {
 @Component({
   selector: 'test-badge-child',
   template: `
-  <Badge [dot]="dot"
-         [hot]="hot"
-         [size]="size"
-         [text]="text"
-         [corner]="corner"
-         [overflowCount]="overflowCount"
-  >
-    <span style="width:26px ; height: 26px; background:#ddd; display:inline-block"></span>
-  </Badge>
- `
+    <Badge [dot]="dot" [hot]="hot" [size]="size" [text]="text" [corner]="corner" [overflowCount]="overflowCount">
+      <span style="width:26px ; height: 26px; background:#ddd; display:inline-block"></span>
+    </Badge>
+  `
 })
 export class TestBadgeComponent {
   size = 'small';
@@ -111,5 +106,4 @@ export class TestBadgeComponent {
   hot = false;
 
   constructor() {}
-
 }

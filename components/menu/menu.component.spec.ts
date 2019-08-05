@@ -216,21 +216,18 @@ describe('MenuComponent', () => {
 @Component({
   selector: 'test-menu',
   template: `
-    <Menu [data]="data"
-          [level]="level"
-          [value]="value"
-          [height]="height"
-          [multiSelect]="multiSelect"
-          (onChange)="onChange($event)"
-          (onCancel)="onCancel()"
-          (onOk)="onOk($event)"
+    <Menu
+      [data]="data"
+      [level]="level"
+      [value]="value"
+      [height]="height"
+      [multiSelect]="multiSelect"
+      (onChange)="onChange($event)"
+      (onCancel)="onCancel()"
+      (onOk)="onOk($event)"
     ></Menu>
 
-    <Menu [data]="data2"
-          [level]="level"
-          [height]="height"
-          [multiSelect]="multiSelect"
-    ></Menu>
+    <Menu [data]="data2" [level]="level" [height]="height" [multiSelect]="multiSelect"></Menu>
 
     <Menu></Menu>
   `

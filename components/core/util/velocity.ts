@@ -4,7 +4,7 @@ export function getVelocity() {
     let _y = 0;
     let _velocity = 0;
     const recorder = {
-      record: (y) => {
+      record: y => {
         const now = +new Date();
         _velocity = (y - _y) / (now - _time);
         if (now - _time >= minInterval) {
@@ -13,12 +13,12 @@ export function getVelocity() {
           _time = now;
         }
       },
-      getVelocity: (y) => {
+      getVelocity: y => {
         if (y !== _y) {
           recorder.record(y);
         }
         return _velocity;
-      },
+      }
     };
     return recorder;
   })();

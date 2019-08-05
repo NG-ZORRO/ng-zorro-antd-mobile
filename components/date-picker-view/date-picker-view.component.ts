@@ -26,7 +26,8 @@ import { DatePickerComponent } from '../date-picker/date-picker.component';
     }
   ]
 })
-export class DatePickerViewComponent extends DatePickerComponent implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {
+export class DatePickerViewComponent extends DatePickerComponent
+  implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {
   @Input()
   mode: string = 'date';
   @Input()

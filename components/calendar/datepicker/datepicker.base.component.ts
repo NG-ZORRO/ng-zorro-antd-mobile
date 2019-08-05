@@ -75,7 +75,9 @@ export class CalendarDatePickerBaseComponent {
   }
 
   getDateWithoutTime = (date?: Date) => {
-    if (!date) { return 0; }
+    if (!date) {
+      return 0;
+    }
     return +new Date(date.getFullYear(), date.getMonth(), date.getDate());
   }
 
@@ -299,8 +301,9 @@ export class CalendarDatePickerBaseComponent {
   }
 
   baseOnCellClick = (day: DateModels.CellData) => {
-    if (!day.tick) { return; }
+    if (!day.tick) {
+      return;
+    }
     this.props.onCellClick && this.props.onCellClick(new Date(day.tick));
   }
-
 }

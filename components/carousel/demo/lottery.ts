@@ -5,19 +5,20 @@ import { Component } from '@angular/core';
   template: `
     <WingBlank>
       <WhiteSpace></WhiteSpace>
-        <Carousel class="my-carousel"
-                  [dots]="false"
-                  [speed]="200"
-                  [autoplay]="true"
-                  [infinite]="true"
-                  [vertical]="true"
-                  [dragging]="false"
-                  [autoplayInterval]="300"
-        >
-          <CarouselSlide *ngFor="let item of state.data;let i = index">
-            <div class="v-item">carousel {{item}}</div>
-          </CarouselSlide>
-        </Carousel>
+      <Carousel
+        class="my-carousel"
+        [dots]="false"
+        [speed]="200"
+        [autoplay]="true"
+        [infinite]="true"
+        [vertical]="true"
+        [dragging]="false"
+        [autoplayInterval]="300"
+      >
+        <CarouselSlide *ngFor="let item of state.data; let i = index">
+          <div class="v-item">carousel {{ item }}</div>
+        </CarouselSlide>
+      </Carousel>
     </WingBlank>
   `,
   styles: [

@@ -1,12 +1,4 @@
-import {
-  Component,
-  ViewEncapsulation,
-  Input,
-  Output,
-  HostBinding,
-  TemplateRef,
-  EventEmitter
-} from '@angular/core';
+import { Component, ViewEncapsulation, Input, Output, HostBinding, TemplateRef, EventEmitter } from '@angular/core';
 import { DateModels } from '../date/DataTypes';
 
 @Component({
@@ -66,5 +58,4 @@ export class CalendarHeaderComponent {
   triggerClear() {
     this.onClear && this.onClear.emit();
   }
-
 }

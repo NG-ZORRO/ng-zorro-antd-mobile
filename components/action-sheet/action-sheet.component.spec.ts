@@ -121,13 +121,13 @@ describe('ActionSheetComponent', () => {
 @Component({
   selector: 'test-actionSheet-basic',
   template: `
-  <nzm-button (onClick)="showActionSheet(message)">showActionSheet</nzm-button>
-  <nzm-button (onClick)="showShareActionSheet()">showShareActionSheet</nzm-button>
-  <nzm-button (onClick)="showShareActionSheetMulpitleLine()">showShareActionSheetMulpitleLine</nzm-button>
+    <nzm-button (onClick)="showActionSheet(message)">showActionSheet</nzm-button>
+    <nzm-button (onClick)="showShareActionSheet()">showShareActionSheet</nzm-button>
+    <nzm-button (onClick)="showShareActionSheetMulpitleLine()">showShareActionSheetMulpitleLine</nzm-button>
 
-  <ng-template #message>
-    <div class="am-action-sheet-message">123</div>
-  </ng-template>
+    <ng-template #message>
+      <div class="am-action-sheet-message">123</div>
+    </ng-template>
   `,
   providers: [ActionSheet],
   entryComponents: [ActionSheetComponent]

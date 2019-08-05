@@ -3,26 +3,33 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-tabs-vertical',
   template: `
-    <Tabs style="height: 200px;"
-          [activeTab]="index"
-          [page]="3"
-          [tabBarPosition]="'left'"
-          [tabDirection]="'vertical'"
-          (onChange)="onChange($event)"
-          (onTabClick)="onTabClick($event)"
+    <Tabs
+      style="height: 200px;"
+      [activeTab]="index"
+      [page]="3"
+      [tabBarPosition]="'left'"
+      [tabDirection]="'vertical'"
+      (onChange)="onChange($event)"
+      (onTabClick)="onTabClick($event)"
     >
       <TabPane [title]="'First Tab'">
-      <div style="display: flex; height: 200px; width: 100%; background-color: white;align-items: center;justify-content: center;">
-        Content of first tab
-      </div>
+        <div
+          style="display: flex; height: 200px; width: 100%; background-color: white;align-items: center;justify-content: center;"
+        >
+          Content of first tab
+        </div>
       </TabPane>
       <TabPane [title]="'Second Tab'">
-        <div style="display: flex; height: 200px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        <div
+          style="display: flex; height: 200px; width: 100%; background-color: white;align-items: center;justify-content: center;"
+        >
           Content of second tab
         </div>
       </TabPane>
       <TabPane [title]="'Third Tab'">
-        <div style="display: flex; height: 200px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        <div
+          style="display: flex; height: 200px; width: 100%; background-color: white;align-items: center;justify-content: center;"
+        >
           Content of third tab
         </div>
       </TabPane>

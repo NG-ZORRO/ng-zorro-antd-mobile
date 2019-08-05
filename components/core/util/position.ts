@@ -1,7 +1,10 @@
-
-export function getAllStyles (element) { return window.getComputedStyle(element); }
-export function getStyle(element, prop) { return getAllStyles(element)[prop]; }
-export function isStaticPositioned (element) {
+export function getAllStyles(element) {
+  return window.getComputedStyle(element);
+}
+export function getStyle(element, prop) {
+  return getAllStyles(element)[prop];
+}
+export function isStaticPositioned(element) {
   return (getStyle(element, 'position') || 'static') === 'static';
 }
 
@@ -58,12 +61,12 @@ export function getPositionElements(hostElement, targetElement, placement, appen
   let placementPrimary = placement.split('-')[0] || 'top';
   let placementSecondary = placement.split('-')[1] || 'center';
   let targetElPosition = {
-    'height': targetElBCR.height || targetElement.offsetHeight,
-    'width': targetElBCR.width || targetElement.offsetWidth,
-    'top': 0,
-    'bottom': targetElBCR.height || targetElement.offsetHeight,
-    'left': 0,
-    'right': targetElBCR.width || targetElement.offsetWidth
+    height: targetElBCR.height || targetElement.offsetHeight,
+    width: targetElBCR.width || targetElement.offsetWidth,
+    top: 0,
+    bottom: targetElBCR.height || targetElement.offsetHeight,
+    left: 0,
+    right: targetElBCR.width || targetElement.offsetWidth
   };
   switch (placementPrimary) {
     case 'top':

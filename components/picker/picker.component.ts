@@ -213,9 +213,9 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   checkArrayDeep(parent, init: boolean = true) {
     if (parent instanceof Object && parent.children && parent.children.length > 0) {
-       if (this.generateArrayData(parent.children).length > 0 && this.dataForRender.length < this.options.cols) {
-         let hasValue = false;
-         this.dataForRender.filter((item, index) => {
+      if (this.generateArrayData(parent.children).length > 0 && this.dataForRender.length < this.options.cols) {
+        let hasValue = false;
+        this.dataForRender.filter((item, index) => {
           if (JSON.stringify(item) === JSON.stringify(parent.children)) {
             hasValue = true;
           }

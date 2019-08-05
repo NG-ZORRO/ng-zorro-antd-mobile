@@ -37,10 +37,10 @@ describe('WingBlank', () => {
 @Component({
   selector: 'test-wing-blank-child',
   template: `
-  <div>
-    <WingBlank [size]="size" ></WingBlank>
-  </div>
- `
+    <div>
+      <WingBlank [size]="size"></WingBlank>
+    </div>
+  `
 })
 export class TestWingBlank {
   size = 'xs'; // 'xs' | 'sm' | 'md' | 'lg' | 'xl'

@@ -71,13 +71,14 @@ describe('segmented-control', () => {
 @Component({
   selector: 'test-segmented-control',
   template: `
-    <SegmentedControl [values]="values"
-                      [tintColor]="tintColor"
-                      [selectedIndex]="selectedIndex"
-                      [disabled]="disabled"
-                      (onChange)="onChange($event)"
+    <SegmentedControl
+      [values]="values"
+      [tintColor]="tintColor"
+      [selectedIndex]="selectedIndex"
+      [disabled]="disabled"
+      (onChange)="onChange($event)"
     ></SegmentedControl>
- `
+  `
 })
 export class TestSegmentedControlComponent {
   disabled = false;

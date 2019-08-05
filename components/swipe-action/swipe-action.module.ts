@@ -6,7 +6,6 @@ import { SwipeActionComponent } from './swipe-action.component';
   imports: [CommonModule],
   exports: [SwipeActionComponent],
   declarations: [SwipeActionComponent],
-  providers: [],
+  providers: []
 })
-
-export class SwipeActionModule { }
+export class SwipeActionModule {}

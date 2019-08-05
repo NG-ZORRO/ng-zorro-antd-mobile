@@ -25,5 +25,4 @@ export class CardHeaderComponent {
   isTemplateRef(value) {
     return value instanceof TemplateRef;
   }
-
 }

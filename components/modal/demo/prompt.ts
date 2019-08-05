@@ -67,7 +67,12 @@ export class DemoModalPromptComponent {
   }
 
   showSecure() {
-    ModalService.prompt('Password', 'Password Message', password => console.log(`password: ${password}`), 'secure-text');
+    ModalService.prompt(
+      'Password',
+      'Password Message',
+      password => console.log(`password: ${password}`),
+      'secure-text'
+    );
   }
 
   showCustom() {

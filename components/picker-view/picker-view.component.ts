@@ -58,7 +58,7 @@ export class PickerViewComponent extends PickerComponent implements OnInit, Afte
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any[]): void { }
+  registerOnTouched(fn: any[]): void {}
 
   ngOnInit() {
     this.pickerViewInit();

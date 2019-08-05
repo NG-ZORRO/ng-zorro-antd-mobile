@@ -68,7 +68,10 @@ describe('radio', () => {
     component.onChange = jasmine.createSpy('onChange callback');
     component.disabled = true;
     fixture.detectChanges();
-    radioItemEle.nativeElement.querySelector('.second-radio-item').querySelector('.am-radio-wrapper').click();
+    radioItemEle.nativeElement
+      .querySelector('.second-radio-item')
+      .querySelector('.am-radio-wrapper')
+      .click();
     fixture.detectChanges();
     expect(component.onChange).toHaveBeenCalledTimes(0);
 
@@ -84,21 +87,16 @@ describe('radio', () => {
 @Component({
   selector: 'test-radio',
   template: `
-    <label Radio
-           [name]="'radio'"
-           [checked]="checked"
-           [disabled]="disabled"
-           (onChange)="onChange($event)"
-    ></label>
+    <label Radio [name]="'radio'" [checked]="checked" [disabled]="disabled" (onChange)="onChange($event)"></label>
     <RadioItemGroup [(ngModel)]="selectedStatus.value" (onChange)="onChange($event)">
       <RadioItem [name]="data[0].name" [value]="data[0].value">
-        {{data[0].name}}
+        {{ data[0].name }}
       </RadioItem>
       <RadioItem class="second-radio-item" [name]="data[1].name" [value]="data[1].value" [disabled]="disabled">
-        {{data[1].name}}
+        {{ data[1].name }}
       </RadioItem>
     </RadioItemGroup>
- `
+  `
 })
 export class TestRadioComponent {
   value = false;

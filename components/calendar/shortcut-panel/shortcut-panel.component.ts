@@ -20,7 +20,7 @@ export class CalendarShortcutPanelComponent {
 
   @HostBinding('class.shortcut-panel') shortcutPanel: boolean = true;
 
-  constructor() { }
+  constructor() {}
 
   onClick = (type: string) => {
     const { onSelect } = this.props;

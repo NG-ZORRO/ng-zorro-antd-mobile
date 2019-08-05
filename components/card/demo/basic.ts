@@ -5,10 +5,11 @@ import { Component } from '@angular/core';
   template: `
     <WingBlank [size]="'lg'">
       <Card>
-        <CardHeader [title]="'This is title'"
-                    [thumb]="'https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg'"
-                    [thumbStyle]="thumbStyle"
-                    [extra]="extra"
+        <CardHeader
+          [title]="'This is title'"
+          [thumb]="'https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg'"
+          [thumbStyle]="thumbStyle"
+          [extra]="extra"
         >
           <ng-template #extra>
             <span>this is extra</span>

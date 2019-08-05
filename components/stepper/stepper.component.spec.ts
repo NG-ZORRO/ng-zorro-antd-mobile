@@ -149,7 +149,6 @@ describe('StepperComponent', () => {
     expect(component.value).toBe(5, 'click down button');
 
     expect(stepperEle.nativeElement.classList).not.toContain('am-stepper-disabled', 'contain am-stepper-disabled');
-
   });
 
   it('should readOnly work', fakeAsync(() => {

@@ -94,12 +94,13 @@ describe('Result', () => {
   selector: 'test-white-space-child',
   template: `
     <div class="result-example">
-      <Result [imgUrl]="imgUrl"
-              [message]="'测试'"
-              [title]="'支付成功'"
-              [buttonText]="buttonText"
-              [buttonType]="buttonType"
-              (onButtonClick)="clickCallback()"
+      <Result
+        [imgUrl]="imgUrl"
+        [message]="'测试'"
+        [title]="'支付成功'"
+        [buttonText]="buttonText"
+        [buttonType]="buttonType"
+        (onButtonClick)="clickCallback()"
       ></Result>
     </div>
   `

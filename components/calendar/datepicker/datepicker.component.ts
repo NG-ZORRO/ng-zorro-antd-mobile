@@ -59,7 +59,9 @@ export class CalendarDatePickerComponent extends CalendarDatePickerBaseComponent
   @HostBinding('class.date-picker') datePicker: boolean = true;
 
   genMonthComponent = (data?: DateModels.MonthData) => {
-    if (!data) { return; }
+    if (!data) {
+      return;
+    }
     return {
       monthData: data,
       locale: this.props.locale,

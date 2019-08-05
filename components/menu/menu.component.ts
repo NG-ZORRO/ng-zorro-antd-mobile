@@ -146,9 +146,11 @@ export class MenuComponent implements OnInit, OnDestroy {
       }
     }
 
-    this.subSelInitItem = this.subMenuData.filter(dataItem => subValue.indexOf(dataItem.value) !== -1).map(item => {
-      return item.value;
-    });
+    this.subSelInitItem = this.subMenuData
+      .filter(dataItem => subValue.indexOf(dataItem.value) !== -1)
+      .map(item => {
+        return item.value;
+      });
 
     const parentValue = this.value && this.value.length > 1 && this.level === 2 ? this.value[0] : null;
 

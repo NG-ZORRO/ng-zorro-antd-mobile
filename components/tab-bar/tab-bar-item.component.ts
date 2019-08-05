@@ -1,9 +1,4 @@
-import {
-  Component,
-  Input,
-  ViewChild,
-  TemplateRef
-} from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef } from '@angular/core';
 import { TabPaneComponent } from '../tabs/tab-pane.component';
 
 @Component({

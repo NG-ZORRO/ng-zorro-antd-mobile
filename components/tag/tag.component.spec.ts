@@ -113,13 +113,14 @@ describe('tag', () => {
 @Component({
   selector: 'test-tag',
   template: `
-    <Tag [small]="small"
-         [closable]="closable"
-         [disabled]="disabled"
-         [selected]="selected"
-         (onClose)="onClose()"
-         (afterClose)="afterClose()"
-         (onChange)="onChange($event)"
+    <Tag
+      [small]="small"
+      [closable]="closable"
+      [disabled]="disabled"
+      [selected]="selected"
+      (onClose)="onClose()"
+      (afterClose)="afterClose()"
+      (onChange)="onChange($event)"
     ></Tag>
   `
 })

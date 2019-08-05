@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
     </div>
   `,
   styles: [
-      `
+    `
       .tag-container {
         display: flex;
         padding-top: 9px;
@@ -28,7 +28,6 @@ import { Component } from '@angular/core';
     `
   ]
 })
-
 export class DemoTagBasicComponent {
   onChange(selected) {
     console.log(`tag selected: ${selected}`);
@@ -42,4 +41,3 @@ export class DemoTagBasicComponent {
     console.log('afterClose');
   }
 }
-

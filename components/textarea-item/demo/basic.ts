@@ -8,19 +8,25 @@ import { Component } from '@angular/core';
       <div class="am-list" style="margin:0;">
         <div class="am-list-header">Customize to focus</div>
         <div class="am-list-body">
-          <TextareaItem [placeholder]="'auto focus in Alipay client'"
-                        [autoFocus]="true"
-                        [title]="'标题'"
-                        [autoHeight]="true"
+          <TextareaItem
+            [placeholder]="'auto focus in Alipay client'"
+            [autoFocus]="true"
+            [title]="'标题'"
+            [autoHeight]="true"
           ></TextareaItem>
-          <TextareaItem [placeholder]="'click the button below to focus'"
-                        [title]="'标题'"
-                        [autoHeight]="true"
-                        [focus]="inputFocus"
+          <TextareaItem
+            [placeholder]="'click the button below to focus'"
+            [title]="'标题'"
+            [autoHeight]="true"
+            [focus]="inputFocus"
           ></TextareaItem>
           <div class="am-list-item am-list-item-middle">
             <div class="am-list-line">
-              <div class="am-list-content" style="width:100%;color:#108ee9;text-align:center" (click)="clickFocusInput()">
+              <div
+                class="am-list-content"
+                style="width:100%;color:#108ee9;text-align:center"
+                (click)="clickFocusInput()"
+              >
                 click to focus
               </div>
             </div>
@@ -31,12 +37,9 @@ import { Component } from '@angular/core';
       <div class="am-list" style="margin:0;">
         <div class="am-list-header">Auto / Fixed height</div>
         <div class="am-list-body">
-          <TextareaItem [title]="'高度自适应'" [autoHeight]="true" [labelNumber]="5">
-          </TextareaItem>
-          <TextareaItem [editable]="false" [autoHeight]="true" [value]="readonlyValue">
-          </TextareaItem>
-          <TextareaItem [rows]="3" [placeholder]="'fixed number of lines'">
-          </TextareaItem>
+          <TextareaItem [title]="'高度自适应'" [autoHeight]="true" [labelNumber]="5"> </TextareaItem>
+          <TextareaItem [editable]="false" [autoHeight]="true" [value]="readonlyValue"> </TextareaItem>
+          <TextareaItem [rows]="3" [placeholder]="'fixed number of lines'"> </TextareaItem>
         </div>
       </div>
       <div class="am-list" style="margin:0;">
@@ -48,8 +51,7 @@ import { Component } from '@angular/core';
       <div class="am-list" style="margin:0;">
         <div class="am-list-header">Custom title（text / image / empty)</div>
         <div class="am-list-body">
-          <TextareaItem [title]="customTitle" [placeholder]="'title can be customized'">
-          </TextareaItem>
+          <TextareaItem [title]="customTitle" [placeholder]="'title can be customized'"> </TextareaItem>
         </div>
       </div>
       <div class="am-list" style="margin:0;">
@@ -74,7 +76,11 @@ import { Component } from '@angular/core';
     </div>
 
     <ng-template #customTitle>
-      <img src="https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png" style="width:28px;height:28px" alt="" />
+      <img
+        src="https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png"
+        style="width:28px;height:28px"
+        alt=""
+      />
     </ng-template>
   `,
   styles: [
@@ -122,7 +128,8 @@ import { Component } from '@angular/core';
 export class DemoTextareaItemBasicComponent {
   value;
   error;
-  readonlyValue = 'This is a very very very very very very very very' +
+  readonlyValue =
+    'This is a very very very very very very very very' +
     ' very very very very very very very very very very long paragraph of read-only text';
   numberFocus = {
     focus: false,
@@ -139,7 +146,7 @@ export class DemoTextareaItemBasicComponent {
   };
   autoFocus = { focus: true, date: new Date() };
 
-  inputErrorClick(e) { }
+  inputErrorClick(e) {}
 
   clickFocus() {
     this.numberFocus = {

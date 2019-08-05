@@ -28,7 +28,7 @@ export class SegmentedControlComponent {
     return this.disabled;
   }
 
-  constructor() { }
+  constructor() {}
 
   onClick(index: number, value: string) {
     if (!this.disabled && index !== this.selectedIndex) {

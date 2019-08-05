@@ -1,5 +1,5 @@
 export default {
-    okText: 'Ok',
-    dismissText: 'Annuller',
-    extra: 'Vælg venligst',
-  };
+  okText: 'Ok',
+  dismissText: 'Annuller',
+  extra: 'Vælg venligst'
+};

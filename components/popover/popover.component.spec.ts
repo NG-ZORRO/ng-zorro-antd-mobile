@@ -53,7 +53,7 @@ describe('PopoverComponent', () => {
     expect(popoverEle.querySelector('.am-popover-mask')).toBe(null);
   });
 
-  it ('should mask work', () => {
+  it('should mask work', () => {
     component.state.mask = true;
     fixture.detectChanges();
     button.click();
@@ -222,38 +222,38 @@ describe('PopoverComponent', () => {
 @Component({
   selector: 'test-popover',
   template: `
-  <div Popover
-       class="popover"
-       style="height:80px; width:80px"
-       [ngStyle]="{'height': '100%', 'display': 'flex', 'align-items': 'center'}"
-       [mask]="state.mask"
-       [overlay]="overlay"
-       [visible]="state.visible"
-       [placement]="state.placement"
-       [showArrow]="state.showArrow"
-       [appendToBody]="state.appendToBody"
-       (onSelect)="onSelect($event)"
-       (onVisibleChange)="onVisibleChange($event)"
-  ></div>
+    <div
+      Popover
+      class="popover"
+      style="height:80px; width:80px"
+      [ngStyle]="{ height: '100%', display: 'flex', 'align-items': 'center' }"
+      [mask]="state.mask"
+      [overlay]="overlay"
+      [visible]="state.visible"
+      [placement]="state.placement"
+      [showArrow]="state.showArrow"
+      [appendToBody]="state.appendToBody"
+      (onSelect)="onSelect($event)"
+      (onVisibleChange)="onVisibleChange($event)"
+    ></div>
 
-  <ng-template #overlay>
-  <PopoverItem [icon]="icon1">Scan</PopoverItem>
-  <PopoverItem [ngStyle]="{'whiteSpace': 'nowrap'}" [icon]="icon2" [disabled]="false">My Qrcode</PopoverItem>
-  <PopoverItem [style]="{'marginRight': 5}" [icon]="icon3">
-    <span [ngStyle]="{'marginRight': 5}">Help</span>
-  </PopoverItem>
-  </ng-template>
+    <ng-template #overlay>
+      <PopoverItem [icon]="icon1">Scan</PopoverItem>
+      <PopoverItem [ngStyle]="{ whiteSpace: 'nowrap' }" [icon]="icon2" [disabled]="false">My Qrcode</PopoverItem>
+      <PopoverItem [style]="{ marginRight: 5 }" [icon]="icon3">
+        <span [ngStyle]="{ marginRight: 5 }">Help</span>
+      </PopoverItem>
+    </ng-template>
 
-  <ng-template #icon1>
-    <Icon [src]="'https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'" [size]="'xs'"></Icon>
-  </ng-template>
-  <ng-template #icon2>
-    <Icon [src]="'https://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'" [size]="'xs'"></Icon>
-  </ng-template>
-  <ng-template #icon3>
-    <Icon [src]="'https://gw.alipayobjects.com/zos/rmsportal/uQIYTFeRrjPELImDRrPt.svg'" [size]="'xs'"></Icon>
-  </ng-template>
-
+    <ng-template #icon1>
+      <Icon [src]="'https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'" [size]="'xs'"></Icon>
+    </ng-template>
+    <ng-template #icon2>
+      <Icon [src]="'https://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'" [size]="'xs'"></Icon>
+    </ng-template>
+    <ng-template #icon3>
+      <Icon [src]="'https://gw.alipayobjects.com/zos/rmsportal/uQIYTFeRrjPELImDRrPt.svg'" [size]="'xs'"></Icon>
+    </ng-template>
   `
 })
 export class TestPopoverComponent {

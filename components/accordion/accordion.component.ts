@@ -72,7 +72,7 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
     });
   }
 
-  init () {
+  init() {
     if (this.expandAll && this.groups && this.groups.length > 0) {
       this._oldGroups = this.groups.toArray();
       this._oldGroups.forEach((group, index) => {
@@ -90,7 +90,13 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
     }
 
     let currentActiveKey = [];
-    if (this.activeKey !== undefined && this.activeKey.length > 0 && !this.accordion && this.groups && this.groups.length > 0) {
+    if (
+      this.activeKey !== undefined &&
+      this.activeKey.length > 0 &&
+      !this.accordion &&
+      this.groups &&
+      this.groups.length > 0
+    ) {
       currentActiveKey = this.toArray(this.activeKey);
       this.groups.forEach((group, index) => {
         currentActiveKey.forEach(key => {
@@ -102,7 +108,13 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
           }
         });
       });
-    } else if (this.defaultActiveKey !== undefined && !this.expandAll && !this.accordion && this.groups && this.groups.length > 0) {
+    } else if (
+      this.defaultActiveKey !== undefined &&
+      !this.expandAll &&
+      !this.accordion &&
+      this.groups &&
+      this.groups.length > 0
+    ) {
       this.groups.forEach((group, index) => {
         if (index === parseInt(this.defaultActiveKey, 0)) {
           setTimeout(() => {

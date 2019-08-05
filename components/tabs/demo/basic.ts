@@ -3,16 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-tabs-basic',
   template: `
-    <Tabs [useOnPan]="true"
-          [swipeable]="true"
-          [activeTab]="index"
-          [page]="3"
-          [tabBarActiveTextColor]="'#1890ff'"
-          (onChange)="onChange($event)"
-          (onTabClick)="onTabClick($event)"
+    <Tabs
+      [useOnPan]="true"
+      [swipeable]="true"
+      [activeTab]="index"
+      [page]="3"
+      [tabBarActiveTextColor]="'#1890ff'"
+      (onChange)="onChange($event)"
+      (onTabClick)="onTabClick($event)"
     >
-      <TabPane [title]="titleTemplate"
-      >
+      <TabPane [title]="titleTemplate">
         <ng-template #titleTemplate>
           <Badge [text]="3">
             <div>First Tab</div>
@@ -22,8 +22,7 @@ import { Component } from '@angular/core';
           Content of first tab
         </div>
       </TabPane>
-      <TabPane [title]="titleTemplate1"
-      >
+      <TabPane [title]="titleTemplate1">
         <ng-template #titleTemplate1>
           <Badge [text]="'今日(20)'">
             <div>Second Tab</div>
@@ -45,24 +44,31 @@ import { Component } from '@angular/core';
       </TabPane>
     </Tabs>
     <WhiteSpace></WhiteSpace>
-    <Tabs [activeTab]="index"
-          [page]="3"
-          [tabBarPosition]="'bottom'"
-          (onChange)="onChange($event)"
-          (onTabClick)="onTabClick($event)"
+    <Tabs
+      [activeTab]="index"
+      [page]="3"
+      [tabBarPosition]="'bottom'"
+      (onChange)="onChange($event)"
+      (onTabClick)="onTabClick($event)"
     >
       <TabPane [title]="'First Tab'">
-        <div style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        <div
+          style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;"
+        >
           Content of first tab
         </div>
       </TabPane>
       <TabPane [title]="'Second Tab'">
-        <div style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        <div
+          style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;"
+        >
           Content of second tab
         </div>
       </TabPane>
       <TabPane [title]="'Third Tab'">
-        <div style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        <div
+          style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;"
+        >
           Content of third tab
         </div>
       </TabPane>

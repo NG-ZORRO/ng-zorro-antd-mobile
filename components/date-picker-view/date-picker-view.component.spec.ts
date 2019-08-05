@@ -84,12 +84,13 @@ describe('DatePickerViewComponent', () => {
 @Component({
   selector: 'test-date-picker-view-basic',
   template: `
-    <DatePickerView [mode]="mode"
-                    [ngModel]="value1"
-                    [locale]="locale"
-                    [maxDate]="maxDate"
-                    [minDate]="minDate"
-                    (onValueChange)="onValueChange1($event)"
+    <DatePickerView
+      [mode]="mode"
+      [ngModel]="value1"
+      [locale]="locale"
+      [maxDate]="maxDate"
+      [minDate]="minDate"
+      (onValueChange)="onValueChange1($event)"
     ></DatePickerView>
   `
 })

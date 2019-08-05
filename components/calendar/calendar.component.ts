@@ -178,7 +178,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
 
   constructor(private _localeProviderService: LocaleProviderService) {}
 
-  writeValue(value: Date|Array<Date>|null): void {
+  writeValue(value: Date | Array<Date> | null): void {
     this._dateModelType = null;
     if (value && value instanceof Array) {
       if (value.length === 0) {
@@ -203,7 +203,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     }
   }
 
-  registerOnChange(fn: (date: Date|Array<Date>) => void): void {
+  registerOnChange(fn: (date: Date | Array<Date>) => void): void {
     this.onChangeFn = fn;
   }
 
@@ -283,7 +283,10 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
         } else {
           newState = {
             ...newState,
-            timePickerTitle: +newDate >= +startDate || this.isSameDate(startDate, newDate) ? locale.selectEndTime : locale.selectStartTime,
+            timePickerTitle:
+              +newDate >= +startDate || this.isSameDate(startDate, newDate)
+                ? locale.selectEndTime
+                : locale.selectStartTime,
             disConfirmBtn: false,
             endDate:
               pickTime && !useDateTime && (+newDate >= +startDate || this.isSameDate(startDate, newDate))
@@ -438,6 +441,6 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     this._unsubscribe$.complete();
   }
 
-  private onChangeFn: (date: Date|Array<Date>) => void = () => {};
-  private onTouchFn: (date: Date|Array<Date>) => void = () => {};
+  private onChangeFn: (date: Date | Array<Date>) => void = () => {};
+  private onTouchFn: (date: Date | Array<Date>) => void = () => {};
 }

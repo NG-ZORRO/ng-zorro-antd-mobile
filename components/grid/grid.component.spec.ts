@@ -12,7 +12,14 @@ describe('GridComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestGridComponent],
-      imports: [BrowserAnimationsModule, CarouselModule, FlexModule, IconModule, GridModule, NgZorroAntdMobilePipesModule]
+      imports: [
+        BrowserAnimationsModule,
+        CarouselModule,
+        FlexModule,
+        IconModule,
+        GridModule,
+        NgZorroAntdMobilePipesModule
+      ]
     }).compileComponents();
   }));
 
@@ -35,10 +42,7 @@ describe('GridComponent', () => {
     expect(gridEle.nativeElement.classList).toContain('am-grid-square', 'square is true');
     component.square = false;
     fixture.detectChanges();
-    expect(gridEle.nativeElement.classList).not.toContain(
-      'am-grid-square',
-      'square is false'
-    );
+    expect(gridEle.nativeElement.classList).not.toContain('am-grid-square', 'square is false');
   });
 
   it('should line work', () => {
@@ -54,10 +58,7 @@ describe('GridComponent', () => {
     expect(gridEle.nativeElement.classList).toContain('am-grid-carousel', 'carousel is true');
     component.isCarousel = false;
     fixture.detectChanges();
-    expect(gridEle.nativeElement.classList).not.toContain(
-      'am-grid-carousel',
-      'carousel is false'
-    );
+    expect(gridEle.nativeElement.classList).not.toContain('am-grid-carousel', 'carousel is false');
   });
 
   it('onClick work', () => {
@@ -80,12 +81,13 @@ describe('GridComponent', () => {
 @Component({
   selector: 'test-grid',
   template: `
-    <Grid [data]="data"
-          [square]="square"
-          [hasLine]="hasLine"
-          [columnNum]="columnNum"
-          [isCarousel]="isCarousel"
-          (onClick)="onClick($event)"
+    <Grid
+      [data]="data"
+      [square]="square"
+      [hasLine]="hasLine"
+      [columnNum]="columnNum"
+      [isCarousel]="isCarousel"
+      (onClick)="onClick($event)"
     ></Grid>
     <Grid [activeStyle]="false" [data]="dataList" (onClick)="click($event)"></Grid>
   `

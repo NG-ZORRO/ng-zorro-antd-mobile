@@ -6,56 +6,55 @@ import { Component, OnInit } from '@angular/core';
     <div class="am-demo-page">
       <div style="padding: 15px;font-size: 16px;">步骤条</div>
       <div class="am-demo-bd am-wingblank am-wingblank-lg">
-          <div>
-            <div class="sub-title">Small size ngModel</div>
-          </div>
-          <div>
-            <Slider [ngModel]="value"
-                    [min]=-10
-                    [max]=100
-                    (ngModelChange)="change($event)"
-                    (onAfterChange)="afterChange($event)"
-            ></Slider>
-          </div>
+        <div>
+          <div class="sub-title">Small size ngModel</div>
+        </div>
+        <div>
+          <Slider
+            [ngModel]="value"
+            [min]="-10"
+            [max]="100"
+            (ngModelChange)="change($event)"
+            (onAfterChange)="afterChange($event)"
+          ></Slider>
+        </div>
       </div>
       <div class="am-demo-bd am-wingblank am-wingblank-lg">
-          <div>
-            <div class="sub-title">Small size</div>
-          </div>
-          <div>
-            <Slider [defaultValue]=26
-                    [min]=-10
-                    [max]=100
-                    (onChange)="change($event)"
-                    (onAfterChange)="afterChange($event)"
-            ></Slider>
-          </div>
+        <div>
+          <div class="sub-title">Small size</div>
+        </div>
+        <div>
+          <Slider
+            [defaultValue]="26"
+            [min]="-10"
+            [max]="100"
+            (onChange)="change($event)"
+            (onAfterChange)="afterChange($event)"
+          ></Slider>
+        </div>
       </div>
       <div class="am-demo-bd am-wingblank am-wingblank-lg">
-          <div>
-              <div class="sub-title">Disabled slider</div>
-          </div>
-          <div>
-            <Slider [defaultValue]=26
-                    [min]=0
-                    [max]=30
-                    [disabled]=true
-            ></Slider>
-          </div>
+        <div>
+          <div class="sub-title">Disabled slider</div>
+        </div>
+        <div>
+          <Slider [defaultValue]="26" [min]="0" [max]="30" [disabled]="true"></Slider>
+        </div>
       </div>
       <div class="am-demo-bd am-wingblank am-wingblank-lg">
-          <div>
-              <div class="sub-title">slider with customized color</div>
-          </div>
-          <div>
-            <Slider [defaultValue]=26
-                    [min]=0
-                    [max]=30
-                    [trackStyle]="trackStyle"
-                    [railStyle]="railStyle"
-                    [handleStyle]="handleStyle"
-            ></Slider>
-          </div>
+        <div>
+          <div class="sub-title">slider with customized color</div>
+        </div>
+        <div>
+          <Slider
+            [defaultValue]="26"
+            [min]="0"
+            [max]="30"
+            [trackStyle]="trackStyle"
+            [railStyle]="railStyle"
+            [handleStyle]="handleStyle"
+          ></Slider>
+        </div>
       </div>
     </div>
   `,

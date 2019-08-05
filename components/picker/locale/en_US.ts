@@ -1,5 +1,5 @@
 export default {
   okText: 'Ok',
   dismissText: 'Cancel',
-  extra: 'please select',
+  extra: 'please select'
 };

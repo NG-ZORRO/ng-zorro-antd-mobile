@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
       <ListItem [extra]="stepperDisabled">Disabled</ListItem>
     </List>
     <ng-template #stepper>
-      <Stepper [value]="value" [min]="1" [max]="3" [showNumber]="true"  (onChange)="change($event)"></Stepper>
+      <Stepper [value]="value" [min]="1" [max]="3" [showNumber]="true" (onChange)="change($event)"></Stepper>
     </ng-template>
     <ng-template #stepperDisabled>
       <Stepper [defaultValue]="6" [min]="1" [max]="10" [disabled]="true" [showNumber]="true"></Stepper>
@@ -29,5 +29,4 @@ export class DemoStepperBasicComponent {
   change($event) {
     console.log($event, 'change');
   }
-
 }

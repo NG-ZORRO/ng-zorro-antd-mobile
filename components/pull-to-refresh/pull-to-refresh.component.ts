@@ -258,10 +258,10 @@ export class PullToRefreshComponent implements ControlValueAccessor {
         offset > 0 &&
         contentOffset > 0 &&
         evt.target.scrollTop + this.ele.nativeElement.clientHeight === evt.target.scrollHeight
-        ) {
-          setTimeout(() => {
-            this._endRreach = true;
-          }, 500);
+      ) {
+        setTimeout(() => {
+          this._endRreach = true;
+        }, 500);
       } else {
         this._endRreach = false;
       }
@@ -275,28 +275,28 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       contentOffset > 0 &&
       evt.target.scrollTop + this.ele.nativeElement.clientHeight > evt.target.scrollHeight - this.distanceToRefresh &&
       this._endTime - this._startTime >= 100
-      ) {
-        this._startTime = this._endTime;
+    ) {
+      this._startTime = this._endTime;
+      if (this.refreshing) {
+        this.state.currentState = 'release';
+        if (this._ngModelOnChange) {
+          this._ngModelOnChange(this.state);
+        }
+      }
+      setTimeout(() => {
+        if (this._direction === '') {
+          this._endRreach = true;
+        }
+        if (this.endReachedRefresh) {
+          this.onRefresh.emit('endReachedRefresh');
+        }
         if (this.refreshing) {
-          this.state.currentState = 'release';
+          this.state.currentState = 'finish';
           if (this._ngModelOnChange) {
             this._ngModelOnChange(this.state);
           }
         }
-        setTimeout(() => {
-          if (this._direction === '') {
-            this._endRreach = true;
-          }
-          if (this.endReachedRefresh) {
-            this.onRefresh.emit('endReachedRefresh');
-          }
-          if (this.refreshing) {
-            this.state.currentState = 'finish';
-            if (this._ngModelOnChange) {
-              this._ngModelOnChange(this.state);
-            }
-          }
-        }, 500);
+      }, 500);
     } else {
       setTimeout(() => {
         if (this._direction === '') {

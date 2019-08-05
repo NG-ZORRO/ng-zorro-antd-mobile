@@ -5,28 +5,34 @@ import { Component, ViewEncapsulation } from '@angular/core';
   template: `
     <div [ngClass]="[show ? 'menu-active' : '']">
       <div>
-        <Navbar [leftContent]="'Menu'"
-                [icon]="icon"
-                (onLeftClick)="handleClick($event)"
-                class="top-nav-bar">
+        <Navbar [leftContent]="'Menu'" [icon]="icon" (onLeftClick)="handleClick($event)" class="top-nav-bar">
           Here is title
         </Navbar>
       </div>
-      <Menu *ngIf="show && initData"
-            class="foo-menu"
-            [data]="initData"
-            [value]="['1', '3']"
-            (onChange)="onChange($event)"
-            [height]="menuHeight">
+      <Menu
+        *ngIf="show && initData"
+        class="foo-menu"
+        [data]="initData"
+        [value]="['1', '3']"
+        (onChange)="onChange($event)"
+        [height]="menuHeight"
+      >
       </Menu>
-      <div *ngIf="show && !initData" style="width: 100%; height: 200px; display: flex; justify-content: center; align-items: center">
+      <div
+        *ngIf="show && !initData"
+        style="width: 100%; height: 200px; display: flex; justify-content: center; align-items: center"
+      >
         <ActivityIndicator [size]="'large'"></ActivityIndicator>
       </div>
       <div *ngIf="show" class="menu-mask1" (click)="onMaskClick()"></div>
     </div>
 
     <ng-template #icon>
-      <img src="https://gw.alipayobjects.com/zos/rmsportal/iXVHARNNlmdCGnwWxQPH.svg" class="am-icon am-icon-md" alt=""/>
+      <img
+        src="https://gw.alipayobjects.com/zos/rmsportal/iXVHARNNlmdCGnwWxQPH.svg"
+        class="am-icon am-icon-md"
+        alt=""
+      />
     </ng-template>
   `,
   styles: [

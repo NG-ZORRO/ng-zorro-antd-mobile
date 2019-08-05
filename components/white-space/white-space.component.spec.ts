@@ -37,10 +37,10 @@ describe('WhiteSpace', () => {
 @Component({
   selector: 'test-white-space-child',
   template: `
-  <div>
-    <WhiteSpace [ngClass]="class" [size]="size"></WhiteSpace>
-  </div>
- `
+    <div>
+      <WhiteSpace [ngClass]="class" [size]="size"></WhiteSpace>
+    </div>
+  `
 })
 export class TestWhiteSpace {
   size = 'xs'; // 'xs' | 'sm' | 'md' | 'lg' | 'xl'

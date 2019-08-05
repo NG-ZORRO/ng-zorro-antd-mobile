@@ -116,7 +116,7 @@ export class ModalComponent implements ControlValueAccessor {
   @HostListener('mouseup', ['$event'])
   @HostListener('touchend', ['$event'])
   panend(event) {
-    if (this.option.closable || this.option.maskClosable  || this.option.popup) {
+    if (this.option.closable || this.option.maskClosable || this.option.popup) {
       if (
         (event && event.target && event.target.getAttribute('role') === 'dialog') ||
         event.target.getAttribute('role') === 'close'

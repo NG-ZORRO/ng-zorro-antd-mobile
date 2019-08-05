@@ -56,11 +56,7 @@ describe('activity-indicator', () => {
 @Component({
   selector: 'test-activity-indicator',
   template: `
-    <ActivityIndicator [size]="size"
-                       [text]="text"
-                       [toast]="toast"
-                       [animating]="animating"
-    ></ActivityIndicator>
+    <ActivityIndicator [size]="size" [text]="text" [toast]="toast" [animating]="animating"></ActivityIndicator>
   `
 })
 export class TestActivityIndicatorComponent implements OnDestroy {

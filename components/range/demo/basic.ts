@@ -6,15 +6,11 @@ import { Component } from '@angular/core';
     <div class="am-demo-page">
       <div style="padding: 15px;font-size: 16px;">步骤条</div>
       <div class="am-demo-bd am-wingblank am-wingblank-lg">
-      <div><div class="sub-title">Basic range ngModel</div></div>
-      <div>
-            <Range [ngModel]="valueModel"
-                   [min]="0"
-                   [max]="20"
-                   (ngModelChange)="changeModel($event)">
-            </Range>
+        <div><div class="sub-title">Basic range ngModel</div></div>
+        <div>
+          <Range [ngModel]="valueModel" [min]="0" [max]="20" (ngModelChange)="changeModel($event)"> </Range>
         </div>
-    </div>
+      </div>
       <div class="am-demo-bd am-wingblank am-wingblank-lg">
         <div><div class="sub-title">Basic range</div></div>
         <div>

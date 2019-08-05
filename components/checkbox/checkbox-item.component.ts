@@ -1,4 +1,14 @@
-import { Component, forwardRef, Input, Output, EventEmitter, ChangeDetectionStrategy, TemplateRef, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  forwardRef,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  TemplateRef,
+  ChangeDetectorRef,
+  ViewEncapsulation
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CheckboxStatus } from './PropsType';
 
@@ -50,9 +60,9 @@ export class CheckboxItemComponent implements ControlValueAccessor {
   @Output()
   onChange = new EventEmitter<CheckboxStatus>();
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
-  onCheckboxClick(event) { }
+  onCheckboxClick(event) {}
 
   change(event) {
     this.checked = event.checked;

@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-tabs-multitabs',
   template: `
-    <Tabs [activeTab]="index"
-          [page]="3"
-          [prerenderingSiblingsNumber]="2"
-          (onChange)="selectCard($event)"
-          (onTabClick)="selectCard($event)"
+    <Tabs
+      [activeTab]="index"
+      [page]="3"
+      [prerenderingSiblingsNumber]="2"
+      (onChange)="selectCard($event)"
+      (onTabClick)="selectCard($event)"
     >
       <TabPane [title]="'1st Tab'">
         <div style="display: flex; align-items: center;justify-content: center;height: 150px;background-color: #fff">

@@ -12,24 +12,19 @@ const data = [
   selector: 'demo-image-picker-basic',
   template: `
     <div class="ip-segment-wrapper">
-      <div class="ip-segment-btn"
-           [ngClass]="{selected: multipleTab === 0}"
-           (click)="changeMultiple(0)"
-      >
+      <div class="ip-segment-btn" [ngClass]="{ selected: multipleTab === 0 }" (click)="changeMultiple(0)">
         切换到单选
       </div>
-      <div class="ip-segment-btn"
-           [ngClass]="{selected: multipleTab === 1}"
-           (click)="changeMultiple(1)"
-      >
+      <div class="ip-segment-btn" [ngClass]="{ selected: multipleTab === 1 }" (click)="changeMultiple(1)">
         切换到多选
       </div>
     </div>
-    <ImagePicker [files]="files"
-                 [selectable]="files.length < 5"
-                 [multiple]="multipleTab === 1"
-                 (onChange)="fileChange($event)"
-                 (onImageClick)="imageClick($event)"
+    <ImagePicker
+      [files]="files"
+      [selectable]="files.length < 5"
+      [multiple]="multipleTab === 1"
+      (onChange)="fileChange($event)"
+      (onImageClick)="imageClick($event)"
     ></ImagePicker>
   `,
   styles: [

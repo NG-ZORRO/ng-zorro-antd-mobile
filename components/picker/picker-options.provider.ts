@@ -1,4 +1,4 @@
-import {EventEmitter} from '@angular/core';
+import { EventEmitter } from '@angular/core';
 export interface PickerOptionsInterface {
   data?: Array<any>;
   cols?: number;

@@ -12,6 +12,4 @@ import { LocaleProviderModule } from '../locale-provider/locale-provider.module'
   exports: [PaginationComponent],
   providers: [LocaleProviderModule]
 })
-
-export class PaginationModule {
-}
+export class PaginationModule {}

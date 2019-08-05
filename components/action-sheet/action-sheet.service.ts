@@ -55,7 +55,7 @@ export class ActionSheetService extends PopupService {
 
   static _open(props: ActionSheetOptions) {
     setTimeout(() => {
-      ActionSheetService.comRef =  ActionSheetService.showPopup('ActionSheetComponent', ActionSheetComponent);
+      ActionSheetService.comRef = ActionSheetService.showPopup('ActionSheetComponent', ActionSheetComponent);
       ActionSheetService.comRef.instance.option = props;
     }, 0);
   }
@@ -71,7 +71,7 @@ export class ActionSheetService extends PopupService {
     const maskTransitionName = config.maskTransitionName ? config.maskTransitionName : options.maskTransitionName;
     options.maskTransitionName = `${maskTransitionName}-enter ${maskTransitionName}-enter-active`;
     const props = ActionSheetService._initConfig(config, options);
-    Object.assign(props, { onPress: cb }, { flag: flag }, { maskClose: props.maskClosable ? cb : () => {}});
+    Object.assign(props, { onPress: cb }, { flag: flag }, { maskClose: props.maskClosable ? cb : () => {} });
     function cb(index: any, rowIndex = 0, event) {
       event.stopPropagation();
       const res = callback(index, rowIndex);
