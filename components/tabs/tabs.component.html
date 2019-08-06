@@ -12,9 +12,9 @@
   >
     <div tab-pane-body
          *ngFor="let tabPane of getCurrentTabPanes(); let i = index"
+         [content]="tabPane.content"
          [active]="i === selectedKey"
          [prerender]="prerenderingSiblingsNumber < 0 || ((selectedKey - i <= prerenderingSiblingsNumber) && (selectedKey - i + prerenderingSiblingsNumber >= 0))"
-         [content]="tabPane.content"
     ></div>
   </div>
   <ng-template *ngIf="'bottom' === tabBarPosition || 'right' === tabBarPosition"
@@ -29,8 +29,8 @@
                  [activeTab]="selectedKey"
                  [tabTitleSize]="tabTitleSize"
                  [tabBarPosition]="tabBarPosition"
-                 [tabBarBackgroundColor]="tabBarBackgroundColor"
                  [tabBarUnderlineStyle]="tabBarUnderlineStyle"
+                 [tabBarBackgroundColor]="tabBarBackgroundColor"
   >
     <div #TabTitle
          *ngFor="let tabPane of getCurrentTabPanes(); let i = index"

@@ -1,23 +1,25 @@
-<ListItem [className]="'am-radio-item ' + (disabled ? 'am-radio-item-disabled' : '')"
-          [wrap]="wrap"
-          [align]="align"
-          [arrow]="arrow"
-          [error]="error"
-          [extra]="radio"
-          [thumb]="thumb"
-          [disabled]="disabled"
-          [platform]="platform"
-          [multipleLine]="multipleLine"
-          (onClick)="onRadioItemClick($event)"
+<ListItem
+  [wrap]="wrap"
+  [align]="align"
+  [arrow]="arrow"
+  [error]="error"
+  [extra]="radio"
+  [thumb]="thumb"
+  [disabled]="disabled"
+  [platform]="platform"
+  [multipleLine]="multipleLine"
+  [className]="'am-radio-item ' + (disabled ? 'am-radio-item-disabled' : '')"
+  (onClick)="onRadioItemClick($event)"
 >
   <ng-content></ng-content>
 </ListItem>
 <ng-template #radio>
-  <label Radio
-         [name]="name"
-         [value]="value"
-         [checked]="checked"
-         [disabled]="disabled"
-         (onChange)="change($event)"
+  <label
+    Radio
+    [name]="name"
+    [value]="value"
+    [checked]="checked"
+    [disabled]="disabled"
+    (onChange)="change($event)"
   ></label>
 </ng-template>

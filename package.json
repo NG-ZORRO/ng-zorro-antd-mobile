@@ -23,7 +23,7 @@
     "helper": "bash ./release-helper.sh",
     "migration-styles": "node ./scripts/build/migration-styles.js",
     "integration": "npm run generate && bash ./integration-test.sh",
-    "format": "prettier --write './components/**/*.{ts,tsx,js,scss}' && tslint --fix './components/**/*.{js,ts,tsx}'",
+    "format": "prettier --write './components/**/*.{ts,tsx,js,scss,html}' && tslint --fix './components/**/*.{js,ts,tsx,html}'",
     "postgenerate": "node ./scripts/build/generate-less.js && cp README.md publish/README.md && npm run migration-styles && npm run schematic:generate",
     "generate": "ng build ng-zorro-antd-mobile-lib",
     "pre-release": "npm run site:init && bash ./scripts/build/replace-publish.sh && npm run generate && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod && npm run helper"

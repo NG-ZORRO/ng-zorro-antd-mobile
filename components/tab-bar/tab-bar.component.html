@@ -1,12 +1,13 @@
-<Tabs [activeTab]="activeTab"
-      [swipeable]="false"
-      [useOnPan]="false"
-      [animated]="false"
-      [tabDirection]="'horizontal'"
-      [tabBarPosition]='tabBarPosition'
-      [renderTabBar]="TabBarBar"
-      [prerenderingSiblingsNumber]="prerenderingSiblingsNumber"
-      [tabPanesContent]="tabBarItems"
+<Tabs
+  [animated]="false"
+  [useOnPan]="false"
+  [swipeable]="false"
+  [activeTab]="activeTab"
+  [renderTabBar]="TabBarBar"
+  [tabDirection]="'horizontal'"
+  [tabPanesContent]="tabBarItems"
+  [tabBarPosition]='tabBarPosition'
+  [prerenderingSiblingsNumber]="prerenderingSiblingsNumber"
 ></Tabs>
 
 <ng-template #TabBarBar>
