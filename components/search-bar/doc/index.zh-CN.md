@@ -25,7 +25,7 @@ subtitle: 搜索栏
 | onChange    |    change 事件的回调     | (val: string): void |<span> </span>  |
 | onFocus    |    focus 事件的回调     | (): void | <span> </span> |
 | onBlur    |    blur 事件的回调     | (): void | <span> </span> |
-| onCancel  | 点击`取消`按钮触发 (不再自动清除输入框的文字) | (val: string): void | <span> </span> |
+| onCancel  | 点击`取消`按钮触发 | (val: string): void | <span> </span> |
 | showCancelButton    |    是否一直显示`取消`按钮     | bool |  `false`  |
 | cancelText    |   定制`取消`按钮的文字     | String |  `取消`  |
 | disabled    |  设置禁用   | bool |  `false`  |
