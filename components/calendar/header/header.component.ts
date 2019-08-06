@@ -52,10 +52,14 @@ export class CalendarHeaderComponent {
   constructor() {}
 
   triggerCancel() {
-    this.onCancel && this.onCancel.emit();
+    if (this.onCancel) {
+      this.onCancel.emit();
+    }
   }
 
   triggerClear() {
-    this.onClear && this.onClear.emit();
+    if (this.onClear) {
+      this.onClear.emit();
+    }
   }
 }

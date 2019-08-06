@@ -152,7 +152,9 @@ export class CalendarSingleMonthComponent implements OnInit, AfterViewInit {
   }
 
   onClickCell(item) {
-    !item.disable && item.onCellClick && item.onCellClick(item.day, item.monthData);
+    if (!item.disable && item.onCellClick) {
+      item.onCellClick(item.day, item.monthData);
+    }
   }
 
   ngOnInit() {

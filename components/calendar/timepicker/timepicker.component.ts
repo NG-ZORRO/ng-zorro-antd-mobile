@@ -77,7 +77,9 @@ export class CalendarTimePickerComponent {
 
   onDateChange = (date: { date: Date; index: number }) => {
     const { onValueChange } = this.props;
-    onValueChange && onValueChange(date.date);
+    if (onValueChange) {
+      onValueChange(date.date);
+    }
   }
 
   getMinTime(date?: Date) {

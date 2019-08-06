@@ -15,13 +15,13 @@ describe('button', () => {
     let buttons;
     beforeEach(async(() => {
       TestBed.configureTestingModule({
-        declarations: [TestButton],
+        declarations: [TestButtonComponent],
         imports: [ButtonModule, IconModule, WingBlankModule, WhiteSpaceModule, ListModule]
       }).compileComponents();
     }));
 
     beforeEach(() => {
-      fixture = TestBed.createComponent(TestButton);
+      fixture = TestBed.createComponent(TestButtonComponent);
       component = fixture.componentInstance;
       buttons = fixture.debugElement.queryAll(By.directive(ButtonComponent));
       fixture.detectChanges();
@@ -170,7 +170,7 @@ describe('button', () => {
     </ng-template>
   `
 })
-export class TestButton implements OnInit, OnDestroy {
+export class TestButtonComponent implements OnInit, OnDestroy {
   type = 'primary';
   size = 'small';
   inline = true;

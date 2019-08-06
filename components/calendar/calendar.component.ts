@@ -357,7 +357,9 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
 
   triggerSelectHasDisableDate = (date: Date[]) => {
     this.triggerClear();
-    this.onSelectHasDisableDate && this.onSelectHasDisableDate.emit(date);
+    if (this.onSelectHasDisableDate) {
+      this.onSelectHasDisableDate.emit(date);
+    }
   }
 
   onClose = () => {
@@ -378,14 +380,20 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
       this.onClose();
       return this.onConfirm && this.onConfirm.emit({ startDate: endDate, endDate: startDate });
     }
-    this.onConfirm && this.onConfirm.emit({ startDate, endDate });
+    if (this.onConfirm) {
+      this.onConfirm.emit({ startDate, endDate });
+    }
     this.onClose();
   }
 
   triggerCancel() {
-    this.props.onCancel && this.props.onCancel();
+    if (this.props.onCancel) {
+      this.props.onCancel();
+    }
     this.onClose();
-    this.onCancel && this.onCancel.emit();
+    if (this.onCancel) {
+      this.onCancel.emit();
+    }
   }
 
   triggerClear = () => {
@@ -395,7 +403,9 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
         ...this.state,
         ...{ startDate: undefined, endDate: undefined, showTimePicker: false }
       };
-      this.props.onClear && this.props.onClear();
+      if (this.props.onClear) {
+        this.props.onClear();
+      }
       this.showClear = !!this.state.startDate;
     }, 0);
   }

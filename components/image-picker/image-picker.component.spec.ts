@@ -14,19 +14,19 @@ const data = [
 ];
 
 describe('ImagePicker', () => {
-  let component: TestImagePicker;
-  let fixture: ComponentFixture<TestImagePicker>;
+  let component: TestImagePickerComponent;
+  let fixture: ComponentFixture<TestImagePickerComponent>;
   let ImagePickers;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ImagePickerModule],
-      declarations: [TestImagePicker]
+      declarations: [TestImagePickerComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestImagePicker);
+    fixture = TestBed.createComponent(TestImagePickerComponent);
     component = fixture.componentInstance;
     ImagePickers = fixture.debugElement.query(By.css('ImagePicker'));
     fixture.detectChanges();
@@ -144,7 +144,7 @@ describe('ImagePicker', () => {
     </ImagePicker>
   `
 })
-export class TestImagePicker {
+export class TestImagePickerComponent {
   files = data.slice(0);
   multiple = true;
   selectable = true;

@@ -7,18 +7,18 @@ import { dispatchTouchEvent } from '../core/testing';
 
 describe('swipeAction', () => {
   let component;
-  let fixture: ComponentFixture<TestSwipeAction>;
+  let fixture: ComponentFixture<TestSwipeActionComponent>;
   let swipeActionEle;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TestSwipeAction],
+      declarations: [TestSwipeActionComponent],
       imports: [SwipeActionModule]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestSwipeAction);
+    fixture = TestBed.createComponent(TestSwipeActionComponent);
     component = fixture.componentInstance;
     swipeActionEle = fixture.debugElement.query(By.css('SwipeAction'));
     fixture.detectChanges();
@@ -175,7 +175,7 @@ describe('swipeAction', () => {
     </SwipeAction>
   `
 })
-export class TestSwipeAction {
+export class TestSwipeActionComponent {
   autoClose = false;
   disabled = false;
   left = [

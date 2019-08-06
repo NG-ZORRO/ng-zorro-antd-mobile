@@ -4,19 +4,19 @@ import { By } from '@angular/platform-browser';
 import { WingBlankModule } from './wing-blank.module';
 
 describe('WingBlank', () => {
-  let component: TestWingBlank;
-  let fixture: ComponentFixture<TestWingBlank>;
+  let component: TestWingBlankComponent;
+  let fixture: ComponentFixture<TestWingBlankComponent>;
   let WingBlankEle;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [WingBlankModule],
-      declarations: [TestWingBlank]
+      declarations: [TestWingBlankComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestWingBlank);
+    fixture = TestBed.createComponent(TestWingBlankComponent);
     component = fixture.componentInstance;
     WingBlankEle = fixture.debugElement.query(By.css('WingBlank'));
     fixture.detectChanges();
@@ -42,7 +42,7 @@ describe('WingBlank', () => {
     </div>
   `
 })
-export class TestWingBlank {
+export class TestWingBlankComponent {
   size = 'xs'; // 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
   constructor() {}

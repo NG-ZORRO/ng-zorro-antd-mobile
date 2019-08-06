@@ -4,19 +4,19 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { WhiteSpaceModule } from './white-space.module';
 
 describe('WhiteSpace', () => {
-  let component: TestWhiteSpace;
-  let fixture: ComponentFixture<TestWhiteSpace>;
+  let component: TestWhiteSpaceComponent;
+  let fixture: ComponentFixture<TestWhiteSpaceComponent>;
   let WhiteSpaceEle;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [WhiteSpaceModule],
-      declarations: [TestWhiteSpace]
+      declarations: [TestWhiteSpaceComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestWhiteSpace);
+    fixture = TestBed.createComponent(TestWhiteSpaceComponent);
     component = fixture.componentInstance;
     WhiteSpaceEle = fixture.debugElement.query(By.css('WhiteSpace'));
     fixture.detectChanges();
@@ -42,7 +42,7 @@ describe('WhiteSpace', () => {
     </div>
   `
 })
-export class TestWhiteSpace {
+export class TestWhiteSpaceComponent {
   size = 'xs'; // 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   class = '';
 

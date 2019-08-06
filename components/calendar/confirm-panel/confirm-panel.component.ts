@@ -69,7 +69,9 @@ export class CalendarConfirmPanelComponent {
 
   triggerConfirm = () => {
     const { onConfirm, disableBtn } = this.props;
-    !disableBtn && onConfirm();
+    if (!disableBtn) {
+      onConfirm();
+    }
   }
 
   selfFormatDate(date: Date) {

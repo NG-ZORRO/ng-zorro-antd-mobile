@@ -10,13 +10,13 @@ describe('Flex', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TestFlex],
+      declarations: [TestFlexComponent],
       imports: [FlexModule]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestFlex);
+    fixture = TestBed.createComponent(TestFlexComponent);
     component = fixture.componentInstance;
     activityEle = fixture.debugElement.queryAll(By.css('flex'));
     fixture.detectChanges();
@@ -86,7 +86,7 @@ describe('Flex', () => {
     </Flex>
   `
 })
-export class TestFlex implements OnDestroy {
+export class TestFlexComponent implements OnDestroy {
   direction: string = 'row';
   wrap: string = 'wrap';
   justify: string = 'start';
