@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
   selector: 'demo-tabs-noanim',
   template: `
     <Tabs
-      [activeTab]="index"
       [page]="3"
-      [useOnPan]="false"
       [animated]="false"
+      [useOnPan]="false"
+      [activeTab]="index"
       (onChange)="onChange($event)"
       (onTabClick)="onTabClick($event)"
     >

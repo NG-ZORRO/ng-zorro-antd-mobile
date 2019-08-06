@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
   selector: 'demo-tabs-fixedtabtitlesize',
   template: `
     <Tabs
+      [page]="3"
       [useOnPan]="true"
       [swipeable]="true"
       [activeTab]="index"
-      [page]="3"
       [tabTitleSize]="100"
       [tabBarActiveTextColor]="'#1890ff'"
       (onChange)="onChange($event)"
@@ -37,8 +37,8 @@ import { Component } from '@angular/core';
     <WhiteSpace></WhiteSpace>
     <Tabs
       style="height: 200px;"
-      [activeTab]="index"
       [page]="3"
+      [activeTab]="index"
       [tabTitleSize]="40"
       [tabBarPosition]="'left'"
       [tabDirection]="'vertical'"

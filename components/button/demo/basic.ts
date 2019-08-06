@@ -42,12 +42,12 @@ import { Component } from '@angular/core';
     </WingBlank>
 
     <List className="my-list">
-      <ListItem [extra]="ghost" [arrow]="'horizontal'"
-        >Regional manager
+      <ListItem [extra]="ghost" [arrow]="'horizontal'">
+        Regional manager
         <Brief>Can be collected, refund, discount management, view data and other operations</Brief>
       </ListItem>
-      <ListItem [extra]="primary" [arrow]="'horizontal'"
-        >Regional manager
+      <ListItem [extra]="primary" [arrow]="'horizontal'">
+        Regional manager
         <Brief>Can be collected, refund, discount management, view data and other operations</Brief>
       </ListItem>
     </List>

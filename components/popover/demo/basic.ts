@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-popover-basic',
   template: `
-    <Navbar [leftContent]="'Back'" [mode]="'light'" [rightContent]="popover" (onLeftClick)="onLeftClick()"
-      >NavBar</Navbar
-    >
+    <Navbar [leftContent]="'Back'" [mode]="'light'" [rightContent]="popover" (onLeftClick)="onLeftClick()">
+      NavBar
+    </Navbar>
 
     <ng-template #popover>
       <Icon

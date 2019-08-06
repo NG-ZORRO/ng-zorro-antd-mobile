@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
   selector: 'demo-tabs-dynamic',
   template: `
     <Tabs
+      [page]="5"
       [useOnPan]="true"
       [swipeable]="true"
       [activeTab]="activeTabIndex"
-      [page]="5"
       [tabBarActiveTextColor]="'#1890ff'"
       (onChange)="onChange($event)"
       (onTabClick)="onTabClick($event)"

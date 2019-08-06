@@ -13,8 +13,8 @@ const data = [
   template: `
     <ImagePicker
       [files]="files"
-      [selectable]="files.length < 5"
       [multiple]="multiple"
+      [selectable]="files.length < 5"
       (onChange)="fileChange($event)"
       (onImageClick)="imageClick($event)"
       (onAddImageClick)="addImageClick($event)"

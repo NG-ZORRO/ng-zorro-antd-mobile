@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
     <Card [full]="true">
       <CardHeader
         [title]="'This is title'"
+        [extra]="extra"
         [thumb]="'https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg'"
         [thumbStyle]="thumbStyle"
-        [extra]="extra"
       >
         <ng-template #extra>
           <span>this is extra</span>

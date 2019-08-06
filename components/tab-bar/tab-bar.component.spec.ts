@@ -121,12 +121,12 @@ describe('tabbar', () => {
   selector: 'test-tabbar',
   template: `
     <TabBar
+      [hidden]="hidden"
       [barTintColor]="'white'"
       [tintColor]="tintColor"
-      [unselectedTintColor]="unselectedTintColor"
       [ngStyle]="tabbarStyle"
       [activeTab]="selectedIndex"
-      [hidden]="hidden"
+      [unselectedTintColor]="unselectedTintColor"
       [tabBarPosition]="topFlag ? 'top' : 'bottom'"
       (onPress)="press($event)"
     >

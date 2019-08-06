@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <Tabs
       style="height: 200px;"
-      [activeTab]="index"
       [page]="3"
+      [activeTab]="index"
       [tabBarPosition]="'left'"
       [tabDirection]="'vertical'"
       (onChange)="onChange($event)"

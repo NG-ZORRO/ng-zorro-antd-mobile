@@ -398,19 +398,19 @@ describe('tab', () => {
   template: `
     <Tabs
       style="height: 50px; overflow: hidden"
-      [activeTab]="activeTab"
       [page]="page"
-      [swipeable]="swipeable"
       [animated]="animated"
-      [tabBarPosition]="tabBarPosition"
+      [activeTab]="activeTab"
+      [swipeable]="swipeable"
       [tabDirection]="tabDirection"
+      [tabBarPosition]="tabBarPosition"
+      [tabBarBackgroundColor]="'black'"
+      [tabBarActiveTextColor]="'red'"
+      [tabBarInactiveTextColor]="'green'"
+      [tabBarTextStyle]="{ 'font-size': '33px' }"
+      [tabBarUnderlineStyle]="{ border: '1px red solid' }"
       (onChange)="onChange($event)"
       (onTabClick)="onTabClick($event)"
-      [tabBarInactiveTextColor]="'green'"
-      [tabBarBackgroundColor]="'black'"
-      [tabBarUnderlineStyle]="{ border: '1px red solid' }"
-      [tabBarTextStyle]="{ 'font-size': '33px' }"
-      [tabBarActiveTextColor]="'red'"
     >
       <TabPane [title]="'Tab 1'">
         <div style="height: 100px; width: 100%">Content of 1 tab</div>

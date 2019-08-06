@@ -4,12 +4,12 @@ import { Component } from '@angular/core';
   selector: 'demo-tab-bar-basic',
   template: `
     <TabBar
+      [hidden]="hidden"
       [barTintColor]="'white'"
       [tintColor]="tintColor"
-      [unselectedTintColor]="unselectedTintColor"
       [ngStyle]="tabbarStyle"
       [activeTab]="selectedIndex"
-      [hidden]="hidden"
+      [unselectedTintColor]="unselectedTintColor"
       [tabBarPosition]="topFlag ? 'top' : 'bottom'"
       (onPress)="tabBarTabOnPress($event)"
     >

@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'demo-tabs-multitabs',
   template: `
     <Tabs
-      [activeTab]="index"
       [page]="3"
+      [activeTab]="index"
       [prerenderingSiblingsNumber]="2"
       (onChange)="selectCard($event)"
       (onTabClick)="selectCard($event)"

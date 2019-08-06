@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
   selector: 'demo-tabs-basic',
   template: `
     <Tabs
+      [page]="3"
       [useOnPan]="true"
       [swipeable]="true"
       [activeTab]="index"
-      [page]="3"
       [tabBarActiveTextColor]="'#1890ff'"
       (onChange)="onChange($event)"
       (onTabClick)="onTabClick($event)"
@@ -45,8 +45,8 @@ import { Component } from '@angular/core';
     </Tabs>
     <WhiteSpace></WhiteSpace>
     <Tabs
-      [activeTab]="index"
       [page]="3"
+      [activeTab]="index"
       [tabBarPosition]="'bottom'"
       (onChange)="onChange($event)"
       (onTabClick)="onTabClick($event)"

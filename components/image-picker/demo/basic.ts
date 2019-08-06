@@ -21,8 +21,8 @@ const data = [
     </div>
     <ImagePicker
       [files]="files"
-      [selectable]="files.length < 5"
       [multiple]="multipleTab === 1"
+      [selectable]="files.length < 5"
       (onChange)="fileChange($event)"
       (onImageClick)="imageClick($event)"
     ></ImagePicker>

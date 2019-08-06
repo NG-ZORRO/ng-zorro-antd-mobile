@@ -13,8 +13,8 @@ import { Component } from '@angular/core';
       <p class="sub-title">TintColor</p>
       <SegmentedControl
         style="height: 40px; width: 250px"
-        [values]="['Segment1', 'Segment2', 'Segment3']"
         [tintColor]="'#ff0000'"
+        [values]="['Segment1', 'Segment2', 'Segment3']"
       ></SegmentedControl>
       <p class="sub-title">onChange</p>
       <SegmentedControl [values]="['Segment1', 'Segment2', 'Segment3']" (onChange)="choose($event)"></SegmentedControl>

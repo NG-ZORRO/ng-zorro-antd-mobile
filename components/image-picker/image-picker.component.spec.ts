@@ -132,14 +132,14 @@ describe('ImagePicker', () => {
   selector: 'test-image-picker-child',
   template: `
     <ImagePicker
+      [length]="len"
       [files]="files"
       [multiple]="multiple"
       [selectable]="selectable"
-      [length]="len"
       [accept]="'image/gif,image/jpeg,image/jpg,image/png'"
       (onChange)="imageChangeCallback($event)"
-      (onImageClick)="imageClickCallback($event)"
       (onAddImageClick)="addImageClick($event)"
+      (onImageClick)="imageClickCallback($event)"
     >
     </ImagePicker>
   `

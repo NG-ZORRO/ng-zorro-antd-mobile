@@ -73,9 +73,9 @@ describe('segmented-control', () => {
   template: `
     <SegmentedControl
       [values]="values"
+      [disabled]="disabled"
       [tintColor]="tintColor"
       [selectedIndex]="selectedIndex"
-      [disabled]="disabled"
       (onChange)="onChange($event)"
     ></SegmentedControl>
   `
