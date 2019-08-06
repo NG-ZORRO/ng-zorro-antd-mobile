@@ -1,24 +1,19 @@
-<ListItem [className]="'am-checkbox-item ' + (disabled ? 'am-checkbox-item-disabled' : '')"
-          [wrap]="wrap"
-          [align]="align"
-          [arrow]="arrow"
-          [error]="error"
-          [extra]="extra"
-          [thumb]="checkbox"
-          [disabled]="disabled"
-          [platform]="platform"
-          [multipleLine]="multipleLine"
-          (onClick)="onCheckboxClick($event)"
+<ListItem
+  [className]="'am-checkbox-item ' + (disabled ? 'am-checkbox-item-disabled' : '')"
+  [wrap]="wrap"
+  [align]="align"
+  [arrow]="arrow"
+  [error]="error"
+  [extra]="extra"
+  [thumb]="checkbox"
+  [disabled]="disabled"
+  [platform]="platform"
+  [multipleLine]="multipleLine"
+  (onClick)="onCheckboxClick($event)"
 >
   <ng-content></ng-content>
 </ListItem>
 <ng-template #checkbox>
-  <label Checkbox
-         [name]="name"
-         [value]="value"
-         [checked]="checked"
-         [disabled]="disabled"
-         (onChange)="change($event)"
-  >
+  <label Checkbox [name]="name" [value]="value" [checked]="checked" [disabled]="disabled" (onChange)="change($event)">
   </label>
 </ng-template>

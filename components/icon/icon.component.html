@@ -1,9 +1,5 @@
-<svg *ngIf="type"
-     class="am-icon"
-     [ngClass]="clsMap"
-     [ngStyle]="{color: color}"
->
-  <use xmlns:xlink="https://www.w3.org/1999/xlink" attr.xlink:href="#{{type}}"></use>
+<svg *ngIf="type" class="am-icon" [ngClass]="clsMap" [ngStyle]="{ color: color }">
+  <use xmlns:xlink="https://www.w3.org/1999/xlink" attr.xlink:href="#{{ type }}"></use>
 </svg>
-<img *ngIf="src" src="{{src}}" class="am-icon" [ngClass]="clsMap">
+<img *ngIf="src" src="{{ src }}" class="am-icon" [ngClass]="clsMap" />
 <ng-content></ng-content>
