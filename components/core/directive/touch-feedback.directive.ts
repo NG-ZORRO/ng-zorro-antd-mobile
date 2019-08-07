@@ -7,7 +7,7 @@ import {
   ElementRef,
   OnInit,
   Renderer2,
-  InjectionToken,
+  InjectionToken
 } from '@angular/core';
 
 export const INTERFACE_TOKEN = new InjectionToken<any>('InterfaceToken');
@@ -16,17 +16,13 @@ export const INTERFACE_TOKEN = new InjectionToken<any>('InterfaceToken');
   selector: '[TouchFeedbackDirective]'
 })
 export class TouchFeedbackDirective implements OnInit {
-
   private _className;
   @Input() className: Array<string>;
   @Input() activeStyle = true;
   @Output() clickStart: EventEmitter<any> = new EventEmitter();
   @Output() clickEnd: EventEmitter<any> = new EventEmitter();
 
-  constructor(private _elementRef: ElementRef, private _renderer: Renderer2
-  ) {
-
-  }
+  constructor(private _elementRef: ElementRef, private _renderer: Renderer2) {}
 
   private addClass(className: string) {
     this._renderer.addClass(this._elementRef.nativeElement, className);

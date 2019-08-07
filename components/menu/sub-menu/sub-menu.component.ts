@@ -1,15 +1,9 @@
-import {
-  Component,
-  ViewEncapsulation,
-  Input,
-  Output,
-  EventEmitter, OnChanges, SimpleChanges
-} from '@angular/core';
+import { Component, ViewEncapsulation, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'SubMenu, nzm-sub-menu',
   templateUrl: './sub-menu.component.html',
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class SubMenuComponent implements OnChanges {
   prefixCls = 'am-sub-menu';

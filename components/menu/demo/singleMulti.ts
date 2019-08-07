@@ -5,24 +5,27 @@ import { Component, ViewEncapsulation } from '@angular/core';
   template: `
     <div [ngClass]="[show ? 'single-multi-menu-active' : '']">
       <div>
-        <Navbar [leftContent]="'Menu'"
-                (onLeftClick)="handleClick($event)"
-                class="single-multi-top-nav-bar">
+        <Navbar [leftContent]="'Menu'" (onLeftClick)="handleClick($event)" class="single-multi-top-nav-bar">
           Here is title
         </Navbar>
       </div>
-      <Menu *ngIf="show && initData"
-            class="single-multi-foo-menu"
-            [data]="initData"
-            [value]="['1']"
-            [level]="1"
-            [multiSelect]="true"
-            (onChange)="onChange($event)"
-            (onOk)="onOk($event)"
-            (onCancel)="onCancel()"
-            [height]="menuHeight">
+      <Menu
+        *ngIf="show && initData"
+        class="single-multi-foo-menu"
+        [data]="initData"
+        [value]="['1']"
+        [level]="1"
+        [multiSelect]="true"
+        (onChange)="onChange($event)"
+        (onOk)="onOk($event)"
+        (onCancel)="onCancel()"
+        [height]="menuHeight"
+      >
       </Menu>
-      <div *ngIf="show && !initData" style="width: 100% ;height: 200px; display: flex; justify-content: center; align-items: center">
+      <div
+        *ngIf="show && !initData"
+        style="width: 100% ;height: 200px; display: flex; justify-content: center; align-items: center"
+      >
         <ActivityIndicator [size]="'large'"></ActivityIndicator>
       </div>
       <div *ngIf="show" class="menu-mask4" (click)="onMaskClick()"></div>

@@ -7,7 +7,6 @@ import { CalendarConfirmPanelPropsType } from './PropsType';
   templateUrl: './confirm-panel.component.html',
   encapsulation: ViewEncapsulation.None
 })
-
 export class CalendarConfirmPanelComponent {
   props = {
     formatStr: 'yyyy-MM-dd hh:mm'
@@ -48,7 +47,7 @@ export class CalendarConfirmPanelComponent {
 
   @HostBinding('class.confirm-panel') confirmPane: boolean = true;
 
-  constructor() { }
+  constructor() {}
 
   formatTime() {
     const { type, locale, disableBtn } = this.props;
@@ -70,7 +69,9 @@ export class CalendarConfirmPanelComponent {
 
   triggerConfirm = () => {
     const { onConfirm, disableBtn } = this.props;
-    !disableBtn && onConfirm();
+    if (!disableBtn) {
+      onConfirm();
+    }
   }
 
   selfFormatDate(date: Date) {

@@ -65,7 +65,7 @@ export function LOCALE_PROVIDER_SERVICE_FACTORY(exist: LocaleProviderService, lo
 }
 
 export const LOCALE_PROVIDER_SERVICE_PROVIDER: Provider = {
-  provide   : LocaleProviderService,
+  provide: LocaleProviderService,
   useFactory: LOCALE_PROVIDER_SERVICE_FACTORY,
-  deps      : [ [ new Optional(), new SkipSelf(), LocaleProviderService ], LOCAL_PROVIDER_TOKEN]
+  deps: [[new Optional(), new SkipSelf(), LocaleProviderService], LOCAL_PROVIDER_TOKEN]
 };

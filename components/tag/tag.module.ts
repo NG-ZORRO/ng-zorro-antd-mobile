@@ -8,5 +8,4 @@ import { TagComponent } from './tag.component';
   declarations: [TagComponent],
   exports: [TagComponent]
 })
-
 export class TagModule {}

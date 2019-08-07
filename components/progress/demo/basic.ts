@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
         <div class="progress">
           <Progress [percent]="percent" [position]="'normal'"></Progress>
         </div>
-        <div aria-hidden="true">{{percent}}%</div>
+        <div aria-hidden="true">{{ percent }}%</div>
       </div>
       <WhiteSpace [size]="'xl'"></WhiteSpace>
       <WingBlank>

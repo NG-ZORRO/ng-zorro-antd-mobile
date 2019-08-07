@@ -2,5 +2,5 @@
 <span *ngIf="closeIcon_component" class="left" (click)="triggerCancel()">
   <ng-template [ngTemplateOutlet]="closeIcon"></ng-template>
 </span>
-<span class="title">{{title || locale.title}}</span>
-<span *ngIf="showClear" class="right" (click)="triggerClear()">{{clearIcon || locale.clear}}</span>
+<span class="title">{{ title || locale.title }}</span>
+<span *ngIf="showClear" class="right" (click)="triggerClear()">{{ clearIcon || locale.clear }}</span>

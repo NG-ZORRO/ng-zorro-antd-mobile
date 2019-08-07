@@ -1,55 +1,55 @@
-<div class="{{prefixListCls}}-line">
+<div class="{{ prefixListCls }}-line">
   <div #lableContent [ngClass]="labelCls">
     <ng-content></ng-content>
   </div>
   <div [ngClass]="controlCls">
-    <CustomInput *ngIf="type==='money'"
-                 [value]="value"
-                 [defaultValue]="defaultValue"
-                 [placeholder]="placeholder"
-                 [disabled]="disabled"
-                 [editable]="editable"
-                 [fontColor]="fontColor"
-                 [moneyKeyboardAlign]="moneyKeyboardAlign"
-                 [setFocus]="setFocus"
-                 [maxLength]="maxLength"
-                 (onChange)="inputChange($event)"
-                 (onBlur)="inputBlur(value)"
-                 (onFocus)="inputFocus(value)">
+    <CustomInput
+      *ngIf="type === 'money'"
+      [value]="value"
+      [defaultValue]="defaultValue"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [editable]="editable"
+      [fontColor]="fontColor"
+      [moneyKeyboardAlign]="moneyKeyboardAlign"
+      [setFocus]="setFocus"
+      [maxLength]="maxLength"
+      (onChange)="inputChange($event)"
+      (onBlur)="inputBlur(value)"
+      (onFocus)="inputFocus(value)"
+    >
     </CustomInput>
-    <div *ngIf="type!=='money'">
-      <input #inputElement
-             [type]="type"
-             [name]="name"
-             [(ngModel)]="value"
-             [defaultValue]="defaultValue"
-             [placeholder]="placeholder"
-             [disabled]="disabled"
-             [readOnly]="!editable"
-             [autofocus]="autoFocus"
-             [maxlength]="maxLength"
-             [pattern]="pattern"
-             [style.color]='fontColor'
-             (ngModelChange)="inputChange($event)"
-             (compositionstart)="compositionStart()"
-             (compositionend)="compositionEnd()"
-             (blur)="inputBlur(value)"
-             (focus)="inputFocus(value)"
-             style="outline:none" />
+    <div *ngIf="type !== 'money'">
+      <input
+        #inputElement
+        [type]="type"
+        [name]="name"
+        [(ngModel)]="value"
+        [defaultValue]="defaultValue"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [readOnly]="!editable"
+        [autofocus]="autoFocus"
+        [maxlength]="maxLength"
+        [pattern]="pattern"
+        [style.color]="fontColor"
+        (ngModelChange)="inputChange($event)"
+        (compositionstart)="compositionStart()"
+        (compositionend)="compositionEnd()"
+        (blur)="inputBlur(value)"
+        (focus)="inputFocus(value)"
+        style="outline:none"
+      />
     </div>
   </div>
-  <div  *ngIf="clear && editable && !disabled && (value && value.length >0 )"
-        class="{{prefixCls}}-clear"
-        (click)="clearInput()"
+  <div
+    *ngIf="clear && editable && !disabled && (value && value.length > 0)"
+    class="{{ prefixCls }}-clear"
+    (click)="clearInput()"
   ></div>
-  <div *ngIf="error"
-       class="{{prefixCls}}-error-extra"
-       (click)="errorClick($event)"
-  ></div>
-  <div *ngIf="extra!==''"
-       class="{{prefixCls}}-extra"
-       (click)="extraClick($event)">
-    <ng-container *ngIf="!ngTemplate">{{extra}}</ng-container>
+  <div *ngIf="error" class="{{ prefixCls }}-error-extra" (click)="errorClick($event)"></div>
+  <div *ngIf="extra !== ''" class="{{ prefixCls }}-extra" (click)="extraClick($event)">
+    <ng-container *ngIf="!ngTemplate">{{ extra }}</ng-container>
     <ng-template *ngIf="ngTemplate" [ngTemplateOutlet]="extra"></ng-template>
   </div>
 </div>

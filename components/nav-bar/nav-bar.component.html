@@ -1,15 +1,15 @@
-<div role="button" class="{{defaultProps.prefixCls}}-left" (click)="click($event)">
+<div role="button" class="{{ defaultProps.prefixCls }}-left" (click)="click($event)">
   <ng-template *ngIf="!isLeftContentString" [ngTemplateOutlet]="leftContent"></ng-template>
-  <span *ngIf="icon" class="{{defaultProps.prefixCls}}-left-icon" aria-hidden="true">
+  <span *ngIf="icon" class="{{ defaultProps.prefixCls }}-left-icon" aria-hidden="true">
     <Icon *ngIf="isIconString" [type]="icon"></Icon>
     <ng-template *ngIf="!isIconString" [ngTemplateOutlet]="icon"></ng-template>
   </span>
-  {{isLeftContentString ? leftContent: null}}
+  {{ isLeftContentString ? leftContent : null }}
 </div>
-<div class="{{defaultProps.prefixCls}}-title">
+<div class="{{ defaultProps.prefixCls }}-title">
   <ng-content></ng-content>
 </div>
-<div class="{{defaultProps.prefixCls}}-right">
-  {{isRightContentString ? rightContent: null}}
+<div class="{{ defaultProps.prefixCls }}-right">
+  {{ isRightContentString ? rightContent : null }}
   <ng-template *ngIf="!isRightContentString" [ngTemplateOutlet]="rightContent"></ng-template>
 </div>

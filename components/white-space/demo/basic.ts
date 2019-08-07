@@ -7,20 +7,20 @@ import { Component, ContentChild, TemplateRef } from '@angular/core';
       <WhiteSpace [size]="'xs'"></WhiteSpace>
       <ng-template [ngTemplateOutlet]="placeHolder"></ng-template>
 
-      <WhiteSpace [size]="'sm'" ></WhiteSpace>
+      <WhiteSpace [size]="'sm'"></WhiteSpace>
       <ng-template [ngTemplateOutlet]="placeHolder"></ng-template>
 
-      <WhiteSpace ></WhiteSpace>
+      <WhiteSpace></WhiteSpace>
       <ng-template [ngTemplateOutlet]="placeHolder"></ng-template>
 
-      <WhiteSpace [size]="'lg'" ></WhiteSpace>
+      <WhiteSpace [size]="'lg'"></WhiteSpace>
       <ng-template [ngTemplateOutlet]="placeHolder"></ng-template>
 
       <WhiteSpace [size]="'xl'"></WhiteSpace>
       <ng-template [ngTemplateOutlet]="placeHolder"></ng-template>
 
       <ng-template #placeHolder>
-        <div class="placeholder" >Block</div>
+        <div class="placeholder">Block</div>
       </ng-template>
     </div>
   `,

@@ -110,7 +110,6 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     };
   }
 
-
   @HostListener('mousemove', ['$event'])
   @HostListener('touchmove', ['$event'])
   panmove(event) {
@@ -199,7 +198,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     this.infinite = this.infinite || true;
     this._nodeArr = items['_results'];
     const shouldDragging = this._nodeArr.length > 1;
-    this._dragging = (this.dragging && shouldDragging) ? true : false;
+    this._dragging = this.dragging && shouldDragging ? true : false;
     if (this._nodeArr.length > 1) {
       this.lastIndex = this._nodeArr.length - 1;
       setTimeout(() => {
@@ -213,7 +212,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
       }, 0);
     } else if (this._nodeArr.length === 1) {
       setTimeout(() => {
-        this._nodeArr.forEach((v) => {
+        this._nodeArr.forEach(v => {
           v.width = this.vertical ? 'auto' : this._rationWidth - this.cellSpacing;
           v.left = 0;
           v.top = 0;
@@ -230,11 +229,11 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     this.stopTimer();
     this._timer = this.autoplayInterval
       ? setInterval(() => {
-        if (document.getElementsByTagName('carousel').length === 0) {
-          return;
-        }
-        this.carousel(1);
-      }, this.autoplayInterval)
+          if (document.getElementsByTagName('carousel').length === 0) {
+            return;
+          }
+          this.carousel(1);
+        }, this.autoplayInterval)
       : 0;
   }
 
@@ -480,7 +479,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   }
 
   get dotindicatorStatus() {
-    return this.dots ? (this.items.length > 1) : this.dots;
+    return this.dots ? this.items.length > 1 : this.dots;
   }
 
   ngAfterViewInit() {
@@ -491,7 +490,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     });
     this.initCarouselSize();
     this.selectedIndex = this.items.length - 1 < this.selectedIndex ? 0 : this.selectedIndex;
-    const index = this.items.length > 1 ? ((this.items.length - 1) === this.selectedIndex ? -1 : this.selectedIndex) : 0;
+    const index = this.items.length > 1 ? (this.items.length - 1 === this.selectedIndex ? -1 : this.selectedIndex) : 0;
     setTimeout(() => {
       this.currentSelectedIndex = this.selectedIndex;
     }, 0);
@@ -500,7 +499,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     const nativeElement = this._ele.nativeElement;
     const targetNode = nativeElement.querySelector('carouselslide');
     const config = { attributes: true, childList: true, subtree: true };
-    const callback = (mutationsList) => {
+    const callback = mutationsList => {
       for (const mutation of mutationsList) {
         if (mutation.type == 'attributes') {
           if (this.slideHeight !== nativeElement.querySelector('carouselslide').clientHeight) {

@@ -108,7 +108,10 @@ export class BadgeComponent implements OnChanges, OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      if (this._ref.nativeElement.children.length > 1 || (this._ref.nativeElement.children.length === 1 && !this.dot && !this.text)) {
+      if (
+        this._ref.nativeElement.children.length > 1 ||
+        (this._ref.nativeElement.children.length === 1 && !this.dot && !this.text)
+      ) {
         this._children = true;
         this.setCls();
       }

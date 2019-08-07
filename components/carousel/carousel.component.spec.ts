@@ -25,7 +25,7 @@ describe('CarouselComponent', () => {
     fixture.detectChanges();
   });
 
-  it ('should taouchstart work', () => {
+  it('should taouchstart work', () => {
     dispatchTouchEvent(carouselEle, 'touchstart', 0, 0);
     fixture.detectChanges();
     dispatchTouchEvent(carouselEle, 'touchmove', 230, 0);
@@ -35,7 +35,7 @@ describe('CarouselComponent', () => {
     dispatchTouchEvent(carouselEle, 'touchcancel');
   });
 
-  it ('should taouchstart work', () => {
+  it('should taouchstart work', () => {
     component.autoplay = false;
     fixture.detectChanges();
     dispatchTouchEvent(carouselEle, 'touchstart', 300, 0);
@@ -47,7 +47,7 @@ describe('CarouselComponent', () => {
     dispatchTouchEvent(carouselEle, 'touchcancel');
   });
 
-  it ('should mousedown work', () => {
+  it('should mousedown work', () => {
     component.autoplay = false;
     fixture.detectChanges();
     dispatchTouchEvent(carouselEle, 'mousedown', 300, 0);
@@ -58,7 +58,7 @@ describe('CarouselComponent', () => {
     fixture.detectChanges();
   });
 
-  it ('should move work', () => {
+  it('should move work', () => {
     component.carouselComponent.selectedIndex = 0;
     expect(component.carouselComponent.carousel(-1));
     component.carouselComponent.selectedIndex = 1;
@@ -70,7 +70,7 @@ describe('CarouselComponent', () => {
     expect(component.carouselComponent.swipeDirection(2, 1, 2, 1));
   });
 
-  it ('should data work', () => {
+  it('should data work', () => {
     component.state.data = ['TekJlZRVCjLFexlOCuWn'];
     fixture.detectChanges();
     expect(carouselEle.querySelector('.slider-list').childElementCount).toBe(1);
@@ -81,7 +81,7 @@ describe('CarouselComponent', () => {
     expect(component).toBeTruthy();
   }));
 
-  it ('should direction work', () => {
+  it('should direction work', () => {
     component.vertical = false;
     component.carouselComponent.currentSelectedIndex = 0;
     component.carouselComponent.lastIndex = 0;
@@ -105,26 +105,25 @@ describe('CarouselComponent', () => {
     tick(200);
     fixture.destroy();
   }));
-
 });
 
 @Component({
   selector: 'test-carousel',
   template: `
-  <Carousel
-    [autoplay]="autoplay"
-    [infinite]="true"
-    [vertical]="vertical"
-    [dragging]="dragging"
-    (beforeChange)="beforeChange($event)"
-    (afterChange)="afterChange($event)"
+    <Carousel
+      [autoplay]="autoplay"
+      [infinite]="true"
+      [vertical]="vertical"
+      [dragging]="dragging"
+      (beforeChange)="beforeChange($event)"
+      (afterChange)="afterChange($event)"
     >
-      <CarouselSlide *ngFor="let item of state.data;let i = index">
-        <div style="display: inline-block; width: 100%;" [ngStyle]="{'height': state.imgHeight}">
-          <img src="https://zos.alipayobjects.com/rmsportal/{{item}}.png" style="width: 100%;"/>
+      <CarouselSlide *ngFor="let item of state.data; let i = index">
+        <div style="display: inline-block; width: 100%;" [ngStyle]="{ height: state.imgHeight }">
+          <img src="https://zos.alipayobjects.com/rmsportal/{{ item }}.png" style="width: 100%;" />
         </div>
       </CarouselSlide>
-  </Carousel>
+    </Carousel>
   `
 })
 export class TestCarouselComponent {
@@ -134,7 +133,13 @@ export class TestCarouselComponent {
   colors = [];
   data = [];
   state = {
-    data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI' , 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
+    data: [
+      'AiyWuByWklrrUDlFignR',
+      'TekJlZRVCjLFexlOCuWn',
+      'IJOtIlfsYdTyaDTRVrLI',
+      'TekJlZRVCjLFexlOCuWn',
+      'IJOtIlfsYdTyaDTRVrLI'
+    ],
     imgHeight: '184px'
   };
   @ViewChild(CarouselComponent) carouselComponent: CarouselComponent;

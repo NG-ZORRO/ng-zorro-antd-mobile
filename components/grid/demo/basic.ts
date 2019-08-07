@@ -3,26 +3,31 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-grid-basic',
   template: `
-    <div class="sub-title">Always square grid item </div>
+    <div class="sub-title">Always square grid item</div>
     <Grid [activeStyle]="false" [data]="data" (onClick)="click($event)"></Grid>
-    <br>
+    <br />
     <Grid [activeStyle]="false" [data]="dataList" (onClick)="click($event)"></Grid>
-    <br>
-    <div class="sub-title">Grid item adjust accroiding to img size </div>
+    <br />
+    <div class="sub-title">Grid item adjust accroiding to img size</div>
     <Grid class="not-square-grid" [data]="data" [square]="false" (onClick)="click($event)"></Grid>
-    <br>
-    <div class="sub-title">ColumnNum=3 </div>
+    <br />
+    <div class="sub-title">ColumnNum=3</div>
     <Grid [data]="data" [columnNum]="3" (onClick)="click($event)"></Grid>
-    <br>
-    <div class="sub-title">No border </div>
+    <br />
+    <div class="sub-title">No border</div>
     <Grid [data]="data" [hasLine]="false" (onClick)="click($event)"></Grid>
-    <br>
+    <br />
     <div class="sub-title">Carousel</div>
     <Grid [data]="data" [isCarousel]="true" (onClick)="click($event)"></Grid>
-    <br>
+    <br />
     <div class="sub-title">Custom content</div>
-    <Grid [data]="data" [columnNum]="3" [itemStyle]="{ height: '150px', background: 'rgba(0,0,0,.05)' }" (onClick)="click($event)"></Grid>
-    <br>
+    <Grid
+      [data]="data"
+      [columnNum]="3"
+      [itemStyle]="{ height: '150px', background: 'rgba(0,0,0,.05)' }"
+      (onClick)="click($event)"
+    ></Grid>
+    <br />
     <div class="sub-title">ng-content</div>
     <Grid>
       <Flex *ngFor="let item of gridData; let i = index" [justify]="'center'" [align]="'stretch'">
@@ -37,7 +42,6 @@ import { Component } from '@angular/core';
         </FlexItem>
       </Flex>
     </Grid>
-
   `,
   styles: [
     `

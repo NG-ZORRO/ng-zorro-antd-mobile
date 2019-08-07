@@ -11,7 +11,7 @@ import { Component, OnDestroy } from '@angular/core';
         </div>
         <p class="sub-title">With text</p>
         <div class="loading-example">
-            <ActivityIndicator [text]="'Loading...'"></ActivityIndicator>
+          <ActivityIndicator [text]="'Loading...'"></ActivityIndicator>
         </div>
         <p class="sub-title">With large size and customized text style</p>
         <div class="loading-example">

@@ -3,25 +3,32 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-tabs-noanim',
   template: `
-    <Tabs [activeTab]="index"
-          [page]="3"
-          [useOnPan]="false"
-          [animated]="false"
-          (onChange)="onChange($event)"
-          (onTabClick)="onTabClick($event)"
+    <Tabs
+      [page]="3"
+      [animated]="false"
+      [useOnPan]="false"
+      [activeTab]="index"
+      (onChange)="onChange($event)"
+      (onTabClick)="onTabClick($event)"
     >
       <TabPane [title]="'First Tab'">
-        <div style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        <div
+          style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;"
+        >
           Content of first tab
         </div>
       </TabPane>
       <TabPane [title]="'Second Tab'">
-        <div style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        <div
+          style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;"
+        >
           Content of second tab
         </div>
-        </TabPane>
+      </TabPane>
       <TabPane [title]="'Third Tab'">
-        <div style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;">
+        <div
+          style="display: flex; height: 150px; width: 100%; background-color: white;align-items: center;justify-content: center;"
+        >
           Content of third tab
         </div>
       </TabPane>

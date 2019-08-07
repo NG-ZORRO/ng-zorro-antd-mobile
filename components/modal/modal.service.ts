@@ -1,9 +1,4 @@
-import {
-  Injectable,
-  Injector,
-  ComponentRef,
-  TemplateRef,
-} from '@angular/core';
+import { Injectable, Injector, ComponentRef, TemplateRef } from '@angular/core';
 import { ModalServiceComponent } from './modal.component';
 import { ModalBaseOptions, ModalOptions, AlertOptions, Action } from './modal-options.provider';
 import { PopupService } from '../core/services/popup.service';
@@ -65,16 +60,14 @@ export class ModalService extends PopupService {
       }
     ]);
     setTimeout(() => {
-      ModalService.modalRef =  ModalService.showPopup('ModalServiceComponent', ModalServiceComponent, childInjector);
+      ModalService.modalRef = ModalService.showPopup('ModalServiceComponent', ModalServiceComponent, childInjector);
     }, 0);
   }
 
   static closeWithAnimation() {
     const options: ModalBaseOptions = new ModalBaseOptions();
     ModalService.modalRef.instance.transitionName = `${options.transitionName}-leave ${options.transitionName}-leave-active`;
-    ModalService.modalRef.instance.maskTransitionName = `${options.maskTransitionName}-leave ${
-      options.maskTransitionName
-    }-leave-active`;
+    ModalService.modalRef.instance.maskTransitionName = `${options.maskTransitionName}-leave ${options.maskTransitionName}-leave-active`;
     setTimeout(() => {
       ModalService.close();
     }, 200);
@@ -199,7 +192,7 @@ export class ModalService extends PopupService {
 }
 
 function getFooter(actions) {
-  let action = actions ? actions :  [{ text: 'OK', onPress: () => {}}];
+  let action = actions ? actions : [{ text: 'OK', onPress: () => {} }];
   return action.map((button: Action) => {
     const orginPress = button.onPress || function() {};
     button.onPress = () => {

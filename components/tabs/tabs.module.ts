@@ -14,4 +14,4 @@ export { TabPaneComponent } from './tab-pane.component';
   exports: [TabPaneComponent, TabsComponent, TabPaneBodyComponent, DefaultTabBarComponent],
   providers: []
 })
-export class TabsModule { }
+export class TabsModule {}

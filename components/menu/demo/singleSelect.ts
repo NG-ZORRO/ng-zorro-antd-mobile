@@ -5,22 +5,24 @@ import { Component, ViewEncapsulation } from '@angular/core';
   template: `
     <div [ngClass]="[show ? 'single-menu-active' : '']">
       <div>
-        <Navbar class="single-top-nav-bar"
-                [leftContent]="'Menu'"
-                (onLeftClick)="handleClick($event)"
-        >
+        <Navbar class="single-top-nav-bar" [leftContent]="'Menu'" (onLeftClick)="handleClick($event)">
           Here is title
         </Navbar>
       </div>
-      <Menu *ngIf="show && initData"
-            class="single-foo-menu"
-            [data]="initData"
-            [value]="['1']"
-            [level]="1"
-            (onChange)="onChange($event)"
-            [height]="menuHeight">
+      <Menu
+        *ngIf="show && initData"
+        class="single-foo-menu"
+        [data]="initData"
+        [value]="['1']"
+        [level]="1"
+        (onChange)="onChange($event)"
+        [height]="menuHeight"
+      >
       </Menu>
-      <div *ngIf="show && !initData" style="width: 100% ;height: 200px; display: flex; justify-content: center; align-items: center">
+      <div
+        *ngIf="show && !initData"
+        style="width: 100% ;height: 200px; display: flex; justify-content: center; align-items: center"
+      >
         <ActivityIndicator [size]="'large'"></ActivityIndicator>
       </div>
       <div *ngIf="show" class="menu-mask2" (click)="onMaskClick()"></div>

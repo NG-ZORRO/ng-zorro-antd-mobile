@@ -4,61 +4,49 @@ import { Component } from '@angular/core';
   selector: 'demo-radio-basic',
   template: `
     <div>
-      <List [renderHeader]=(renderHeader)>
+      <List [renderHeader]="renderHeader">
         <RadioItemGroup [(ngModel)]="selectedStatus1.value" (onChange)="onChange($event)">
-          <RadioItem *ngFor="let i of data"
-                     [name]="i.name"
-                     [value]="i.value"
-          >
-            {{i.name}}
+          <RadioItem *ngFor="let i of data" [name]="i.name" [value]="i.value">
+            {{ i.name }}
           </RadioItem>
         </RadioItemGroup>
       </List>
       <WhiteSpace [size]="'lg'"></WhiteSpace>
       <List>
         <RadioItemGroup [(ngModel)]="selectedStatus2.value" (onChange)="onChange2($event)">
-          <RadioItem *ngFor="let i of data2"
-                     [name]="i.name"
-                     [value]="i.value"
-          >
-            {{i.name}}
-            <Brief>{{i.extra}}</Brief>
+          <RadioItem *ngFor="let i of data2" [name]="i.name" [value]="i.value">
+            {{ i.name }}
+            <Brief>{{ i.extra }}</Brief>
           </RadioItem>
         </RadioItemGroup>
       </List>
-      <List [renderHeader]=(renderHeader2)>
+      <List [renderHeader]="renderHeader2">
         <RadioItemGroup [(ngModel)]="selectedStatus1.value" (onChange)="onChange($event)">
-          <RadioItem *ngFor="let i of data"
-                     [name]="i.name"
-                     [value]="i.value"
-                     [disabled]="true"
-          >
-            {{i.name}}
+          <RadioItem *ngFor="let i of data" [name]="i.name" [value]="i.value" [disabled]="true">
+            {{ i.name }}
           </RadioItem>
         </RadioItemGroup>
       </List>
       <WhiteSpace [size]="'lg'"></WhiteSpace>
       <List>
         <RadioItemGroup [(ngModel)]="selectedStatus2.value" (onChange)="onChange2($event)">
-          <RadioItem *ngFor="let i of data2"
-                     [name]="i.name"
-                     [value]="i.value"
-                     [disabled]="disabled"
-          >
-            {{i.name}}
-            <Brief>{{i.extra}}</Brief>
+          <RadioItem *ngFor="let i of data2" [name]="i.name" [value]="i.value" [disabled]="disabled">
+            {{ i.name }}
+            <Brief>{{ i.extra }}</Brief>
           </RadioItem>
         </RadioItemGroup>
       </List>
       <Flex style="padding: 15px">
         <FlexItem style="padding: 15px 0; color: #888; flex: none">Radio demo(dustomized style)</FlexItem>
         <FlexItem>
-          <label Radio
-                 class="my-radio"
-                 [name]="'Last Agree Item'"
-                 [value]="'Agree Submit'"
-                 (onChange)="onChange3($event)"
-          >Agree</label>
+          <label
+            Radio
+            class="my-radio"
+            [name]="'Last Agree Item'"
+            [value]="'Agree Submit'"
+            (onChange)="onChange3($event)"
+            >Agree</label
+          >
         </FlexItem>
       </Flex>
     </div>
@@ -77,7 +65,7 @@ import { Component } from '@angular/core';
 })
 export class DemoRadioBasicComponent {
   disabled: boolean = true;
-  selectedStatus1 = {value: 0, name: 'doctor'};
+  selectedStatus1 = { value: 0, name: 'doctor' };
   selectedStatus2 = { value: 0, name: 'basketball', extra: 'details' };
   data = [{ value: 0, name: 'doctor' }, { value: 1, name: 'bachelor' }];
   data2 = [{ value: 0, name: 'basketball', extra: 'details' }, { value: 1, name: 'football', extra: 'details' }];

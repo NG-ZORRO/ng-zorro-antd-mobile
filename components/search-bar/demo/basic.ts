@@ -9,14 +9,14 @@ import { Component, ElementRef, Renderer } from '@angular/core';
           <div class="sub-title">Normal</div>
         </div>
         <div style="border-bottom: 1px solid #ddd;">
-          <SearchBar [placeholder]="'Search'" [maxLength]="8" ></SearchBar>
+          <SearchBar [placeholder]="'Search'" [maxLength]="8"></SearchBar>
         </div>
         <div class="am-whitespace am-whitespace-md"></div>
         <div class="am-wingblank am-wingblank-lg">
           <div class="sub-title">AutoFocus when enter page</div>
         </div>
         <div style="border-bottom: 1px solid #ddd;">
-        <SearchBar [placeholder]="'自动获取光标'" [setFocus]="autoFocus"></SearchBar>
+          <SearchBar [placeholder]="'自动获取光标'" [setFocus]="autoFocus"></SearchBar>
         </div>
         <div class="am-wingblank am-wingblank-lg">
           <div class="sub-title">Focus by operation</div>
@@ -28,18 +28,19 @@ import { Component, ElementRef, Renderer } from '@angular/core';
         <div class="am-wingblank am-wingblank-lg">
           <div class="sub-title">Show cancel button</div>
         </div>
-          <div style="border-bottom: 1px solid #ddd;">
-            <SearchBar [(ngModel)]="value"
-                       [placeholder]="'Search'"
-                       [showCancelButton]="true"
-                       (onBlur)="blur()"
-                       (onFocus)="focus()"
-                       (onCancel)="cancel()"
-                       (onClear)="clear(value)"
-                       (onSubmit)="submit(value)"
-                       (onChange)="change($event)"
-            ></SearchBar>
-          </div>
+        <div style="border-bottom: 1px solid #ddd;">
+          <SearchBar
+            [(ngModel)]="value"
+            [placeholder]="'Search'"
+            [showCancelButton]="true"
+            (onBlur)="blur()"
+            (onFocus)="focus()"
+            (onCancel)="cancel()"
+            (onClear)="clear(value)"
+            (onSubmit)="submit(value)"
+            (onChange)="change($event)"
+          ></SearchBar>
+        </div>
       </div>
     </div>
   `,

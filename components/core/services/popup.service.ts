@@ -11,9 +11,7 @@ export class PopupService {
   static currentServiceName = null;
   static serviceArray: any = [];
 
-  constructor(
-    public _overlay: Overlay,
-  ) {
+  constructor(public _overlay: Overlay) {
     PopupService.overlay = this._overlay;
   }
 
@@ -22,8 +20,12 @@ export class PopupService {
     component,
     childInjector?: Injector,
     hasBackdrop?: boolean,
-    positionStrategy: GlobalPositionStrategy =
-    PopupService.overlay.position().global().centerVertically().centerHorizontally()): ComponentRef<any> {
+    positionStrategy: GlobalPositionStrategy = PopupService.overlay
+      .position()
+      .global()
+      .centerVertically()
+      .centerHorizontally()
+  ): ComponentRef<any> {
     let overlayConfig = new OverlayConfig();
     overlayConfig.hasBackdrop = hasBackdrop;
     overlayConfig.positionStrategy = positionStrategy;
@@ -33,7 +35,7 @@ export class PopupService {
     });
     PopupService.currentServiceName = componentName;
     const comRef = PopupService.overlayRef.attach(new ComponentPortal(component, undefined, childInjector));
-    PopupService.serviceArray.push({key: componentName, value: PopupService.overlayRef});
+    PopupService.serviceArray.push({ key: componentName, value: PopupService.overlayRef });
     return comRef;
   }
 

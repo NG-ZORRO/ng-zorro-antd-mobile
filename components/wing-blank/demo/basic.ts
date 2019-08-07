@@ -19,7 +19,7 @@ import { Component } from '@angular/core';
       </WingBlank>
 
       <ng-template #placeHolder>
-        <div class="placeholder" >Block</div>
+        <div class="placeholder">Block</div>
       </ng-template>
     </div>
   `,

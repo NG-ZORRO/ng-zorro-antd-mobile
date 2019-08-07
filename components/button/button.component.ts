@@ -81,8 +81,8 @@ export class ButtonComponent implements AfterViewInit {
     if (this._disabled) {
       return;
     }
-      this._active = true;
-      this.setClassMap();
+    this._active = true;
+    this.setClassMap();
   }
   @HostListener('touchend', ['$event'])
   @HostListener('mouseup', ['$event'])
@@ -131,7 +131,7 @@ export class ButtonComponent implements AfterViewInit {
   set loading(value: boolean) {
     this._loading = value;
     if (this._el.querySelector('icon')) {
-      const icon =  this._el.querySelector('icon') as HTMLElement;
+      const icon = this._el.querySelector('icon') as HTMLElement;
       icon.style.display = value ? '' : 'none';
     }
     this.setClassMap();

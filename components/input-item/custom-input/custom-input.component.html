@@ -1,6 +1,6 @@
-<div *ngIf="value===''" class="fake-input-placeholder">
-  {{placeholder}}
+<div *ngIf="value === ''" class="fake-input-placeholder">
+  {{ placeholder }}
 </div>
-<div [ngClass]="fakeInputCls"  [style.color]='fontColor' (click)="onFakeInputClick()" >
-  {{value}}
+<div [ngClass]="fakeInputCls" [style.color]="fontColor" (click)="onFakeInputClick()">
+  {{ value }}
 </div>

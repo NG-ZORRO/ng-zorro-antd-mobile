@@ -5,64 +5,56 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
   selector: 'demo-list-form',
   template: `
     <form [formGroup]="registerForm">
-      <List [renderHeader]=(renderHeader) [renderFooter]=(renderFooter)>
-        <InputItem [placeholder]="'please input account'"
-                   [error]="isError"
-                   [focus]="onFocus"
-                   [value]="formData.username"
-                   [clear]="true" formControlName="username" id="username"
-                   (onErrorClick)="inputErrorClick($event)"
-                   (onChange)="inputChange($event)"
+      <List [renderHeader]="renderHeader" [renderFooter]="renderFooter">
+        <InputItem
+          [placeholder]="'please input account'"
+          [error]="isError"
+          [focus]="onFocus"
+          [value]="formData.username"
+          [clear]="true"
+          formControlName="username"
+          id="username"
+          (onErrorClick)="inputErrorClick($event)"
+          (onChange)="inputChange($event)"
         >
           Account
         </InputItem>
-        <InputItem id="password"
-                   formControlName="password"
-                   [placeholder]="'please input password'"
-                   [type]="'password'"
-                   [(ngModel)]="formData.password"
-                   [value]="formData.password"
+        <InputItem
+          id="password"
+          formControlName="password"
+          [placeholder]="'please input password'"
+          [type]="'password'"
+          [(ngModel)]="formData.password"
+          [value]="formData.password"
         >
           Password
         </InputItem>
         <ListItem [extra]="_switch">Confirm Infomation</ListItem>
         <ListItem>
-          <Range style="padding: 7px"
-                 [defaultValue]=[20,80]
-                 [min]=0
-                 [max]=100
-                 (onAfterChange)="afterChange($event)"
+          <Range
+            style="padding: 7px"
+            [defaultValue]="[20, 80]"
+            [min]="0"
+            [max]="100"
+            (onAfterChange)="afterChange($event)"
           ></Range>
         </ListItem>
         <ListItem [extra]="_stepper">Number of Subscribers</ListItem>
         <ListItem>
-          <a Button [type]="'primary'"
-                    [size]="'small'"
-                    [inline]="true"
-                    (onClick)="onSubmit()"
-          >
+          <a Button [type]="'primary'" [size]="'small'" [inline]="true" (onClick)="onSubmit()">
             Submit
           </a>
-          <a Button
-             style="margin-left: 2.5px;"
-             [size]="'small'"
-             [inline]="true"
-             (onClick)="onReset()"
-          >
+          <a Button style="margin-left: 2.5px;" [size]="'small'" [inline]="true" (onClick)="onReset()">
             Reset
           </a>
         </ListItem>
       </List>
     </form>
     <ng-template #_switch>
-      <Switch class='oneui-mobile' [checked] = "true" (onChange)='switchCheck($event)'></Switch>
+      <Switch class="oneui-mobile" [checked]="true" (onChange)="switchCheck($event)"></Switch>
     </ng-template>
     <ng-template #_stepper>
-      <Stepper [value]="stepper_value"
-               [min]="1"
-               [showNumber]="true"
-               (onChange)="setpperChange($event)"
-      ></Stepper>
+      <Stepper [value]="stepper_value" [min]="1" [showNumber]="true" (onChange)="setpperChange($event)"></Stepper>
     </ng-template>
   `,
   styles: [
