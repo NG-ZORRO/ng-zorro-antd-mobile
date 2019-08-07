@@ -1,3 +1,3 @@
 export default {
-    dismissText: 'Annuller'
-  };
+  dismissText: 'Annuller'
+};

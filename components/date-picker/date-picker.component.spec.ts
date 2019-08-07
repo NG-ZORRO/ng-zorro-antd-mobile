@@ -118,11 +118,8 @@ describe('DatePickerComponent', () => {
     datePickerEle = document.querySelector('datepicker');
     const contentEles = datePickerEle.querySelectorAll('.am-picker-col-content');
     const minuteEles = contentEles[contentEles.length - 1].querySelectorAll('.am-picker-col-item');
-    const step =  minuteEles[1].innerText - minuteEles[0].innerText;
-    expect(step).toBe(
-      5,
-      'minuteStep is 5'
-    );
+    const step = minuteEles[1].innerText - minuteEles[0].innerText;
+    expect(step).toBe(5, 'minuteStep is 5');
     datePickerEle.querySelector('.am-picker-popup-header-right').click();
   });
 

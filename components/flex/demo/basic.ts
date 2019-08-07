@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
           <ng-template [ngTemplateOutlet]="placeHolder"></ng-template>
         </FlexItem>
       </Flex>
-      <br>
+      <br />
       <Flex>
         <FlexItem>
           <ng-template [ngTemplateOutlet]="placeHolder"></ng-template>
@@ -25,7 +25,7 @@ import { Component } from '@angular/core';
           <ng-template [ngTemplateOutlet]="placeHolder"></ng-template>
         </FlexItem>
       </Flex>
-      <br>
+      <br />
       <Flex>
         <FlexItem>
           <ng-template [ngTemplateOutlet]="placeHolder"></ng-template>
@@ -40,7 +40,7 @@ import { Component } from '@angular/core';
           <ng-template [ngTemplateOutlet]="placeHolder"></ng-template>
         </FlexItem>
       </Flex>
-      <br>
+      <br />
       <div className="sub-title">Wrap</div>
       <Flex [wrap]="'wrap'">
         <div class="placeholder inline">Block</div>
@@ -57,31 +57,31 @@ import { Component } from '@angular/core';
         <div class="placeholder inline">Block</div>
         <div class="placeholder inline">Block</div>
       </Flex>
-      <br>
+      <br />
       <Flex [justify]="'end'">
         <div class="placeholder inline">Block</div>
         <div class="placeholder inline">Block</div>
         <div class="placeholder inline">Block</div>
       </Flex>
-      <br>
+      <br />
       <Flex [justify]="'between'">
         <div class="placeholder inline">Block</div>
         <div class="placeholder inline">Block</div>
         <div class="placeholder inline">Block</div>
       </Flex>
-      <br>
+      <br />
       <Flex [align]="'start'">
         <div class="placeholder inline">Block</div>
         <div class="placeholder inline small">Block</div>
         <div class="placeholder inline">Block</div>
       </Flex>
-      <br>
+      <br />
       <Flex [align]="'end'">
         <div class="placeholder inline">Block</div>
         <div class="placeholder inline small">Block</div>
         <div class="placeholder inline">Block</div>
       </Flex>
-      <br>
+      <br />
       <Flex [align]="'baseline'">
         <div class="placeholder inline">Block</div>
         <div class="placeholder inline small">Block</div>

@@ -39,12 +39,11 @@ describe('TouchFeedbackDirective', () => {
     fixture.detectChanges();
     expect(gridEle.nativeElement.children[0].children[0]).not.toContain('am-grid-item-active');
   });
-
 });
 @Component({
   selector: 'test-grid',
   template: `
-    <Grid  [data]="dataList" (onClick)="click($event)"></Grid>
+    <Grid [data]="dataList" (onClick)="click($event)"></Grid>
   `
 })
 export class TouchFeedbackDirectiveComponent {

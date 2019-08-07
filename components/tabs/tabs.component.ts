@@ -155,7 +155,7 @@ export class TabsComponent implements DoCheck, AfterContentInit {
   @HostBinding('class.am-tabs-horizontal')
   amTabsHorizontal: boolean = true;
 
-  constructor() { }
+  constructor() {}
 
   clickTab(index: number) {
     if (this.selectedKey !== index) {

@@ -95,7 +95,10 @@ export class StepsComponent implements OnInit, AfterContentInit {
             ? Object.assign(step.stepItemCls, { 'ellipsis-item': true })
             : { 'ellipsis-item': true };
         }
-        if ((this._status === StepStatusEnum.ERROR && index === this._current) || step.status === StepStatusEnum.ERROR) {
+        if (
+          (this._status === StepStatusEnum.ERROR && index === this._current) ||
+          step.status === StepStatusEnum.ERROR
+        ) {
           icon = 'cross-circle-o';
         }
       }

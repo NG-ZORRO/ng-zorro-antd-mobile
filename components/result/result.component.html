@@ -1,20 +1,17 @@
-<div *ngIf="img" class="{{prefixCls}}-pic">
+<div *ngIf="img" class="{{ prefixCls }}-pic">
   <ng-template [ngTemplateOutlet]="img"></ng-template>
 </div>
-<div *ngIf="!img && imgUrl"
-     class="{{prefixCls}}-pic"
-     [ngStyle]="{ backgroundImage: 'url('+ imgUrl +')' }"
-></div>
-<div *ngIf="title" class="{{prefixCls}}-title">
+<div *ngIf="!img && imgUrl" class="{{ prefixCls }}-pic" [ngStyle]="{ backgroundImage: 'url(' + imgUrl + ')' }"></div>
+<div *ngIf="title" class="{{ prefixCls }}-title">
   <ng-template *ngIf="!isTitleString" [ngTemplateOutlet]="title"></ng-template>
-  <span *ngIf="isTitleString">{{title}}</span>
+  <span *ngIf="isTitleString">{{ title }}</span>
 </div>
-<div [ngClass]="prefixCls+'-message'">
+<div [ngClass]="prefixCls + '-message'">
   <ng-template *ngIf="!isMessageString" [ngTemplateOutlet]="message"></ng-template>
-  <span *ngIf="isMessageString">{{message}}</span>
+  <span *ngIf="isMessageString">{{ message }}</span>
 </div>
-<div *ngIf="buttonText" class="{{prefixCls}}-button">
+<div *ngIf="buttonText" class="{{ prefixCls }}-button">
   <a Button [type]="buttonType" (click)="buttonClick($event)">
-    {{buttonText}}
+    {{ buttonText }}
   </a>
 </div>

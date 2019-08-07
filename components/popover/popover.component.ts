@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewEncapsulation, OnInit} from '@angular/core';
+import { Component, AfterViewInit, ViewEncapsulation, OnInit } from '@angular/core';
 import { PopoverComponentOptions } from './popover-component-options.provider';
 
 @Component({

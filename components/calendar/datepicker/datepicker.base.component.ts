@@ -29,7 +29,9 @@ export class CalendarDatePickerBaseComponent {
   init() {
     const { initalMonths = 6, defaultDate } = this.props;
     for (let i = 0; i < initalMonths; i++) {
-      this.canLoadNext() && this.genMonthData(defaultDate, i);
+      if (this.canLoadNext()) {
+        this.genMonthData(defaultDate, i);
+      }
     }
     this.visibleMonth = [...this.state.months];
   }
@@ -75,7 +77,9 @@ export class CalendarDatePickerBaseComponent {
   }
 
   getDateWithoutTime = (date?: Date) => {
-    if (!date) { return 0; }
+    if (!date) {
+      return 0;
+    }
     return +new Date(date.getFullYear(), date.getMonth(), date.getDate());
   }
 
@@ -245,7 +249,9 @@ export class CalendarDatePickerBaseComponent {
           if (index < this.state.months.length && this.visibleMonth.indexOf(this.state.months[index]) < 0) {
             this.visibleMonth.push(this.state.months[index]);
           } else {
-            this.canLoadNext() && this.genMonthData(undefined, 1);
+            if (this.canLoadNext()) {
+              this.genMonthData(undefined, 1);
+            }
           }
         }
         needUpdate = true;
@@ -299,8 +305,11 @@ export class CalendarDatePickerBaseComponent {
   }
 
   baseOnCellClick = (day: DateModels.CellData) => {
-    if (!day.tick) { return; }
-    this.props.onCellClick && this.props.onCellClick(new Date(day.tick));
+    if (!day.tick) {
+      return;
+    }
+    if (this.props.onCellClick) {
+      this.props.onCellClick(new Date(day.tick));
+    }
   }
-
 }

@@ -8,10 +8,12 @@ import { Component } from '@angular/core';
       <Pagination [total]="5" [current]="1" [locale]="locale"></Pagination>
 
       <p class="sub-title">Button with text and icon</p>
-      <Pagination class="custom-pagination-with-icon"
-                  [total]="5"
-                  [current]="1"
-                  [locale]="{prevText:localeLeft,nextText:localeRight}">
+      <Pagination
+        class="custom-pagination-with-icon"
+        [total]="5"
+        [current]="1"
+        [locale]="{ prevText: localeLeft, nextText: localeRight }"
+      >
       </Pagination>
 
       <p class="sub-title">Hide number</p>

@@ -66,22 +66,23 @@ export class DefaultTabBarComponent implements AfterContentInit {
   @HostBinding('class.am-tabs-tab-bar-wrap')
   tabBarWrap = true;
 
-  constructor(private _renderer: Renderer2, private _ref: ChangeDetectorRef) { }
+  constructor(private _renderer: Renderer2, private _ref: ChangeDetectorRef) {}
 
   onTouchStart(event) {
-    if ((this.tabTitleSize > 0 &&
-             (this.tabTitleSize * this.tabTitles.length >
-                 (('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) ?
-                     this.tabsBarSwipe.nativeElement.offsetWidth :
-                     this.tabsBarSwipe.nativeElement.offsetHeight
-                 )
-             )
-        ) || (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)
+    if (
+      (this.tabTitleSize > 0 &&
+        this.tabTitleSize * this.tabTitles.length >
+          ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition
+            ? this.tabsBarSwipe.nativeElement.offsetWidth
+            : this.tabsBarSwipe.nativeElement.offsetHeight)) ||
+      (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)
     ) {
       if ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) {
-        this._startPosition = event && event.changedTouches && event.changedTouches[0] && event.changedTouches[0].clientX;
+        this._startPosition =
+          event && event.changedTouches && event.changedTouches[0] && event.changedTouches[0].clientX;
       } else {
-        this._startPosition = event && event.changedTouches && event.changedTouches[0] && event.changedTouches[0].clientY;
+        this._startPosition =
+          event && event.changedTouches && event.changedTouches[0] && event.changedTouches[0].clientY;
       }
     }
   }
@@ -89,14 +90,13 @@ export class DefaultTabBarComponent implements AfterContentInit {
   onTouchMove(event) {
     event.preventDefault();
     event.stopPropagation();
-    if ((this.tabTitleSize > 0 &&
-            (this.tabTitleSize * this.tabTitles.length >
-                (('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) ?
-                    this.tabsBarSwipe.nativeElement.offsetWidth :
-                    this.tabsBarSwipe.nativeElement.offsetHeight
-                )
-            )
-        ) || (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)
+    if (
+      (this.tabTitleSize > 0 &&
+        this.tabTitleSize * this.tabTitles.length >
+          ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition
+            ? this.tabsBarSwipe.nativeElement.offsetWidth
+            : this.tabsBarSwipe.nativeElement.offsetHeight)) ||
+      (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)
     ) {
       if ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) {
         this.setTabBarNavSwipingPosition(
@@ -122,18 +122,16 @@ export class DefaultTabBarComponent implements AfterContentInit {
         };
       }
     }
-
   }
 
   onTouchEnd() {
-    if ((this.tabTitleSize > 0 &&
-          (this.tabTitleSize * this.tabTitles.length >
-              (('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) ?
-                  this.tabsBarSwipe.nativeElement.offsetWidth :
-                  this.tabsBarSwipe.nativeElement.offsetHeight
-              )
-          )
-      ) || (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)
+    if (
+      (this.tabTitleSize > 0 &&
+        this.tabTitleSize * this.tabTitles.length >
+          ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition
+            ? this.tabsBarSwipe.nativeElement.offsetWidth
+            : this.tabsBarSwipe.nativeElement.offsetHeight)) ||
+      (this.tabTitleSize <= 0 && this.page < this.tabTitles.length)
     ) {
       this.tabBarNavSwipedPosition = this.tabBarNavSwipingPosition;
     }
@@ -157,7 +155,7 @@ export class DefaultTabBarComponent implements AfterContentInit {
           this._renderer.setStyle(
             tabTitle.nativeElement,
             'width',
-            this.tabTitleSize > 0 ? (this.tabTitleSize + 'px') : (this.getTabSize(this.page, this.tabTitles.length) + '%')
+            this.tabTitleSize > 0 ? this.tabTitleSize + 'px' : this.getTabSize(this.page, this.tabTitles.length) + '%'
           );
         });
       } else {
@@ -165,7 +163,7 @@ export class DefaultTabBarComponent implements AfterContentInit {
           this._renderer.setStyle(
             tabTitle.nativeElement,
             'height',
-            this.tabTitleSize > 0 ? (this.tabTitleSize + 'px') : this.getTabSize(this.page, this.tabTitles.length) + '%'
+            this.tabTitleSize > 0 ? this.tabTitleSize + 'px' : this.getTabSize(this.page, this.tabTitles.length) + '%'
           );
         });
       }
@@ -174,18 +172,22 @@ export class DefaultTabBarComponent implements AfterContentInit {
 
   private setTabBarStyleCenter() {
     if ('top' === this.tabBarPosition || 'bottom' === this.tabBarPosition) {
-      this.setTabBarNavSwipedPosition(this.tabTitleSize > 0 ? this.tabTitleSize :
-          (this.tabsBarSwipe.nativeElement.offsetWidth / Math.min(this.tabTitles.length, this.page)),
-          this.tabsBarSwipe.nativeElement.offsetWidth
+      this.setTabBarNavSwipedPosition(
+        this.tabTitleSize > 0
+          ? this.tabTitleSize
+          : this.tabsBarSwipe.nativeElement.offsetWidth / Math.min(this.tabTitles.length, this.page),
+        this.tabsBarSwipe.nativeElement.offsetWidth
       );
       this.tabsBarStyle = {
         transform: 'translate3d(' + this.tabBarNavSwipedPosition + 'px, 0px, 0px)',
         webkitTransform: 'translate3d(' + this.tabBarNavSwipedPosition + ', 0px, 0px)'
       };
     } else {
-      this.setTabBarNavSwipedPosition(this.tabTitleSize > 0 ? this.tabTitleSize :
-          (this.tabsBarSwipe.nativeElement.offsetHeight / Math.min(this.tabTitles.length, this.page)),
-          this.tabsBarSwipe.nativeElement.offsetHeight
+      this.setTabBarNavSwipedPosition(
+        this.tabTitleSize > 0
+          ? this.tabTitleSize
+          : this.tabsBarSwipe.nativeElement.offsetHeight / Math.min(this.tabTitles.length, this.page),
+        this.tabsBarSwipe.nativeElement.offsetHeight
       );
       this.tabsBarStyle = {
         transform: 'translate3d(0, ' + this.tabBarNavSwipedPosition + 'px, 0px)',
@@ -201,9 +203,10 @@ export class DefaultTabBarComponent implements AfterContentInit {
         this.inkBarLength = this.tabTitles.toArray()[key].nativeElement.style.width;
         this.inkBarStyle = {
           width: this.inkBarLength,
-          left: this.tabTitleSize > 0 ?
-                    (this.selectedKey * this.tabTitleSize + 'px') :
-                        ((this.selectedKey * 100) / Math.min(this.tabTitles.length, this.page) + '%')
+          left:
+            this.tabTitleSize > 0
+              ? this.selectedKey * this.tabTitleSize + 'px'
+              : (this.selectedKey * 100) / Math.min(this.tabTitles.length, this.page) + '%'
         };
         Object.assign(this.inkBarStyle, this.tabBarUnderlineStyle);
       } else {
@@ -211,9 +214,10 @@ export class DefaultTabBarComponent implements AfterContentInit {
         this.inkBarLength = this.tabTitles.toArray()[key].nativeElement.style.height;
         this.inkBarStyle = {
           height: this.inkBarLength,
-          top: this.tabTitleSize > 0 ?
-                  (this.selectedKey * this.tabTitleSize + 'px') :
-                      ((this.selectedKey * 100) /  Math.min(this.tabTitles.length, this.page) + '%')
+          top:
+            this.tabTitleSize > 0
+              ? this.selectedKey * this.tabTitleSize + 'px'
+              : (this.selectedKey * 100) / Math.min(this.tabTitles.length, this.page) + '%'
         };
         Object.assign(this.inkBarStyle, this.tabBarUnderlineStyle);
       }
@@ -224,8 +228,9 @@ export class DefaultTabBarComponent implements AfterContentInit {
   private setTabBarNavSwipingPosition(swipingDistance: number, swipingItemLength: number, viewportLength: number) {
     if (this.tabBarNavSwipedPosition + swipingDistance > 0) {
       this.tabBarNavSwipingPosition = 0;
-    } else if ((this.tabBarNavSwipedPosition + swipingDistance) <
-        (viewportLength - swipingItemLength * this.tabTitles.length)
+    } else if (
+      this.tabBarNavSwipedPosition + swipingDistance <
+      viewportLength - swipingItemLength * this.tabTitles.length
     ) {
       this.tabBarNavSwipingPosition = viewportLength - swipingItemLength * this.tabTitles.length;
       this.showNext = false;
@@ -247,9 +252,7 @@ export class DefaultTabBarComponent implements AfterContentInit {
       } else {
         this.tabBarNavSwipedPosition = (1 - this.selectedKey) * swipingItemLength;
       }
-    } else if ((this.selectedKey + 1) * swipingItemLength >=
-        (viewportLength - this.tabBarNavSwipedPosition)
-      ) {
+    } else if ((this.selectedKey + 1) * swipingItemLength >= viewportLength - this.tabBarNavSwipedPosition) {
       if (this.tabTitles.length - 1 === this.selectedKey) {
         this.tabBarNavSwipedPosition = viewportLength - (this.selectedKey + 1) * swipingItemLength;
       } else {
@@ -261,7 +264,7 @@ export class DefaultTabBarComponent implements AfterContentInit {
     } else {
       this.showPrev = false;
     }
-    if ((this.tabBarNavSwipedPosition + swipingItemLength * this.tabTitles.length - viewportLength) > 0) {
+    if (this.tabBarNavSwipedPosition + swipingItemLength * this.tabTitles.length - viewportLength > 0) {
       this.showNext = true;
     } else {
       this.showNext = false;

@@ -6,4 +6,4 @@ import { TouchFeedbackDirective } from './touch-feedback.directive';
   exports: [TouchFeedbackDirective],
   declarations: [TouchFeedbackDirective]
 })
-export class TouchFeedbackModule { }
+export class TouchFeedbackModule {}

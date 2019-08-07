@@ -7,18 +7,18 @@ import { dispatchTouchEvent } from '../core/testing';
 
 describe('swipeAction', () => {
   let component;
-  let fixture: ComponentFixture<TestSwipeAction>;
+  let fixture: ComponentFixture<TestSwipeActionComponent>;
   let swipeActionEle;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TestSwipeAction],
+      declarations: [TestSwipeActionComponent],
       imports: [SwipeActionModule]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestSwipeAction);
+    fixture = TestBed.createComponent(TestSwipeActionComponent);
     component = fixture.componentInstance;
     swipeActionEle = fixture.debugElement.query(By.css('SwipeAction'));
     fixture.detectChanges();
@@ -162,19 +162,20 @@ describe('swipeAction', () => {
 @Component({
   selector: 'test-swipe-action',
   template: `
-    <SwipeAction style="background-color: gray"
-                 [left]="left"
-                 [right]="right"
-                 [disabled]="disabled"
-                 [autoClose]="autoClose"
-                 (onOpen)="onOpen()"
-                 (onClose)="onClose()"
+    <SwipeAction
+      style="background-color: gray"
+      [left]="left"
+      [right]="right"
+      [disabled]="disabled"
+      [autoClose]="autoClose"
+      (onOpen)="onOpen()"
+      (onClose)="onClose()"
     >
       Have left and right buttons
     </SwipeAction>
   `
 })
-export class TestSwipeAction {
+export class TestSwipeActionComponent {
   autoClose = false;
   disabled = false;
   left = [

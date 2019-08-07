@@ -48,10 +48,10 @@ export class DemoModalAlertComponent {
             ToastService.info('onPress Promise', 1000);
             setTimeout(resolve, 1000);
           }),
-          style: {
-            color: '#ffffff',
-            background: '#00ff00'
-          }
+        style: {
+          color: '#ffffff',
+          background: '#00ff00'
+        }
       }
     ]);
   }

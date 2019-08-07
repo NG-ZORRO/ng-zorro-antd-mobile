@@ -209,7 +209,7 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
     this._el = element.nativeElement;
   }
 
-  _onChange = (_: any) => { };
+  _onChange = (_: any) => {};
 
   setCls() {
     this.hasCount = this._count > 0 && this._rows > 1;
@@ -292,7 +292,6 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
     return text.replace(regexAstralSymbols, '_').length;
   }
 
-
   writeValue(value: any): void {
     if (typeof value === 'undefined' || value === null) {
       this._value = '';
@@ -304,7 +303,7 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: any): void { }
+  registerOnTouched(fn: any): void {}
 
   ngOnInit() {
     this.setCls();

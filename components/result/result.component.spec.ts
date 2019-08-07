@@ -47,19 +47,19 @@ describe('Result', () => {
   });
 
   describe('spec', () => {
-    let component: TestResult;
-    let fixture: ComponentFixture<TestResult>;
+    let component: TestResultComponent;
+    let fixture: ComponentFixture<TestResultComponent>;
     let resultEle;
 
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         imports: [ResultModule, ButtonModule],
-        declarations: [TestResult]
+        declarations: [TestResultComponent]
       }).compileComponents();
     }));
 
     beforeEach(() => {
-      fixture = TestBed.createComponent(TestResult);
+      fixture = TestBed.createComponent(TestResultComponent);
       component = fixture.componentInstance;
       resultEle = fixture.debugElement.query(By.css('Result'));
       fixture.detectChanges();
@@ -94,17 +94,18 @@ describe('Result', () => {
   selector: 'test-white-space-child',
   template: `
     <div class="result-example">
-      <Result [imgUrl]="imgUrl"
-              [message]="'测试'"
-              [title]="'支付成功'"
-              [buttonText]="buttonText"
-              [buttonType]="buttonType"
-              (onButtonClick)="clickCallback()"
+      <Result
+        [imgUrl]="imgUrl"
+        [message]="'测试'"
+        [title]="'支付成功'"
+        [buttonText]="buttonText"
+        [buttonType]="buttonType"
+        (onButtonClick)="clickCallback()"
       ></Result>
     </div>
   `
 })
-export class TestResult {
+export class TestResultComponent {
   img: string = 'xs'; // 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   imgUrl: string = 'https://img.alicdn.com/tfs/TB1oy4uGDtYBeNjy1XdXXXXyVXa-393-401.png';
   message: string = '';

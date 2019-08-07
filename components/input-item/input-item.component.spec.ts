@@ -407,36 +407,37 @@ describe('InputComponent', () => {
 @Component({
   selector: 'test-stepper',
   template: `
-    <InputItem [type]="type"
-               [value]="value"
-               [defaultValue]="defaultValue"
-               [editable]="editable"
-               [disabled]="disabled"
-               [clear]="clear"
-               [placeholder]="placeholder"
-               [maxLength]="maxLength"
-               [error]="error"
-               [extra]="extra"
-               [labelNumber]="labelNumber"
-               [updatePlaceholder]="updatePlaceholder"
-               [prefixListCls]="prefixListCls"
-               [name]="name"
-               [fontColor]="fontColor"
-               [moneyKeyboardAlign]="moneyKeyboardAlign"
-               [locale]="locale"
-               [focus]="focus"
-               (onChange)="change($event)"
-               (onBlur)="blur()"
-               (onFocus)="focusFn()"
-               (onErrorClick)="errorClick()"
-               (onExtraClick)="extraClick()"
+    <InputItem
+      [type]="type"
+      [value]="value"
+      [defaultValue]="defaultValue"
+      [editable]="editable"
+      [disabled]="disabled"
+      [clear]="clear"
+      [placeholder]="placeholder"
+      [maxLength]="maxLength"
+      [error]="error"
+      [extra]="extra"
+      [labelNumber]="labelNumber"
+      [updatePlaceholder]="updatePlaceholder"
+      [prefixListCls]="prefixListCls"
+      [name]="name"
+      [fontColor]="fontColor"
+      [moneyKeyboardAlign]="moneyKeyboardAlign"
+      [locale]="locale"
+      [focus]="focus"
+      (onChange)="change($event)"
+      (onBlur)="blur()"
+      (onFocus)="focusFn()"
+      (onErrorClick)="errorClick()"
+      (onExtraClick)="extraClick()"
     >
       <span (click)="clickTitle()">标题</span>
     </InputItem>
     <InputItem class="input-item-1" [(ngModel)]="modelValue"></InputItem>
-    <div class="am-list-content" click = "blurFocus()">click to focus</div>
+    <div class="am-list-content" click="blurFocus()">click to focus</div>
     <ng-template #extraTemplate>#</ng-template>
- `
+  `
 })
 export class TestInputComponent {
   type: string = 'text';
@@ -471,7 +472,7 @@ export class TestInputComponent {
   blur = jasmine.createSpy('blur callback');
   change = jasmine.createSpy('change callback');
 
-  constructor() { }
+  constructor() {}
 
   clickTitle() {
     this.focus = {

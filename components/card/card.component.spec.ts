@@ -66,11 +66,7 @@ describe('CardComponent', () => {
   selector: 'test-card',
   template: `
     <Card [full]="full">
-      <CardHeader [title]="title"
-                  [thumb]="thumb"
-                  [thumbStyle]="thumbStyle"
-                  [extra]="extra"
-    >
+      <CardHeader [title]="title" [thumb]="thumb" [thumbStyle]="thumbStyle" [extra]="extra">
         <ng-template #extra>
           <span>this is extra</span>
         </ng-template>

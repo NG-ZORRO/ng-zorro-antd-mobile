@@ -1,12 +1,4 @@
-import {
-  Component,
-  ViewEncapsulation,
-  Input,
-  Output,
-  HostBinding,
-  TemplateRef,
-  EventEmitter
-} from '@angular/core';
+import { Component, ViewEncapsulation, Input, Output, HostBinding, TemplateRef, EventEmitter } from '@angular/core';
 import { DateModels } from '../date/DataTypes';
 
 @Component({
@@ -60,11 +52,14 @@ export class CalendarHeaderComponent {
   constructor() {}
 
   triggerCancel() {
-    this.onCancel && this.onCancel.emit();
+    if (this.onCancel) {
+      this.onCancel.emit();
+    }
   }
 
   triggerClear() {
-    this.onClear && this.onClear.emit();
+    if (this.onClear) {
+      this.onClear.emit();
+    }
   }
-
 }

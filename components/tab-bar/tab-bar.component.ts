@@ -1,4 +1,13 @@
-import { Component, AfterContentInit, Input, Output, ContentChildren, QueryList, HostBinding, EventEmitter } from '@angular/core';
+import {
+  Component,
+  AfterContentInit,
+  Input,
+  Output,
+  ContentChildren,
+  QueryList,
+  HostBinding,
+  EventEmitter
+} from '@angular/core';
 import { TabBarItemComponent } from './tab-bar-item.component';
 
 export type TabBarTabPositionType = 'top' | 'bottom';
@@ -69,7 +78,7 @@ export class TabBarComponent implements AfterContentInit {
   @HostBinding('class.am-tab-bar')
   tabBar: boolean = true;
 
-  constructor() { }
+  constructor() {}
 
   selectTabBarItem(index: number) {
     if (this.tabBarItems && this.tabBarItems.length > 0) {
@@ -93,5 +102,4 @@ export class TabBarComponent implements AfterContentInit {
     }
     this.selectTabBarItem(this.activeTab);
   }
-
 }

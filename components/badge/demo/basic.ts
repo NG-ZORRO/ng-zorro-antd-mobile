@@ -3,15 +3,18 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-badge-basic',
   template: `
-    <List [renderHeader]=(renderHeader)>
+    <List [renderHeader]="renderHeader">
       <ListItem [extra]="'extra content'" [arrow]="'horizontal'">
         <Badge [dot]="true" [text]="77" class="dot-badge">
-            <span style="width:26px ; height: 26px; background:#ddd; display:inline-block"></span>
+          <span style="width:26px ; height: 26px; background:#ddd; display:inline-block"></span>
         </Badge>
         <span style="margin-left:12px">Dot badge</span>
       </ListItem>
-      <ListItem [thumb]="'https://zos.alipayobjects.com/rmsportal/faMhXAxhCzLvveJ.png'"
-                [extra]="customBadage" [arrow]="'horizontal'">Content
+      <ListItem
+        [thumb]="'https://zos.alipayobjects.com/rmsportal/faMhXAxhCzLvveJ.png'"
+        [extra]="customBadage"
+        [arrow]="'horizontal'"
+        >Content
       </ListItem>
       <ListItem>
         <Badge [text]="'促'" [corner]="true">
@@ -25,7 +28,7 @@ import { Component } from '@angular/core';
         <Badge [text]="0">Text number 0</Badge>
         <Badge [text]="'new'" style="margin-left:12px;"></Badge>
       </ListItem>
-      <ListItem >
+      <ListItem>
         Marketing:
         <Badge [text]="'减'" [hot]="true" style="margin-left:12px;"></Badge>
         <Badge [text]="'惠'" [hot]="true" style="margin-left:12px;"></Badge>
@@ -33,7 +36,7 @@ import { Component } from '@angular/core';
         <Badge [text]="'反'" [hot]="true" style="margin-left:12px;"></Badge>
         <Badge [text]="'HOT'" [hot]="true" style="margin-left:12px;"></Badge>
       </ListItem>
-      <ListItem >
+      <ListItem>
         Customize
         <Badge class="quan" [text]="'券'" [setStyle]="quanStyle"></Badge>
         <Badge class="new" [text]="'NEW'" [setStyle]="newStyle"></Badge>
@@ -49,9 +52,9 @@ import { Component } from '@angular/core';
   `,
   styles: [
     `
-     /deep/ .dot-badge .am-badge-dot{
-       right:-8px;
-     }
+      /deep/ .dot-badge .am-badge-dot {
+        right: -8px;
+      }
       .corner-badge {
         height: 50px;
         width: 200px;

@@ -14,11 +14,10 @@
     "deprecation": {
       "severity": "warn"
     },
-    "eofline": false,
+    "eofline": true,
     "forin": true,
     "import-blacklist": [
       true,
-      "rxjs",
       "rxjs/Rx"
     ],
     "import-spacing": true,
@@ -73,7 +72,6 @@
     "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
     "no-unused-expression": true,
-    "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
     "one-line": [
@@ -129,15 +127,20 @@
       "app",
       "kebab-case"
     ],
+    "use-component-view-encapsulation": false,
+    "contextual-lifecycle": true,
     "no-output-on-prefix": false,
-    "use-input-property-decorator": true,
-    "use-output-property-decorator": true,
-    "use-host-property-decorator": false,
+    "no-inputs-metadata-property": true,
+    "no-outputs-metadata-property": true,
+    "no-host-metadata-property": false,
     "no-input-rename": false,
     "no-output-rename": true,
     "use-life-cycle-interface": true,
+    "use-pipe-decorator": true,
     "use-pipe-transform-interface": true,
-    "component-class-suffix": false,
-    "directive-class-suffix": false
+    "component-class-suffix": true,
+    "directive-class-suffix": true,
+    "template-banana-in-box": true,
+    "template-no-negated-async": true
   }
 }

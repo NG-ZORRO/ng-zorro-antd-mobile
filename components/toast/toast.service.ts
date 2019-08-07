@@ -5,7 +5,7 @@ import {
   ApplicationRef,
   Compiler,
   NgZone,
-  ComponentFactoryResolver,
+  ComponentFactoryResolver
 } from '@angular/core';
 import { ToastComponent } from './toast.component';
 import { ToastOptions } from './toast-options.provider';
@@ -26,7 +26,12 @@ export class ToastService {
   static _toastCompFactory: ComponentFactory<ToastComponent> = null;
   static _appRef: ApplicationRef = null;
 
-  constructor(private _appRef: ApplicationRef, private _compiler: Compiler, private _cfr: ComponentFactoryResolver, private _zone: NgZone) {
+  constructor(
+    private _appRef: ApplicationRef,
+    private _compiler: Compiler,
+    private _cfr: ComponentFactoryResolver,
+    private _zone: NgZone
+  ) {
     ToastService._zone = this._zone;
     ToastService._appRef = this._appRef;
     ToastService._toastCompFactory = this._cfr.resolveComponentFactory(ToastComponent);
@@ -68,7 +73,10 @@ export class ToastService {
     options.position = position;
     const props = ToastService._initConfig(config, options);
 
-    document.body.insertBefore(document.createElement(ToastService._toastCompFactory.selector), document.body.firstChild);
+    document.body.insertBefore(
+      document.createElement(ToastService._toastCompFactory.selector),
+      document.body.firstChild
+    );
     let instance: any;
     let subject: any;
 

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-date-picker-view-basic',
   template: `
-    <div class="sub-title">Start datetime {{getDate(value1)}}</div>
+    <div class="sub-title">Start datetime {{ getDate(value1) }}</div>
     <DatePickerView [(ngModel)]="value1" (onValueChange)="onValueChange($event)"></DatePickerView>
   `,
   styles: [

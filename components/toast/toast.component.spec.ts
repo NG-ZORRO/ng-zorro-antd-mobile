@@ -168,7 +168,7 @@ describe('ToastComponent', () => {
     </ng-template>
 
     <ng-template #contentTpl>
-    contentTpl
+      contentTpl
     </ng-template>
   `
 })

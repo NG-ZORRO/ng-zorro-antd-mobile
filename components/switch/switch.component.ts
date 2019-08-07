@@ -1,12 +1,4 @@
-import {
-  Component,
-  ViewEncapsulation,
-  Input,
-  Output,
-  EventEmitter,
-  forwardRef,
-  HostBinding
-} from '@angular/core';
+import { Component, ViewEncapsulation, Input, Output, EventEmitter, forwardRef, HostBinding } from '@angular/core';
 
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -110,5 +102,4 @@ export class SwitchComponent {
   registerOnTouched(fn: () => {}): void {
     this.onTouched = fn;
   }
-
 }

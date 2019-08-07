@@ -59,7 +59,7 @@ export class SwipeActionComponent implements OnInit, AfterViewInit, OnDestroy {
     };
   }
 
-  onCloseSwipe = (ev) => {
+  onCloseSwipe = ev => {
     if (!(this._openedLeft || this._openedRight)) {
       return;
     }

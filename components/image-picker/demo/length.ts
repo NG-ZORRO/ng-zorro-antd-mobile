@@ -11,12 +11,13 @@ const data = [
 @Component({
   selector: 'demo-image-picker-length',
   template: `
-    <ImagePicker [files]="files"
-                 [length]="6"
-                 [selectable]="files.length < 7"
-                 (onImageChange)="imageChange($event)"
-                 (onImageClick)="imageClick($event)"
-                 (onAddImageClick)="addImageClick($event)"
+    <ImagePicker
+      [files]="files"
+      [length]="6"
+      [selectable]="files.length < 7"
+      (onImageClick)="imageClick($event)"
+      (onImageChange)="imageChange($event)"
+      (onAddImageClick)="addImageClick($event)"
     ></ImagePicker>
   `
 })

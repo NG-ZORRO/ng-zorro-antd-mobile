@@ -7,13 +7,14 @@ import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
   styles: [],
   template: `
     <WingBlank>
-      <ListItem Picker
-                [arrow]="'horizontal'"
-                [cols]="1"
-                [extra]="locale"
-                [(ngModel)]="lang"
-                [data]="languages"
-                (ngModelChange)="onChange($event)"
+      <ListItem
+        Picker
+        [arrow]="'horizontal'"
+        [cols]="1"
+        [extra]="locale"
+        [(ngModel)]="lang"
+        [data]="languages"
+        (ngModelChange)="onChange($event)"
       >
         Choose language
       </ListItem>
@@ -23,15 +24,8 @@ import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
         <Pagination [total]="5" [current]="1"></Pagination>
         <WhiteSpace></WhiteSpace>
         <List class="date-picker-list" style="background-color: white">
-          <ListItem DatePicker
-                    [arrow]="'horizontal'"
-                    [mode]="'date'"
-                    [title]="'Select date'">datePicker
-          </ListItem>
-          <ListItem Picker
-                    [arrow]="'horizontal'"
-                    [data]="seasons"
-                    [cascade]="false">
+          <ListItem DatePicker [arrow]="'horizontal'" [mode]="'date'" [title]="'Select date'">datePicker </ListItem>
+          <ListItem Picker [arrow]="'horizontal'" [data]="seasons" [cascade]="false">
             picker
           </ListItem>
         </List>
@@ -124,7 +118,7 @@ export class DemoLocaleProviderBasicComponent {
 
   constructor(private _localeProviderService: LocaleProviderService) {}
 
-  onChange = (item) => {
+  onChange = item => {
     this.locale = item[0].value;
     const currentLocale = this.languages.find(i => i.value === this.locale).language;
     this._localeProviderService.setLocale(currentLocale);

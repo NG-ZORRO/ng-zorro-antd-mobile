@@ -14,6 +14,6 @@ export function PopoverOptionsFactory(userOptions: PopoverOptions): PopoverOptio
   declarations: [PopoverDirective, PopoverComponent],
   imports: [CommonModule],
   exports: [PopoverDirective, PopoverComponent],
-  entryComponents: [PopoverComponent],
+  entryComponents: [PopoverComponent]
 })
 export class PopoverModule {}

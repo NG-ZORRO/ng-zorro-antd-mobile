@@ -1,10 +1,4 @@
-import {
-  Injectable,
-  ComponentRef,
-  ComponentFactory,
-  ApplicationRef,
-  ComponentFactoryResolver
-} from '@angular/core';
+import { Injectable, ComponentRef, ComponentFactory, ApplicationRef, ComponentFactoryResolver } from '@angular/core';
 import { CustomKeyboardComponent } from '../custom-keyboard/custom-keyboard.component';
 
 @Injectable()

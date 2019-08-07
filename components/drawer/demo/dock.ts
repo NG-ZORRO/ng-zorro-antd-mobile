@@ -5,14 +5,15 @@ import { Component } from '@angular/core';
   template: `
     <div>
       <Navbar [icon]="icon" (onLeftClick)="onDockedChange($event)">Docked in document</Navbar>
-      <Drawer class="my-drawer"
-              [ngStyle]="{minHeight: this.height+'px'}"
-              [contentStyle]="{ color: '#A6A6A6', textAlign: 'center', paddingTop: '42px' }"
-              [sidebarStyle]="{ border: '1px solid #ddd' }"
-              [sidebar]="sidebar"
-              [enableDragHandle]="false"
-              [docked]="this.state.docked"
-              (onOpenChange)="onDockedChange($event)"
+      <Drawer
+        class="my-drawer"
+        [ngStyle]="{ minHeight: this.height + 'px' }"
+        [contentStyle]="{ color: '#A6A6A6', textAlign: 'center', paddingTop: '42px' }"
+        [sidebarStyle]="{ border: '1px solid #ddd' }"
+        [sidebar]="sidebar"
+        [enableDragHandle]="false"
+        [docked]="this.state.docked"
+        (onOpenChange)="onDockedChange($event)"
       >
         Click upper-left corner
       </Drawer>
@@ -24,13 +25,14 @@ import { Component } from '@angular/core';
 
     <ng-template #sidebar>
       <List>
-        <ListItem [multipleLine]="true"
-                  [thumb]="'https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'">
+        <ListItem [multipleLine]="true" [thumb]="'https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'">
           Category
         </ListItem>
-        <ListItem *ngFor="let num of this.nums ; let i = index"
-                  [thumb]="'https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'">
-          Category{{i + 1}}
+        <ListItem
+          *ngFor="let num of this.nums; let i = index"
+          [thumb]="'https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'"
+        >
+          Category{{ i + 1 }}
         </ListItem>
       </List>
     </ng-template>

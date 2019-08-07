@@ -1,4 +1,11 @@
-import { Component, ChangeDetectorRef, Input, TemplateRef, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ChangeDetectorRef,
+  Input,
+  TemplateRef,
+  ChangeDetectionStrategy,
+  ViewEncapsulation
+} from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -48,9 +55,9 @@ export class RadioItemComponent {
     this.cdr.markForCheck();
   }
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
-  onRadioItemClick(event) { }
+  onRadioItemClick(event) {}
 
   change(event) {
     if (!this.disabled && !this.checked) {

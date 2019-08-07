@@ -14,19 +14,19 @@ const data = [
 ];
 
 describe('ImagePicker', () => {
-  let component: TestImagePicker;
-  let fixture: ComponentFixture<TestImagePicker>;
+  let component: TestImagePickerComponent;
+  let fixture: ComponentFixture<TestImagePickerComponent>;
   let ImagePickers;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ImagePickerModule],
-      declarations: [TestImagePicker]
+      declarations: [TestImagePickerComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestImagePicker);
+    fixture = TestBed.createComponent(TestImagePickerComponent);
     component = fixture.componentInstance;
     ImagePickers = fixture.debugElement.query(By.css('ImagePicker'));
     fixture.detectChanges();
@@ -85,7 +85,7 @@ describe('ImagePicker', () => {
   it('getOrientation work', () => {
     const mockOnLoadEvt = { target: { result: new ArrayBuffer(100) } };
     const mockReader: FileReader = jasmine.createSpyObj('FileReader', ['readAsDataURL', 'onload', 'readAsArrayBuffer']);
-    const mockCallback = (num) => num;
+    const mockCallback = num => num;
     const mockFile = new File([''], 'filename', { type: 'image/png' });
     spyOn(window as any, 'FileReader').and.returnValue(mockReader);
     mockReader.onload(mockOnLoadEvt as any);
@@ -97,8 +97,8 @@ describe('ImagePicker', () => {
 
   it('addImage work', () => {
     const mockItem = {
-      'url': 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-      'orientation': 0
+      url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
+      orientation: 0
     };
     component.imagePicker.addImage(mockItem);
     expect(component.imageChangeCallback).toHaveBeenCalled();
@@ -119,7 +119,6 @@ describe('ImagePicker', () => {
     expect(component.imagePicker.length).toBe(4);
   });
 
-
   it('should files work', () => {
     const imageDiv = ImagePickers.nativeElement.querySelector('.am-image-picker-item-content');
     expect(imageDiv.style['background-image']).toBe(
@@ -132,19 +131,20 @@ describe('ImagePicker', () => {
 @Component({
   selector: 'test-image-picker-child',
   template: `
-    <ImagePicker [files]="files"
-                 [multiple]="multiple"
-                 [selectable]="selectable"
-                 [length]="len"
-                 [accept]="'image/gif,image/jpeg,image/jpg,image/png'"
-                 (onChange)="imageChangeCallback($event)"
-                 (onImageClick)="imageClickCallback($event)"
-                 (onAddImageClick)="addImageClick($event)"
+    <ImagePicker
+      [length]="len"
+      [files]="files"
+      [multiple]="multiple"
+      [selectable]="selectable"
+      [accept]="'image/gif,image/jpeg,image/jpg,image/png'"
+      (onChange)="imageChangeCallback($event)"
+      (onAddImageClick)="addImageClick($event)"
+      (onImageClick)="imageClickCallback($event)"
     >
     </ImagePicker>
   `
 })
-export class TestImagePicker {
+export class TestImagePickerComponent {
   files = data.slice(0);
   multiple = true;
   selectable = true;
@@ -153,8 +153,7 @@ export class TestImagePicker {
   imageChangeCallback = jasmine.createSpy('imageChangeCallback is callback');
   imageClickCallback = jasmine.createSpy('imageClickCallback is callback');
 
-  constructor() {
-  }
+  constructor() {}
 
   addImageClick(e) {
     e.preventDefault();

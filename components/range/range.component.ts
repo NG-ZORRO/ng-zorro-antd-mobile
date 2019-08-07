@@ -164,7 +164,7 @@ export class RangeComponent implements OnInit, ControlValueAccessor {
     if (!this.verifyPushable()) {
       this._pushable = 0;
       console.log('pushable设置无效，已大于有些value间隔，被强制设为0');
-   }
+    }
     const initialValue = Array.apply(null, Array(this._count + 1)).map(function() {
       return minTemp;
     });

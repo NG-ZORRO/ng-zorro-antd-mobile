@@ -7,13 +7,7 @@ import { SliderStepsComponent } from './slider-steps/slider-steps.component';
 import { SliderTrackComponent } from './slider-track/slider-track.component';
 
 @NgModule({
-  exports: [
-    SliderComponent,
-    SliderHandleComponent,
-    SliderMarksComponent,
-    SliderStepsComponent,
-    SliderTrackComponent
-  ],
+  exports: [SliderComponent, SliderHandleComponent, SliderMarksComponent, SliderStepsComponent, SliderTrackComponent],
   declarations: [
     SliderComponent,
     SliderHandleComponent,

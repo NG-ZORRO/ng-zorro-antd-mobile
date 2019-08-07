@@ -56,26 +56,27 @@ describe('NavBarComponent', () => {
 @Component({
   selector: 'test-nav-bar-basic',
   template: `
-  <Navbar [icon]="icon"
-          [mode]="mode"
-          [leftContent]="leftContent"
-          [rightContent]="rightContent"
-          (onLeftClick)="onLeftClick()"
-  >
-    NavBar
-  </Navbar>
-  <Navbar [icon]="'left'" [leftContent]="'leftContent'" [rightContent]="'rightContent'">NavBar1</Navbar>
+    <Navbar
+      [icon]="icon"
+      [mode]="mode"
+      [leftContent]="leftContent"
+      [rightContent]="rightContent"
+      (onLeftClick)="onLeftClick()"
+    >
+      NavBar
+    </Navbar>
+    <Navbar [icon]="'left'" [leftContent]="'leftContent'" [rightContent]="'rightContent'">NavBar1</Navbar>
 
-  <ng-template #icon>
-    <Icon [type]="'left'"></Icon>
-  </ng-template>
-  <ng-template #leftContent>
-    <Icon [type]="'ellipsis'"></Icon>
-  </ng-template>
-  <ng-template #rightContent>
-    <Icon [ngStyle]="{marginRight: '16px'}" [type]="'search'"></Icon>
-    <Icon [type]="'ellipsis'"></Icon>
-  </ng-template>
+    <ng-template #icon>
+      <Icon [type]="'left'"></Icon>
+    </ng-template>
+    <ng-template #leftContent>
+      <Icon [type]="'ellipsis'"></Icon>
+    </ng-template>
+    <ng-template #rightContent>
+      <Icon [ngStyle]="{ marginRight: '16px' }" [type]="'search'"></Icon>
+      <Icon [type]="'ellipsis'"></Icon>
+    </ng-template>
   `
 })
 export class TestNavBarBasicComponent {

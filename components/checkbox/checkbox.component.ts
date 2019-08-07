@@ -64,7 +64,7 @@ export class CheckboxComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor() {}
 
   updateValue(value: boolean): void {
     this.checked = value;

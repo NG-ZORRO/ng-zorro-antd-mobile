@@ -1,21 +1,23 @@
-<div *ngIf="renderHeader && renderHeaderType === 'string'"
-     class="{{defaultProps.prefixCls}}-header"
-     [innerHTML]="renderHeader">
-</div>
-<div *ngIf="renderHeader && renderHeaderType === 'function'"
-     class="{{defaultProps.prefixCls}}-header">{{renderHeader()}}
+<div
+  *ngIf="renderHeader && renderHeaderType === 'string'"
+  class="{{ defaultProps.prefixCls }}-header"
+  [innerHTML]="renderHeader"
+></div>
+<div *ngIf="renderHeader && renderHeaderType === 'function'" class="{{ defaultProps.prefixCls }}-header">
+  {{ renderHeader() }}
 </div>
 <ng-template *ngIf="renderHeader && renderHeaderType === 'templateRef'" [ngTemplateOutlet]="renderHeader">
 </ng-template>
-<div class="{{defaultProps.prefixCls}}-body">
+<div class="{{ defaultProps.prefixCls }}-body">
   <ng-content></ng-content>
 </div>
-<div *ngIf="renderFooter && renderFooterType === 'string'"
-     class="{{defaultProps.prefixCls}}-footer"
-     [innerHTML]="renderFooter">
-</div>
-<div *ngIf="renderFooter && renderFooterType === 'function'"
-     class="{{defaultProps.prefixCls}}-footer">{{renderFooter()}}
+<div
+  *ngIf="renderFooter && renderFooterType === 'string'"
+  class="{{ defaultProps.prefixCls }}-footer"
+  [innerHTML]="renderFooter"
+></div>
+<div *ngIf="renderFooter && renderFooterType === 'function'" class="{{ defaultProps.prefixCls }}-footer">
+  {{ renderFooter() }}
 </div>
 <ng-template *ngIf="renderFooter && renderFooterType === 'templateRef'" [ngTemplateOutlet]="renderFooter">
 </ng-template>

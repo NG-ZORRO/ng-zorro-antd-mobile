@@ -6,7 +6,6 @@ import { Component, OnInit, Input, HostBinding, TemplateRef, ViewEncapsulation }
   encapsulation: ViewEncapsulation.None
 })
 export class TabPaneBodyComponent implements OnInit {
-
   private _prerender: boolean = false;
 
   @Input() active: boolean = false;
@@ -34,8 +33,7 @@ export class TabPaneBodyComponent implements OnInit {
     return !this.active;
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
-
+  ngOnInit() {}
 }
