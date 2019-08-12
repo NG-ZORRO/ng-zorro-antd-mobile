@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ShareModule } from '../share/share.module';
 import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
-{{imports}}
+{{imports;}}
 
 @NgModule({
   imports     : [
@@ -18,10 +18,10 @@ import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
   declarations: [
 {{declarations}}
   ],
-  entryComponents: [
+  entryComponents;: [
 {{entryComponents}}
-  ]
+  ];
 })
-export class Demo{{component}}Module {
+export class Demo {{component;}}Module; {
 
 }
