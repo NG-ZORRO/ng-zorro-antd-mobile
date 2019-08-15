@@ -11,9 +11,11 @@ import {
   Renderer2,
   ElementRef,
   forwardRef,
-  TemplateRef
+  TemplateRef,
+  AfterViewChecked
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { isTemplateRef } from '../core/util/check';
 
 @Component({
   selector: 'InputItem, nzm-input-item',
@@ -36,6 +38,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   autoFocus: boolean = false;
   inputType: string = 'text';
   ngTemplate: boolean = false;
+  isTemplateRef = isTemplateRef;
 
   private _el: HTMLElement;
   private _type: string = 'text';
@@ -57,7 +60,9 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   private _focus: boolean = false;
   private _isClear: boolean = false;
   private _fontColor: string;
+  private _content: string | TemplateRef<any> = '';
   private _inputLock = false;
+
 
   @ViewChild('lableContent')
   lableRef;
@@ -220,6 +225,14 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
       }
     }
   }
+  @Input()
+  get content() {
+    return this._content;
+  }
+  set content(value: string | TemplateRef<any>) {
+    this._content = value;
+    this.setCls();
+  }
 
   @Output()
   onChange: EventEmitter<any> = new EventEmitter<any>();
@@ -252,7 +265,8 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   setCls() {
     if (
       this.lableRef.nativeElement.children.length > 0 ||
-      (this.lableRef.nativeElement && this.lableRef.nativeElement.innerText !== '')
+      (this.lableRef.nativeElement && this.lableRef.nativeElement.innerText !== '') ||
+      this._content != undefined
     ) {
       this.labelCls = {
         [`${this.prefixCls}-label`]: true,

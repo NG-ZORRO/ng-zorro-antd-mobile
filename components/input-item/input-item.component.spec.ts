@@ -228,6 +228,12 @@ describe('InputComponent', () => {
     const labelEle = inputItem.nativeElement.querySelector('.am-input-label');
     expect(labelEle.classList).toContain('am-input-label-3');
   });
+  it('should content work', () => {
+    component.content = 'test content';
+    fixture.detectChanges();
+    const labelEle = inputModel.nativeElement.querySelector('.am-input-label');
+    expect(labelEle.innerText).toContain('test content');
+  });
   it('should updatePlaceholder work', () => {
     component.updatePlaceholder = true;
     component.value = 'hahah';
@@ -434,7 +440,7 @@ describe('InputComponent', () => {
     >
       <span (click)="clickTitle()">标题</span>
     </InputItem>
-    <InputItem class="input-item-1" [(ngModel)]="modelValue"></InputItem>
+    <InputItem class="input-item-1" [(ngModel)]="modelValue" [content]="content"></InputItem>
     <div class="am-list-content" click="blurFocus()">click to focus</div>
     <ng-template #extraTemplate>#</ng-template>
   `
@@ -459,6 +465,7 @@ export class TestInputComponent {
   moneyKeyboardAlign: string = 'right';
   locale;
   focus;
+  content = 'content';
 
   @ViewChild(InputItemComponent)
   inputItemComp: InputItemComponent;
