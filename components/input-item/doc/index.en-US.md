@@ -32,6 +32,7 @@ Properties | Descrition | Type | Default
 | extra       | the right content of `InputItem`   | string or TemplateRef |  ''  |
 | onExtraClick      | callback that is called when the extra content is clicked | (e: Object): void | <span> </span> |
 | labelNumber  | number of label text, valid value is 2 to 7 | number | `5` |
+| content  | content of label text | TemplateRef or String |  |
 | updatePlaceholder | whether to replace the placeholder with cleared content | bool | false|
 | prefixListCls  |   the class name prefix of list      | String |  `am-list`  |
 | moneyKeyboardAlign    | text align direction, only `type='money'` support this api， could be `'left'`, `'right'`       | String |  'right'  |
