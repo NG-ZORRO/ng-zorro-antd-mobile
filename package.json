@@ -137,12 +137,10 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "npm run test",
       "commit-msg": "node ./scripts/git/commit-msg.js -E HUSKY_GIT_PARAMS"
     }
   },
-  "pre-commit": [
-    "test"
-  ],
   "browserslist": [
     "iOS >= 7",
     "Android >= 4.4"
