@@ -8,7 +8,7 @@ describe('Result', () => {
   describe('spec', () => {
     let component: TestResultComponent;
     let fixture: ComponentFixture<TestResultComponent>;
-    let resultEle;
+    let results;
 
     beforeEach(async(() => {
       TestBed.configureTestingModule({
@@ -20,7 +20,7 @@ describe('Result', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(TestResultComponent);
       component = fixture.componentInstance;
-      resultEle = fixture.debugElement.query(By.css('Result'));
+      results = fixture.debugElement.queryAll(By.css('Result'));
       fixture.detectChanges();
     });
 
@@ -30,34 +30,44 @@ describe('Result', () => {
 
     it('should buttonText work', () => {
       fixture.detectChanges();
-      const button = resultEle.nativeElement.querySelector('.am-result-button');
+      const button = results[0].nativeElement.querySelector('.am-result-button');
       expect(button.querySelector('a').innerText).toContain('测试一下');
     });
 
     it('should img work', () => {
       fixture.detectChanges();
-      expect(resultEle.nativeElement.querySelector('.img1')).toBeTruthy();
+      expect(results[0].nativeElement.querySelector('.img1')).toBeTruthy();
     });
 
-    it('should message work', () => {
+    it('should message string work', () => {
       fixture.detectChanges();
-      expect(resultEle.nativeElement.querySelector('.message1')).toBeTruthy();
+      expect(results[1].nativeElement.querySelector('.am-result-message').innerText).toContain('测试');
     });
 
-    it('should text work', () => {
+    it('should message template work', () => {
       fixture.detectChanges();
-      expect(resultEle.nativeElement.querySelector('.am-result-title').innerText).toContain('支付成功');
+      expect(results[0].nativeElement.querySelector('.message1')).toBeTruthy();
+    });
+
+    it('should title string work', () => {
+      fixture.detectChanges();
+      expect(results[0].nativeElement.querySelector('.am-result-title').innerText).toContain('支付成功');
+    });
+
+    it('should title template work', () => {
+      fixture.detectChanges();
+      expect(results[1].nativeElement.querySelector('.title1').innerText).toContain('支付失败');
     });
 
     it('should buttonType work', () => {
       fixture.detectChanges();
-      const button = resultEle.nativeElement.querySelector('.am-result-button');
+      const button = results[0].nativeElement.querySelector('.am-result-button');
       expect(button.querySelector('[type=primary]')).toBeTruthy();
     });
 
     it('onClick work', () => {
       fixture.detectChanges();
-      let nzmButton = resultEle.nativeElement.querySelector('a[type=primary]');
+      let nzmButton = results[0].nativeElement.querySelector('a[type=primary]');
       nzmButton.click();
       expect(component.clickCallback).toHaveBeenCalled();
     });
@@ -76,6 +86,14 @@ describe('Result', () => {
         [buttonType]="buttonType"
         (onButtonClick)="clickCallback()"
       ></Result>
+      <Result
+        [imgUrl]="imgUrl"
+        [message]="'测试'"
+        [title]="title1"
+        [buttonText]="buttonText"
+        [buttonType]="buttonType"
+        (onButtonClick)="clickCallback()"
+      ></Result>
       <ng-template #img1>
         <img
           src="https://gw.alipayobjects.com/zos/rmsportal/pdFARIqkrKEGVVEwotFe.svg"
@@ -86,16 +104,20 @@ describe('Result', () => {
       <ng-template #message1>
         <div class="message1">998.00元 <del>1098元</del></div>
       </ng-template>
+      <ng-template #title1>
+        <div class="title1">支付失败</div>
+      </ng-template>
     </div>
   `
 })
 export class TestResultComponent {
-  img: string = 'xs'; // 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-  message: string = '';
   title: string = '';
+  message: string = '';
+  img: string = 'xs'; // 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   buttonText: string = '测试一下';
   buttonType: string = 'primary';
   clickCallback = jasmine.createSpy('buttonClick is callback');
+  imgUrl: string = 'https://img.alicdn.com/tfs/TB1oy4uGDtYBeNjy1XdXXXXyVXa-393-401.png';
 
   constructor() {}
 }
