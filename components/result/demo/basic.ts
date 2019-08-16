@@ -45,6 +45,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
       [img]="img5"
       [title]="'无法完成操作'"
       [message]="'由于你的支付宝账户还未绑定淘宝账户请登请登录www.taobao.com'"
+      [buttonText]="'请点击查看错误详情'"
+      (onButtonClick)="clickCallback()"
     >
       <ng-template #img5>
         <img
@@ -77,6 +79,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class DemoResultBasicComponent {
   clickCallback() {
-    console.log('clk');
+    console.log('错误详情');
   }
 }
