@@ -35,6 +35,7 @@ subtitle: 文本输入
 | extra       | 右边注释   | string or TemplateRef |  ''  |
 | onExtraClick      | extra 点击事件触发的回调函数 | (e: Object): void |  无  |
 | labelNumber  | 标签的文字个数，可用`2-7`之间的数字 | number | `5` |
+| content  | 标签内容支持string和模版 | TemplateRef 或者 String |  |
 | updatePlaceholder | 当清除内容时，是否将清除前的内容替换到 placeholder 中 | bool |  false  |
 | prefixListCls  |   列表 className 前缀      | String |  `am-list`  |
 | moneyKeyboardAlign   | 文字排版起始方向, 只有 `type='money'` 支持， 可选为 `'left'`, `'right'`       | String |  'right'  |
