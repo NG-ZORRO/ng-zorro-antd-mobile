@@ -21,7 +21,6 @@ describe('Result', () => {
       fixture = TestBed.createComponent(TestResultComponent);
       component = fixture.componentInstance;
       results = fixture.debugElement.queryAll(By.css('Result'));
-      // resultEle = fixture.debugElement.query(By.css('Result'));
       fixture.detectChanges();
     });
 
