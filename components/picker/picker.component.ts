@@ -14,14 +14,15 @@ import * as velocity from '../core/util/velocity';
 import * as touchEvent from '../core/util/touch-event';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { PickerRef } from './picker-ref.class';
 
 @Component({
   selector: 'Picker',
   templateUrl: './picker.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
+export class PickerComponent<T = any, R = any> extends PickerRef<T, R> implements OnInit, AfterViewInit, OnDestroy {
   transitionName: string = 'am-slide-up-enter am-slide-up-enter-active';
   maskTransitionName: string = 'am-fade-enter am-fade-enter-active';
   startY: number = 0;
@@ -141,7 +142,9 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
     public elementRef: ElementRef,
     public options: PickerOptions,
     private _localeProviderService: LocaleProviderService
-  ) {}
+  ) {
+    super();
+  }
 
   onChange = (_: any[]) => {};
 
@@ -296,6 +299,24 @@ export class PickerComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
     }, 0);
+  }
+
+  getInstance(): PickerComponent {
+    return this;
+  }
+
+  getElement(): HTMLElement {
+    return this.elementRef && this.elementRef.nativeElement;
+  }
+
+  close(): void {
+    if (this.options.hidePicker) {
+      this.options.hidePicker();
+    }
+  }
+
+  destroy(): void {
+    this.close();
   }
 
   ngOnInit() {

@@ -16,7 +16,7 @@ subtitle: 动作面板
 
 ## API
 
-#### static showActionSheetWithOptions(options: Object, callback: Function)
+####  showActionSheetWithOptions(options: Object, callback: Function)
 
 显示 action sheet，`options`对象必须包含以下的一个或者多个：
 
@@ -29,7 +29,7 @@ subtitle: 动作面板
 
 `callback`函数支持返回 Promise
 
-#### static showShareActionSheetWithOptions(options: Object, callback: Function)
+#### showShareActionSheetWithOptions(options: Object, callback: Function)
 
 显示分享 action sheet，`options`对象必须包含以下的一个或者多个：
 
@@ -43,7 +43,7 @@ subtitle: 动作面板
 
 - `callback`函数支持返回 Promise 
 
-#### static showShareActionSheetWithOptions(options: Object, failureCallback: Function, successCallback: Function)
+#### showShareActionSheetWithOptions(options: Object, failureCallback: Function, successCallback: Function)
 
 
 显示分享 action sheet，`options`对象必须包含以下的一个或者多个：
@@ -57,4 +57,36 @@ subtitle: 动作面板
   - failureCallback(error): 分享失败调用；
   - successCallback(completed, method)：分享成功调用;
 
-#### static close() - programmatically close.
+#### close() - programmatically close.
+
+以上函数调用后，会返回一个引用，可以通过该引用关闭弹窗。
+
+```ts
+constructor(actionSheet: ActionSheetService) {
+  const ref: ActionSheetService = actionSheet.showShareActionSheetWithOptions(
+      {
+        options: this.dataList,
+        title: 'action-title',
+        message: 'I am description, description, description'
+      },
+      buttonIndex => {
+        return new Promise(resolve => {
+          setTimeout(resolve, 1000);
+        });
+      }
+    );
+  ref.close(); // 或 ref.destroy(); 将直接销毁对话框
+}
+```
+
+#### ActionSheetRef
+
+> ActionSheetRef 对象用于控制对话框以及进行内容间的通信
+
+通过服务方式 `ActionSheetService.xxx()` 创建的对话框，都会返回一个 `ActionSheetRef` 对象，该对象具有以下方法：
+
+| 方法/属性 | 说明 |
+|----|----|
+| close(result: any)        | 关闭(隐藏)对话框。<i>注：当用于以服务方式创建的对话框，此方法将直接 销毁 对话框（同destroy方法）</i> |
+| destroy(result: any)      | 销毁对话框。<i>注：仅用于服务方式创建的对话框（非服务方式创建的对话框，此方法只会隐藏对话框）</i> |
+| getContentComponent()     | 获取对话框内容中Content的Component实例instance。<i>注：当对话框还未初始化完毕（`ngOnInit`未执行）时，此函数将返回`undefined`</i> |

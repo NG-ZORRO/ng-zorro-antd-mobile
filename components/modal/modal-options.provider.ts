@@ -1,7 +1,7 @@
 import { Injectable, TemplateRef } from '@angular/core';
 
 export class ModalBaseOptions {
-  visible?: boolean = false;
+  visible?: boolean = true;
   focus?: boolean = true;
   prefixCls?: string = 'am-modal';
   animated?: boolean = true;
@@ -26,6 +26,7 @@ export class ModalBaseOptions {
   transitionName?: string = 'am-zoom';
   maskTransitionName?: string = 'am-fade';
   close: () => void;
+  closeWithAnimation: () => void;
 }
 
 @Injectable()

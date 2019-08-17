@@ -1,9 +1,9 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { async, ComponentFixture, fakeAsync, tick, TestBed, flush } from '@angular/core/testing';
-import { ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule } from '../..';
+import { ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule, ModalRef } from '../..';
 import { By } from '@angular/platform-browser';
-import { ModalService, ModalServiceComponent } from '../..';
+import { ModalService, ModalServiceComponent, ModalComponent } from '../..';
 import { ButtonComponent } from '../button/button.component';
 import { dispatchTouchEvent } from '../core/testing';
 import { ModalOptions, AlertOptions } from './modal-options.provider';
@@ -17,15 +17,7 @@ describe('ModalComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestModalBasicComponent],
-      imports: [
-        ModalModule,
-        WingBlankModule,
-        ListModule,
-        WhiteSpaceModule,
-        ButtonModule,
-        FormsModule,
-        ReactiveFormsModule
-      ],
+      imports: [ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule, FormsModule, ReactiveFormsModule],
       providers: [Overlay, ModalOptions, AlertOptions]
     }).compileComponents();
     TestBed.overrideModule(ModalModule, {
@@ -46,6 +38,8 @@ describe('ModalComponent', () => {
   });
 
   it('should transparent work', fakeAsync(() => {
+    component.modalServiceComponent.transitionName = null;
+    component.modalServiceComponent.setTransitionName(true);
     component.state = true;
     fixture.detectChanges();
     flush();
@@ -53,6 +47,7 @@ describe('ModalComponent', () => {
     expect(modalEle.nativeElement.querySelector('.am-modal-transparent')).toBeTruthy('transparent is true');
     component.transparent = false;
     fixture.detectChanges();
+    component.modalServiceComponent.inputChange('phone', '1234');
 
     expect(modalEle.nativeElement.querySelector('.am-modal-transparent')).toBeNull('transparent is false');
   }));
@@ -186,6 +181,7 @@ describe('ModalComponent', () => {
     button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modalservice');
+    const input = document.querySelector('modalservice').getElementsByClassName('am-modal-input')[0];
     const buttonOk = modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
@@ -196,7 +192,7 @@ describe('ModalComponent', () => {
     button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modalservice');
-    const buttonOk = modal.querySelector('.am-modal-button');
+    const buttonOk =  modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
   });
@@ -206,7 +202,7 @@ describe('ModalComponent', () => {
     button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modalservice');
-    const buttonOk = modal.querySelector('.am-modal-button');
+    const buttonOk =  modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
   });
@@ -216,7 +212,7 @@ describe('ModalComponent', () => {
     button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modalservice');
-    const buttonOk = modal.querySelector('.am-modal-button');
+    const buttonOk =  modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
   });
@@ -226,7 +222,7 @@ describe('ModalComponent', () => {
     button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modalservice');
-    const buttonOk = modal.querySelector('.am-modal-button');
+    const buttonOk =  modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
   });
@@ -235,38 +231,43 @@ describe('ModalComponent', () => {
 @Component({
   selector: 'demo-modal-basic',
   template: `
-    <Modal
-      [title]="title"
-      [popup]="popup"
-      [(ngModel)]="state"
-      [footer]="footer"
-      [closable]="closable"
-      [platform]="platform"
-      [wrapClassName]="'test-class'"
-      [transparent]="transparent"
-      [animationType]="animationType"
-    >
-      <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
-        scoll content...
-        <br />
-        scoll content... <br />
-        scoll content... <br />
-        scoll content... <br />
-        scoll content... <br />
-        scoll content...
-        <br />
-      </div>
-    </Modal>
-    <div Button (onClick)="showOpeartion()">operation</div>
-    <div Button (onClick)="showAlert()">customized buttons</div>
-    <div Button (onClick)="showPromptDefault()">defaultValue</div>
-    <div Button (onClick)="showPromptPromise()">promise</div>
-    <div Button (onClick)="showSecure()">secure-text</div>
-    <div Button (onClick)="showCustom()">custom buttons</div>
-    <div Button (onClick)="showLogin()">login-password</div>
-    <ng-template #title>
-      <div>123</div>
-    </ng-template>
+  <Modal [title]="title"
+         [popup]="popup"
+         [(ngModel)]="state"
+         [actions]="actions"
+         [placeholders]="'ccccc'"
+         [type]="'dddd'"
+         [defaultValue]="'yyyy'"
+         [operation]="true"
+         [footer]="footer"
+         [closable]="closable"
+         [maskClosable]="true"
+         [platform]="platform"
+         [wrapClassName]="'test-class'"
+         [className]="'xxx'"
+         [transparent]="transparent"
+         [animationType]="animationType"
+  >
+    <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
+      scoll content...
+      <br /> scoll content...
+      <br /> scoll content...
+      <br /> scoll content...
+      <br /> scoll content...
+      <br /> scoll content...
+      <br />
+    </div>
+  </Modal>
+  <div Button (onClick)="showOpeartion()">operation</div>
+  <div Button (onClick)="showAlert()">customized buttons</div>
+  <div Button (onClick)="showPromptDefault()">defaultValue</div>
+  <div Button (onClick)="showPromptPromise()">promise</div>
+  <div Button (onClick)="showSecure()">secure-text</div>
+  <div Button (onClick)="showCustom()">custom buttons</div>
+  <div Button (onClick)="showLogin()">login-password</div>
+  <ng-template #title>
+  <div>123</div>
+  </ng-template>
   `
 })
 export class TestModalBasicComponent {
@@ -277,6 +278,10 @@ export class TestModalBasicComponent {
   state = false;
   transparent = true;
   title: any = '456';
+  actions = [
+    { text: 'Cancel', onPress: () => console.log('cancel') },
+    { text: 'OK', onPress: () => console.log('ok') }
+  ];
   footer = [
     {
       text: 'Ok',
@@ -287,28 +292,43 @@ export class TestModalBasicComponent {
     }
   ];
   @ViewChild('title') titleRef: ViewChild;
-  constructor(private _modal: ModalService) {}
+  @ViewChild(ModalComponent) modalServiceComponent: ModalComponent;
+  templateOpenSpy = jasmine.createSpy('template afterOpen spy');
+  templateCloseSpy = jasmine.createSpy('template afterClose spy');
+  constructor(private _modal: ModalService) {
+    const ref: ModalRef = this._modal.alert('Delete', 'Are you sure ?', [
+      { text: 'Cancel', onPress: () => console.log('cancel') },
+      { text: 'OK', onPress: () => console.log('ok') }
+    ]);
+    ref.getInstance();
+    ref.getElement();
+    ref.triggerCancel();
+    ref.afterOpen.subscribe(this.templateOpenSpy);
+    ref.afterClose.subscribe(this.templateCloseSpy);
+    ref.destroy();
+  }
 
   onClose(key) {
     this.state = false;
   }
 
   showOpeartion() {
-    ModalService.operation([
+    this._modal.operation([
       { text: '标为未读', onPress: () => console.log('标为未读被点击了') },
       { text: '置顶聊天', onPress: () => console.log('置顶聊天被点击了') }
     ]);
   }
 
   showAlert() {
-    ModalService.alert('Delete', 'Are you sure ?', [
+    const ref: ModalRef = this._modal.alert('Delete', 'Are you sure ?', [
       { text: 'Cancel', onPress: () => console.log('cancel') },
       { text: 'OK', onPress: () => console.log('ok') }
     ]);
+    ref.triggerOk();
   }
 
   showPromptPromise() {
-    ModalService.prompt(
+    this._modal.prompt(
       'input name',
       'please input your name',
       [
@@ -340,7 +360,7 @@ export class TestModalBasicComponent {
   }
 
   showPromptDefault() {
-    ModalService.prompt(
+    this._modal.prompt(
       'defaultValue',
       'defaultValue for prompt',
       [{ text: 'Cancel' }, { text: 'Submit', onPress: value => console.log(`输入的内容:${value}`) }],
@@ -350,16 +370,11 @@ export class TestModalBasicComponent {
   }
 
   showSecure() {
-    ModalService.prompt(
-      'Password',
-      'Password Message',
-      password => console.log(`password: ${password}`),
-      'secure-text'
-    );
+    this._modal.prompt('Password', 'Password Message', password => console.log(`password: ${password}`), 'secure-text');
   }
 
   showCustom() {
-    ModalService.prompt(
+    this._modal.prompt(
       'Password',
       'You can custom buttons',
       [{ text: '取消' }, { text: '提交', onPress: password => console.log(`密码为:${password}`) }],
@@ -368,7 +383,7 @@ export class TestModalBasicComponent {
   }
 
   showLogin() {
-    ModalService.prompt(
+    this._modal.prompt(
       'Login',
       'Please input login information',
       (login, password) => console.log(`login: ${login}, password: ${password}`),

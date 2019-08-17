@@ -6,7 +6,7 @@ import { ListModule, PickerModule, PickerComponent } from '../..';
 import { PickerOptions } from './picker-options.provider';
 import { PickerService } from './picker.service';
 import { dispatchTouchEvent } from '../core/testing';
-import { LocaleProviderService, LocaleProviderModule } from '../..';
+import { LocaleProviderService, LocaleProviderModule, PickerRef } from '../..';
 import { ButtonComponent } from '../button/button.component';
 import { ButtonModule } from '../button/button.module';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
@@ -253,6 +253,8 @@ export class TestPickerBasicComponent {
   }
 
   showPicker() {
-    PickerService.showPicker({ value: this.value, data: this.singleArea }, result => {}, cancel => {});
+   const ref: PickerRef = this._picker.showPicker({ value: this.value, data: this.singleArea }, result => {}, cancel => {});
+   ref.getInstance();
+   ref.getElement();
   }
 }

@@ -65,3 +65,28 @@ subtitle: 对话框
 | platform  |  设定组件的平台特有样式, 可选值为 `android`, `ios`， 默认为 `ios`  | String | `'ios'`|
 
 `ModalSerivce.operation(actions?, platform?).close()` 可以在外部关闭 operation`
+
+以上函数调用后，会返回一个引用，可以通过该引用关闭弹窗。
+
+```ts
+constructor(modal: ModalService) {
+  const ref: ModalRef = modal.alert();
+  ref.close(); // 或 ref.destroy(); 将直接销毁对话框
+}
+```
+
+#### ModalRef
+
+> ModalRef 对象用于控制对话框以及进行内容间的通信
+
+通过服务方式 `ModalService.xxx()` 创建的对话框，都会返回一个 `ModalRef` 对象，该对象具有以下方法：
+
+| 方法/属性 | 说明 |
+|----|----|
+| afterOpen                 | 同afterOpen，但类型为Observable&lt;void&gt; |
+| afterClose                | 同afterClose，但类型为Observable&lt;result:any&gt; |
+| close(result: any)        | 关闭(隐藏)对话框。<i>注：当用于以服务方式创建的对话框，此方法将直接 销毁 对话框（同destroy方法）</i> |
+| destroy(result: any)      | 销毁对话框。<i>注：仅用于服务方式创建的对话框（非服务方式创建的对话框，此方法只会隐藏对话框）</i> |
+| getContentComponent()     | 获取对话框内容中Content的Component实例instance。<i>注：当对话框还未初始化完毕（`ngOnInit`未执行）时，此函数将返回`undefined`</i> |
+| triggerOk()               | 手动触发onClose |
+| triggerCancel()           | 手动触发cancel |

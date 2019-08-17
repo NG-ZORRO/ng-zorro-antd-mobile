@@ -37,3 +37,34 @@ subtitle: 选择器
 | config    | 初始化配置       | {data: [], value: [],...}    | 无           |
 | confirm    | 选中后的回调       | (val): void     | 无           |
 | cancel    | 点击取消时执行的回调       | (): void     | 无           |
+
+以上函数调用后，会返回一个引用，可以通过该引用关闭弹窗。
+
+```ts
+constructor(picker: PickerService) {
+  const ref: PickerRef =  picker.showPicker(
+      { value: this.value, data: this.singleArea },
+      result => {
+        this.name = this.getResult(result);
+        this.value = this.getValue(result);
+      },
+      cancel => {
+        console.log('cancel');
+
+      }
+    );
+  ref.close(); // 或 ref.destroy(); 将直接销毁对话框
+}
+```
+
+#### PickerRef
+
+> PickerRef 对象用于控制对话框以及进行内容间的通信
+
+通过服务方式 `PickerService.xxx()` 创建的对话框，都会返回一个 `PickerRef` 对象，该对象具有以下方法：
+
+| 方法/属性 | 说明 |
+|----|----|
+| close(result: any)        | 关闭(隐藏)对话框。<i>注：当用于以服务方式创建的对话框，此方法将直接 销毁 对话框（同destroy方法）</i> |
+| destroy(result: any)      | 销毁对话框。<i>注：仅用于服务方式创建的对话框（非服务方式创建的对话框，此方法只会隐藏对话框）</i> |
+| getContentComponent()     | 获取对话框内容中Content的Component实例instance。<i>注：当对话框还未初始化完毕（`ngOnInit`未执行）时，此函数将返回`undefined`</i> |
