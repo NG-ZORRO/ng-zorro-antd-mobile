@@ -15,14 +15,14 @@ function noop() {}
   providedIn: 'root'
 })
 export class ActionSheetService extends PopupService {
-  static compRef: ComponentRef<any> = null;
-  static _actionSheetCompFactory: ComponentFactory<ActionSheetComponent> = null;
-  static appRef: ApplicationRef = null;
-  static comRef: ComponentRef<ActionSheetComponent> = null;
+  compRef: ComponentRef<any> = null;
+  _actionSheetCompFactory: ComponentFactory<ActionSheetComponent> = null;
+  appRef: ApplicationRef = null;
+  comRef: ComponentRef<ActionSheetComponent> = null;
 
-  static instance = null;
+  instance = null;
 
-  static _initConfig(config: ActionSheetOptions, options: Object = {}): ActionSheetOptions {
+  _initConfig(config: ActionSheetOptions, options: Object = {}): ActionSheetOptions {
     const props: ActionSheetOptions = new ActionSheetOptions();
     const optionalParams: string[] = [
       'prefixCls',
@@ -36,12 +36,14 @@ export class ActionSheetService extends PopupService {
       'transitionName',
       'maskTransitionName',
       'options',
-      'locale'
+      'locale',
+      'close'
     ];
+    const self = this;
     config = Object.assign(options, config, {
       close: (): void => {
         if (config.maskClosable) {
-          ActionSheetService.closeWithAnimation(config.transitionName, config.maskTransitionName);
+          self.closeWithAnimation(config.transitionName, config.maskTransitionName);
         }
       }
     });
@@ -53,14 +55,13 @@ export class ActionSheetService extends PopupService {
     return props;
   }
 
-  static _open(props: ActionSheetOptions) {
-    setTimeout(() => {
-      ActionSheetService.comRef =  ActionSheetService.showPopup('ActionSheetComponent', ActionSheetComponent);
-      ActionSheetService.comRef.instance.option = props;
-    }, 0);
+  _open(props: ActionSheetOptions) {
+    this.comRef =  this.showPopup(ActionSheetComponent);
+    this.comRef.instance.option = props;
+    return this.comRef && this.comRef.instance;
   }
 
-  static createActionSheet(
+  createActionSheet(
     flag: string,
     config: ActionSheetWithOptions | ShareActionSheetWithOptions,
     callback: ActionCallBack
@@ -70,39 +71,40 @@ export class ActionSheetService extends PopupService {
     options.transitionName = `${transitionName}-enter ${transitionName}-enter-active`;
     const maskTransitionName = config.maskTransitionName ? config.maskTransitionName : options.maskTransitionName;
     options.maskTransitionName = `${maskTransitionName}-enter ${maskTransitionName}-enter-active`;
-    const props = ActionSheetService._initConfig(config, options);
+    const props = this._initConfig(config, options);
     Object.assign(props, { onPress: cb }, { flag: flag }, { maskClose: props.maskClosable ? cb : () => {}});
+    const self = this;
     function cb(index: any, rowIndex = 0, event) {
       event.stopPropagation();
       const res = callback(index, rowIndex);
       if (res && res.then) {
         res.then(() => {
-          ActionSheetService.closeWithAnimation(transitionName, maskTransitionName);
+          self.closeWithAnimation(transitionName, maskTransitionName);
         });
       } else {
-        ActionSheetService.closeWithAnimation(transitionName, maskTransitionName);
+        self.closeWithAnimation(transitionName, maskTransitionName);
       }
     }
-    return ActionSheetService._open(props);
+    return this._open(props);
   }
 
-  static closeWithAnimation(transitionName, maskTransitionName) {
-    ActionSheetService.comRef.instance.option.transitionName = `${transitionName}-leave ${transitionName}-leave-active`;
-    ActionSheetService.comRef.instance.option.maskTransitionName = `${maskTransitionName}-leave ${maskTransitionName}-leave-active`;
+  closeWithAnimation(transitionName, maskTransitionName) {
+    this.comRef.instance.option.transitionName = `${transitionName}-leave ${transitionName}-leave-active`;
+    this.comRef.instance.option.maskTransitionName = `${maskTransitionName}-leave ${maskTransitionName}-leave-active`;
     setTimeout(() => {
-      ActionSheetService.close();
+      this.close();
     }, 200);
   }
 
-  static showActionSheetWithOptions(config: ActionSheetWithOptions, callback: ActionCallBack = noop) {
-    ActionSheetService.createActionSheet(NORMAL, config, callback);
+  showActionSheetWithOptions(config: ActionSheetWithOptions, callback: ActionCallBack = noop) {
+   return this.createActionSheet(NORMAL, config, callback);
   }
 
-  static showShareActionSheetWithOptions(config: ShareActionSheetWithOptions, callback: ActionCallBack = noop) {
-    ActionSheetService.createActionSheet(SHARE, config, callback);
+  showShareActionSheetWithOptions(config: ShareActionSheetWithOptions, callback: ActionCallBack = noop) {
+    return this.createActionSheet(SHARE, config, callback);
   }
 
-  static close() {
-    ActionSheetService.hidePopup('ActionSheetComponent');
+  close() {
+    this.hidePopup();
   }
 }

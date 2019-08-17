@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PickerService } from 'ng-zorro-antd-mobile';
+import { PickerService, PickerRef } from 'ng-zorro-antd-mobile';
 import { district, provinceLite } from 'antd-mobile-demo-data';
 @Component({
   selector: 'demo-picker-basic',
@@ -233,7 +233,7 @@ export class DemoPickerBasicComponent {
   }
 
   showPicker() {
-    PickerService.showPicker(
+   const ref: PickerRef =  this._picker.showPicker(
       { value: this.value, data: this.singleArea },
       result => {
         this.name = this.getResult(result);

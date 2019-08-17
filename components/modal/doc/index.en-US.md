@@ -59,3 +59,37 @@ Properties | Descrition | Type | Default
 | actions | button group, [{text, onPress, style}]  | Array | -  |
 
 call ModalService.operation(actions?).close()` can close Operation Modal outside anywhere as you wish.
+
+
+```ts
+constructor(modal: ModalService) {
+  const ref: ModalRef = modal.alert();
+  ref.close(); // Or ref.destroy(); This dialog will be destroyed directly
+}
+```
+
+### Related type definition
+
+#### Other Methods/Attributes for ModalService
+
+| Methods/Attributes | Description | Type |
+|----|----|
+| openModals | All currently open Modal list | ModalRef[] |
+| afterAllClose | Callback called after all Modals closed completely | Observable&lt;void&gt; |
+| closeAll() | Close all modals | function |
+
+#### ModalRef
+
+> ModalRef object is used to control dialogs and communicate with inside content
+
+The dialog created by the service method `ModalService.xxx()` will return a `ModalRef` object that is used to manipulate the dialog , This object has the following methods:
+
+| Method | Description |
+|----|----|
+| afterOpen                 | Same as AfterOpen but of type Observable&lt;void&gt; |
+| afterClose | Same as AfterClose, but of type Observable&lt;result:any&gt; |
+| close()                   | Close (hide) the dialog. <i>Note: When used for a dialog created as a service, this method will destroy the dialog directly (as with the destroy method)</i> |
+| destroy()                 | Destroy the dialog. <i>Note: Used only for dialogs created by the service (non-service created dialogs, this method only hides the dialog)</i> |
+| getContentComponent()  | Gets the Component instance in the contents of the dialog for `Content`. <i> Note: When the dialog is not initialized (`ngOnInit` is not executed), this function will return `undefined`</i> |
+| triggerOk()               | Manually trigger onClose |
+| triggerCancel()           | Manually trigger cancel |

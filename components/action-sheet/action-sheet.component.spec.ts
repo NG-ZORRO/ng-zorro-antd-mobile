@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
 import { ActionSheetComponent } from './action-sheet.component';
-import { ActionSheet, ActionSheetModule, ButtonModule } from '../..';
+import { ActionSheet, ActionSheetModule, ButtonModule, ActionSheetRef } from '../..';
 import { NgZorroAntdMobilePipesModule } from '../pipes/ng-zorro-antd-mobile.pipes.module';
 import { Overlay } from '@angular/cdk/overlay';
 import { en_US } from '../locale-provider/locale';
@@ -102,17 +102,6 @@ describe('ActionSheetComponent', () => {
     flush();
   }));
 
-  it('should close work', fakeAsync(() => {
-    const button = buttons[1].nativeElement;
-    button.click();
-    fixture.detectChanges();
-    flush();
-    actionSheetEle = document.getElementsByTagName('actionsheet')[1];
-    actionSheetEle.querySelector('.am-action-sheet-share-list-item').click();
-    fixture.detectChanges();
-    flush();
-  }));
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -162,7 +151,7 @@ export class TestActionSheetBasicComponent {
 
   showActionSheet = message => {
     const BUTTONS = ['Operation1', 'Operation2', 'Operation2', 'Delete', 'Cancel'];
-    ActionSheet.showActionSheetWithOptions(
+    const ref: ActionSheetRef = this._actionSheet.showActionSheetWithOptions(
       {
         options: BUTTONS,
         cancelButtonIndex: BUTTONS.length - 1,
@@ -176,10 +165,12 @@ export class TestActionSheetBasicComponent {
         console.log(buttonIndex);
       }
     );
+    ref.getInstance();
+    ref.getElement();
   }
 
   showShareActionSheet = () => {
-    ActionSheet.showShareActionSheetWithOptions(
+    this._actionSheet.showShareActionSheetWithOptions(
       {
         options: this.dataList,
         title: 'action-title',
@@ -195,7 +186,7 @@ export class TestActionSheetBasicComponent {
 
   showShareActionSheetMulpitleLine = () => {
     const data = [[...this.dataList1, this.dataList1[2]], [this.dataList1[3], this.dataList1[4]]];
-    ActionSheet.showShareActionSheetWithOptions(
+    this._actionSheet.showShareActionSheetWithOptions(
       {
         options: data,
         message: 'I am description, description, description'
