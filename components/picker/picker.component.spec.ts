@@ -253,8 +253,12 @@ export class TestPickerBasicComponent {
   }
 
   showPicker() {
-   const ref: PickerRef = this._picker.showPicker({ value: this.value, data: this.singleArea }, result => {}, cancel => {});
-   ref.getInstance();
-   ref.getElement();
+    const ref: PickerRef = this._picker.showPicker(
+      { value: this.value, data: this.singleArea },
+      result => {},
+      cancel => {}
+    );
+    ref.getInstance();
+    ref.getElement();
   }
 }

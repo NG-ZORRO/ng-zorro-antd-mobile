@@ -9,14 +9,32 @@ import { ToastService } from 'ng-zorro-antd-mobile';
       <div class="am-list" style="margin:0;">
         <div class="am-list-header">Money input</div>
         <div class="am-list-body">
-          <InputItem [type]="'money'" [clear]="true" [placeholder]="'start from left'" [moneyKeyboardAlign]="'left'" [content]="'光标在左'">
+          <InputItem
+            [type]="'money'"
+            [clear]="true"
+            [placeholder]="'start from left'"
+            [moneyKeyboardAlign]="'left'"
+            [content]="'光标在左'"
+          >
           </InputItem>
-          <InputItem [type]="'money'" [clear]="true" [placeholder]="'start from rigth'" [content]="'光标在右'"></InputItem>
-          <InputItem [type]="'money'" [clear]="true" [placeholder]="'money format'" [focus]="numberFocus" [content]="'数字键盘'">
+          <InputItem
+            [type]="'money'"
+            [clear]="true"
+            [placeholder]="'start from rigth'"
+            [content]="'光标在右'"
+          ></InputItem>
+          <InputItem
+            [type]="'money'"
+            [clear]="true"
+            [placeholder]="'money format'"
+            [focus]="numberFocus"
+            [content]="'数字键盘'"
+          >
           </InputItem>
           <div class="am-list-item am-list-item-middle">
             <div class="am-list-line">
-              <div class="am-list-content" style="width:100%;color:#108ee9;text-align:center" (click)="clickFocus()">click to focus
+              <div class="am-list-content" style="width:100%;color:#108ee9;text-align:center" (click)="clickFocus()">
+                click to focus
               </div>
             </div>
             <div class="am-list-ripple" style="display: none;"></div>
@@ -27,7 +45,12 @@ import { ToastService } from 'ng-zorro-antd-mobile';
         <div class="am-list-header">Customize to focus</div>
         <div class="am-list-body">
           <InputItem [clear]="true" [placeholder]="'auto focus'" [focus]="autoFocus" [content]="'标题'"></InputItem>
-          <InputItem [clear]="true" [placeholder]="'click the button below to focus'" [focus]="inputFocus" [content]="'标题'">
+          <InputItem
+            [clear]="true"
+            [placeholder]="'click the button below to focus'"
+            [focus]="inputFocus"
+            [content]="'标题'"
+          >
           </InputItem>
           <div class="am-list-item am-list-item-middle">
             <div class="am-list-line">
@@ -48,7 +71,7 @@ import { ToastService } from 'ng-zorro-antd-mobile';
         <div class="am-list-body">
           <InputItem [placeholder]="'Click label to focus input'" [focus]="titleFocus" [content]="contentlabel">
             <ng-template #contentlabel>
-            <span (click)="clickTitle()">标题</span>
+              <span (click)="clickTitle()">标题</span>
             </ng-template>
           </InputItem>
         </div>
@@ -62,7 +85,12 @@ import { ToastService } from 'ng-zorro-antd-mobile';
       <div class="am-list" style="margin:0;">
         <div class="am-list-header">Number of words for the title</div>
         <div class="am-list-body">
-          <InputItem [clear]="true" [labelNumber]="5" [placeholder]="'limited title length'" [content]="'标题过长超过5个字符'">
+          <InputItem
+            [clear]="true"
+            [labelNumber]="5"
+            [placeholder]="'limited title length'"
+            [content]="'标题过长超过5个字符'"
+          >
           </InputItem>
         </div>
       </div>
@@ -71,10 +99,10 @@ import { ToastService } from 'ng-zorro-antd-mobile';
         <div class="am-list-body">
           <InputItem [placeholder]="'no label'"></InputItem>
           <InputItem [placeholder]="'title can be icon，image or text'" [content]="content">
-          <ng-template #content>
-          <div
-              style="background-image:url(https://zos.alipayobjects.com/rmsportal/DfkJHaJGgMghpXdqNaKF.png); background-size:cover;height:22px; width: 22px "
-            ></div>
+            <ng-template #content>
+              <div
+                style="background-image:url(https://zos.alipayobjects.com/rmsportal/DfkJHaJGgMghpXdqNaKF.png); background-size:cover;height:22px; width: 22px "
+              ></div>
             </ng-template>
           </InputItem>
         </div>
@@ -89,10 +117,19 @@ import { ToastService } from 'ng-zorro-antd-mobile';
         <div class="am-list-header">Format</div>
         <div class="am-list-body">
           <InputItem [type]="'bankCard'" [defaultValue]="'8888 8888 8888 8888'" [content]="'银行卡'"></InputItem>
-          <InputItem [type]="'phone'" [placeholder]="'186 1234 1234'" (onChange)="inputChange($event)" [content]="'手机号码'">
+          <InputItem
+            [type]="'phone'"
+            [placeholder]="'186 1234 1234'"
+            (onChange)="inputChange($event)"
+            [content]="'手机号码'"
+          >
           </InputItem>
           <InputItem [type]="'password'" [placeholder]="'****'" [content]="'密码'"></InputItem>
-          <InputItem [type]="'number'" [placeholder]="'click to show number keyboard'" [content]="'数字键盘'"></InputItem>
+          <InputItem
+            [type]="'number'"
+            [placeholder]="'click to show number keyboard'"
+            [content]="'数字键盘'"
+          ></InputItem>
         </div>
       </div>
       <div class="am-list" style="margin:0;">

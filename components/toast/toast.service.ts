@@ -25,11 +25,7 @@ export class ToastService {
   toastCompFactory: ComponentFactory<ToastComponent> = null;
   appRef: ApplicationRef = null;
 
-  constructor(
-    private _appRef: ApplicationRef,
-    private _cfr: ComponentFactoryResolver,
-    private _zone: NgZone
-  ) {
+  constructor(private _appRef: ApplicationRef, private _cfr: ComponentFactoryResolver, private _zone: NgZone) {
     this.zone = this._zone;
     this.appRef = this._appRef;
     this.toastCompFactory = this._cfr.resolveComponentFactory(ToastComponent);
@@ -71,10 +67,7 @@ export class ToastService {
     options.position = position;
     const props = this._initConfig(config, options);
 
-    document.body.insertBefore(
-      document.createElement(this.toastCompFactory.selector),
-      document.body.firstChild
-    );
+    document.body.insertBefore(document.createElement(this.toastCompFactory.selector), document.body.firstChild);
     let instance: any;
     let subject: any;
 
