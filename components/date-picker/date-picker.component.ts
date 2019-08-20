@@ -199,7 +199,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   init() {
     if (!this.checkTime() && this.options.showErrorToast) {
       setTimeout(() => {
-        ToastService.fail(this.errorMessage, this.options.showErrorToastInterval);
+        this.toast.fail(this.errorMessage, this.options.showErrorToastInterval);
       }, 0);
     }
     this.initResult();

@@ -13,13 +13,16 @@ A lightweight feedback or tips, used to display content that does not interrupt 
 - Toast with Icon, 4-6 words is recommended.; Toast without Icon, the number of words should not exceed 14.
 
 
-## API
+## API USE
 
-- `ToastService.success(content, duration, onClose, mask)`
-- `ToastService.fail(content, duration, onClose, mask)`
-- `ToastService.info(content, duration, onClose, mask)`
-- `ToastService.loading(content, duration, onClose, mask)`
-- `ToastService.offline(content, duration, onClose, mask)`
+```ts
+constructor(private _toast: ToastService) {}
+```
+- `this._toast.success(content, duration, onClose, mask)`
+- `this._toast.fail(content, duration, onClose, mask)`
+- `this._toast.info(content, duration, onClose, mask)`
+- `this._toast.loading(content, duration, onClose, mask)`
+- `this._toast.offline(content, duration, onClose, mask)`
 
 The component provide several static methods：
 
@@ -35,4 +38,4 @@ Properties | Descrition | Type | Default
 
 Provides global configuration and global destroy methods:
 
-- `ToastService.hide()`
+- `this._toast.hide()`

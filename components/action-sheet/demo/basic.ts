@@ -57,7 +57,7 @@ export class DemoActionSheetBasicComponent {
       },
       buttonIndex => {
         return new Promise(resolve => {
-          ToastService.info('closed after 1000ms');
+          this._toast.info('closed after 1000ms');
           setTimeout(resolve, 1000);
         });
       }

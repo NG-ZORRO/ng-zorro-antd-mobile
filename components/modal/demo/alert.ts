@@ -51,7 +51,7 @@ export class DemoModalAlertComponent {
         text: 'Ok',
         onPress: () =>
           new Promise(resolve => {
-            ToastService.info('onPress Promise', 1000);
+            this._toast.info('onPress Promise', 1000);
             setTimeout(resolve, 1000);
           }),
         style: {
