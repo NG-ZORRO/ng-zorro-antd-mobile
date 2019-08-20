@@ -95,7 +95,7 @@ export class DemoModalBasicComponent {
     }
   ];
 
-  constructor(private _modal: ModalService) {}
+  constructor() {}
 
   modelChange(event) {
     console.log('asdfasdf', event);
