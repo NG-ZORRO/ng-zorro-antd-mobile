@@ -12,6 +12,7 @@ export class ActionSheetOptions {
   transitionName?: string = 'am-slide-up';
   maskTransitionName?: string = 'am-fade';
   locale?;
+  close?: () => void;
 }
 
 @Injectable()

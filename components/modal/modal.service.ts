@@ -1,14 +1,20 @@
-import { Injectable, Injector, ComponentRef, TemplateRef } from '@angular/core';
+import {
+  Injectable,
+  Injector,
+  ComponentRef,
+  TemplateRef,
+} from '@angular/core';
 import { ModalServiceComponent } from './modal.component';
 import { ModalBaseOptions, ModalOptions, AlertOptions, Action } from './modal-options.provider';
 import { PopupService } from '../core/services/popup.service';
+import { ModalRef } from './modal-ref.class';
 @Injectable({
   providedIn: 'root'
 })
 @Injectable()
 export class ModalService extends PopupService {
-  static modalRef: ComponentRef<ModalServiceComponent> = null;
-  static _initConfig(config: ModalBaseOptions, options: any): ModalBaseOptions {
+  modalRef: ComponentRef<ModalServiceComponent> = null;
+  _initConfig(config: ModalBaseOptions, options: any): ModalBaseOptions {
     const props: ModalBaseOptions = new ModalBaseOptions();
     const optionalParams: string[] = [
       'visible',
@@ -35,13 +41,20 @@ export class ModalService extends PopupService {
       'operation',
       'transitionName',
       'maskTransitionName',
-      'close'
+      'close',
+      'closeWithAnimation'
     ];
+    const self = this;
     config = Object.assign(options, config, {
       close: (): void => {
         if (config.maskClosable || config.closable) {
-          ModalService.closeWithAnimation();
+          self.closeWithAnimation();
         }
+      }
+    },
+    {
+      closeWithAnimation: (): void => {
+        self.closeWithAnimation();
       }
     });
     optionalParams.forEach(key => {
@@ -52,28 +65,29 @@ export class ModalService extends PopupService {
     return props;
   }
 
-  static _open(props: ModalBaseOptions): any {
+  _open(props: ModalBaseOptions): any {
     const childInjector = Injector.create([
       {
         provide: ModalOptions,
         useValue: props
       }
     ]);
-    setTimeout(() => {
-      ModalService.modalRef = ModalService.showPopup('ModalServiceComponent', ModalServiceComponent, childInjector);
-    }, 0);
+    this.modalRef =  this.showPopup(ModalServiceComponent, childInjector);
+    return this.modalRef && this.modalRef.instance;
   }
 
-  static closeWithAnimation() {
+  closeWithAnimation() {
     const options: ModalBaseOptions = new ModalBaseOptions();
-    ModalService.modalRef.instance.transitionName = `${options.transitionName}-leave ${options.transitionName}-leave-active`;
-    ModalService.modalRef.instance.maskTransitionName = `${options.maskTransitionName}-leave ${options.maskTransitionName}-leave-active`;
+    this.modalRef.instance.transitionName = `${options.transitionName}-leave ${options.transitionName}-leave-active`;
+    this.modalRef.instance.maskTransitionName = `${options.maskTransitionName}-leave ${
+      options.maskTransitionName
+    }-leave-active`;
     setTimeout(() => {
-      ModalService.close();
+      this.close();
     }, 200);
   }
 
-  static alert(
+  alert(
     title?: string | TemplateRef<any>,
     message?: string | TemplateRef<any>,
     actions?: Array<any>,
@@ -86,7 +100,7 @@ export class ModalService extends PopupService {
     options.maskClosable = false;
     options.platform = 'ios';
 
-    const footer = getFooter(actions);
+    const footer = getFooter.call(this, actions);
 
     const config = Object.assign({
       title: title,
@@ -96,11 +110,11 @@ export class ModalService extends PopupService {
       platform: platform ? platform : 'ios'
     });
 
-    const props = ModalService._initConfig(config, options);
-    return ModalService._open(props);
+    const props = this._initConfig(config, options);
+    return this._open(props);
   }
 
-  static prompt(
+  prompt(
     title?: string | TemplateRef<any>,
     message?: string | TemplateRef<any>,
     callbackOrActions?: any,
@@ -120,8 +134,8 @@ export class ModalService extends PopupService {
     (options.type = type ? type : 'default'), (options.platform = platform ? platform : 'ios');
 
     function getArgs(self, func) {
-      const text = ModalService.modalRef.instance.data.text || options.defaultValue[0];
-      const password = ModalService.modalRef.instance.data.password || options.defaultValue[1];
+      const text = self.modalRef.instance.data.text || options.defaultValue[0];
+      const password = self.modalRef.instance.data.password || options.defaultValue[1];
       if (type === 'login-password') {
         return func(text, password);
       } else if (type === 'secure-text') {
@@ -132,12 +146,13 @@ export class ModalService extends PopupService {
 
     let actions;
     if (typeof callbackOrActions === 'function') {
+      const onPress = getArgs(this, callbackOrActions);
       actions = [
         { text: 'Cancel' },
         {
           text: 'OK',
           onPress: () => {
-            getArgs(this, callbackOrActions);
+            onPress.call();
           }
         }
       ];
@@ -154,7 +169,7 @@ export class ModalService extends PopupService {
       });
     }
 
-    const footer = getFooter(actions);
+    const footer = getFooter.call(this, actions);
     const config = Object.assign({
       title: title,
       message: message,
@@ -163,11 +178,11 @@ export class ModalService extends PopupService {
       actions: footer,
       platform: platform ? platform : 'ios'
     });
-    const props = ModalService._initConfig(config, options);
-    return ModalService._open(props);
+    const props = this._initConfig(config, options);
+    return this._open(props);
   }
 
-  static operation(actions?: any, platform?: string): any {
+  operation(actions?: any, platform?: string): any {
     const options: ModalOptions = new ModalOptions();
     options.visible = true;
     options.transparent = true;
@@ -175,34 +190,34 @@ export class ModalService extends PopupService {
     options.maskClosable = false;
     options.operation = true;
     options.className = 'am-modal-operation';
-    const footer = getFooter(actions);
+    const footer = getFooter.call(this, actions);
 
     const config = Object.assign({
       footer: footer,
       actions: footer,
       platform: platform ? platform : 'ios'
     });
-    const props = ModalService._initConfig(config, options);
-    return ModalService._open(props);
+    const props = this._initConfig(config, options);
+    return this._open(props);
   }
 
-  static close() {
-    ModalService.hidePopup('ModalServiceComponent');
+  close() {
+    this.hidePopup();
   }
 }
 
 function getFooter(actions) {
-  let action = actions ? actions : [{ text: 'OK', onPress: () => {} }];
+  let action = actions ? actions :  [{ text: 'OK', onPress: () => {}}];
   return action.map((button: Action) => {
     const orginPress = button.onPress || function() {};
     button.onPress = () => {
       const res = orginPress();
       if (res && res.then) {
         res.then(() => {
-          ModalService.closeWithAnimation();
+          this.closeWithAnimation();
         });
       } else {
-        ModalService.closeWithAnimation();
+        this.closeWithAnimation();
       }
     };
     return button;

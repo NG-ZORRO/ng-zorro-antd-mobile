@@ -33,7 +33,7 @@ export class DemoActionSheetBasicComponent {
 
   showActionSheet = message => {
     const BUTTONS = ['Operation1', 'Operation2', 'Operation2', 'Delete', 'Cancel'];
-    ActionSheetService.showActionSheetWithOptions(
+    this._actionSheet.showActionSheetWithOptions(
       {
         options: BUTTONS,
         cancelButtonIndex: BUTTONS.length - 1,
@@ -49,7 +49,7 @@ export class DemoActionSheetBasicComponent {
   }
 
   showShareActionSheet = () => {
-    ActionSheetService.showShareActionSheetWithOptions(
+    this._actionSheet.showShareActionSheetWithOptions(
       {
         options: this.dataList,
         message: 'I am description, description, description',
@@ -66,7 +66,7 @@ export class DemoActionSheetBasicComponent {
 
   showShareActionSheetMulpitleLine = () => {
     const data = [[...this.dataList, this.dataList[2]], [this.dataList[3], this.dataList[4]]];
-    ActionSheetService.showShareActionSheetWithOptions(
+    this._actionSheet.showShareActionSheetWithOptions(
       {
         options: data,
         message: 'I am description, description, description',
