@@ -7,7 +7,7 @@ import {
   TemplateRef,
   EventEmitter,
   HostListener,
-  ViewEncapsulation,
+  ViewEncapsulation
 } from '@angular/core';
 import { ModalOptions } from './modal-options.provider';
 import { Observable } from 'rxjs';
@@ -290,14 +290,14 @@ export class ModalComponent<T = any, R = any> extends ModalRef<T, R> implements 
 
   triggerOk(): void {
     if (this.option.footer.length > 1) {
-      const button =  this.option.footer[1];
+      const button = this.option.footer[1];
       button.onPress();
     }
   }
 
   triggerCancel(): void {
     if (this.option.footer.length > 0) {
-      const button =  this.option.footer[0];
+      const button = this.option.footer[0];
       button.onPress();
     }
   }

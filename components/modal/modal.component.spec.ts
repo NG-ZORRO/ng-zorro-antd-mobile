@@ -17,7 +17,15 @@ describe('ModalComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestModalBasicComponent],
-      imports: [ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule, FormsModule, ReactiveFormsModule],
+      imports: [
+        ModalModule,
+        WingBlankModule,
+        ListModule,
+        WhiteSpaceModule,
+        ButtonModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
       providers: [Overlay, ModalOptions, AlertOptions]
     }).compileComponents();
     TestBed.overrideModule(ModalModule, {
@@ -192,7 +200,7 @@ describe('ModalComponent', () => {
     button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modalservice');
-    const buttonOk =  modal.querySelector('.am-modal-button');
+    const buttonOk = modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
   });
@@ -202,7 +210,7 @@ describe('ModalComponent', () => {
     button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modalservice');
-    const buttonOk =  modal.querySelector('.am-modal-button');
+    const buttonOk = modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
   });
@@ -212,7 +220,7 @@ describe('ModalComponent', () => {
     button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modalservice');
-    const buttonOk =  modal.querySelector('.am-modal-button');
+    const buttonOk = modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
   });
@@ -222,7 +230,7 @@ describe('ModalComponent', () => {
     button.click();
     fixture.detectChanges();
     const modal = document.querySelector('modalservice');
-    const buttonOk =  modal.querySelector('.am-modal-button');
+    const buttonOk = modal.querySelector('.am-modal-button');
     dispatchTouchEvent(buttonOk, 'touchend');
     fixture.detectChanges();
   });
@@ -231,43 +239,45 @@ describe('ModalComponent', () => {
 @Component({
   selector: 'demo-modal-basic',
   template: `
-  <Modal [title]="title"
-         [popup]="popup"
-         [(ngModel)]="state"
-         [actions]="actions"
-         [placeholders]="'ccccc'"
-         [type]="'dddd'"
-         [defaultValue]="'yyyy'"
-         [operation]="true"
-         [footer]="footer"
-         [closable]="closable"
-         [maskClosable]="true"
-         [platform]="platform"
-         [wrapClassName]="'test-class'"
-         [className]="'xxx'"
-         [transparent]="transparent"
-         [animationType]="animationType"
-  >
-    <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
-      scoll content...
-      <br /> scoll content...
-      <br /> scoll content...
-      <br /> scoll content...
-      <br /> scoll content...
-      <br /> scoll content...
-      <br />
-    </div>
-  </Modal>
-  <div Button (onClick)="showOpeartion()">operation</div>
-  <div Button (onClick)="showAlert()">customized buttons</div>
-  <div Button (onClick)="showPromptDefault()">defaultValue</div>
-  <div Button (onClick)="showPromptPromise()">promise</div>
-  <div Button (onClick)="showSecure()">secure-text</div>
-  <div Button (onClick)="showCustom()">custom buttons</div>
-  <div Button (onClick)="showLogin()">login-password</div>
-  <ng-template #title>
-  <div>123</div>
-  </ng-template>
+    <Modal
+      [title]="title"
+      [popup]="popup"
+      [(ngModel)]="state"
+      [actions]="actions"
+      [placeholders]="'ccccc'"
+      [type]="'dddd'"
+      [defaultValue]="'yyyy'"
+      [operation]="true"
+      [footer]="footer"
+      [closable]="closable"
+      [maskClosable]="true"
+      [platform]="platform"
+      [wrapClassName]="'test-class'"
+      [className]="'xxx'"
+      [transparent]="transparent"
+      [animationType]="animationType"
+    >
+      <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
+        scoll content...
+        <br />
+        scoll content... <br />
+        scoll content... <br />
+        scoll content... <br />
+        scoll content... <br />
+        scoll content...
+        <br />
+      </div>
+    </Modal>
+    <div Button (onClick)="showOpeartion()">operation</div>
+    <div Button (onClick)="showAlert()">customized buttons</div>
+    <div Button (onClick)="showPromptDefault()">defaultValue</div>
+    <div Button (onClick)="showPromptPromise()">promise</div>
+    <div Button (onClick)="showSecure()">secure-text</div>
+    <div Button (onClick)="showCustom()">custom buttons</div>
+    <div Button (onClick)="showLogin()">login-password</div>
+    <ng-template #title>
+      <div>123</div>
+    </ng-template>
   `
 })
 export class TestModalBasicComponent {

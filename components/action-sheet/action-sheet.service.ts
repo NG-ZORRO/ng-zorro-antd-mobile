@@ -56,7 +56,7 @@ export class ActionSheetService extends PopupService {
   }
 
   _open(props: ActionSheetOptions) {
-    this.comRef =  this.showPopup(ActionSheetComponent);
+    this.comRef = this.showPopup(ActionSheetComponent);
     this.comRef.instance.option = props;
     return this.comRef && this.comRef.instance;
   }
@@ -72,7 +72,7 @@ export class ActionSheetService extends PopupService {
     const maskTransitionName = config.maskTransitionName ? config.maskTransitionName : options.maskTransitionName;
     options.maskTransitionName = `${maskTransitionName}-enter ${maskTransitionName}-enter-active`;
     const props = this._initConfig(config, options);
-    Object.assign(props, { onPress: cb }, { flag: flag }, { maskClose: props.maskClosable ? cb : () => {}});
+    Object.assign(props, { onPress: cb }, { flag: flag }, { maskClose: props.maskClosable ? cb : () => {} });
     const self = this;
     function cb(index: any, rowIndex = 0, event) {
       event.stopPropagation();
@@ -97,7 +97,7 @@ export class ActionSheetService extends PopupService {
   }
 
   showActionSheetWithOptions(config: ActionSheetWithOptions, callback: ActionCallBack = noop) {
-   return this.createActionSheet(NORMAL, config, callback);
+    return this.createActionSheet(NORMAL, config, callback);
   }
 
   showShareActionSheetWithOptions(config: ShareActionSheetWithOptions, callback: ActionCallBack = noop) {
