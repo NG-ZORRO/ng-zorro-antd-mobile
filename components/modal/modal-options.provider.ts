@@ -1,7 +1,7 @@
 import { Injectable, TemplateRef } from '@angular/core';
 
 export class ModalBaseOptions {
-  visible?: boolean = true;
+  visible?: boolean = false;
   focus?: boolean = true;
   prefixCls?: string = 'am-modal';
   animated?: boolean = true;
