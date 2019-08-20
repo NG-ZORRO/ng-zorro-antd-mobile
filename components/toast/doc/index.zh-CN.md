@@ -14,13 +14,15 @@ subtitle: 轻提示
 - 有 Icon 的 Toast，字数为 4-6 个；没有 Icon 的 Toast，字数不宜超过 14 个。
 
 
-## API
-
-- `ToastService.success(content, duration, onClose, mask)`
-- `ToastService.fail(content, duration, onClose, mask)`
-- `ToastService.info(content, duration, onClose, mask)`
-- `ToastService.loading(content, duration, onClose, mask)`
-- `ToastService.offline(content, duration, onClose, mask)`
+## API 调用
+```ts
+constructor(private _toast: ToastService) {}
+```
+- `this._toast.success(content, duration, onClose, mask)`
+- `this._toast.fail(content, duration, onClose, mask)`
+- `this._toast.info(content, duration, onClose, mask)`
+- `this._toast.loading(content, duration, onClose, mask)`
+- `this._toast.offline(content, duration, onClose, mask)`
 
 组件提供了五个静态方法，参数如下：
 
@@ -36,4 +38,4 @@ subtitle: 轻提示
 
 还提供了全局配置和全局销毁方法：
 
-- `ToastService.hide()`
+- `this._toast.hide()`
