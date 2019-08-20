@@ -21,7 +21,7 @@ import { ModalService, ToastService, ModalRef } from 'ng-zorro-antd-mobile';
   `
 })
 export class DemoModalAlertComponent {
-  constructor(private _modal: ModalService, private _toast: ToastService) {}
+  constructor(private _modal: ModalService, private _toast: ToastService) { }
 
   showAlert() {
     this._modal.alert('Delete', 'Are you sure ?', [
