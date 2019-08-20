@@ -31,7 +31,7 @@ export class DemoModalPromptComponent {
           text: 'Close',
           onPress: value =>
             new Promise(resolve => {
-              ToastService.info('onPress promise resolve', 1000);
+              this._toast.info('onPress promise resolve', 1000);
               setTimeout(() => {
                 resolve();
                 console.log(`value:${value}`);
@@ -42,7 +42,7 @@ export class DemoModalPromptComponent {
           text: 'Hold on',
           onPress: value =>
             new Promise((resolve, reject) => {
-              ToastService.info('onPress promise reject', 1000);
+              this._toast.info('onPress promise reject', 1000);
               setTimeout(() => {
                 // reject();
                 console.log(`value:${value}`);
