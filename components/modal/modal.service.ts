@@ -1,9 +1,4 @@
-import {
-  Injectable,
-  Injector,
-  ComponentRef,
-  TemplateRef,
-} from '@angular/core';
+import { Injectable, Injector, ComponentRef, TemplateRef } from '@angular/core';
 import { ModalServiceComponent } from './modal.component';
 import { ModalBaseOptions, ModalOptions, AlertOptions, Action } from './modal-options.provider';
 import { PopupService } from '../core/services/popup.service';
@@ -45,18 +40,22 @@ export class ModalService extends PopupService {
       'closeWithAnimation'
     ];
     const self = this;
-    config = Object.assign(options, config, {
-      close: (): void => {
-        if (config.maskClosable || config.closable) {
+    config = Object.assign(
+      options,
+      config,
+      {
+        close: (): void => {
+          if (config.maskClosable || config.closable) {
+            self.closeWithAnimation();
+          }
+        }
+      },
+      {
+        closeWithAnimation: (): void => {
           self.closeWithAnimation();
         }
       }
-    },
-    {
-      closeWithAnimation: (): void => {
-        self.closeWithAnimation();
-      }
-    });
+    );
     optionalParams.forEach(key => {
       if (config[key] !== undefined) {
         props[key] = config[key];
@@ -72,16 +71,14 @@ export class ModalService extends PopupService {
         useValue: props
       }
     ]);
-    this.modalRef =  this.showPopup(ModalServiceComponent, childInjector);
+    this.modalRef = this.showPopup(ModalServiceComponent, childInjector);
     return this.modalRef && this.modalRef.instance;
   }
 
   closeWithAnimation() {
     const options: ModalBaseOptions = new ModalBaseOptions();
     this.modalRef.instance.transitionName = `${options.transitionName}-leave ${options.transitionName}-leave-active`;
-    this.modalRef.instance.maskTransitionName = `${options.maskTransitionName}-leave ${
-      options.maskTransitionName
-    }-leave-active`;
+    this.modalRef.instance.maskTransitionName = `${options.maskTransitionName}-leave ${options.maskTransitionName}-leave-active`;
     setTimeout(() => {
       this.close();
     }, 200);
@@ -207,7 +204,7 @@ export class ModalService extends PopupService {
 }
 
 function getFooter(actions) {
-  let action = actions ? actions :  [{ text: 'OK', onPress: () => {}}];
+  let action = actions ? actions : [{ text: 'OK', onPress: () => {} }];
   return action.map((button: Action) => {
     const orginPress = button.onPress || function() {};
     button.onPress = () => {

@@ -1,7 +1,7 @@
 <div class="{{ prefixListCls }}-line">
   <div #lableContent [ngClass]="labelCls">
     <ng-template *ngIf="isTemplateRef(content)" [ngTemplateOutlet]="content"></ng-template>
-    <ng-container *ngIf="!isTemplateRef(content)">{{content}}</ng-container>
+    <ng-container *ngIf="!isTemplateRef(content)">{{ content }}</ng-container>
   </div>
   <div [ngClass]="controlCls">
     <CustomInput

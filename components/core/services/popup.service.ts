@@ -11,9 +11,7 @@ export class PopupService {
   currentServiceName = null;
   serviceArray: any = [];
 
-  constructor(
-    public _overlay: Overlay,
-  ) {
+  constructor(public _overlay: Overlay) {
     this.overlay = this._overlay;
   }
 
@@ -21,8 +19,12 @@ export class PopupService {
     component,
     childInjector?: Injector,
     hasBackdrop?: boolean,
-    positionStrategy: GlobalPositionStrategy =
-    this.overlay.position().global().centerVertically().centerHorizontally()): ComponentRef<any> {
+    positionStrategy: GlobalPositionStrategy = this.overlay
+      .position()
+      .global()
+      .centerVertically()
+      .centerHorizontally()
+  ): ComponentRef<any> {
     let overlayConfig = new OverlayConfig();
     overlayConfig.hasBackdrop = hasBackdrop;
     overlayConfig.positionStrategy = positionStrategy;

@@ -1,11 +1,4 @@
-import {
-  OnInit,
-  Component,
-  OnDestroy,
-  ElementRef,
-  TemplateRef,
-  ViewEncapsulation
-} from '@angular/core';
+import { OnInit, Component, OnDestroy, ElementRef, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';

@@ -238,7 +238,7 @@ export class DemoPickerBasicComponent {
   }
 
   showPicker() {
-   const ref: PickerRef =  this._picker.showPicker(
+    const ref: PickerRef = this._picker.showPicker(
       { value: this.value, data: this.singleArea },
       result => {
         this.name = this.getResult(result);
