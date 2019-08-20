@@ -179,7 +179,7 @@ export class DemoInputItemBasicComponent {
   constructor(private _toast: ToastService) {}
 
   inputErrorClick(e) {
-    ToastService.info('Please enter 11 digits');
+    this._toast.info('Please enter 11 digits');
   }
 
   inputChange(e) {

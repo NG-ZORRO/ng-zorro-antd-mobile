@@ -184,22 +184,22 @@ export class TestToastComponent {
   constructor(private _toast: ToastService) {}
 
   showToast() {
-    const toast = ToastService.show('This is a toast tips !!!', 0, true, this.position);
+    this._toast.show('This is a toast tips !!!', 0, true, this.position);
     setTimeout(() => {
-      ToastService.hide();
+      this._toast.hide();
     }, 3000);
   }
 
   showToastNoMask() {
-    const toast = ToastService.info('Toast without mask !!!', 4000, null, false);
+    this._toast.info('Toast without mask !!!', 4000, null, false);
   }
 
   showCustomIcon(event) {
-    const toast = ToastService.info(event);
+    this._toast.info(event);
   }
 
   successToast() {
-    const toast = ToastService.success('Load success !!!', 3000, () => {
+    this._toast.success('Load success !!!', 3000, () => {
       this.onClose();
     });
   }
@@ -209,15 +209,15 @@ export class TestToastComponent {
   }
 
   failToast() {
-    const toast = ToastService.fail('Load failed !!!', 1000);
+    this._toast.fail('Load failed !!!', 1000);
   }
 
   offline() {
-    const toast = ToastService.offline('Network connection failed !!!', 1000);
+    this._toast.offline('Network connection failed !!!', 1000);
   }
 
   loadingToast() {
-    const toast = ToastService.loading('Loading...', 3000, () => {
+    this._toast.loading('Loading...', 3000, () => {
       console.log('Load complete !!!');
     });
   }
