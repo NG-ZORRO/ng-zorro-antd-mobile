@@ -19,8 +19,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   docsearch = null;
   kitchenUrl = window.location.origin + '/#/kitchen-sink?lang=zh-CN';
   language = 'zh';
-  versionList = ['0.12.x'];
-  currentVersion = '0.12.x';
+  versionList = ['0.12.x', '1.0.0-beta.0'];
+  versionMap = {'0.12.x': '0.12.5', '1.0.0-beta.0': '1.0.0-beta.0'};
+  currentVersion = '1.0.0-beta.0';
   isHomeURL = true;
   isKitchenURL = false;
   demoTitle = '';
@@ -65,7 +66,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   navigateToVersion(version) {
     if (version !== this.currentVersion) {
-      window.location.href = window.location.origin + `/version/` + version;
+      window.location.href = window.location.origin + `/version/` + this.versionMap[version];
     } else {
       window.location.href = window.location.origin;
     }
