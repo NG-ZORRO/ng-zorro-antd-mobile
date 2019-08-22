@@ -130,9 +130,16 @@ export class ModalService extends PopupService {
     options.placeholders = placeholders;
     (options.type = type ? type : 'default'), (options.platform = platform ? platform : 'ios');
 
-    function getArgs(self, func) {
-      const text = self.modalRef.instance.data.text || options.defaultValue[0];
-      const password = self.modalRef.instance.data.password || options.defaultValue[1];
+    function getArgs(self: any, func: any) {
+      let text: any, password: any;
+      if (self.modalRef) {
+        text = self.modalRef.instance.data.text || options.defaultValue[0];
+        password = self.modalRef.instance.data.password || options.defaultValue[1];
+      } else {
+        text = options.defaultValue[0];
+        password = options.defaultValue[1];
+      }
+
       if (type === 'login-password') {
         return func(text, password);
       } else if (type === 'secure-text') {
@@ -143,13 +150,12 @@ export class ModalService extends PopupService {
 
     let actions;
     if (typeof callbackOrActions === 'function') {
-      const onPress = getArgs(this, callbackOrActions);
       actions = [
         { text: 'Cancel' },
         {
           text: 'OK',
           onPress: () => {
-            onPress.call();
+            getArgs(this, callbackOrActions);
           }
         }
       ];
