@@ -157,15 +157,15 @@ describe('StepperComponent', () => {
     fixture.detectChanges();
 
     inputEle.value = 34;
-    inputEle.dispatchEvent(new UIEvent('change'));
+    inputEle.dispatchEvent(new UIEvent('input'));
     expect(component.value).toBe(20, 'set input');
 
     inputEle.value = 4;
-    inputEle.dispatchEvent(new UIEvent('change'));
+    inputEle.dispatchEvent(new UIEvent('input'));
     expect(component.value).toBe(10, 'set input');
 
     inputEle.value = 15;
-    inputEle.dispatchEvent(new UIEvent('change'));
+    inputEle.dispatchEvent(new UIEvent('input'));
     expect(component.value).toBe(15, 'set input');
 
     component.readOnly = true;
