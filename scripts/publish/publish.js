@@ -45,7 +45,6 @@ function changeVersion() {
   const appComponent = path.join(__dirname, '../site/_site/src/app/app.component.ts');
   const codeBox = path.join(__dirname, '../site/_site/src/app/share/nz-codebox/nz-codebox.component.ts');
   const currentVersion = fs.readFileSync(packageJson, 'utf-8').match(/"version": "([0-9.]+)"/)[1];
-
   let versionNumberValid = false;
   let version;
 
