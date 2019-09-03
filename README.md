@@ -38,7 +38,7 @@ This is the **Angular** implementation of **Ant Design Mobile** specification, s
 
 ## Angular Support
 
-Now Supports Angular `^7.0.0`.
+Now Supports Angular `^8.0.0`.
 
 ## Installation
 
