@@ -23,7 +23,7 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
   `
 })
 export class DemoAccordionBasicComponent implements OnInit {
-  @ViewChild('title1') title1: ViewChild;
+  @ViewChild('title1', {static: false}) title1: ViewChild;
   accordions: Array<any> = [];
 
   activeKey = [0, 1];

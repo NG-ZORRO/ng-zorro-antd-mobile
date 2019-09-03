@@ -467,10 +467,10 @@ export class TestInputComponent {
   focus;
   content = 'content';
 
-  @ViewChild(InputItemComponent)
+  @ViewChild(InputItemComponent, { static: false })
   inputItemComp: InputItemComponent;
 
-  @ViewChild('extraTemplate')
+  @ViewChild('extraTemplate', { static: false })
   extraTpl: TemplateRef<any>;
 
   errorClick = jasmine.createSpy('errorClick callback');

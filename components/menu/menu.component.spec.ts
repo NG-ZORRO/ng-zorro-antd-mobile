@@ -336,7 +336,7 @@ export class TestMenuComponent {
   height = document.documentElement.clientHeight / 2;
   multiSelect = false;
 
-  @ViewChild(MenuComponent)
+  @ViewChild(MenuComponent, { static: false })
   menu: MenuComponent;
 
   constructor() {}

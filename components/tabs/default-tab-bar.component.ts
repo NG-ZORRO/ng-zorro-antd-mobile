@@ -34,7 +34,7 @@ export class DefaultTabBarComponent implements AfterContentInit {
   @ContentChildren('TabTitle')
   tabTitles: QueryList<ElementRef>;
 
-  @ViewChild('TabsBarSwipe')
+  @ViewChild('TabsBarSwipe', { static: true })
   tabsBarSwipe: ElementRef;
 
   @Input()

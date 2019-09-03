@@ -68,9 +68,9 @@ describe('NoticeBarComponent', () => {
   `
 })
 export class TestNoticeBarComponent {
-  @ContentChild('iconDom')
+  @ContentChild('iconDom', { static: false })
   icon: TemplateRef<void>;
-  @ContentChild('action')
+  @ContentChild('action', { static: false })
   action: TemplateRef<void>;
   option = {
     content:

@@ -7,7 +7,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 })
 export class NzHighlightComponent implements OnInit {
   _code;
-  @ViewChild('code') codeElement: ElementRef;
+  @ViewChild('code', {static: false}) codeElement: ElementRef;
   @Input() nzLanguage: string;
 
   @Input()

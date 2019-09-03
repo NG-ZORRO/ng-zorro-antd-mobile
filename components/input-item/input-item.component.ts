@@ -63,9 +63,9 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   private _content: string | TemplateRef<any> = '';
   private _inputLock = false;
 
-  @ViewChild('lableContent')
+  @ViewChild('lableContent', { static: true })
   lableRef;
-  @ViewChild('inputElement')
+  @ViewChild('inputElement', { static: false })
   inputElementRef;
 
   @Input()
