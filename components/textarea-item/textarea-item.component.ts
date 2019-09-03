@@ -57,7 +57,7 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
   private _isClear: boolean = false;
   private _isClickingClear: boolean = false;
 
-  @ViewChild('text')
+  @ViewChild('text', { static: true })
   textRef;
 
   @Input()

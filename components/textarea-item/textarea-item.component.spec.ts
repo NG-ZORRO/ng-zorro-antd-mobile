@@ -265,7 +265,7 @@ export class TestTextareaItemComponent {
   blurFn = jasmine.createSpy('blur callback');
   changeFn = jasmine.createSpy('change callback');
 
-  @ViewChild(TextareaItemComponent)
+  @ViewChild(TextareaItemComponent, { static: false })
   textareaItemComp: TextareaItemComponent;
 
   constructor() {}

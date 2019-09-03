@@ -41,7 +41,7 @@ export class PickerComponent<T = any, R = any> extends PickerRef<T, R> implement
 
   private _unsubscribe$: Subject<void> = new Subject<void>();
 
-  @ViewChild('picker', { read: ViewContainerRef })
+  @ViewChild('picker', { read: ViewContainerRef, static: true })
   private _picker: ViewContainerRef;
 
   @HostListener('mousedown', ['$event'])

@@ -486,7 +486,7 @@ export class TestCalendarBasicComponent {
     }
   };
 
-  @ViewChild(CalendarComponent)
+  @ViewChild(CalendarComponent, { static: false })
   datepicker: CalendarComponent;
 
   constructor() {}

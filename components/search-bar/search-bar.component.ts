@@ -66,7 +66,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit, AfterViewCheck
   private locale: any = {};
   private _unsubscribe$ = new Subject<void>();
 
-  @ViewChild('search')
+  @ViewChild('search', { static: true })
   inputElementRef;
 
   @Input()

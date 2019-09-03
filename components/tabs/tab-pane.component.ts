@@ -9,7 +9,7 @@ export class TabPaneComponent {
 
   private _title: string | TemplateRef<void>;
 
-  @ViewChild('content') content: TemplateRef<void>;
+  @ViewChild('content', { static: true }) content: TemplateRef<void>;
 
   @Input()
   get title(): string | TemplateRef<void> {

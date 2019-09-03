@@ -68,7 +68,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
   private _ngModelOnChange: (value: object) => {};
   private _ngModelOnTouched: () => {};
 
-  @ViewChild('pullToRefresh', { read: ViewContainerRef })
+  @ViewChild('pullToRefresh', { read: ViewContainerRef, static: true })
   private _pullToRefresh: ViewContainerRef;
 
   @Input()

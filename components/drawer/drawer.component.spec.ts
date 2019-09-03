@@ -399,7 +399,7 @@ export class TestDrawerComponent {
   dragHandleStyle = { color: '#A6A6A9' };
   touch = true;
 
-  @ViewChild(DrawerComponent)
+  @ViewChild(DrawerComponent, { static: false })
   drawer: DrawerComponent;
 
   onOpenChange(value) {
