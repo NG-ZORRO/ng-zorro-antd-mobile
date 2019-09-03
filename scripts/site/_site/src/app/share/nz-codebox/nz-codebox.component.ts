@@ -26,7 +26,7 @@ export class NzCodeBoxComponent implements OnInit {
   @Input() nzLink: string;
   @Input() nzId: string;
   @Input() nzIframeHeight = 360;
-  @Input() nzRawCode = '';
+  @Input() nzRawCode = {default: ''};
   @Input() nzComponentName = '';
   @Input() nzSelector = '';
   @Input() nzGenerateCommand = '';
@@ -318,7 +318,7 @@ export class NzCodeBoxComponent implements OnInit {
          * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
          */
         // import 'intl';  // Run \`npm install --save intl\`.`,
-        'src/app/app.component.ts': this.nzRawCode,
+        'src/app/app.component.ts': this.nzRawCode.default,
         'src/app/app.module.ts': `import { NgModule } from '@angular/core';
         import { BrowserModule } from '@angular/platform-browser';
         import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
