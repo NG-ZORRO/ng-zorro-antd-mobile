@@ -144,7 +144,7 @@ export class TestActionSheetBasicComponent {
   }));
   locale = en_US;
 
-  @ViewChild('message')
+  @ViewChild('message', { static: false })
   message: ViewChild;
 
   constructor(private _actionSheet: ActionSheet) {}

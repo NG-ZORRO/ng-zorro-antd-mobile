@@ -178,7 +178,7 @@ export class TestToastComponent {
   mask = true;
   position = 'middle';
 
-  @ViewChild('contentTpl')
+  @ViewChild('contentTpl', { static: false })
   contentTpl: ViewChild;
 
   constructor(private _toast: ToastService) {}

@@ -11,7 +11,7 @@ export class TabBarItemComponent extends TabPaneComponent {
   tintColor: string = '#108ee9';
   unselectedTintColor: string = '#888';
 
-  @ViewChild('tabBarTab')
+  @ViewChild('tabBarTab', { static: true })
   tabBarTab: TemplateRef<void>;
 
   @Input()

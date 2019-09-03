@@ -458,7 +458,7 @@ export class TestTabsComponent {
   distanceToChangeTab = 0.3;
   tabDirection = 'horizontal';
 
-  @ViewChild(TabsComponent)
+  @ViewChild(TabsComponent, { static: false })
   tabs: TabsComponent;
   @ViewChildren(TabPaneComponent)
   tabPanes: QueryList<TabPaneComponent>;

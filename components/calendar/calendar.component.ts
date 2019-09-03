@@ -71,7 +71,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   private _dateModelValue: any;
   private _dateModelTime: number = 0;
 
-  @ViewChild(CalendarDatePickerComponent)
+  @ViewChild(CalendarDatePickerComponent, { static: false })
   datepicker: CalendarDatePickerComponent;
 
   @Input()

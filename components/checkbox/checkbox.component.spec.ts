@@ -100,7 +100,7 @@ export class TestCheckboxComponent {
   checked: boolean = false;
   disabled: boolean = false;
 
-  @ViewChild(CheckboxComponent)
+  @ViewChild(CheckboxComponent, { static: false })
   checkbox: CheckboxComponent;
 
   onChange(e) {

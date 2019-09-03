@@ -18,9 +18,9 @@ export class CalendarDatePickerComponent extends CalendarDatePickerBaseComponent
   private _lastY: number = 0;
   private _delta: number = this._initDelta;
 
-  @ViewChild('layout')
+  @ViewChild('layout', { static: true })
   layoutDom: ElementRef;
-  @ViewChild('panel')
+  @ViewChild('panel', { static: true })
   panelDom: ElementRef;
 
   @Input()

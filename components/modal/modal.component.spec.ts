@@ -301,8 +301,8 @@ export class TestModalBasicComponent {
       }
     }
   ];
-  @ViewChild('title') titleRef: ViewChild;
-  @ViewChild(ModalComponent) modalServiceComponent: ModalComponent;
+  @ViewChild('title', { static: false }) titleRef: ViewChild;
+  @ViewChild(ModalComponent, { static: false }) modalServiceComponent: ModalComponent;
   templateOpenSpy = jasmine.createSpy('template afterOpen spy');
   templateCloseSpy = jasmine.createSpy('template afterClose spy');
   constructor(private _modal: ModalService) {
