@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run site:init && node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng serve --aot --port 4300 --host 0.0.0.0 --deploy-url=/ --disable-host-check",
-    "build": "node ./scripts/site/generate-site init && node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng build --prod --output-hashing none",
+    "build": "node ./scripts/site/generate-site init && node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng build --aot --prod --output-hashing none",
     "test": "npm run site:init && ng test --watch=false --code-coverage",
     "test-watch": "npm run site:init && ng test --watch=true --code-coverage",
     "release": "node --max_old_space_size=5120 ./scripts/publish/publish.js",
@@ -19,14 +19,14 @@
     "schematic:tsc": "tsc -p schematics/tsconfig.json",
     "schematic:build": "node ./scripts/schematics/set-theme.js && node ./scripts/schematics/set-version.js && npm run schematic:tsc && node ./scripts/schematics/copy-resources",
     "schematic:generate": "npm run schematic:demo && npm run schematic:build && rm -rf schematics/demo",
-    "doc": "ng build --prod",
+    "doc": "node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng build --aot --prod",
     "helper": "bash ./release-helper.sh",
     "migration-styles": "node ./scripts/build/migration-styles.js",
     "integration": "npm run generate && bash ./integration-test.sh",
     "format": "prettier --write './components/**/*.{ts,tsx,js,scss,html}' && tslint --fix './components/**/*.{js,ts,tsx}'",
     "postgenerate": "node ./scripts/build/generate-less.js && cp README.md publish/README.md && npm run migration-styles && npm run schematic:generate",
-    "generate": "ng build ng-zorro-antd-mobile-lib",
-    "pre-release": "npm run site:init && bash ./scripts/build/replace-publish.sh && npm run generate && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod && npm run helper"
+    "generate": "node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng build ng-zorro-antd-mobile-lib",
+    "pre-release": "npm run site:init && bash ./scripts/build/replace-publish.sh && npm run generate && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --aot --prod && npm run helper"
   },
   "main": "./bundles/antd.umd.js",
   "module": "./esm5/antd.js",
