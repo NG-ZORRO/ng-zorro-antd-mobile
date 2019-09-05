@@ -8,7 +8,7 @@
 
 * **codebox:** fix stackblitz package dependencies error ([#561](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/561)) ([61dcc28](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/61dcc28))
 
-* **codebox:** fix copy code error error ([#561](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/561)) ([630f63c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/630f63c))
+* **codebox:** fix copy code error error ([#560](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/560)) ([630f63c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/630f63c))
 
 * **codebox:** fix rawCode convert bug ([#558](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/558)) ([ddb89cb](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ddb89cb))
 

@@ -23,7 +23,7 @@ timeline: true
 
 * **codebox:** 修复 stackblitz package 依赖展示错误 ([#561](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/561)) ([61dcc28](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/61dcc28))
 
-* **codebox:** 修复复制代码为对象的错误 ([#561](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/561)) ([630f63c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/630f63c))
+* **codebox:** 修复复制代码为对象的错误 ([#560](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/560)) ([630f63c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/630f63c))
 
 * **codebox:** 修复 rawCode 转换错误 ([#558](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/558)) ([ddb89cb](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ddb89cb))
 
