@@ -44,15 +44,16 @@ function changeVersion() {
   const packageJson = path.join(__dirname, '../../components/package.json');
   const appComponent = path.join(__dirname, '../site/_site/src/app/app.component.ts');
   const codeBox = path.join(__dirname, '../site/_site/src/app/share/nz-codebox/nz-codebox.component.ts');
-  const currentVersion = fs.readFileSync(packageJson, 'utf-8').match(/"version": "([0-9.]+)"/)[1];
+  // const currentVersion = fs.readFileSync(packageJson, 'utf-8').match(/"version": "([0-9.]+)"/)[1];
+  const currentVersion = '1.0.0-beta.1';
   let versionNumberValid = false;
   let version;
 
   function checkVersionNumber(cur, next) {
     // Must be numbers and dots.
-    if (!/^[0-9][0-9.]{1,10}[0-9]$/.test(next)) {
-      return false;
-    }
+    // if (!/^[0-9][0-9.]{1,10}[0-9]$/.test(next)) {
+    //   return false;
+    // }
 
     const curArr = cur.split('.');
     const nextArr = next.split('.');
