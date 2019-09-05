@@ -19,9 +19,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   docsearch = null;
   kitchenUrl = window.location.origin + '/#/kitchen-sink?lang=zh-CN';
   language = 'zh';
-  versionList = ['0.12.x', '1.0.0-beta.0', '1.0.0-beta.1'];
-  versionMap = {'0.12.x': '0.12.5', '1.0.0-beta.0': '1.0.00', '1.0.0-beta.1': '1.0.06'};
-  currentVersion = '1.0.0-beta.1';
+  versionList = ['0.12.x', '1.0.0-beta.0', '1.0.0-beta.2'];
+  versionMap = {'0.12.x': '0.12.5', '1.0.0-beta.0': '1.0.00', '1.0.0-beta.2': '1.0.07'};
+  currentVersion = '1.0.0-beta.2';
   isHomeURL = true;
   isKitchenURL = false;
   demoTitle = '';
