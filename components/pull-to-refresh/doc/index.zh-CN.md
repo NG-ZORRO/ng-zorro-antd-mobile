@@ -24,5 +24,5 @@ subtitle: 拉动刷新
 | footerIndicator  | 脚部指示器配置 `{ activate: any, deactivate: any, release: any, finish: any }` | Object | - |
 | endReachedRefresh| 滚动到底自动刷新（direction=down） | bool | false | 
 
-> **注：**  Need to set the height to use this component, otherwise it will not display correctly.
+> **注：**  使用时，需要设置组件高度，否则展示不正确。
 

@@ -98,14 +98,6 @@ export class DemoPullToRefreshBasicComponent implements OnInit {
     }
   }
 
-  genData() {
-    const dataArr = [];
-    for (let i = 0; i < 100; i++) {
-      dataArr.push(i);
-    }
-    return dataArr;
-  }
-
   ngOnInit() {
     this.addItems(0);
   }
