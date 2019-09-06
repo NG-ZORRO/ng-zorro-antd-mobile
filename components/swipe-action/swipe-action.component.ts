@@ -79,6 +79,10 @@ export class SwipeActionComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   setBtnStyle(value) {
+    if (this._btnsLeftWidth === 0 || this._btnsRightWidth === 0) {
+      this._btnsLeftWidth = this.leftBtnRef ? this.leftBtnRef.nativeElement.offsetWidth : 0;
+      this._btnsRightWidth = this.rightBtnRef ? this.rightBtnRef.nativeElement.offsetWidth : 0;
+    }
     const limit = value > 0 ? this._btnsLeftWidth : -this._btnsRightWidth;
     const contentLeft = this.getContentEasing(value, limit);
     this.content.nativeElement.style.left = `${contentLeft}px`;
