@@ -20,11 +20,11 @@ import { Component } from '@angular/core';
   `
 })
 export class DemoAccordionAccordionComponent {
-  activeKey = [0, 1];
+  activeKey = [1];
   accordions: Array<any> = [
     { title: 'Title 1', child: ['content 1', 'content 1', 'content 1'] },
-    { title: 'Title 2', child: ['content 2', 'content 2', 'content 2'], inactive: false },
-    { title: 'Title 3', child: ['content 3', 'content 3', 'content 3'], inactive: true }
+    { title: 'Title 2', child: ['content 2', 'content 2', 'content 2'] },
+    { title: 'Title 3', child: ['content 3', 'content 3', 'content 3'] }
   ];
 
   onChange(event) {
