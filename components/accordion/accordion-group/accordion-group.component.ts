@@ -1,4 +1,12 @@
-import { Component, Input, ChangeDetectorRef, Output, EventEmitter, ViewEncapsulation, HostBinding } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectorRef,
+  Output,
+  EventEmitter,
+  ViewEncapsulation,
+  HostBinding
+} from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AccordionService } from '../accordion.service';
 import { isTemplateRef } from '../../core/util/check';

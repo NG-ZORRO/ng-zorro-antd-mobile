@@ -1,7 +1,10 @@
-
-export function getAllStyles (element) { return window.getComputedStyle(element); }
-export function getStyle(element, prop) { return getAllStyles(element)[prop]; }
-export function isStaticPositioned (element) {
+export function getAllStyles(element) {
+  return window.getComputedStyle(element);
+}
+export function getStyle(element, prop) {
+  return getAllStyles(element)[prop];
+}
+export function isStaticPositioned(element) {
   return (getStyle(element, 'position') || 'static') === 'static';
 }
 
@@ -13,8 +16,7 @@ export function getOffsetParent(element) {
   return offsetParentEl || document.documentElement;
 }
 
-export function getOffset(element, round) {
-  if (round === void 0) { round = true; }
+export function getOffset(element) {
   let elBcr = element.getBoundingClientRect();
   let viewportOffset = {
     top: window.pageYOffset - document.documentElement.clientTop,
@@ -28,28 +30,19 @@ export function getOffset(element, round) {
     left: elBcr.left + viewportOffset.left,
     right: elBcr.right + viewportOffset.left
   };
-  if (round) {
-    elOffset.height = Math.round(elOffset.height);
-    elOffset.width = Math.round(elOffset.width);
-    elOffset.top = Math.round(elOffset.top);
-    elOffset.bottom = Math.round(elOffset.bottom);
-    elOffset.left = Math.round(elOffset.left);
-    elOffset.right = Math.round(elOffset.right);
-  }
   return elOffset;
 }
 
-export function getPosition(element, round) {
-  if (round === void 0) { round = true; }
+export function getPosition(element) {
   let elPosition;
   let parentOffset = { width: 0, height: 0, top: 0, bottom: 0, left: 0, right: 0 };
   if (getStyle(element, 'position') === 'fixed') {
     elPosition = element.getBoundingClientRect();
   } else {
     let offsetParentEl = getOffsetParent(element);
-    elPosition = getOffset(element, false);
+    elPosition = getOffset(element);
     if (offsetParentEl !== document.documentElement) {
-      parentOffset = getOffset(offsetParentEl, false);
+      parentOffset = getOffset(offsetParentEl);
     }
     parentOffset.top += offsetParentEl.clientTop;
     parentOffset.left += offsetParentEl.clientLeft;
@@ -58,28 +51,22 @@ export function getPosition(element, round) {
   elPosition.bottom -= parentOffset.top;
   elPosition.left -= parentOffset.left;
   elPosition.right -= parentOffset.left;
-  if (round) {
-    elPosition.top = Math.round(elPosition.top);
-    elPosition.bottom = Math.round(elPosition.bottom);
-    elPosition.left = Math.round(elPosition.left);
-    elPosition.right = Math.round(elPosition.right);
-  }
   return elPosition;
 }
 
 export function getPositionElements(hostElement, targetElement, placement, appendToBody) {
-  let hostElPosition = appendToBody ? getOffset(hostElement, false) : getPosition(hostElement, false);
+  let hostElPosition = appendToBody ? getOffset(hostElement) : getPosition(hostElement);
   let targetElStyles = getAllStyles(targetElement);
   let targetElBCR = targetElement.getBoundingClientRect();
   let placementPrimary = placement.split('-')[0] || 'top';
   let placementSecondary = placement.split('-')[1] || 'center';
   let targetElPosition = {
-    'height': targetElBCR.height || targetElement.offsetHeight,
-    'width': targetElBCR.width || targetElement.offsetWidth,
-    'top': 0,
-    'bottom': targetElBCR.height || targetElement.offsetHeight,
-    'left': 0,
-    'right': targetElBCR.width || targetElement.offsetWidth
+    height: targetElBCR.height || targetElement.offsetHeight,
+    width: targetElBCR.width || targetElement.offsetWidth,
+    top: 0,
+    bottom: targetElBCR.height || targetElement.offsetHeight,
+    left: 0,
+    right: targetElBCR.width || targetElement.offsetWidth
   };
   switch (placementPrimary) {
     case 'top':

@@ -263,7 +263,6 @@ describe('tab', () => {
     fixture.detectChanges();
     expect(tabsEle.querySelector('.am-tabs-content-wrap').classList).toContain('am-tabs-content-wrap-animated');
 
-
     component.animated = false;
     component.tabDirection = 'vertical';
     fixture.detectChanges();
@@ -397,20 +396,22 @@ describe('tab', () => {
 @Component({
   selector: 'test-tabs',
   template: `
-    <Tabs style="height: 50px; overflow: hidden"
-          [activeTab]="activeTab"
-          [page]="page"
-          [swipeable]="swipeable"
-          [animated]="animated"
-          [tabBarPosition]="tabBarPosition"
-          [tabDirection]="tabDirection"
-          (onChange)="onChange($event)"
-          (onTabClick)="onTabClick($event)"
-          [tabBarInactiveTextColor]="'green'"
-          [tabBarBackgroundColor]="'black'"
-          [tabBarUnderlineStyle]="{'border': '1px red solid'}"
-          [tabBarTextStyle]="{'font-size': '33px'}"
-          [tabBarActiveTextColor]="'red'">
+    <Tabs
+      style="height: 50px; overflow: hidden"
+      [page]="page"
+      [animated]="animated"
+      [activeTab]="activeTab"
+      [swipeable]="swipeable"
+      [tabDirection]="tabDirection"
+      [tabBarPosition]="tabBarPosition"
+      [tabBarBackgroundColor]="'black'"
+      [tabBarActiveTextColor]="'red'"
+      [tabBarInactiveTextColor]="'green'"
+      [tabBarTextStyle]="{ 'font-size': '33px' }"
+      [tabBarUnderlineStyle]="{ border: '1px red solid' }"
+      (onChange)="onChange($event)"
+      (onTabClick)="onTabClick($event)"
+    >
       <TabPane [title]="'Tab 1'">
         <div style="height: 100px; width: 100%">Content of 1 tab</div>
       </TabPane>
@@ -422,7 +423,7 @@ describe('tab', () => {
           Content of first tab
         </div>
       </TabPane>
-      <TabPane [title]="'Tab 3'" >
+      <TabPane [title]="'Tab 3'">
         Content of 3 tab
       </TabPane>
       <TabPane [title]="'Tab 4'">
@@ -457,7 +458,7 @@ export class TestTabsComponent {
   distanceToChangeTab = 0.3;
   tabDirection = 'horizontal';
 
-  @ViewChild(TabsComponent)
+  @ViewChild(TabsComponent, { static: false })
   tabs: TabsComponent;
   @ViewChildren(TabPaneComponent)
   tabPanes: QueryList<TabPaneComponent>;

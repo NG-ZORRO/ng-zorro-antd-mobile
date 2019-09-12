@@ -62,7 +62,7 @@ export class RadioComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor() {}
 
   updateValue(checkValue: boolean): void {
     this.checked = checkValue;

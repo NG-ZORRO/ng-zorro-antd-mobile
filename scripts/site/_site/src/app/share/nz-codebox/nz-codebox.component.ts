@@ -6,12 +6,10 @@ import { environment } from '../../../environments/environment';
 import sdk from '@stackblitz/sdk';
 
 @Component({
-  selector     : 'nz-code-box',
+  selector: 'nz-code-box',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './nz-codebox.component.html',
-  styleUrls    : [
-    './nz-codebox.less'
-  ]
+  styleUrls: ['./nz-codebox.less']
 })
 export class NzCodeBoxComponent implements OnInit {
   _code: string;
@@ -20,7 +18,7 @@ export class NzCodeBoxComponent implements OnInit {
   showIframe: boolean;
   simulateIFrame: boolean;
   iframe: SafeUrl;
-  nzWidth = window.innerWidth  * 0.8;
+  nzWidth = window.innerWidth * 0.8;
   @Input() nzTitle: string;
   @Input() nzExpanded = false;
   @Input() nzSelected = false;
@@ -28,14 +26,14 @@ export class NzCodeBoxComponent implements OnInit {
   @Input() nzLink: string;
   @Input() nzId: string;
   @Input() nzIframeHeight = 360;
-  @Input() nzRawCode = '';
+  @Input() nzRawCode = {default: ''};
   @Input() nzComponentName = '';
   @Input() nzSelector = '';
   @Input() nzGenerateCommand = '';
 
   @Input() set nzIframeSource(value: string) {
-    this.showIframe = (value != 'null') && environment.production;
-    this.simulateIFrame = (value != 'null') && !environment.production;
+    this.showIframe = value != 'null' && environment.production;
+    this.simulateIFrame = value != 'null' && !environment.production;
     this.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(value);
   }
 
@@ -87,37 +85,33 @@ export class NzCodeBoxComponent implements OnInit {
   }
 
   copy(value: string): Promise<string> {
-
-    const promise = new Promise<string>(
-      (resolve, reject): void => {
-        let copyTextArea = null as HTMLTextAreaElement;
-        try {
-          copyTextArea = this.dom.createElement('textarea');
-          copyTextArea.style.height = '0px';
-          copyTextArea.style.opacity = '0';
-          copyTextArea.style.width = '0px';
-          this.dom.body.appendChild(copyTextArea);
-          copyTextArea.value = value;
-          copyTextArea.select();
-          this.dom.execCommand('copy');
-          resolve(value);
-        } finally {
-          if (copyTextArea && copyTextArea.parentNode) {
-            copyTextArea.parentNode.removeChild(copyTextArea);
-          }
+    const promise = new Promise<string>((resolve, reject): void => {
+      let copyTextArea = null as HTMLTextAreaElement;
+      try {
+        copyTextArea = this.dom.createElement('textarea');
+        copyTextArea.style.height = '0px';
+        copyTextArea.style.opacity = '0';
+        copyTextArea.style.width = '0px';
+        this.dom.body.appendChild(copyTextArea);
+        copyTextArea.value = value;
+        copyTextArea.select();
+        this.dom.execCommand('copy');
+        resolve(value);
+      } finally {
+        if (copyTextArea && copyTextArea.parentNode) {
+          copyTextArea.parentNode.removeChild(copyTextArea);
         }
       }
-    );
+    });
 
-    return (promise);
-
+    return promise;
   }
 
   /** bug here https://github.com/stackblitz/core/issues/311 **/
   openOnStackBlitz() {
     sdk.openProject({
       files: {
-        'angular.json'   : `{
+        'angular.json': `{
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
@@ -240,9 +234,8 @@ export class NzCodeBoxComponent implements OnInit {
   },
   "defaultProject": "demo"
 }`,
-        'src/index.html'          : `<${this.nzSelector}>loading</${this.nzSelector}>`,
-        'src/main.ts'             : `import './polyfills';
-
+        'src/index.html': `<${this.nzSelector}>loading</${this.nzSelector}>`,
+        'src/main.ts': `import './polyfills';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -257,75 +250,75 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
 
   // Otherwise, log the boot error
 }).catch(err => console.error(err));`,
-        'src/polyfills.ts'        : `/**
- * This file includes polyfills needed by Angular and is loaded before the app.
- * You can add your own extra polyfills to this file.
- *
- * This file is divided into 2 sections:
- *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
- *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
- *      file.
- *
- * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
- * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
- * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
- *
- * Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html
- */
+                'src/polyfills.ts': `/**
+  * This file includes polyfills needed by Angular and is loaded before the app.
+  * You can add your own extra polyfills to this file.
+  *
+  * This file is divided into 2 sections:
+  *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
+  *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
+  *      file.
+  *
+  * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
+  * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
+  * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
+  *
+  * Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html
+  */
 
-/***************************************************************************************************
- * BROWSER POLYFILLS
- */
+  /***************************************************************************************************
+   * BROWSER POLYFILLS
+   */
 
-/** IE9, IE10 and IE11 requires all of the following polyfills. **/
-// import 'core-js/es6/symbol';
-// import 'core-js/es6/object';
-// import 'core-js/es6/function';
-// import 'core-js/es6/parse-int';
-// import 'core-js/es6/parse-float';
-// import 'core-js/es6/number';
-// import 'core-js/es6/math';
-// import 'core-js/es6/string';
-// import 'core-js/es6/date';
-// import 'core-js/es6/array';
-// import 'core-js/es6/regexp';
-// import 'core-js/es6/map';
-// import 'core-js/es6/set';
+  /** IE9, IE10 and IE11 requires all of the following polyfills. **/
+  // import 'core-js/es6/symbol';
+  // import 'core-js/es6/object';
+  // import 'core-js/es6/function';
+  // import 'core-js/es6/parse-int';
+  // import 'core-js/es6/parse-float';
+  // import 'core-js/es6/number';
+  // import 'core-js/es6/math';
+  // import 'core-js/es6/string';
+  // import 'core-js/es6/date';
+  // import 'core-js/es6/array';
+  // import 'core-js/es6/regexp';
+  // import 'core-js/es6/map';
+  // import 'core-js/es6/set';
 
-/** IE10 and IE11 requires the following for NgClass support on SVG elements */
-// import 'classlist.js';  // Run \`npm install --save classlist.js\`.
+  /** IE10 and IE11 requires the following for NgClass support on SVG elements */
+  // import 'classlist.js';  // Run \`npm install --save classlist.js\`.
 
-/** IE10 and IE11 requires the following to support \`@angular/animation\`. */
-// import 'web-animations-js';  // Run \`npm install --save web-animations-js\`.
-
-
-/** Evergreen browsers require these. **/
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
+  /** IE10 and IE11 requires the following to support \`@angular/animation\`. */
+  // import 'web-animations-js';  // Run \`npm install --save web-animations-js\`.
 
 
-/** ALL Firefox browsers require the following to support \`@angular/animation\`. **/
-// import 'web-animations-js';  // Run \`npm install --save web-animations-js\`.
+  /** Evergreen browsers require these. **/
+  import 'core-js/es6/reflect';
+  import 'core-js/es7/reflect';
+
+
+  /** ALL Firefox browsers require the following to support \`@angular/animation\`. **/
+  // import 'web-animations-js';  // Run \`npm install --save web-animations-js\`.
 
 
 
-/***************************************************************************************************
- * Zone JS is required by Angular itself.
- */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
+  /***************************************************************************************************
+   * Zone JS is required by Angular itself.
+   */
+  import 'zone.js/dist/zone';  // Included with Angular CLI.
 
 
-/***************************************************************************************************
- * APPLICATION IMPORTS
- */
+  /***************************************************************************************************
+   * APPLICATION IMPORTS
+   */
 
-/**
- * Date, currency, decimal and percent pipes.
- * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
- */
-// import 'intl';  // Run \`npm install --save intl\`.`,
-        'src/app/app.component.ts': this.nzRawCode,
-        'src/app/app.module.ts'   : `import { NgModule } from '@angular/core';
+  /**
+   * Date, currency, decimal and percent pipes.
+   * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
+   */
+  // import 'intl';  // Run \`npm install --save intl\`.`,
+        'src/app/app.component.ts': this.nzRawCode.default,
+        'src/app/app.module.ts': `import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -337,43 +330,46 @@ import { ${this.nzComponentName} } from './app.component';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 registerLocaleData(en);
+
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule, NgZorroAntdMobileModule, BrowserAnimationsModule ],
   declarations: [ ${this.nzComponentName} ],
   bootstrap:    [ ${this.nzComponentName} ]
 })
 export class AppModule { }
-`,
-        'src/styles.css'         : `/* Add application styles & imports to this file! */;`
+        `,
+        'src/styles.css': `/* Add application styles & imports to this file! */;`
       },
-
-      title       : 'Dynamically Generated Project',
-      description : 'Created with <3 by the StackBlitz SDK!',
-      template    : 'angular-cli',
+      title: 'Dynamically Generated Project',
+      description: 'Created with <3 by the StackBlitz SDK!',
+      template: 'angular-cli',
       dependencies: {
-        '@angular/cdk'                     : '^7.3.7',
-        '@angular/core'                    : '^7.2.13',
-        '@angular/forms'                   : '^7.2.13',
-        '@angular/http'                    : '^7.2.13',
-        '@angular/language-service'        : '^7.2.13',
-        '@angular/platform-browser'        : '^7.2.13',
-        '@angular/platform-browser-dynamic': '^7.2.13',
-        '@angular/common'                  : '^7.2.13',
-        '@angular/router'                  : '^7.2.13',
-        '@angular/animations'              : '^7.2.13',
-        '@angular/compiler'                : '^7.2.13',
-        '@ant-design/icons-angular'        : '~2.0.3',
-        'rxjs'                             : '^6.3.3',
-        'ng-zorro-antd-mobile'             : '^0.12.0'
+        '@angular/animations': '^8.0.0',
+        '@angular/cdk': '^8.0.0',
+        '@angular/common': '^8.0.0',
+        '@angular/compiler': '^8.0.0',
+        '@angular/core': '^8.0.0',
+        '@angular/forms': '^8.0.0',
+        '@angular/platform-browser': '^8.0.0',
+        '@angular/platform-browser-dynamic': '^8.0.0',
+        '@angular/router': '^8.0.0',
+        '@ant-design/icons-angular': '~8.0.3',
+        'core-js': '^2.5.4',
+        'rxjs': '^6.3.3',
+        'zone.js': '^0.9.0',
+        'ng-zorro-antd-mobile': '1.0.0-beta.2'
       },
-      tags        : [ 'stackblitz', 'sdk' ]
+      tags: ['stackblitz', 'sdk']
     });
   }
 
-  constructor(@Inject(DOCUMENT) private dom: Document, private sanitizer: DomSanitizer, private _el: ElementRef, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(
+    @Inject(DOCUMENT) private dom: Document,
+    private sanitizer: DomSanitizer,
+    private _el: ElementRef,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

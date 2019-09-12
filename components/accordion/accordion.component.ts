@@ -47,8 +47,8 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
   @HostBinding('class.am-accordion')
   amAccordion: boolean = true;
 
-  @HostListener('click', ['$event'])
-  click(event) {
+  @HostListener('click')
+  click() {
     let result: any = [];
     this.groups.toArray().forEach(group => {
       if (group.isOpened) {
@@ -72,10 +72,10 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
     });
   }
 
-  init () {
+  init() {
     if (this.expandAll && this.groups && this.groups.length > 0) {
       this._oldGroups = this.groups.toArray();
-      this._oldGroups.forEach((group, index) => {
+      this._oldGroups.forEach((group) => {
         group.openOnInitialization();
       });
       this._subscription = this.groups.changes.subscribe(change => {
@@ -89,9 +89,16 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
       });
     }
 
-    let currentActiveKey = [];
-    if (this.activeKey !== undefined && this.activeKey.length > 0 && !this.accordion && this.groups && this.groups.length > 0) {
+    let currentActiveKey: Array<any> = [];
+    if (this.activeKey && this.activeKey.length > 0) {
       currentActiveKey = this.toArray(this.activeKey);
+      if (this.accordion) {
+        currentActiveKey = currentActiveKey.slice(0, 1);
+      }
+    } else if (this.defaultActiveKey) {
+      currentActiveKey = [this.defaultActiveKey];
+    }
+    if (this.groups && this.groups.length > 0) {
       this.groups.forEach((group, index) => {
         currentActiveKey.forEach(key => {
           if (index === parseInt(key, 0)) {
@@ -101,15 +108,6 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
             }, 0);
           }
         });
-      });
-    } else if (this.defaultActiveKey !== undefined && !this.expandAll && !this.accordion && this.groups && this.groups.length > 0) {
-      this.groups.forEach((group, index) => {
-        if (index === parseInt(this.defaultActiveKey, 0)) {
-          setTimeout(() => {
-            group.isOpened = true;
-            group.openOnInitialization();
-          }, 0);
-        }
       });
     }
   }

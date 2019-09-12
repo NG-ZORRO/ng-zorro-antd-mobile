@@ -3,9 +3,8 @@ import {
   ComponentRef,
   ComponentFactory,
   ApplicationRef,
-  Compiler,
   NgZone,
-  ComponentFactoryResolver,
+  ComponentFactoryResolver
 } from '@angular/core';
 import { ToastComponent } from './toast.component';
 import { ToastOptions } from './toast-options.provider';
@@ -20,19 +19,19 @@ export interface ConfigInterface {
 })
 @Injectable()
 export class ToastService {
-  static timeout = null;
-  static _zone: NgZone = null;
-  static compRef: ComponentRef<any> = null;
-  static _toastCompFactory: ComponentFactory<ToastComponent> = null;
-  static _appRef: ApplicationRef = null;
+  timeout = null;
+  zone: NgZone = null;
+  compRef: ComponentRef<any> = null;
+  toastCompFactory: ComponentFactory<ToastComponent> = null;
+  appRef: ApplicationRef = null;
 
-  constructor(private _appRef: ApplicationRef, private _compiler: Compiler, private _cfr: ComponentFactoryResolver, private _zone: NgZone) {
-    ToastService._zone = this._zone;
-    ToastService._appRef = this._appRef;
-    ToastService._toastCompFactory = this._cfr.resolveComponentFactory(ToastComponent);
+  constructor(private _appRef: ApplicationRef, private _cfr: ComponentFactoryResolver, private _zone: NgZone) {
+    this.zone = this._zone;
+    this.appRef = this._appRef;
+    this.toastCompFactory = this._cfr.resolveComponentFactory(ToastComponent);
   }
 
-  static _initConfig(config: Object, options: ToastOptions): Object {
+  _initConfig(config: Object, options: ToastOptions): Object {
     const props = {};
     const optionalParams: string[] = ['content', 'iconType', 'mask', 'position'];
 
@@ -57,31 +56,31 @@ export class ToastService {
     return props;
   }
 
-  static notice(config: ConfigInterface, type, timeInterval = 2000, onClose, mask = true, position = 'middle') {
+  notice(config: ConfigInterface, type, timeInterval = 2000, onClose, mask = true, position = 'middle') {
     // 如果已经存在，在没有遮罩层的情况下，会响应别的toast，需要清除原来的
-    if (ToastService.compRef) {
-      ToastService.hide();
+    if (this.compRef) {
+      this.hide();
     }
     const options: ToastOptions = new ToastOptions();
     options.iconType = type;
     options.mask = mask;
     options.position = position;
-    const props = ToastService._initConfig(config, options);
+    const props = this._initConfig(config, options);
 
-    document.body.insertBefore(document.createElement(ToastService._toastCompFactory.selector), document.body.firstChild);
+    document.body.insertBefore(document.createElement(this.toastCompFactory.selector), document.body.firstChild);
     let instance: any;
     let subject: any;
 
-    ToastService.compRef = ToastService._appRef.bootstrap(ToastService._toastCompFactory);
-    instance = ToastService.compRef.instance;
+    this.compRef = this._appRef.bootstrap(this.toastCompFactory);
+    instance = this.compRef.instance;
     subject = instance.subject;
 
     if (timeInterval) {
-      ToastService.timeout = setTimeout(() => {
+      this.timeout = setTimeout(() => {
         if (onClose) {
           onClose();
         }
-        ToastService.hide();
+        this.hide();
       }, timeInterval);
     }
 
@@ -92,66 +91,66 @@ export class ToastService {
   /**
    * Open info dialog
    */
-  static info(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
+  info(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'info',
       content: content
     });
-    return ToastService.notice(config, 'info', timeInterval, onClose, mask, position);
+    return this.notice(config, 'info', timeInterval, onClose, mask, position);
   }
 
   /**
    * Open success dialog
    */
-  static success(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
+  success(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'success',
       content: content
     });
-    return ToastService.notice(config, 'success', timeInterval, onClose, mask, position);
+    return this.notice(config, 'success', timeInterval, onClose, mask, position);
   }
 
-  static show(content?: string, timeInterval?: number, mask?: boolean, position?: string) {
+  show(content?: string, timeInterval?: number, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'info',
       content: content
     });
-    return ToastService.notice(config, 'info', timeInterval, () => {}, mask, position);
+    return this.notice(config, 'info', timeInterval, () => {}, mask, position);
   }
 
-  static fail(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
+  fail(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'fail',
       content: content
     });
-    return ToastService.notice(config, 'fail', timeInterval, onClose, mask, position);
+    return this.notice(config, 'fail', timeInterval, onClose, mask, position);
   }
 
-  static offline(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
+  offline(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'offline',
       content: content
     });
-    return ToastService.notice(config, 'offline', timeInterval, onClose, mask, position);
+    return this.notice(config, 'offline', timeInterval, onClose, mask, position);
   }
 
-  static loading(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
+  loading(content?: string, timeInterval?: number, onClose?: () => void, mask?: boolean, position?: string) {
     const config = Object.assign({
       iconType: 'loading',
       content: content
     });
-    return ToastService.notice(config, 'loading', timeInterval, onClose, mask, position);
+    return this.notice(config, 'loading', timeInterval, onClose, mask, position);
   }
 
-  static hide() {
-    if (ToastService.timeout) {
-      clearTimeout(ToastService.timeout);
+  hide() {
+    if (this.timeout) {
+      clearTimeout(this.timeout);
     }
-    if (ToastService.compRef) {
-      ToastService._zone.run(() => {
-        ToastService.compRef.destroy();
+    if (this.compRef) {
+      this._zone.run(() => {
+        this.compRef.destroy();
       });
-      ToastService.compRef = null;
+      this.compRef = null;
     }
   }
 }

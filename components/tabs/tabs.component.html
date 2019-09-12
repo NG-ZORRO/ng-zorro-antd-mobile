@@ -1,47 +1,60 @@
 <ng-container>
-  <ng-template *ngIf="'top' === tabBarPosition || 'left' === tabBarPosition"
-               [ngTemplateOutlet]="renderTabBar || renderDefaultTabBar">
-  </ng-template>
-  <div #TabContent
-       class="{{prefixCls}}-content-wrap"
-       [ngClass]="{'am-tabs-content-wrap-animated': animated}"
-       [ngStyle]="{'transform': paneMoveStyle, 'webkitTransform': paneMoveStyle}"
-       (touchstart)="onTouchStart($event)"
-       (touchmove)="onTouchMove($event)"
-       (touchend)="onTouchEnd($event)"
+  <ng-template
+    *ngIf="'top' === tabBarPosition || 'left' === tabBarPosition"
+    [ngTemplateOutlet]="renderTabBar || renderDefaultTabBar"
   >
-    <div tab-pane-body
-         *ngFor="let tabPane of getCurrentTabPanes(); let i = index"
-         [active]="i === selectedKey"
-         [prerender]="prerenderingSiblingsNumber < 0 || ((selectedKey - i <= prerenderingSiblingsNumber) && (selectedKey - i + prerenderingSiblingsNumber >= 0))"
-         [content]="tabPane.content"
+  </ng-template>
+  <div
+    #TabContent
+    class="{{ prefixCls }}-content-wrap"
+    [ngClass]="{ 'am-tabs-content-wrap-animated': animated }"
+    [ngStyle]="{ transform: paneMoveStyle, webkitTransform: paneMoveStyle }"
+    (touchstart)="onTouchStart($event)"
+    (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <div
+      tab-pane-body
+      *ngFor="let tabPane of getCurrentTabPanes(); let i = index"
+      [content]="tabPane.content"
+      [active]="i === selectedKey"
+      [prerender]="
+        prerenderingSiblingsNumber < 0 ||
+        (selectedKey - i <= prerenderingSiblingsNumber && selectedKey - i + prerenderingSiblingsNumber >= 0)
+      "
     ></div>
   </div>
-  <ng-template *ngIf="'bottom' === tabBarPosition || 'right' === tabBarPosition"
-               [ngTemplateOutlet]="renderTabBar || renderDefaultTabBar"
+  <ng-template
+    *ngIf="'bottom' === tabBarPosition || 'right' === tabBarPosition"
+    [ngTemplateOutlet]="renderTabBar || renderDefaultTabBar"
   ></ng-template>
 </ng-container>
 
 <ng-template #renderDefaultTabBar>
-  <DefaultTabBar #DefaultTabBar
-                 [page]="page"
-                 [animated]="animated"
-                 [activeTab]="selectedKey"
-                 [tabTitleSize]="tabTitleSize"
-                 [tabBarPosition]="tabBarPosition"
-                 [tabBarBackgroundColor]="tabBarBackgroundColor"
-                 [tabBarUnderlineStyle]="tabBarUnderlineStyle"
+  <DefaultTabBar
+    #DefaultTabBar
+    [page]="page"
+    [animated]="animated"
+    [activeTab]="selectedKey"
+    [tabTitleSize]="tabTitleSize"
+    [tabBarPosition]="tabBarPosition"
+    [tabBarUnderlineStyle]="tabBarUnderlineStyle"
+    [tabBarBackgroundColor]="tabBarBackgroundColor"
   >
-    <div #TabTitle
-         *ngFor="let tabPane of getCurrentTabPanes(); let i = index"
-         class="{{prefixCls}}-default-bar-tab"
-         [ngClass]="{'am-tabs-default-bar-tab-active': i === selectedKey, 'am-tabs-default-bar-tab-disabled': tabPane.disabled}"
-         [ngStyle]="tabBarTextStyle"
-         [style.color]="i === selectedKey ? tabBarActiveTextColor : tabBarInactiveTextColor"
-         (click)="clickTab(i)"
+    <div
+      #TabTitle
+      *ngFor="let tabPane of getCurrentTabPanes(); let i = index"
+      class="{{ prefixCls }}-default-bar-tab"
+      [ngClass]="{
+        'am-tabs-default-bar-tab-active': i === selectedKey,
+        'am-tabs-default-bar-tab-disabled': tabPane.disabled
+      }"
+      [ngStyle]="tabBarTextStyle"
+      [style.color]="i === selectedKey ? tabBarActiveTextColor : tabBarInactiveTextColor"
+      (click)="clickTab(i)"
     >
       <ng-container *ngIf="tabPane.isTitleString; else titleTemplate">
-        {{tabPane.title}}
+        {{ tabPane.title }}
       </ng-container>
       <ng-template #titleTemplate>
         <ng-template [ngTemplateOutlet]="tabPane.title"></ng-template>

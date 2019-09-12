@@ -1,11 +1,12 @@
 <span [ngClass]="classMap">
-  <input type="checkbox"
-         class="{{prefixCls}}-input"
-         [attr.name]="name"
-         [attr.value]="value"
-         [checked]="checked"
-         [disabled]="disabled"
-  >
-  <span class="{{prefixCls}}-inner"></span>
+  <input
+    type="checkbox"
+    class="{{ prefixCls }}-input"
+    [attr.name]="name"
+    [attr.value]="value"
+    [checked]="checked"
+    [disabled]="disabled"
+  />
+  <span class="{{ prefixCls }}-inner"></span>
 </span>
 <ng-content></ng-content>

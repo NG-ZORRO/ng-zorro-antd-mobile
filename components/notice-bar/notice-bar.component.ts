@@ -60,7 +60,8 @@ export class NoticeBarComponent implements OnInit, OnDestroy {
         width: this._width * 2 + 'px',
         'animation-name': animationName,
         'animation-delay': `${this._option.marqueeProps.leading}ms`,
-        'animation-duration': `${(1 / this._option.marqueeProps.fps) * this._width / util.getWidthHeight().width * 1000}s`,
+        'animation-duration': `${(((1 / this._option.marqueeProps.fps) * this._width) / util.getWidthHeight().width) *
+          1000}s`,
         'animation-iteration-count': `${count}`
       };
       this.marqueeScroll = 'scrolling';
@@ -71,22 +72,34 @@ export class NoticeBarComponent implements OnInit, OnDestroy {
   }
 
   insetKeyframe(animationName) {
-    util.insertKeyFrame(`@keyframes ${animationName} {
+    util.insertKeyFrame(
+      `@keyframes ${animationName} {
       0% { left: 0px; }
       100% { left: -${this._width}px }
-    }`, 'notice_bar_animation_cls');
-    util.insertKeyFrame(`@-webkit-keyframes ${animationName} {
+    }`,
+      'notice_bar_animation_cls'
+    );
+    util.insertKeyFrame(
+      `@-webkit-keyframes ${animationName} {
       0% { left: 0px; }
       100% { left: -${this._width}px }
-    }`, 'notice_bar_animation_cls');
-    util.insertKeyFrame(`@-moz-keyframes ${animationName} {
+    }`,
+      'notice_bar_animation_cls'
+    );
+    util.insertKeyFrame(
+      `@-moz-keyframes ${animationName} {
       0% { left: 0px; }
       100% { left: -${this._width}px }
-    }`, 'notice_bar_animation_cls');
-    util.insertKeyFrame(`@-o-keyframes ${animationName} {
+    }`,
+      'notice_bar_animation_cls'
+    );
+    util.insertKeyFrame(
+      `@-o-keyframes ${animationName} {
       0% { left: 0px; }
       100% { left: -${this._width}px }
-    }`, 'notice_bar_animation_cls');
+    }`,
+      'notice_bar_animation_cls'
+    );
   }
 
   ngOnInit() {

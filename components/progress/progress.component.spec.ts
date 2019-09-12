@@ -55,11 +55,8 @@ describe('ProgressComponent', () => {
 @Component({
   selector: 'test-progress',
   template: `
-    <Progress [percent]="percent"
-              [position]="position"
-              [unfilled]="unfilled"
-    ></Progress>
- `
+    <Progress [percent]="percent" [position]="position" [unfilled]="unfilled"></Progress>
+  `
 })
 export class TestProgressComponent {
   percent = 30;

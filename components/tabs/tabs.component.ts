@@ -36,14 +36,10 @@ export class TabsComponent implements DoCheck, AfterContentInit {
   @ContentChildren(TabPaneComponent, { descendants: false })
   tabPanes: QueryList<TabPaneComponent>;
 
-  @ViewChild('TabContent')
+  @ViewChild('TabContent', { static: true })
   tabContent: ElementRef;
-  @ViewChild('TabsBarSwipe')
-  tabsBarSwipe: ElementRef;
-  @ViewChild('DefaultTabBar')
+  @ViewChild('DefaultTabBar', { static: false })
   defaultTabBar: ElementRef;
-  @ViewChild('TabsBarContainer')
-  tabsBarContainer: ElementRef;
 
   @Input()
   page: number = 5;
@@ -155,7 +151,7 @@ export class TabsComponent implements DoCheck, AfterContentInit {
   @HostBinding('class.am-tabs-horizontal')
   amTabsHorizontal: boolean = true;
 
-  constructor() { }
+  constructor() {}
 
   clickTab(index: number) {
     if (this.selectedKey !== index) {

@@ -7,5 +7,4 @@ import { DrawerComponent } from './drawer.component';
   declarations: [DrawerComponent],
   exports: [DrawerComponent]
 })
-
 export class DrawerModule {}

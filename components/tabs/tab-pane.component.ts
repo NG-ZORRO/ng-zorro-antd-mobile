@@ -5,12 +5,11 @@ import { Component, Input, ViewChild, TemplateRef } from '@angular/core';
   templateUrl: './tab-pane.component.html'
 })
 export class TabPaneComponent {
-
   public isTitleString: boolean = true;
 
   private _title: string | TemplateRef<void>;
 
-  @ViewChild('content') content: TemplateRef<void>;
+  @ViewChild('content', { static: true }) content: TemplateRef<void>;
 
   @Input()
   get title(): string | TemplateRef<void> {
@@ -22,5 +21,4 @@ export class TabPaneComponent {
   }
 
   constructor() {}
-
 }

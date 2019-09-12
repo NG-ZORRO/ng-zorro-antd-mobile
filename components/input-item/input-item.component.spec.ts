@@ -56,12 +56,12 @@ describe('InputComponent', () => {
     component.value = 'test';
     fixture.detectChanges();
     inputEle = inputItem.nativeElement.querySelector('input');
-    expect(inputEle.value).toBe('test', 'type is text');
+    expect(inputEle.getAttribute('ng-reflect-model')).toBe('test', 'type is text');
 
     component.value = null;
     fixture.detectChanges();
     inputEle = inputItem.nativeElement.querySelector('input');
-    expect(inputEle.value).toBe('', 'value is undefined');
+    expect(inputEle.getAttribute('ng-reflect-model')).toBe('', 'value is undefined');
 
     component.type = 'money';
     fixture.detectChanges();
@@ -76,7 +76,7 @@ describe('InputComponent', () => {
     component.defaultValue = 'default test';
     fixture.detectChanges();
     inputEle = inputItem.nativeElement.querySelector('input');
-    expect(inputEle.value).toBe('test', 'type is text');
+    expect(inputEle.getAttribute('ng-reflect-model')).toBe('test', 'type is text');
 
     component.type = 'money';
     fixture.detectChanges();
@@ -109,7 +109,7 @@ describe('InputComponent', () => {
     component.defaultValue = 'test';
     fixture.detectChanges();
     inputEle = inputItem.nativeElement.querySelector('input');
-    expect(inputEle.value).toBe('test', 'type is text');
+    expect(inputEle.getAttribute('ng-reflect-model')).toBe('test', 'type is text');
 
     component.type = 'money';
     fixture.detectChanges();
@@ -227,6 +227,12 @@ describe('InputComponent', () => {
     fixture.detectChanges();
     const labelEle = inputItem.nativeElement.querySelector('.am-input-label');
     expect(labelEle.classList).toContain('am-input-label-3');
+  });
+  it('should content work', () => {
+    component.content = 'test content';
+    fixture.detectChanges();
+    const labelEle = inputModel.nativeElement.querySelector('.am-input-label');
+    expect(labelEle.innerText).toContain('test content');
   });
   it('should updatePlaceholder work', () => {
     component.updatePlaceholder = true;
@@ -407,36 +413,37 @@ describe('InputComponent', () => {
 @Component({
   selector: 'test-stepper',
   template: `
-    <InputItem [type]="type"
-               [value]="value"
-               [defaultValue]="defaultValue"
-               [editable]="editable"
-               [disabled]="disabled"
-               [clear]="clear"
-               [placeholder]="placeholder"
-               [maxLength]="maxLength"
-               [error]="error"
-               [extra]="extra"
-               [labelNumber]="labelNumber"
-               [updatePlaceholder]="updatePlaceholder"
-               [prefixListCls]="prefixListCls"
-               [name]="name"
-               [fontColor]="fontColor"
-               [moneyKeyboardAlign]="moneyKeyboardAlign"
-               [locale]="locale"
-               [focus]="focus"
-               (onChange)="change($event)"
-               (onBlur)="blur()"
-               (onFocus)="focusFn()"
-               (onErrorClick)="errorClick()"
-               (onExtraClick)="extraClick()"
+    <InputItem
+      [type]="type"
+      [value]="value"
+      [defaultValue]="defaultValue"
+      [editable]="editable"
+      [disabled]="disabled"
+      [clear]="clear"
+      [placeholder]="placeholder"
+      [maxLength]="maxLength"
+      [error]="error"
+      [extra]="extra"
+      [labelNumber]="labelNumber"
+      [updatePlaceholder]="updatePlaceholder"
+      [prefixListCls]="prefixListCls"
+      [name]="name"
+      [fontColor]="fontColor"
+      [moneyKeyboardAlign]="moneyKeyboardAlign"
+      [locale]="locale"
+      [focus]="focus"
+      (onChange)="change($event)"
+      (onBlur)="blur()"
+      (onFocus)="focusFn()"
+      (onErrorClick)="errorClick()"
+      (onExtraClick)="extraClick()"
     >
       <span (click)="clickTitle()">标题</span>
     </InputItem>
-    <InputItem class="input-item-1" [(ngModel)]="modelValue"></InputItem>
-    <div class="am-list-content" click = "blurFocus()">click to focus</div>
+    <InputItem class="input-item-1" [(ngModel)]="modelValue" [content]="content"></InputItem>
+    <div class="am-list-content" click="blurFocus()">click to focus</div>
     <ng-template #extraTemplate>#</ng-template>
- `
+  `
 })
 export class TestInputComponent {
   type: string = 'text';
@@ -458,11 +465,12 @@ export class TestInputComponent {
   moneyKeyboardAlign: string = 'right';
   locale;
   focus;
+  content = 'content';
 
-  @ViewChild(InputItemComponent)
+  @ViewChild(InputItemComponent, { static: false })
   inputItemComp: InputItemComponent;
 
-  @ViewChild('extraTemplate')
+  @ViewChild('extraTemplate', { static: false })
   extraTpl: TemplateRef<any>;
 
   errorClick = jasmine.createSpy('errorClick callback');
@@ -471,7 +479,7 @@ export class TestInputComponent {
   blur = jasmine.createSpy('blur callback');
   change = jasmine.createSpy('change callback');
 
-  constructor() { }
+  constructor() {}
 
   clickTitle() {
     this.focus = {

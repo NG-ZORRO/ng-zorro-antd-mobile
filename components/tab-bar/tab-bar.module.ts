@@ -11,4 +11,4 @@ import { TabBarItemComponent } from './tab-bar-item.component';
   declarations: [TabBarComponent, TabBarItemComponent],
   providers: []
 })
-export class TabBarModule { }
+export class TabBarModule {}

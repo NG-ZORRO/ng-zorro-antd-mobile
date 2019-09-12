@@ -1,4 +1,4 @@
 export default {
   okText: 'Ok',
-  cancelText: 'Avbryt',
+  cancelText: 'Avbryt'
 };

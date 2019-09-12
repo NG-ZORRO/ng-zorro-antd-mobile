@@ -13,7 +13,7 @@ import { Component, ViewEncapsulation, Input, TemplateRef, NgZone } from '@angul
     '[class.am-toast-nomask]': '!mask',
     '[class.am-toast-nomask-top]': `!mask && position === 'top'`,
     '[class.am-toast-nomask-middle]': `!mask && position === 'middle'`,
-    '[class.am-toast-nomask-bottom]': `!mask && position === 'bottom'`,
+    '[class.am-toast-nomask-bottom]': `!mask && position === 'bottom'`
   }
 })
 export class ToastComponent {

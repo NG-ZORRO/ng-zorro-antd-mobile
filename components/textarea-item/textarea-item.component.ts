@@ -56,7 +56,7 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
   private _isClear: boolean = false;
   private _isClickingClear: boolean = false;
 
-  @ViewChild('text')
+  @ViewChild('text', { static: true })
   textRef;
 
   @Input()
@@ -196,19 +196,19 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
   @HostBinding('class.am-textarea-disabled')
   clsDisabled: boolean;
   @HostBinding('class.am-textarea-error')
-  clsError: boolean ;
+  clsError: boolean;
   @HostBinding('class.am-textarea-focus')
-  clsFocus: boolean ;
+  clsFocus: boolean;
   @HostBinding('class.am-textarea-item-single-line')
   clsSingleLine: boolean;
   @HostBinding('class.am-textarea-has-count')
-  clsHasCount: boolean ;
+  clsHasCount: boolean;
 
   constructor(private element: ElementRef, private render: Renderer2) {
     this._el = element.nativeElement;
   }
 
-  _onChange = (_: any) => {};
+  _onChange = (_: any) => { };
 
   setCls() {
     this.hasCount = this._count > 0 && this._rows > 1;
@@ -291,7 +291,6 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
     return text.replace(regexAstralSymbols, '_').length;
   }
 
-
   writeValue(value: any): void {
     if (typeof value === 'undefined' || value === null) {
       this._value = '';
@@ -303,16 +302,16 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void { }
 
   ngOnInit() {
+    this.textRef.nativeElement.value = this._value;
     this.setCls();
     this.setCharacterLength();
-    this.textRef.nativeElement.value = this._value;
   }
 
   ngAfterContentChecked() {
-    if (this._autoHeight && this._focus) {
+    if (this._autoHeight) {
       this.reAlignHeight();
     }
   }

@@ -11,11 +11,18 @@ import { LocaleProviderModule } from '../locale-provider/locale-provider.module'
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, FlexModule, ListModule, RadioModule, CheckboxModule, ButtonModule, LocaleProviderModule, FormsModule],
+  imports: [
+    CommonModule,
+    FlexModule,
+    ListModule,
+    RadioModule,
+    CheckboxModule,
+    ButtonModule,
+    LocaleProviderModule,
+    FormsModule
+  ],
   exports: [MenuComponent, SubMenuComponent],
   declarations: [MenuComponent, SubMenuComponent],
   providers: [LocaleProviderModule]
 })
-
-export class MenuModule {
-}
+export class MenuModule {}

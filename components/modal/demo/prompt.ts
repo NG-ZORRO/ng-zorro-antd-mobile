@@ -23,7 +23,7 @@ export class DemoModalPromptComponent {
   constructor(private _modal: ModalService, private _toast: ToastService) {}
 
   showPromptPromise() {
-    ModalService.prompt(
+    this._modal.prompt(
       'input name',
       'please input your name',
       [
@@ -31,7 +31,7 @@ export class DemoModalPromptComponent {
           text: 'Close',
           onPress: value =>
             new Promise(resolve => {
-              ToastService.info('onPress promise resolve', 1000);
+              this._toast.info('onPress promise resolve', 1000);
               setTimeout(() => {
                 resolve();
                 console.log(`value:${value}`);
@@ -42,7 +42,7 @@ export class DemoModalPromptComponent {
           text: 'Hold on',
           onPress: value =>
             new Promise((resolve, reject) => {
-              ToastService.info('onPress promise reject', 1000);
+              this._toast.info('onPress promise reject', 1000);
               setTimeout(() => {
                 // reject();
                 console.log(`value:${value}`);
@@ -57,7 +57,7 @@ export class DemoModalPromptComponent {
   }
 
   showPromptDefault() {
-    ModalService.prompt(
+    this._modal.prompt(
       'defaultValue',
       'defaultValue for prompt',
       [{ text: 'Cancel' }, { text: 'Submit', onPress: value => console.log(`输入的内容:${value}`) }],
@@ -67,11 +67,11 @@ export class DemoModalPromptComponent {
   }
 
   showSecure() {
-    ModalService.prompt('Password', 'Password Message', password => console.log(`password: ${password}`), 'secure-text');
+    this._modal.prompt('Password', 'Password Message', password => console.log(`password: ${password}`), 'secure-text');
   }
 
   showCustom() {
-    ModalService.prompt(
+    this._modal.prompt(
       'Password',
       'You can custom buttons',
       [{ text: '取消' }, { text: '提交', onPress: password => console.log(`密码为:${password}`) }],
@@ -80,7 +80,7 @@ export class DemoModalPromptComponent {
   }
 
   showLogin() {
-    ModalService.prompt(
+    this._modal.prompt(
       'Login',
       'Please input login information',
       (login, password) => console.log(`login: ${login}, password: ${password}`),

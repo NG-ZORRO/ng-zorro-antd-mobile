@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PickerService } from 'ng-zorro-antd-mobile';
+import { PickerService, PickerRef } from 'ng-zorro-antd-mobile';
 import { district, provinceLite } from 'antd-mobile-demo-data';
 @Component({
   selector: 'demo-picker-basic',
@@ -178,25 +178,30 @@ export class DemoPickerBasicComponent {
     const d = [...this.asynData];
     const asyncValue = [...val];
     if (val[0] === 'zj') {
-      d.forEach((i) => {
+      d.forEach(i => {
         if (i.value === 'zj') {
           colNum = 2;
           if (!i.children) {
-            i.children = [{
-              value: 'zj-nb',
-              label: '宁波',
-            }, {
-              value: 'zj-hz',
-              label: '杭州',
-            }];
+            i.children = [
+              {
+                value: 'zj-nb',
+                label: '宁波'
+              },
+              {
+                value: 'zj-hz',
+                label: '杭州'
+              }
+            ];
             asyncValue.push('zj-nb');
           } else if (val[1] === 'zj-hz') {
-            i.children.forEach((j) => {
+            i.children.forEach(j => {
               if (j.value === 'zj-hz') {
-                j.children = [{
-                  value: 'zj-hz-xh',
-                  label: '西湖区',
-                }];
+                j.children = [
+                  {
+                    value: 'zj-hz-xh',
+                    label: '西湖区'
+                  }
+                ];
                 asyncValue.push('zj-hz-xh');
               }
             });
@@ -233,7 +238,7 @@ export class DemoPickerBasicComponent {
   }
 
   showPicker() {
-    PickerService.showPicker(
+    const ref: PickerRef = this._picker.showPicker(
       { value: this.value, data: this.singleArea },
       result => {
         this.name = this.getResult(result);
@@ -241,7 +246,6 @@ export class DemoPickerBasicComponent {
       },
       cancel => {
         console.log('cancel');
-
       }
     );
   }

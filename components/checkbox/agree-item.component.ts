@@ -50,7 +50,7 @@ export class AgreeItemComponent implements ControlValueAccessor {
   @HostBinding('class.am-checkbox-agree')
   checkboxAgree: boolean = true;
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
   change(event) {
     this.checked = event.checked;

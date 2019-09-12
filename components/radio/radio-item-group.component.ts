@@ -44,10 +44,10 @@ export class RadioItemGroupComponent implements AfterContentInit, OnDestroy, Con
   @Output()
   onChange = new EventEmitter<RadioStatus>();
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
   updateChildrenStatus() {
-    if (this.radioItems && typeof (this.selectedValue) !== 'undefined' && null !== this.selectedValue) {
+    if (this.radioItems && typeof this.selectedValue !== 'undefined' && null !== this.selectedValue) {
       Promise.resolve().then(() => {
         this.radioItems.forEach(radioItem => {
           radioItem.checked = radioItem.value === this.selectedValue;
@@ -71,7 +71,7 @@ export class RadioItemGroupComponent implements AfterContentInit, OnDestroy, Con
         this.selectSubscription = merge(...this.radioItems.map(radioItem => radioItem.select$))
           .pipe(takeUntil(this.destroy$))
           .subscribe(radioItem => {
-            if (typeof (this.selectedValue) !== 'undefined' && null !== this.selectedValue) {
+            if (typeof this.selectedValue !== 'undefined' && null !== this.selectedValue) {
               this.selectedValue = radioItem.value;
               this._ngModelOnChange(radioItem.value);
               this.updateChildrenStatus();
@@ -89,7 +89,7 @@ export class RadioItemGroupComponent implements AfterContentInit, OnDestroy, Con
   }
 
   writeValue(value: string | number): void {
-    if (typeof (value) !== 'undefined' && null !== value) {
+    if (typeof value !== 'undefined' && null !== value) {
       this.selectedValue = value;
       this.updateChildrenStatus();
       this.cdr.markForCheck();

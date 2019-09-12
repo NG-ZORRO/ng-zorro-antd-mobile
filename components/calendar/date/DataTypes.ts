@@ -6,7 +6,7 @@ export namespace DateModels {
     Only,
     Start,
     Middle,
-    End,
+    End
   }
 
   export interface Locale {

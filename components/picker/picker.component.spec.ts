@@ -6,7 +6,7 @@ import { ListModule, PickerModule, PickerComponent } from '../..';
 import { PickerOptions } from './picker-options.provider';
 import { PickerService } from './picker.service';
 import { dispatchTouchEvent } from '../core/testing';
-import { LocaleProviderService, LocaleProviderModule } from '../..';
+import { LocaleProviderService, LocaleProviderModule, PickerRef } from '../..';
 import { ButtonComponent } from '../button/button.component';
 import { ButtonModule } from '../button/button.module';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
@@ -112,6 +112,16 @@ describe('PickerComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should okText dismissText work', () => {
+    const list = lists[0].nativeElement;
+    list.click();
+    fixture.detectChanges();
+    pickerEle = document.querySelector('picker');
+    expect(pickerEle.querySelector('.am-picker-popup-header-left').innerText).toEqual('dismissText');
+    expect(pickerEle.querySelector('.am-picker-popup-header-right').innerText).toEqual('okText');
+    fixture.detectChanges();
+  });
+
   it('should showPicker work', () => {
     const button = buttons[0].nativeElement;
     button.click();
@@ -168,6 +178,8 @@ describe('PickerComponent', () => {
         [data]="singleArea"
         [arrow]="'horizontal'"
         [appendToBody]="true"
+        [okText]="'okText'"
+        [dismissText]="'dismissText'"
         (ngModelChange)="modelChange($event)"
       >
         Multiple & cascader
@@ -241,6 +253,12 @@ export class TestPickerBasicComponent {
   }
 
   showPicker() {
-    PickerService.showPicker({ value: this.value, data: this.singleArea }, result => {}, cancel => {});
+    const ref: PickerRef = this._picker.showPicker(
+      { value: this.value, data: this.singleArea },
+      result => {},
+      cancel => {}
+    );
+    ref.getInstance();
+    ref.getElement();
   }
 }

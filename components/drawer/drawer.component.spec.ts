@@ -353,33 +353,34 @@ describe('drawer', () => {
 @Component({
   selector: 'test-drawer',
   template: `
-    <Drawer [enableDragHandle]="enableDragHandle"
-            [sidebar]="sidebar"
-            [open]="open"
-            [position]="position"
-            [contentStyle]="contentStyle"
-            [sidebarStyle]="sidebarStyle"
-            [overlayStyle]="overlayStyle"
-            [dragHandleStyle]="dragHandleStyle"
-            [touch]="touch"
-            [transitions]="transitions"
-            [docked]="docked"
-            [dragToggleDistance]="dragToggleDistance"
-            (onOpenChange)="onOpenChange($event)"
+    <Drawer
+      [enableDragHandle]="enableDragHandle"
+      [sidebar]="sidebar"
+      [open]="open"
+      [position]="position"
+      [contentStyle]="contentStyle"
+      [sidebarStyle]="sidebarStyle"
+      [overlayStyle]="overlayStyle"
+      [dragHandleStyle]="dragHandleStyle"
+      [touch]="touch"
+      [transitions]="transitions"
+      [docked]="docked"
+      [dragToggleDistance]="dragToggleDistance"
+      (onOpenChange)="onOpenChange($event)"
     >
       Click upper-left corner
     </Drawer>
 
     <ng-template #sidebar>
       <List>
-        <ListItem
-          [multipleLine]="true"
-          [thumb]="'https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'">
+        <ListItem [multipleLine]="true" [thumb]="'https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'">
           Category
         </ListItem>
-        <ListItem *ngFor="let num of [1,2,3,4,5] ; let i = index"
-                  [thumb]="'https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'">
-          Category{{i + 1}}
+        <ListItem
+          *ngFor="let num of [1, 2, 3, 4, 5]; let i = index"
+          [thumb]="'https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'"
+        >
+          Category{{ i + 1 }}
         </ListItem>
       </List>
     </ng-template>
@@ -398,7 +399,7 @@ export class TestDrawerComponent {
   dragHandleStyle = { color: '#A6A6A9' };
   touch = true;
 
-  @ViewChild(DrawerComponent)
+  @ViewChild(DrawerComponent, { static: false })
   drawer: DrawerComponent;
 
   onOpenChange(value) {

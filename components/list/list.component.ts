@@ -25,7 +25,7 @@ export class ListComponent {
   get renderHeader() {
     return this._renderHeader;
   }
-  set renderHeader(value: string | Function | TemplateRef<any>) {
+  set renderHeader(value: any) {
     if (value instanceof TemplateRef) {
       this.renderHeaderType = 'templateRef';
     } else {
@@ -39,7 +39,7 @@ export class ListComponent {
   get renderFooter() {
     return this._renderFooter;
   }
-  set renderFooter(value: string | Function | TemplateRef<any>) {
+  set renderFooter(value: any) {
     if (value instanceof TemplateRef) {
       this.renderFooterType = 'templateRef';
     } else {

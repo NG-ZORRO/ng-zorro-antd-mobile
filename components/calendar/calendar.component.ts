@@ -71,7 +71,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   private _dateModelValue: any;
   private _dateModelTime: number = 0;
 
-  @ViewChild(CalendarDatePickerComponent)
+  @ViewChild(CalendarDatePickerComponent, { static: false })
   datepicker: CalendarDatePickerComponent;
 
   @Input()
@@ -178,7 +178,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
 
   constructor(private _localeProviderService: LocaleProviderService) {}
 
-  writeValue(value: Date|Array<Date>|null): void {
+  writeValue(value: Date | Array<Date> | null): void {
     this._dateModelType = null;
     if (value && value instanceof Array) {
       if (value.length === 0) {
@@ -203,7 +203,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     }
   }
 
-  registerOnChange(fn: (date: Date|Array<Date>) => void): void {
+  registerOnChange(fn: (date: Date | Array<Date>) => void): void {
     this.onChangeFn = fn;
   }
 
@@ -283,7 +283,10 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
         } else {
           newState = {
             ...newState,
-            timePickerTitle: +newDate >= +startDate || this.isSameDate(startDate, newDate) ? locale.selectEndTime : locale.selectStartTime,
+            timePickerTitle:
+              +newDate >= +startDate || this.isSameDate(startDate, newDate)
+                ? locale.selectEndTime
+                : locale.selectStartTime,
             disConfirmBtn: false,
             endDate:
               pickTime && !useDateTime && (+newDate >= +startDate || this.isSameDate(startDate, newDate))
@@ -354,7 +357,9 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
 
   triggerSelectHasDisableDate = (date: Date[]) => {
     this.triggerClear();
-    this.onSelectHasDisableDate && this.onSelectHasDisableDate.emit(date);
+    if (this.onSelectHasDisableDate) {
+      this.onSelectHasDisableDate.emit(date);
+    }
   }
 
   onClose = () => {
@@ -375,14 +380,20 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
       this.onClose();
       return this.onConfirm && this.onConfirm.emit({ startDate: endDate, endDate: startDate });
     }
-    this.onConfirm && this.onConfirm.emit({ startDate, endDate });
+    if (this.onConfirm) {
+      this.onConfirm.emit({ startDate, endDate });
+    }
     this.onClose();
   }
 
   triggerCancel() {
-    this.props.onCancel && this.props.onCancel();
+    if (this.props.onCancel) {
+      this.props.onCancel();
+    }
     this.onClose();
-    this.onCancel && this.onCancel.emit();
+    if (this.onCancel) {
+      this.onCancel.emit();
+    }
   }
 
   triggerClear = () => {
@@ -392,7 +403,9 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
         ...this.state,
         ...{ startDate: undefined, endDate: undefined, showTimePicker: false }
       };
-      this.props.onClear && this.props.onClear();
+      if (this.props.onClear) {
+        this.props.onClear();
+      }
       this.showClear = !!this.state.startDate;
     }, 0);
   }
@@ -438,6 +451,6 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     this._unsubscribe$.complete();
   }
 
-  private onChangeFn: (date: Date|Array<Date>) => void = () => {};
-  private onTouchFn: (date: Date|Array<Date>) => void = () => {};
+  private onChangeFn: (date: Date | Array<Date>) => void = () => {};
+  private onTouchFn: (date: Date | Array<Date>) => void = () => {};
 }

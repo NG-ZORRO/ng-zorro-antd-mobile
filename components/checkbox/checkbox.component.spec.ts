@@ -91,30 +91,19 @@ describe('checkbox', () => {
 @Component({
   selector: 'test-checkbox',
   template: `
-    <label Checkbox
-           [disabled]="disabled"
-           [checked]="checked"
-           (onChange)= "onChange($event)"
-    ></label>
-    <CheckboxItem [disabled]="disabled"
-                  [(ngModel)]="checked"
-                  (onChange)="onChange($event)"
-    ></CheckboxItem>
-    <AgreeItem [disabled]="disabled"
-               [(ngModel)]="checked"
-               (onChange)= "onChange($event)"
-    ></AgreeItem>
+    <label Checkbox [disabled]="disabled" [checked]="checked" (onChange)="onChange($event)"></label>
+    <CheckboxItem [disabled]="disabled" [(ngModel)]="checked" (onChange)="onChange($event)"></CheckboxItem>
+    <AgreeItem [disabled]="disabled" [(ngModel)]="checked" (onChange)="onChange($event)"></AgreeItem>
   `
 })
 export class TestCheckboxComponent {
   checked: boolean = false;
   disabled: boolean = false;
 
-  @ViewChild(CheckboxComponent)
+  @ViewChild(CheckboxComponent, { static: false })
   checkbox: CheckboxComponent;
 
   onChange(e) {
     console.log('onChange', e);
   }
-
 }

@@ -4,30 +4,33 @@ import { Component } from '@angular/core';
   selector: 'demo-checkbox-basic',
   template: `
     <List [renderHeader]="renderHeader">
-      <CheckboxItem *ngFor="let i of checkItemListData"
-                    [name]="i.name"
-                    [value]="i.value"
-                    [(ngModel)]="i.checked"
-                    (onChange)="onChange($event)"
+      <CheckboxItem
+        *ngFor="let i of checkItemListData"
+        [name]="i.name"
+        [value]="i.value"
+        [(ngModel)]="i.checked"
+        (onChange)="onChange($event)"
       >
         {{ i.name }}
       </CheckboxItem>
-      <CheckboxItem multipleLine
-                    key="disabled"
-                    data-seed="logId"
-                    [disabled]="disabledStatus"
-                    [(ngModel)]="disabledCheckboxItemStatus"
+      <CheckboxItem
+        multipleLine
+        key="disabled"
+        data-seed="logId"
+        [disabled]="disabledStatus"
+        [(ngModel)]="disabledCheckboxItemStatus"
       >
         Undergraduate<Brief>Auxiliary text</Brief>
       </CheckboxItem>
     </List>
     <Flex>
       <FlexItem>
-        <AgreeItem data-seed="logId"
-                   [name]="agreeItemData.name"
-                   [value]="agreeItemData.value"
-                   [(ngModel)]="agreeItemData.checked"
-                   (onChange)="onChange2($event)"
+        <AgreeItem
+          data-seed="logId"
+          [name]="agreeItemData.name"
+          [value]="agreeItemData.value"
+          [(ngModel)]="agreeItemData.checked"
+          (onChange)="onChange2($event)"
         >
           Agree <a (click)="onClick($event)">agreement</a>
         </AgreeItem>

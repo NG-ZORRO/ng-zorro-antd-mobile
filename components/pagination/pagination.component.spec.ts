@@ -103,28 +103,31 @@ describe('pagination', () => {
 @Component({
   selector: 'test-pagination',
   template: `
-    <Pagination [mode]="mode"
-                [current]="current"
-                [total]="total"
-                [simple]="simple"
-                [disabled]="disabled"
-                [locale]="locale"
-                (onChange)="onChange($event)"
+    <Pagination
+      [mode]="mode"
+      [current]="current"
+      [total]="total"
+      [simple]="simple"
+      [disabled]="disabled"
+      [locale]="locale"
+      (onChange)="onChange($event)"
     ></Pagination>
-    <Pagination [mode]="mode"
-                [current]="current"
-                [total]="total"
-                [simple]="simple"
-                [disabled]="disabled"
-                [locale]="locale"
-                (onChange)="onChange($event)"
+    <Pagination
+      [mode]="mode"
+      [current]="current"
+      [total]="total"
+      [simple]="simple"
+      [disabled]="disabled"
+      [locale]="locale"
+      (onChange)="onChange($event)"
     ></Pagination>
-    <Pagination [mode]="mode"
-                [current]="current"
-                [total]="total"
-                [simple]="simple"
-                [disabled]="disabled"
-                [locale]="{prevText:localeLeft,nextText:localeRight}"
+    <Pagination
+      [mode]="mode"
+      [current]="current"
+      [total]="total"
+      [simple]="simple"
+      [disabled]="disabled"
+      [locale]="{ prevText: localeLeft, nextText: localeRight }"
     ></Pagination>
 
     <ng-template #localeLeft>

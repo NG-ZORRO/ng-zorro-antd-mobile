@@ -3,12 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'demo-picker-view-basic',
   template: `
-    <div>{{getValue(value)}}</div>
-    <PickerView [data]="seasons"
-                [cascade]="false"
-                [(ngModel)]="value"
-                (ngModelChange)="onChange($event)"
-    ></PickerView>
+    <div>{{ getValue(value) }}</div>
+    <PickerView [data]="seasons" [cascade]="false" [(ngModel)]="value" (ngModelChange)="onChange($event)"></PickerView>
   `
 })
 export class DemoPickerViewBasicComponent {

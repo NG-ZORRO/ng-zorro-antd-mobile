@@ -28,13 +28,13 @@ export class SwipeActionComponent implements OnInit, AfterViewInit, OnDestroy {
   private _needShowRight: boolean;
   private _startX: number;
 
-  @ViewChild('leftBtnRef')
+  @ViewChild('leftBtnRef', { static: false })
   leftBtnRef;
-  @ViewChild('rightBtnRef')
+  @ViewChild('rightBtnRef', { static: false })
   rightBtnRef;
-  @ViewChild('contentRef')
+  @ViewChild('contentRef', { static: false })
   content;
-  @ViewChild('coverRef')
+  @ViewChild('coverRef', { static: false })
   cover;
 
   @Input()
@@ -59,7 +59,7 @@ export class SwipeActionComponent implements OnInit, AfterViewInit, OnDestroy {
     };
   }
 
-  onCloseSwipe = (ev) => {
+  onCloseSwipe = ev => {
     if (!(this._openedLeft || this._openedRight)) {
       return;
     }
@@ -79,6 +79,10 @@ export class SwipeActionComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   setBtnStyle(value) {
+    if (this._btnsLeftWidth === 0 || this._btnsRightWidth === 0) {
+      this._btnsLeftWidth = this.leftBtnRef ? this.leftBtnRef.nativeElement.offsetWidth : 0;
+      this._btnsRightWidth = this.rightBtnRef ? this.rightBtnRef.nativeElement.offsetWidth : 0;
+    }
     const limit = value > 0 ? this._btnsLeftWidth : -this._btnsRightWidth;
     const contentLeft = this.getContentEasing(value, limit);
     this.content.nativeElement.style.left = `${contentLeft}px`;

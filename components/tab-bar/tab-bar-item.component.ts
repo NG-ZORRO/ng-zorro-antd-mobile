@@ -1,9 +1,4 @@
-import {
-  Component,
-  Input,
-  ViewChild,
-  TemplateRef
-} from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef } from '@angular/core';
 import { TabPaneComponent } from '../tabs/tab-pane.component';
 
 @Component({
@@ -16,7 +11,7 @@ export class TabBarItemComponent extends TabPaneComponent {
   tintColor: string = '#108ee9';
   unselectedTintColor: string = '#888';
 
-  @ViewChild('tabBarTab')
+  @ViewChild('tabBarTab', { static: true })
   tabBarTab: TemplateRef<void>;
 
   @Input()

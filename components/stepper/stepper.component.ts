@@ -142,14 +142,17 @@ export class StepperComponent implements OnChanges, ControlValueAccessor {
   }
 
   inputChange(event) {
-    const value = event.target.value;
-    this._value = value ? parseInt(value, null) : 0;
-    if (value < this._min) {
+    const value = event;
+    this._value = value ? +value : 0;
+    if (this._value < this._min) {
       this._value = this._min;
     }
-    if (value > this._max) {
+    if (this._value > this._max) {
       this._value = this._max;
     }
+    this._upDisabled = this.plus(this._value, this._step) > this._max ? true : false;
+    this._downDisabled = this.minus(this._value, this._step) < this._min ? true : false;
+    this.setCls();
     this.onChange.emit(this._value);
     this.onChangeFn(this._value);
   }

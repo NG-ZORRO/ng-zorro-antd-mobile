@@ -27,7 +27,7 @@ describe('AccordionComponent', () => {
     fixture.detectChanges();
   });
 
-  it ('should click work', () => {
+  it('should click work', () => {
     accordionEle.nativeElement.click();
   });
 
@@ -53,7 +53,6 @@ describe('AccordionComponent', () => {
     component.accordion = false;
     fixture.detectChanges();
     let accordionPanelEle = accordionEle.nativeElement.querySelector('accordionpanel');
-
   });
 
   it('should expandall, accordion work', () => {
@@ -82,10 +81,10 @@ describe('AccordionComponent', () => {
 
   it('should toArray work', () => {
     fixture.detectChanges();
-    expect(component.accordionComponent.toArray('KEY')).toEqual([ 'KEY' ], 'toArray is work');
+    expect(component.accordionComponent.toArray('KEY')).toEqual(['KEY'], 'toArray is work');
   });
 
-  it ('should header click', () => {
+  it('should header click', () => {
     accordionEle.nativeElement.querySelector('.am-accordion-header').click();
   });
 });
@@ -100,13 +99,14 @@ describe('AccordionComponent', () => {
       [accordion]="accordion"
       (onChange)="onChange($event)"
     >
-      <AccordionPanel *ngFor="let item of accordions; let i = index;"
-                      [key]="i"
-                      [header]="item.title"
-                      [disabled]="item.inactive"
+      <AccordionPanel
+        *ngFor="let item of accordions; let i = index"
+        [key]="i"
+        [header]="item.title"
+        [disabled]="item.inactive"
       >
         <div *ngFor="let content of item.child">
-          {{content}}
+          {{ content }}
         </div>
       </AccordionPanel>
     </Accordion>
@@ -114,13 +114,15 @@ describe('AccordionComponent', () => {
 })
 export class TestAccordionComponent implements OnInit {
   defaultActiveKey = '0';
-  accordions: Array<any> = [{ title: 'Title 1', child: ['content 1', 'content 1', 'content 1'],  inactive: false },
-                            { title: 'Title 2', child: ['content 2', 'content 2', 'content 2'] }];
+  accordions: Array<any> = [
+    { title: 'Title 1', child: ['content 1', 'content 1', 'content 1'], inactive: false },
+    { title: 'Title 2', child: ['content 2', 'content 2', 'content 2'] }
+  ];
   expandAll = false;
   accordion = true;
   activeKey = undefined;
 
-  @ViewChild(AccordionComponent) accordionComponent: AccordionComponent;
+  @ViewChild(AccordionComponent, { static: false }) accordionComponent: AccordionComponent;
 
   onChange(event) {
     console.log(event);
@@ -128,8 +130,10 @@ export class TestAccordionComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.accordions = [{ title: 'Title 1', child: ['content 1', 'content 1', 'content 1'],  inactive: false },
-      { title: 'Title 2', child: ['content 2', 'content 2', 'content 2'] }];
+      this.accordions = [
+        { title: 'Title 1', child: ['content 1', 'content 1', 'content 1'], inactive: false },
+        { title: 'Title 2', child: ['content 2', 'content 2', 'content 2'] }
+      ];
     }, 0);
   }
 }

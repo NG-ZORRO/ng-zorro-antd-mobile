@@ -1,15 +1,18 @@
 import {
-  Component,
-  HostListener,
   Input,
   Output,
+  Component,
+  forwardRef,
+  ElementRef,
   TemplateRef,
   EventEmitter,
-  ViewEncapsulation,
-  forwardRef
+  HostListener,
+  ViewEncapsulation
 } from '@angular/core';
 import { ModalOptions } from './modal-options.provider';
+import { Observable } from 'rxjs';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ModalRef } from './modal-ref.class';
 @Component({
   selector: 'Modal',
   templateUrl: './modal.component.html',
@@ -23,7 +26,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class ModalComponent implements ControlValueAccessor {
+export class ModalComponent<T = any, R = any> extends ModalRef<T, R> implements ControlValueAccessor {
   autoFocus = { focus: true, date: new Date() };
   transitionName: string = '';
   maskTransitionName: string = '';
@@ -39,9 +42,6 @@ export class ModalComponent implements ControlValueAccessor {
   onTouched: () => {};
 
   @Input()
-  get title(): string | TemplateRef<any> {
-    return this.option.title;
-  }
   set title(value: string | TemplateRef<any>) {
     this.option.title = value;
   }
@@ -112,15 +112,21 @@ export class ModalComponent implements ControlValueAccessor {
   }
   @Output()
   onClose: EventEmitter<any> = new EventEmitter();
+  @Output()
+  afterOpenEmitter: EventEmitter<any> = new EventEmitter<void>();
+  @Output()
+  afterCloseEmitter: EventEmitter<any> = new EventEmitter<void>();
 
   @HostListener('mouseup', ['$event'])
   @HostListener('touchend', ['$event'])
   panend(event) {
-    if (this.option.closable || this.option.maskClosable  || this.option.popup) {
+    if (this.option.closable || this.option.maskClosable || this.option.popup) {
       if (
         (event && event.target && event.target.getAttribute('role') === 'dialog') ||
         event.target.getAttribute('role') === 'close'
       ) {
+        event.preventDefault();
+        event.stopPropagation();
         if (this.option.close) {
           this.option.close();
         } else {
@@ -131,7 +137,9 @@ export class ModalComponent implements ControlValueAccessor {
     }
   }
 
-  constructor(public option: ModalOptions) {}
+  constructor(public option: ModalOptions, public elementRef: ElementRef) {
+    super();
+  }
 
   isTemplateRef(value: string | TemplateRef<any>) {
     return value instanceof TemplateRef;
@@ -234,7 +242,9 @@ export class ModalComponent implements ControlValueAccessor {
     }
     setTimeout(() => {
       this.option.visible = false;
-      this.onChanged(this.option.visible);
+      if (this.onChanged) {
+        this.onChanged(this.option.visible);
+      }
     }, 200);
   }
 
@@ -252,6 +262,49 @@ export class ModalComponent implements ControlValueAccessor {
   registerOnTouched(fn: () => {}): void {
     this.onTouched = fn;
   }
+
+  get afterOpen(): Observable<void> {
+    return this.afterOpenEmitter.asObservable();
+  }
+
+  get afterClose(): Observable<R> {
+    return this.afterCloseEmitter.asObservable();
+  }
+
+  getInstance(): ModalComponent {
+    return this;
+  }
+
+  getElement(): HTMLElement {
+    return this.elementRef && this.elementRef.nativeElement;
+  }
+
+  close(): void {
+    if (this.option.closeWithAnimation) {
+      this.option.closeWithAnimation();
+    } else {
+      this.onClose.emit();
+      this.leaveAnimation();
+    }
+  }
+
+  triggerOk(): void {
+    if (this.option.footer.length > 1) {
+      const button = this.option.footer[1];
+      button.onPress();
+    }
+  }
+
+  triggerCancel(): void {
+    if (this.option.footer.length > 0) {
+      const button = this.option.footer[0];
+      button.onPress();
+    }
+  }
+
+  destroy(): void {
+    this.close();
+  }
 }
 
 @Component({
@@ -260,8 +313,8 @@ export class ModalComponent implements ControlValueAccessor {
   encapsulation: ViewEncapsulation.None
 })
 export class ModalServiceComponent extends ModalComponent {
-  constructor(public option: ModalOptions) {
-    super(option);
+  constructor(public option: ModalOptions, public elementRef: ElementRef) {
+    super(option, elementRef);
     this.setTransitionName(this.option.visible);
   }
 }

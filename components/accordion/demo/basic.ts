@@ -3,18 +3,16 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 @Component({
   selector: 'demo-accordion-basic',
   template: `
-    <Accordion [defaultActiveKey]="'0'"
-               [activeKey]="activeKey"
-               (onChange)="onChange($event)"
-    >
-      <AccordionPanel *ngFor="let item of accordions; let i = index;"
-                      [key]="i"
-                      [header]="item.title"
-                      [disabled]="item.inactive"
+    <Accordion [defaultActiveKey]="'0'" [activeKey]="activeKey" (onChange)="onChange($event)">
+      <AccordionPanel
+        *ngFor="let item of accordions; let i = index"
+        [key]="i"
+        [header]="item.title"
+        [disabled]="item.inactive"
       >
         <List className="my-list">
           <ListItem *ngFor="let content of item.child">
-            {{content}}
+            {{ content }}
           </ListItem>
         </List>
       </AccordionPanel>
@@ -25,7 +23,7 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
   `
 })
 export class DemoAccordionBasicComponent implements OnInit {
-  @ViewChild('title1') title1: ViewChild;
+  @ViewChild('title1', {static: true}) title1: ViewChild;
   accordions: Array<any> = [];
 
   activeKey = [0, 1];
@@ -37,9 +35,12 @@ export class DemoAccordionBasicComponent implements OnInit {
   ngOnInit() {
     this.accordions = [
       { title: this.title1, child: ['content 1', 'content 1', 'content 1'] },
-      { title: `<img src="/assets/img/logo.svg" style="width:36px"/>`, child: ['content 2', 'content 2', 'content 2'], inactive: false },
+      {
+        title: `<img src="/assets/img/logo.svg" style="width:36px"/>`,
+        child: ['content 2', 'content 2', 'content 2'],
+        inactive: false
+      },
       { title: 'Title 3', child: ['content 3', 'content 3', 'content 3'], inactive: true }
     ];
   }
-
 }

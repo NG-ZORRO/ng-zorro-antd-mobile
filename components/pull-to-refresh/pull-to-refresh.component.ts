@@ -58,17 +58,17 @@ export class PullToRefreshComponent implements ControlValueAccessor {
     finish: '完成刷新'
   };
 
-  private _startTime = 0;
-  private _endTime = 0;
-  private _endRreach = false;
+  private _startTime: number = 0;
+  private _endTime: number = 0;
+  private _endReach: boolean = false;
   private _direction: string = '';
   private _clientHeight: number = 0;
   private _currentContentHeight: number = 0;
-  private _lastcontentOffset: number = 0;
+  private _lastContentOffset: number = 0;
   private _ngModelOnChange: (value: object) => {};
   private _ngModelOnTouched: () => {};
 
-  @ViewChild('pullToRefresh', { read: ViewContainerRef })
+  @ViewChild('pullToRefresh', { read: ViewContainerRef, static: true })
   private _pullToRefresh: ViewContainerRef;
 
   @Input()
@@ -110,14 +110,14 @@ export class PullToRefreshComponent implements ControlValueAccessor {
   @HostBinding('class.super-container')
   container: boolean = true;
   @HostBinding('class.am-pull-to-refresh-up')
-  refreshUp: boolean = false;
+  refreshUp: boolean = this._direction === 'up' || this._direction === '';
   @HostBinding('class.am-pull-to-refresh-down')
-  refreshDown: boolean = true;
+  refreshDown: boolean = this._direction === 'down' || this._direction === '';
 
   @HostListener('touchstart', ['$event'])
   touchstart(e) {
     this._startTime = Date.now();
-    if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
+    if (this._direction === 'down' || (this._direction === '' && !this._endReach)) {
       if (this.ele.nativeElement.scrollTop > 0) {
         this.startY = undefined;
         return;
@@ -133,18 +133,12 @@ export class PullToRefreshComponent implements ControlValueAccessor {
   }
   @HostListener('touchmove', ['$event'])
   touchmove(e) {
-    if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
+    if (this._direction === 'down' || (this._direction === '' && !this._endReach)) {
       if (this.ele.nativeElement.scrollTop > 0) {
         return;
       }
       let distanceY = e.changedTouches[0].clientY - this.startY;
-      if (distanceY < 0) {
-        // 滚动
-        this.state.drag = false;
-      } else {
-        // 下拉
-        this.state.drag = true;
-      }
+      this.state.drag = distanceY >= 0;
       if (this.state.drag) {
         // 禁止滚动
         if (e.cancelable) {
@@ -173,7 +167,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       let distanceY = e.changedTouches[0].clientY - this.startY;
       //向上拉动的时候，如果当前窗口内容没有滚到最后，则不实现拖动的动作；向下滚动不实现拖动动作
       if (
-        Math.abs(this._lastcontentOffset) <= this._clientHeight - this._currentContentHeight - this.distanceToRefresh ||
+        Math.abs(this._lastContentOffset) < this._clientHeight - this._currentContentHeight - this.distanceToRefresh ||
         distanceY > 0
       ) {
         // 滚动
@@ -212,7 +206,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
     const distanceY = e.changedTouches[0].clientY - this.startY;
     if (Math.abs(distanceY) >= this.distanceToRefresh) {
       this.state.currentState = 'release';
-      if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
+      if (this._direction === 'down' || (this._direction === '' && !this._endReach)) {
         this.translateY(this.distanceToRefresh + 1);
       } else {
         this.translateY(-this.distanceToRefresh - 1);
@@ -225,7 +219,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
         if (this._ngModelOnChange) {
           this._ngModelOnChange(this.state);
         }
-        if (this._direction === 'down' || (this._direction === '' && !this._endRreach)) {
+        if (this._direction === 'down' || (this._direction === '' && !this._endReach)) {
           this.onRefresh.emit('down');
         } else {
           this.translateY(-this.distanceToRefresh - 1);
@@ -243,65 +237,55 @@ export class PullToRefreshComponent implements ControlValueAccessor {
       this.translateY(0);
     }
   }
-  @HostListener('touchcancel', ['$event'])
-  touchcancel(evt) {
+  @HostListener('touchcancel')
+  touchcancel() {
     this.translateY(0);
   }
   @HostListener('scroll', ['$event'])
   scroll(evt) {
     this._endTime = Date.now();
     const contentOffset = evt.target.scrollTop;
-    const offset = contentOffset - this._lastcontentOffset;
-    this._lastcontentOffset = contentOffset;
+    this._lastContentOffset = contentOffset;
     if (this._direction === '') {
       if (
-        offset > 0 &&
         contentOffset > 0 &&
         evt.target.scrollTop + this.ele.nativeElement.clientHeight === evt.target.scrollHeight
-        ) {
-          setTimeout(() => {
-            this._endRreach = true;
-          }, 500);
+      ) {
+        setTimeout(() => {
+          this._endReach = true;
+        }, 100);
       } else {
-        this._endRreach = false;
+        this._endReach = false;
       }
     }
-    if (!this.endReachedRefresh) {
+    if (!this.endReachedRefresh || this._direction !== 'down') {
       return;
     }
     if (
-      this._direction === 'down' &&
-      offset > 0 &&
       contentOffset > 0 &&
       evt.target.scrollTop + this.ele.nativeElement.clientHeight > evt.target.scrollHeight - this.distanceToRefresh &&
       this._endTime - this._startTime >= 100
-      ) {
-        this._startTime = this._endTime;
+    ) {
+      this._startTime = this._endTime;
+      if (this.refreshing) {
+        this.state.currentState = 'release';
+        if (this._ngModelOnChange) {
+          this._ngModelOnChange(this.state);
+        }
+      }
+      setTimeout(() => {
+        if (this.endReachedRefresh) {
+          this.onRefresh.emit('endReachedRefresh');
+        }
         if (this.refreshing) {
-          this.state.currentState = 'release';
+          this.state.currentState = 'finish';
           if (this._ngModelOnChange) {
             this._ngModelOnChange(this.state);
           }
         }
-        setTimeout(() => {
-          if (this._direction === '') {
-            this._endRreach = true;
-          }
-          if (this.endReachedRefresh) {
-            this.onRefresh.emit('endReachedRefresh');
-          }
-          if (this.refreshing) {
-            this.state.currentState = 'finish';
-            if (this._ngModelOnChange) {
-              this._ngModelOnChange(this.state);
-            }
-          }
-        }, 500);
+      }, 500);
     } else {
       setTimeout(() => {
-        if (this._direction === '') {
-          this._endRreach = false;
-        }
         if (this.refreshing) {
           this.state.currentState = 'finish';
           if (this._ngModelOnChange) {
@@ -315,9 +299,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
   constructor(private ele: ElementRef) {}
 
   isTemplateRef(value) {
-    if (value) {
-      return value instanceof TemplateRef;
-    }
+    return value instanceof TemplateRef;
   }
 
   translateY(distanceY) {

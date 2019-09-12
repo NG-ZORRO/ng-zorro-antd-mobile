@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   exports: [TextareaItemComponent],
-  declarations: [TextareaItemComponent ],
+  declarations: [TextareaItemComponent],
   imports: [CommonModule, FormsModule]
 })
 export class TextareaItemModule {}

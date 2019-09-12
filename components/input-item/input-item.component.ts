@@ -11,9 +11,11 @@ import {
   Renderer2,
   ElementRef,
   forwardRef,
-  TemplateRef
+  TemplateRef,
+  AfterViewChecked
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { isTemplateRef } from '../core/util/check';
 
 @Component({
   selector: 'InputItem, nzm-input-item',
@@ -26,7 +28,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {
+export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAccessor {
   prefixCls: string = 'am-input';
   wrapCls: object;
   labelCls: object;
@@ -36,6 +38,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
   autoFocus: boolean = false;
   inputType: string = 'text';
   ngTemplate: boolean = false;
+  isTemplateRef = isTemplateRef;
 
   private _el: HTMLElement;
   private _type: string = 'text';
@@ -57,11 +60,12 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
   private _focus: boolean = false;
   private _isClear: boolean = false;
   private _fontColor: string;
+  private _content: string | TemplateRef<any> = '';
   private _inputLock = false;
 
-  @ViewChild('lableContent')
+  @ViewChild('lableContent', { static: true })
   lableRef;
-  @ViewChild('inputElement')
+  @ViewChild('inputElement', { static: false })
   inputElementRef;
 
   @Input()
@@ -220,6 +224,14 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
       }
     }
   }
+  @Input()
+  get content() {
+    return this._content;
+  }
+  set content(value: string | TemplateRef<any>) {
+    this._content = value;
+    this.setCls();
+  }
 
   @Output()
   onChange: EventEmitter<any> = new EventEmitter<any>();
@@ -252,7 +264,8 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
   setCls() {
     if (
       this.lableRef.nativeElement.children.length > 0 ||
-      (this.lableRef.nativeElement && this.lableRef.nativeElement.innerText !== '')
+      (this.lableRef.nativeElement && this.lableRef.nativeElement.innerText !== '') ||
+      this._content != undefined
     ) {
       this.labelCls = {
         [`${this.prefixCls}-label`]: true,
@@ -298,9 +311,6 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
           break;
       }
       this._value = value;
-      if (this._type !== 'money') {
-        this.inputElementRef.nativeElement.value = this._value;
-      }
       this._onChange(this._value);
       this.onChange.emit(this._value);
     }, 0);
@@ -315,6 +325,9 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
   }
 
   inputFocus(value) {
+    if (!this._editable && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     setTimeout(() => {
       this._focus = true;
       this.clsFocus = true;
@@ -343,9 +356,6 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
     this.onChange.emit(this._value);
     this._onChange(this._value);
     this._isClear = true;
-    if (this._type !== 'money') {
-      this.inputElementRef.nativeElement.value = this._value;
-    }
     this.inputFocus(this._value);
   }
 
@@ -374,12 +384,6 @@ export class InputItemComponent implements OnInit, AfterViewInit, OnChanges, Con
   }
 
   registerOnTouched(fn: any): void {}
-
-  ngOnChanges() {
-    if (this.inputElementRef && this._type !== 'money' && this._value !== undefined) {
-      this.inputElementRef.nativeElement.value = this._value;
-    }
-  }
 
   ngOnInit() {
     this.setCls();

@@ -33,44 +33,44 @@ export class DemoToastBasicComponent {
   constructor(private _toast: ToastService) {}
 
   showToast() {
-    const toast = ToastService.show('This is a toast tips !!!', 0);
+    const toast = this._toast.show('This is a toast tips !!!', 0);
     setTimeout(() => {
-      ToastService.hide();
+      this._toast.hide();
     }, 3000);
   }
 
   showToastNoMask() {
-    const toast = ToastService.info('Toast without mask !!!', 4000, null, false);
+    const toast = this._toast.info('Toast without mask !!!', 4000, null, false);
   }
 
   showToastTop() {
-    const toast = ToastService.info('Toast position top', 4000, null, false, 'top');
+    const toast = this._toast.info('Toast position top', 4000, null, false, 'top');
   }
 
   showToastBottom() {
-    const toast = ToastService.info('Toast position top', 4000, null, false, 'bottom');
+    const toast = this._toast.info('Toast position top', 4000, null, false, 'bottom');
   }
 
   showCustomIcon(event) {
-    const toast = ToastService.info(event);
+    const toast = this._toast.info(event);
   }
 
   successToast() {
-    const toast = ToastService.success('Load success !!!', 3000, () => {
+    const toast = this._toast.success('Load success !!!', 3000, () => {
       console.log('success');
     });
   }
 
   failToast() {
-    const toast = ToastService.fail('Load failed !!!', 1000);
+    const toast = this._toast.fail('Load failed !!!', 1000);
   }
 
   offline() {
-    const toast = ToastService.offline('Network connection failed !!!', 1000);
+    const toast = this._toast.offline('Network connection failed !!!', 1000);
   }
 
   loadingToast() {
-    const toast = ToastService.loading('Loading...', 3000, () => {
+    const toast = this._toast.loading('Loading...', 3000, () => {
       console.log('Load complete !!!');
     });
   }

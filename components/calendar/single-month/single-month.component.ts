@@ -28,7 +28,7 @@ export class CalendarSingleMonthComponent implements OnInit, AfterViewInit {
 
   @HostBinding('class.single-month') singleMonth: boolean = true;
 
-  constructor(private _elementRef: ElementRef) { }
+  constructor(private _elementRef: ElementRef) {}
 
   genWeek = (weeksData: DateModels.CellData[], index: number) => {
     const { getDateExtra, monthData, onCellClick, locale, rowSize } = this.props;
@@ -152,7 +152,9 @@ export class CalendarSingleMonthComponent implements OnInit, AfterViewInit {
   }
 
   onClickCell(item) {
-    !item.disable && item.onCellClick && item.onCellClick(item.day, item.monthData);
+    if (!item.disable && item.onCellClick) {
+      item.onCellClick(item.day, item.monthData);
+    }
   }
 
   ngOnInit() {

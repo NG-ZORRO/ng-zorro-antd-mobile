@@ -191,35 +191,37 @@ describe('list', () => {
 @Component({
   selector: 'test-list',
   template: `
-    <List className="my-list" [renderHeader]=(renderHeader) [renderFooter]="(renderFooter)">
-      <ListItem [extra]="extra"
-                [wrap]="wrap"
-                [thumb]="thumb"
-                [arrow]="arrow"
-                [align]="align"
-                [error]="error"
-                [disabled]="disabled"
-                [platform]="platform"
-                [multipleLine]="multipleLine"
-                (onClick)="onClick()"
+    <List className="my-list" [renderHeader]="renderHeader" [renderFooter]="renderFooter">
+      <ListItem
+        [extra]="extra"
+        [wrap]="wrap"
+        [thumb]="thumb"
+        [arrow]="arrow"
+        [align]="align"
+        [error]="error"
+        [disabled]="disabled"
+        [platform]="platform"
+        [multipleLine]="multipleLine"
+        (onClick)="onClick()"
       >
         Title
       </ListItem>
-      <ListItem [extra]="extra"
-                [wrap]="wrap"
-                [thumb]="thumb"
-                [arrow]="arrow"
-                [align]="align"
-                [error]="error"
-                [disabled]="disabled"
-                [platform]="platform"
-                [multipleLine]="multipleLine"
+      <ListItem
+        [extra]="extra"
+        [wrap]="wrap"
+        [thumb]="thumb"
+        [arrow]="arrow"
+        [align]="align"
+        [error]="error"
+        [disabled]="disabled"
+        [platform]="platform"
+        [multipleLine]="multipleLine"
       >
         Title
       </ListItem>
       <Brief></Brief>
     </List>
- `
+  `
 })
 export class TestListComponent {
   thumb = 'https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png';

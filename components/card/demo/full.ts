@@ -4,10 +4,11 @@ import { Component } from '@angular/core';
   selector: 'demo-card-full',
   template: `
     <Card [full]="true">
-      <CardHeader [title]="'This is title'"
-                  [thumb]="'https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg'"
-                  [thumbStyle]="thumbStyle"
-                  [extra]="extra"
+      <CardHeader
+        [title]="'This is title'"
+        [extra]="extra"
+        [thumb]="'https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg'"
+        [thumbStyle]="thumbStyle"
       >
         <ng-template #extra>
           <span>this is extra</span>
