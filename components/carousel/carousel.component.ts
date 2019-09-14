@@ -123,7 +123,9 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
       this.touchObject.startY,
       touchEvent.getEventTarget(event).pageY
     );
-
+    if (direction === 0) {
+      return;
+    }
     const length = this.vertical
       ? Math.abs(touchEvent.getEventTarget(event).pageY - this.touchObject.startY)
       : Math.abs(touchEvent.getEventTarget(event).pageX - this.touchObject.startX);
