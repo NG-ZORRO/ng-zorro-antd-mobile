@@ -75,7 +75,7 @@ export class AccordionComponent implements AfterContentInit, OnDestroy, OnChange
   init() {
     if (this.expandAll && this.groups && this.groups.length > 0) {
       this._oldGroups = this.groups.toArray();
-      this._oldGroups.forEach((group) => {
+      this._oldGroups.forEach(group => {
         group.openOnInitialization();
       });
       this._subscription = this.groups.changes.subscribe(change => {
