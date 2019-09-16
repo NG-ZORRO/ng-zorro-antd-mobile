@@ -1,9 +1,6 @@
 <div class="am-pull-to-refresh-content-wrapper">
   <div class="am-pull-to-refresh-content" [ngClass]="transtionCls" [ngStyle]="style">
-    <div
-      *ngIf="refreshDown"
-      class="am-pull-to-refresh-indicator am-pull-to-refresh-header-indicator"
-    >
+    <div *ngIf="refreshDown" class="am-pull-to-refresh-indicator am-pull-to-refresh-header-indicator">
       <ng-template
         *ngIf="isTemplateRef(headerIndicator[state.currentState])"
         [ngTemplateOutlet]="headerIndicator[state.currentState]"
@@ -27,10 +24,7 @@
         }}</ng-container>
       </div>
     </div>
-    <div
-      *ngIf="refreshUp"
-      class="am-pull-to-refresh-indicator am-pull-to-refresh-footer-indicator"
-    >
+    <div *ngIf="refreshUp" class="am-pull-to-refresh-indicator am-pull-to-refresh-footer-indicator">
       <ng-template
         *ngIf="isTemplateRef(footerIndicator[state.currentState])"
         [ngTemplateOutlet]="footerIndicator[state.currentState]"

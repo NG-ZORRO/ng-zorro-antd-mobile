@@ -63,7 +63,7 @@ export class StepsComponent implements OnInit, AfterContentInit {
   @HostBinding('class.am-steps-horizontal')
   clsStepsHztl: boolean;
 
-  constructor(private _elf: ElementRef, private _render: Renderer2) { }
+  constructor(private _elf: ElementRef, private _render: Renderer2) {}
 
   setStepStyle() {
     const itemCount = this.stepItems.length;
@@ -87,7 +87,7 @@ export class StepsComponent implements OnInit, AfterContentInit {
         }
       } else if (step.status && !icon) {
         switch (step.status) {
-          case  StepStatusEnum.FINISH:
+          case StepStatusEnum.FINISH:
             icon = 'check-circle-o';
             break;
           case StepStatusEnum.ERROR:
