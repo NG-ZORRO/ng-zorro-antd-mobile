@@ -20,6 +20,7 @@ import {
 import { PickerComponent } from './picker.component';
 import { PickerOptions } from './picker-options.provider';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import * as _ from 'lodash';
 
 @Directive({
   selector: '[Picker], [nzm-picker]',
@@ -95,8 +96,10 @@ export class PickerDirective implements OnDestroy, OnInit, OnChanges, ControlVal
       this.picker.instance.options.cols = value.cols.currentValue;
     }
     if (value.data && this.picker) {
-      this.picker.instance.options.data = value.data.currentValue;
-      this.showPicker();
+      if (!_.isEqual(this.picker.instance.options.data, value.data.currentValue)) {
+        this.picker.instance.options.data = value.data.currentValue;
+        this.showPicker();
+      }
     }
   }
 
