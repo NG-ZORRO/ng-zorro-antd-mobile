@@ -596,7 +596,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       if (this.resultArr.length < 3) {
         this.resultArr.push('1');
       }
-      result = this.resultArr
+      result = this.resultArr.slice(0, 3)
         .map(v => {
           return this.preZero(parseInt(v, 0));
         })
@@ -719,8 +719,9 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
         this.current_time[realIdx] = -targetLong / this.lineHeight;
         this.resultArr[checkIdx] = -targetLong / this.lineHeight;
       } else {
-        this.current_time[realIdx] = -targetLong / this.lineHeight + 1;
-        this.resultArr[checkIdx] = -targetLong / this.lineHeight + 1;
+        const delta = this.current_time[0] === this.min_date[0] ? this.min_date[realIdx] : 1;
+        this.current_time[realIdx] = -targetLong / this.lineHeight + delta;
+        this.resultArr[checkIdx] = -targetLong / this.lineHeight + delta;
       }
 
       this.data[checkIdx] = arr;
