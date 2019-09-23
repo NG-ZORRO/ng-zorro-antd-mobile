@@ -20,7 +20,6 @@ import {
 import { PickerComponent } from './picker.component';
 import { PickerOptions } from './picker-options.provider';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import * as _ from 'lodash';
 
 @Directive({
   selector: '[Picker], [nzm-picker]',
@@ -96,7 +95,7 @@ export class PickerDirective implements OnDestroy, OnInit, OnChanges, ControlVal
       this.picker.instance.options.cols = value.cols.currentValue;
     }
     if (value.data && this.picker) {
-      if (!_.isEqual(this.picker.instance.options.data, value.data.currentValue)) {
+      if (!this.isPickerDataEqual(this.picker.instance.options.data, value.data.currentValue)) {
         this.picker.instance.options.data = value.data.currentValue;
         this.showPicker();
       }
@@ -209,5 +208,31 @@ export class PickerDirective implements OnDestroy, OnInit, OnChanges, ControlVal
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  isPickerDataEqual(data1, data2) {
+    if (!data1 && !data2) {
+      return true;
+    }
+    if (!Array.isArray(data1) || !Array.isArray(data2) || data1.length !== data2.length) {
+      return false;
+    }
+    for (let i = 0; i < data1.length; i++) {
+      const item1 = data1[i];
+      const item2 = data2[i];
+      if ((item1 && !item2) || (!item1 && item2)) {
+        return false;
+      }
+      if (item1.value !== item2.value) {
+        return false;
+      }
+      if (item1.label !== item2.label) {
+        return false;
+      }
+      if (item1.children && item2.children) {
+        return this.isPickerDataEqual(item1.children, item2.children);
+      }
+    }
+    return true;
   }
 }
