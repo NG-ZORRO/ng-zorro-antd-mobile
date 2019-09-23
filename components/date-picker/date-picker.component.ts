@@ -596,7 +596,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       if (this.resultArr.length < 3) {
         this.resultArr.push('1');
       }
-      result = this.resultArr.slice(0, 3)
+      result = this.resultArr
+        .slice(0, 3)
         .map(v => {
           return this.preZero(parseInt(v, 0));
         })

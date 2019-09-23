@@ -13,6 +13,14 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 1.0.0(2019-09-23)
+
+### Bug Fixes
+
+* **picker:** fix NAN bug when fast scroll ([#589](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/589)) ([3e63d20](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3e63d20))
+
+* **picker:** fix select bug when data is a function ([#586](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/586)) ([26a07d7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/26a07d7))
+
 ## 1.0.0-rc.0(2019-09-16)
 
 ### Bug Fixes
