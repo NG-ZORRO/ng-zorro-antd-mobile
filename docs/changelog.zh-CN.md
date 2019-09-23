@@ -13,6 +13,14 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 1.0.0(2019-09-23)
+
+### Bug Fixes
+
+* **picker:** 修复快速滑动时显示NAN的错误 ([#589](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/589)) ([3e63d20](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3e63d20))
+
+* **picker:** 修复 data input 为一个函数时引发的选择错误 ([#586](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/586)) ([26a07d7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/26a07d7))
+
 ## 1.0.0-rc.0(2019-09-16)
 
 ### Bug Fixes
