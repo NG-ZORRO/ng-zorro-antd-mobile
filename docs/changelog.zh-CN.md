@@ -13,6 +13,12 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 1.0.1(2019-09-24)
+
+### Bug Fixes
+
+* **picker:** 去除对 lodash isEqual 的引用 ([#592](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/592)) ([ee6f4b6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ee6f4b6))
+
 ## 1.0.0(2019-09-23)
 
 ### Bug Fixes

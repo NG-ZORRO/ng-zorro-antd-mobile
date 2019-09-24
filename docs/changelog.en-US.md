@@ -13,6 +13,12 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 1.0.1(2019-09-24)
+
+### Bug Fixes
+
+* **picker:** remove lodash isEqual reference ([#592](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/592)) ([ee6f4b6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ee6f4b6))
+
 ## 1.0.0(2019-09-23)
 
 ### Bug Fixes
