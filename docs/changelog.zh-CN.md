@@ -23,7 +23,7 @@ timeline: true
 
 ### Bug Fixes
 
-* **picker:** 修复快速滑动时显示NAN的错误 ([#589](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/589)) ([3e63d20](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3e63d20))
+* **date-picker:** 修复快速滑动时显示NAN的错误 ([#589](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/589)) ([3e63d20](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3e63d20))
 
 * **picker:** 修复 data input 为一个函数时引发的选择错误 ([#586](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/586)) ([26a07d7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/26a07d7))
 
