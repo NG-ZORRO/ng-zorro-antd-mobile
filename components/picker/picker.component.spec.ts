@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
-import { ListModule, PickerModule, PickerComponent } from '../..';
+import { ListModule, PickerModule, PickerComponent, PickerDirective } from '../..';
 import { PickerOptions } from './picker-options.provider';
 import { PickerService } from './picker.service';
 import { dispatchTouchEvent } from '../core/testing';
@@ -163,6 +163,79 @@ describe('PickerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create', () => {
+    let data1 = [
+      {
+        value: '',
+        label: 'd',
+        children: [
+          {
+            value: '',
+            label: '',
+            children: [
+            ]
+          }
+        ]
+      }
+    ];
+
+    let data2 = [
+      {
+        value: 'dd',
+        label: '',
+        children: [
+          {
+            value: '',
+            label: '',
+            children: [
+            ]
+          }
+        ]
+      },
+    ];
+    let data3 = null;
+    let data4 = [];
+
+    let data5 = [
+      {
+        value: 'dd',
+        label: ''
+      },
+      {
+        value: 'dd',
+        label: ''
+      }
+    ];
+    let data6 = [
+      {
+        value: 'dd',
+        label: 'd'
+      },
+      {
+        value: 'dd',
+        label: ''
+      }
+    ];
+    let data7 = [
+      {
+        value: 'dd',
+        label: ''
+      },
+      null
+    ];
+    expect(component.picker.isPickerDataEqual(data1, data2)).toBe(false);
+    expect(component.picker.isPickerDataEqual(data1, data3)).toBe(false);
+    expect(component.picker.isPickerDataEqual(data3, data2)).toBe(false);
+    expect(component.picker.isPickerDataEqual(data1, data4)).toBe(false);
+    expect(component.picker.isPickerDataEqual(data1, data5)).toBe(false);
+    expect(component.picker.isPickerDataEqual(data3, data4)).toBe(false);
+    expect(component.picker.isPickerDataEqual(data5, data6)).toBe(false);
+    expect(component.picker.isPickerDataEqual(data5, data7)).toBe(false);
+    expect(component.picker.isPickerDataEqual(data3, data3)).toBe(true);
+    expect(component.picker.isPickerDataEqual(data4, data4)).toBe(true);
+    expect(component.picker.isPickerDataEqual(data1, data1)).toBe(true);
+  });
 });
 
 @Component({
@@ -229,6 +302,10 @@ export class TestPickerBasicComponent {
   title = 'result';
   mask = true;
   modelChange = jasmine.createSpy('ngModel change callback');
+
+  @ViewChild(PickerDirective, { static: false })
+  picker: PickerDirective;
+
 
   constructor(private _picker: PickerService) {}
 
