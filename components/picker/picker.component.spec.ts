@@ -173,8 +173,7 @@ describe('PickerComponent', () => {
           {
             value: '',
             label: '',
-            children: [
-            ]
+            children: []
           }
         ]
       }
@@ -188,11 +187,10 @@ describe('PickerComponent', () => {
           {
             value: '',
             label: '',
-            children: [
-            ]
+            children: []
           }
         ]
-      },
+      }
     ];
     let data3 = null;
     let data4 = [];
@@ -305,7 +303,6 @@ export class TestPickerBasicComponent {
 
   @ViewChild(PickerDirective, { static: false })
   picker: PickerDirective;
-
 
   constructor(private _picker: PickerService) {}
 

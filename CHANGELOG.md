@@ -1,8 +1,17 @@
+## [1.0.1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/1.0.0...1.0.1) (2019-09-24)
+
+
+### Bug Fixes
+
+* **picker:** remove lodash isEqual reference ([#592](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/592)) ([ee6f4b6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ee6f4b6))
+
+
+
 # [1.0.0](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/1.0.0-rc.0...1.0.0) (2019-09-23)
 
 ### Bug Fixes
 
-* **picker:** fix select bug when data is a function ([#589](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/589)) ([3e63d20](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3e63d20))
+* **date-picker:** fix NAN bug when fast scroll ([#589](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/589)) ([3e63d20](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3e63d20))
 
 * **picker:** fix select bug when data is a function ([#586](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/586)) ([26a07d7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/26a07d7))
 
