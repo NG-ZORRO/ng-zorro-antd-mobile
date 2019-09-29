@@ -224,6 +224,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit, AfterViewCheck
     this.onSubmit.emit(this._value);
     this.setClass();
     this._blurFromOnClear = true;
+    this.inputElementRef.nativeElement.blur();
   }
 
   onSearchbarCancel() {
