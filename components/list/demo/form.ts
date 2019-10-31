@@ -12,12 +12,12 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
           [focus]="onFocus"
           [value]="formData.username"
           [clear]="true"
+          [content]="'Account'"
           formControlName="username"
           id="username"
           (onErrorClick)="inputErrorClick($event)"
           (onChange)="inputChange($event)"
         >
-          Account
         </InputItem>
         <InputItem
           id="password"
@@ -26,8 +26,8 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
           [type]="'password'"
           [(ngModel)]="formData.password"
           [value]="formData.password"
+          [content]="'Password'"
         >
-          Password
         </InputItem>
         <ListItem [extra]="_switch">Confirm Infomation</ListItem>
         <ListItem>
