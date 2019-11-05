@@ -31,7 +31,6 @@ export class ListComponent {
     } else {
       this.renderHeaderType = typeof value;
     }
-    console.log('this isi rend', this.renderHeaderType);
 
     this._renderHeader = value;
   }
