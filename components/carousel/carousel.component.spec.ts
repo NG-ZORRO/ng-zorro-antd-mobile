@@ -59,6 +59,8 @@ describe('CarouselComponent', () => {
   });
 
   it('should move work', () => {
+    component.carouselComponent.selectedIndex = undefined;
+    expect(component.carouselComponent.carousel(-1));
     component.carouselComponent.selectedIndex = 0;
     expect(component.carouselComponent.carousel(-1));
     component.carouselComponent.selectedIndex = 1;
