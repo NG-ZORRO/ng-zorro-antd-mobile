@@ -91,7 +91,9 @@ export class AccordionGroupComponent {
 
   slideAnimationDoen(event) {
     if (event.fromState === 'down' && event.toState === 'up') {
-      this.isShowChild = false;
+      setTimeout(() => {
+        this.isShowChild = false;
+      }, 0);
     }
   }
 }
