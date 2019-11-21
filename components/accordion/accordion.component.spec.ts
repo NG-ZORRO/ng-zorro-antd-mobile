@@ -35,24 +35,19 @@ describe('AccordionComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should expandall, accordion work', () => {
+  it('should accordionpanel open close work', () => {
     fixture.detectChanges();
     component.accordions = [{ title: 'Title 1', child: ['content 1', 'content 1'] }];
     component.activeKey = undefined;
-    component.expandAll = false;
+    component.expandAll = true;
     component.accordion = false;
     fixture.detectChanges();
-    let accordionPanelEle = accordionEle.nativeElement.querySelector('accordionpanel');
-  });
-
-  it('should expandall, accordion work', () => {
+    accordionEle.nativeElement.querySelector('.am-accordion-header').click();
     fixture.detectChanges();
-    component.accordions = [{ title: 'Title 1', child: ['content 1', 'content 1'] }];
-    component.activeKey = undefined;
-    component.expandAll = false;
-    component.accordion = false;
+    expect(accordionEle.nativeElement.querySelector('.am-accordion-content').classList).toContain('am-accordion-content-active');
+    accordionEle.nativeElement.querySelector('.am-accordion-header').click();
     fixture.detectChanges();
-    let accordionPanelEle = accordionEle.nativeElement.querySelector('accordionpanel');
+    expect(accordionEle.nativeElement.querySelector('.am-accordion-content-active')).toBeNull();
   });
 
   it('should expandall, accordion work', () => {
