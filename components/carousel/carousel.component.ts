@@ -79,6 +79,9 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     return this._selectedIndex;
   }
   set selectedIndex(value) {
+    if (typeof value === 'undefined') {
+      value = 0;
+    }
     this._selectedIndex = Math.abs(value);
     if (this._nodeArr.length > 0) {
       this.carousel(1);
@@ -491,7 +494,9 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
       this.carouselInit(items);
     });
     this.initCarouselSize();
-    this.selectedIndex = this.items.length - 1 < this.selectedIndex ? 0 : this.selectedIndex;
+    if (!this._resizeTimer) {
+      this.selectedIndex = this.items.length - 1 < this.selectedIndex ? 0 : this.selectedIndex;
+    }
     const index = this.items.length > 1 ? (this.items.length - 1 === this.selectedIndex ? -1 : this.selectedIndex) : 0;
     setTimeout(() => {
       this.currentSelectedIndex = this.selectedIndex;
