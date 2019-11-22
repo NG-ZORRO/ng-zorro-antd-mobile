@@ -59,7 +59,7 @@ describe('StepsComponent', () => {
     );
   });
 
-  it('should step change work',fakeAsync(() => {
+  it('should step change work', fakeAsync(() => {
     component.isChange = true;
     fixture.detectChanges();
     tick(100);

@@ -138,6 +138,9 @@ export class StepsComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
+    setTimeout(() => {
+      this.setStepStyle();
+    }, 0);
     this.stepItems.changes.subscribe(change => {
       setTimeout(() => {
         this.setStepStyle();
