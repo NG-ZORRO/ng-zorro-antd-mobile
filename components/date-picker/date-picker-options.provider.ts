@@ -32,7 +32,7 @@ export class DatePickerOptions implements DatePickerOptionsInterface {
   dismissText = '取消';
   disabled = false;
   locale;
-  appendToBody = false;
+  appendToBody = true;
   showErrorToast = true;
   showErrorToastInterval = 2000;
   onOk: EventEmitter<any> = new EventEmitter();

@@ -244,6 +244,7 @@ describe('DatePickerComponent', () => {
       [title]="title"
       [value]="value1"
       [locale]="locale"
+      [appendToBody]="false"
       [minuteStep]="minuteStep"
       class="nzm-button"
       [minDate]="minDate"
@@ -259,6 +260,7 @@ describe('DatePickerComponent', () => {
         DatePicker
         [extra]="name1"
         [arrow]="'horizontal'"
+        [appendToBody]="false"
         [mode]="'datetime'"
         [value]="value1"
         (onOk)="onOk1($event)"
@@ -270,6 +272,7 @@ describe('DatePickerComponent', () => {
         DatePicker
         [extra]="name2"
         [arrow]="'horizontal'"
+        [appendToBody]="false"
         [mode]="'date'"
         [value]="value2"
         (onOk)="onOk2($event)"
@@ -280,6 +283,7 @@ describe('DatePickerComponent', () => {
         DatePicker
         [extra]="name3"
         [arrow]="'horizontal'"
+        [appendToBody]="false"
         [mode]="'time'"
         [value]="value3"
         (onOk)="onOk3($event)"
@@ -290,6 +294,7 @@ describe('DatePickerComponent', () => {
         DatePicker
         [extra]="name4"
         [arrow]="'horizontal'"
+        [appendToBody]="false"
         [mode]="'time'"
         [locale]="locale"
         [value]="value4"
@@ -301,11 +306,11 @@ describe('DatePickerComponent', () => {
         DatePicker
         [extra]="name4"
         [arrow]="'horizontal'"
+        [appendToBody]="true"
         [mode]="'time'"
         [locale]="locale"
         [value]="value4"
         [isOpen]="true"
-        [appendToBody]="true"
         [(ngModel)]="value4"
         (onOk)="onOk4($event)"
       >
@@ -316,6 +321,7 @@ describe('DatePickerComponent', () => {
         [disabled]="true"
         [extra]="name4"
         [arrow]="'horizontal'"
+        [appendToBody]="false"
         [mode]="'time'"
         [locale]="locale"
         [value]="value4"

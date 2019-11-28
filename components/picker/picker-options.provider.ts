@@ -21,7 +21,7 @@ export class PickerOptions implements PickerOptionsInterface {
   dismissText?: string = '取消';
   disabled?: boolean = false;
   cascade?: boolean = true;
-  appendToBody?: boolean = false;
+  appendToBody?: boolean = true;
   onDismiss?: EventEmitter<any> = new EventEmitter();
   onPickerChange?: EventEmitter<any> = new EventEmitter();
   indicatorStyle?: object = {};

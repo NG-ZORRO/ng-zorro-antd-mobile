@@ -11,7 +11,7 @@ export class PopoverOptions implements PopoverOptionsInterface {
   showArrow: boolean = false;
   mask: boolean = false;
   placement: string = 'bottom';
-  appendToBody: boolean = false;
+  appendToBody: boolean = true;
   className: string = '';
   autoClose: boolean = true;
 }
