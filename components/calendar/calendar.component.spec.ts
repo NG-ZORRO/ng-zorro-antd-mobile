@@ -58,7 +58,7 @@ describe('CalendarComponent', () => {
     component.state.now = new Date(2018, 8, 2);
     const disableDay = component.state.now.getDate() + 5 + '';
     fixture.detectChanges();
-    expect(calendarEle.nativeElement.querySelector('.row .cell .disable').innerText).toContain(
+    expect(calendarEle.nativeElement.querySelector('.row .cell.extra-classname .disable').innerText).toContain(
       disableDay,
       'getDateExtra is right'
     );
@@ -422,10 +422,10 @@ describe('CalendarComponent', () => {
 
 const extra = {};
 const now = new Date(2018, 8, 2);
-extra[+new Date(now.getFullYear(), now.getMonth(), now.getDate() + 5)] = { info: 'Disable', disable: true };
-extra[+new Date(now.getFullYear(), now.getMonth(), now.getDate() + 6)] = { info: 'Disable', disable: true };
-extra[+new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7)] = { info: 'Disable', disable: true };
-extra[+new Date(now.getFullYear(), now.getMonth(), now.getDate() + 8)] = { info: 'Disable', disable: true };
+extra[+new Date(now.getFullYear(), now.getMonth(), now.getDate() + 5)] = { info: 'Disable', cellCls: 'extra-classname', disable: true };
+extra[+new Date(now.getFullYear(), now.getMonth(), now.getDate() + 6)] = { info: 'Disable', cellCls: 'extra-classname', disable: true };
+extra[+new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7)] = { info: 'Disable', cellCls: 'extra-classname', disable: true };
+extra[+new Date(now.getFullYear(), now.getMonth(), now.getDate() + 8)] = { info: 'Disable', cellCls: 'extra-classname', disable: true };
 
 for (const key in extra) {
   if (extra.hasOwnProperty(key)) {
