@@ -141,5 +141,11 @@ export class StepsComponent implements OnInit, AfterContentInit {
     setTimeout(() => {
       this.setStepStyle();
     }, 0);
+    this.stepItems.changes.subscribe(change => {
+      setTimeout(() => {
+        this.setStepStyle();
+      }, 0);
+    });
   }
+
 }
