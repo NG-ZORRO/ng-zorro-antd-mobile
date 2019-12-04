@@ -13,6 +13,22 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 1.0.2(2019-12-04)
+
+### Bug Fixes
+
+* **accordion:** fix accordion expand and collapse error when quick click ([#614](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/614)) ([567ff59](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/567ff59))
+* **calendar:** should get extra cell class name from cell not row ([#620](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/620)) ([0a11514](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0a11514))
+* **carousel:** fix carousel slide error when resize ([#615](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/615)) ([3ff1894](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3ff1894))
+* **checkbox:** fix checked initial status when disabled is true ([#598](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/598)) ([85511ca](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/85511ca))
+* **datepicker:** fix chinese prompt ([#616](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/616)) ([71576bb](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/71576bb))
+* **list:** fix inputitem demo ([#606](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/606)) ([0a50951](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0a50951))
+* **list&range:** delete console.log ([#610](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/610)) ([762f200](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/762f200))
+* **pagination:** fix set locale not work bug ([#611](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/611)) ([756f5be](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/756f5be))
+* **searchbar:** Fix the keyboard not closed when the user submits ([#596](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/596)) ([5e20a54](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5e20a54))
+* **steps:** fix step import async ([#617](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/617)) ([ef4153c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ef4153c))
+* **tabs:** make popup components working right in Tabs&TabBar ([#621](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/621)) ([89bd218](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/89bd218))
+
 ## 1.0.1(2019-09-24)
 
 ### Bug Fixes
