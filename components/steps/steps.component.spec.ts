@@ -58,6 +58,12 @@ describe('StepsComponent', () => {
       'description 2'
     );
   });
+
+  it('should step change work', fakeAsync(() => {
+    component.isChange = true;
+    fixture.detectChanges();
+    tick(100);
+  }));
 });
 
 @Component({
@@ -69,6 +75,7 @@ describe('StepsComponent', () => {
       <Step [title]="'Waiting'" [description]="'This is description'"></Step>
       <Step [title]="'ERROR'" [status]="'error'" [description]="'This is description'"></Step>
       <Step [title]="'Waiting'" [icon]="customIcon" [description]="'This is description'"></Step>
+      <Step *ngIf="isChange" [title]="'Waiting'" [icon]="customIcon" [description]="'This is description'"></Step>
     </Steps>
 
     <ng-template #customIcon>
@@ -92,6 +99,7 @@ export class TestStepsComponent {
   title = 'start';
   description = 'this is test';
   stepStatus;
+  isChange = false;
 
   constructor() {}
 }
