@@ -13,6 +13,22 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 1.0.2(2019-12-04)
+
+### Bug Fixes
+
+* **accordion:** 修复快速点击 accordion 展开时错误([#614](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/614)) ([567ff59](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/567ff59))
+* **calendar:** 从 cell 而非 row 中获取 extra cell class 名([#620](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/620)) ([0a11514](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0a11514))
+* **carousel:** 修复 resize 时 carousel slide 展示错误 ([#615](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/615)) ([3ff1894](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3ff1894))
+* **checkbox:** 修复 disabled 状态为 true 时已点击的初始状态([#598](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/598)) ([85511ca](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/85511ca))
+* **datepicker:** 修复中文提示文案错误 ([#616](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/616)) ([71576bb](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/71576bb))
+* **list:** 修复 inputitem demo ([#606](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/606)) ([0a50951](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0a50951))
+* **list&range:** 删除 console.log ([#610](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/610)) ([762f200](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/762f200))
+* **pagination:** 修复设置 locale 不生效错误 ([#611](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/611)) ([756f5be](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/756f5be))
+* **searchbar:** 修复用户提交时键盘未收起的问题 ([#596](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/596)) ([5e20a54](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5e20a54))
+* **steps:** 修复 step import async 错误 ([#617](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/617)) ([ef4153c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/ef4153c))
+* **tabs:** 让 popup类组件在Tabs和TabBar里正常的面板里弹出 ([#621](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/621)) ([89bd218](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/89bd218))
+
 ## 1.0.1(2019-09-24)
 
 ### Bug Fixes
