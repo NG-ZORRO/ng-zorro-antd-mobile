@@ -156,7 +156,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       this.indexArray[parseInt(event.target.id, 0)]
     ] = this.data[parseInt(event.target.id, 0)][this.index];
     if (this.judgeTime(this.current_time, this.max_date)) {
-      this.currentTime = this.current_time = this.max_date.slice(0, this.indexArray.length);
+      this.currentTime = this.current_time =
+        this.max_date.slice(0, this.options.mode === 'time' ? this.modeSwitch.length : this.indexArray.length);
       this.resultArr = this.current_time;
       this.options.onValueChange.emit({ date: this.handleReslut(), index: event.target.id });
       if (this.options.updateNgModel) {
@@ -167,7 +168,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       }
       this.init();
     } else if (this.judgeTime(this.min_date, this.current_time)) {
-      this.currentTime = this.current_time = this.min_date.slice(0, this.indexArray.length);
+      this.currentTime = this.current_time =
+        this.min_date.slice(0, this.options.mode === 'time' ? this.modeSwitch.length : this.indexArray.length);
       this.resultArr = this.currentTime;
       this.options.onValueChange.emit({ date: this.handleReslut(), index: event.target.id });
       if (this.options.updateNgModel) {
@@ -371,6 +373,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
         this.errorMessage = this.localeNew.curTMorethanMax;
       }
       let _indexArrayIndex = 0;
+      let timeModeIndex = this.options.mode === 'time' ? 3 : 0;
       for (let i = 0; i < this.modeSwitch.length; i++) {
         if (this.modeSwitch[i] === 0) {
           switch (i) {
@@ -435,29 +438,29 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
               break;
             case 3:
               this.localMinDate[_indexArrayIndex] = min_date[i] =
-                this.localMinDate[_indexArrayIndex] >= 0 && this.localMinDate[_indexArrayIndex] <= 23
-                  ? this.localMinDate[_indexArrayIndex]
+                this.localMinDate[_indexArrayIndex - timeModeIndex] >= 0 && this.localMinDate[_indexArrayIndex - timeModeIndex] <= 23
+                  ? this.localMinDate[_indexArrayIndex - timeModeIndex]
                   : 0;
               if (this.options.use12Hours) {
                 this.localMaxDate[_indexArrayIndex] = max_date[i] =
-                  this.localMaxDate[_indexArrayIndex] >= 0 && this.localMaxDate[_indexArrayIndex] <= 11
-                    ? this.localMaxDate[_indexArrayIndex]
+                  this.localMaxDate[_indexArrayIndex - timeModeIndex] >= 0 && this.localMaxDate[_indexArrayIndex - timeModeIndex] <= 11
+                    ? this.localMaxDate[_indexArrayIndex - timeModeIndex]
                     : 11;
               } else {
                 this.localMaxDate[_indexArrayIndex] = max_date[i] =
-                  this.localMaxDate[_indexArrayIndex] >= 0 && this.localMaxDate[_indexArrayIndex] <= 23
-                    ? this.localMaxDate[_indexArrayIndex]
+                  this.localMaxDate[_indexArrayIndex - timeModeIndex] >= 0 && this.localMaxDate[_indexArrayIndex - timeModeIndex] <= 23
+                    ? this.localMaxDate[_indexArrayIndex - timeModeIndex]
                     : 23;
               }
               break;
             case 4:
               this.localMinDate[_indexArrayIndex] = min_date[i] =
-                this.localMinDate[_indexArrayIndex] >= 0 && this.localMinDate[_indexArrayIndex] <= 59
-                  ? this.localMinDate[_indexArrayIndex]
+                this.localMinDate[_indexArrayIndex - timeModeIndex] >= 0 && this.localMinDate[_indexArrayIndex - timeModeIndex] <= 59
+                  ? this.localMinDate[_indexArrayIndex - timeModeIndex]
                   : 0;
               this.localMaxDate[_indexArrayIndex] = max_date[i] =
-                this.localMaxDate[_indexArrayIndex] >= 0 && this.localMaxDate[_indexArrayIndex] <= 59
-                  ? this.localMaxDate[_indexArrayIndex]
+                this.localMaxDate[_indexArrayIndex - timeModeIndex] >= 0 && this.localMaxDate[_indexArrayIndex - timeModeIndex] <= 59
+                  ? this.localMaxDate[_indexArrayIndex - timeModeIndex]
                   : 59;
               break;
           }
@@ -636,9 +639,9 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     let status = null;
     if (sta) {
-      status = this.judgeEqualArray(this.min_date, this.resultArr, checkIdx + 1);
+      status = this.judgeEqualArray(this.min_date, this.resultArr, this.options.mode === 'time' ? checkIdx + 4 : checkIdx + 1);
     } else {
-      status = this.judgeEqualArray(this.max_date, this.resultArr, checkIdx + 1);
+      status = this.judgeEqualArray(this.max_date, this.resultArr, this.options.mode === 'time' ? checkIdx + 4 : checkIdx + 1);
     }
     if (!status) {
       let min = 0;
@@ -705,24 +708,24 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       arr.push(index);
     }
 
-    if (arr.indexOf(this.resultArr[checkIdx]) == -1) {
+    if (arr.indexOf(this.resultArr[realIdx]) == -1) {
       if (-this.selectedTarget[checkIdx].currentY > max - min) {
         indexT = max - min;
         this.selectedTarget[checkIdx].currentY = -indexT;
       }
       targetLong = -arr.length * this.lineHeight;
     } else {
-      targetLong = -arr.indexOf(this.resultArr[checkIdx]) * this.lineHeight;
-      this.selectedTarget[checkIdx].currentY = -arr.indexOf(this.resultArr[checkIdx]);
+      targetLong = -arr.indexOf(this.resultArr[realIdx]) * this.lineHeight;
+      this.selectedTarget[checkIdx].currentY = -arr.indexOf(this.resultArr[realIdx]);
     }
     if (this.data[checkIdx].toString() !== arr.toString()) {
       if (checkIdx >= 3) {
         this.current_time[realIdx] = -targetLong / this.lineHeight;
-        this.resultArr[checkIdx] = -targetLong / this.lineHeight;
+        this.resultArr[realIdx] = -targetLong / this.lineHeight;
       } else {
         const delta = this.current_time[0] === this.min_date[0] ? this.min_date[realIdx] : 1;
         this.current_time[realIdx] = -targetLong / this.lineHeight + delta;
-        this.resultArr[checkIdx] = -targetLong / this.lineHeight + delta;
+        this.resultArr[realIdx] = -targetLong / this.lineHeight + delta;
       }
 
       this.data[checkIdx] = arr;
