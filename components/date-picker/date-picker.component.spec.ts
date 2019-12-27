@@ -109,6 +109,48 @@ describe('DatePickerComponent', () => {
     datePickerEle.querySelector('.am-picker-popup-header-right').click();
   });
 
+  it('should time mode minDate work', () => {
+    component.mode = 'time';
+    component.minDate = new Date();
+    component.value1 = new Date(component.maxDate.getTime() - 60 * 1000);
+    fixture.detectChanges();
+    button.click();
+    fixture.detectChanges();
+    datePickerEle = document.querySelector('datepicker');
+    const target = datePickerEle.querySelector('.am-picker-col-mask');
+    dispatchTouchEvent(target, 'mousedown', 0, 200);
+    fixture.detectChanges();
+    dispatchTouchEvent(target, 'mousemove', 0, 100);
+    fixture.detectChanges();
+    dispatchTouchEvent(target, 'mouseup', 0, 0);
+    fixture.detectChanges();
+    datePickerEle.querySelector('.am-picker-popup-header-right').click();
+    fixture.detectChanges();
+    expect(component.value1.getHours()).toBe(component.minDate.getHours());
+    expect(component.value1.getMinutes()).toBe(component.minDate.getMinutes());
+  });
+
+  it('should time mode maxDate work', () => {
+    component.mode = 'time';
+    component.maxDate = new Date();
+    component.value1 = new Date(component.maxDate.getTime() + 60 * 1000);
+    fixture.detectChanges();
+    button.click();
+    fixture.detectChanges();
+    datePickerEle = document.querySelector('datepicker');
+    const target = datePickerEle.querySelector('.am-picker-col-mask');
+    dispatchTouchEvent(target, 'mousedown', 0, -100);
+    fixture.detectChanges();
+    dispatchTouchEvent(target, 'mousemove', 0, -200);
+    fixture.detectChanges();
+    dispatchTouchEvent(target, 'mouseup', 0, -300);
+    fixture.detectChanges();
+    datePickerEle.querySelector('.am-picker-popup-header-right').click();
+    fixture.detectChanges();
+    expect(component.value1.getHours()).toBe(component.maxDate.getHours());
+    expect(component.value1.getMinutes()).toBe(component.maxDate.getMinutes());
+  });
+
   it('should minuteStep work', () => {
     component.mode = 'datetime';
     component.minuteStep = 5;
