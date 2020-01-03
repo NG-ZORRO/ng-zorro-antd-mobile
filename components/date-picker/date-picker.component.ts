@@ -30,8 +30,8 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   localMaxDate: any[] = [];
   currentTime: any[] = [];
   indexArray: any = [];
-  min_date: any[] = [];
-  max_date: any[] = [];
+  min_date: number[] = [];
+  max_date: number[] = [];
   current_time: any[] = [
     new Date().getFullYear(),
     new Date().getMonth() + 1,
@@ -240,7 +240,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  transformDateFormat(date): any {
+  transformDateFormat(date: Date): any {
     if (!date) {
       return '';
     } else {
@@ -474,12 +474,12 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  judgeTime(arr1, arr2) {
+  judgeTime(arr1: number[], arr2: number[]): boolean {
     let date1;
     let date2;
     date1 = arr1.slice(0, 3).join('-') + ' ' + arr1.slice(3, 5).join(':');
     date2 = arr2.slice(0, 3).join('-') + ' ' + arr2.slice(3, 5).join(':');
-    return new Date(date1).getTime() >= new Date(date2).getTime();
+    return new Date(date1).getTime() > new Date(date2).getTime();
   }
 
   judgeEqualArray(arr1, arr2, length) {
