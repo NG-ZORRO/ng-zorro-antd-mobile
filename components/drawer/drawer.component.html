@@ -2,10 +2,10 @@
   <ng-template [ngTemplateOutlet]="sidebar"></ng-template>
 </div>
 <div
-  class="{{ prefixCls }}-overlay"
-  [ngStyle]="overlayStyleFinal"
   role="presentation"
+  class="{{ prefixCls }}-overlay"
   ref="overlay"
+  [ngStyle]="overlayStyleFinal"
   (click)="onOverlayClicked()"
 ></div>
 <div class="{{ prefixCls }}-content" [ngStyle]="contentStyleFinal" ref="content">
