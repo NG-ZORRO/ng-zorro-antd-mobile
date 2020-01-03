@@ -51,7 +51,8 @@ describe('DatePickerComponent', () => {
     button.click();
     fixture.detectChanges();
     datePickerEle = document.querySelector('datepicker');
-    expect(datePickerEle.querySelector('.am-picker-col-item').innerText).toBe('2019', 'minDate is 2000');
+    const thisYear = new Date().getFullYear().toString();
+    expect(datePickerEle.querySelector('.am-picker-col-item').innerText).toBe(thisYear, `minDate is ${thisYear}`);
     datePickerEle.querySelector('.am-picker-popup-header-right').click();
   });
 
@@ -61,7 +62,8 @@ describe('DatePickerComponent', () => {
     button.click();
     fixture.detectChanges();
     datePickerEle = document.querySelector('datepicker');
-    expect(datePickerEle.querySelector('.am-picker-col-item').innerText).toBe('2019', 'minDate is 2000');
+    const thisYear = new Date().getFullYear().toString();
+    expect(datePickerEle.querySelector('.am-picker-col-item').innerText).toBe(thisYear, `minDate is ${thisYear}`);
     datePickerEle.querySelector('.am-picker-popup-header-right').click();
   });
 
