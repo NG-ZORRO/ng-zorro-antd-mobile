@@ -13,6 +13,15 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 1.0.3(2020-01-08)
+
+### Bug Fixes
+
+* **date-picker:** 修复时间选择范围问题 ([#627](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/627)) ([2225539](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/22255394a5d9cf9bb19cc0a647bdb33a106a31c0))
+* **date-picker:** 修复 mode:time 状态下时间选择范围问题 ([#629](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/629)) ([e685ffa](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/e685ffa65e533c529734ebe8eca85baddf01d89d))
+* **datepicker:** 修复单测失败例子 ([#632](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/632)) ([7183052](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/71830525f4d7445fff95e1562c28dfcd940e8989))
+* **drawer:** 修复无法遮盖背景元素的问题 ([#631](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/631)) ([8794e89](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8794e895364b53f068702ebbfd0f200df1bdcd40))
+
 ## 1.0.2(2019-12-04)
 
 ### Bug Fixes
