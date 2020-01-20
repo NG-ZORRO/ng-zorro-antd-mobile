@@ -14,16 +14,16 @@ Drawer is a panel that displays the app's navigation options on the left edge of
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| sidebar | The sidebar content. | ng-template | - |
-| onOpenChange | Callback called when open state of `Drawer` changes. | (open: bool): void | - |
-| open | If the sidebar should be open. | Boolean | false |
-| position | Position of `Drawer`. | String | 'left', enum{'left', 'right', 'top', 'bottom'} |
-| sidebarStyle | - | Object | {} |
-| contentStyle | - | Object | {} |
-| overlayStyle  | - | Object | {} |
-| dragHandleStyle  | - | Object | {} |
-| touch  | If touch gestures should be enabled | Boolean | true |
-| transitions  | If transitions should be enabled. | Boolean | true |
-| docked  | If the sidebar should be docked in document. | Boolean | false |
-| enableDragHandle  | If dragHandle should be enabled | Boolean | false |
-| dragToggleDistance  | Distance the sidebar has to be dragged before it will open/close after it is released. | Number | 30 |
+| `[sidebar]` | The sidebar content | `ng-template` | - |
+| `[onOpenChange]` | Callback called when open state of `Drawer` changes | `(open: boolean): void` | - |
+| `[open]` | If the sidebar should be open | `boolean` | `false` |
+| `[position]` | Position of `Drawer` | `'left' | 'right' | 'top' | 'bottom'` | `'left'` |
+| `[sidebarStyle]` | - | `object` | `{}` |
+| `[contentStyle]` | - | `object` | `{}` |
+| `[overlayStyle]` | - | `object` | `{}` |
+| `[dragHandleStyle]` | - | `object` | `{}` |
+| `[touch]` | If touch gestures should be enabled | `boolean` | `true` |
+| `[transitions]` | If transitions should be enabled | `boolean` | `true` |
+| `[docked]` | If the sidebar should be docked in document | `boolean` | `false` |
+| `[enableDragHandle]` | If dragHandle should be enabled | `boolean` | `false` |
+| `[dragToggleDistance]` | Distance the sidebar has to be dragged before it will open/close after it is released | `number` | `30` |
