@@ -10,4 +10,4 @@ Layout controls
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| size   |  up and down margins, optional values:`xs`,`sm`,`md`,`lg`,`xl` | string | `md`  |
+| `[size]` | up and down margins | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` \| `'md'` |
