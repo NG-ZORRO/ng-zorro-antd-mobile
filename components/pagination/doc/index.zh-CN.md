@@ -12,13 +12,12 @@ subtitle: 分页器
 
 ## API
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-|  mode  | 形态，可选`button`,`number`,`pointer` | string | `button`  |
-|  current  | 当前页号 | number  |  1  |
-|  total  | 数据总数 | number  |  0  |
-|  simple  | 是否隐藏数值 | boolean | false  |
-|  disabled  | 禁用状态 | boolean | false  |
-| locale |  国际化, 可以覆盖全局`LocaleProvider`的配置 | Object：{prevText, nextText} | 无 |
-|  onChange | change 事件触发的回调函数 | (e: Object): void | 无 |
-
+| `[mode]` | 形态 | `'button' \| 'number' \| 'pointer'` | `'button'` |
+| `[current]` | 当前页号 | `number` | `1`  |
+| `[total]` | 数据总数 | `number` | `0` |
+| `[simple]` | 是否隐藏数值 | `boolean` | `false` |
+| `[disabled]` | 禁用状态 | `boolean` | `false` |
+| `[locale]` | 国际化, 可以覆盖全局`LocaleProvider`的配置 | `{prevText: string \| TemplateRef, nextText: string \| TemplateRef}` | - |
+| `[onChange]` | change 事件触发的回调函数 | `EventEmitter<number>` | - |
