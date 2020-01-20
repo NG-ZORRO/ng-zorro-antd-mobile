@@ -17,8 +17,8 @@ Located above the app content area, below the system status bar, and provides na
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| mode   | style mode  | string |  'dark' enum{'dark', 'light'} |
-| icon   | appears on the leftmost icon placeholder  | TemplateRef |  - |
-| leftContent   | left content    | any |  - |
-| rightContent  | right content   | any |  - |
-| onLeftClick   | click the callback on the left  | (e: Object): void |  - |
+| `[mode]` | Style mode | `'dark' \| 'light'` | `'dark'`
+| `[icon]` | Appears on the leftmost icon placeholder | `TemplateRef` | - |
+| `[leftContent]` | Left content | `string \| TemplateRef` | - |
+| `[rightContent]` | Right content | `string \| TemplateRef` | - |
+| `[onLeftClick]` | Click the callback on the left | `(e: object) => void` | - |
