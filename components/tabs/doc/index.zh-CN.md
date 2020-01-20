@@ -17,28 +17,28 @@ subtitle: 标签页
 
 ### Tabs
 
-属性 | 说明 | 类型 | 默认值 | 必选
-----|-----|------|------|------
-activeTab | 当前激活Tab索引 | number | 0 | true
-tabBarPosition  | TabBar位置 | 'top' \| 'bottom' \| 'left'  \| 'right' | top | false
-page | Tab分页尺寸 | number | 5 | false
-swipeable  | 是否可以滑动内容切换 | boolean |  true | false
-useOnPan  | 使用跟手滚动 | boolean |  true | false
-animated  | 是否开启切换动画 | boolean |  true | false
-onChange  | tab变化时触发 | (index: number) => void | <span> </span> | false
-onTabClick  | tab 被点击的回调 | (index: number) => void | <span> </span> | false
-distanceToChangeTab | 滑动切换阈值(宽度比例) | number |  0.3 | false
-| prerenderingSiblingsNumber| 预加载两侧Tab数量, -1: 加载所有的tab内容, 0: 仅加载当前tab内容, n: 预加载两侧n个Tab | number |   -1   | false
-tabDirection | Tab方向 | 'horizontal' \| 'vertical' |  horizontal | false
-tabBarUnderlineStyle  | tabBar下划线样式 | object | <span> </span> | false
-tabBarBackgroundColor  | tabBar背景色 | string | <span> </span> | false
-tabBarActiveTextColor  | tabBar激活Tab文字颜色 | string | <span> </span> | false
-tabBarInactiveTextColor  | tabBar非激活Tab文字颜色 | string | <span> </span> | false
-tabBarTextStyle  | tabBar文字样式 | object | <span> </span> | false
-renderTabBar | 替换TabBar的Tab | TemplateRef | null | false
+参数 | 说明 | 类型 | 默认值
+----|-----|------|------
+| `[activeTab]` | 当前激活Tab索引 | `number` | `0` |
+| `[tabBarPosition]`  | TabBar位置 | `'top' \| 'bottom' \| 'left'  \| 'right'` | `'top'` |
+| `[page]` | Tab分页尺寸 | `number` | `5` |
+| `[swipeable]` | 是否可以滑动内容切换 | `boolean` | `true` |
+| `[useOnPan]` | 使用跟手滚动 | `boolean` |  `true` |
+| `[animated]` | 是否开启切换动画 | `boolean` |  `true` |
+| `[distanceToChangeTab]` | 滑动切换阈值(宽度比例) | number | `0.3` |
+| `[prerenderingSiblingsNumber]` | 预加载两侧Tab数量, -1: 加载所有的Tab内容, 0: 仅加载当前tab内容, n: 预加载两侧n个Tab | `number` | `-1` |
+| `[tabDirection]` | Tab方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `[tabBarUnderlineStyle]` | TabBar下划线样式 | `object` | - |
+| `[tabBarBackgroundColor]` | TabBar背景色 | `string` | - |
+| `[tabBarActiveTextColor]` | TabBar激活Tab文字颜色 | `string` | - |
+| `[tabBarInactiveTextColor]` | TabBar非激活Tab文字颜色 | `string` | - |
+| `[tabBarTextStyle]` | TabBar文字样式 | `object` | - |
+| `[renderTabBar]` | 替换TabBar的Tab | `TemplateRef` | - |
+| `(onChange)` | Tab变化时触发 | `EventEmitter({index: number})` | - |
+| `(onTabClick)` | Tab 被点击的回调 | `EventEmitter({index: number})` | - |
 
 ### TabPane
 
-属性 | 说明 | 类型 | 默认值 | 必选
-----|-----|------|------|------
-title | tab面板的标题 | string \| TemplateRef | <span> </span> | true
+参数 | 说明 | 类型 | 默认值
+----|-----|------|------
+| `[title]` | tab面板的标题 | `string \| TemplateRef` | - |
