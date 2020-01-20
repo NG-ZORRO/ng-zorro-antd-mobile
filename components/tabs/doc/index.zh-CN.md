@@ -34,8 +34,8 @@ subtitle: 标签页
 | `[tabBarInactiveTextColor]` | TabBar非激活Tab文字颜色 | `string` | - |
 | `[tabBarTextStyle]` | TabBar文字样式 | `object` | - |
 | `[renderTabBar]` | 替换TabBar的Tab | `TemplateRef` | - |
-| `(onChange)` | Tab变化时触发 | `EventEmitter({index: number})` | - |
-| `(onTabClick)` | Tab 被点击的回调 | `EventEmitter({index: number})` | - |
+| `(onChange)` | Tab变化时触发 | `EventEmitter<{index: number}>` | - |
+| `(onTabClick)` | Tab 被点击的回调 | `EventEmitter<{index: number}>` | - |
 
 ### TabPane
 

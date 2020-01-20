@@ -34,8 +34,8 @@ Properties | Descrition | Type | Default
 | `[tabBarInactiveTextColor]` | Color of the default tab bar's text when inactive | `string` | - |
 | `[tabBarTextStyle]` | Styles to the tab bar's text | `object` | - |
 | `[renderTabBar]` | Render for replace the tab of tabbar | `TemplateRef` | - |
-| `(onChange)` | Callback when tab is switched | `EventEmitter({index: number})` | - |
-| `(onTabClick)` | On tab click | `EventEmitter({index: number})` | - |
+| `(onChange)` | Callback when tab is switched | `EventEmitter<{index: number}>` | - |
+| `(onTabClick)` | On tab click | `EventEmitter<{index: number}>` | - |
 
 ### TabPane
 

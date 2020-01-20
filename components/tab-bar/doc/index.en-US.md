@@ -24,7 +24,7 @@ Properties | Descrition | Type | Default
 | `[hidden]` | Whether it is hidden | `boolean` | `false` |
 | `[tabBarPosition]` | Tabbar position | `'top'\|'bottom'` | `'bottom'` |
 | `[prerenderingSiblingsNumber]`| Pre-render nearby sibling, -1: render all the siblings, 0: render current page, n: render n siblings | `number` | `-1` |
-| `(onPress)` | On press the bar | `EventEmitter({index: number, title: string, key: string})` | - |
+| `(onPress)` | On press the bar | `EventEmitter<{index: number, title: string, key: string}>` | - |
 
 ### TabBarItem
 
