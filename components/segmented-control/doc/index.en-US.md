@@ -16,8 +16,8 @@ title: SegmentedControl
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| tintColor  | accent color of the control       | String |  `#2DB7F5`  |
-| disabled  | whether the user is able to interact with the control  | Boolean |  false  |
-| selectedIndex  | the index of the segment to be (pre)selected | Number |  0  |
-| values  | The labels for the control's segment buttons, in order  | array |  []  |
-| onChange    |  callback that is called when the user taps a segment; passes the event object as an argument.| (selectedIndex: number, value: string) => void | <span> </span> |
+| `[tintColor]` | Accent color of the control | `string` | `'#2DB7F5'` |
+| `[disabled]` | Whether the user is able to interact with the control | `boolean` | `false` |
+| `[selectedIndex]` | The index of the segment to be (pre)selected | `number` | `0` |
+| `[values]` | The labels for the control's segment buttons, in order | `array` | `[]` |
+| `[onChange]` | Callback that is called when the user taps a segment; passes the event object as an argument | `EventEmitter<{selectedIndex: number, value: any}>` | - |
