@@ -14,12 +14,12 @@ Flex is a wrap of  Flexible Box.
 ### Flex
 
 Properties | Descrition | Type | Default
------------|------------|------|--------
-| direction    |   how flex items are placed in the flex container，value could be `row`,`row-reverse`,`column`,`column-reverse`  | String  | `row` |
-| wrap    |  the wrap way of sub-elements，option `nowrap`,`wrap`,`wrap-reverse` | String  | `nowrap` |
-| justify  | the way of alignment for sub-elements of main axis, option `start`,`end`,`center`,`between`,`around`    | String   | `start` |
-| align    | the way of alignment for sub-elements of cross-axis, option `start`,`center`,`end`,`baseline`,`stretch`  | String   | `center` |
-| alignContent | the way of alignment when have multiple axes,  option `start`,`end`,`center`,`between`,`around`,`stretch`    | String  | `stretch` |
+----|-----|------|------
+| `[direction]` | how flex items are placed in the flex container | `'row' \| 'row-reverse' \| 'column' \| 'column-reverse'` | `'row'` |
+| `[wrap]` | the wrap way of sub-elements | `'nowrap' \| 'wrap' \| 'wrap-reverse'`  | `'nowrap'` |
+| `[justify]` | the way of alignment for sub-elements of main axis | `'start' \| 'end' \| 'center' \| 'between' \| 'around'` | `'start'` |
+| `[align]` | the way of alignment for sub-elements of cross-axis  | `'start' \| 'center' \| 'end' \| 'baseline' \| 'stretch'` | `'center'` |
+| `[alignContent]` | the way of alignment when have multiple axes | `'start' \| 'end' \| 'center' \| 'between' \| 'around' \| 'stretch'`  | `'stretch'` |
 
 ### Flex.Item
 
