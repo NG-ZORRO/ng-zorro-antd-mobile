@@ -16,32 +16,27 @@ A foundational component for inputting text into the app via a keyboard.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| type    | can be `bankCard`; `phone`(which the maxLength is 11 and setting will be ignored); `password`; `number`(in order to evoke the 'numeric keyboard with decimal', this type is not a native number, but `<input type="text" pattern="[0-9]*"/>`); `digit`(represent the native type number); `money`; As well as other standard html input type values. | String |  `text`  |
-| value | the value of input for more information about controled component)  | String |  <span> </span> |
-| defaultValue | provides an initial value that will change when the user starts typing. | String |  -  |
-| placeholder  | the string that will be rendered before text input has been entered. | String | ''  |
-| editable    | whether is editable        | bool |  true  |
-| disabled    | whether is disabled       | bool |  false  |
-| clear      |  whether to display clear(it takes effect only `editable` is `true` and `disabled` is `false` has been set) | bool | false  |
-| maxLength      |  limits the maximum number of characters that can be entered      | number |  <span> </span> |
-| onChange    | callback that is called when the text input's text changes | (val: string): void |  -  |
-| onBlur     | callback that is called when the text input is blurred | (val: string): void |   -  |
-| onFocus    | callback that is called when the text input is focused | (val: string): void |  -  |
-| error       | whether to display error       | bool |  false  |
-| onErrorClick   | callback that is called when the error icon is clicked  | (e: Object): void | <span> </span> |
-| extra       | the right content of `InputItem`   | string or TemplateRef |  ''  |
-| onExtraClick      | callback that is called when the extra content is clicked | (e: Object): void | <span> </span> |
-| labelNumber  | number of label text, valid value is 2 to 7 | number | `5` |
-| content  | content of label text | TemplateRef or String |  |
-| updatePlaceholder | whether to replace the placeholder with cleared content | bool | false|
-| prefixListCls  |   the class name prefix of list      | String |  `am-list`  |
-| moneyKeyboardAlign    | text align direction, only `type='money'` support this api， could be `'left'`, `'right'`       | String |  'right'  |
-| locale   | 国际化，可覆盖全局的配置,  when`type`is`money`，can cunstom the keyboard confirm item's label | Object: { confirmLabel } |  无 |
+| `[type]` | Can be `bankCard`; `phone`(which the maxLength is 11 and setting will be ignored); `password`; `number`(in order to evoke the 'numeric keyboard with decimal', this type is not a native number, but `<input type="text" pattern="[0-9]*"/>`); `digit`(represent the native type number); `money`; As well as other standard html input type values | `string` | `'text'` |
+| `[value]` | The value of input for more information about controled component | `string` | - |
+| `[defaultValue]` | Provides an initial value that will change when the user starts typing | `string` | - |
+| `[placeholder]` | The string that will be rendered before text input has been entered | `string` | - |
+| `[editable]` | Whether is editable | `boolean` | `true` |
+| `[disabled]` | Whether is disabled | `boolean` | `false` |
+| `[clear]` | Whether to display clear(it takes effect only `editable` is `true` and `disabled` is `false` has been set) | `boolean` | `false` |
+| `[maxLength]` | Limits the maximum number of characters that can be entered | `number` | - |
+| `[error]` | Whether to display error | `boolean` | `false` |
+| `[onErrorClick]` | Callback that is called when the error icon is clicked | `EventEmitter<object>` | - |
+| `[extra]` | The right content of `InputItem` | `string | TemplateRef` | '' |
+| `[onExtraClick]` | Callback that is called when the extra content is clicked | `EventEmitter<object>` | - |
+| `[labelNumber]` | Number of label text, valid value is 2 to 7 | `number` | `5` |
+| `[content]` | Content of label text | `string | TemplateRef` | - |
+| `[updatePlaceholder]` | Whether to replace the placeholder with cleared content | `boolean` | `false` |
+| `[prefixListCls]` | The class name prefix of list | `string` | `am-list` |
+| `[moneyKeyboardAlign]` | Text align direction, only `type='money'` support this api | `'left' | 'right'` | 'right' |
+| `[locale]` | International，can override global configuration,  when`type`is`money`，can cunstom the keyboard confirm item's label | `{ confirmLabel }` | - |
+| `(onChange)` | Callback that is called when the text input's text changes | `EventEmitter<string>` | - |
+| `(onBlur)` | Callback that is called when the text input is blurred | `EventEmitter<string>` | - |
+| `(onFocus)` | Callback that is called when the text input is focused | `EventEmitter<string>` | - |
+| `(focus)` | Force focus back onto the input node | `EventEmitter<void>` | - |
 
 > Note: `InputItem` does not support negative number if `type` is text, you can use `type=text` to do that.
-
-## InputItem Instance methods
-
-Property | Description | Type | Default
-----|-----|------|------
-| focus     | Force focus back onto the input node  | (): void |  -  |
