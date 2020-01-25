@@ -17,16 +17,16 @@ You can collapse / expand the content area.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| activeKey | current active Panel key | Array or String   | The first panel key on accordion mode|
-| defaultActiveKey | default active key | String   | null |
-| onChange    | called when collapse Panel is changed | (key: string): void |  noop  |
-| accordion  | accordion mode | Boolean | false  |
+| `[activeKey]` | Current active Panel key, The first panel key on accordion mode | `Array | string` | - |
+| `[defaultActiveKey]` | Default active key | `string` | - |
+| `[accordion]` | Accordion mode | `boolean` | `false` |
+| `(onChange)` | Called when collapse Panel is changed | `EventEmitter<string>` | - |
 
-### Accordion.Panel
+### AccordionPanel
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| key  | corresponding activeKey   | String   | -   |
-| header | header content of Panel | TemplateRef or String or html(<div>header</div>) | -   |
+| `[key]` | Corresponding activeKey | `string` | - |
+| `[header]` | Header content of Panel | `string | TemplateRef` | - |
 
 Note: Currently does not support nested use for NG.
