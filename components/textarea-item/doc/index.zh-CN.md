@@ -15,31 +15,26 @@ subtitle: 多行输入
 
 ## API
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| ngModel |  value, 双向绑定| String | 无 |
-| value    | value  | String |  无  |
-| defaultValue    | 设置初始默认值        | String |  -  |
-| placeholder      | placeholder        | String | ''  |
-| editable    | 是否可编辑        | bool |  true  |
-| disabled    | 是否禁用        | bool |  false  |
-| clear      |  是否带清除功能(仅`editable`为`true`,`disabled`为`false`才生效) | bool | false  |
-| rows      |   显示几行      | number |   1 |
-| count      |  计数功能,兼具最大长度,默认为0,代表不开启计数功能      | number | -  |
-| onChange    | change 事件触发的回调函数 | (val: string): void |  -  |
-| onBlur     | blur 事件触发的回调函数 | (val: string): void |   -  |
-| onFocus    | focus 事件触发的回调函数 | (val: string): void |  -  |
-| error       | 报错样式        | bool |  false  |
-| onErrorClick       | 点击报错 icon 触发的回调   | (): void |  无  |
-| autoHeight       | 高度自适应, autoHeight 和 rows 请二选一    | bool  | false  |
-| autoFocus       | 初始化自动获得焦点   | bool  | false  |
-| labelNumber  | 定宽枚举值：`num * @input-label-width: 34px`，可用`2-7`之间的数字，一般(不能保证全部)能对应显示出相应个数的中文文字(不考虑英文字符) | number | `5` |
-| name    | textarea 的 name       | String |   -  |
-| prefixListCls    |   列表 className 前缀      | String |  `am-list`  |
-| title    | 文案说明        | String/node |  '' |
-
-## TextareaItem methods
-
-属性 | 说明 | 类型 | 默认值
-----|-----|------|------
-| focus   | 强制获得焦点  | - |  -  |
+| `[value]` | value | `string` | - |
+| `[defaultValue]` | 设置初始默认值 | `string` | - |
+| `[placeholder]` | placeholder | `string` | - |
+| `[editable]` | 是否可编辑 | `boolean` | `true` |
+| `[disabled]` | 是否禁用 | `boolean` | `false` |
+| `[clear]` | 是否带清除功能(仅`editable`为`true`,`disabled`为`false`才生效) | `boolean` | `false` |
+| `[rows]` | 显示几行 | `number` | `1` |
+| `[count]` | 计数功能,兼具最大长度,默认为0,代表不开启计数功能 | `number` | - |
+| `[error]` | 报错样式 | `boolean` | `false` |
+| `[autoHeight]` | 高度自适应, autoHeight 和 rows 请二选一 | `boolean` | `false` |
+| `[autoFocus]` | 初始化自动获得焦点 | `boolean` | `false` |
+| `[labelNumber]` | 定宽枚举值：`num * @input-label-width: 34px`，可用`2-7`之间的数字，一般(不能保证全部)能对应显示出相应个数的中文文字(不考虑英文字符) | `number` | `5` |
+| `[name]` | textarea 的 name | `string` | - |
+| `[prefixListCls]` | 列表 className 前缀 | `string` | `am-list` |
+| `[title]` | 文案说明 | `string | TemplateRef` | - |
+| `[focus]` | 强制获得焦点 | `{ focus: boolean }` | - |
+| `[(ngModel)]` | value | `string` | - |
+| `(onChange)` | change 事件触发的回调函数 | `EventEmitter<string>` | - |
+| `(onBlur)` | blur 事件触发的回调函数 | `EventEmitter<string>` | - |
+| `(onFocus)` | focus 事件触发的回调函数 | `EventEmitter<string>` | - |
+| `(onErrorClick)` | 点击报错 icon 触发的回调 | `EventEmitter<void>` | - |
