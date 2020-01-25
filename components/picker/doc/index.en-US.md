@@ -14,28 +14,28 @@ Choose from a set of data, e.g. Country choice.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| ngModel | Current selected value, the format is `[value1, value2, value3]`, corresponds to the level value of the data source,double binding | Array | - |
-| data    | data source      | `Array<{value, label, children: Array}>` |   -  |
-| cols    | col numbers   | Number |  `3`  |
-| onChange | selected callback function | (val): void | - |
-| onPickerChange | trigger on each column of selected data is changed  | (val): void | - |
-| okText  | ok text | String |  `确定`  |
-| dismissText  | dismiss text | String |  `取消`  |
-| ngModelChange | handler called when click ok | EventEmitter<any[]>  |  - |
-| onDismiss  | handler called when click cancel | (): void  |  -  |
-| title  | title | String | - |
-| disabled  | set disabled | Boolean | false |
-| cascade  | whether is cascade mode | Boolean | true |
-| indicatorStyle  | style of indicator | Object | - |
+| `[data]` | Data source | `Array<{value, label, children: Array}>` | - |
+| `[cols]` | Col numbers | `number` | `3` |
+| `[okText]` | Ok text | `string` | `'确定'` |
+| `[dismissText]` | Dismiss text | `string` | `'取消'` |
+| `[title]` | Titile | `string` | - |
+| `[disabled]` | Set disabled | `boolean` | `false` |
+| `[cascade]` | Whether is cascade mode | `boolean` | `true` |
+| `[indicatorStyle]` | Style of indicator | `object` | - |
+| `[(ngModel)]` | Current selected value, the format is `[value1, value2, value3]`, corresponds to the level value of the data source,double binding | `Array` | - |
+| `(onChange)` | Selected callback function | `EventEmitter<object>` | - |
+| `(onPickerChange)` | Trigger on each column of selected data is changed | `EventEmitter<object>` | - |
+| `(ngModelChange)` | Handler called when click ok | `EventEmitter<any[]>` | - |
+| `(onDismiss)` | Handler called when click cancel | `EventEmitter<void>`  | - |
 
 > **注：** Don't support default city initialization data any more。
 
 ### PickerService.showPicker(config, confirm?, cancel?)
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| config    | init config       | {data: [], value: [],...}    | -           |
-| confirm    | handler called when click ok       | (val): void     | -           |
-| cancel    | handler called when click cancel       | (): void     | -           |
+| `config` | Init config | `{data: [], value: [],...}` | - |
+| `confirm` | Handler called when click ok | `(val) => void` | - |
+| `cancel` | Handler called when click cancel | `() => void` | - |
 
 call PickerService.showPicker(actions?).close()` can close Operation Picker outside anywhere as you wish.
 
@@ -65,8 +65,8 @@ The dialog created by the service method `PickerService.xxx()` will return a `Pi
 
 | Method | Description |
 |----|----|
-| afterOpen                 | Same as AfterOpen but of type Observable&lt;void&gt; |
-| afterClose | Same as AfterClose, but of type Observable&lt;result:any&gt; |
-| close()                   | Close (hide) the dialog. <i>Note: When used for a dialog created as a service, this method will destroy the dialog directly (as with the destroy method)</i> |
-| destroy()                 | Destroy the dialog. <i>Note: Used only for dialogs created by the service (non-service created dialogs, this method only hides the dialog)</i> |
-| getContentComponent()  | Gets the Component instance in the contents of the dialog for `Content`. <i> Note: When the dialog is not initialized (`ngOnInit` is not executed), this function will return `undefined`</i> |
+| `afterOpen() => Observable` | Same as AfterOpen but of type `Observable` |
+| `afterClose(result: any) => Observable` | Same as AfterClose, but of type `Observable` |
+| `close(result: any) => void` | Close (hide) the dialog. <i>Note: When used for a dialog created as a service, this method will destroy the dialog directly (as with the destroy method)</i> |
+| `destroy(result: any) => void` | Destroy the dialog. <i>Note: Used only for dialogs created by the service (non-service created dialogs, this method only hides the dialog)</i> |
+| `getContentComponent() => Component` | Gets the Component instance in the contents of the dialog for `Content`. <i> Note: When the dialog is not initialized (`ngOnInit` is not executed), this function will return `undefined`</i> |

@@ -13,30 +13,31 @@ subtitle: 选择器
 
 ## API
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| ngModel | 当前值, 格式是`[value1, value2, value3]`, 对应数据源的相应级层value, 可双向绑定 | Array | - |
-| data    | 数据源        | `Array<{value, label, children: Array}>` |   -  |
-| cols    | 列数        | Number |  `3`  |
-| onChange | 选中后的回调 | (val): void | - |
-| onPickerChange | 每列数据选择变化后的回调函数   | (val): void | - |
-| okText  | 选中的文案 | String |  `确定`  |
-| dismissText  | 取消选中的文案 | String |  `取消`  |
-| ngModelChange  | 点击选中时执行的回调 | EventEmitter<any[]>  | - |
-| onDismiss  | 点击取消时执行的回调 | (): void  |  无  |
-| title  | 大标题 | String | - |
-| disabled  | 是否不可用 | Boolean | false |
-| cascade  | 是否联动 | Boolean | true |
+| `[data]` | 数据源 | `Array<{value, label, children: Array}>` | - |
+| `[cols]` | 列数 | `number` | `3` |
+| `[okText]` | 选中的文案 | `string` | `'确定'` |
+| `[dismissText]` | 取消选中的文案 | `string` | `'取消'` |
+| `[title]` | 大标题 | `string` | - |
+| `[disabled]` | 是否不可用 | `boolean` | `false` |
+| `[cascade]` | 是否联动 | `boolean` | `true` |
+| `[indicatorStyle]` | indicator的样式 | `object` | - |
+| `[(ngModel)]` | 当前值, 格式是`[value1, value2, value3]`, 对应数据源的相应级层value | `Array` | - |
+| `(onChange)` | 选中后的回调 | `EventEmitter<object>` | - |
+| `(onPickerChange)` | 每列数据选择变化后的回调函数 | `EventEmitter<object>` | - |
+| `(ngModelChange)` | 点击选中时执行的回调 | `EventEmitter<any[]>` | - |
+| `(onDismiss)` | 点击取消时执行的回调 | `EventEmitter<void>`  | - |
 
 > **注：** 组件不再提供默认的城市初始化数据。
 
 
 ### PickerService.showPicker(config, confirm?, cancel?)
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| config    | 初始化配置       | {data: [], value: [],...}    | 无           |
-| confirm    | 选中后的回调       | (val): void     | 无           |
-| cancel    | 点击取消时执行的回调       | (): void     | 无           |
+| `config` | 初始化配置 | `{data: [], value: [],...}` | - |
+| `confirm` | 选中后的回调 | `(val) => void` | - |
+| `cancel` | 点击取消时执行的回调 | `() => void` | - |
 
 以上函数调用后，会返回一个引用，可以通过该引用关闭弹窗。
 
@@ -65,6 +66,8 @@ constructor(picker: PickerService) {
 
 | 方法/属性 | 说明 |
 |----|----|
-| close(result: any)        | 关闭(隐藏)对话框。<i>注：当用于以服务方式创建的对话框，此方法将直接 销毁 对话框（同destroy方法）</i> |
-| destroy(result: any)      | 销毁对话框。<i>注：仅用于服务方式创建的对话框（非服务方式创建的对话框，此方法只会隐藏对话框）</i> |
-| getContentComponent()     | 获取对话框内容中Content的Component实例instance。<i>注：当对话框还未初始化完毕（`ngOnInit`未执行）时，此函数将返回`undefined`</i> |
+| `afterOpen() => Observable` | 和 AfterOpen 一样, 但返回值是`Observable` |
+| `afterClose(result: any) => Observable` | 和 AfterClose 一样, 但返回值是`Observable` |
+| `close(result: any) => void` | 关闭(隐藏)对话框 <i>注：当用于以服务方式创建的对话框，此方法将直接 销毁 对话框（同destroy方法）</i> |
+| `destroy(result: any) => void` | 销毁对话框 <i>注：仅用于服务方式创建的对话框（非服务方式创建的对话框，此方法只会隐藏对话框）</i> |
+| `getContentComponent() => Component` | 获取对话框内容中Content的Component实例instance <i>注：当对话框还未初始化完毕（`ngOnInit`未执行）时，此函数将返回`undefined`</i> |
