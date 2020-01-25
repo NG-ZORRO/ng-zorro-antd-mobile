@@ -15,24 +15,19 @@ Normally located below NavBar, the activation status is exited by the Cancel but
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| ngModel      |  the controlled current value, dobule binding  | String | <span> </span> |
-| ngModelChange    |  event callback     | (val: string): void | <span> </span> |
-| defaultValue |  the uncontrolled default value    | String | <span> </span> |
-| value      |  the controlled current value  | String | <span> </span> |
-| placeholder    |    placeholder   | String | <span> </span> |
-| onSubmit    |  submit event (click the enter on the keyboard) | (val: string): void | <span> </span> |
-| onChange    |    change event callback     | (val: string): void | <span> </span> |
-| onFocus    |    focus event callback     | (): void | <span> </span> |
-| onBlur    |    blur event callback     | (): void | <span> </span> |
-| onCancel  | Click the `Cancel` button to trigger | (val: string): void | <span> </span> |
-| showCancelButton |  Whether the `Cancel` button is always displayed  | bool |  `false`  |
-| cancelText  |  Customize the text of the `Cancel` button   | String |  `Cancel`  |
-| disabled    |   Set disabled  | bool |  `false`  |
-| onClear |  Click the clear icon to trigger   | (val: string): void | <span> </span> |
-| maxLength     |  The maxlength attribute limits the number of characters that SearchBar can accept    | number | -  |
-
-## SearchBar Instance methods
-
-Property | Description | Type | Default
-----|-----|------|------
-| focus    | Force focus back onto the search input node  | (): void |  -  |
+| `[defaultValue]` | the uncontrolled default value | `string` | - |
+| `[value]` | the controlled current value | `string` | - |
+| `[placeholder]` | placeholder | `string` | - |
+| `[showCancelButton]` | 是否一直显示`取消`按钮 | `boolean` | `false` |
+| `[cancelText]` | Customize the text of the `Cancel` button | `string` | `'Cancel'` |
+| `[disabled]` | Set disabled | `boolean` | `false` |
+| `[maxLength]` | The maxlength attribute limits the number of characters that SearchBar can accept | `number` | - |
+| `[(ngModel)]` | the controlled current value | `string`| - |
+| `(ngModelChange)` | event callback | `EventEmitter<string>` | - |
+| `(onSubmit)` | submit event (click the enter on the keyboard) | `EventEmitter<string>` | - |
+| `(onChange)` | change event callback | `EventEmitter<string>` |- |
+| `(onFocus)` | focus event callback | `EventEmitter<void>` | - |
+| `(onBlur)` | blur event callback | `EventEmitter<void>` | - |
+| `(onCancel)` | Click the `Cancel` button to trigger | `EventEmitter<string>` | - |
+| `(onClear)` | Click the clear icon to trigger | `EventEmitter<string>` | - |
+| `(focus)` | Callback event when SearchBar focus | `EventEmitter<void>` | - |
