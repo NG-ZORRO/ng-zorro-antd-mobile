@@ -16,25 +16,20 @@ Card can be used to organize information and operations, usually also as an entr
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-|   full  |  whether is full column | boolean | `false` |
+| `[full]` | Whether is full column | `boolean` | `false` |
 
 ### CardHeader
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-|title| title for `CardHeader` | TemplateRef、String | <span> </span> |
-|thumb| thumb to render in the left of  `CardHeader`  | String、TemplateRef | <span> </span> |
-|thumbStyle| style of thumb | Object | {} |
-|extra| extra content to render in the right of `CardHeader` | TemplateRef、String | <span> </span> |
-
-### CardBody
-
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| `[title]` | Title for `CardHeader` | `string \| TemplateRef` | - |
+| `[thumb]` | Thumb to render in the left of  `CardHeader` | `string \| TemplateRef` | - |
+| `[thumbStyle]` | Style of thumb | `object` | {} |
+| `[extra]` | Extra content to render in the right of `CardHeader` | `string \| TemplateRef` | - |
 
 ### CardFooter
 
 Properties | Descrition | Type | Default
------------|------------|------|--------
-|content| content of `CardFooter` | TemplateRef、String |<span> </span>|
-|extra| extra content of `CardFooter` | TemplateRef、String | <span> </span> |
+-----------|------------|------|--------z
+| `[content]` | Content of `CardFooter` | `string \| TemplateRef` | - |
+| `[extra]` | Extra content of `CardFooter` | `string \| TemplateRef` | - |
