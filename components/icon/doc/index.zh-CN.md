@@ -30,8 +30,8 @@ subtitle: 图标
 
 ## API
 
-| 属性        | 说明           | 类型            | 默认值       |
+| 参数 | 说明 | 类型 | 默认值 |
 |------------|----------------|----------------|--------------|
-| type    |   内置 icon 名称 或 unicode     | String   |  <span> </span> |
-| size    |   图标大小    | 'xxs'/'xs'/'sm'/'md'/'lg' | `md` |
-| color   | 图标颜色  | Color | '#000' |
+| `[type]` | 内置 icon 名称 或 unicode | `string` | - |
+| `[size]` | 图标大小 | `'xxs' /| 'xs' /| 'sm' /| 'md' /| 'lg'` | `'md'` |
+| `[color]` | 图标颜色 | `string` | `'#000'` |
