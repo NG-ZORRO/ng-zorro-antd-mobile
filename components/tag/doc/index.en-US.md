@@ -14,10 +14,10 @@ Tag for categorizing or markuping, can be used to make classification or mark th
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| small   |  Whether to show a smaller size  |   Boolean    |  `false`  |
-| disabled   | Whether is disabled      | Boolean |    `false`  |
-| closable   | Whether can be closed(invalid in `small` or `disabled` mode) | Boolean | `false` |
-| selected   | Whether is selected by default     | Boolean |   `false`  |
-| onChange   | The callback function that is triggered when the selected state changes. | (selected: bool): void |   -  |
-| onClose   | The callback function that is triggered when the tag is closed. | (): void |   -  |
-| afterClose   | The callback function that is triggered after close. | (): void |   -  |
+| `[small]` | Whether to show a smaller size | `boolean` | `false` |
+| `[disabled]` | Whether is disabled | `boolean` | `false` |
+| `[closable]` | Whether can be closed(invalid in `small` or `disabled` mode) | `boolean` | `false` |
+| `[selected]` | Whether is selected by default | `boolean` | `false` |
+| `(onChange)` | The callback function that is triggered when the selected state changes | `EventEmitter<boolean>` | - |
+| `(onClose)` | The callback function that is triggered when the tag is closed | `EventEmitter<void>` | - |
+| `(afterClose)` | The callback function that is triggered after close | `EventEmitter<void>` | - |
