@@ -18,9 +18,9 @@ subtitle: 活动指示器
 
 ### ActivityIndicator
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-|  animating  | 显隐状态 | boolean  | true  |
-|  size  | spinner大小，可选`small`/`large` | string  | small  |
-|  toast  | loading样式类型 | boolean  | false  |
-|  text  | loading文本 | string |  -   |
+| `[animating]` | 显隐状态 | `boolean`  | `true`  |
+| `[size]` | spinner大小 | `'small' | 'large'` | `'small'`  |
+| `[toast]` | loading样式类型 | `boolean` | `false`  |
+| `[text]` | loading文本 | `string` | - |
