@@ -15,7 +15,7 @@ Progress Bar to indicate your task's progress.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-percent | percent value of progress | number | 0
-position | position of progress bar, optional：`fixed` `normal` | string | `fixed`
-unfilled | whether to fill unfinished part of progress | boolean | true
-barStyle | the style of bar（only when selector is nzm-progress） | object | {}
+| `[percent]` | Percent value of progress | `number` | `0`
+| `[position]` | Position of progress bar | `'fixed' \| 'normal'` | `'fixed'`
+| `[unfilled]` | Whether to fill unfinished part of progress | `boolean` | `true`
+| `[barStyle]` | The style of bar(only when selector is nzm-progress) | `object` | `{}`
