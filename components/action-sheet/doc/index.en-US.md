@@ -87,8 +87,8 @@ The dialog created by the service method `ActionSheetService.xxx()` will return 
 
 | Method | Description |
 |----|----|
-| afterOpen                 | Same as AfterOpen but of type Observable&lt;void&gt; |
-| afterClose | Same as AfterClose, but of type Observable&lt;result:any&gt; |
-| close()                   | Close (hide) the dialog. <i>Note: When used for a dialog created as a service, this method will destroy the dialog directly (as with the destroy method)</i> |
-| destroy()                 | Destroy the dialog. <i>Note: Used only for dialogs created by the service (non-service created dialogs, this method only hides the dialog)</i> |
-| getContentComponent()  | Gets the Component instance in the contents of the dialog for `Content`. <i> Note: When the dialog is not initialized (`ngOnInit` is not executed), this function will return `undefined`</i> |
+| `afterOpen() => Observable` | Same as `AfterOpen` but of type Observable&lt;void&gt; |
+| `afterClose(result: any) => Observable` | Same as `AfterClose`, but of type Observable&lt;result:any&gt; |
+| `close(result: any) => void` | Close (hide) the dialog. <i>Note: When used for a dialog created as a service, this method will destroy the dialog directly (as with the destroy method)</i> |
+| `destroy(result: any) => void` | Destroy the dialog. <i>Note: Used only for dialogs created by the service (non-service created dialogs, this method only hides the dialog)</i> |
+| `getContentComponent() => Component`| Gets the Component instance in the contents of the dialog for `Content`. <i> Note: When the dialog is not initialized (`ngOnInit` is not executed), this function will return `undefined`</i> |

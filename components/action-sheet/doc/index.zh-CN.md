@@ -87,6 +87,8 @@ constructor(actionSheet: ActionSheetService) {
 
 | 方法/属性 | 说明 |
 |----|----|
-| close(result: any)        | 关闭(隐藏)对话框。<i>注：当用于以服务方式创建的对话框，此方法将直接 销毁 对话框（同destroy方法）</i> |
-| destroy(result: any)      | 销毁对话框。<i>注：仅用于服务方式创建的对话框（非服务方式创建的对话框，此方法只会隐藏对话框）</i> |
-| getContentComponent()     | 获取对话框内容中Content的Component实例instance。<i>注：当对话框还未初始化完毕（`ngOnInit`未执行）时，此函数将返回`undefined`</i> |
+| `afterOpen() => Observable` | 和 AfterOpen 一样, 但类型是Observable&lt;void&gt; |
+| `afterClose(result: any) => Observable` | 和 AfterClose 一样, 但类型是Observable&lt;void&gt; |
+| `close(result: any) => void` | 关闭(隐藏)对话框。<i>注：当用于以服务方式创建的对话框，此方法将直接 销毁 对话框（同destroy方法）</i> |
+| `destroy(result: any) => void` | 销毁对话框。<i>注：仅用于服务方式创建的对话框（非服务方式创建的对话框，此方法只会隐藏对话框）</i> |
+| `getContentComponent() => Component`| 获取对话框内容中Content的Component实例instance。<i>注：当对话框还未初始化完毕（`ngOnInit`未执行）时，此函数将返回`undefined`</i> |
