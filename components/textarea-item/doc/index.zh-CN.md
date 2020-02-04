@@ -30,8 +30,8 @@ subtitle: 多行输入
 | `[autoFocus]` | 初始化自动获得焦点 | `boolean` | `false` |
 | `[labelNumber]` | 定宽枚举值：`num * @input-label-width: 34px`，可用`2-7`之间的数字，一般(不能保证全部)能对应显示出相应个数的中文文字(不考虑英文字符) | `number` | `5` |
 | `[name]` | textarea 的 name | `string` | - |
-| `[prefixListCls]` | 列表 className 前缀 | `string` | `am-list` |
-| `[title]` | 文案说明 | `string | TemplateRef` | - |
+| `[prefixListCls]` | 列表 className 前缀 | `string` | `'am-list'` |
+| `[title]` | 文案说明 | `string \| TemplateRef` | - |
 | `[focus]` | 强制获得焦点 | `{ focus: boolean }` | - |
 | `[(ngModel)]` | value | `string` | - |
 | `(onChange)` | change 事件触发的回调函数 | `EventEmitter<string>` | - |

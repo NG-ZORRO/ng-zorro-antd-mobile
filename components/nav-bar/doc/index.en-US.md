@@ -21,4 +21,4 @@ Properties | Descrition | Type | Default
 | `[icon]` | Appears on the leftmost icon placeholder | `TemplateRef` | - |
 | `[leftContent]` | Left content | `string \| TemplateRef` | - |
 | `[rightContent]` | Right content | `string \| TemplateRef` | - |
-| `[onLeftClick]` | Click the callback on the left | `(e: object) => void` | - |
+| `(onLeftClick)` | Click the callback on the left | `EventEmitter<object>` | - |

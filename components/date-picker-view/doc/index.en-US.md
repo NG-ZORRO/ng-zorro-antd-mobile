@@ -10,7 +10,7 @@ DatePickerView's functions like DatePicker, but it is rendered directly in the a
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| `[mode]`| Mode value | `'year' | 'month' | 'date' | 'time' | 'datetime'` | `'date'` |
+| `[mode]`| Mode value | `'year' \| 'month' \| 'date' \| 'time' \| 'datetime'` | `'date'` |
 | `[minDate]` | Minimum date | `Date` | `2000-1-1` |
 | `[maxDate]` | Maximum date | `Date` | `2030-1-1` |
 | `[locale]` | International, can override the configuration of the global `[LocaleProvider](https://ng.mobile.ant.design/components/locale-provider/en)` | `{DatePickerLocale: {year, month, day, hour, minute, am?, pm?}, okText, dismissText }` | - |

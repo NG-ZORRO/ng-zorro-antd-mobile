@@ -26,7 +26,7 @@ subtitle: 卡片
 ----|-----|------|------
 | `[title]` | 卡片标题 | `string \| TemplateRef` | - |
 | `[thumb]` | 卡片标题图片 | `string \| TemplateRef` | - |
-| `[thumbStyle]` | 标题图片样式 | `object` | {} |
+| `[thumbStyle]` | 标题图片样式 | `object` | `{}` |
 | `[extra]` | 卡片标题辅助内容 | `string \| TemplateRef` | - |
 
 ### CardFooter

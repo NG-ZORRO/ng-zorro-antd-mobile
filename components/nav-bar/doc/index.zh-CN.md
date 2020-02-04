@@ -22,4 +22,4 @@ subtitle: 导航栏
 | `[icon]` | 出现在最左边的图标占位符 | `TemplateRef` | - |
 | `[leftContent]` | 导航左边内容 | `string \| TemplateRef` | - |
 | `[rightContent]` | 导航右边内容 | `string \| TemplateRef` | - |
-| `[onLeftClick]` | 导航左边点击回调 | `(e: object) => void` | - |
+| `(onLeftClick)` | 导航左边点击回调 | `EventEmitter<object>` | - |

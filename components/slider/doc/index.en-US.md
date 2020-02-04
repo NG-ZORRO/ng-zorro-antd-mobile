@@ -17,7 +17,7 @@ Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | `[min]` | The minimum value the slider can slide to | `number` | `0` |
 | `[max]` | The maximum value the slider can slide to | `number` | `100` |
-| `[step]` | The granularity the slider can step through values. Must greater than 0, and be divided by (max - min) . When `marks` no null, `step` can be `null` | `number | null` | `1` |
+| `[step]` | The granularity the slider can step through values. Must greater than 0, and be divided by (max - min) . When `marks` no null, `step` can be `null` | `number \| null` | `1` |
 | `[value]` | The value of slider | `number` | - |
 | `[defaultValue]` | The default value of slider | `number` | `0` |
 | `[disabled]` | If true, the slider will not be interactable | `boolean` | `false` |

@@ -25,15 +25,15 @@ Properties | Descrition | Type | Default
 | `[clear]` | Whether to display clear(it takes effect only `editable` is `true` and `disabled` is `false` has been set) | `boolean` | `false` |
 | `[maxLength]` | Limits the maximum number of characters that can be entered | `number` | - |
 | `[error]` | Whether to display error | `boolean` | `false` |
-| `[onErrorClick]` | Callback that is called when the error icon is clicked | `EventEmitter<object>` | - |
-| `[extra]` | The right content of `InputItem` | `string | TemplateRef` | '' |
-| `[onExtraClick]` | Callback that is called when the extra content is clicked | `EventEmitter<object>` | - |
+| `[extra]` | The right content of `InputItem` | `string \| TemplateRef` | - |
 | `[labelNumber]` | Number of label text, valid value is 2 to 7 | `number` | `5` |
-| `[content]` | Content of label text | `string | TemplateRef` | - |
+| `[content]` | Content of label text | `string \| TemplateRef` | - |
 | `[updatePlaceholder]` | Whether to replace the placeholder with cleared content | `boolean` | `false` |
-| `[prefixListCls]` | The class name prefix of list | `string` | `am-list` |
-| `[moneyKeyboardAlign]` | Text align direction, only `type='money'` support this api | `'left' | 'right'` | 'right' |
+| `[prefixListCls]` | The class name prefix of list | `string` | `'am-list'` |
+| `[moneyKeyboardAlign]` | Text align direction, only `type='money'` support this api | `'left' \| 'right'` | `'right'` |
 | `[locale]` | International，can override global configuration,  when`type`is`money`，can cunstom the keyboard confirm item's label | `{ confirmLabel }` | - |
+| `(onErrorClick)` | Callback that is called when the error icon is clicked | `EventEmitter<object>` | - |
+| `(onExtraClick)` | Callback that is called when the extra content is clicked | `EventEmitter<object>` | - |
 | `(onChange)` | Callback that is called when the text input's text changes | `EventEmitter<string>` | - |
 | `(onBlur)` | Callback that is called when the text input is blurred | `EventEmitter<string>` | - |
 | `(onFocus)` | Callback that is called when the text input is focused | `EventEmitter<string>` | - |

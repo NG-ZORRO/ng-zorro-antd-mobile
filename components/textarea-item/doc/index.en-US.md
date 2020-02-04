@@ -29,8 +29,8 @@ Properties | Descrition | Type | Default
 | `[autoFocus]` | auto get focus when init | `boolean` | `false` |
 | `[labelNumber]` | number of label text, valid value is 2 to 7 | `number` | `5` |
 | `[name]` | the name of textarea | `string` | - |
-| `[prefixListCls]` | the class name prefix of list | `string` | `am-list` |
-| `[title]` | the description of textarea | `string | TemplateRef` | - |
+| `[prefixListCls]` | the class name prefix of list | `string` | `'am-list'` |
+| `[title]` | the description of textarea | `string \| TemplateRef` | - |
 | `[focus]` | Force focus back onto the input node | `{ focus: boolean }` | - |
 | `[(ngModel)]` | Current value | `string` | - |
 | `(onChange)` | callback that is called when the textarea's text changes | `EventEmitter<string>` | - |

@@ -28,6 +28,6 @@ title: ActivityIndicator
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | `[animating]` | Whether to show the indicator | `boolean`  | `true`  |
-| `[size]` | Size of the indicator | `'small' | 'large'` | `'small'`  |
+| `[size]` | Size of the indicator | `'small' \| 'large'` | `'small'`  |
 | `[toast]` | Whether to use toast style | `boolean` | `false`  |
 | `[text]` | Loading text behind the indicator | `string` | - |

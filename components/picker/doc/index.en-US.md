@@ -65,8 +65,8 @@ The dialog created by the service method `PickerService.xxx()` will return a `Pi
 
 | Method | Description |
 |----|----|
-| `afterOpen() => Observable` | Same as AfterOpen but of type `Observable` |
-| `afterClose(result: any) => Observable` | Same as AfterClose, but of type `Observable` |
+| `afterOpen` | Same as AfterOpen but of type `Observable` |
+| `afterClose` | Same as AfterClose, but of type `Observable` |
 | `close(result: any) => void` | Close (hide) the dialog. <i>Note: When used for a dialog created as a service, this method will destroy the dialog directly (as with the destroy method)</i> |
 | `destroy(result: any) => void` | Destroy the dialog. <i>Note: Used only for dialogs created by the service (non-service created dialogs, this method only hides the dialog)</i> |
 | `getContentComponent() => Component` | Gets the Component instance in the contents of the dialog for `Content`. <i> Note: When the dialog is not initialized (`ngOnInit` is not executed), this function will return `undefined`</i> |

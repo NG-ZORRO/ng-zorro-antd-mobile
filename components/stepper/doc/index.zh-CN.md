@@ -16,12 +16,12 @@ subtitle: 步进器
 ----|-----|------|------
 | `[min]` | 最小值 | `number` | - |
 | `[max]` | 最大值 | `number` | - |
-| `[(ngModel)]` | 当前值 | `number` | - |
-| `(ngModelChange)` | 变化时回调函数 | `EventEmitter<void>` | - |
 | `[value]` | 当前值 | `number` | - |
-| `[step]` | 每次改变的步数，可以为小数 | `number | string` | `1` |
+| `[step]` | 每次改变的步数，可以为小数 | `number \| string` | `1` |
 | `[defaultValue]` | 初始值 | `number` | - |
-| `(onChange)` | 变化时回调函数 | `EventEmitter<void>` | - |
 | `[disabled]` | 禁用 | `boolean` | `false` |
 | `[readOnly]` | input 只读 | `boolean` | `false` |
 | `[showNumber]` | 是否显示数值 | `boolean` | `false` |
+| `[(ngModel)]` | 当前值 | `number` | - |
+| `(ngModelChange)` | 变化时回调函数 | `EventEmitter<void>` | - |
+| `(onChange)` | 变化时回调函数 | `EventEmitter<void>` | - |

@@ -22,4 +22,4 @@ subtitle: 分段器
 | `[disabled]` | 是否启用 | `boolean` | `false` |
 | `[selectedIndex]` | 选中项在数组中的索引 | `number` | `0` |
 | `[values]` | 选项数组,值是字符串 | `array` | `[]` |
-| `[onChange]` | 回调函数 | `EventEmitter<{selectedIndex: number, value: any}>` | - |
+| `(onChange)` | 回调函数 | `EventEmitter<{selectedIndex: number, value: any}>` | - |

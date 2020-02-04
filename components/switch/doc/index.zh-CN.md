@@ -21,7 +21,7 @@ subtitle: 滑动开关
 | `[disabled]` | 是否不可修改 | `boolean` | `false` |
 | `[color]` | 开关打开后的颜色 | `string` | `'#4dd865'` |
 | `[name]` | switch 的 name | `string` | - |
-| `[platform]` | 设定组件的平台特有样式 | `'ios' | 'android'` | `'ios'`|
+| `[platform]` | 设定组件的平台特有样式 | `'ios' \| 'android'` | `'ios'`|
 | `[(ngModel)]` | 当前值 | `boolean` | `false` |
 | `(onChange)` | change 事件触发的回调函数 | `EventEmitter<boolean>` | - |
 | `(onClick)` | click事件触发的回调函数，当switch为disabled时，入参的值始终是默认传入的checked值 | `EventEmitter<boolean>` | - |

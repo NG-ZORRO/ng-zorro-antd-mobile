@@ -21,7 +21,7 @@ Properties | Descrition | Type | Default
 | `[disabled]` | Whether is disabled | `boolean` | `false` |
 | `[color]` | Background color when the switch is turned on | `string` | `'#4dd865'` |
 | `[name]` | Name of `switch` | `string` | - |
-| `[platform]` | Set the special style depends on platform | `'ios' | 'android'` | `'ios'`|
+| `[platform]` | Set the special style depends on platform | `'ios' \| 'android'` | `'ios'`|
 | `[(ngModel)]` | Current selected value | `boolean` | `false` |
 | `(onChange)` | The callback function that is triggered when the selected state changes | `EventEmitter<boolean>` | - |
 | `(onClick)` | Callback event of click | `EventEmitter<boolean>` | - |

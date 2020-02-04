@@ -11,7 +11,7 @@ PickerView 的功能类似于 Picker ，但它是直接渲染在区域中，而�
 
 参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| `[data]` | 数据源 | `Array<{value, label}> | Array<Array<{value, label}> `| - |
+| `[data]` | 数据源 | `Array<{value, label}> \| Array<Array<{value, label}> `| - |
 | `[cascade]` | 是否级联 | `boolean` | `true` |
 | `[cols]` | 列数 | `number` | `3` |
 | `[itemStyle]` | 每列样式 | `object` | - |

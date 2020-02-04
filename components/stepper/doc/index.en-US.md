@@ -15,12 +15,12 @@ Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | `[min]` | Specifies the minimum value | `number` | - |
 | `[max]` | Specifies the maximum value | `number` | - |
-| `[(ngModel)]` | Specifies the value of the `Stepper` | `number` | - |
-| `(ngModelChange)` | Called when value of the `Stepper` changed | `EventEmitter<void>` | - |
 | `[value]` | Specifies the value of the `Stepper` | `number` | - |
-| `[step]` | Specifies the legal number intervals | `number | string` | `1` |
+| `[step]` | Specifies the legal number intervals | `number \| string` | `1` |
 | `[defaultValue]` | Specifies the defaultValue of the `Stepper` | `number` | - |
-| `(onChange)` | Called when value of the `Stepper` changed | `EventEmitter<void>` | - |
 | `[disabled]` | Specifies the `Stepper` should be disabled | `boolean` | `false` |
 | `[readOnly]` | Specifies the `Stepper` is read only | `boolean` | `false` |
 | `[showNumber]` | Whether to display number value | `boolean` | `false` |
+| `[(ngModel)]` | Specifies the value of the `Stepper` | `number` | - |
+| `(ngModelChange)` | Called when value of the `Stepper` changed | `EventEmitter<void>` | - |
+| `(onChange)` | Called when value of the `Stepper` changed | `EventEmitter<void>` | - |

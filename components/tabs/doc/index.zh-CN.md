@@ -25,7 +25,7 @@ subtitle: 标签页
 | `[swipeable]` | 是否可以滑动内容切换 | `boolean` | `true` |
 | `[useOnPan]` | 使用跟手滚动 | `boolean` |  `true` |
 | `[animated]` | 是否开启切换动画 | `boolean` |  `true` |
-| `[distanceToChangeTab]` | 滑动切换阈值(宽度比例) | number | `0.3` |
+| `[distanceToChangeTab]` | 滑动切换阈值(宽度比例) | `number` | `0.3` |
 | `[prerenderingSiblingsNumber]` | 预加载两侧Tab数量, -1: 加载所有的Tab内容, 0: 仅加载当前tab内容, n: 预加载两侧n个Tab | `number` | `-1` |
 | `[tabDirection]` | Tab方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
 | `[tabBarUnderlineStyle]` | TabBar下划线样式 | `object` | - |

@@ -11,7 +11,7 @@ DatePickerView 的功能类似于 DatePicker ，但它是直接渲染在区域�
 
 参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| `[mode]`| 日期选择的类型 | `'year' | 'month' | 'date' | 'time' | 'datetime'` | `'date'` |
+| `[mode]`| 日期选择的类型 | `'year' \| 'month' \| 'date' \| 'time' \| 'datetime'` | `'date'` |
 | `[minDate]` | 最小可选日期 | `Date` | `2000-1-1` |
 | `[maxDate]` | 最大可选日期 | `Date` | `2030-1-1` |
 | `[locale]` | 国际化，可覆盖全局`[LocaleProvider](https://ng.mobile.ant.design/components/locale-provider/zh)`的配置 | `{DatePickerLocale: {year, month, day, hour, minute, am?, pm?}, okText, dismissText }` | - |

@@ -35,8 +35,8 @@ subtitle: 对话框
 
 参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| `[title]` | 标题 | `string | TemplateRef` | - |
-| `[message]` | 提示信息 | `string | TemplateRef` | - |
+| `[title]` | 标题 | `string \| TemplateRef` | - |
+| `[message]` | 提示信息 | `string \| TemplateRef` | - |
 | `[actions]` | 按钮组 | `Array<text: string, onPress: Function, style: object>` | - |
 | `[platform]` | 设定组件的平台特有样式, 仅限web | `'android' \| 'ios'` | `'ios'`|
 

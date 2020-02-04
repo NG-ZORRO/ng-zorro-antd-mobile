@@ -17,7 +17,7 @@ subtitle: 单选框
 | `[value]` | value | `string` | - |
 | `[checked]` | 指定当前是否选中  | `boolean` | - |
 | `[disabled]` | 禁用 | `boolean` | `false` |
-| `(onChange)` | change 事件触发的回调函数 | `EventEmitter<name: string, value: string, checked: boolean>` | 无  |
+| `(onChange)` | change 事件触发的回调函数 | `EventEmitter<name: string, value: string, checked: boolean>` | - |
 
 ### RadioItemGroup
 
@@ -25,7 +25,7 @@ subtitle: 单选框
 
 参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| `[(ngModel)]` | 指定选中的RadioItem对应的value | `string | number` | - |
+| `[(ngModel)]` | 指定选中的RadioItem对应的value | `string \| number` | - |
 | `(onChange)` | RadioItem选中变化时的回调 | `EventEmitter<{name, value}>` | - |
 
 ### RadioItem

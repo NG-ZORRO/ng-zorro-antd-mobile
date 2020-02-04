@@ -25,7 +25,7 @@ Properties | Descrition | Type | Default
 | `[swipeable]` | Whether to switch tabs with swipe gestrue in the content | `boolean` | `true` |
 | `[useOnPan]` | Use hand scroll | `boolean` |  `true` |
 | `[animated]` | Whether to change tabs with animation | `boolean` |  `true` |
-| `[distanceToChangeTab]` | Distance to change tab, width ratio | number | `0.3` |
+| `[distanceToChangeTab]` | Distance to change tab, width ratio | `number` | `0.3` |
 | `[prerenderingSiblingsNumber]` | Pre-render nearby sibling, -1: render all the siblings, 0: render current page, n: render n siblings | `number` | `-1` |
 | `[tabDirection]` | Tab paging direction | `'horizontal' \| 'vertical'` | `'horizontal'` |
 | `[tabBarUnderlineStyle]` | Style of the default tab bar's underline | `object` | - |

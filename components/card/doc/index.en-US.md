@@ -24,7 +24,7 @@ Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | `[title]` | Title for `CardHeader` | `string \| TemplateRef` | - |
 | `[thumb]` | Thumb to render in the left of  `CardHeader` | `string \| TemplateRef` | - |
-| `[thumbStyle]` | Style of thumb | `object` | {} |
+| `[thumbStyle]` | Style of thumb | `object` | `{}` |
 | `[extra]` | Extra content to render in the right of `CardHeader` | `string \| TemplateRef` | - |
 
 ### CardFooter

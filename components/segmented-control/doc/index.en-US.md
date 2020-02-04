@@ -20,4 +20,4 @@ Properties | Descrition | Type | Default
 | `[disabled]` | Whether the user is able to interact with the control | `boolean` | `false` |
 | `[selectedIndex]` | The index of the segment to be (pre)selected | `number` | `0` |
 | `[values]` | The labels for the control's segment buttons, in order | `array` | `[]` |
-| `[onChange]` | Callback that is called when the user taps a segment; passes the event object as an argument | `EventEmitter<{selectedIndex: number, value: any}>` | - |
+| `(onChange)` | Callback that is called when the user taps a segment; passes the event object as an argument | `EventEmitter<{selectedIndex: number, value: any}>` | - |

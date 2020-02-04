@@ -66,8 +66,8 @@ constructor(picker: PickerService) {
 
 | 方法/属性 | 说明 |
 |----|----|
-| `afterOpen() => Observable` | 和 AfterOpen 一样, 但返回值是`Observable` |
-| `afterClose(result: any) => Observable` | 和 AfterClose 一样, 但返回值是`Observable` |
+| `afterOpen` | 和 AfterOpen 一样, 但返回值是`Observable` |
+| `afterClose` | 和 AfterClose 一样, 但返回值是`Observable` |
 | `close(result: any) => void` | 关闭(隐藏)对话框 <i>注：当用于以服务方式创建的对话框，此方法将直接 销毁 对话框（同destroy方法）</i> |
 | `destroy(result: any) => void` | 销毁对话框 <i>注：仅用于服务方式创建的对话框（非服务方式创建的对话框，此方法只会隐藏对话框）</i> |
 | `getContentComponent() => Component` | 获取对话框内容中Content的Component实例instance <i>注：当对话框还未初始化完毕（`ngOnInit`未执行）时，此函数将返回`undefined`</i> |

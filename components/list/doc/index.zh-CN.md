@@ -34,7 +34,7 @@ subtitle: 列表
 | `[error]` | 报错样式,右侧文字颜色变成橙色 | `boolean` | `false` |
 | `[multipleLine]` | 多行 | `boolean` | `false` |
 | `[wrap]` | 是否换行，默认情况下，文字超长会被隐藏， | `boolean` | `false` |
-| `[platform]` | 设定组件的平台特有样式, 默认为 `cross`， 是指组件会自动检测设备 UA 应用不同平台的样式 | `string` | `'android' \| 'ios' \| 'cross'` |
+| `[platform]` | 设定组件的平台特有样式, 默认为 `cross`， 是指组件会自动检测设备 UA 应用不同平台的样式 | `'android' \| 'ios' \| 'cross'` | `'cross'` |
 | `(onClick)` | 点击事件的回调函数 | `EventEmitter<void>` | - |
 
 ### Brief

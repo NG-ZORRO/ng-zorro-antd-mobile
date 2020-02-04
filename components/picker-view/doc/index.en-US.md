@@ -10,7 +10,7 @@ PickerView's functions like Picker, but it is rendered directly in the area inst
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| `[data]` | data source | `Array<{value, label}> | Array<Array<{value, label}> `| - |
+| `[data]` | data source | `Array<{value, label}> \| Array<Array<{value, label}> `| - |
 | `[cascade]` | whether cascade | `boolean` | `true` |
 | `[cols]` | col numbers | `number` | `3` |
 | `[itemStyle]` | style to apply to each of the item labels | `object` | - |

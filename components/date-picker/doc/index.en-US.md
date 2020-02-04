@@ -14,7 +14,7 @@ Used to select a date or time.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| `[mode]`| Mode value | `'year' | 'month' | 'date' | 'time' | 'datetime'` | `'date'` |
+| `[mode]`| Mode value | `'year' \| 'month' \| 'date' \| 'time' \| 'datetime'` | `'date'` |
 | `[minDate]` | Minimum date | `Date` | `2000-1-1` |
 | `[maxDate]` | Maximum date | `Date` | `2030-1-1` |
 | `[minuteStep]` | The amount of time, in minutes, between each minute item | `number` | `1` |
@@ -22,7 +22,7 @@ Properties | Descrition | Type | Default
 | `[disabled]` | Set disabled | `boolean` | `false`  |
 | `[showErrorToast]` | Toast error message | `boolean` | `true` |
 | `[showErrorToastInterval]` | Toast error message | `number` | `2000` |
-| `[title]` | Title | `string | TemplateRef` | - |
+| `[title]` | Title | `string \| TemplateRef` | - |
 | `[(ngModel)]` | The currently selected value | `Date` | `new Date()` |
 | `(onValueChange)` | Fire when picker col change | `EventEmitter<{date: object, index: string}>` | - |
 | `(onOk)` | Handler called when click ok | `EventEmitter<Date>` | - |

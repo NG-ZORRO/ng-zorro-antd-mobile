@@ -28,15 +28,15 @@ subtitle: 文本输入
 | `[clear]` | 是否带清除功能(仅`editable`为`true`,`disabled`为`false`才生效) | `boolean` | `false` |
 | `[maxLength]` | 最大长度 | `number` | - |
 | `[error]` | 是否显示报错样式 | `boolean` | `false` |
-| `[onErrorClick]` | 点击报错 icon 触发的回调函数 | `EventEmitter<object>` | - |
-| `[extra]` | 右边注释 | `string | TemplateRef` | '' |
-| `[onExtraClick]` | extra 点击事件触发的回调函数 | `EventEmitter<object>` | - |
+| `[extra]` | 右边注释 | `string \| TemplateRef` | - |
 | `[labelNumber]` | 标签的文字个数，可用`2-7`之间的数字 | `number` | `5` |
-| `[content]` | 标签内容支持string和模版 | `string | TemplateRef` | - |
+| `[content]` | 标签内容支持string和模版 | `string \| TemplateRef` | - |
 | `[updatePlaceholder]` | 当清除内容时，是否将清除前的内容替换到 placeholder 中 | `boolean` | `false` |
-| `[prefixListCls]` | 列表 className 前缀 | `string` | `am-list` |
-| `[moneyKeyboardAlign]` | 文字排版起始方向, 只有 `type='money'` 支持 | `'left' | 'right'` | 'right' |
+| `[prefixListCls]` | 列表 className 前缀 | `string` | `'am-list'` |
+| `[moneyKeyboardAlign]` | 文字排版起始方向, 只有 `type='money'` 支持 | `'left' \| 'right'` | `'right'` |
 | `[locale]` | 国际化，可覆盖全局的配置, 当`type`为`money`，可以自定义确认按钮的文案 | `{ confirmLabel }` | - |
+| `(onErrorClick)` | 点击报错 icon 触发的回调函数 | `EventEmitter<object>` | - |
+| `(onExtraClick)` | extra 点击事件触发的回调函数 | `EventEmitter<object>` | - |
 | `(onChange)` | change 事件触发的回调函数 | `EventEmitter<string>` | - |
 | `(onBlur)` | blur 事件触发的回调函数 | `EventEmitter<string>` | - |
 | `(onFocus)` | focus 事件触发的回调函数 | `EventEmitter<string>` | - |

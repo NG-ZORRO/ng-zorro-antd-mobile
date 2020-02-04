@@ -16,7 +16,7 @@ Properties | Descrition | Type | Default
 | `[value]` | value | `string` | - |
 | `[checked]` | To set the current checked state  | `boolean` | - |
 | `[disabled]` | Whether disabled | `boolean` | `false` |
-| `(onChange)` | A callback function, can be executed when the checked state changes | `EventEmitter<name: string, value: string, checked: boolean>` | 无  |
+| `(onChange)` | A callback function, can be executed when the checked state changes | `EventEmitter<name: string, value: string, checked: boolean>` | - |
 
 
 ###RadioItemGroup

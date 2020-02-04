@@ -34,8 +34,8 @@ Properties | Descrition | Type | Default
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 ----|-----|------|------
-| `[title]` | Title | `string | TemplateRef` | - |
-| `[message]` | Message | `string | TemplateRef` | - |
+| `[title]` | Title | `string \| TemplateRef` | - |
+| `[message]` | Message | `string \| TemplateRef` | - |
 | `[actions]` | Button group | `Array<text: string, onPress: Function, style: object>` | - |
 | `[platform]` | Set the special style depends on platform, works on web only | `'android' \| 'ios'` | `'ios'`|
 

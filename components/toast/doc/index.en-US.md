@@ -28,11 +28,11 @@ The component provide several static methods：
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| `content` | Toast content | `string \| TemplateRef` | - |
-| `duration` | Delay time to close, which units is millisecond | `number` | `3000` |
-| `onClose` | A callback function Triggered when the Toast is closed | `Function` | - |
-| `mask` | Whether to show a transparent mask, which will prevent touch event of the whole page | `boolean` | `true` |
-| `position` | Position of toast | `'top' \| 'middle' \| 'bottom'` | `'middle'` |
+| `[content]` | Toast content | `string \| TemplateRef` | - |
+| `[duration]` | Delay time to close, which units is millisecond | `number` | `3000` |
+| `[onClose]` | A callback function Triggered when the Toast is closed | `Function` | - |
+| `[mask]` | Whether to show a transparent mask, which will prevent touch event of the whole page | `boolean` | `true` |
+| `[position]` | Position of toast | `'top' \| 'middle' \| 'bottom'` | `'middle'` |
 
 > **Notice：** OnClose is invalid and Toast does not hide, If set duration = 0, toast will not auto hide, you have to manually do it.
 

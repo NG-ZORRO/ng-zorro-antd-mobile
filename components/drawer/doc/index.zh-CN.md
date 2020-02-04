@@ -15,10 +15,9 @@ subtitle: 抽屉
 
 参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| `[sidebar]` | 抽屉里的内容 | `ng-template` | - |
-| `[onOpenChange]` | open 状态切换时调用 | `(open: boolean): void` | - |
+| `[sidebar]` | 抽屉里的内容 | `TemplateRef` | - |
 | `[open]` | 开关状态 | `boolean` | `false` |
-| `[position]` | 抽屉所在位置 | `'left' | 'right' | 'top' | 'bottom'` | `'left'` |
+| `[position]` | 抽屉所在位置 | `'left' \| 'right' \| 'top' \| 'bottom'` | `'left'` |
 | `[sidebarStyle]` | - | `object` | `{}` |
 | `[contentStyle]` | - | `object` | `{}` |
 | `[overlayStyle]` | - | `object` | `{}` |
@@ -28,3 +27,4 @@ subtitle: 抽屉
 | `[docked]` | 是否嵌入到正常文档流里 | `boolean` | `false` |
 | `[enableDragHandle]` | 是否启用 dragHandle | `boolean` | `false` |
 | `[dragToggleDistance]` | 打开/关闭抽屉时距 sidebar 的拖动距离 | `number` | `30` |
+| `(onOpenChange)` | open 状态切换时调用 | `EventEmitter<boolean>` | - |

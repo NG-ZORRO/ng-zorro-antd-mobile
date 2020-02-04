@@ -20,7 +20,7 @@ subtitle: 滑动输入条
 ----|-----|------|------
 | `[min]` | 最小值 | `number` | `0` |
 | `[max]` | 最大值 | `number` | `100` |
-| `[step]` | 步长，取值必须大于 0，并且可被 (max - min) 整除。当 `marks` 不为空对象时，可以设置 `step` 为 `null`，此时 Slider 的可选值仅有 marks 标出来的部分 | `number | null` | `1` |
+| `[step]` | 步长，取值必须大于 0，并且可被 (max - min) 整除。当 `marks` 不为空对象时，可以设置 `step` 为 `null`，此时 Slider 的可选值仅有 marks 标出来的部分 | `number \| null` | `1` |
 | `[value]` | 设置当前取值 | `number` | - |
 | `[defaultValue]` | 设置初始取值 | `number` | `0` |
 | `[disabled]` | 值为 `true` 时，滑块为禁用状态 | `boolean` | `false` |

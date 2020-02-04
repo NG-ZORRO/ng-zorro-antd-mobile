@@ -33,7 +33,7 @@ Properties | Descrition | Type | Default
 | `[error]` | Whether to display error style(the color of text on the right side may change to orange) | `boolean` | `false` |
 | `[multipleLine]` | multiple line | `boolean` | `false` |
 | `[wrap]` | Whether to wrap long texts, otherwise it will be hidden by default | `boolean` | `false` |
-| `[platform]` | set the special style depends on platform, default to be `cross`， which means we will detect UA and change the component style | `string` | `'android' \| 'ios' \| 'cross'` |
+| `[platform]` | set the special style depends on platform, default to be `cross`， which means we will detect UA and change the component style | `'android' \| 'ios' \| 'cross'` | `'cross'` |
 | `(onClick)` | callback is called when list is clicked | `EventEmitter<void>` | - |
 
 ### Brief
