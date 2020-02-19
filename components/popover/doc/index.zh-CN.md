@@ -13,21 +13,21 @@ subtitle: 气泡
 
 ### Popover
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| visible    | 当前显隐状态    | Boolean |  false   |
-| onVisibleChange    | 当显隐状态变化时回调函数    | (visible: bool): void |  -   |
-| placement    | enum{'left','right','top','bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'} | String |  'bottomRight'   |
-| mask    | 是否显示遮罩背景层    | Boolean |  false  |
-| overlay   | 弹出层内容    | TemplateRef |  -   |
-| onSelect   | 选中某选项时的回调函数    | (node: any, index?: number): void |  -   |
-| className | 传入自定义class, e.g. "am-popover-${your className}"  | string | am-popover | 
-| autoClose | 是否使用点击popover元素关闭popover | Boolean | true |
+| `[visible]` | 当前显隐状态 | `boolean` | `false` |
+| `[placement]` | 气泡的位置 | `'left' \|'right' \|'top' \|'bottom' \| 'topLeft' \| 'topRight' \| 'bottomLeft' \| 'bottomRight'` \| `'bottomRight'` |
+| `[mask]` | 是否显示遮罩背景层 | `boolean` | `false` |
+| `[overlay]` | 弹出层内容 | `TemplateRef` | - |
+| `[className]` | 传入自定义class, e.g. "am-popover-${your className}" | `string` | `am-popover` | 
+| `[autoClose]` | 是否使用点击popover元素关闭popover | `boolean` | `true` |
+| `(onVisibleChange)` | 当显隐状态变化时回调函数 | `EventEmitter<boolean>` | - |
+| `(onSelect)` | 选中某选项时的回调函数 | `EventEmitter<node: any, index?: number>` | - |
 
 ### Popover.Item
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| disabled   | 是否禁用    | Boolean |  false   |
-| style  | item 样式    | Object |  -   |
-| icon   | icon   | TemplateRef |  -   |
+| `disabled` | 是否禁用 | `boolean` | `false` |
+| `style` | item 样式 | `object` | - |
+| `icon` | icon | `TemplateRef` | - |

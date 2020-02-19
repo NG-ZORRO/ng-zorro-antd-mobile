@@ -13,16 +13,16 @@ subtitle: 拉动刷新
 
 ## API
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| direction  | 拉动方向，可以是 `up` 或 `down` | String | - |
-| distanceToRefresh | 刷新距离 | number | 25 |
-| refreshing | 是否显示刷新状态 | bool | false |
-| onRefresh | 必选, 刷新回调函数 | () => void | - |
-| ngModel | 刷新的状态 `{ currentState : deactivate , drag: false}` | Object | deactivate |
-| headerIndicator  | 头部指示器配置 `{ activate: any, deactivate: any, release: any, finish: any }` | Object | - |
-| footerIndicator  | 脚部指示器配置 `{ activate: any, deactivate: any, release: any, finish: any }` | Object | - |
-| endReachedRefresh| 滚动到底自动刷新（direction=down） | bool | false | 
+| `[direction]` | 拉动方向 | `'up' \| 'down'` | - |
+| `[distanceToRefresh]` | 刷新距离 | `number` | `25` |
+| `[refreshing]` | 是否显示刷新状态 | `boolean` | `false` |
+| `[headerIndicator]` | 头部指示器配置 `{ activate: any, deactivate: any, release: any, finish: any }` | `object` | - |
+| `[footerIndicator]` | 脚部指示器配置 `{ activate: any, deactivate: any, release: any, finish: any }` | `object` | - |
+| `[endReachedRefresh]`| 滚动到底自动刷新（direction=down） | `boolean` | `false` | 
+| `[(ngModel)]` | 刷新的状态 `{ currentState : deactivate , drag: false}` | `object` | `{ currentState : deactivate , drag: false}` |
+| `(onRefresh)` | 刷新回调函数 | `EventEmitter<void>` | - |
 
 > **注：**  使用时，需要设置组件高度，否则展示不正确。
 

@@ -19,20 +19,19 @@ Call out oprations from one side of screen with gesture.
 ### SwipeAction
 
 Properties | Descrition | Type | Default
------------|------------|------|--------           |
-| left       | left buttons for `swipeout`      | Array | `null` |
-| right       | right buttons for `swipeout`    | Array | `null` |
-| autoClose       | auto hide after button is pressed   | Boolean | `false` |
-| onOpen       |    callback function that is triggered when the buttons will be opened   | (): void | `function() {}` |
-| disabled       |   whether is disabled    | Boolean | `false` |
-| onClose   |  callback function that is triggered when the buttons will be closed | (): void | `function() {}` |
+-----------|------------|------|--------|
+| `[left]` | Left buttons for `swipeout` | `Array` | - |
+| `[right]` | Right buttons for `swipeout` | `Array` | - |
+| `[autoClose]` | Auto hide after button is pressed | `boolean` | `false` |
+| `[disabled]` | Whether is disabled | `boolean` | `false` |
+| `(onOpen)` | Callback function that is triggered when the buttons will be opened | `EventEmitter<void>` | - |
+| `(onClose)` | Callback function that is triggered when the buttons will be closed | `EventEmitter<void>` | - |
 
 ### Button
 
-| Properties | Descrition             | Type                    | Default |
+| Properties | Descrition | Type | Default |
 |------|------------------|-------------------------|--------|
-| text       | text of button    | String | `Click` |
-| style       | style of button     | Object | `{}` |
-| onPress       | callback function that is triggered when button will be pressed   | (): void | `function() {}` |
-| className       | class name of button     | String |  |
-
+| `[text]` | Text of button | `string` | `'Click'` |
+| `[style]` | Style of button | `object` | `{}` |
+| `[onPress]` | Callback function that is triggered when button will be pressed | `EventEmitter<void>` | - |
+| `[className]` | Class name of button | `string` | - |

@@ -15,12 +15,12 @@ subtitle: 结果页
 
 ## API
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-imgUrl | 插图 url | string / Image Source  | -
-img | 插图元素 (可以为`<img src="" />`/`<Icon type="" />`等), 会覆盖 imgUrl 设置  | TemplateRef | -
-title | title 文案 | TemplateRef \| string | -
-message | message 文案 | TemplateRef \ string | -
-buttonText | 按钮文案 | string | -
-buttonType | 请参考 button 的配置 | string | -
-onButtonClick | 按钮回调函数 | (e: Object): void | -
+| `[imgUrl]` | 插图 url | `string` | - |
+| `[img]` | 插图元素 (可以为`<img src="" />`/`<Icon type="" />`等), 会覆盖 imgUrl 设置 | `TemplateRef` | - |
+| `[title]` | title 文案 | `TemplateRef \| string` | - |
+| `[message]` | message 文案 | `TemplateRef \| string` | - |
+| `[buttonText]` | 按钮文案 | `string` | - |
+| `[buttonType]` | 请参考 button 的配置 | `string` | - |
+| `(onButtonClick)` | 按钮回调函数 | `EventEmitter<object>` | - |

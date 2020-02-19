@@ -15,17 +15,17 @@ A Slider component for selecting particular value in range, eg: controls the dis
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| ngModel|  Number  |     | The value of slider, double binding. |
-| ngModelChange |  Function     | Noop    | Callback function that is called when the user changes the slider's value. |
-| min    |  Number     | 0     | The minimum value the slider can slide to. |
-| max    |  Number     | 100    | The maximum value the slider can slide to. |
-| step    |  Number or null     | 1    | The granularity the slider can step through values. Must greater than 0, and be divided by (max - min) . When `marks` no null, `step` can be `null`. |
-| value    |  Number  |     | The value of slider. |
-| defaultValue    |  Number   | 0     | The default value of slider. |
-| disabled    |  Boolean     | false    | If true, the slider will not be interactable. |
-| onChange    |  Function     | Noop    | Callback function that is called when the user changes the slider's value. |
-| onAfterChange    |  Function     | Noop    | Fired when `ontouchend` is fired. |
-| marks    |  Object{Number:String}     | { }    | Tick mark of Slider, type of key must be number, and must in closed interval min, max. |
-| handleStyle    |  Object     |    | The style used for handle.  |
-| trackStyle   | Object     |    | The style used for the track to the left of the button. |
-| railStyle    |  Object     |   | The style used for the track to the right of the button. |
+| `[min]` | The minimum value the slider can slide to | `number` | `0` |
+| `[max]` | The maximum value the slider can slide to | `number` | `100` |
+| `[step]` | The granularity the slider can step through values. Must greater than 0, and be divided by (max - min) . When `marks` no null, `step` can be `null` | `number \| null` | `1` |
+| `[value]` | The value of slider | `number` | - |
+| `[defaultValue]` | The default value of slider | `number` | `0` |
+| `[disabled]` | If true, the slider will not be interactable | `boolean` | `false` |
+| `[marks]` | Tick mark of Slider, type of key must be number, and must in closed interval min, max | `{ [_: number]: string }` | `{ }` |
+| `[handleStyle]` | The style used for handle | `object` | - |
+| `[trackStyle]` | The style used for the track to the left of the button | `object` | - |
+| `[railStyle]` | The style used for the track to the right of the button | `object` | - |
+| `[(ngModel)]` | The value of slider | `number` | - |
+| `(ngModelChange)` | Callback function that is called when the user changes the slider's value | `EventEmitter<number>` | - |
+| `(onChange)` | Callback function that is called when the user changes the slider's value | `EventEmitter<number>` | - |
+| `(onAfterChange)` | Fired when `ontouchend` is fired | `EventEmitter<number>` | - |

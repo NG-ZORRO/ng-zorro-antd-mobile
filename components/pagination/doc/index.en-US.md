@@ -14,11 +14,10 @@ A long list can be divided into several pages by `Pagination`, and only one page
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-|  mode  | the mode of `Pagination` which can be one of `button`,`number`,`pointer` | string | `button`  |
-|  current  | current page index | number  |  1 |
-|  total  | total number of data | number  |  0  |
-|  simple  | whether to hide number | boolean | false  |
-|  disabled  | whether is disabled | boolean | false  |
-| locale |  [i18n](/components/locale-provider/) setting, you can override the configuration of the global `LocaleProvider | Object：{prevText, nextText} | <span> </span> |
-|  onChange | invoked with the new index when the value changes. | (index: Number): void | <span> </span> |
-
+| `[mode]` | The mode of `Pagination` | `'button' \| 'number' \| 'pointer'` | `'button'` |
+| `[current]` | Current page index | `number` | `1`  |
+| `[total]` |  Total number of data | `number` | `0` |
+| `[simple]` | Whether to hide number | `boolean` | `false` |
+| `[disabled]` | Whether is disabled | `boolean` | `false` |
+| `[locale]` | [i18n](/components/locale-provider/) setting, you can override the configuration of the global `LocaleProvider` | `{prevText: string \| TemplateRef, nextText: string \| TemplateRef}` | - |
+| `[onChange]` | Invoked with the new index when the value changes | `EventEmitter<number>` | - |

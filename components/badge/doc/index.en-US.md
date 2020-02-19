@@ -15,9 +15,9 @@ The red dot at corner for notification and getting user attention.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-size | size of badge, optional: `large` `small` | string | `small`
-text | text or number inside badge | string\|number | - 
-corner | whether is badge at corner position | boolean | `false`
-dot | show badge as a red dot | boolean | `false`
-overflowCount | max count to show | number | `99`
-hot  | hot commercial style | boolean | `false`
+`[size]` | Size of badge | `'large' \| 'small'` | `'small'`
+`[text]` | Text or number inside badge | `string \| number` | -
+`[corner]` | Whether is badge at corner position | `boolean` | `false`
+`[dot]` | Show badge as a red dot | `boolean` | `false`
+`[overflowCount]` | Max count to show | `number` | `99`
+`[hot]` | Hot commercial style | `boolean` | `false`

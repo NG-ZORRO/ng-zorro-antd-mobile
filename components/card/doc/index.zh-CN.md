@@ -16,27 +16,22 @@ subtitle: 卡片
 
 ### Card
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-|   full  |  是否通栏  | boolean | `false` |
+| `[full]` | 是否通栏 | `boolean` | `false` |
 
 ### CardHeader
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-|title| 卡片标题 | TemplateRef、String | <span> </span> |
-|thumb| 卡片标题图片 | String、TemplateRef | <span> </span> |
-|thumbStyle| 标题图片样式 | Object | {} |
-|extra| 卡片标题辅助内容 | TemplateRef、String | <span> </span> |
-
-### CardBody
-
-属性 | 说明 | 类型 | 默认值
-----|-----|------|------
+| `[title]` | 卡片标题 | `string \| TemplateRef` | - |
+| `[thumb]` | 卡片标题图片 | `string \| TemplateRef` | - |
+| `[thumbStyle]` | 标题图片样式 | `object` | `{}` |
+| `[extra]` | 卡片标题辅助内容 | `string \| TemplateRef` | - |
 
 ### CardFooter
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-|content|尾部内容 | TemplateRef、String | <span> </span> |
-|extra| 尾部辅助内容 | TemplateRef、String | <span> </span> |
+| `[content]` | 尾部内容 | `string \| TemplateRef` | - |
+| `[extra]` | 尾部辅助内容 | `string \| TemplateRef` | - |

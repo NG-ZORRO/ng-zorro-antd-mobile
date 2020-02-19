@@ -18,24 +18,26 @@ Use to show important information for the system, and ask for user feedback. eg:
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| visible | Determine whether a modal dialog is visible or not | Boolean | false |
-| closable | Determine whether a close (x) button is visible or not | Boolean | false |
-| maskClosable | Determine whether to close the modal dialog when clicked mask of it | Boolean | true |
-| onClose | Callback for clicking close icon x or mask | (): void | - |
-| transparent | transparent mode or full screen mode | Boolean | false |
-| popup | popup mode | Boolean | false |
-| animationType | Options: 'slide-down/up' / 'fade' / 'slide' | String | fade |
-| title | title | TemplateRef | - |
-| footer | footer content | Array [{text, onPress}] | [] |
-| platform  | set the special style depends on platform, Options `android`, `ios` | String | `ios` |
+| `[visible]` | Determine whether a modal dialog is visible or not | `boolean` | `false` |
+| `[closable]` | Determine whether a close (x) button is visible or not | `boolean` | `false` |
+| `[maskClosable]` | Determine whether to close the modal dialog when clicked mask of it | `boolean` | `true` |
+| `[transparent]` | Transparent mode or full screen mode | `boolean` | `false` |
+| `[popup]` | Popup mode | `boolean` | `false` |
+| `[animationType]` | Type of animation | `'slide-down' \| 'slide-up' \| 'fade' \| 'slide'` | `'fade'` |
+| `[title]` | Title | `TemplateRef` | - |
+| `[footer]` | Footer content | `Array<text: string, onPress: Function>` | `[]` |
+| `[platform]` | Set the special style depends on platform, works on web only | `'android' \| 'ios'` | `'ios'`|
+| `(onClose)` | Callback for clicking close icon x or mask | `EventEmitter<void>` | - |
 
 ### ModalService.alert(title, message, actions?)
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| title | title | String or TemplateRef | -  |
-| message | message  | String or TemplateRef  | -  |
-| actions | button group, [{text, onPress, style}]  | Array | -  |
+----|-----|------|------
+| `[title]` | Title | `string \| TemplateRef` | - |
+| `[message]` | Message | `string \| TemplateRef` | - |
+| `[actions]` | Button group | `Array<text: string, onPress: Function, style: object>` | - |
+| `[platform]` | Set the special style depends on platform, works on web only | `'android' \| 'ios'` | `'ios'`|
 
 call `ModalService.alert(title, message, actions?).close()`  can close Alert Modal outside anywhere as you wish.
 
@@ -43,12 +45,13 @@ call `ModalService.alert(title, message, actions?).close()`  can close Alert Mod
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| title | title | String or TemplateRef | -  |
-| message | message  | String or TemplateRef  | -  |
-| callbackOrActions  | button group [{text, onPress}] or callback | Array or Function | -  |
-| type  | prompt style | String (`default`, `secure-text`, `login-password`)|  `default`  |
-| defaultValue  | ['', ''] | String[] | -  |
-| placeholders  | ['', ''] | String[] | -  |
+| `[title]` | title | `string \| TemplateRef` | - |
+| `[message]` | message | `string \| TemplateRef` | - |
+| `[callbackOrActions]` | button group or callback | `Array<text: string, onPress: Function> \| Function` | - |
+| `[type]` | prompt style | `'default' \| 'secure-text' \| 'login-password'` | `'default'` |
+| `[defaultValue]` | defaultValue | `string[]` | - |
+| `[placeholders]` | placeholders | `string[]` | - |
+| `[platform]` | Set the special style depends on platform, works on web only | `'android' \| 'ios'` | `'ios'`|
 
 call ModalService.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?).close()` can close prompt Modal outside anywhere as you wish.
 
@@ -56,7 +59,8 @@ call ModalService.prompt(title, message, callbackOrActions, type?, defaultValue?
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| actions | button group, [{text, onPress, style}]  | Array | -  |
+| `[actions]` | button group | `Array<text: string, onPress: Function, style: object>` | - |
+| `[platform]` | Set the special style depends on platform, works on web only | `'android' \| 'ios'` | `'ios'`|
 
 call ModalService.operation(actions?).close()` can close Operation Modal outside anywhere as you wish.
 
@@ -74,9 +78,9 @@ constructor(modal: ModalService) {
 
 | Methods/Attributes | Description | Type |
 |----|----|
-| openModals | All currently open Modal list | ModalRef[] |
-| afterAllClose | Callback called after all Modals closed completely | Observable&lt;void&gt; |
-| closeAll() | Close all modals | function |
+| `openModals` | All currently open Modal list | `ModalRef[]` |
+| `afterAllClose` | Callback called after all Modals closed completely | `Observable&lt;void&gt;` |
+| `closeAll()` | Close all modals | `Function` |
 
 #### ModalRef
 
@@ -86,10 +90,10 @@ The dialog created by the service method `ModalService.xxx()` will return a `Mod
 
 | Method | Description |
 |----|----|
-| afterOpen                 | Same as AfterOpen but of type Observable&lt;void&gt; |
-| afterClose | Same as AfterClose, but of type Observable&lt;result:any&gt; |
-| close()                   | Close (hide) the dialog. <i>Note: When used for a dialog created as a service, this method will destroy the dialog directly (as with the destroy method)</i> |
-| destroy()                 | Destroy the dialog. <i>Note: Used only for dialogs created by the service (non-service created dialogs, this method only hides the dialog)</i> |
-| getContentComponent()  | Gets the Component instance in the contents of the dialog for `Content`. <i> Note: When the dialog is not initialized (`ngOnInit` is not executed), this function will return `undefined`</i> |
-| triggerOk()               | Manually trigger onClose |
-| triggerCancel()           | Manually trigger cancel |
+| `afterOpen` | Same as AfterOpen but of type Observable&lt;void&gt; |
+| `afterClose` | Same as AfterClose, but of type Observable&lt;result:any&gt; |
+| `close(result: any) => void` | Close (hide) the dialog. <i>Note: When used for a dialog created as a service, this method will destroy the dialog directly (as with the destroy method)</i> |
+| `destroy(result: any) => void` | Destroy the dialog. <i>Note: Used only for dialogs created by the service (non-service created dialogs, this method only hides the dialog)</i> |
+| `getContentComponent() => Component` | Gets the Component instance in the contents of the dialog for `Content`. <i> Note: When the dialog is not initialized (`ngOnInit` is not executed), this function will return `undefined`</i> |
+| `triggerOk() => void` | Manually trigger onClose |
+| `triggerCancel() => void` | Manually trigger cancel |

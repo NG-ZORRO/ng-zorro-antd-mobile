@@ -19,23 +19,23 @@ A single and continuous block content is vertically arranged to display current 
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| renderHeader       | list heder  | String/TemplateRef/Function | <span> </span> |
-| renderFooter       | list footer  | String/TemplateRef/Function | <span> </span> |
+| `[renderHeader]` | list heder | `string \| TemplateRef` | - |
+| `[renderFooter]` | list footer | `string \| TemplateRef` | - |
 
-### List.Item
+### ListItem
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| thumb       | thumbnail on the left side of `List`(string type will be used to set img src)  | String/TemplateRef | <span> </span> |
-| extra      | extra content on the right side of `List`        | String/TemplateRef | <span> </span> |
-| arrow      | arrow direction, options: `horizontal`,`up`,`down`, `empty`; `empty` option may hide the dom  | String | <span> </span> |
-| align    | vertical alignment of child elements，options: `top`,`middle`,`bottom`  | String   | `middle` |
-| onClick    | callback is called when  list is clicked | (): void | <span> </span> |
-| error    | Whether to display error style(the color of text on the right side may change to orange) | Boolean  | `false`  |
-| multipleLine    | multiple line | Boolean  | `false`  |
-| wrap    | Whether to wrap long texts, otherwise it will be hidden by default. | Boolean  | `false`  |
-| platform  |  set the special style depends on platform, Options  `android`, `ios`， default to be `cross`， which means we will detect UA and change the component style | String | `'cross'`|
+| `[thumb]` | thumbnail on the left side of `List`(string type will be used to set img src) | `string \| TemplateRef` | - |
+| `[extra]` | extra content on the right side of `List` | `string \| TemplateRef` | - |
+| `[arrow]` | arrow direction，`empty` option may hide the dom | `'horizontal' \| 'up' \| 'down' \| 'empty'` | - |
+| `[align]` | vertical alignment of child elements | `'top' \| 'middle' \| 'bottom'` | `'middle'` |
+| `[error]` | Whether to display error style(the color of text on the right side may change to orange) | `boolean` | `false` |
+| `[multipleLine]` | multiple line | `boolean` | `false` |
+| `[wrap]` | Whether to wrap long texts, otherwise it will be hidden by default | `boolean` | `false` |
+| `[platform]` | set the special style depends on platform, default to be `cross`， which means we will detect UA and change the component style | `'android' \| 'ios' \| 'cross'` | `'cross'` |
+| `(onClick)` | callback is called when list is clicked | `EventEmitter<void>` | - |
 
-### List.Item.Brief
+### Brief
 
 Brief infomation
