@@ -29,7 +29,7 @@ subtitle: 列表
 ----|-----|------|------
 | `[thumb]` | 缩略图(当为 string 类型时作为 img src) | `string \| TemplateRef` | - |
 | `[extra]` | 右边内容 | `string \| TemplateRef` | - |
-| `[arrow]` | 箭头方向(右,上,下)，如果是`empty`则存在对应的dom,但是不显示 | `'horizontal' \| 'up' \| 'down' \| 'empty' \|` | - |
+| `[arrow]` | 箭头方向(右,上,下)，如果是`empty`则存在对应的dom,但是不显示 | `'horizontal' \| 'up' \| 'down' \| 'empty'` | - |
 | `[align]` | 子元素垂直对齐 | `'top' \| 'middle' \| 'bottom'` | `'middle'` |
 | `[error]` | 报错样式,右侧文字颜色变成橙色 | `boolean` | `false` |
 | `[multipleLine]` | 多行 | `boolean` | `false` |

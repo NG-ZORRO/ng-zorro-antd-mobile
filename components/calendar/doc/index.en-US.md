@@ -26,9 +26,9 @@ Properties | Description | Type | Default
 | `[maxDate]` | Max date | `Date` | - |
 | `[minDate]` | Min date | `Date` | - |
 | `[rowSize]` | Row size | `'normal' \| 'xl'` | - |
-| `[defaultValue]` | Default date select value | `\[Date, Date\] \| \[Date\]` | - |
+| `[defaultValue]` | Default date select value | `[Date, Date] \| [Date]` | - |
 | `[defaultTimeValue]` | Default time of timePicker | `Date` |  -  |
-| `[onSelect]` | On select dates callback | `(date: Date, state?: \[Date \| undefined, Date \| undefined\]) => \[Date, Date\] \| \[Date\] \| void` | - |
+| `[onSelect]` | On select dates callback | `(date: Date, state?: [Date \| undefined, Date \| undefined]) => [Date, Date] \| [Date] \| void` | - |
 | `[(ngModel)]` | ngModel | `Array<Date> \| Date` | `Date` |
 | `(onCancel)` | On cancel | `EventEmitter<void>` | - |
 | `(onConfirm)` | On confirm | `EventEmitter<{startDateTime?: Date, endDateTime?: Date}>` | - |

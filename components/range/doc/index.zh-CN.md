@@ -27,9 +27,9 @@ subtitle: 区域选择
 | `[onChange]` | 当 Slider 的值发生改变时，会触发 onChange 事件，并把改变后的值作为参数传入 | `EventEmitter<Array<number>>` | - |
 | `[onAfterChange]` | 与 `ontouchend` 触发时机一致，把当前值作为参数传入 | `EventEmitter<Array<number>>` | - |
 | `[marks]` | 刻度标记，key 的类型必须为 `Number` 且取值在闭区间 [min, max] 内 | `{ [_: number]: string }` | `{ }` |
-| `[count]` | Determine how many ranges to render, and multiple handles will be rendered (number + 1) | `number` | `1` |
-| `[allowCross]` | `allowCross` could be set as `true` to allow those handles to cross | `boolean` | `true` |
-| `[pushable]` | minimum ensured distance between handles | `number` | - |
+| `[count]` | 有几个区间块，比如有一个圆圈就是两个区间 | `number` | `1` |
+| `[allowCross]` | 是否允许两个handler(圆圈)互相穿越 | `boolean` | `true` |
+| `[pushable]` | 两个触点之间的最小距离, 仅限`allowCross`为`false` | `number` | - |
 | `[handleStyle]` | 滑块的样式，按数组顺序应用到多滑块 | `Array<object>` | - |
 | `[trackStyle]` | 选中部分滑动条的样式，按数组顺序应用到滑动条的多区间 | `Array<object>` | - |
 | `[railStyle]` | 未选中部分 | `object` | - |

@@ -29,5 +29,5 @@ Now, we only support the built-in 'check-circle', 'check', 'check-circle-o', 'cr
 | Properties | Description | Type | Default |
 |------------|----------------|----------------|--------------|
 | `[type]` | Icon type | `string` | - |
-| `[size]` | Icon size | `'xxs' /| 'xs' /| 'sm' /| 'md' /| 'lg'` | `'md'` |
+| `[size]` | Icon size | `'xxs' \| 'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
 | `[color]` | Icon color | `string` | `'#000'` |

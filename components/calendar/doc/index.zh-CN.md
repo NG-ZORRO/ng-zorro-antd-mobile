@@ -28,9 +28,9 @@ subtitle: 日历
 | `[maxDate]` | 最大日期 | `Date` | - |
 | `[minDate]` | 最小日期 | `Date` | - |
 | `[rowSize]` | 行大小 | `'normal' \| 'xl'` | - |
-| `[defaultValue]` | 默认日历选择范围 | `\[Date, Date\] \| \[Date\]` | - |
+| `[defaultValue]` | 默认日历选择范围 | `[Date, Date] \| [Date]` | - |
 | `[defaultTimeValue]` | 默认时间选择值 | `Date` |  -  |
-| `[onSelect]` | 选择区间回调 | `(date: Date, state?: \[Date \| undefined, Date \| undefined\]) => \[Date, Date\] \| \[Date\] \| void` | - |
+| `[onSelect]` | 选择区间回调 | `(date: Date, state?: [Date \| undefined, Date \| undefined]) => [Date, Date] \| [Date] \| void` | - |
 | `[(ngModel)]` | ngModel | `Array<Date> \| Date` | `Date` |
 | `(onCancel)` | 关闭时回调 | `EventEmitter<void>` | - |
 | `(onConfirm)` | 确认时回调 | `EventEmitter<{startDateTime?: Date, endDateTime?: Date}>` | - |

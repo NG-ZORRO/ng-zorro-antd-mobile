@@ -28,7 +28,7 @@ Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | `[thumb]` | thumbnail on the left side of `List`(string type will be used to set img src) | `string \| TemplateRef` | - |
 | `[extra]` | extra content on the right side of `List` | `string \| TemplateRef` | - |
-| `[arrow]` | arrow direction，`empty` option may hide the dom | `'horizontal' \| 'up' \| 'down' \| 'empty' \|` | - |
+| `[arrow]` | arrow direction，`empty` option may hide the dom | `'horizontal' \| 'up' \| 'down' \| 'empty'` | - |
 | `[align]` | vertical alignment of child elements | `'top' \| 'middle' \| 'bottom'` | `'middle'` |
 | `[error]` | Whether to display error style(the color of text on the right side may change to orange) | `boolean` | `false` |
 | `[multipleLine]` | multiple line | `boolean` | `false` |
