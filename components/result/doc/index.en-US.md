@@ -16,10 +16,10 @@ Result page contains feedback like illustrations, icons and text.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-imgUrl | image url | string / Image Source  | -
-img | image node (could be `<img src="" />` or `<Icon type="" />`), which will override `imgUrl` | TemplateRef | -
-title | title of result page | TemplateRef \| string | -
-message | message text of result page | TemplateRef \| string | -
-buttonText | text of built-in button | string | -
-buttonType | type of built-in button | string | -
-onButtonClick | callback of clicking built-in button | (e: Object): void | -
+| `[imgUrl]` | Image url | `string` | - |
+| `[img]` | Image node (could be `<img src="" />` or `<Icon type="" />`), which will override `imgUrl` | `TemplateRef` | - |
+| `[title]` | Title of result page | `TemplateRef \| string` | - |
+| `[message]` | Message text of result page | `TemplateRef \| string` | - |
+| `[buttonText]` | Text of built-in button | `string` | - |
+| `[buttonType]` | Type of built-in button | `string` | - |
+| `(onButtonClick)` | Callback of clicking built-in button | `EventEmitter<object>` | - |

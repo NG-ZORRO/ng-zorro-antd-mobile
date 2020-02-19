@@ -10,4 +10,4 @@ Layout controls
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| size    | left and right blank space, optional values:`sm`,`md`,`lg`  | string |  `lg`  |
+| `[size]` | left and right blank space | `'sm' \| 'md' \| 'lg'` | `'lg'` |

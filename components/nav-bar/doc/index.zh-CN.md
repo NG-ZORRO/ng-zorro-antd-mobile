@@ -16,10 +16,10 @@ subtitle: 导航栏
 
 ## API
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| mode   | 模式   | string |  'dark' enum{'dark', 'light'} |
-| icon   | 出现在最左边的图标占位符  | TemplateRef |  - |
-| leftContent   | 导航左边内容      | any |    无  |
-| rightContent   | 导航右边内容      | any |    无  |
-| onLeftClick   | 导航左边点击回调      | (e: Object): void |    无  |
+| `[mode]` | 模式 | `'dark' \| 'light'` | `'dark'`
+| `[icon]` | 出现在最左边的图标占位符 | `TemplateRef` | - |
+| `[leftContent]` | 导航左边内容 | `string \| TemplateRef` | - |
+| `[rightContent]` | 导航右边内容 | `string \| TemplateRef` | - |
+| `(onLeftClick)` | 导航左边点击回调 | `EventEmitter<object>` | - |

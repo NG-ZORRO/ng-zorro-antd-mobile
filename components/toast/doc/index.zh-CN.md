@@ -26,13 +26,13 @@ constructor(private _toast: ToastService) {}
 
 组件提供了五个静态方法，参数如下：
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| content    | 提示内容       | TemplateRef or String    | 无           |
-| duration   | 自动关闭的延时，单位毫秒 | number                 | 3000          |
-| onClose    | 关闭后回调 |  Function                 | 无          |
-| mask    | 是否显示透明蒙层，防止触摸穿透 |  Boolean  | true          |
-| position    | enum{'top', 'middle', 'bottom'} |  string  | 'middle'      |
+| `[content]` | 提示内容 | `string \| TemplateRef` | - |
+| `[duration]` | 自动关闭的延时，单位毫秒 | `number` | `3000` |
+| `[onClose]` | 关闭后回调 | `Function` | - |
+| `[mask]` | 是否显示透明蒙层，防止触摸穿透 | `boolean` | `true` |
+| `[position]` | 弹出的位置 | `'top' \| 'middle' \| 'bottom'` | `'middle'` |
 
 > **注：**  duration = 0 时，onClose 无效，toast 不会消失；隐藏 toast 需要手动调用 hide
 

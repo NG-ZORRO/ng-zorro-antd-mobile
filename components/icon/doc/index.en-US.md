@@ -26,8 +26,8 @@ Now, we only support the built-in 'check-circle', 'check', 'check-circle-o', 'cr
 
 ## API
 
-| Properties        | Description           | Type            | Default       |
+| Properties | Description | Type | Default |
 |------------|----------------|----------------|--------------|
-| type    |   string    | String   | <span> </span> |
-| size    |   icon size     | 'xxs'/'xs'/'sm'/'md'/'lg'  | `md` |
-| color   | icon color  | Color | '#000' |
+| `[type]` | Icon type | `string` | - |
+| `[size]` | Icon size | `'xxs' \| 'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `[color]` | Icon color | `string` | `'#000'` |

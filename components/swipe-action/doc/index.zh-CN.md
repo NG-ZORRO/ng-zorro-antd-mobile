@@ -18,21 +18,21 @@ subtitle: 滑动操作
 
 ### SwipeAction
 
-属性 | 说明 | 类型 | 默认值
-----|-----|------|------           |
-| left       | 左侧按钮组      | Array | `null` |
-| right       | 右侧按钮组      | Array | `null` |
-| autoClose       | 点击按钮后自动隐藏按钮   | Boolean | `false` |
-| onOpen       |    打开时回调函数   | (): void | `function() {}` |
-| disabled       |   禁用 `swipeout`    | Boolean | `false` |
-| onClose  |  关闭时回调函数    | (): void | `function() {}` |
+参数 | 说明 | 类型 | 默认值
+----|-----|------|------|
+| `[left]` | 左侧按钮组 | `Array` | - |
+| `[right]` | 右侧按钮组 | `Array` | - |
+| `[autoClose]` | 点击按钮后自动隐藏按钮 | `boolean` | `false` |
+| `[disabled]` | 禁用 `swipeout` | `boolean` | `false` |
+| `(onOpen)` | 打开时回调函数 | `EventEmitter<void>` | - |
+| `(onClose)` | 关闭时回调函数 | `EventEmitter<void>` | - |
 
 ### Button
 
-| 参数 | 说明             | 类型                    | 默认值 |
+| 参数 | 说明 | 类型 | 默认值 |
 |------|------------------|-------------------------|--------|
-| text       | 按钮文案     | String | `Click` |
-| style       | 按钮样式     | Object | `{}` |
-| onPress       | 按钮点击事件     | (): void | `function() {}` |
-| className       | 按钮样式类     | String |  |
+| `[text]` | 按钮文案 | `string` | `'Click'` |
+| `[style]` | 按钮样式 | `object` | `{}` |
+| `[onPress]` | 按钮点击事件 | `EventEmitter<void>` | - |
+| `[className]` | 按钮样式类 | `string` | - |
 

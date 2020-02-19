@@ -16,10 +16,10 @@ subtitle: 分段器
 
 ## API
 
-属性 | 说明 | 类型 | 默认值
+参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| tintColor  | 组件主色调        | String |  `#2DB7F5`  |
-| disabled  | 是否启用        | Boolean |  false|
-| selectedIndex  | 选中项在数组中的索引        | Number |  0  |
-| values  | 选项数组,值是字符串        | array |  []  |
-| onChange    | 回调函数 | (selectedIndex: number, value: string) => void | <span> </span> |
+| `[tintColor]` | 组件主色调 | `string` | `'#2DB7F5'` |
+| `[disabled]` | 是否启用 | `boolean` | `false` |
+| `[selectedIndex]` | 选中项在数组中的索引 | `number` | `0` |
+| `[values]` | 选项数组,值是字符串 | `array` | `[]` |
+| `(onChange)` | 回调函数 | `EventEmitter<{selectedIndex: number, value: any}>` | - |

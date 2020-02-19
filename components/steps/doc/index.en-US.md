@@ -29,17 +29,18 @@ The Steps container.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| current | To set the current step, counting from 0. You can overwrite this state by using `status` of `Step` | number | `0` |
-| size | To specify the size of the step bar, a smaller size can be achieved by setting it to `small` | string | - |
-| direction | To specify the direction of the step bar   | Enum { 'vertical', 'horizontal' }  | `vertical`  |
+| `[current]` | To set the current step, counting from 0. You can overwrite this state by using `status` of `Step` | `number` | `0` |
+| `[size]` | Size | `large \| 'small'` | - |
+| `[status]` | Current step's states | `'wait' \| 'process' \| 'finish' \| 'error'` | `'process'` |
+| `[direction]` | To specify the direction of the step bar | `'vertical' \| 'horizontal'` | `'vertical'`  |
 
-### Steps.Step
+### Step
 
 A single step used as child component of the Step.
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| status | To specify the status. It will be automatically set by `current` of `Steps` if not configured. | Enum { 'wait', 'process', 'finish', 'error' } | `wait` |
-| title | Title of the step | string | -     |
-| description | Detail of the step(optional property) | string | -  |
-| icon | Icon of the step(optional property) | TemplateRef | - |
+| `[status]` | To specify the status. It will be automatically set by `current` of `Steps` if not configured | `'wait' \| 'process' \| 'finish' \| 'error'` | `wait` |
+| `[title]` | Title of the step | `string` | - |
+| `[description]` | Detail of the step | `string` | - |
+| `[icon]` | Icon of the step | `TemplateRef` | - |
