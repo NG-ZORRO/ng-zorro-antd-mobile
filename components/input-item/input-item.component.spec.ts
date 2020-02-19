@@ -344,23 +344,11 @@ describe('InputComponent', () => {
     tick(0);
     expect(component.inputItemComp.value).toBe('123');
 
-    component.inputItemComp.inputType = 'text';
-    component.inputItemComp.inputChange('sdf12hah3');
-    component.clickTitle();
-    tick(0);
-    expect(component.inputItemComp.value).toBe('sdf12hah3');
-
     component.inputItemComp.inputType = 'password';
-    component.inputItemComp.inputChange('sdf12hah3');
+    component.inputItemComp.inputChange('passwordDemo');
     component.clickTitle();
     tick(0);
-    expect(component.inputItemComp.value).toBe('sdf12hah3');
-
-    component.inputItemComp.inputType = 'test';
-    component.inputItemComp.inputChange('sdf12hah3');
-    component.clickTitle();
-    tick(0);
-    expect(component.inputItemComp.value).toBe('sdf12hah3');
+    expect(component.inputItemComp.value).toBe('passwordDemo');
   }));
   it('should OnChange work, type is money', () => {
     component.type = 'money';
