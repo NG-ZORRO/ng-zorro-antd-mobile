@@ -6,16 +6,15 @@ import {
   EventEmitter,
   ViewChild,
   OnInit,
-  OnChanges,
   HostBinding,
   Renderer2,
   ElementRef,
   forwardRef,
-  TemplateRef,
-  AfterViewChecked
+  TemplateRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { isTemplateRef } from '../core/util/check';
+import { NzmInputType } from './input-item.definitions';
 
 @Component({
   selector: 'InputItem, nzm-input-item',
@@ -36,12 +35,12 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   setFocus: object = {};
   pattern: string = '';
   autoFocus: boolean = false;
-  inputType: string = 'text';
+  inputType: NzmInputType = 'text';
   ngTemplate: boolean = false;
   isTemplateRef = isTemplateRef;
 
   private _el: HTMLElement;
-  private _type: string = 'text';
+  private _type: NzmInputType = 'text';
   private _value: string;
   private _defaultValue: string = '';
   private _placeholder: string = '';
@@ -64,15 +63,15 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   private _inputLock = false;
 
   @ViewChild('lableContent', { static: true })
-  lableRef;
+  lableRef: ElementRef;
   @ViewChild('inputElement', { static: false })
-  inputElementRef;
+  inputElementRef: ElementRef;
 
   @Input()
-  get type(): string {
+  get type(): NzmInputType {
     return this._type;
   }
-  set type(value: string) {
+  set type(value: NzmInputType) {
     if (value && value.length > 0) {
       this.inputType = value;
       if (value === 'bankCard' || value === 'phone') {
@@ -259,7 +258,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     this._el = element.nativeElement;
   }
 
-  _onChange = (_: any) => {};
+  _onChange = (_: any) => { };
 
   setCls() {
     if (
@@ -280,15 +279,13 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     this.controlCls = { [`${this.prefixCls}-control`]: true };
   }
 
-  inputChange(e) {
+  inputChange(inputValue: string) {
     setTimeout(() => {
       if (this._inputLock && this.inputType === 'text') {
         return;
       }
-      let value = e;
+      let value = inputValue;
       switch (this.inputType) {
-        case 'text':
-          break;
         case 'bankCard':
           value = value.replace(/\D/g, '').replace(/(....)(?=.)/g, '$1 ');
           break;
@@ -304,13 +301,10 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
         case 'number':
           value = value.replace(/\D/g, '');
           break;
-        case 'password':
-          break;
-        default:
-          this._value = value;
-          break;
       }
-      this._value = value;
+      if (this.inputType !== 'text') {
+        this._value = value;
+      }
       this._onChange(this._value);
       this.onChange.emit(this._value);
     }, 0);
@@ -383,7 +377,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void { }
 
   ngOnInit() {
     this.setCls();

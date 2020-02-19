@@ -23,6 +23,7 @@
     <div *ngIf="type !== 'money'">
       <input
         #inputElement
+        style="outline:none"
         [type]="type"
         [name]="name"
         [(ngModel)]="value"
@@ -39,7 +40,6 @@
         (compositionend)="compositionEnd()"
         (blur)="inputBlur(value)"
         (focus)="inputFocus(value)"
-        style="outline:none"
       />
     </div>
   </div>
