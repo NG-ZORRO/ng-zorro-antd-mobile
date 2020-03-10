@@ -357,7 +357,7 @@ export class AppModule { }
         'core-js': '^2.5.4',
         'rxjs': '^6.3.3',
         'zone.js': '^0.9.0',
-        'ng-zorro-antd-mobile': '1.0.3'
+        'ng-zorro-antd-mobile': '1.0.4'
       },
       tags: ['stackblitz', 'sdk']
     });
