@@ -13,6 +13,17 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 1.0.4(2020-03-10)
+
+### Bug Fixes
+
+* **carousel:** 修复走马灯slide宽度问题 ([#646](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/646)) ([b26eb8c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b26eb8c9517c8a81f4169bebf2033846e99e1b17))
+* **date-picker:** 修复最大与最小时间值无法被选中问题 ([#627](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/627)) ([2225539](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/22255394a5d9cf9bb19cc0a647bdb33a106a31c0))
+* **date-picker:** 修复 mode:time 模式下无法选择和设置最大或最小时间 ([#629](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/629)) ([e685ffa](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/e685ffa65e533c529734ebe8eca85baddf01d89d))
+* **datepicker:** 修复单元测试问题 ([#632](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/632)) ([7183052](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/71830525f4d7445fff95e1562c28dfcd940e8989))
+* **drawer:** 修复 drawer 无法盖住背景下的页面 ([#631](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/631)) ([8794e89](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8794e895364b53f068702ebbfd0f200df1bdcd40))
+* **input-item:** 修复光标一直返回到最后的问题 ([#639](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/639)) ([0f032ad](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0f032adae19d4827bde17f4952124ccce5421216))
+
 ## 1.0.3(2020-01-08)
 
 ### Bug Fixes
