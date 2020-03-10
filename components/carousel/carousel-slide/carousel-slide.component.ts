@@ -6,7 +6,7 @@ import { Component, HostBinding, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class CarouselSlideComponent {
-  @HostBinding('class.carousel-container')
+  @HostBinding('class.am-carousel-container')
   container = true;
   @HostBinding('style.width.px')
   width;
