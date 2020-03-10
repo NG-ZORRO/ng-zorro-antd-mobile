@@ -18,7 +18,7 @@ Use to show important information for the system, and ask for user feedback. eg:
 
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
-| `[visible]` | Determine whether a modal dialog is visible or not | `boolean` | `false` |
+| `[ngModel]` | Determine whether a modal dialog is visible or not | `boolean` | `false` |
 | `[closable]` | Determine whether a close (x) button is visible or not | `boolean` | `false` |
 | `[maskClosable]` | Determine whether to close the modal dialog when clicked mask of it | `boolean` | `true` |
 | `[transparent]` | Transparent mode or full screen mode | `boolean` | `false` |

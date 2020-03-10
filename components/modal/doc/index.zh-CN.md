@@ -20,7 +20,7 @@ subtitle: 对话框
 
 参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
-| `[visible]` | 对话框是否可见 | `boolean` | `false` |
+| `[ngModel]` | 对话框是否可见 | `boolean` | `false` |
 | `[closable]` | 是否显示关闭按钮 | `boolean` | `false` |
 | `[maskClosable]` | 点击蒙层是否允许关闭 | `boolean` | `true` |
 | `[transparent]` | 是否背景透明 | `boolean` | `false` |
