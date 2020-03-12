@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'demo-search-bar-basic',
@@ -97,7 +97,7 @@ export class DemoSearchBarBasicComponent {
     date: new Date()
   };
 
-  constructor(private _element: ElementRef, private _renderer: Renderer) {}
+  constructor(private _element: ElementRef, private _renderer: Renderer2) {}
 
   change($event) {
     console.log($event, 'onChange');
