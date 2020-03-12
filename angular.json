@@ -16,6 +16,7 @@
             "main": "./site/src/main.ts",
             "tsConfig": "./site/src/tsconfig.app.json",
             "polyfills": "./site/src/polyfills.ts",
+            "aot": true,
             "assets": [
               "site/src/assets",
               "site/src/favicon.ico",
