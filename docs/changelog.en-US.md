@@ -18,10 +18,6 @@ timeline: true
 ### Bug Fixes
 
 * **carousel:** fix carousel slide width bug ([#646](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/646)) ([b26eb8c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b26eb8c9517c8a81f4169bebf2033846e99e1b17))
-* **date-picker:** fix maximum and minimum time can't be choosen bug ([#627](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/627)) ([2225539](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/22255394a5d9cf9bb19cc0a647bdb33a106a31c0))
-* **date-picker:** fix mode:time can't choose maximum&minimum, set maxDate &minDate ([#629](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/629)) ([e685ffa](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/e685ffa65e533c529734ebe8eca85baddf01d89d))
-* **datepicker:** fix unit test failures ([#632](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/632)) ([7183052](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/71830525f4d7445fff95e1562c28dfcd940e8989))
-* **drawer:** fix drawer can not cover elements under background ([#631](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/631)) ([8794e89](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8794e895364b53f068702ebbfd0f200df1bdcd40))
 * **input-item:** fix input cursor always turn to end position ([#639](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/639)) ([0f032ad](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0f032adae19d4827bde17f4952124ccce5421216))
 
 ## 1.0.3(2020-01-08)
