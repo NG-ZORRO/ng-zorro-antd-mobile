@@ -38,6 +38,7 @@ export function createTouchEvent(type: string, pageX: number = 0, pageY: number 
   const event = new UIEvent(type, { detail: 0, view: window });
   const touchDetails = { pageX, pageY };
   const changedTouchesDetails = { clientX: pageX, clientY: pageY };
+  event.initEvent(type, true, true);
 
   // Most of the browsers don't have a "initTouchEvent" method that can be used to define
   // the touch details.
@@ -46,7 +47,7 @@ export function createTouchEvent(type: string, pageX: number = 0, pageY: number 
     changedTouches: { value: [changedTouchesDetails] }
   });
 
-  return event as UIEvent;
+  return event;
 }
 
 /** Dispatches a keydown event from an element. */

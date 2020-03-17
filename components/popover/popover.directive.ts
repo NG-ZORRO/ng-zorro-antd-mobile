@@ -28,7 +28,7 @@ import * as Positioning from '../core/util/position';
 })
 export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
   popover: ComponentRef<PopoverComponent>;
-
+  appendToBodyElement: HTMLElement;
   private _eventListeners: Array<() => void> = [];
 
   @Input()
@@ -194,7 +194,7 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
         childInjector
       );
       if (options.appendToBody) {
-        document.body.appendChild(this.popover.location.nativeElement);
+        this.appendToBodyElement = document.body.appendChild(this.popover.location.nativeElement);
       }
       this.onVisibleChange.emit(true);
     }
@@ -227,6 +227,10 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
   }
 
   private hidePopover(): void {
+    if (this.appendToBodyElement) {
+      document.body.removeChild(this.appendToBodyElement);
+      this.appendToBodyElement = null;
+    }
     if (this.popover) {
       this.popover.destroy();
       delete this.popover;

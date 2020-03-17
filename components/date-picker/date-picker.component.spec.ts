@@ -9,7 +9,6 @@ import {
   ListModule,
   ToastModule,
   ButtonModule,
-  ToastComponent,
   LocaleProviderModule,
   LocaleProviderService
 } from '../..';
