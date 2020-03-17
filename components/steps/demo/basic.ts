@@ -53,7 +53,7 @@ import { Component, OnInit } from '@angular/core';
           <Steps [current]="1">
             <Step [title]="'Step 1'" [icon]="customIcon" [description]="'This is description'"></Step>
             <Step [title]="'Step 2'" [icon]="customIcon" [description]="'This is description'"></Step>
-            <Step [title]="'Step 3'" [icon]="customIcon" [description]="'This is description'"></Step>
+            <Step [title]="customTitle" [icon]="customIcon" [description]="customDescription"></Step>
           </Steps>
         </div>
         <div>
@@ -98,6 +98,14 @@ import { Component, OnInit } from '@angular/core';
         </div>
       </div>
     </div>
+
+    <ng-template #customTitle>
+      <div>Step 3</div>
+    </ng-template>
+
+    <ng-template #customDescription>
+      <div>'This is description'</div>
+    </ng-template>
 
     <ng-template #customIcon>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" class="am-icon am-icon-md">
