@@ -41,7 +41,7 @@ import { Component, OnInit } from '@angular/core';
         </div>
         <div>
           <Steps>
-            <Step [status]="'finish'" [title]="'Step 1'" [icon]="customIcon"></Step>
+            <Step [status]="'finish'" [title]="'Step 1'" [icon]="'loading'"></Step>
             <Step [status]="'process'" [title]="'Step 2'" [icon]="customIcon"></Step>
             <Step [status]="'error'" [title]="'Step 3'" [icon]="customIcon"></Step>
           </Steps>

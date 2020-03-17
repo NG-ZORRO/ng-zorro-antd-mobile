@@ -47,7 +47,7 @@ export class StepComponent implements OnInit {
   @Input()
   title: string | TemplateRef<any> = null;
   @Input()
- description: string | TemplateRef<any> = null;
+  description: string | TemplateRef<any> = null;
   @Input()
   get icon(): string | TemplateRef<any> {
     return this._icon;

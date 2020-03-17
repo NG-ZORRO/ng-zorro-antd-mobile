@@ -13,6 +13,12 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 1.0.5(2020-03-17)
+
+### Features
+
+* **steps:** step title&description support templateRef input ([#650](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/650)) ([bb41050](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/bb4105060cad850d9d6d106f8b6b2521bb6a5902))
+
 ## 1.0.4(2020-03-10)
 
 ### Bug Fixes
