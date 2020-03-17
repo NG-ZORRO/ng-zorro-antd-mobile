@@ -13,6 +13,12 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 1.0.5(2020-03-17)
+
+### Features
+
+* **steps:** step title&description input 增加 templateRef 类型 ([#650](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/650)) ([bb41050](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/bb4105060cad850d9d6d106f8b6b2521bb6a5902))
+
 ## 1.0.4(2020-03-10)
 
 ### Bug Fixes
