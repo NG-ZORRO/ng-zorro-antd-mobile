@@ -41,6 +41,6 @@ A single step used as child component of the Step.
 Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | `[status]` | To specify the status. It will be automatically set by `current` of `Steps` if not configured | `'wait' \| 'process' \| 'finish' \| 'error'` | `wait` |
-| `[title]` | Title of the step | `string` | - |
-| `[description]` | Detail of the step | `string` | - |
-| `[icon]` | Icon of the step | `TemplateRef` | - |
+| `[title]` | Title of the step | `string \| TemplateRef` | - |
+| `[description]` | Detail of the step | `string \| TemplateRef` | - |
+| `[icon]` | Icon of the step | `string \| TemplateRef` | - |

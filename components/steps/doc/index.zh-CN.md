@@ -41,6 +41,6 @@ subtitle: 步骤条
 参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
 | `[status]` | 指定状态。当不配置该属性时，会使用 Steps 的 `current` 来自动指定状态 | `'wait' \| 'process' \| 'finish' \| 'error'` | `wait` |
-| `[title]` | 标题 | `string` | - |
-| `[description]` | 步骤的详情描述 | `string` | - |
-| `[icon]` | 步骤图标 | `TemplateRef` | - |
+| `[title]` | 标题 | `string \| TemplateRef` | - |
+| `[description]` | 步骤的详情描述 | `string \| TemplateRef` | - |
+| `[icon]` | 步骤图标 | `string \| TemplateRef` | - |
