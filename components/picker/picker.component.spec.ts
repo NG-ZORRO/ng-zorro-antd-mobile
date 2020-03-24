@@ -301,7 +301,7 @@ export class TestPickerBasicComponent {
   mask = true;
   modelChange = jasmine.createSpy('ngModel change callback');
 
-  @ViewChild(PickerDirective, { static: false })
+  @ViewChild(PickerDirective)
   picker: PickerDirective;
 
   constructor(private _picker: PickerService) {}

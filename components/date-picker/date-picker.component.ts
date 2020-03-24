@@ -64,7 +64,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   ngModelOnChange: (value: Date) => {};
   ngModelOnTouched: () => {};
 
-  @ViewChild('picker', { static: false, read: ViewContainerRef })
+  @ViewChild('picker', { read: ViewContainerRef })
   picker: ViewContainerRef;
 
   @HostListener('mousedown', ['$event'])

@@ -202,7 +202,7 @@ export class TestSwipeActionComponent {
     }
   ];
 
-  @ViewChild(SwipeActionComponent, { static: false })
+  @ViewChild(SwipeActionComponent)
   swipeAction: SwipeActionComponent;
 
   constructor() {}

@@ -117,7 +117,7 @@ export class TestAccordionComponent implements OnInit {
   accordion = true;
   activeKey = undefined;
 
-  @ViewChild(AccordionComponent, { static: false }) accordionComponent: AccordionComponent;
+  @ViewChild(AccordionComponent) accordionComponent: AccordionComponent;
 
   onChange(event) {
     console.log(event);

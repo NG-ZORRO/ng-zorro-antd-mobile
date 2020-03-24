@@ -20,7 +20,7 @@ export class ImagePickerComponent {
   private _files: Array<any> = [];
   private _multiple: boolean = false;
 
-  @ViewChild('fileSelectorInput', { read: ViewContainerRef, static: false })
+  @ViewChild('fileSelectorInput', { read: ViewContainerRef })
   private _fileSelectorInput: ViewContainerRef;
 
   @Input() capture: boolean | string = false;

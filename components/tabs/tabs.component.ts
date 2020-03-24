@@ -38,7 +38,7 @@ export class TabsComponent implements DoCheck, AfterContentInit {
 
   @ViewChild('TabContent', { static: true })
   tabContent: ElementRef;
-  @ViewChild('DefaultTabBar', { static: false })
+  @ViewChild('DefaultTabBar')
   defaultTabBar: ElementRef;
 
   @Input()

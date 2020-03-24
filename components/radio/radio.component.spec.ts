@@ -105,7 +105,7 @@ export class TestRadioComponent {
   selectedStatus = { value: 0, name: 'doctor' };
   data = [{ value: 0, name: 'doctor' }, { value: 1, name: 'bachelor' }];
 
-  @ViewChild(RadioComponent, { static: false })
+  @ViewChild(RadioComponent)
   radio: RadioComponent;
 
   onChange(e) {

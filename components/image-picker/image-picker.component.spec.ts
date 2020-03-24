@@ -149,7 +149,7 @@ export class TestImagePickerComponent {
   multiple = true;
   selectable = true;
   len = 3;
-  @ViewChild(ImagePickerComponent, { static: false }) imagePicker: ImagePickerComponent;
+  @ViewChild(ImagePickerComponent) imagePicker: ImagePickerComponent;
   imageChangeCallback = jasmine.createSpy('imageChangeCallback is callback');
   imageClickCallback = jasmine.createSpy('imageClickCallback is callback');
 
