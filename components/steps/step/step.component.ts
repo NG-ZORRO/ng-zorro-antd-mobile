@@ -32,8 +32,6 @@ export class StepComponent implements OnInit {
   iconSize: string;
 
   private _status: StepStatusEnum;
-  private _title: string;
-  private _description: string;
   private _icon: string | TemplateRef<any>;
 
   @Input()
@@ -47,28 +45,15 @@ export class StepComponent implements OnInit {
     }
   }
   @Input()
-  get title(): string {
-    return this._title;
-  }
-  set title(value: string) {
-    this._title = value;
-  }
+  title: string | TemplateRef<any> = null;
   @Input()
-  get description(): string {
-    return this._description;
-  }
-  set description(value: string) {
-    this._description = value;
-  }
+  description: string | TemplateRef<any> = null;
   @Input()
   get icon(): string | TemplateRef<any> {
     return this._icon;
   }
   set icon(value: string | TemplateRef<any>) {
     if (value) {
-      if (typeof value !== 'string') {
-        this.isIconString = false;
-      }
       this._icon = value;
       this.setClass();
     }
@@ -78,6 +63,10 @@ export class StepComponent implements OnInit {
   clsStepItem: boolean = true;
 
   constructor(private _el: ElementRef) {}
+
+  isTemplateRef(value) {
+    return value instanceof TemplateRef;
+  }
 
   setClass() {
     this.iconCls = {
