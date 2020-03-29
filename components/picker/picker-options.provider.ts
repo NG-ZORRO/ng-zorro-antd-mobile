@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 export interface PickerOptionsInterface {
   data?: Array<any>;
   cols?: number;
@@ -11,6 +11,7 @@ export interface PickerOptionsInterface {
   appendToBody?: boolean;
 }
 
+@Injectable()
 export class PickerOptions implements PickerOptionsInterface {
   data?: Array<any> = [];
   value?: Array<any> = [];
