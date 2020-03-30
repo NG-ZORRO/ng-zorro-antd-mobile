@@ -4,7 +4,6 @@ import { LocaleProviderPipe } from './locale-provider.pipe';
 import { LOCAL_PROVIDER_TOKEN } from './locale-provider.token';
 import { LOCALE_PROVIDER_SERVICE_PROVIDER } from './locale-provider.service';
 
-@Injectable()
 @NgModule({
   imports: [],
   declarations: [LocaleProviderPipe],
