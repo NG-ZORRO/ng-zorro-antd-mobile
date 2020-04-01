@@ -28,9 +28,7 @@ describe('ModalComponent', () => {
       ],
       providers: [Overlay, ModalOptions, AlertOptions]
     }).compileComponents();
-    TestBed.overrideModule(ModalModule, {
-      set: { entryComponents: [ModalServiceComponent] }
-    }).compileComponents();
+    TestBed.overrideModule(ModalModule, {}).compileComponents();
   }));
 
   beforeEach(() => {

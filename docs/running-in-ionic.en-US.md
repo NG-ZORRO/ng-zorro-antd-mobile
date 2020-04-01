@@ -75,7 +75,6 @@ import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

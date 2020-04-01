@@ -24,9 +24,7 @@ describe('PickerComponent', () => {
       providers: [PickerOptions, LocaleProviderService, Overlay],
       imports: [ListModule, PickerModule, LocaleProviderModule, ButtonModule, FormsModule]
     }).compileComponents();
-    TestBed.overrideModule(PickerModule, {
-      set: { entryComponents: [PickerComponent] }
-    }).compileComponents();
+    TestBed.overrideModule(PickerModule, {}).compileComponents();
   }));
 
   beforeEach(() => {

@@ -18,9 +18,7 @@ describe('ActionSheetComponent', () => {
       imports: [NgZorroAntdMobilePipesModule, ActionSheetModule, ButtonModule],
       providers: [ActionSheet, Overlay]
     }).compileComponents();
-    TestBed.overrideModule(ActionSheetModule, {
-      set: { entryComponents: [ActionSheetComponent, TestActionSheetBasicComponent] }
-    }).compileComponents();
+    TestBed.overrideModule(ActionSheetModule, {}).compileComponents();
   }));
 
   beforeEach(() => {
@@ -118,8 +116,7 @@ describe('ActionSheetComponent', () => {
       <div class="am-action-sheet-message">123</div>
     </ng-template>
   `,
-  providers: [ActionSheet],
-  entryComponents: [ActionSheetComponent]
+  providers: [ActionSheet]
 })
 export class TestActionSheetBasicComponent {
   dataList = [

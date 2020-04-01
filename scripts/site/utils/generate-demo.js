@@ -24,9 +24,6 @@ function generateDemoModule(content) {
   let routes = '';
   for (const key in demoMap) {
     const declareComponents = [`Demo${componentName(component)}${componentName(key)}Component`];
-    const entries = retrieveEntryComponents(demoMap[key] && demoMap[key].ts);
-    entryComponents.push(...entries);
-    declareComponents.push(...entries);
     imports += `import { ${declareComponents.join(', ')} } from './${key}';\n`;
     declarations += `\t\t${declareComponents.join(',\n\t')},\n`;
     routes += `  {path: '${key}', component: ${declareComponents}},\n`;
@@ -41,7 +38,11 @@ function generateDemoModule(content) {
   declarations += `\t\tDemo${componentName(component)}EnComponent,\n`;
   declarations += `\t\tDemo${componentName(component)}DemoZhComponent,\n`;
   declarations += `\t\tDemo${componentName(component)}DemoEnComponent,\n`;
-  return demoModuleTemplate.replace(/{{imports}}/g, imports).replace(/{{declarations}}/g, declarations).replace(/{{component}}/g, componentName(component)).replace(/{{routes}}/g, routes).replace(/{{entryComponents}}/g, entryComponents.join(',\n'));
+  return demoModuleTemplate
+    .replace(/{{imports}}/g, imports)
+    .replace(/{{declarations}}/g, declarations)
+    .replace(/{{component}}/g, componentName(component))
+    .replace(/{{routes}}/g, routes);
 }
 
 function componentName(component) {
@@ -186,12 +187,4 @@ function generateExample(result) {
     zh: (isZhUnion ? templateUnion.replace(/{{content}}/g, zhPart) : templateSplit.replace(/{{first}}/g, firstZhPart).replace(/{{second}}/g, secondZhPart)),
     en: (isEnUnion ? templateUnion.replace(/{{content}}/g, enPart) : templateSplit.replace(/{{first}}/g, firstEnPart).replace(/{{second}}/g, secondEnPart))
   }
-}
-
-function retrieveEntryComponents(plainCode) {
-  var matches = (plainCode + '').match(/^\/\*\s*?entryComponents:\s*([^\n]+?)\*\//) || [];
-  if (matches[1]) {
-    return matches[1].split(',').map(className => className.trim()).filter((value, index, self) => value && self.indexOf(value) === index);
-  }
-  return [];
 }
