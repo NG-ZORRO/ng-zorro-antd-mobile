@@ -112,7 +112,7 @@ function wrapperHeader(title, whenToUse, language, example) {
 	</section>
 	<h2>
 		<span>${language === 'zh' ? '代码演示' : 'Examples'}</span>
-		<i class="anticon anticon-appstore code-box-expand-trigger" title="${language === 'zh' ? '展开全部代码' : 'expand all code'}" (click)="expandAllCode()"></i>
+		<i nz-icon nzType="appstore" class="code-box-expand-trigger" title="${language === 'zh' ? '展开全部代码' : 'expand all code'}" (click)="expandAllCode()"></i>
 	</h2>
 </section>${example}`
   } else {

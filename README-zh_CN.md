@@ -76,7 +76,7 @@ $ ng add ng-zorro-antd-mobile
 2. [<img alt="Segment Fault" src="https://gw.alipayobjects.com/zos/rmsportal/hfYFfCvHTQTUKntlJbMF.svg" width="100" />](https://segmentfault.com/t/ng-zorro-mobile)（中文）
 3. [![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd-mobile.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd-mobile)（English & 中文）
 4. 加入钉钉 **NG-ZORRO-MOBILE** 自助服务群（中文）<br/>
-<img src="https://gw.alicdn.com/tfs/TB1_8dtJCzqK1RjSZPcXXbTepXa-1125-1485.jpg" width="300">
+<img src="https://img.alicdn.com/tfs/TB1cABKAkL0gK0jSZFAXXcA9pXa-1125-1485.jpg" width="300">
 
 ## 谁在使用
 
