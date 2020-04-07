@@ -8,7 +8,6 @@ import { IconModule } from '../icon/icon.module';
   imports: [IconModule, CommonModule, FormsModule],
   declarations: [NoticeBarComponent],
   exports: [NoticeBarComponent],
-  providers: [],
-  entryComponents: []
+  providers: []
 })
 export class NoticeBarModule {}

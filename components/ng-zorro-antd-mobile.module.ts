@@ -153,7 +153,7 @@ export * from './activity-indicator/public-api';
   ]
 })
 export class NgZorroAntdMobileModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<NgZorroAntdMobileModule> {
     return {
       ngModule: NgZorroAntdMobileModule
     };

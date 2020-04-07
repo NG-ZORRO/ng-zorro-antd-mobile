@@ -22,6 +22,7 @@ export class ToastService {
   timeout = null;
   zone: NgZone = null;
   compRef: ComponentRef<any> = null;
+  insertElement: HTMLElement = null;
   toastCompFactory: ComponentFactory<ToastComponent> = null;
   appRef: ApplicationRef = null;
 
@@ -67,7 +68,7 @@ export class ToastService {
     options.position = position;
     const props = this._initConfig(config, options);
 
-    document.body.insertBefore(document.createElement(this.toastCompFactory.selector), document.body.firstChild);
+    this.insertElement = document.body.insertBefore(document.createElement(this.toastCompFactory.selector), document.body.firstChild);
     let instance: any;
     let subject: any;
 
@@ -149,8 +150,10 @@ export class ToastService {
     if (this.compRef) {
       this._zone.run(() => {
         this.compRef.destroy();
+        document.body.removeChild(this.insertElement);
       });
       this.compRef = null;
+      this.insertElement = null;
     }
   }
 }

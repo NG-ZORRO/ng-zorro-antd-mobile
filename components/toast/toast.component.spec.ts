@@ -19,9 +19,7 @@ describe('ToastComponent', () => {
       declarations: [TestToastComponent],
       imports: [IconModule, ToastModule, ButtonModule]
     }).compileComponents();
-    TestBed.overrideModule(ToastModule, {
-      set: { entryComponents: [ToastComponent, TestToastComponent] }
-    }).compileComponents();
+    TestBed.overrideModule(ToastModule, {}).compileComponents();
   }));
 
   beforeEach(() => {
@@ -178,7 +176,7 @@ export class TestToastComponent {
   mask = true;
   position = 'middle';
 
-  @ViewChild('contentTpl', { static: false })
+  @ViewChild('contentTpl')
   contentTpl: ViewChild;
 
   constructor(private _toast: ToastService) {}

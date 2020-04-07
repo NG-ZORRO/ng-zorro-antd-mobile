@@ -22,7 +22,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
   ],
   declarations: [ActionSheetComponent],
   exports: [ActionSheetComponent],
-  entryComponents: [ActionSheetComponent],
   providers: [PopupService, ActionSheetService]
 })
 export class ActionSheetModule {}

@@ -25,7 +25,6 @@ import { PopupService } from '../core/services/popup.service';
   ],
   exports: [ModalComponent, ModalServiceComponent],
   declarations: [ModalComponent, ModalServiceComponent],
-  entryComponents: [ModalServiceComponent],
   providers: [AlertOptions, ModalService, PopupService]
 })
 export class ModalModule {}

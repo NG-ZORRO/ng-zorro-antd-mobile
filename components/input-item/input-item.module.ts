@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   exports: [InputItemComponent, CustomKeyboardComponent, CustomInputComponent],
   declarations: [InputItemComponent, CustomKeyboardComponent, CustomInputComponent],
-  entryComponents: [CustomKeyboardComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class InputItemModule {}

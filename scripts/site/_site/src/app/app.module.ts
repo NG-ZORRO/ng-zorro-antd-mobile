@@ -5,7 +5,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 // import { ServiceWorkerModule } from '@angular/service-worker';
-import { NgZorroAntdModule, NZ_ICON_DEFAULT_TWOTONE_COLOR, NZ_ICONS } from 'ng-zorro-antd';
+import { NZ_CONFIG, NZ_ICONS, NzConfig } from 'ng-zorro-antd';
 import { ShareModule } from './share/share.module';
 import { IconDefinition } from '@ant-design/icons-angular';
 
@@ -17,6 +17,9 @@ import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 
 import { LeftOutline, RightOutline } from '@ant-design/icons-angular/icons';
 
+const ngZorroConfig: NzConfig = {
+  icon: { nzTwotoneColor: '#1890ff' }
+};
 const icons: IconDefinition[] = [ LeftOutline, RightOutline ];
 
 @NgModule({
@@ -29,7 +32,6 @@ const icons: IconDefinition[] = [ LeftOutline, RightOutline ];
     FormsModule,
     HttpClientModule,
     ShareModule,
-    NgZorroAntdModule,
     NgZorroAntdMobileModule,
     RouterModule.forRoot(routes, environment.production ? { useHash: true, preloadingStrategy: PreloadAllModules } : {useHash: true}),
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
@@ -37,7 +39,7 @@ const icons: IconDefinition[] = [ LeftOutline, RightOutline ];
   providers   : [
     Title,
     { provide: NZ_ICONS, useValue: icons },
-    { provide: NZ_ICON_DEFAULT_TWOTONE_COLOR, useValue: '#1890ff' }
+    { provide: NZ_CONFIG, useValue: ngZorroConfig }
   ],
   bootstrap   : [ AppComponent ]
 })

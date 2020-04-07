@@ -9,7 +9,6 @@ import {
   ListModule,
   ToastModule,
   ButtonModule,
-  ToastComponent,
   LocaleProviderModule,
   LocaleProviderService
 } from '../..';
@@ -28,9 +27,7 @@ describe('DatePickerComponent', () => {
       providers: [DatePickerOptions, LocaleProviderService, Toast],
       imports: [DatePickerModule, LocaleProviderModule, ButtonModule, ListModule, ToastModule, FormsModule]
     }).compileComponents();
-    TestBed.overrideModule(DatePickerModule, {
-      set: { entryComponents: [DatePickerComponent] }
-    }).compileComponents();
+    TestBed.overrideModule(DatePickerModule, {}).compileComponents();
   }));
 
   beforeEach(() => {

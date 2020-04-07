@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 export interface PopoverOptionsInterface {
   mask?: boolean;
   visible?: boolean;
@@ -7,6 +8,7 @@ export interface PopoverOptionsInterface {
   autoClose?: boolean;
 }
 
+@Injectable()
 export class PopoverOptions implements PopoverOptionsInterface {
   showArrow: boolean = false;
   mask: boolean = false;

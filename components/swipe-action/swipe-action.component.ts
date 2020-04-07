@@ -28,13 +28,13 @@ export class SwipeActionComponent implements OnInit, AfterViewInit, OnDestroy {
   private _needShowRight: boolean;
   private _startX: number;
 
-  @ViewChild('leftBtnRef', { static: false })
+  @ViewChild('leftBtnRef')
   leftBtnRef;
-  @ViewChild('rightBtnRef', { static: false })
+  @ViewChild('rightBtnRef')
   rightBtnRef;
-  @ViewChild('contentRef', { static: false })
+  @ViewChild('contentRef')
   content;
-  @ViewChild('coverRef', { static: false })
+  @ViewChild('coverRef')
   cover;
 
   @Input()

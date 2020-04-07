@@ -28,9 +28,7 @@ describe('ModalComponent', () => {
       ],
       providers: [Overlay, ModalOptions, AlertOptions]
     }).compileComponents();
-    TestBed.overrideModule(ModalModule, {
-      set: { entryComponents: [ModalServiceComponent] }
-    }).compileComponents();
+    TestBed.overrideModule(ModalModule, {}).compileComponents();
   }));
 
   beforeEach(() => {
@@ -301,8 +299,8 @@ export class TestModalBasicComponent {
       }
     }
   ];
-  @ViewChild('title', { static: false }) titleRef: ViewChild;
-  @ViewChild(ModalComponent, { static: false }) modalServiceComponent: ModalComponent;
+  @ViewChild('title') titleRef: ViewChild;
+  @ViewChild(ModalComponent) modalServiceComponent: ModalComponent;
   templateOpenSpy = jasmine.createSpy('template afterOpen spy');
   templateCloseSpy = jasmine.createSpy('template afterClose spy');
   constructor(private _modal: ModalService) {

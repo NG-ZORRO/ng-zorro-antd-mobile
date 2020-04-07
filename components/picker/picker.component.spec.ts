@@ -24,9 +24,7 @@ describe('PickerComponent', () => {
       providers: [PickerOptions, LocaleProviderService, Overlay],
       imports: [ListModule, PickerModule, LocaleProviderModule, ButtonModule, FormsModule]
     }).compileComponents();
-    TestBed.overrideModule(PickerModule, {
-      set: { entryComponents: [PickerComponent] }
-    }).compileComponents();
+    TestBed.overrideModule(PickerModule, {}).compileComponents();
   }));
 
   beforeEach(() => {
@@ -301,7 +299,7 @@ export class TestPickerBasicComponent {
   mask = true;
   modelChange = jasmine.createSpy('ngModel change callback');
 
-  @ViewChild(PickerDirective, { static: false })
+  @ViewChild(PickerDirective)
   picker: PickerDirective;
 
   constructor(private _picker: PickerService) {}

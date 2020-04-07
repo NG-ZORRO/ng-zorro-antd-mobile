@@ -22,9 +22,10 @@ module.exports = function generateDocs(rootPath, docsMap) {
   generateModule(docsPath, docsMap);
 };
 
-function wrapperDocs(toc, title, content) {
+function wrapperDocs(toc, title, content, style) {
   return `<article class="markdown">${title}${toc}
   <section class="markdown" ngNonBindable>${content}</section>
+  ${style}
   </article>`
 }
 
@@ -48,6 +49,13 @@ function generateToc(meta, raw) {
   </nz-affix>`;
 }
 
+function generateStyle(content) {
+  const styleReg = /<style>([\s\S]*)<\/style>/g;
+  if (styleReg.test(content)) {
+    return content.match(styleReg)[0];
+  }
+}
+
 function baseInfo(file, path) {
   const meta = YFM.loadFront(file);
   const content = meta.__content;
@@ -61,8 +69,20 @@ function baseInfo(file, path) {
 }
 
 function generateTemplate(docsPath, name, zh, en) {
-  fs.writeFileSync(path.join(docsPath, `${name}-zh.html`), wrapperDocs(generateToc(zh.meta, zh.raw), generateTitle(zh.meta.title, '', zh.path), angularNonBindAble(zh.content, name)));
-  fs.writeFileSync(path.join(docsPath, `${name}-en.html`), wrapperDocs(generateToc(en.meta, en.raw), generateTitle(en.meta.title, '', en.path), angularNonBindAble(en.content, name)));
+  fs.writeFileSync(path.join(docsPath, `${name}-zh.html`), wrapperDocs(
+    generateToc(zh.meta, zh.raw),
+    generateTitle(zh.meta.title, '', zh.path),
+    angularNonBindAble(zh.content, name),
+    generateStyle(zh.content)
+  )
+  );
+  fs.writeFileSync(path.join(docsPath, `${name}-en.html`), wrapperDocs(
+    generateToc(en.meta, en.raw),
+    generateTitle(en.meta.title, '', en.path),
+    angularNonBindAble(en.content, name),
+    generateStyle(en.content)
+  ),
+  );
 }
 
 function generateComponent(docsPath, name) {

@@ -30,6 +30,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class DatePickerDirective implements OnDestroy, OnChanges, OnInit, ControlValueAccessor {
   picker: ComponentRef<DatePickerComponent>;
+  appendToBodyElement: HTMLElement;
   private _eventListeners: Array<() => void> = [];
   private _ngModelOnChange: (value: Date) => {};
   private _ngModelOnTouched: () => {};
@@ -148,13 +149,17 @@ export class DatePickerDirective implements OnDestroy, OnChanges, OnInit, Contro
         childInjector
       );
       if (options.appendToBody) {
-        document.body.appendChild(this.picker.location.nativeElement);
+        this.appendToBodyElement = document.body.appendChild(this.picker.location.nativeElement);
       }
       this.onVisibleChange.emit(true);
     }
   }
 
   hidePicker(): void {
+    if (this.appendToBodyElement) {
+      document.body.removeChild(this.appendToBodyElement);
+      this.appendToBodyElement = null;
+    }
     if (this.picker) {
       this.picker.destroy();
       delete this.picker;

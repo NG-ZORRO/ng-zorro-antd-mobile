@@ -315,7 +315,7 @@ describe('CalendarComponent', () => {
     component.state.pickTime = true;
     component.state.defaultTimeValue = new Date(2000, 0, 1, 8);
     component.state.now = new Date(2018, 8, 2);
-    component.state.mimDate = new Date(2018, 8, 2);
+    component.state.minDate = new Date(2018, 8, 2);
     component.state.maxDate = new Date(2018, 8, 3);
     fixture.detectChanges();
     calendarEle.nativeElement
@@ -486,7 +486,7 @@ export class TestCalendarBasicComponent {
     }
   };
 
-  @ViewChild(CalendarComponent, { static: false })
+  @ViewChild(CalendarComponent)
   datepicker: CalendarComponent;
 
   constructor() {}

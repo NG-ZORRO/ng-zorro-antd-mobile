@@ -5,8 +5,8 @@ const lang_router = new Date().toString().includes('GMT+0800') ? '/docs/introduc
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: lang_router },
   ...DEMO_ROUTES,
-  { 'path': 'docs', 'loadChildren': './docs/index.module#NzDocsModule' },
-  { 'path': 'kitchen-sink', 'loadChildren': './kitchen-sink/kitchen-sink.module#KitchenSinkModule' },
+  { 'path': 'docs', 'loadChildren': () => import('./docs/index.module').then(m => m.NzDocsModule) },
+  { 'path': 'kitchen-sink', 'loadChildren': () => import('./kitchen-sink/kitchen-sink.module').then(m => m.KitchenSinkModule) },
   { path: 'demo', component: DEMOComponent },
   { path: '**', redirectTo: lang_router, pathMatch: 'full' }
 ];

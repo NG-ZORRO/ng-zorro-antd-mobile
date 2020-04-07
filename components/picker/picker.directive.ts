@@ -33,6 +33,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class PickerDirective implements OnDestroy, OnInit, OnChanges, ControlValueAccessor {
   picker: ComponentRef<PickerComponent>;
+  appendToBodyElement: HTMLElement;
   value: Array<any>;
   private _eventListeners: Array<() => void> = [];
 
@@ -173,13 +174,17 @@ export class PickerDirective implements OnDestroy, OnInit, OnChanges, ControlVal
         childInjector
       );
       if (options.appendToBody) {
-        document.body.appendChild(this.picker.location.nativeElement);
+        this.appendToBodyElement = document.body.appendChild(this.picker.location.nativeElement);
       }
       this.onVisibleChange.emit(true);
     }
   }
 
   private hidePicker(): void {
+    if (this.appendToBodyElement) {
+      document.body.removeChild(this.appendToBodyElement);
+      this.appendToBodyElement = null;
+    }
     if (this.picker) {
       this.picker.destroy();
       delete this.picker;

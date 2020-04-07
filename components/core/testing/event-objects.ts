@@ -35,11 +35,10 @@ export function createMouseEvent(type: string, x = 0, y = 0): MouseEvent {
 export function createTouchEvent(type: string, pageX: number = 0, pageY: number = 0): UIEvent {
   // In favor of creating events that work for most of the browsers, the event is created
   // as a basic UI Event. The necessary details for the event will be set manually.
-  const event = document.createEvent('UIEvent');
+  const event = new UIEvent(type, { detail: 0, view: window });
   const touchDetails = { pageX, pageY };
   const changedTouchesDetails = { clientX: pageX, clientY: pageY };
-
-  event.initUIEvent(type, true, true, window, 0);
+  event.initEvent(type, true, true);
 
   // Most of the browsers don't have a "initTouchEvent" method that can be used to define
   // the touch details.
@@ -48,7 +47,7 @@ export function createTouchEvent(type: string, pageX: number = 0, pageY: number 
     changedTouches: { value: [changedTouchesDetails] }
   });
 
-  return event as UIEvent;
+  return event;
 }
 
 /** Dispatches a keydown event from an element. */
@@ -70,7 +69,7 @@ export function createKeyboardEvent(type: string, keyCode: number, target?: Elem
 
   // IE won't set `defaultPrevented` on synthetic events so we need to do it manually.
   event.preventDefault = function() {
-    Object.defineProperty(event, 'defaultPrevented', { get: () => true });
+    Object.defineProperty(event, 'defaultPrevented', { get: () => true, configurable: true });
     return originalPreventDefault.apply(this, arguments);
   };
 

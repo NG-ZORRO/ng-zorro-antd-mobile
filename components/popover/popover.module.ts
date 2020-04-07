@@ -13,7 +13,6 @@ export function PopoverOptionsFactory(userOptions: PopoverOptions): PopoverOptio
 @NgModule({
   declarations: [PopoverDirective, PopoverComponent],
   imports: [CommonModule],
-  exports: [PopoverDirective, PopoverComponent],
-  entryComponents: [PopoverComponent]
+  exports: [PopoverDirective, PopoverComponent]
 })
 export class PopoverModule {}

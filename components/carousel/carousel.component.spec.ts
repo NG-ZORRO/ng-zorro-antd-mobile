@@ -144,7 +144,7 @@ export class TestCarouselComponent {
     ],
     imgHeight: '184px'
   };
-  @ViewChild(CarouselComponent, { static: false }) carouselComponent: CarouselComponent;
+  @ViewChild(CarouselComponent) carouselComponent: CarouselComponent;
   dataOutPut(event) {
     this.data = event;
   }

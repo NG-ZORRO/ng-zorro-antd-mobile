@@ -11,7 +11,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
   imports: [CommonModule, OverlayModule],
   exports: [PickerComponent, PickerDirective],
   declarations: [PickerComponent, PickerDirective],
-  providers: [PickerOptions, PopupService, PickerService],
-  entryComponents: [PickerComponent]
+  providers: [PickerOptions, PopupService, PickerService]
 })
 export class PickerModule {}

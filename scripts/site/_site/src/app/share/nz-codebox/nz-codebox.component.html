@@ -2,42 +2,34 @@
   <section class="code-box-meta markdown">
     <div class="code-box-title">
       <a (click)="navigateToFragment()">{{ nzTitle }}
-        <a class="edit-button" [attr.href]="nzHref" target="_blank" style="">
-          <i class="anticon anticon-edit"></i>
+        <a class="edit-button" [attr.href]="nzHref" target="_blank">
+          <i nz-icon nzType="edit"></i>
         </a>
       </a>
     </div>
     <ng-content select="[intro]"></ng-content>
-    <nz-tooltip [nzTitle]="nzExpanded?'Hide Code':'Show Code'">
-      <span class="code-expand-icon" nz-tooltip (click)="nzExpanded=!nzExpanded">
-        <img alt="expand code"
-             class="code-expand-icon-show"
-             src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg"
-        />
-        <nz-modal
-          [(nzVisible)]="nzExpanded"
-          [nzWidth]="nzWidth"
-          [nzTitle]="nzTitle"
-          [nzCancelText]="null"
-          [nzOkText]="nzOkText()"
-          (nzOnCancel)="handleCancel()"
-          (nzOnOk)="handleOk()"
-        >
-          <nz-highlight [nzCode]="_code" [nzLanguage]="'typescript'"></nz-highlight>
-        </nz-modal>
-      </span>
-    </nz-tooltip>
+    <span class="code-expand-icon" nz-tooltip nzTooltipTitle="nzExpanded?'Hide Code':'Show Code'" (click)="nzExpanded=!nzExpanded">
+      <img alt="expand code"
+           class="code-expand-icon-show"
+           src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg"
+      />
+      <nz-modal
+        [(nzVisible)]="nzExpanded"
+        [nzWidth]="nzWidth"
+        [nzTitle]="nzTitle"
+        [nzCancelText]="null"
+        [nzOkText]="nzOkText()"
+        (nzOnCancel)="handleCancel()"
+        (nzOnOk)="handleOk()"
+      >
+        <nz-highlight [nzCode]="_code" [nzLanguage]="'typescript'"></nz-highlight>
+      </nz-modal>
+    </span>
   </section>
   <div class="code-box-actions" style="position: relative; top: 0">
-    <nz-tooltip [nzTitle]="'Edit On StackBlitz'">
-      <i nz-tooltip class="anticon anticon-form code-box-code-copy" style="opacity: 1;" (click)="openOnStackBlitz()"></i>
-    </nz-tooltip>
-    <nz-tooltip [nzTitle]="'Copy Code'">
-      <i nz-tooltip class="anticon anticon-copy code-box-code-copy" style="opacity: 1;" [class.anticon-copy]="!_copied" [class.anticon-check]="_copied" [class.ant-tooltip-open]="_copied" (click)="copyCode(nzRawCode.default)"></i>
-    </nz-tooltip>
-    <nz-tooltip [nzTitle]="'Copy Generate Command'" *ngIf="nzGenerateCommand">
-      <i nz-tooltip class="anticon anticon-code-o code-box-code-copy" style="opacity: 1;" [class.anticon-code-o]="!_commandCopied" [class.anticon-check]="_commandCopied" [class.ant-tooltip-open]="_commandCopied" (click)="copyGenerateCommand(nzGenerateCommand)"></i>
-    </nz-tooltip>
+    <i nz-tooltip [nzTooltipTitle]="'Edit On StackBlitz'" style="opacity: 1;" class="code-box-code-copy" nz-icon nzType="form" (click)="openOnStackBlitz()"></i>
+    <i nz-tooltip [nzTooltipTitle]="'Copy Code'" nz-icon [nzType]="_copied ? 'check' : 'copy'" class="code-box-code-copy" style="opacity: 1;" (click)="copyCode(nzRawCode.default)"></i>
+    <i *ngIf="nzGenerateCommand" nz-tooltip [nzTooltipTitle]="'Copy Generate Command'" nz-icon [nzType]="_commandCopied ? 'check' : 'code'" class="code-box-code-copy" style="opacity: 1;" (click)="copyGenerateCommand(nzGenerateCommand)"></i>
   </div>
   <section class="highlight-wrapper" [ngClass]="{'highlight-wrapper-expand':true}">
     <div class="highlight">

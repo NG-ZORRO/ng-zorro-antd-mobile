@@ -16,6 +16,7 @@
             "main": "./site/src/main.ts",
             "tsConfig": "./site/src/tsconfig.app.json",
             "polyfills": "./site/src/polyfills.ts",
+            "aot": true,
             "assets": [
               "site/src/assets",
               "site/src/favicon.ico",
@@ -34,6 +35,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "./site/src/environments/environment.ts",
@@ -45,7 +52,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": false,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -92,8 +98,13 @@
           "options": {
             "tsConfig": "components/tsconfig.lib.json",
             "project": "components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "components/tsconfig.lib.prod.json"
+            }
           }
-        },
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -111,10 +122,13 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "less"
+      "style": "less"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

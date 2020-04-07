@@ -9,7 +9,6 @@ import { WingBlankModule } from '../wing-blank/wing-blank.module';
   imports: [CommonModule, IconModule, WingBlankModule],
   exports: [ToastComponent],
   declarations: [ToastComponent],
-  entryComponents: [ToastComponent],
   providers: [ToastService]
 })
 export class ToastModule {}

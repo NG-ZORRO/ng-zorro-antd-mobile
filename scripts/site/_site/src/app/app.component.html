@@ -1,6 +1,6 @@
 <div *ngIf="isHomeURL" class="page-wrapper">
   <header id="header" class="clearfix">
-    <i class="anticon anticon-menu nav-phone-icon" (click)="toggleHide()"></i>
+    <i class="nav-phone-icon" nz-icon nzType="menu" nzTheme="outline" (click)="toggleHide()"></i>
     <div nz-row>
       <div nz-col [nzXs]="24" [nzSm]="24" [nzMd]="8" [nzLg]="5" [nzXl]="5" [nzXXl]="4">
         <a id="logo" href>
@@ -10,7 +10,7 @@
       </div>
       <div nz-col [nzXs]="0" [nzSm]="0" [nzMd]="16" [nzLg]="19" [nzXl]="19" [nzXXl]="20" class="nav nav-hide">
         <div id="search-box">
-          <i class="anticon anticon-search"></i>
+          <i nz-icon nzType="search"></i>
           <!-- <input *ngIf="useDocsearch" nz-input #searchInput style="font-size:11px" [placeholder]="language=='zh' ? '在 ng.mobile.ant.design 中搜索' : 'Search in ng.mobile.ant.design'"> -->
           <nz-select *ngIf="useDocsearch" [nzPlaceHolder]="language=='zh'?'搜索组件...':'Search Components...'" nzShowSearch [(ngModel)]="searchComponent" (ngModelChange)="navigateToPage($event)">
             <ng-template [ngForOf]="componentList" ngFor let-component>
@@ -84,7 +84,7 @@
               <h2>Ant Design</h2>
               <div>
                 <a target="_blank " href="https://github.com/NG-ZORRO/ng-zorro-antd-mobile"><span>GitHub</span></a>
-                <span> - </span><span><i class="anticon anticon-github"></i></span>
+                <span> - </span><span><i nz-icon nzType="github"></i></span>
               </div>
               <div>
                 <a target="_blank " href="https://ng.ant.design">NG-ZORRO</a>

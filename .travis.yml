@@ -2,7 +2,7 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - '10.16.3'
+  - '12.3.1'
 
 env:
   - TASK=pre-release
