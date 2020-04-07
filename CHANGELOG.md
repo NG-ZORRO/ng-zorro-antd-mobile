@@ -1,3 +1,12 @@
+# [2.0.0](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/1.0.5...2.0.0) (2020-04-07)
+
+
+### Features
+
+* **all:** support Angular 9 ([#652](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/652)) ([2150bcb](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/2150bcb955596b9297e34cc7fa6dae1d12625226))
+
+
+
 ## [1.0.5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/1.0.4...1.0.5) (2020-03-17)
 
 
