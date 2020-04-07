@@ -19,9 +19,17 @@ export class AppComponent implements OnInit, AfterViewInit {
   docsearch = null;
   kitchenUrl = window.location.origin + '/#/kitchen-sink?lang=zh-CN';
   language = 'zh';
-  versionList = ['0.12.x', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5'];
-  versionMap = {'0.12.x': '0.12.5', '1.0.1': '1.0.11', '1.0.2': '1.0.2', '1.0.3': '1.0.3', '1.0.4': '1.0.4', '1.0.5': '1.0.5'};
-  currentVersion = '1.0.5';
+  versionList = ['0.12.x', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5', '2.0.0'];
+  versionMap = {
+    '0.12.x': '0.12.5',
+    '1.0.1': '1.0.11',
+    '1.0.2': '1.0.2',
+    '1.0.3': '1.0.3',
+    '1.0.4': '1.0.4',
+    '1.0.5': '1.0.51',
+    '2.0.0': '2.0.0'
+  };
+  currentVersion = '2.0.0';
   isHomeURL = true;
   isKitchenURL = false;
   demoTitle = '';
@@ -148,7 +156,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       if (
         event &&
         event['url'] &&
-        (event['url'].indexOf('demo-zh') >= 0 || event['url'].indexOf('demo-en') >= 0 || event['url'].indexOf('/kitchen-sink') >= 0)
+        (event['url'].indexOf('demo-zh') >= 0 ||
+          event['url'].indexOf('demo-en') >= 0 ||
+          event['url'].indexOf('/kitchen-sink') >= 0)
       ) {
         this.isHomeURL = false;
       }
@@ -176,7 +186,10 @@ export class AppComponent implements OnInit, AfterViewInit {
         if (this.router.url !== '/' + this.searchComponent) {
           this.searchComponent = null;
         }
-        this.language = this.router.url.split('/')[this.router.url.split('/').length - 1].split('#')[0].split(';')[0];
+        this.language = this.router.url
+          .split('/')
+          [this.router.url.split('/').length - 1].split('#')[0]
+          .split(';')[0];
         // this.nzI18nService.setLocale(this.language === 'en' ? en_US : zh_CN);
         if (this.docsearch) {
           this.docsearch.algoliaOptions = { hitsPerPage: 5, facetFilters: [`tags:${this.language}`] };
@@ -194,11 +207,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         // 锚点功能
         if (!this.isKitchenURL) {
           setTimeout(() => {
-              const anchor = this.router.url.split(';')[1];
-              if (anchor) {
-                const dom = decodeURIComponent(anchor.split('=')[1]);
-                dom && document.querySelector(`#${dom}`).scrollIntoView();
-              }
+            const anchor = this.router.url.split(';')[1];
+            if (anchor) {
+              const dom = decodeURIComponent(anchor.split('=')[1]);
+              dom && document.querySelector(`#${dom}`).scrollIntoView();
+            }
           }, 500);
         }
 
@@ -207,17 +220,23 @@ export class AppComponent implements OnInit, AfterViewInit {
             this.listenerQRCode = null;
           }
 
-          this.listenerQRCode = document.querySelector('span.edit-button') && document.querySelector('span.edit-button').addEventListener('mouseenter', function() {
-            setTimeout(() => {
-              if (document.querySelector('#qrcode')) {
-                this.qrcode = new window['QRCode'](document.querySelector('#qrcode'), {
-                  text: window['__zorro_mobile_url__'],
-                  width: 140,
-                  height: 140
-                });
-              }
-            }, 180);
-          }, false);
+          this.listenerQRCode =
+            document.querySelector('span.edit-button') &&
+            document.querySelector('span.edit-button').addEventListener(
+              'mouseenter',
+              function() {
+                setTimeout(() => {
+                  if (document.querySelector('#qrcode')) {
+                    this.qrcode = new window['QRCode'](document.querySelector('#qrcode'), {
+                      text: window['__zorro_mobile_url__'],
+                      width: 140,
+                      height: 140
+                    });
+                  }
+                }, 180);
+              },
+              false
+            );
         }, 500);
       }
     });
