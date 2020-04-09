@@ -271,19 +271,19 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
 */
 
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
-// import 'classlist.js';  // Run `npm install --save classlist.js`.
+// import 'classlist.js';  // Run \`npm install --save classlist.js\`.
 
 /**
-* Web Animations `@angular/platform-browser/animations`
+* Web Animations \`@angular/platform-browser/animations\`
 * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
 * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
 */
-// import 'web-animations-js';  // Run `npm install --save web-animations-js`.
+// import 'web-animations-js';  // Run \`npm install --save web-animations-js\`.
 
 /**
 * By default, zone.js will patch all possible macroTask and DomEvents
 * user can disable parts of macroTask/DomEvents patch by setting following flags
-* because those flags need to be set before `zone.js` being loaded, and webpack
+* because those flags need to be set before \`zone.js\` being loaded, and webpack
 * will put import in the top of bundle, so user need to create a separate file
 * in this directory (for example: zone-flags.ts), and put the following flags
 * into that file, and then add the following code before importing zone.js.
@@ -298,7 +298,7 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
 * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
 *
 *  in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
-*  with the following flag, it will bypass `zone.js` patch for IE/Edge
+*  with the following flag, it will bypass \`zone.js\` patch for IE/Edge
 *
 *  (window as any).__Zone_enable_cross_context_check = true;
 *
@@ -351,7 +351,6 @@ export class AppModule { }
       '@angular/router': '~9.1.1',
       '@ant-design/icons-angular': '~9.0.1',
       'rxjs': '~6.5.4',
-      'tslib': "~1.10.0",
       'zone.js': '~0.10.2',
       'ng-zorro-antd-mobile': '2.0.0'
     },
