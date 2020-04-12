@@ -9,7 +9,6 @@ import { LocaleProviderModule } from '../locale-provider/locale-provider.module'
 @NgModule({
   imports: [CommonModule, ButtonModule, FlexModule, IconModule, LocaleProviderModule],
   declarations: [PaginationComponent],
-  exports: [PaginationComponent],
-  providers: [LocaleProviderModule]
+  exports: [PaginationComponent]
 })
 export class PaginationModule {}

@@ -22,7 +22,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [MenuComponent, SubMenuComponent],
-  declarations: [MenuComponent, SubMenuComponent],
-  providers: [LocaleProviderModule]
+  declarations: [MenuComponent, SubMenuComponent]
 })
 export class MenuModule {}

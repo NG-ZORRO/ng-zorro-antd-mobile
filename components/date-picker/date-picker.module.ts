@@ -12,6 +12,6 @@ import { ToastComponent } from '../toast/toast.component';
   imports: [CommonModule, LocaleProviderModule, ToastModule, FormsModule],
   exports: [DatePickerComponent, DatePickerDirective],
   declarations: [DatePickerComponent, DatePickerDirective],
-  providers: [DatePickerOptions, LocaleProviderModule]
+  providers: [DatePickerOptions]
 })
 export class DatePickerModule {}
