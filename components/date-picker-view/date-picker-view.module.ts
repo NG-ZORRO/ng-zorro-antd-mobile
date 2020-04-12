@@ -9,7 +9,6 @@ import { ToastModule } from '../toast/toast.module';
 @NgModule({
   imports: [CommonModule, DatePickerModule, LocaleProviderModule, ToastModule, FormsModule],
   exports: [DatePickerViewComponent],
-  declarations: [DatePickerViewComponent],
-  providers: [LocaleProviderModule]
+  declarations: [DatePickerViewComponent]
 })
 export class DatePickerViewModule {}

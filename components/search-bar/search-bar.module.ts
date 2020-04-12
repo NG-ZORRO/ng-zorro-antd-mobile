@@ -7,7 +7,6 @@ import { LocaleProviderModule } from '../locale-provider/locale-provider.module'
 @NgModule({
   exports: [SearchBarComponent],
   declarations: [SearchBarComponent],
-  imports: [CommonModule, FormsModule, LocaleProviderModule],
-  providers: [LocaleProviderModule]
+  imports: [CommonModule, FormsModule, LocaleProviderModule]
 })
 export class SearchBarModule {}

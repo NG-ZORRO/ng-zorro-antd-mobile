@@ -33,7 +33,6 @@ import { CalendarShortcutPanelComponent } from './shortcut-panel/shortcut-panel.
     CalendarSingleMonthComponent,
     CalendarConfirmPanelComponent,
     CalendarShortcutPanelComponent
-  ],
-  providers: [LocaleProviderModule]
+  ]
 })
 export class CalendarModule {}
