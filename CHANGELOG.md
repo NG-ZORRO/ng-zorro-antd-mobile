@@ -1,3 +1,12 @@
+## [2.0.1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/2.0.0...2.0.1) (2020-04-13)
+
+
+### Bug Fixes
+
+* **locale-provider:** fix provider LocaleProviderModule in ngModule will trigger error ([#662](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/662)) ([7f52fca](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7f52fca3950e67602c8578e42664ac566861437d))
+
+
+
 # [2.0.0](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/1.0.5...2.0.0) (2020-04-07)
 
 

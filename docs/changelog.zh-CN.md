@@ -13,6 +13,11 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 2.0.1(2020-04-13)
+### Bug Fixes
+
+* **locale-provider:** 修复 provider 中依赖 LocaleProviderModule 引发的错误 ([#662](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/662)) ([7f52fca](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7f52fca3950e67602c8578e42664ac566861437d))
+
 ## 2.0.0(2020-04-07)
 
 ### Features
