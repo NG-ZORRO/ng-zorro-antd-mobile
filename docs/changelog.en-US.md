@@ -13,6 +13,11 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 2.0.1(2020-04-13)
+### Bug Fixes
+
+* **locale-provider:** fix provider LocaleProviderModule in ngModule will trigger error ([#662](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/662)) ([7f52fca](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7f52fca3950e67602c8578e42664ac566861437d))
+
 ## 2.0.0(2020-04-07)
 
 ### Features
