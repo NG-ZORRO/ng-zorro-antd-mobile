@@ -12,7 +12,7 @@ import { AccordionService } from '../accordion.service';
 import { isTemplateRef } from '../../core/util/check';
 import { Template } from '@angular/compiler/src/render3/r3_ast';
 @Component({
-  selector: 'AccordionPanel',
+  selector: 'AccordionPanel, nzm-accordion-panel',
   templateUrl: './accordion-group.component.html',
   encapsulation: ViewEncapsulation.None,
   animations: [
