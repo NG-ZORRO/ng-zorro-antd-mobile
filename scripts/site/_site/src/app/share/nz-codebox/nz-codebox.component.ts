@@ -341,7 +341,7 @@ export class AppModule { }
     template: 'angular-cli',
     dependencies: {
       '@angular/animations': '~9.1.1',
-      '@angular/cdk': '~9.1.1',
+      '@angular/cdk': '~9.2.1',
       '@angular/common': '~9.1.1',
       '@angular/compiler': '~9.1.1',
       '@angular/core': '~9.1.1',

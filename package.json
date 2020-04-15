@@ -45,7 +45,7 @@
   ],
   "dependencies": {
     "@angular/animations": "^9.0.0",
-    "@angular/cdk": "^9.0.0",
+    "@angular/cdk": "^9.2.1",
     "@angular/pwa": "^0.13.8",
     "@ant-design/icons-angular": "^9.0.1",
     "ant-design": "^1.0.0",
