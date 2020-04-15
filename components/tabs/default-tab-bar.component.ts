@@ -254,9 +254,9 @@ export class DefaultTabBarComponent implements AfterContentInit {
       }
     } else if ((this.selectedKey + 1) * swipingItemLength >= viewportLength - this.tabBarNavSwipedPosition) {
       if (this.tabTitles.length - 1 === this.selectedKey) {
-        this.tabBarNavSwipedPosition = viewportLength - (this.selectedKey + 1) * swipingItemLength;
+        this.tabBarNavSwipedPosition = (viewportLength / swipingItemLength - this.selectedKey - 1) * swipingItemLength;
       } else {
-        this.tabBarNavSwipedPosition = viewportLength - (this.selectedKey + 2) * swipingItemLength;
+        this.tabBarNavSwipedPosition = (viewportLength / swipingItemLength - this.selectedKey - 2) * swipingItemLength;
       }
     }
     if (this.tabBarNavSwipedPosition < 0) {
