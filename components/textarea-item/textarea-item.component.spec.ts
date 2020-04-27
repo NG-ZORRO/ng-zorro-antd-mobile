@@ -129,6 +129,17 @@ describe('TextareaComponent', () => {
     const textarea = textareaEle.nativeElement.querySelector('.am-textarea-count');
     expect(textarea).not.toBeNull();
   });
+  it('should count work after ngModel write value', () => {
+    component.count = 100;
+    component.rows = 5;
+    const textarea = textareaModel.nativeElement.querySelector('textarea');
+    textarea.value = '123';
+    textarea.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    const count = textareaModel.nativeElement.querySelector('.am-textarea-count').firstElementChild.innerText;
+    expect(component.valueModel).toBe('123');
+    expect(count).toBe('3');
+  });
   it('should labelNumber work', () => {
     component.labelNumber = 3;
     component.title = 'test';
@@ -230,7 +241,7 @@ describe('TextareaComponent', () => {
     >
     </TextareaItem>
     <TextareaItem class="text-2" [title]="customTitle" [autoHeight]="true" [labelNumber]="5"> </TextareaItem>
-    <TextareaItem class="text-3" [(ngModel)]="valueModel"> </TextareaItem>
+    <TextareaItem class="text-3" [rows]="rows" [count]="count" [(ngModel)]="valueModel"> </TextareaItem>
     <ng-template #customTitle>
       <img
         src="https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png"
