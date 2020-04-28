@@ -297,6 +297,7 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
     } else {
       this._value = value;
     }
+    this.setCharacterLength();
   }
   registerOnChange(fn: (_: any) => void): void {
     this._onChange = fn;
