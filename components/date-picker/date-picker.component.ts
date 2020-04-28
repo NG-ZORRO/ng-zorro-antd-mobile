@@ -328,6 +328,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       this.min_date = min_Date.map(item => {
         return parseInt(item, 0);
       });
+      console.log(this.min_date);
     }
     const max_Date = this.transformDateFormat(this.options.maxDate).split('-');
     if (max_Date.length > 0) {
@@ -610,7 +611,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.options.minDate.getTime() > this.resultDate.getTime()) {
       if (this.resultArr.length > 0) {
         for (let index = 0; index < this.resultArr.length; index++) {
-          this.resultArr = this.min_date;
+          this.resultArr = [...this.min_date];
           this.currentTime = this.resultArr;
           this.current_time = this.currentTime;
         }
