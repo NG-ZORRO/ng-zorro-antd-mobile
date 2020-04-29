@@ -85,6 +85,30 @@ describe('PullToRefreshComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should refreshing false work', () => {
+    component.state.refreshing = false;
+    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchstart', 0, 300);
+    fixture.detectChanges();
+    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchmove', 0, 500);
+    fixture.detectChanges();
+    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchend', 0, 500);
+    fixture.detectChanges();
+  });
+
+  it('should refreshing change work', () => {
+    component.state.down = false;
+    component.state.refreshing = false;
+    fixture.detectChanges();
+    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchstart', 0, 300);
+    fixture.detectChanges();
+    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchmove', 0, 500);
+    fixture.detectChanges();
+    dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchend', 0, 500);
+    fixture.detectChanges();
+    component.state.refreshing = true;
+    fixture.detectChanges();
+  });
+
   it('should scroll work', () => {
     component.state.down = false;
     dispatchTouchEvent(pullToRefreshEle.nativeElement, 'touchstart', 0, 500);
@@ -136,7 +160,7 @@ describe('PullToRefreshComponent', () => {
       [endReachedRefresh]="state.scrollRefresh"
       [(ngModel)]="state.refreshState"
       [direction]="state.down ? 'down' : 'up'"
-      [refreshing]="true"
+      [refreshing]="state.refreshing"
       [headerIndicator]="state.down ? {} : { deactivate: '下拉可以刷新' }"
       [footerIndicator]="state.down ? {} : { deactivate: '上拉可以刷新' }"
       (onRefresh)="pullToRefresh($event)"
@@ -156,6 +180,7 @@ export class TestPullToRefreshComponent {
       drag: false
     },
     scrollRefresh: false,
+    refreshing: true,
     down: true,
     height: window.innerHeight - ((63 + 47) * window.devicePixelRatio) / 2,
     data: []
