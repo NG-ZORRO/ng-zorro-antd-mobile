@@ -8,7 +8,7 @@
       </a>
     </div>
     <ng-content select="[intro]"></ng-content>
-    <span class="code-expand-icon" nz-tooltip nzTooltipTitle="nzExpanded?'Hide Code':'Show Code'" (click)="nzExpanded=!nzExpanded">
+    <span class="code-expand-icon" nz-tooltip [nzTooltipTitle]="nzExpanded?'Hide Code':'Show Code'" (click)="nzExpanded=!nzExpanded">
       <img alt="expand code"
            class="code-expand-icon-show"
            src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg"
