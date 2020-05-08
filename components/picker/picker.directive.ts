@@ -136,6 +136,7 @@ export class PickerDirective implements OnDestroy, OnInit, OnChanges, ControlVal
           this.hidePicker();
         },
         updateNgModel: (value: any[]): void => {
+          this.value = value;
           this.onChange(value);
         }
       });
