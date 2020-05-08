@@ -396,6 +396,19 @@ describe('InputComponent', () => {
     tick(0);
     expect(component.modelValue).toBe('test-ng-model');
   }));
+
+  it('should setDisabledState work', () => {
+    component.inputItemComp.setDisabledState(true);
+    fixture.detectChanges();
+    expect(inputItem.nativeElement.classList).toContain('am-input-disabled', 'type is text');
+
+    component.type = 'money';
+    fixture.detectChanges();
+    component.inputItemComp.setDisabledState(true);
+    fixture.detectChanges();
+    component.clickTitle();
+    expect(component.focusFn).toHaveBeenCalledTimes(0);
+  });
 });
 
 @Component({

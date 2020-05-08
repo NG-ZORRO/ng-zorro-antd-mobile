@@ -377,6 +377,10 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     this._onChange = fn;
   }
 
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   registerOnTouched(fn: any): void { }
 
   ngOnInit() {
