@@ -373,6 +373,10 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     }
   }
 
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   registerOnChange(fn: (_: any) => void): void {
     this._onChange = fn;
   }
