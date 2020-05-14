@@ -211,6 +211,12 @@ describe('TextareaComponent', () => {
     fixture.detectChanges();
     expect(component.blurFn).toHaveBeenCalled();
   }));
+  it('should setDisabled work', () => {
+    component.textareaItemComp.setDisabledState(true);
+    fixture.detectChanges();
+    textareaItem = textareaEle.nativeElement;
+    expect(textareaItem.classList).toContain('am-textarea-disabled');
+  });
 });
 
 @Component({

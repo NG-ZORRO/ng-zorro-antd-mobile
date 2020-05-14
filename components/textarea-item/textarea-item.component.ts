@@ -299,6 +299,11 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
     }
     this.setCharacterLength();
   }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   registerOnChange(fn: (_: any) => void): void {
     this._onChange = fn;
   }
