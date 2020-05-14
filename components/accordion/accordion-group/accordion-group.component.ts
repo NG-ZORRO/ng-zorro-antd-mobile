@@ -5,12 +5,12 @@ import {
   Output,
   EventEmitter,
   ViewEncapsulation,
-  HostBinding
+  HostBinding,
+  TemplateRef
 } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AccordionService } from '../accordion.service';
 import { isTemplateRef } from '../../core/util/check';
-import { Template } from '@angular/compiler/src/render3/r3_ast';
 @Component({
   selector: 'AccordionPanel, nzm-accordion-panel',
   templateUrl: './accordion-group.component.html',
@@ -37,7 +37,7 @@ export class AccordionGroupComponent {
   @Input()
   key: string;
   @Input()
-  header: string | Template;
+  header: string | TemplateRef<void>;
   @Input()
   isOpened: boolean = false;
   @Input()

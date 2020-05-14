@@ -20,10 +20,14 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
     <ng-template #title1>
       <div>Title 1</div>
     </ng-template>
+    <ng-template #title2>
+      <img src="/assets/img/logo.svg" style="width:36px"/>
+    </ng-template>
   `
 })
 export class DemoAccordionBasicComponent implements OnInit {
   @ViewChild('title1', { static: true }) title1: ViewChild;
+  @ViewChild('title2', { static: true }) title2: ViewChild;
   accordions: Array<any> = [];
 
   activeKey = [0, 1];
@@ -36,7 +40,7 @@ export class DemoAccordionBasicComponent implements OnInit {
     this.accordions = [
       { title: this.title1, child: ['content 1', 'content 1', 'content 1'] },
       {
-        title: `<img src="/assets/img/logo.svg" style="width:36px"/>`,
+        title: this.title2,
         child: ['content 2', 'content 2', 'content 2'],
         inactive: false
       },
