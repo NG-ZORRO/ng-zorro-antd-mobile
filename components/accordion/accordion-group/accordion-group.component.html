@@ -6,7 +6,7 @@
   (click)="checkAndToggle()"
 >
   <i class="arrow"></i>
-  <div *ngIf="!isTemplateRef(header)" [innerHTML]="header | safeHTML"></div>
+  <ng-container *ngIf="!isTemplateRef(header)">{{ header }}</ng-container>
   <ng-template *ngIf="isTemplateRef(header)" [ngTemplateOutlet]="header"></ng-template>
 </div>
 <div
