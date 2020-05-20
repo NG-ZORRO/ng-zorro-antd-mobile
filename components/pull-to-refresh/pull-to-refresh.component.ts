@@ -127,7 +127,7 @@ export class PullToRefreshComponent implements ControlValueAccessor {
     } else {
       this.startY = e && e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientY;
       this._clientHeight = this._pullToRefresh.element.nativeElement.clientHeight;
-      this._currentContentHeight = document.getElementsByTagName('pulltorefresh')[0].clientHeight;
+      this._currentContentHeight = this.ele.nativeElement.clientHeight;
     }
     this.transtionCls = '';
   }
