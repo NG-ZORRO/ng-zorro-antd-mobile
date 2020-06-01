@@ -30,6 +30,15 @@ describe('GridComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should columnNum work', () => {
+    component.columnNum = 4;
+    fixture.detectChanges();
+    expect(gridEle.nativeElement.children[0].children.length).toBe(4, 'columnNum is work');
+    component.columnNum = 3;
+    fixture.detectChanges();
+    expect(gridEle.nativeElement.children[0].children.length).toBe(3, 'columnNum is work');
+  });
+
   it('should data work', () => {
     fixture.detectChanges();
     expect(gridEle.nativeElement.children.length).not.toBe(0, 'data is work');
@@ -61,6 +70,16 @@ describe('GridComponent', () => {
     expect(gridEle.nativeElement.classList).not.toContain('am-grid-carousel', 'carousel is false');
   });
 
+  it('should carouselMaxRow work', () => {
+    component.isCarousel = true;
+    component.carouselMaxRow = 2;
+    fixture.detectChanges();
+    expect(gridEle.nativeElement.querySelector('carouselslide').getElementsByTagName('flex').length).toBe(2, 'carouselMaxRow is work');
+    component.carouselMaxRow = 1;
+    fixture.detectChanges();
+    expect(gridEle.nativeElement.querySelector('carouselslide').getElementsByTagName('flex').length).toBe(1, 'carouselMaxRow is work');
+  });
+
   it('onClick work', () => {
     component.data = Array.from(new Array(9)).map((val, i) => ({
       icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png',
@@ -87,6 +106,7 @@ describe('GridComponent', () => {
       [hasLine]="hasLine"
       [columnNum]="columnNum"
       [isCarousel]="isCarousel"
+      [carouselMaxRow]="carouselMaxRow"
       (onClick)="onClick($event)"
     ></Grid>
     <Grid [activeStyle]="false" [data]="dataList" (onClick)="click($event)"></Grid>
@@ -100,6 +120,7 @@ export class TestGridComponent {
   square = true;
   hasLine = true;
   columnNum = 3;
+  carouselMaxRow = 1;
   isCarousel = false;
 
   dataList = Array.from(new Array(9)).map((_val, i) => ({
