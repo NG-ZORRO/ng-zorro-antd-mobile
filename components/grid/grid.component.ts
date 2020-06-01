@@ -28,9 +28,25 @@ export class GridComponent implements OnInit {
   private _data = [];
 
   @Input()
-  columnNum: number = 4;
+  get columnNum(): number {
+    return this.defaultProps.columnNum;
+  }
+  set columnNum(value: number) {
+    if (typeof value === 'number') {
+      this.defaultProps.columnNum = value;
+      this.init();
+    }
+  }
   @Input()
-  carouselMaxRow: number = 2;
+  get carouselMaxRow(): number {
+    return this.defaultProps.carouselMaxRow;
+  }
+  set carouselMaxRow(value: number) {
+    if (typeof value === 'number') {
+      this.defaultProps.carouselMaxRow = value;
+      this.init();
+    }
+  }
   @Input()
   itemStyle: object = {};
   @Input()
