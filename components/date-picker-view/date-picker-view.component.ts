@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
+import { DatePickerOptions } from '../date-picker/date-picker-options.provider';
 
 @Component({
   selector: 'DatePickerView, nzm-date-picker-view',
@@ -23,8 +24,9 @@ import { DatePickerComponent } from '../date-picker/date-picker.component';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DatePickerViewComponent),
       multi: true
-    }
-  ]
+    },
+    DatePickerOptions
+  ],
 })
 export class DatePickerViewComponent extends DatePickerComponent
   implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {
