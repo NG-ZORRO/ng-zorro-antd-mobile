@@ -13,6 +13,16 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 1.0.6(2020-06-11)
+
+### Bug Fixes
+
+* **date-picker:** 修复 mindate 改变月份错误 ([#686](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/686)) ([6ebc91c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6ebc91c5d634ad1b7ccf5d7b71a839fddaa17249))
+* **datepickerview:** 修复 datePickerOptions 单例 ([#709](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/709)) ([f973f87](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f973f870b30ebed444cdee09928cf4b3fa6e352c))
+* **grid:** 修复 columnNum 与 carouselMaxRow 无法正常运行问题 ([#705](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/705)) ([6e3fd25](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6e3fd2576f4a4259cfc680c365bd6d643cb89a4c))
+* **picker:** 修复 binding 赋值问题 ([#684](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/684)) ([0974096](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/097409694db60fc49cbb016c97684bfc9ff350d6))
+* **pulltorefresh:** 修复元素高度 ([#699](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/699)) ([eb9fd9c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/eb9fd9cd71e4b0a061ed2d17834854683fbebf91))
+
 ## 1.0.5(2020-03-17)
 
 ### Features
