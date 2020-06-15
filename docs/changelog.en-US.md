@@ -13,7 +13,7 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
-## 2.0.2(2020-06-15)
+## 2.0.3(2020-06-15)
 
 ### Bug Fixes
 
