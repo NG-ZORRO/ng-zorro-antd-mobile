@@ -13,6 +13,36 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 2.0.2(2020-06-15)
+
+### Bug Fixes
+
+* **accordion:** no longer support innerHtml ([#695](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/695)) ([6ac0642](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6ac0642e96920f20e34765d9ba9ff539e6e5ab05))
+* **action-sheet:** import TouchFeedbackDirective ([#669](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/669)) ([c5da920](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/c5da92037e5c448eca3c27d09aae3d425eadb279))
+* **date-picker:** fix mindate change month error ([#685](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/685)) ([21e4df9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/21e4df92cfdeb1425fb38ed99372e0de12b94059))
+* **datepickerview:** fix datePickerOptions singleton pattern ([#708](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/708)) ([3a32fdd](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3a32fdd080885434a87910e99dc536cbed275b85))
+* **grid:** fix columnNum and carouselMaxRow not work ([#704](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/704)) ([920676d](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/920676d9d0d1b00598c65bd549b5028a344d36c7))
+* **picker:** fix binding assignment ([#683](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/683)) ([f2ac758](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f2ac7581986d4dff78a0990afb43b3a4baee5b42))
+* **stackblitz:** update stackblitz @angular/cdk dependency ([#667](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/667)) ([6b27539](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6b27539b544201685b631af452e2bdc8bef9404a))
+* **tabs:** fix tabs calculate lose precision ([#668](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/668)) ([c1fc617](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/c1fc6173b2d3590d04abb3e3780d6f1510b3457b))
+* **textarea-item:** fix count not work after ngModel write value ([#680](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/680)) ([45f9759](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/45f97591304ed89f8b655db3de74d3a38a0cb712))
+* **pulltorefresh:** fix element height ([#698](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/698)) ([5db6c0b](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5db6c0bcaf2481cdad450f79eafa8c1c7821344f))
+
+
+### Features
+
+* **accordion:** add nzm- selector ([#666](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/666)) ([3cc3279](https://github.com/NG-ZORRO/
+
+## 1.0.6(2020-06-11)
+
+### Bug Fixes
+
+* **date-picker:** fix mindate change month error ([#686](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/686)) ([6ebc91c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6ebc91c5d634ad1b7ccf5d7b71a839fddaa17249))
+* **datepickerview:** fix datePickerOptions singleton pattern ([#709](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/709)) ([f973f87](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f973f870b30ebed444cdee09928cf4b3fa6e352c))
+* **grid:** fix columnNum and carouselMaxRow not work ([#705](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/705)) ([6e3fd25](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6e3fd2576f4a4259cfc680c365bd6d643cb89a4c))
+* **picker:** fix binding assignment ([#684](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/684)) ([0974096](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/097409694db60fc49cbb016c97684bfc9ff350d6))
+* **pulltorefresh:** fix element height ([#699](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/699)) ([eb9fd9c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/eb9fd9cd71e4b0a061ed2d17834854683fbebf91))
+
 ## 2.0.1(2020-04-13)
 ### Bug Fixes
 
