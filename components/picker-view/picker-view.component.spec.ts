@@ -38,6 +38,22 @@ describe('PickerViewComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should cols work', () => {
+    component.cols = 1;
+    component.seasons = [
+      {
+        label: '2013',
+        children: []
+      },
+      {
+        label: '2014',
+        children: []
+      }
+    ];
+    fixture.detectChanges();
+    expect(pickerEle.nativeElement.querySelector('.am-picker').children.length).toBe(1);
+  });
+
   it('should seasons work', () => {
     expect(pickerEle.nativeElement.querySelector('.am-picker').children.length).toBeGreaterThan(0, 'seasons has value');
   });
@@ -76,6 +92,7 @@ describe('PickerViewComponent', () => {
       [data]="seasons"
       [cascade]="cascade"
       [ngModel]="value"
+      [cols] = [cols]
       [itemStyle]="itemStyle"
       [indicatorStyle]="indicatorStyle"
       (ngModelChange)="onChange($event)"
@@ -86,6 +103,7 @@ export class TestPickerViewBasicComponent {
   cascade = false;
   itemStyle = { color: 'red' };
   indicatorStyle = { background: 'red' };
+  cols = 2;
   seasons = [
     {
       label: '2013',
