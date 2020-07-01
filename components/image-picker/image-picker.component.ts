@@ -92,7 +92,7 @@ export class ImagePickerComponent {
       return {
         type: 'img',
         backgroundImage: 'url(' + item.url + ')',
-        transform: 'rotate(' + this.getRotation(item.orientation) + ')deg'
+        transform: 'rotate(' + this.getRotation(item.orientation) + 'deg)'
       };
     });
     if (this._selectable) {
