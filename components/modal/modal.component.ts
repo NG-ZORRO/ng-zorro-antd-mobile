@@ -120,7 +120,7 @@ export class ModalComponent<T = any, R = any> extends ModalRef<T, R> implements 
   @HostListener('mouseup', ['$event'])
   @HostListener('touchend', ['$event'])
   panend(event) {
-    if (this.option.closable || this.option.maskClosable || this.option.popup) {
+    if (this.option.closable || this.option.maskClosable) {
       if (
         (event && event.target && event.target.getAttribute('role') === 'dialog') ||
         event.target.getAttribute('role') === 'close'
