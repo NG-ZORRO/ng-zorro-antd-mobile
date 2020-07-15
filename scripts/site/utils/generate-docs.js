@@ -23,10 +23,16 @@ module.exports = function generateDocs(rootPath, docsMap) {
 };
 
 function wrapperDocs(toc, title, content, style) {
-  return `<article class="markdown">${title}${toc}
-  <section class="markdown" ngNonBindable>${content}</section>
-  ${style}
-  </article>`
+  if (style) {
+    return `<article class="markdown">${title}${toc}
+    <section class="markdown" ngNonBindable>${content}</section>
+    ${style}
+    </article>`
+  } else {
+    return `<article class="markdown">${title}${toc}
+    <section class="markdown" ngNonBindable>${content}</section>
+    </article>`
+  }
 }
 
 function generateToc(meta, raw) {
