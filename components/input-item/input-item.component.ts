@@ -232,6 +232,8 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     this.setCls();
   }
 
+  @Input() compositionFilter = true;
+
   @Output()
   onChange: EventEmitter<any> = new EventEmitter<any>();
   @Output()
@@ -280,8 +282,9 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   }
 
   inputChange(inputValue: string) {
+    // 'compositionend' is earlier than ngModelChange, Therefore use timer to make ngModelChange runs after 'compositionend' event
     setTimeout(() => {
-      if (this._inputLock && this.inputType === 'text') {
+      if (this.compositionFilter && this._inputLock && this.inputType === 'text') {
         return;
       }
       let value = inputValue;
