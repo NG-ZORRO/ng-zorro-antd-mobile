@@ -31,6 +31,7 @@ Properties | Descrition | Type | Default
 | `[updatePlaceholder]` | Whether to replace the placeholder with cleared content | `boolean` | `false` |
 | `[prefixListCls]` | The class name prefix of list | `string` | `'am-list'` |
 | `[moneyKeyboardAlign]` | Text align direction, only `type='money'` support this api | `'left' \| 'right'` | `'right'` |
+| `[compositionFilter]` | When it is `true` , input mode of PinYin, the value never change before finish input, you can search `compositionstart` event to know more | `boolean` | `true` |
 | `[locale]` | International，can override global configuration,  when`type`is`money`，can cunstom the keyboard confirm item's label | `{ confirmLabel }` | - |
 | `(onErrorClick)` | Callback that is called when the error icon is clicked | `EventEmitter<object>` | - |
 | `(onExtraClick)` | Callback that is called when the extra content is clicked | `EventEmitter<object>` | - |
