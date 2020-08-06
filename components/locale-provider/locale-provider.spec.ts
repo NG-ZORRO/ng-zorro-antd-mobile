@@ -1,7 +1,7 @@
 import { LocaleProviderPipe } from './locale-provider.pipe';
 import { LOCAL_PROVIDER_TOKEN } from './locale-provider.token';
 import { LocaleProviderService } from './locale-provider.service';
-import { ru_RU, zh_CN, en_US, sv_SE, da_DK } from './locale';
+import { ru_RU, zh_CN, en_US, sv_SE, da_DK, pt_BR } from './locale';
 
 describe('Unit: Testing Services', function() {
   describe('Locale-provider Service:', function() {
@@ -37,6 +37,10 @@ describe('Unit: Testing Services', function() {
       service.setLocale(da_DK);
       expect(service.getLocale()).toEqual(da_DK);
       expect(service.getLocaleId()).toEqual('da_DK');
+
+      service.setLocale(pt_BR);
+      expect(service.getLocale()).toEqual(pt_BR);
+      expect(service.getLocaleId()).toEqual('pt_BR');
     });
 
     it('getLocaleId work when locale set wrong', function() {
