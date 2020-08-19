@@ -1,6 +1,11 @@
 <h1>{{title}}<span class="subtitle">{{subtitle}}</span>
   {{start}}
-  <span nz-popover nzTooltipPlacement="bottom" [nzPopoverContent]="contentTemplate" class="edit-button" target="_blank">
+  <span
+    nz-popover
+    nzPopoverPlacement="bottom"
+    class="edit-button"
+    target="_blank"
+    [nzPopoverContent]="contentTemplate">
 		<i nz-icon nzType="qrcode"></i>
   </span>
   {{end}}
