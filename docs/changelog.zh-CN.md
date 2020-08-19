@@ -13,6 +13,20 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 2.0.7(2020-07-20)
+
+### Bug Fixes
+
+* **date-picker-view:** 增加异步数据输入支持 ([#718](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/718)) ([f2748f0](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f2748f0f5ea5624dfa87816a28d91e9bee0f67a8))
+* **drawer:** 修复 drawer 在 tabs 中闪现的问题你 ([#724](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/724)) ([c4b56e0](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/c4b56e02af4f03ecd1f2dfbf921d78feef8503b4))
+* **image-picker:** 修复旋转不生效的问题 ([#717](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/717)) ([364d368](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/364d368e7cbb2f54cf8feab83f51f9ad8f023e55))
+* **modal:** 修复 `maskClosable` 不生效的问题([#722](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/722)) ([8aae09b](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8aae09b5fb315d9c539f82ae2f6b77f9891b6aa1))
+
+
+### Features
+
+* **input-item:** 增加 [compositionFilter] 输入 ([#735](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/735)) ([1d73f30](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/1d73f30ca52454f25ae14e89fb368b80914211d6))
+
 ## 2.0.3(2020-06-15)
 
 ### Bug Fixes
