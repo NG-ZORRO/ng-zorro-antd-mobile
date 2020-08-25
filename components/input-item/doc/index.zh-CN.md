@@ -34,6 +34,7 @@ subtitle: 文本输入
 | `[updatePlaceholder]` | 当清除内容时，是否将清除前的内容替换到 placeholder 中 | `boolean` | `false` |
 | `[prefixListCls]` | 列表 className 前缀 | `string` | `'am-list'` |
 | `[moneyKeyboardAlign]` | 文字排版起始方向, 只有 `type='money'` 支持 | `'left' \| 'right'` | `'right'` |
+| `[compositionFilter]` | 当为 `true` 时, 移动端的拼音输入模式下, 在未完成输入前不会变更值, 可以搜下 `compositionstart` 事件以了解更多 | `boolean` | `true` |
 | `[locale]` | 国际化，可覆盖全局的配置, 当`type`为`money`，可以自定义确认按钮的文案 | `{ confirmLabel }` | - |
 | `[focus]` | 使 input 聚焦 | `{ focus: true }` | - |
 | `(onErrorClick)` | 点击报错 icon 触发的回调函数 | `EventEmitter<object>` | - |
