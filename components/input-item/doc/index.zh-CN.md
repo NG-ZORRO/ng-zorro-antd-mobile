@@ -35,11 +35,11 @@ subtitle: 文本输入
 | `[prefixListCls]` | 列表 className 前缀 | `string` | `'am-list'` |
 | `[moneyKeyboardAlign]` | 文字排版起始方向, 只有 `type='money'` 支持 | `'left' \| 'right'` | `'right'` |
 | `[locale]` | 国际化，可覆盖全局的配置, 当`type`为`money`，可以自定义确认按钮的文案 | `{ confirmLabel }` | - |
+| `[focus]` | 使 input 聚焦 | `{ focus: true }` | - |
 | `(onErrorClick)` | 点击报错 icon 触发的回调函数 | `EventEmitter<object>` | - |
 | `(onExtraClick)` | extra 点击事件触发的回调函数 | `EventEmitter<object>` | - |
 | `(onChange)` | change 事件触发的回调函数 | `EventEmitter<string>` | - |
 | `(onBlur)` | blur 事件触发的回调函数 | `EventEmitter<string>` | - |
 | `(onFocus)` | focus 事件触发的回调函数 | `EventEmitter<string>` | - |
-| `(focus)` | 使 input 聚焦 | `EventEmitter<void>` | - |
 
 > 注意: `InputItem` 当 `type=number` 时不支持输入负号, 你可以利用 `type=text` 来自己实现。
