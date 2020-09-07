@@ -12,7 +12,7 @@ A long list can be divided into several pages by `Pagination`, and only one page
 
 ## API
 
-Properties | Descrition | Type | Default
+Properties | Descrition | Type | Default1
 -----------|------------|------|--------
 | `[mode]` | The mode of `Pagination` | `'button' \| 'number' \| 'pointer'` | `'button'` |
 | `[current]` | Current page index | `number` | `1`  |
