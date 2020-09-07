@@ -33,11 +33,11 @@ Properties | Descrition | Type | Default
 | `[moneyKeyboardAlign]` | Text align direction, only `type='money'` support this api | `'left' \| 'right'` | `'right'` |
 | `[compositionFilter]` | When it is `true` , input mode of PinYin, the value never change before finish input, you can search `compositionstart` event to know more | `boolean` | `true` |
 | `[locale]` | International，can override global configuration,  when`type`is`money`，can cunstom the keyboard confirm item's label | `{ confirmLabel }` | - |
+| `[focus]` | Force focus back onto the input node | `{ focus: true }` | - |
 | `(onErrorClick)` | Callback that is called when the error icon is clicked | `EventEmitter<object>` | - |
 | `(onExtraClick)` | Callback that is called when the extra content is clicked | `EventEmitter<object>` | - |
 | `(onChange)` | Callback that is called when the text input's text changes | `EventEmitter<string>` | - |
 | `(onBlur)` | Callback that is called when the text input is blurred | `EventEmitter<string>` | - |
 | `(onFocus)` | Callback that is called when the text input is focused | `EventEmitter<string>` | - |
-| `(focus)` | Force focus back onto the input node | `EventEmitter<void>` | - |
 
 > Note: `InputItem` does not support negative number if `type` is text, you can use `type=text` to do that.
