@@ -95,7 +95,7 @@
     "less-plugin-clean-css": "^1.5.1",
     "marked": "~0.6.0",
     "ng-packagr": "10.1.0",
-    "ng-zorro-antd": "^9.0.0-beta.3",
+    "ng-zorro-antd": "^10.0.0",
     "ngx-color": "^4.0.0",
     "ngx-infinite-scroll": "~7.1.0",
     "node-prismjs": "^0.1.1",
