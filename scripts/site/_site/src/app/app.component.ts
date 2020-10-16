@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     '2.0.3': '2012.0.3',
     '2.0.7': '2012.0.7'
   };
-  currentVersion = '2.0.7';
+  currentVersion = '3.0.0';
   isHomeURL = true;
   isKitchenURL = false;
   demoTitle = '';
