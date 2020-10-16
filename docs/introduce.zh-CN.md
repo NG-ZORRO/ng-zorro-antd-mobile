@@ -133,7 +133,7 @@ title: Ant Design Mobile of Angular <div class="github-btn"><a class="gh-btn" hr
 
 ## 支持 Angular 版本
 
-目前支持 Angular `^9.0.0` 版本。
+目前支持 Angular `^10.0.0` 版本。
 
 ## 安装
 
