@@ -13,6 +13,14 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 3.0.1(2020-10-16)
+
+### Bug Fixes
+
+* **all:** 支持Angular 10 ([#741](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/741)) ([e81e65c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/e81e65c0b88eb44cf2692b29d7ebe69e1a55d171))
+* **website:** 替换 QRCode ([#739](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/739)) ([b014e17](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b014e1733c8ee5f742388adb830877d2f65925d0))
+* **package.json:** marked 版本升级至 1.1.1 ([#743](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/743)) ([abc11b9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/abc11b94cb5af24fb190d48b3a6ba72192941ddc))
+
 ## 2.0.7(2020-07-20)
 
 ### Bug Fixes

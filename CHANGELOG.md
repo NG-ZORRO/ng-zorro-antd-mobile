@@ -1,3 +1,12 @@
+# [3.0.1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/2.0.7...3.0.0) (2020-10-16)
+
+### Bug Fixes
+
+* **website:** replace QRCode ([#739](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/739)) ([b014e17](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b014e1733c8ee5f742388adb830877d2f65925d0))
+* **package.json:** bump marked from 0.6.3 to 1.1.1 ([#743](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/743)) ([abc11b9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/abc11b94cb5af24fb190d48b3a6ba72192941ddc))
+
+
+
 ## [2.0.7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/2.0.3...2.0.7) (2020-07-20)
 
 
