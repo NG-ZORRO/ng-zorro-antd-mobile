@@ -1,4 +1,4 @@
-# [3.0.0](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/2.0.7...3.0.0) (2020-10-16)
+# [3.0.1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/2.0.7...3.0.0) (2020-10-16)
 
 ### Bug Fixes
 
