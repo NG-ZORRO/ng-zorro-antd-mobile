@@ -13,9 +13,9 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
-## 3.0.1(2020-10-16)
+## 3.0.2(2020-10-20)
 
-### Bug Fixes
+### Features
 
 * **all:** support Angular 10 ([#741](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/741)) ([e81e65c](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/e81e65c0b88eb44cf2692b29d7ebe69e1a55d171))
 * **website:** replace QRCode ([#739](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/739)) ([b014e17](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/b014e1733c8ee5f742388adb830877d2f65925d0))
