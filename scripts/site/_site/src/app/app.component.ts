@@ -19,7 +19,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   docsearch = null;
   kitchenUrl = window.location.origin + '/#/kitchen-sink?lang=zh-CN';
   language = 'zh';
-  versionList = ['0.12.x', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5', '1.0.6', '2.0.1', '2.0.3', '2.0.7', '3.0.2'];
+  versionList = ['0.12.x', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.5', '1.0.6', '2.0.1', '2.0.3', '2.0.7', '3.0.3'];
   versionMap = {
     '0.12.x': '0.12.5',
     '1.0.1': '1.0.11',
@@ -31,9 +31,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     '2.0.1': '2.0.100',
     '2.0.3': '2012.0.3',
     '2.0.7': '2012.0.7',
-    '3.0.2': '2013.0.2'
+    '3.0.3': '2013.0.3'
   };
-  currentVersion = '3.0.2';
+  currentVersion = '3.0.3';
   isHomeURL = true;
   isKitchenURL = false;
   demoTitle = '';
