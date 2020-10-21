@@ -1,3 +1,12 @@
+## [3.0.3](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/3.0.2...3.0.3) (2020-10-21)
+
+
+### Bug Fixes
+
+* **tabbar:** fix title input ts error ([#753](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/753)) ([42b17e2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/42b17e2817e59aaf8b382ae18751db260bfd6fb8))
+
+
+
 # [3.0.2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/2.0.7...3.0.2) (2020-10-20)
 
 ### Features
