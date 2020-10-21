@@ -17,8 +17,6 @@ export class TabBarItemComponent extends TabPaneComponent {
   @Input()
   key: string = '';
   @Input()
-  title: string = '';
-  @Input()
   dot: boolean = false;
   @Input()
   badge: number | string = null;
