@@ -45,6 +45,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit, AfterViewCheck
   cancelCls: object = {
     [`${this.prefixCls}-cancel`]: true
   };
+  isComposing = false;
 
   private _defaultValue: string = '';
   private _value: string = '';
@@ -248,6 +249,10 @@ export class SearchBarComponent implements OnInit, AfterViewInit, AfterViewCheck
       this.setClass();
     }, 100);
     this.onSearchbarFocus();
+  }
+
+  onSetCompositionState(isComposing: boolean) {
+    this.isComposing = isComposing;
   }
 
   writeValue(value: any): void {
