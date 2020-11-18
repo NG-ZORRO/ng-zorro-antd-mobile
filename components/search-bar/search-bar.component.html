@@ -9,7 +9,7 @@
         <i class="{{ prefixCls }}-synthetic-ph-icon"></i>
         <span
           class="{{ prefixCls }}-synthetic-ph-placeholder"
-          [ngStyle]="{ visibility: placeholder && !value ? 'visible' : 'hidden' }"
+          [ngStyle]="{ visibility: placeholder && !isComposing && !value ? 'visible' : 'hidden' }"
         >
           {{ placeholder }}
         </span>
@@ -28,6 +28,8 @@
       (blur)="onSearchbarBlur()"
       (focus)="onSearchbarFocus()"
       (ngModelChange)="onSearchbarChange($event)"
+      (compositionstart)="onSetCompositionState(true)"
+      (compositionend)="onSetCompositionState(false)"
     />
     <a [ngClass]="clearCls" style="box-sizing: content-box;transition: 0s" (click)="onSearchbarClear()"></a>
   </div>
