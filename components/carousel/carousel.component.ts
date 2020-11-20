@@ -496,11 +496,11 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     this.initCarouselSize();
     if (!this._resizeTimer) {
       this.selectedIndex = this.items.length - 1 < this.selectedIndex ? 0 : this.selectedIndex;
-      setTimeout(() => {
-        this.currentSelectedIndex = this.selectedIndex;
-      }, 0);
     }
     const index = this.items.length > 1 ? (this.items.length - 1 === this.selectedIndex ? -1 : this.selectedIndex) : 0;
+    setTimeout(() => {
+      this.currentSelectedIndex = this.selectedIndex;
+    }, 0);
     this.getListStyles(-index * this._rationWidth);
     this.carouselInit(this.items);
     const nativeElement = this._ele.nativeElement;
