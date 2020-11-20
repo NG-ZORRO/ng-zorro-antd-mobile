@@ -59,6 +59,15 @@ describe('StepsComponent', () => {
     );
   });
 
+  it('should current work', () => {
+    component.current = 0;
+    fixture.detectChanges();
+    expect(stepList[0].querySelector('.am-steps-icon').innerText).toBe('1', 'current 1');
+    component.current = 1;
+    fixture.detectChanges();
+    expect(stepList[1].querySelector('.am-steps-icon').innerText).toBe('2', 'current 2');
+  });
+
   it('should step change work', fakeAsync(() => {
     component.isChange = true;
     fixture.detectChanges();
