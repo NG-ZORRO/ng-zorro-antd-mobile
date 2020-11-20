@@ -502,7 +502,6 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     }
     const selectedIndex = this._resizeTimer ? this.currentSelectedIndex : this.selectedIndex;
     const index = this.items.length > 1 ? (this.items.length - 1 === selectedIndex ? -1 : selectedIndex) : 0;
-    console.log(index);
     this.getListStyles(-index * this._rationWidth);
     this.carouselInit(this.items);
     const nativeElement = this._ele.nativeElement;
@@ -513,7 +512,6 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
         if (mutation.type == 'attributes') {
           if (this.slideHeight !== nativeElement.querySelector('carouselslide').clientHeight) {
             this.initCarouselSize();
-            console.log('MutationObserver:' + index);
             this.getListStyles(-index * this._rationWidth);
             this.carouselInit(this.items);
           }
