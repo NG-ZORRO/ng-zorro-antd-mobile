@@ -96,6 +96,28 @@ import { Component, OnInit } from '@angular/core';
             <Step [title]="'Step 3'" [icon]="customIcon"></Step>
           </Steps>
         </div>
+        <div>
+          <div class="sub-title">Switch Step</div>
+        </div>
+        <div>
+          <Steps [direction]="'horizontal'" [current]="current">
+            <Step [title]="'Finished'"></Step>
+            <Step [title]="'In Progress'"></Step>
+            <Step [title]="'Waiting'"></Step>
+          </Steps>
+        </div>
+        <div class="steps-content">{{ index }}</div>
+        <div class="steps-action">
+          <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+            <span>Previous</span>
+          </button>
+          <button nz-button nzType="default" (click)="next()" *ngIf="current < 2">
+            <span>Next</span>
+          </button>
+          <button nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
+            <span>Done</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -153,13 +175,32 @@ import { Component, OnInit } from '@angular/core';
         border-radius: 5px;
         margin: 0 15px 15px 15px;
       }
+      .steps-content {
+        margin-top: 16px;
+        border: 1px dashed #e9e9e9;
+        border-radius: 6px;
+        background-color: #fafafa;
+        min-height: 200px;
+        text-align: center;
+        padding-top: 80px;
+      }
+
+      .steps-action {
+        margin-top: 24px;
+      }
+
+      button {
+        margin-right: 8px;
+      }
     `
   ]
 })
 export class DemoStepsBasicComponent implements OnInit {
   steps = [];
+  current = 0;
+  index = 'First-content';
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.steps = [
@@ -176,5 +217,39 @@ export class DemoStepsBasicComponent implements OnInit {
         description: 'This is description'
       }
     ];
+  }
+
+  pre(): void {
+    this.current -= 1;
+    this.changeContent();
+  }
+
+  next(): void {
+    this.current += 1;
+    this.changeContent();
+  }
+
+  done(): void {
+    console.log('done');
+  }
+
+  changeContent(): void {
+    switch (this.current) {
+      case 0: {
+        this.index = 'First-content';
+        break;
+      }
+      case 1: {
+        this.index = 'Second-content';
+        break;
+      }
+      case 2: {
+        this.index = 'third-content';
+        break;
+      }
+      default: {
+        this.index = 'error';
+      }
+    }
   }
 }
