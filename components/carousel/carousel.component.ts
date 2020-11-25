@@ -500,7 +500,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
         this.currentSelectedIndex = this.selectedIndex;
       }, 0);
     }
-    const index = this.items.length > 1 ? (this.items.length - 1 === this.selectedIndex ? -1 : this.selectedIndex) : 0;
+    const selectedIndex = this._resizeTimer ? this.currentSelectedIndex : this.selectedIndex;
+    const index = this.items.length > 1 ? (this.items.length - 1 === selectedIndex ? -1 : selectedIndex) : 0;
     this.getListStyles(-index * this._rationWidth);
     this.carouselInit(this.items);
     const nativeElement = this._ele.nativeElement;
@@ -517,7 +518,9 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
         }
       }
     };
-
+    if (this._observer) {
+      this._observer.disconnect();
+    }
     this._observer = new MutationObserver(callback);
     this._observer.observe(targetNode, config);
   }
