@@ -1,3 +1,13 @@
+# Rider Club - Development information
+
+Generate the project and then publish to npm a new release : 
+```shell script
+npm run generate
+npm run publish
+```
+
+----
+
 <div align="center" ><img width="300" src="https://gw.alicdn.com/tfs/TB18WVWJpzqK1RjSZSgXXcpAVXa-106-120.svg"></div>
 <br/>
 

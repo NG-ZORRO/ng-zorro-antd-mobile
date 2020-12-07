@@ -11,6 +11,6 @@ fi
 
 DIR_TARGET="$BASE_HOME/$PUBLISH_DIST"
 cd "$DIR_TARGET"
-`npm publish`
+`npm publish --access public`
 echo "publish finish!!!"
 rm -fr "$DIR_TARGET"
