@@ -1,6 +1,6 @@
 {
-  "name": "ng-zorro-antd-mobile",
-  "version": "3.0.3",
+  "name": "@riderclub/ng-zorro-antd-mobile",
+  "version": "3.0.4",
   "description": "An enterprise-class mobile UI components based on Ant Design and Angular",
   "schematics": "./schematics/collection.json",
   "keywords": [
@@ -16,10 +16,10 @@
   "homepage": "https://ng.mobile.ant.design",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NG-ZORRO/ng-zorro-antd-mobile"
+    "url": "https://github.com/riderclub/ng-zorro-antd-mobile"
   },
   "bugs": {
-    "url": "https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues"
+    "url": "https://github.com/riderclub/ng-zorro-antd-mobile/issues"
   },
   "dependencies": {
     "@angular/cdk": "^10.1.3",
