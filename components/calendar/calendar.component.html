@@ -37,9 +37,9 @@
     <CalendarConfirmPanel
       *ngIf="state.startDate"
       [propsData]="props"
+      [disableBtn]="state.disConfirmBtn"
       [startDateTime]="state.startDate"
       [endDateTime]="state.endDate"
-      [disableBtn]="state.disConfirmBtn"
       [formatStr]="props.pickTime ? props.locale.dateTimeFormat : props.locale.dateFormat"
       [onConfirm]="triggerConfirm"
     ></CalendarConfirmPanel>

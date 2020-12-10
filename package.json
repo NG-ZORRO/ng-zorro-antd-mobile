@@ -1,6 +1,6 @@
 {
   "name": "@riderclub/ng-zorro-antd-mobile",
-  "version": "0.0.0-NOT-USED",
+  "version": "1.0.0",
   "description": "An enterprise-class mobile UI components based on Ant Design and Angular",
   "license": "MIT",
   "scripts": {

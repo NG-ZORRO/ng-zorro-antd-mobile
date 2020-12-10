@@ -85,7 +85,9 @@ export class TabBarComponent implements AfterContentInit {
       this.tabBarItems.forEach((tabBarItem: TabBarItemComponent) => {
         tabBarItem.selected = false;
       });
-      this.tabBarItems.toArray()[index].selected = true;
+      if (index && index > -1) {
+        this.tabBarItems.toArray()[index].selected = true;
+      }
     }
   }
 

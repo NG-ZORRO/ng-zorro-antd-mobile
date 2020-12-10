@@ -53,3 +53,5 @@ yarn.lock
 #System Files
 .DS_Store
 Thumbs.db
+/components/node_modules/
+

@@ -1,7 +1,7 @@
 import { DateModels } from '../date/DataTypes';
 import { DatepickerPropsType } from './datepicker.props.component';
 import { formatDate } from '../util';
-import defaultLocale from '../locale/zh_CN';
+import defaultLocale from '../locale/en_US';
 
 export interface DatepickerStateType {
   months: DateModels.MonthData[];
