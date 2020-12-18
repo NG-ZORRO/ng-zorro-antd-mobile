@@ -75,7 +75,13 @@ describe('pagination', () => {
     expect(paginationEle.nativeElement.querySelector('.am-pagination-wrap')).toBeFalsy();
   });
 
-  it('should disabled work', () => {});
+  it('should disabled work', () => {
+    component.disabled = true;
+    component.current = 3;
+    component.total = 6;
+    fixture.detectChanges();
+    expect(paginationEle.nativeElement.querySelector('.am-button-disabled')).toBeTruthy();
+  });
 
   it('should local work', () => {
     nextButton = paginationEle.nativeElement.querySelector('.am-pagination-wrap-btn-next').firstElementChild;
