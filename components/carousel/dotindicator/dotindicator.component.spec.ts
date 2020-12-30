@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DotIndicatorComponent } from './dotindicator.component';
 
@@ -6,7 +6,7 @@ describe('DotindicatorComponent', () => {
   let component: DotIndicatorComponent;
   let fixture: ComponentFixture<DotIndicatorComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [DotIndicatorComponent]
     }).compileComponents();

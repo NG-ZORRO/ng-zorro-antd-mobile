@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { TabBarModule } from './tab-bar.module';
 import { TabsModule } from '../tabs/tabs.module';
 
@@ -10,7 +10,7 @@ describe('tabbar', () => {
   let fixture: ComponentFixture<TestTabBarComponent>;
   let tabBarEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestTabBarComponent],
       imports: [TabBarModule, TabsModule, NoopAnimationsModule, BrowserAnimationsModule]

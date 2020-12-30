@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { DrawerModule } from './drawer.module';
 import { ListModule } from '../list/list.module';
 import { DrawerComponent } from './drawer.component';
@@ -10,7 +10,7 @@ describe('drawer', () => {
   let component;
   let fixture: ComponentFixture<TestDrawerComponent>;
   let drawerEle;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestDrawerComponent],
       imports: [DrawerModule, ListModule]

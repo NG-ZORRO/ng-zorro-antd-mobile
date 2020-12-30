@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { ListModule, PickerModule, PickerComponent, PickerDirective } from '../..';
 import { PickerOptions } from './picker-options.provider';
 import { PickerService } from './picker.service';
@@ -18,7 +18,7 @@ describe('PickerComponent', () => {
   let buttons;
   let pickerEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestPickerBasicComponent],
       providers: [PickerOptions, LocaleProviderService, Overlay],

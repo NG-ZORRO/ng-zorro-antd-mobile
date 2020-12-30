@@ -1,6 +1,6 @@
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { dispatchTouchEvent } from '../core/testing';
 import { TabsComponent } from './tabs.component';
@@ -12,7 +12,7 @@ describe('tab', () => {
   let fixture: ComponentFixture<TestTabsComponent>;
   let tabsEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestTabsComponent],
       imports: [TabsModule, NoopAnimationsModule, BrowserAnimationsModule]

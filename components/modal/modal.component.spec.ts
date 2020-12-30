@@ -1,6 +1,6 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { async, ComponentFixture, fakeAsync, tick, TestBed, flush } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, tick, TestBed, flush, waitForAsync } from '@angular/core/testing';
 import { ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule, ModalRef } from '../..';
 import { By } from '@angular/platform-browser';
 import { ModalService, ModalServiceComponent, ModalComponent } from '../..';
@@ -14,7 +14,7 @@ describe('ModalComponent', () => {
   let modalEle;
   let buttons;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestModalBasicComponent],
       imports: [

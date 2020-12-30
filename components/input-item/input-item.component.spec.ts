@@ -1,6 +1,6 @@
 import { Component, ViewChild, TemplateRef } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { InputItemModule } from './input-item.module';
 import { createFakeEvent, dispatchFakeEvent } from '../core/testing';
 import { InputItemComponent } from './input-item.component';
@@ -13,7 +13,7 @@ describe('InputComponent', () => {
   let inputEle;
   let inputModel;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestInputComponent],
       imports: [InputItemModule, FormsModule]

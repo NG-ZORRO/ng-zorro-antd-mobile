@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PullToRefreshModule } from './pull-to-refresh.module';
 import { IconModule } from '../icon/icon.module';
@@ -12,7 +12,7 @@ describe('PullToRefreshComponent', () => {
   let fixture: ComponentFixture<TestPullToRefreshComponent>;
   let pullToRefreshEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestPullToRefreshComponent],
       imports: [PullToRefreshModule, IconModule, FormsModule, ReactiveFormsModule]

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { StepperModule } from './stepper.module';
 
 describe('StepperComponent', () => {
@@ -12,7 +12,7 @@ describe('StepperComponent', () => {
   let upButton;
   let downButton;
   let inputEle;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestStepperComponent],
       imports: [StepperModule, FormsModule]

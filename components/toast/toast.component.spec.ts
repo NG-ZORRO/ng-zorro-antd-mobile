@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ToastService } from './toast.service';
 import { ToastComponent } from './toast.component';
 import { ToastModule } from './toast.module';
@@ -14,7 +14,7 @@ describe('ToastComponent', () => {
   let toastEle1;
   let buttons;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestToastComponent],
       imports: [IconModule, ToastModule, ButtonModule]

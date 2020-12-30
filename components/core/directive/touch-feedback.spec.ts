@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { dispatchTouchEvent } from '../testing';
 import { TouchFeedbackModule } from './touch-feedback.module';
 import { CarouselModule, FlexModule, IconModule, GridModule } from '../../..';
@@ -9,7 +9,7 @@ describe('TouchFeedbackDirective', () => {
   let fixture: ComponentFixture<TouchFeedbackDirectiveComponent>;
   let gridEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TouchFeedbackDirectiveComponent],
       imports: [TouchFeedbackModule, GridModule, FlexModule]

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { CardModule } from './card.module';
 
 describe('CardComponent', () => {
@@ -8,7 +8,7 @@ describe('CardComponent', () => {
   let fixture: ComponentFixture<TestCardComponent>;
   let cardEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestCardComponent],
       imports: [CardModule]

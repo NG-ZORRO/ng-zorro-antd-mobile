@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { PaginationModule } from './pagination.module';
 import { IconModule } from '../icon/icon.module';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
@@ -13,7 +13,7 @@ describe('pagination', () => {
   let prevButton;
   let nextButton;
   let wrapper;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestPaginationComponent],
       imports: [PaginationModule, IconModule, LocaleProviderModule]

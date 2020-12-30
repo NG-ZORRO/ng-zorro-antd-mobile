@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NavBarModule, IconModule } from '../..';
 
 describe('NavBarComponent', () => {
@@ -8,7 +8,7 @@ describe('NavBarComponent', () => {
   let fixture: ComponentFixture<TestNavBarBasicComponent>;
   let navBarEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestNavBarBasicComponent],
       imports: [NavBarModule, IconModule]

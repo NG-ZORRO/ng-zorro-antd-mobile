@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { RangeModule } from './range.module';
 import { dispatchMouseEvent } from '../core/testing';
 
@@ -12,7 +12,7 @@ describe('RangeComponent', () => {
   let amSlider;
   let sliderHandler;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestRangeComponent],
       imports: [RangeModule, FormsModule]
@@ -121,7 +121,7 @@ describe('RangeModelComponent', () => {
   let amSlider;
   let sliderHandler;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestRangeModelComponent],
       imports: [RangeModule, FormsModule]

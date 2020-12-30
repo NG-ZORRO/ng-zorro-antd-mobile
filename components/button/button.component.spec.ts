@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
 import { ButtonModule } from './button.module';
 import { IconModule, WingBlankModule, WhiteSpaceModule, ListModule } from '../..';
@@ -13,7 +13,7 @@ describe('button', () => {
 
   describe('basic', () => {
     let buttons;
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [TestButtonComponent],
         imports: [ButtonModule, IconModule, WingBlankModule, WhiteSpaceModule, ListModule]

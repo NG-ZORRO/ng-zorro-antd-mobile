@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { PopoverComponentOptions } from './popover-component-options.provider';
 import { PopoverModule, IconModule, PopoverItemModule } from '../..';
 import { dispatchTouchEvent } from '../core/testing';
@@ -12,7 +12,7 @@ describe('PopoverComponent', () => {
   let button;
   let popoverEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestPopoverComponent],
       providers: [PopoverComponentOptions, PopoverOptions],

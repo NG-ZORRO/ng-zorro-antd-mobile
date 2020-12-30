@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ProgressModule } from './progress.module';
 
 describe('ProgressComponent', () => {
@@ -8,7 +8,7 @@ describe('ProgressComponent', () => {
   let fixture: ComponentFixture<TestProgressComponent>;
   let progressEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestProgressComponent],
       imports: [ProgressModule]

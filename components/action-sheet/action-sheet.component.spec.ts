@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flush, waitForAsync } from '@angular/core/testing';
 import { ActionSheetComponent } from './action-sheet.component';
 import { ActionSheet, ActionSheetModule, ButtonModule, ActionSheetRef } from '../..';
 import { NgZorroAntdMobilePipesModule } from '../pipes/ng-zorro-antd-mobile.pipes.module';
@@ -12,7 +12,7 @@ describe('ActionSheetComponent', () => {
   let buttons;
   let actionSheetEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestActionSheetBasicComponent],
       imports: [NgZorroAntdMobilePipesModule, ActionSheetModule, ButtonModule],

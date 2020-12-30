@@ -1,6 +1,6 @@
-import { Component, ContentChild, TemplateRef } from '@angular/core';
+import { Component, ContentChild, OnInit, TemplateRef } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IconModule } from '../icon/icon.module';
 import { NoticeBarModule } from './notice-bar.module';
 
@@ -9,7 +9,7 @@ describe('NoticeBarComponent', () => {
   let fixture: ComponentFixture<TestNoticeBarComponent>;
   let noticeBarEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestNoticeBarComponent],
       imports: [IconModule, NoticeBarModule]
@@ -67,21 +67,25 @@ describe('NoticeBarComponent', () => {
     </NoticeBar>
   `
 })
-export class TestNoticeBarComponent {
+export class TestNoticeBarComponent implements OnInit {
   @ContentChild('iconDom')
   icon: TemplateRef<void>;
   @ContentChild('action')
   action: TemplateRef<void>;
-  option = {
-    content:
-      '我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！',
-    fontSize: '24px',
-    icon: this.icon,
-    action: this.action,
-    mode: 'closable',
-    scrolling: true,
-    marqueeProps: { loop: true, leading: 500, trailing: 8000, fps: 200, style: {} }
-  };
+  option: any;
+
+  ngOnInit() {
+    this.option = {
+      content:
+        '我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！我是小黄条，小黄条的小，小黄条的黄，小黄条的条，请多多关照！！！',
+      fontSize: '24px',
+      icon: this.icon,
+      action: this.action,
+      mode: 'closable',
+      scrolling: true,
+      marqueeProps: { loop: true, leading: 500, trailing: 8000, fps: 200, style: {} }
+    };
+  }
 
   onClick() {
     console.log('1');

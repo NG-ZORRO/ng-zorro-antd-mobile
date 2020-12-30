@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { SearchBarModule } from './search-bar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
@@ -15,7 +15,7 @@ describe('SearchBarComponent', () => {
   let formEle;
   let buttonEle;
   let cancelEle;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestSearchBarComponent],
       imports: [SearchBarModule, BrowserAnimationsModule, LocaleProviderModule, FormsModule]

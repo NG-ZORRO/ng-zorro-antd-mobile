@@ -1,7 +1,7 @@
 import { OnInit, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SliderModule } from './slider.module';
 import { dispatchMouseEvent, dispatchTouchEvent } from '../core/testing';
 
@@ -15,7 +15,7 @@ describe('SliderComponent', () => {
   let sliderSteps;
   let sliderMarks;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestSliderComponent],
       imports: [SliderModule, FormsModule]
