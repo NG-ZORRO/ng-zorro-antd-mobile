@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { WhiteSpaceModule } from './white-space.module';
 
 describe('WhiteSpace', () => {
@@ -8,7 +8,7 @@ describe('WhiteSpace', () => {
   let fixture: ComponentFixture<TestWhiteSpaceComponent>;
   let WhiteSpaceEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [WhiteSpaceModule],
       declarations: [TestWhiteSpaceComponent]

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { TextareaItemModule } from './textarea-item.module';
 import { TextareaItemComponent } from './textarea-item.component';
 import { dispatchFakeEvent } from '../core/testing';
@@ -15,7 +15,7 @@ describe('TextareaComponent', () => {
   let textareaItem;
   let textareaModel;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestTextareaItemComponent],
       imports: [TextareaItemModule, FormsModule]

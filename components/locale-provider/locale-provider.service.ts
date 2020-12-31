@@ -5,7 +5,7 @@ import zh_CN from './locale/zh_CN';
 
 @Injectable()
 export class LocaleProviderService {
-  private _locale: any;
+  private _locale: any = undefined;
   private _change = new BehaviorSubject<any>(this._locale);
 
   constructor(@Inject(LOCAL_PROVIDER_TOKEN) locale: any) {

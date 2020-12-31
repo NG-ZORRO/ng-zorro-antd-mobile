@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { CustomInputComponent } from './custom-input.component';
 import { InputItemModule } from '../input-item.module';
 import { CustomInputService } from './custom-input.service';
@@ -9,7 +9,7 @@ describe('custom-input', () => {
   let fixture: ComponentFixture<CustomInputComponent>;
   let keyboard;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [InputItemModule, LocaleProviderModule],
       providers: [CustomInputService]

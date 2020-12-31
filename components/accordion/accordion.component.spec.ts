@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, fakeAsync, tick, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, tick, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from './accordion.module';
 import { AccordionComponent } from './accordion.component';
@@ -12,7 +12,7 @@ describe('AccordionComponent', () => {
   let fixture: ComponentFixture<TestAccordionComponent>;
   let accordionEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestAccordionComponent],
       imports: [BrowserAnimationsModule, AccordionModule, WhiteSpaceModule],

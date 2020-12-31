@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { DatePickerViewModule } from './date-picker-view.module';
 import { DatePickerOptions, DatePickerModule } from '../date-picker/index';
 import { LocaleProviderService, LocaleProviderModule, ToastModule, Toast, ToastComponent } from '../..';
@@ -14,7 +14,7 @@ describe('DatePickerViewComponent', () => {
 
   let service: LocaleProviderService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     // service = new LocaleProviderService(LOCAL_PROVIDER_TOKEN);
     // service.setLocale(zh_CN);
     TestBed.configureTestingModule({

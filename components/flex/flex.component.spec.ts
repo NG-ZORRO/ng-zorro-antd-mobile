@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { FlexModule } from './flex.module';
 
 describe('Flex', () => {
@@ -8,7 +8,7 @@ describe('Flex', () => {
   let fixture;
   let activityEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestFlexComponent],
       imports: [FlexModule]

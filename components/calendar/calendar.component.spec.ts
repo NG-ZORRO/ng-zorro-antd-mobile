@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { LocaleProviderService } from '../locale-provider/locale-provider.service';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
 import { ModalModule } from '../modal/modal.module';
@@ -16,7 +16,7 @@ describe('CalendarComponent', () => {
   let fixture: ComponentFixture<TestCalendarBasicComponent>;
   let calendarEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestCalendarBasicComponent],
       providers: [LocaleProviderService],

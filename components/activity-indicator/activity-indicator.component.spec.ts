@@ -1,13 +1,13 @@
 import { Component, OnDestroy } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { ActivityIndicatorModule } from './activity-indicator.module';
 
 describe('activity-indicator', () => {
   let component;
   let fixture;
   let activityEle;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestActivityIndicatorComponent],
       imports: [ActivityIndicatorModule]

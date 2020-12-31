@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ImagePickerModule } from './image-picker.module';
 import { ImagePickerComponent } from './image-picker.component';
 
@@ -18,7 +18,7 @@ describe('ImagePicker', () => {
   let fixture: ComponentFixture<TestImagePickerComponent>;
   let ImagePickers;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ImagePickerModule],
       declarations: [TestImagePickerComponent]

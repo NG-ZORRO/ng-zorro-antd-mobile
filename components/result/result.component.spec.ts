@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ResultModule } from './result.module';
 import { ButtonModule } from '../button/button.module';
 
@@ -10,7 +10,7 @@ describe('Result', () => {
     let fixture: ComponentFixture<TestResultComponent>;
     let results;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [ResultModule, ButtonModule],
         declarations: [TestResultComponent]

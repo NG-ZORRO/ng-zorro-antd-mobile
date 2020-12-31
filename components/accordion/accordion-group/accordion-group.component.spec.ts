@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionService } from '../accordion.service';
 import { AccordionGroupComponent } from './accordion-group.component';
@@ -8,7 +8,7 @@ describe('AccordionGroupComponent', () => {
   let component: AccordionGroupComponent;
   let fixture: ComponentFixture<AccordionGroupComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AccordionGroupComponent],
       imports: [BrowserAnimationsModule, NgZorroAntdMobilePipesModule],

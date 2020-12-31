@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MenuModule } from './menu.module';
 import { MenuComponent } from './menu.component';
 import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
@@ -11,7 +11,7 @@ describe('MenuComponent', () => {
   let fixture: ComponentFixture<TestMenuComponent>;
   let menuEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestMenuComponent],
       imports: [MenuModule, LocaleProviderModule]

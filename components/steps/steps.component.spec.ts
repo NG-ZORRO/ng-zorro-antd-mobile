@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { StepsModule } from './steps.module';
 import { StepStatusEnum, StepDirectionEnum } from './step/step.component';
 
@@ -10,7 +10,7 @@ describe('StepsComponent', () => {
   let stepsEle;
   let stepList;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestStepsComponent],
       imports: [StepsModule]

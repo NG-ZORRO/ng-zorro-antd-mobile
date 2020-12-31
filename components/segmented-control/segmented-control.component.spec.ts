@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SegmentedControlModule } from './segmented-control.module';
 
 describe('segmented-control', () => {
@@ -8,7 +8,7 @@ describe('segmented-control', () => {
   let fixture: ComponentFixture<TestSegmentedControlComponent>;
   let segmentedControlEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestSegmentedControlComponent],
       imports: [SegmentedControlModule]

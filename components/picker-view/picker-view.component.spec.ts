@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { PickerViewModule } from './picker-view.module';
 import { PickerOptions } from '../picker/picker-options.provider';
 import { LocaleProviderService, LocaleProviderModule } from '../..';
@@ -12,7 +12,7 @@ describe('PickerViewComponent', () => {
   let pickerEle;
   let pickerEleForNgModel;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestPickerViewBasicComponent],
       imports: [PickerViewModule, LocaleProviderModule, FormsModule],

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { async, ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flush, waitForAsync } from '@angular/core/testing';
 import { SwitchModule } from './switch.module';
 import { IconModule } from '../icon/icon.module';
 import { By } from '@angular/platform-browser';
@@ -11,7 +11,7 @@ describe('SwitchComponent', () => {
   let switchEle;
   let inputEle;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestSwitchComponent],
       imports: [SwitchModule, IconModule, FormsModule]
