@@ -13,6 +13,19 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 4.0.0(2020-12-31)
+
+### Features
+
+* **all:** 升级至 Angular 11 ([#773](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/773)) ([7917100](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7917100cfc2d5c81ca18ddc47cbccd748e06de95))
+
+### Bug Fixes
+
+* **carousel:** 修复激活slider尺寸自适应引发的错误 ([#767](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/767)) ([a6ae246](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/a6ae24679362b70e1f3dc4f5b6516c5b8cbeb46e))
+* **pagination:** 增加 disabled 支持 ([#772](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/772)) ([d798cc9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/d798cc9c7c1ca508d9fdf3165825577451e1b814))
+* **radio:** 修复不使用list wrapper时listitem无法点击的问题 ([#756](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/756)) ([9089a24](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/9089a247eebb631b48c24290f65febbbcf860ac8))
+* **steps:** 增加 current 支持 ([#762](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/762)) ([60d6b54](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/60d6b54860b857c12fe08eea9c3aea4d9b84ed81))
+
 ## 3.0.3(2020-10-21)
 
 ### Features

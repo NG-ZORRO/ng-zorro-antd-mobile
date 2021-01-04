@@ -13,6 +13,19 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 4.0.0(2020-12-31)
+
+### Features
+
+* **all:** support Angular 11 ([#773](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/773)) ([7917100](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7917100cfc2d5c81ca18ddc47cbccd748e06de95))
+
+### Bug Fixes
+
+* **carousel:** fix when resize active slider error show ([#767](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/767)) ([a6ae246](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/a6ae24679362b70e1f3dc4f5b6516c5b8cbeb46e))
+* **pagination:** add disabled support ([#772](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/772)) ([d798cc9](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/d798cc9c7c1ca508d9fdf3165825577451e1b814))
+* **radio:** fix listitem can't click when not using list wraper ([#756](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/756)) ([9089a24](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/9089a247eebb631b48c24290f65febbbcf860ac8))
+* **steps:** add current support ([#762](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/762)) ([60d6b54](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/60d6b54860b857c12fe08eea9c3aea4d9b84ed81))
+
 ## 3.0.3(2020-10-21)
 
 ### Features
