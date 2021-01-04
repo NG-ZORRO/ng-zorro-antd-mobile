@@ -75,7 +75,7 @@ describe('RangeComponent', () => {
     const sliderHandlerNodeList = rangeEle.nativeElement.querySelectorAll('sliderhandle');
     dispatchMouseEvent(sliderHandlerNodeList[0], 'mousedown');
     fixture.detectChanges();
-    dispatchMouseEvent(document, 'mousemove', 600);
+    dispatchMouseEvent(document, 'mousemove', 10000);
     fixture.detectChanges();
     dispatchMouseEvent(document, 'mouseup');
     sliderHandler = rangeEle.nativeElement.querySelectorAll('.am-slider-handle');
@@ -89,7 +89,7 @@ describe('RangeComponent', () => {
     const sliderHandlerNodeList = rangeEle.nativeElement.querySelectorAll('sliderhandle');
     dispatchMouseEvent(sliderHandlerNodeList[0], 'mousedown');
     fixture.detectChanges();
-    dispatchMouseEvent(document, 'mousemove', 600);
+    dispatchMouseEvent(document, 'mousemove', 10000);
     fixture.detectChanges();
     dispatchMouseEvent(document, 'mouseup');
     sliderHandler = rangeEle.nativeElement.querySelectorAll('.am-slider-handle');
