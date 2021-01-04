@@ -78,7 +78,7 @@
     "classlist.js": "^1.1.20150312",
     "codecov": "^3.0.0",
     "codelyzer": "^6.0.1",
-    "conventional-changelog-cli": "^2.0.1",
+    "conventional-changelog-cli": "^2.1.1",
     "core-js": "^2.5.4",
     "fs-extra": "~7.0.1",
     "husky": "^2.1.0",
