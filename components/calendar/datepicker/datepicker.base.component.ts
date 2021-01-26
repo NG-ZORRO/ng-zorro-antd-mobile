@@ -1,7 +1,7 @@
 import { DateModels } from '../date/DataTypes';
 import { DatepickerPropsType } from './datepicker.props.component';
-import { formatDate } from '../util';
 import defaultLocale from '../locale/en_US';
+import { WEEK_START } from '../util';
 
 export interface DatepickerStateType {
   months: DateModels.MonthData[];
@@ -93,8 +93,8 @@ export class CalendarDatePickerBaseComponent {
     let currentWeek: DateModels.CellData[] = [];
     weeks.push(currentWeek);
 
-    let startWeekday = currentDay.getDay();
-    if (startWeekday > 0) {
+    let startWeekday = (currentDay.getDay() + 7 - WEEK_START) % 7;
+    if (startWeekday > WEEK_START) {
       for (let i = 0; i < startWeekday; i++) {
         currentWeek.push({} as DateModels.CellData);
       }
@@ -127,10 +127,9 @@ export class CalendarDatePickerBaseComponent {
     if (!date) {
       date = new Date();
     }
-    const { locale } = this.props;
     const { firstDate, lastDate } = this.getMonthDate(date, addMonth);
     const weeks = this.genWeekData(firstDate);
-    const title = formatDate(firstDate, locale ? locale.monthTitle : 'yyyy/MM', this.props.locale);
+    const title = firstDate.toLocaleString(undefined, { month: 'long', year: 'numeric' });
     const data = {
       title,
       firstDate,

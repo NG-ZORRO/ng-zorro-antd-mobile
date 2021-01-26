@@ -42,20 +42,20 @@ export class CalendarSingleMonthComponent implements OnInit, AfterViewInit {
       const extra = (getDateExtra && getDateExtra(new Date(day.tick))) || {};
       let info = extra.info;
       const disable = extra.disable || day.outOfDate;
+      const readonly = extra.readonly;
 
       let cls = 'date';
       let lCls = 'left';
       let rCls = 'right';
       let infoCls = 'info';
 
-      if (dayOfWeek === 0 || dayOfWeek === 6) {
-        cls += ' grey';
-      }
-
       if (disable) {
         cls += ' disable';
       } else if (info) {
         cls += ' important';
+      }
+      if (readonly) {
+        cls += ' readonly';
       }
 
       if (day.selected) {
@@ -129,6 +129,7 @@ export class CalendarSingleMonthComponent implements OnInit, AfterViewInit {
         info,
         extra,
         disable,
+        readonly,
         onCellClick: onCellClick,
         monthData
       };
@@ -152,7 +153,7 @@ export class CalendarSingleMonthComponent implements OnInit, AfterViewInit {
   }
 
   onClickCell(item) {
-    if (!item.disable && item.onCellClick) {
+    if (!item.disable && !item.readonly && item.onCellClick) {
       item.onCellClick(item.day, item.monthData);
     }
   }

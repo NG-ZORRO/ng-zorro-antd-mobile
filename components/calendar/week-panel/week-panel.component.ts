@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { DateModels } from '../date/DataTypes';
+import { WEEK_START } from '../util';
 
 @Component({
   selector: 'CalendarWeekPanel, nzm-calendar-week-panel',
@@ -9,6 +10,7 @@ import { DateModels } from '../date/DataTypes';
 export class CalendarWeekPanelComponent implements OnInit {
   constructor() {}
 
+  readonly WEEK_START = WEEK_START;
   week: string[] = ['日', '一', '二', '三', '四', '五', '六'];
 
   private _locale: DateModels.Locale;

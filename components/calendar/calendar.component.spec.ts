@@ -73,11 +73,11 @@ describe('CalendarComponent', () => {
   });
 
   it('should ngModel one', () => {
-    component.state.date = new Date(2018, 8, 2);
+    component.state.date = new Date(2018, 8, 3);
     component.state.show = true;
-    component.state.now = new Date(2018, 8, 2);
+    component.state.now = new Date(2018, 8, 3);
     component.state.type = 'one';
-    const displayDay = '2';
+    const displayDay = '3';
     fixture.detectChanges();
     calendarEle.nativeElement
       .querySelectorAll('.date .row')[1]
@@ -91,11 +91,11 @@ describe('CalendarComponent', () => {
   });
 
   it('should write ngModel one', () => {
-    component.state.date = new Date(2018, 8, 2);
-    component.state.now = new Date(2018, 8, 2);
+    component.state.date = new Date(2018, 8, 3);
+    component.state.now = new Date(2018, 8, 3);
     component.state.type = 'one';
     component.state.show = true;
-    const displayDay = '2';
+    const displayDay = '3';
     fixture.detectChanges();
     calendarEle.nativeElement
       .querySelectorAll('.date .row')[1]
@@ -129,13 +129,13 @@ describe('CalendarComponent', () => {
 
   it('should write ngModel one throw error 1', () => {
     component.state.date = [
-      new Date(2018, 8, 2),
-      new Date(new Date(2018, 8, 2).getFullYear(), new Date(2018, 8, 2).getMonth(), new Date(2018, 8, 2).getDate() + 1)
+      new Date(2018, 8, 3),
+      new Date(new Date(2018, 8, 3).getFullYear(), new Date(2018, 8, 3).getMonth(), new Date(2018, 8, 3).getDate() + 1)
     ];
-    component.state.now = new Date(2018, 8, 2);
+    component.state.now = new Date(2018, 8, 3);
     component.state.type = 'one';
     component.state.show = true;
-    const displayDay = '2';
+    const displayDay = '3';
     fixture.detectChanges();
     calendarEle.nativeElement
       .querySelectorAll('.date .row')[1]
@@ -150,10 +150,10 @@ describe('CalendarComponent', () => {
 
   it('should write ngModel one throw error 2', () => {
     component.state.date = [];
-    component.state.now = new Date(2018, 8, 2);
+    component.state.now = new Date(2018, 8, 3);
     component.state.type = 'one';
     component.state.show = true;
-    const displayDay = '2';
+    const displayDay = '3';
     fixture.detectChanges();
     calendarEle.nativeElement
       .querySelectorAll('.date .row')[1]
@@ -168,13 +168,13 @@ describe('CalendarComponent', () => {
 
   it('should ngModel range', () => {
     component.state.show = true;
-    component.state.now = new Date(2018, 8, 2);
+    component.state.now = new Date(2018, 8, 3);
     component.state.type = 'range';
     component.state.date = [
-      new Date(2018, 8, 2),
-      new Date(new Date(2018, 8, 2).getFullYear(), new Date(2018, 8, 2).getMonth(), new Date(2018, 8, 2).getDate() + 1)
+      new Date(2018, 8, 3),
+      new Date(new Date(2018, 8, 3).getFullYear(), new Date(2018, 8, 3).getMonth(), new Date(2018, 8, 3).getDate() + 1)
     ];
-    const displayDay = '2';
+    const displayDay = '3';
     fixture.detectChanges();
     calendarEle.nativeElement
       .querySelectorAll('.date .row')[1]
@@ -215,13 +215,13 @@ describe('CalendarComponent', () => {
 
   it('should write ngModel range', () => {
     component.state.show = true;
-    component.state.now = new Date(2018, 8, 2);
+    component.state.now = new Date(2018, 8, 3);
     component.state.type = 'range';
     component.state.date = [
-      new Date(2018, 8, 2),
-      new Date(new Date(2018, 8, 2).getFullYear(), new Date(2018, 8, 2).getMonth(), new Date(2018, 8, 2).getDate() + 1)
+      new Date(2018, 8, 3),
+      new Date(new Date(2018, 8, 3).getFullYear(), new Date(2018, 8, 3).getMonth(), new Date(2018, 8, 3).getDate() + 1)
     ];
-    const displayDay = '2';
+    const displayDay = '3';
     fixture.detectChanges();
     calendarEle.nativeElement
       .querySelectorAll('.date .row')[1]
@@ -242,8 +242,8 @@ describe('CalendarComponent', () => {
     component.state.show = true;
     component.state.now = new Date(2018, 8, 10);
     component.state.type = 'range';
-    component.state.date = [new Date(2018, 8, 10), new Date(2018, 8, 2)];
-    const displayDay = '2';
+    component.state.date = [new Date(2018, 8, 10), new Date(2018, 8, 3)];
+    const displayDay = '3';
     fixture.detectChanges();
     calendarEle.nativeElement
       .querySelectorAll('.date .row')[3]
@@ -345,9 +345,9 @@ describe('CalendarComponent', () => {
   it('should change type', () => {
     component.state.show = true;
     component.state.type = 'one';
-    component.state.now = new Date(2018, 8, 2);
-    component.state.mimDate = new Date(2018, 8, 2);
-    component.state.maxDate = new Date(2018, 8, 2);
+    component.state.now = new Date(2018, 8, 3);
+    component.state.mimDate = new Date(2018, 8, 3);
+    component.state.maxDate = new Date(2018, 8, 3);
     fixture.detectChanges();
     calendarEle.nativeElement
       .querySelectorAll('.date .row')[1]
@@ -363,9 +363,9 @@ describe('CalendarComponent', () => {
   it('should change type and close', () => {
     component.state.show = true;
     component.state.type = 'one';
-    component.state.now = new Date(2018, 8, 2);
-    component.state.mimDate = new Date(2018, 8, 2);
-    component.state.maxDate = new Date(2018, 8, 2);
+    component.state.now = new Date(2018, 8, 3);
+    component.state.mimDate = new Date(2018, 8, 3);
+    component.state.maxDate = new Date(2018, 8, 3);
     fixture.detectChanges();
     calendarEle.nativeElement
       .querySelectorAll('.date .row')[1]

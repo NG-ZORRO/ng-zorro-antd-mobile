@@ -1,5 +1,7 @@
 import { DateModels } from '../date/DataTypes';
 
+export const WEEK_START = 1;
+
 export const mergeDateTime = (date?: Date, time?: Date) => {
   date = date || new Date();
   if (!time) {

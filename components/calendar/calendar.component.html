@@ -1,9 +1,10 @@
 <span *ngIf="isShow">
-  <div class="{{ 'mask ' + maskAnimateClass }}"></div>
+  <div [ngClass]="{ 'mask-inline': props.inline }" class="{{ 'mask ' + maskAnimateClass }}"></div>
 </span>
 <span *ngIf="isShow">
-  <div class="{{ 'content animate ' + contentAnimateClass }}">
+  <div [ngClass]="{ 'content-inline': props.inline }" class="{{ 'content animate ' + contentAnimateClass }}">
     <CalendarHeader
+      *ngIf="props.showHeader && !props.inline"
       [locale]="props.locale"
       [closeIcon]="closeIconHtml"
       [showClear]="showClear"

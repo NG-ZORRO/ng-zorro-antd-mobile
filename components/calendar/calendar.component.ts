@@ -48,6 +48,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   props = {
     visible: false,
     showHeader: true,
+    inline: false,
     locale: zhCN,
     pickTime: false,
     showShortcut: false,
@@ -120,6 +121,10 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     }
   }
   @Input()
+  set inline(value) {
+    this.props.inline = value;
+  }
+  @Input()
   set getDateExtra(value) {
     this.props.getDateExtra = value;
   }
@@ -142,6 +147,10 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   @Input()
   set type(value) {
     this.props.type = value;
+  }
+  @Input()
+  set showHeader(value) {
+    this.props.showHeader = value;
   }
   @Input()
   set showShortcut(value) {

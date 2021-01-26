@@ -51,6 +51,7 @@ export namespace DateModels {
     disable?: boolean;
     cellCls?: any;
     cellRender?: any;
+    readonly?: boolean;
   }
 
   export interface MonthData {
