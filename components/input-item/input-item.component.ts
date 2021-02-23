@@ -78,9 +78,9 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
         this._type = 'tel';
       } else if (value === 'password') {
         this._type = 'password';
-      } else if (value === 'digit') {
+      } else if (value === 'digit' || value === 'number') {
         this._type = 'number';
-      } else if (value !== 'text' && value !== 'number') {
+      } else {
         this._type = value;
       }
       if (value === 'number') {
@@ -260,13 +260,14 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     this._el = element.nativeElement;
   }
 
-  _onChange = (_: any) => { };
+  _onChange = (_: any) => {};
 
   setCls() {
     if (
-      this.lableRef.nativeElement.children.length > 0 ||
-      (this.lableRef.nativeElement && this.lableRef.nativeElement.innerText !== '') ||
-      this._content != undefined
+      this.lableRef &&
+      (this.lableRef.nativeElement.children.length > 0 ||
+        (this.lableRef.nativeElement && this.lableRef.nativeElement.innerText !== '') ||
+        this._content != undefined)
     ) {
       this.labelCls = {
         [`${this.prefixCls}-label`]: true,
@@ -384,7 +385,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: any): void { }
+  registerOnTouched(fn: any): void {}
 
   ngOnInit() {
     this.setCls();
