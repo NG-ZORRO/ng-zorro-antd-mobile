@@ -28,6 +28,16 @@
     overflow: hidden;
     padding: 2 * @hd 0;
 
+    &.@{inputPrefixCls}-label-required:before {
+      display: inline-block;
+      margin-right: 4px;
+      color: #ff4d4f;
+      font-size: 14px;
+      font-family: SimSun, sans-serif;
+      line-height: 1;
+      content: '*';
+    }
+
     &.@{inputPrefixCls}-label-2 {
       width: 2 * @input-label-width;
     }

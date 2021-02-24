@@ -61,11 +61,20 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
   private _fontColor: string;
   private _content: string | TemplateRef<any> = '';
   private _inputLock = false;
+  private _nzRequired = false;
 
   @ViewChild('lableContent', { static: true })
   lableRef: ElementRef;
   @ViewChild('inputElement')
   inputElementRef: ElementRef;
+
+  @Input()
+  get nzRequired(): boolean {
+    return this._nzRequired;
+  }
+  set nzRequired(value: boolean) {
+    this._nzRequired = value;
+  }
 
   @Input()
   get type(): NzmInputType {
@@ -271,6 +280,7 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
     ) {
       this.labelCls = {
         [`${this.prefixCls}-label`]: true,
+        [`${this.prefixCls}-label-required`]: this.nzRequired,
         [`${this.prefixCls}-label-2`]: this._labelNumber === 2,
         [`${this.prefixCls}-label-3`]: this._labelNumber === 3,
         [`${this.prefixCls}-label-4`]: this._labelNumber === 4,
