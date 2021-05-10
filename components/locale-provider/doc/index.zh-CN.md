@@ -16,7 +16,7 @@ type: Other
 ```typescript
 
 /** 配置 ng-zorro-antd-mobile 国际化 **/
-import { LOCAL_PROVIDER_TOKEN, en_US } from 'ng-zorro-antd-mobile-mobile';
+import { LOCAL_PROVIDER_TOKEN, en_US } from 'ng-zorro-antd-mobile';
 
 @NgModule({
   ...
