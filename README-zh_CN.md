@@ -27,7 +27,7 @@
 - UI 样式高度可配置，拓展性更强，轻松适应各类产品风格
 - 使用 **TypeScript** 开发，提供类型定义文件，支持类型及属性智能提示，方便业务开发
 - 提供 "组件按需加载" / "Web 页面高清显示" / "SVG Icon" 等优化方案，一体式开发
-- 支持在Ionic中运行[[指南]](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/4)
+- 支持在 Ionic 中运行[[指南]](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/4)
 
 ## 支持环境
 
@@ -38,7 +38,7 @@
 
 ## Angular 支持
 
-现在支持 Angular `^10.0.0`.
+现在支持 Angular `^11.0.0`.
 
 ## 安装
 
@@ -50,12 +50,12 @@ $ cd PROJECT_NAME
 $ ng add ng-zorro-antd-mobile
 ```
 
-> 如果你想了解更多CLI工具链的功能和命令，建议访问 [Angular CLI](https://github.com/angular/angular-cli) 了解更多
+> 如果你想了解更多 CLI 工具链的功能和命令，建议访问 [Angular CLI](https://github.com/angular/angular-cli) 了解更多
 
 ## 链接
 
 - [首页](https://ng.mobile.ant.design)
-- [Angular官方文档](https://angular.io/)
+- [Angular 官方文档](https://angular.io/)
 - [开发脚手架](https://cli.angular.io/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [RxJS](https://github.com/ReactiveX/rxjs)
@@ -76,7 +76,7 @@ $ ng add ng-zorro-antd-mobile
 2. [<img alt="Segment Fault" src="https://gw.alipayobjects.com/zos/rmsportal/hfYFfCvHTQTUKntlJbMF.svg" width="100" />](https://segmentfault.com/t/ng-zorro-mobile)（中文）
 3. [![Gitter](https://img.shields.io/gitter/room/ng-zorro/ng-zorro-antd-mobile.svg?style=flat-square)](https://gitter.im/ng-zorro/ng-zorro-antd-mobile)（English & 中文）
 4. 加入钉钉 **NG-ZORRO-MOBILE** 自助服务群（中文）<br/>
-<img src="https://img.alicdn.com/tfs/TB1cABKAkL0gK0jSZFAXXcA9pXa-1125-1485.jpg" width="300">
+   <img src="https://img.alicdn.com/imgextra/i4/O1CN01ylpwqk1F5Gy1VfokO_!!6000000000435-0-tps-1125-1485.jpg" width="300">
 
 ## 谁在使用
 
