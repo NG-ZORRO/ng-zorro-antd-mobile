@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, waitForAsync, tick } from '@angular/core/testing';
 import { StepperModule } from './stepper.module';
 
 describe('StepperComponent', () => {
@@ -12,12 +12,14 @@ describe('StepperComponent', () => {
   let upButton;
   let downButton;
   let inputEle;
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [TestStepperComponent],
-      imports: [StepperModule, FormsModule]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [TestStepperComponent],
+        imports: [StepperModule, FormsModule]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestStepperComponent);
@@ -42,7 +44,6 @@ describe('StepperComponent', () => {
       'up-disabled'
     );
   });
-
   it('should min work', () => {
     component.min = 9;
     component.value = 9;
@@ -68,8 +69,7 @@ describe('StepperComponent', () => {
       'up-disabled'
     );
   });
-
-  it('should dowDisabled work', () => {
+  it('should downDisabled work', () => {
     component.min = 5;
     component.value = 9;
     component.step = 3;
@@ -83,29 +83,6 @@ describe('StepperComponent', () => {
     );
   });
 
-  it('should defaultValue work', () => {
-    component.defaultValue = 11;
-    fixture.detectChanges();
-    expect(component.defaultValue).toBe(11, 'value == defaultValue');
-  });
-  it('should step work', () => {
-    component.value = 1e-13;
-    component.step = 2;
-    fixture.detectChanges();
-    downButton.click();
-    expect(component.value).toBe(-1.9999999999999, 'step is 2');
-    component.step = 3;
-    fixture.detectChanges();
-    upButton.click();
-    expect(component.value).toBe(1.0000000000001, 'step is 3');
-  });
-
-  it('should showNumber work', () => {
-    expect(stepperEle.nativeElement.classList).toContain('showNumber', 'showNumber');
-    component.showNumber = false;
-    fixture.detectChanges();
-    expect(stepperEle.nativeElement.classList).not.toContain('showNumber', 'showNumber is not show');
-  });
   it('should disabled work', () => {
     expect(stepperEle.nativeElement.classList).not.toContain('am-stepper-disabled', 'not contain am-stepper-disabled');
     component.disabled = true;
@@ -150,27 +127,79 @@ describe('StepperComponent', () => {
 
     expect(stepperEle.nativeElement.classList).not.toContain('am-stepper-disabled', 'contain am-stepper-disabled');
   });
-
   it('should readOnly work', fakeAsync(() => {
+    component.readOnly = true;
+    fixture.detectChanges();
+    expect(inputEle.getAttribute('readonly')).not.toBeNull('readonly is null');
+  }));
+
+  it('should defaultValue work', () => {
+    component.defaultValue = 11;
+    fixture.detectChanges();
+    expect(component.defaultValue).toBe(11, 'value == defaultValue');
+  });
+  it('should step work', () => {
+    component.value = 1e-13;
+    component.step = 2;
+    fixture.detectChanges();
+    downButton.click();
+    expect(component.value).toBe(-1.9999999999999, 'step is 2');
+    component.step = 3;
+    fixture.detectChanges();
+    upButton.click();
+    expect(component.value).toBe(1.0000000000001, 'step is 3');
+  });
+  it('should showNumber work', () => {
+    expect(stepperEle.nativeElement.classList).toContain('showNumber', 'showNumber');
+    component.showNumber = false;
+    fixture.detectChanges();
+    expect(stepperEle.nativeElement.classList).not.toContain('showNumber', 'showNumber is not show');
+  });
+
+  it('should only input numbers work', fakeAsync(() => {
+    inputEle.value = 'ssssss';
+    inputEle.dispatchEvent(new UIEvent('input'));
+    tick(0);
+    expect(component.value).toBe(0, 'input ssssss');
+
+    inputEle.value = '测试中文';
+    inputEle.dispatchEvent(new UIEvent('input'));
+    tick(0);
+    expect(component.value).toBe(0, 'input 测试中文');
+
+    inputEle.value = 's1s.s2s.s3s';
+    inputEle.dispatchEvent(new UIEvent('input'));
+    tick(0);
+    expect(component.value).toBe(123, 'input s1s.s2s.s3s');
+
+    inputEle.value = '-1-2-3';
+    inputEle.dispatchEvent(new UIEvent('input'));
+    tick(0);
+    expect(component.value).toBe(-123, 'input -1-2-3');
+  }));
+
+  it('should blur check work', fakeAsync(() => {
     component.max = 20;
     component.min = 10;
     fixture.detectChanges();
 
     inputEle.value = 34;
     inputEle.dispatchEvent(new UIEvent('input'));
-    expect(component.value).toBe(20, 'set input');
+    tick(0);
+    inputEle.dispatchEvent(new Event('blur'));
+    expect(component.value).toBe(20, 'check max input');
 
     inputEle.value = 4;
     inputEle.dispatchEvent(new UIEvent('input'));
-    expect(component.value).toBe(10, 'set input');
+    tick(0);
+    inputEle.dispatchEvent(new Event('blur'));
+    expect(component.value).toBe(10, 'check min input');
 
     inputEle.value = 15;
     inputEle.dispatchEvent(new UIEvent('input'));
-    expect(component.value).toBe(15, 'set input');
-
-    component.readOnly = true;
-    fixture.detectChanges();
-    expect(inputEle.getAttribute('readonly')).not.toBeNull('readonly is null');
+    tick(0);
+    inputEle.dispatchEvent(new Event('blur'));
+    expect(component.value).toBe(15, 'check normal input');
   }));
 
   it('should onChange work', () => {

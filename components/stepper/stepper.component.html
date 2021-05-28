@@ -20,8 +20,9 @@
 </div>
 <div class="{{ prefixCls }}-input-wrap">
   <input
-    class="{{ prefixCls }}-input"
+    type="text"
     style="outline:none"
+    class="{{ prefixCls }}-input"
     [disabled]="disabled"
     [readonly]="readOnly"
     [autocomplete]="'off'"
@@ -29,5 +30,8 @@
     [min]="min"
     [(ngModel)]="value"
     (ngModelChange)="inputChange($event)"
+    (compositionstart)="compositionStart()"
+    (compositionend)="compositionEnd()"
+    (blur)="inputBlur()"
   />
 </div>
