@@ -4,25 +4,36 @@ import { Component } from '@angular/core';
   selector: 'demo-stepper-basic',
   template: `
     <List>
-      <ListItem [extra]="stepperNgModel">Show number value</ListItem>
       <ListItem [extra]="stepper">Show number value</ListItem>
+      <ListItem [extra]="stepperDecimal">Decimal step</ListItem>
       <ListItem [extra]="stepperDisabled">Disabled</ListItem>
+      <ListItem [extra]="stepperReadOnly">ReadOnly</ListItem>
     </List>
     <ng-template #stepper>
-      <Stepper [value]="value" [min]="1" [max]="3" [showNumber]="true" (onChange)="change($event)"></Stepper>
+      <Stepper [showNumber]="true" [(ngModel)]="value" (ngModelChange)="change($event)"></Stepper>
+    </ng-template>
+    <ng-template #stepperDecimal>
+      <Stepper
+        [min]="1"
+        [max]="10"
+        [showNumber]="true"
+        [step]="0.1"
+        [(ngModel)]="decimalValue"
+        (ngModelChange)="change($event)"
+      ></Stepper>
     </ng-template>
     <ng-template #stepperDisabled>
       <Stepper [defaultValue]="6" [min]="1" [max]="10" [disabled]="true" [showNumber]="true"></Stepper>
     </ng-template>
-    <ng-template #stepperNgModel>
-      <Stepper [(ngModel)]="value1" [min]="1" [max]="10" [showNumber]="true" (ngModelChange)="change($event)"></Stepper>
+    <ng-template #stepperReadOnly>
+      <Stepper [defaultValue]="6" [min]="1" [max]="10" [readOnly]="true" [showNumber]="true"></Stepper>
     </ng-template>
   `,
   styles: [``]
 })
 export class DemoStepperBasicComponent {
-  value = 3;
-  value1 = 6;
+  value = 0;
+  decimalValue = 6;
 
   constructor() {}
 

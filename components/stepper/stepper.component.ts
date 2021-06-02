@@ -30,6 +30,7 @@ export class StepperComponent implements OnChanges, ControlValueAccessor {
   private _downDisabled: boolean = false;
   private _isUpClick: boolean = false;
   private _isDownClick: boolean = false;
+  private _inputLock = false;
 
   @Input()
   get max(): number {
@@ -141,20 +142,72 @@ export class StepperComponent implements OnChanges, ControlValueAccessor {
     }
   }
 
+  compositionStart() {
+    this._inputLock = true;
+  }
+
+  compositionEnd() {
+    this._inputLock = false;
+  }
+
   inputChange(event) {
-    const value = event;
-    this._value = value ? +value : 0;
+    // 'compositionend' is earlier than ngModelChange, Therefore use timer to make ngModelChange runs after 'compositionend' event
+    setTimeout(() => {
+      if (this._inputLock) {
+        return;
+      }
+
+      const allowDecimal = this._step % 1 !== 0;
+      const allowNegative = this._min < 0;
+      let decimalFlag = false;
+      let negativeFlag = false;
+      let value = event.toString().replace(/\D/g, (match, index, str) => {
+        if (allowDecimal && match === '.' && !decimalFlag) {
+          decimalFlag = true;
+          return '.';
+        }
+        if (allowNegative && match === '-' && !negativeFlag) {
+          negativeFlag = true;
+          return '-';
+        }
+        return '';
+      });
+
+      if (negativeFlag && value.indexOf('-') > 0) {
+        value = value.replace(/-/g, '');
+      }
+
+      if (!isNaN(value)) {
+        this._value = +value;
+        this._upDisabled = this.plus(this._value, this._step) > this._max ? true : false;
+        this._downDisabled = this.minus(this._value, this._step) < this._min ? true : false;
+      }
+
+      this.setCls();
+      this.onChange.emit(this._value);
+      this.onChangeFn(this._value);
+    }, 0);
+  }
+
+  inputBlur() {
+    let value = +this._value;
+    if (+this._value === -0) {
+      value = 0;
+    }
     if (this._value < this._min) {
-      this._value = this._min;
+      value = this._min;
+    } else if (this._value > this._max) {
+      value = this._max;
     }
-    if (this._value > this._max) {
-      this._value = this._max;
+
+    const len = this._step.toString().length - this._step.toString().indexOf('.') - 1;
+    value = +value.toFixed(len);
+
+    if (value !== this._value) {
+      this._value = value;
+      this.onChange.emit(this._value);
+      this.onChangeFn(this._value);
     }
-    this._upDisabled = this.plus(this._value, this._step) > this._max ? true : false;
-    this._downDisabled = this.minus(this._value, this._step) < this._min ? true : false;
-    this.setCls();
-    this.onChange.emit(this._value);
-    this.onChangeFn(this._value);
   }
 
   setCls() {
