@@ -212,6 +212,11 @@ export class CustomInputComponent implements OnInit, OnDestroy {
   }
 
   onKeyboardClick = keyboardItemValue => {
+    // 只允许一个小数点且不能是首位
+    if (keyboardItemValue === '.' && (this._value.includes('.') || this._value === '')) {
+      return;
+    }
+
     let valueAfterChange;
     // 删除键
     if (keyboardItemValue === 'delete') {
