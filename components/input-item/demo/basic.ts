@@ -4,9 +4,8 @@ import { ToastService } from 'ng-zorro-antd-mobile';
 @Component({
   selector: 'demo-input-item-basic',
   template: `
-    <div class="am-demo-page">
-      <div style="padding: 15px;font-size: 16px; color:#000">Basic</div>
-      <div class="am-list" style="margin:0;">
+    <div class="am-demo-page" style="padding-bottom: 15px;">
+      <div class="am-list">
         <div class="am-list-header">Money input</div>
         <div class="am-list-body">
           <InputItem
@@ -26,7 +25,7 @@ import { ToastService } from 'ng-zorro-antd-mobile';
           <InputItem
             [type]="'money'"
             [clear]="true"
-            [placeholder]="'money format'"
+            [placeholder]="'click the button below to focus'"
             [focus]="numberFocus"
             [content]="'数字键盘'"
           >
@@ -41,7 +40,7 @@ import { ToastService } from 'ng-zorro-antd-mobile';
           </div>
         </div>
       </div>
-      <div class="am-list" style="margin:0;">
+      <div class="am-list">
         <div class="am-list-header">Customize to focus</div>
         <div class="am-list-body">
           <InputItem [clear]="true" [placeholder]="'auto focus'" [focus]="autoFocus" [content]="'标题'"></InputItem>
@@ -66,7 +65,7 @@ import { ToastService } from 'ng-zorro-antd-mobile';
           </div>
         </div>
       </div>
-      <div class="am-list" style="margin:0;">
+      <div class="am-list">
         <div class="am-list-header">Click label to focus input</div>
         <div class="am-list-body">
           <InputItem [placeholder]="'Click label to focus input'" [focus]="titleFocus" [content]="contentlabel">
@@ -76,13 +75,13 @@ import { ToastService } from 'ng-zorro-antd-mobile';
           </InputItem>
         </div>
       </div>
-      <div class="am-list" style="margin:0;">
+      <div class="am-list">
         <div class="am-list-header">Show clear</div>
         <div class="am-list-body">
           <InputItem [clear]="true" [placeholder]="'displayed clear while typing'" [content]="'标题'"></InputItem>
         </div>
       </div>
-      <div class="am-list" style="margin:0;">
+      <div class="am-list">
         <div class="am-list-header">Number of words for the title</div>
         <div class="am-list-body">
           <InputItem
@@ -94,7 +93,7 @@ import { ToastService } from 'ng-zorro-antd-mobile';
           </InputItem>
         </div>
       </div>
-      <div class="am-list" style="margin:0;">
+      <div class="am-list">
         <div class="am-list-header">Custom title（text / image / empty)</div>
         <div class="am-list-body">
           <InputItem [placeholder]="'no label'"></InputItem>
@@ -107,13 +106,13 @@ import { ToastService } from 'ng-zorro-antd-mobile';
           </InputItem>
         </div>
       </div>
-      <div class="am-list" style="margin:0;">
+      <div class="am-list">
         <div class="am-list-header">Customize the extra content in the right</div>
         <div class="am-list-body">
-          <InputItem [placeholder]="'0.00'" [extra]="'¥'" [content]="'价格'"></InputItem>
+          <InputItem [type]="'money'" [placeholder]="'0.00'" [extra]="'¥'" [content]="'价格'"></InputItem>
         </div>
       </div>
-      <div class="am-list" style="margin:0;">
+      <div class="am-list">
         <div class="am-list-header">Format</div>
         <div class="am-list-body">
           <InputItem [type]="'bankCard'" [defaultValue]="'8888 8888 8888 8888'" [content]="'银行卡'"></InputItem>
@@ -127,19 +126,19 @@ import { ToastService } from 'ng-zorro-antd-mobile';
           <InputItem [type]="'password'" [placeholder]="'****'" [content]="'密码'"></InputItem>
           <InputItem
             [type]="'number'"
-            [placeholder]="'click to show number keyboard'"
-            [content]="'数字键盘'"
+            [placeholder]="'only input numbers'"
+            [content]="'数字'"
           ></InputItem>
         </div>
       </div>
-      <div class="am-list" style="margin:0;">
+      <div class="am-list">
         <div class="am-list-header">Not editable / Disabled</div>
         <div class="am-list-body">
           <InputItem [editable]="false" [value]="'not editable'" [content]="'姓名'"></InputItem>
           <InputItem [disabled]="true" [value]="'style of disabled InputItem'" [content]="'姓名'"></InputItem>
         </div>
       </div>
-      <div class="am-list" style="margin:0;">
+      <div class="am-list">
         <div class="am-list-header">Confirm when typing</div>
         <div class="am-list-body">
           <InputItem
@@ -199,17 +198,14 @@ export class DemoInputItemBasicComponent {
   value = '';
   error = false;
   numberFocus = {
-    focus: false,
-    date: new Date()
+    focus: false
   };
   inputFocus = {
     focus: false,
-    date: new Date()
   };
 
   titleFocus = {
     focus: false,
-    date: new Date()
   };
   autoFocus = { focus: true, date: new Date() };
 
@@ -232,21 +228,18 @@ export class DemoInputItemBasicComponent {
   clickFocus() {
     this.numberFocus = {
       focus: true,
-      date: new Date()
     };
   }
 
   clickFocusInput() {
     this.inputFocus = {
       focus: true,
-      date: new Date()
     };
   }
 
   clickTitle() {
     this.titleFocus = {
       focus: true,
-      date: new Date()
     };
   }
 }
