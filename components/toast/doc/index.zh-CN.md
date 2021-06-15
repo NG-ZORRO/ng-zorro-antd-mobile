@@ -14,7 +14,7 @@ subtitle: 轻提示
 - 有 Icon 的 Toast，字数为 4-6 个；没有 Icon 的 Toast，字数不宜超过 14 个。
 
 
-## API 调用
+## API
 ```ts
 constructor(private _toast: ToastService) {}
 ```

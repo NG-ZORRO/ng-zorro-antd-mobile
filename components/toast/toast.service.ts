@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { ToastComponent } from './toast.component';
 import { ToastOptions } from './toast-options.provider';
+import { first } from 'rxjs/operators';
 
 export interface ConfigInterface {
   content?: any;
@@ -57,7 +58,7 @@ export class ToastService {
     return props;
   }
 
-  notice(config: ConfigInterface, type, timeInterval = 2000, onClose, mask = true, position = 'middle') {
+  async notice(config: ConfigInterface, type, timeInterval = 2000, onClose, mask = true, position = 'middle') {
     // 如果已经存在，在没有遮罩层的情况下，会响应别的toast，需要清除原来的
     if (this.compRef) {
       this.hide();
@@ -71,6 +72,12 @@ export class ToastService {
     this.insertElement = document.body.insertBefore(document.createElement(this.toastCompFactory.selector), document.body.firstChild);
     let instance: any;
     let subject: any;
+    // 需要等待应用程序稳定后再安装，比如在 ngOnInit 里调用
+    if (!this._zone.isStable) {
+      await this._appRef.isStable.pipe(
+        first(stable => stable)
+      )
+    }
 
     this.compRef = this._appRef.bootstrap(this.toastCompFactory);
     instance = this.compRef.instance;
@@ -84,7 +91,6 @@ export class ToastService {
         this.hide();
       }, timeInterval);
     }
-
     Object.assign(instance, props);
     return subject;
   }
