@@ -1,7 +1,8 @@
 /* tslint:disable:max-line-length */
 // inspried by https://github.com/kisenka/svg-sprite-loader/blob/master/runtime/browser-sprite.js
 // Much simplified, do make sure run this after document ready
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 const svgSprite = contents => `
 <svg
@@ -18,7 +19,10 @@ const svgSprite = contents => `
 
 @Injectable()
 export class IconHandler {
-  constructor() {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
   contents = [];
   // both minified by https://github.com/svg/svgo
   icons = {
@@ -88,11 +92,11 @@ export class IconHandler {
   }
 
   load() {
-    if (!document) {
+    if (!isPlatformBrowser(this.platformId)) {
       return;
     }
-    const existing = document.getElementById('__ANTD_MOBILE_SVG_SPRITE_NODE__');
-    const mountNode = document.body;
+    const existing = this.document.getElementById('__ANTD_MOBILE_SVG_SPRITE_NODE__');
+    const mountNode = this.document.body;
 
     if (!existing) {
       mountNode.insertAdjacentHTML('afterbegin', this.renderSvgSprite());
