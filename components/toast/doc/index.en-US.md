@@ -13,7 +13,7 @@ A lightweight feedback or tips, used to display content that does not interrupt 
 - Toast with Icon, 4-6 words is recommended.; Toast without Icon, the number of words should not exceed 14.
 
 
-## API USE
+## API
 
 ```ts
 constructor(private _toast: ToastService) {}
