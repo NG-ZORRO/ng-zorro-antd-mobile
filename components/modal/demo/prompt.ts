@@ -33,7 +33,7 @@ export class DemoModalPromptComponent {
             new Promise(resolve => {
               this._toast.info('onPress promise resolve', 1000);
               setTimeout(() => {
-                resolve();
+                resolve(value);
                 console.log(`value:${value}`);
               }, 1000);
             })

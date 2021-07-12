@@ -46,7 +46,7 @@ module.exports = function generateRoutes(showCaseTargetPath, componentsMap, docs
       reverseMap[componentsMap[key].type].push(en);
     }
     const moduleName = capitalizeFirstLetter(camelCase(key));
-    routes += `  {'path': 'components/${key}', 'loadChildren': './${key}/index.module#Demo${moduleName}Module'},\n`;
+    routes += `  {'path': 'components/${key}', 'loadChildren': () => import('./${key}/index.module').then(m => m.Demo${moduleName}Module)},\n`;
   }
   for (const key in reverseMap) {
     components.push({
