@@ -26,7 +26,7 @@ export class NzCodeBoxComponent implements OnInit {
   @Input() nzLink: string;
   @Input() nzId: string;
   @Input() nzIframeHeight = 360;
-  @Input() nzRawCode = {default: ''};
+  @Input() nzRawCode = { default: '' };
   @Input() nzComponentName = '';
   @Input() nzSelector = '';
   @Input() nzGenerateCommand = '';
@@ -234,8 +234,8 @@ export class NzCodeBoxComponent implements OnInit {
   },
   "defaultProject": "demo"
 }`,
-'src/index.html': `<${this.nzSelector}>loading</${this.nzSelector}>`,
-'src/main.ts': `import './polyfills';
+        'src/index.html': `<${this.nzSelector}>loading</${this.nzSelector}>`,
+        'src/main.ts': `import './polyfills';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -250,7 +250,7 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
 
   // Otherwise, log the boot error
 }).catch(err => console.error(err));`,
-'src/polyfills.ts': `/**
+        'src/polyfills.ts': `/**
 * This file includes polyfills needed by Angular and is loaded before the app.
 * You can add your own extra polyfills to this file.
 *
@@ -334,29 +334,29 @@ registerLocaleData(en);
 })
 export class AppModule { }
         `,
-  'src/styles.css': `/* Add application styles & imports to this file! */;`
-    },
-    title: 'Dynamically Generated Project',
-    description: 'Created with <3 by the StackBlitz SDK!',
-    template: 'angular-cli',
-    dependencies: {
-      '@angular/animations': '^11.0.5',
-      '@angular/cdk': '^11.0.3',
-      '@angular/common': '^11.0.5',
-      '@angular/compiler': '^11.0.5',
-      '@angular/core': '^11.0.5',
-      '@angular/forms': '^11.0.5',
-      '@angular/platform-browser': '^11.0.5',
-      '@angular/platform-browser-dynamic': '^11.0.5',
-      '@angular/router': '^11.0.5',
-      '@ant-design/icons-angular': '^11.0.1',
-      'rxjs': '~6.6.2',
-      'zone.js': '~0.10.2',
-      'ng-zorro-antd-mobile': '4.0.0'
-    },
-    tags: ['stackblitz', 'sdk']
-  });
-}
+        'src/styles.css': `/* Add application styles & imports to this file! */;`
+      },
+      title: 'Dynamically Generated Project',
+      description: 'Created with <3 by the StackBlitz SDK!',
+      template: 'angular-cli',
+      dependencies: {
+        '@angular/animations': '^12.1.1',
+        '@angular/cdk': '^12.1.1',
+        '@angular/common': '^12.1.1',
+        '@angular/compiler': '^12.1.1',
+        '@angular/core': '^12.1.1',
+        '@angular/forms': '^12.1.1',
+        '@angular/platform-browser': '^12.1.1',
+        '@angular/platform-browser-dynamic': '^12.1.1',
+        '@angular/router': '^12.1.1',
+        '@ant-design/icons-angular': '^12.0.3',
+        rxjs: '~6.6.2',
+        'zone.js': '~0.11.4',
+        'ng-zorro-antd-mobile': '5.0.0'
+      },
+      tags: ['stackblitz', 'sdk']
+    });
+  }
 
   constructor(
     @Inject(DOCUMENT) private dom: Document,
