@@ -171,7 +171,7 @@ import { ToastService } from 'ng-zorro-antd-mobile';
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
       }
-      /deep/ .am-list-body InputItem:not(:last-child) .am-list-line {
+      :host ::ng-deep .am-list-body InputItem:not(:last-child) .am-list-line {
         border-bottom: 1px solid #ddd;
       }
 

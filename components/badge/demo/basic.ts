@@ -52,7 +52,7 @@ import { Component } from '@angular/core';
   `,
   styles: [
     `
-      /deep/ .dot-badge .am-badge-dot {
+      :host ::ng-deep .dot-badge .am-badge-dot {
         right: -8px;
       }
       .corner-badge {
@@ -62,25 +62,25 @@ import { Component } from '@angular/core';
         font-size: 17px;
         color: #000;
       }
-      /deep/ .special-badge .am-list-line {
+      :host ::ng-deep .special-badge .am-list-line {
         padding-right: 0;
       }
-      /deep/ .special-badge .am-list-line .am-list-extra {
+      :host ::ng-deep .special-badge .am-list-line .am-list-extra {
         padding: 0;
         height: 44px;
       }
-      /deep/ .special-badge .am-badge {
+      :host ::ng-deep .special-badge .am-badge {
         transform: rotate(45deg);
         transform-origin: right bottom;
         right: 0px;
         top: 13px;
         width: 50px;
       }
-      /deep/ .special-badge .am-badge-text {
+      :host ::ng-deep .special-badge .am-badge-text {
         border-radius: 1px;
       }
 
-      /deep/ .am-badge {
+      :host ::ng-deep .am-badge {
         text-align: right;
         font-size: 17px;
         color: #000;

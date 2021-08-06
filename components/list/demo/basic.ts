@@ -90,7 +90,7 @@ import { Component } from '@angular/core';
   `,
   styles: [
     `
-      /deep/ .my-list .spe .am-list-extra {
+      :host ::ng-deep .my-list .spe .am-list-extra {
         flex-basis: initial;
       }
     `

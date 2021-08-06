@@ -24,7 +24,7 @@ import { Component } from '@angular/core';
   `,
   styles: [
     `
-      /deep/ .am-badge {
+      :host ::ng-deep .am-badge {
         text-align: right;
       }
     `

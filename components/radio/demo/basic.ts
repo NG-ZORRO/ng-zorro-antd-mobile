@@ -53,7 +53,7 @@ import { Component } from '@angular/core';
   `,
   styles: [
     `
-      /deep/ .my-radio .am-radio {
+      :host ::ng-deep .my-radio .am-radio {
         padding: 2.5px;
         border: 1px solid #ccc;
         border-radius: 50%;
