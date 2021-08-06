@@ -39,19 +39,19 @@ import { Component } from '@angular/core';
   `,
   styles: [
     `
-      /deep/ .my-drawer {
+      :host ::ng-deep .my-drawer {
         position: relative;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
       }
 
-      /deep/ .my-drawer .am-drawer-sidebar {
+      :host ::ng-deep .my-drawer .am-drawer-sidebar {
         background-color: #fff;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
       }
 
-      /deep/ .my-drawer .am-drawer-sidebar .am-list {
+      :host ::ng-deep .my-drawer .am-drawer-sidebar .am-list {
         width: 300px;
         padding: 0;
       }

@@ -102,7 +102,7 @@ import { Component } from '@angular/core';
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
       }
-      /deep/ .am-list-body .am-list-item.am-textarea-item:not(:last-child) {
+      :host ::ng-deep .am-list-body .am-list-item.am-textarea-item:not(:last-child) {
         border-bottom: 1px solid #ddd;
       }
 

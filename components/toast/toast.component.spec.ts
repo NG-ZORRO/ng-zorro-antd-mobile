@@ -1,8 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ApplicationRef } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ToastService } from './toast.service';
-import { ToastComponent } from './toast.component';
 import { ToastModule } from './toast.module';
 import { IconModule, ButtonModule } from '../..';
 import { ButtonComponent } from '../button/button.component';
@@ -13,17 +12,20 @@ describe('ToastComponent', () => {
   let toastEle;
   let toastEle1;
   let buttons;
+  let appRef: ApplicationRef;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestToastComponent],
-      imports: [IconModule, ToastModule, ButtonModule]
+      imports: [IconModule, ToastModule, ButtonModule],
+      providers: [ApplicationRef]
     }).compileComponents();
     TestBed.overrideModule(ToastModule, {}).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestToastComponent);
+    appRef = TestBed.inject(ApplicationRef);
     component = fixture.componentInstance;
     toastEle = fixture.debugElement.query(By.css('toast'));
     buttons = fixture.debugElement.queryAll(By.directive(ButtonComponent));
@@ -82,10 +84,12 @@ describe('ToastComponent', () => {
     expect(toastEle.nativeElement.classList).toContain('am-toast-nomask-bottom');
   });
 
-  it('should showToast work', () => {
+  it('should showToast work', async () => {
     const button = buttons[0].nativeElement;
     button.click();
     fixture.detectChanges();
+    await appRef.isStable;
+    
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain(
       'This is a toast tips !!!',
@@ -93,10 +97,12 @@ describe('ToastComponent', () => {
     );
   });
 
-  it('should showToastNoMask work', () => {
+  it('should showToastNoMask work', async () => {
     const button = buttons[1].nativeElement;
     button.click();
     fixture.detectChanges();
+    await appRef.isStable;
+
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain(
       'Toast without mask !!!',
@@ -104,34 +110,42 @@ describe('ToastComponent', () => {
     );
   });
 
-  it('should showCustomIcon work', () => {
+  it('should showCustomIcon work', async () => {
     const button = buttons[2].nativeElement;
     button.click();
     fixture.detectChanges();
+    await appRef.isStable;
+    
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.innerText).toContain('toast的内容', 'showCustomIcon work');
   });
 
-  it('should successToast work', () => {
+  it('should successToast work', async () => {
     const button = buttons[3].nativeElement;
     button.click();
     fixture.detectChanges();
+    await appRef.isStable;
+    
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain('Load success !!!', 'successToast work');
   });
 
-  it('should failToast work', () => {
+  it('should failToast work', async () => {
     const button = buttons[4].nativeElement;
     button.click();
     fixture.detectChanges();
+    await appRef.isStable;
+    
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain('Load failed !!!', 'failToast work');
   });
 
-  it('should offline work', () => {
+  it('should offline work', async () => {
     const button = buttons[5].nativeElement;
     button.click();
     fixture.detectChanges();
+    await appRef.isStable;
+    
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain(
       'Network connection failed !!!',
@@ -139,10 +153,12 @@ describe('ToastComponent', () => {
     );
   });
 
-  it('should loadingToast work', () => {
+  it('should loadingToast work', async () => {
     const button = buttons[6].nativeElement;
     button.click();
     fixture.detectChanges();
+    await appRef.isStable;
+    
     toastEle1 = document.querySelector('toast');
     expect(toastEle1.querySelector('.am-toast-text-info').innerText).toContain('Loading...', 'loadingToast work');
   });
@@ -179,7 +195,7 @@ export class TestToastComponent {
   @ViewChild('contentTpl')
   contentTpl: ViewChild;
 
-  constructor(private _toast: ToastService) {}
+  constructor(private _toast: ToastService) { }
 
   showToast() {
     this._toast.show('This is a toast tips !!!', 0, true, this.position);

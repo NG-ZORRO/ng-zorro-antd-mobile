@@ -345,7 +345,7 @@ export class TestModalBasicComponent {
           onPress: value =>
             new Promise(resolve => {
               setTimeout(() => {
-                resolve();
+                resolve(value);
                 console.log(`value:${value}`);
               }, 1000);
             })
