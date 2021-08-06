@@ -59,7 +59,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
   `,
   styles: [
     `
-      /deep/ .my-list .spe .am-list-extra {
+      :host ::ng-deep .my-list .spe .am-list-extra {
         flex-basis: initial;
       }
     `

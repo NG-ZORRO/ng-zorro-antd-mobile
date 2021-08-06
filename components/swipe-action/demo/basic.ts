@@ -67,7 +67,7 @@ import { Component } from '@angular/core';
   `,
   styles: [
     `
-      /deep/.btnClass {
+      :host ::ng-deep.btnClass {
         background-color: #f4333c;
         color: white;
       }

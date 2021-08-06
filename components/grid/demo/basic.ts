@@ -50,7 +50,7 @@ import { Component } from '@angular/core';
         font-size: 14px;
         padding: 15px 0 9px 15px;
       }
-      /deep/.not-square-grid .am-grid-icon {
+      :host ::ng-deep.not-square-grid .am-grid-icon {
         width: 40px;
         height: 60px;
       }

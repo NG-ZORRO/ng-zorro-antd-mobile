@@ -442,7 +442,7 @@ describe('tab', () => {
   `,
   styles: [
     `
-      /deep/ .am-tabs-default-bar-content {
+      :host ::ng-deep .am-tabs-default-bar-content {
         height: 100px;
       }
     `
