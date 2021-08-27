@@ -29,16 +29,14 @@ export class ModalBaseOptions {
   closeWithAnimation: () => void;
 }
 
+export class ModalServiceCustomOptions {
+  maskClosable?: boolean = false;
+}
+
 @Injectable()
 export class ModalOptions extends ModalBaseOptions {
   transitionName?: string = 'am-fade';
   maskTransitionName?: string = 'am-fade';
-}
-
-@Injectable()
-export class AlertOptions extends ModalBaseOptions {
-  message?: string | TemplateRef<any>;
-  actions?: Array<any>;
 }
 
 @Injectable()

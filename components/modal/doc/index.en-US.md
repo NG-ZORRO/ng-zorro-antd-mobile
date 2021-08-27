@@ -60,6 +60,7 @@ Properties | Descrition | Type | Default
 -----------|------------|------|--------
 | `[actions]` | button group | `Array<text: string, onPress: Function, style: object>` | - |
 | `[platform]` | Set the special style depends on platform, works on web only | `'android' \| 'ios'` | `'ios'`|
+| `[customOptions]` | support `maskClosable` params，Determine whether to close the modal dialog when clicked mask of it | `Object` | - |
 
 call `ModalService.operation(actions?).close()` can close Operation Modal outside anywhere as you wish.
 

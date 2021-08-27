@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalService, ToastService, ModalRef } from 'ng-zorro-antd-mobile';
+import { ModalService, ToastService } from 'ng-zorro-antd-mobile';
 
 @Component({
   selector: 'demo-modal-alert',
