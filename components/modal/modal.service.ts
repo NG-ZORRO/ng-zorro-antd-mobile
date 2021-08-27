@@ -12,11 +12,9 @@ export class ModalService extends PopupService {
   modalRef: ComponentRef<ModalServiceComponent> = null;
 
   _open(props: ModalBaseOptions): any {
-    const childInjector = Injector.create(
-      {
-        providers: [{provide: ModalOptions, useValue: props}]
-      }
-    );
+    const childInjector = Injector.create({
+      providers: [{ provide: ModalOptions, useValue: props }]
+    });
 
     this.modalRef = this.showPopup(ModalServiceComponent, childInjector);
     return this.modalRef && this.modalRef.instance;
@@ -35,7 +33,7 @@ export class ModalService extends PopupService {
     title?: string | TemplateRef<any>,
     message?: string | TemplateRef<any>,
     actions?: Array<any>,
-    platform?: string,
+    platform?: string
   ): any {
     const options: ModalOptions = new ModalOptions();
     const footer = getFooter.call(this, actions);
@@ -55,12 +53,12 @@ export class ModalService extends PopupService {
       closeWithAnimation: () => {
         this.closeWithAnimation();
       }
-    }
+    };
 
     const props = {
       ...options,
-      ...defaultOptions,
-    }
+      ...defaultOptions
+    };
 
     return this._open(props);
   }
@@ -72,7 +70,7 @@ export class ModalService extends PopupService {
     type?: string,
     defaultValue?: Array<string>,
     placeholders?: Array<any>,
-    platform?: string,
+    platform?: string
   ): any {
     const options: ModalOptions = new ModalOptions();
 
@@ -94,24 +92,27 @@ export class ModalService extends PopupService {
       return func(text);
     }
 
-    const actions = (typeof callbackOrActions === 'function') ? [
-      { text: 'Cancel' },
-      {
-        text: 'OK',
-        onPress: () => {
-          getArgs(this, callbackOrActions);
-        }
-      }
-    ] : callbackOrActions.map(item => {
-      return {
-        text: item.text,
-        onPress: () => {
-          if (item.onPress) {
-            return getArgs(this, item.onPress);
-          }
-        }
-      };
-    });
+    const actions =
+      typeof callbackOrActions === 'function'
+        ? [
+            { text: 'Cancel' },
+            {
+              text: 'OK',
+              onPress: () => {
+                getArgs(this, callbackOrActions);
+              }
+            }
+          ]
+        : callbackOrActions.map(item => {
+            return {
+              text: item.text,
+              onPress: () => {
+                if (item.onPress) {
+                  return getArgs(this, item.onPress);
+                }
+              }
+            };
+          });
 
     const footer = getFooter.call(this, actions);
     const defaultOptions = {
@@ -135,12 +136,12 @@ export class ModalService extends PopupService {
       closeWithAnimation: () => {
         this.closeWithAnimation();
       }
-    }
+    };
 
     const props = {
       ...options,
-      ...defaultOptions,
-    }
+      ...defaultOptions
+    };
 
     return this._open(props);
   }
@@ -163,13 +164,13 @@ export class ModalService extends PopupService {
       closeWithAnimation: () => {
         this.closeWithAnimation();
       }
-    }
-    
+    };
+
     const props = {
       ...options,
       ...defaultOptions,
       ...customOptions
-    }
+    };
 
     return this._open(props);
   }
