@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ModalService } from 'ng-zorro-antd-mobile';
 
 @Component({
   selector: 'demo-modal-basic',
@@ -10,12 +9,12 @@ import { ModalService } from 'ng-zorro-antd-mobile';
       <WhiteSpace></WhiteSpace>
       <Modal [(ngModel)]="this.state.modal1" [transparent]="true" [title]="'Title'" [footer]="footer">
         <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
-          scoll content... <br />
-          scoll content... <br />
-          scoll content... <br />
-          scoll content... <br />
-          scoll content... <br />
-          scoll content... <br />
+          scroll content... <br />
+          scroll content... <br />
+          scroll content... <br />
+          scroll content... <br />
+          scroll content... <br />
+          scroll content... <br />
         </div>
       </Modal>
       <div Button (onClick)="showModal('modal2')">popup</div>
@@ -38,9 +37,9 @@ import { ModalService } from 'ng-zorro-antd-mobile';
         (onClose)="onClose('modal3')"
       >
         <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
-          scoll content... <br />
-          scoll content... <br />
-          scoll content... <br />
+          scroll content... <br />
+          scroll content... <br />
+          scroll content... <br />
         </div>
       </Modal>
       <div Button (onClick)="showModal('modal4')">closable</div>
@@ -53,9 +52,9 @@ import { ModalService } from 'ng-zorro-antd-mobile';
         (onClose)="onClose('modal4')"
       >
         <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
-          scoll content... <br />
-          scoll content... <br />
-          scoll content... <br />
+          scroll content... <br />
+          scroll content... <br />
+          scroll content... <br />
         </div>
       </Modal>
     </WingBlank>
@@ -95,11 +94,6 @@ export class DemoModalBasicComponent {
     }
   ];
 
-  constructor() {}
-
-  modelChange(event) {
-    console.log('asdfasdf', event);
-  }
   onClose(key) {
     this.state[key] = false;
   }

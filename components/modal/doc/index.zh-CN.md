@@ -31,7 +31,7 @@ subtitle: 对话框
 | `[platform]` | 设定组件的平台特有样式, 仅限web | `'android' \| 'ios'` | `'ios'`|
 | `(onClose)` | 点击 x 或 mask 回调 | `EventEmitter<void>` | - |
 
-### ModalSerivce.alert(title, message, actions?, platform?)
+### ModalService.alert(title, message, actions?, platform?)
 
 参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
@@ -40,9 +40,9 @@ subtitle: 对话框
 | `[actions]` | 按钮组 | `Array<text: string, onPress: Function, style: object>` | - |
 | `[platform]` | 设定组件的平台特有样式, 仅限web | `'android' \| 'ios'` | `'ios'`|
 
-`ModalSerivce.alert(title, message, actions?, platform?).close()` 可以在外部关闭 Alert
+`ModalService.alert(title, message, actions?, platform?).close()` 可以在外部关闭 Alert
 
-### ModalSerivce.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?, platform?)
+### ModalService.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?, platform?)
 
 参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
@@ -55,16 +55,17 @@ subtitle: 对话框
 | `[platform]` | 设定组件的平台特有样式, 仅限web | `'android' \| 'ios'` | `'ios'`|
 
 
-`ModalSerivce.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?, platform?).close()` 可以在外部关闭 prompt`
+`ModalService.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?, platform?).close()` 可以在外部关闭 prompt`
 
-### ModalSerivce.operation(actions?, platform?)
+### ModalService.operation(actions?, platform?, customOptions?)
 
 参数 | 说明 | 类型 | 默认值
 ----|-----|------|------
 | `[actions]` | 按钮组 | `Array<text: string, onPress: Function, style: object>` | - |
-| `[platform]` | 设定组件的平台特有样式, 仅限web | `'android' \| 'ios'` | `'ios'`|
+| `[platform]` | 设定组件的平台特有样式, 仅限 web | `'android' \| 'ios'` | `'ios'`|
+| `[customOptions]` | 支持 `maskClosable` 入参，控制点击蒙层是否允许关闭 | `Object` | - |
 
-`ModalSerivce.operation(actions?, platform?).close()` 可以在外部关闭 operation`
+`ModalService.operation(actions?, platform?).close()` 可以在外部关闭 operation`
 
 以上函数调用后，会返回一个引用，可以通过该引用关闭弹窗。
 

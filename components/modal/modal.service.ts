@@ -1,76 +1,21 @@
 import { Injectable, Injector, ComponentRef, TemplateRef } from '@angular/core';
+
 import { ModalServiceComponent } from './modal.component';
-import { ModalBaseOptions, ModalOptions, AlertOptions, Action } from './modal-options.provider';
+import { ModalBaseOptions, ModalOptions, ModalServiceCustomOptions, Action } from './modal-options.provider';
 import { PopupService } from '../core/services/popup.service';
-import { ModalRef } from './modal-ref.class';
+
 @Injectable({
   providedIn: 'root'
 })
 @Injectable()
 export class ModalService extends PopupService {
   modalRef: ComponentRef<ModalServiceComponent> = null;
-  _initConfig(config: ModalBaseOptions, options: any): ModalBaseOptions {
-    const props: ModalBaseOptions = new ModalBaseOptions();
-    const optionalParams: string[] = [
-      'visible',
-      'focus',
-      'prefixCls',
-      'animated',
-      'closable',
-      'maskClosable',
-      'onClose',
-      'transparent',
-      'popup',
-      'animationType',
-      'title',
-      'footer',
-      'platform',
-      'className',
-      'wrapClassName',
-      'message',
-      'actions',
-      'callbackOrActions',
-      'type',
-      'defaultValue',
-      'placeholders',
-      'operation',
-      'transitionName',
-      'maskTransitionName',
-      'close',
-      'closeWithAnimation'
-    ];
-    const self = this;
-    config = Object.assign(
-      options,
-      config,
-      {
-        close: (): void => {
-          if (config.maskClosable || config.closable) {
-            self.closeWithAnimation();
-          }
-        }
-      },
-      {
-        closeWithAnimation: (): void => {
-          self.closeWithAnimation();
-        }
-      }
-    );
-    optionalParams.forEach(key => {
-      if (config[key] !== undefined) {
-        props[key] = config[key];
-      }
-    });
-    return props;
-  }
 
   _open(props: ModalBaseOptions): any {
-    const childInjector = Injector.create([
-      {
-        provide: ModalOptions,
-        useValue: props
-      }
-    ]);
+    const childInjector = Injector.create({
+      providers: [{ provide: ModalOptions, useValue: props }]
+    });
+
     this.modalRef = this.showPopup(ModalServiceComponent, childInjector);
     return this.modalRef && this.modalRef.instance;
   }
@@ -90,24 +35,31 @@ export class ModalService extends PopupService {
     actions?: Array<any>,
     platform?: string
   ): any {
-    const options: AlertOptions = new AlertOptions();
-    options.visible = true;
-    options.transparent = true;
-    options.closable = false;
-    options.maskClosable = false;
-    options.platform = 'ios';
-
+    const options: ModalOptions = new ModalOptions();
     const footer = getFooter.call(this, actions);
-
-    const config = Object.assign({
-      title: title,
-      message: message,
-      footer: footer,
+    const defaultOptions = {
+      visible: true,
+      transparent: true,
+      closable: false,
+      maskClosable: false,
+      platform: platform || 'ios',
+      title: title || '',
+      message: message || '',
+      footer,
       actions: footer,
-      platform: platform ? platform : 'ios'
-    });
+      close: () => {
+        this.closeWithAnimation();
+      },
+      closeWithAnimation: () => {
+        this.closeWithAnimation();
+      }
+    };
 
-    const props = this._initConfig(config, options);
+    const props = {
+      ...options,
+      ...defaultOptions
+    };
+
     return this._open(props);
   }
 
@@ -121,14 +73,6 @@ export class ModalService extends PopupService {
     platform?: string
   ): any {
     const options: ModalOptions = new ModalOptions();
-    options.visible = true;
-    options.transparent = true;
-    options.closable = false;
-    options.maskClosable = false;
-    options.className = 'am-modal-alert-content';
-    options.defaultValue = defaultValue || ['', ''];
-    options.placeholders = placeholders;
-    (options.type = type ? type : 'default'), (options.platform = platform ? platform : 'ios');
 
     function getArgs(self: any, func: any) {
       let text: any, password: any;
@@ -148,59 +92,86 @@ export class ModalService extends PopupService {
       return func(text);
     }
 
-    let actions;
-    if (typeof callbackOrActions === 'function') {
-      actions = [
-        { text: 'Cancel' },
-        {
-          text: 'OK',
-          onPress: () => {
-            getArgs(this, callbackOrActions);
-          }
-        }
-      ];
-    } else {
-      actions = callbackOrActions.map(item => {
-        return {
-          text: item.text,
-          onPress: () => {
-            if (item.onPress) {
-              return getArgs(this, item.onPress);
+    const actions =
+      typeof callbackOrActions === 'function'
+        ? [
+            { text: 'Cancel' },
+            {
+              text: 'OK',
+              onPress: () => {
+                getArgs(this, callbackOrActions);
+              }
             }
-          }
-        };
-      });
-    }
+          ]
+        : callbackOrActions.map(item => {
+            return {
+              text: item.text,
+              onPress: () => {
+                if (item.onPress) {
+                  return getArgs(this, item.onPress);
+                }
+              }
+            };
+          });
 
     const footer = getFooter.call(this, actions);
-    const config = Object.assign({
-      title: title,
-      message: message,
-      type: type ? type : 'default',
-      footer: footer,
+    const defaultOptions = {
+      visible: true,
+      transparent: true,
+      closable: false,
+      maskClosable: false,
+      operation: true,
+      className: 'm-modal-alert-content',
+      defaultValue: defaultValue || ['', ''],
+      placeholders: placeholders || [],
+      type: type || 'default',
+      title: title || '',
+      message: message || '',
+      footer,
       actions: footer,
-      platform: platform ? platform : 'ios'
-    });
-    const props = this._initConfig(config, options);
+      platform: platform ? platform : 'ios',
+      close: () => {
+        this.closeWithAnimation();
+      },
+      closeWithAnimation: () => {
+        this.closeWithAnimation();
+      }
+    };
+
+    const props = {
+      ...options,
+      ...defaultOptions
+    };
+
     return this._open(props);
   }
 
-  operation(actions?: any, platform?: string): any {
+  operation(actions?: any, platform?: string, customOptions?: ModalServiceCustomOptions): any {
     const options: ModalOptions = new ModalOptions();
-    options.visible = true;
-    options.transparent = true;
-    options.closable = false;
-    options.maskClosable = false;
-    options.operation = true;
-    options.className = 'am-modal-operation';
     const footer = getFooter.call(this, actions);
+    const defaultOptions = {
+      visible: true,
+      transparent: true,
+      closable: false,
+      maskClosable: false,
+      operation: true,
+      className: 'am-modal-operation',
+      footer,
+      platform: platform ? platform : 'ios',
+      close: () => {
+        this.closeWithAnimation();
+      },
+      closeWithAnimation: () => {
+        this.closeWithAnimation();
+      }
+    };
 
-    const config = Object.assign({
-      footer: footer,
-      actions: footer,
-      platform: platform ? platform : 'ios'
-    });
-    const props = this._initConfig(config, options);
+    const props = {
+      ...options,
+      ...defaultOptions,
+      ...customOptions
+    };
+
     return this._open(props);
   }
 
@@ -210,11 +181,12 @@ export class ModalService extends PopupService {
 }
 
 function getFooter(actions) {
-  let action = actions ? actions : [{ text: 'OK', onPress: () => {} }];
-  return action.map((button: Action) => {
-    const orginPress = button.onPress || function() {};
+  let _actions = actions ? actions : [{ text: 'OK', onPress: () => {} }];
+
+  return _actions.map((button: Action) => {
+    const originPress = button.onPress || function() {};
     button.onPress = () => {
-      const res = orginPress();
+      const res = originPress();
       if (res && res.then) {
         res.then(() => {
           this.closeWithAnimation();

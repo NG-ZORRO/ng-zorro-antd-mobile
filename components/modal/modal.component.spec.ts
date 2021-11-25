@@ -1,12 +1,12 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ComponentFixture, fakeAsync, tick, TestBed, flush, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, flush, waitForAsync } from '@angular/core/testing';
 import { ModalModule, WingBlankModule, ListModule, WhiteSpaceModule, ButtonModule, ModalRef } from '../..';
 import { By } from '@angular/platform-browser';
-import { ModalService, ModalServiceComponent, ModalComponent } from '../..';
+import { ModalService, ModalComponent } from '../..';
 import { ButtonComponent } from '../button/button.component';
 import { dispatchTouchEvent } from '../core/testing';
-import { ModalOptions, AlertOptions } from './modal-options.provider';
+import { ModalOptions } from './modal-options.provider';
 import { Overlay } from '@angular/cdk/overlay';
 describe('ModalComponent', () => {
   let component: TestModalBasicComponent;
@@ -26,7 +26,7 @@ describe('ModalComponent', () => {
         FormsModule,
         ReactiveFormsModule
       ],
-      providers: [Overlay, ModalOptions, AlertOptions]
+      providers: [Overlay, ModalOptions]
     }).compileComponents();
     TestBed.overrideModule(ModalModule, {}).compileComponents();
   }));
@@ -170,7 +170,7 @@ describe('ModalComponent', () => {
     expect(modalEle.nativeElement.querySelector('.am-modal-close')).toBeNull('closable is false');
   }));
 
-  it('should showOpeartion work', () => {
+  it('should showOperation work', () => {
     const button = buttons[0].nativeElement;
     button.click();
     fixture.detectChanges();
@@ -256,17 +256,17 @@ describe('ModalComponent', () => {
       [animationType]="animationType"
     >
       <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
-        scoll content...
+        scroll content...
         <br />
-        scoll content... <br />
-        scoll content... <br />
-        scoll content... <br />
-        scoll content... <br />
-        scoll content...
+        scroll content... <br />
+        scroll content... <br />
+        scroll content... <br />
+        scroll content... <br />
+        scroll content...
         <br />
       </div>
     </Modal>
-    <div Button (onClick)="showOpeartion()">operation</div>
+    <div Button (onClick)="showOperation()">operation</div>
     <div Button (onClick)="showAlert()">customized buttons</div>
     <div Button (onClick)="showPromptDefault()">defaultValue</div>
     <div Button (onClick)="showPromptPromise()">promise</div>
@@ -320,7 +320,7 @@ export class TestModalBasicComponent {
     this.state = false;
   }
 
-  showOpeartion() {
+  showOperation() {
     this._modal.operation([
       { text: '标为未读', onPress: () => console.log('标为未读被点击了') },
       { text: '置顶聊天', onPress: () => console.log('置顶聊天被点击了') }

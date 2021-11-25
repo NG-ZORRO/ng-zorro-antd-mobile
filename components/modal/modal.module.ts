@@ -8,7 +8,6 @@ import { WhiteSpaceModule } from '../white-space/white-space.module';
 import { ButtonModule } from '../button/button.module';
 import { InputItemModule } from '../input-item/input-item.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AlertOptions } from './modal-options.provider';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PopupService } from '../core/services/popup.service';
 @NgModule({
@@ -25,6 +24,6 @@ import { PopupService } from '../core/services/popup.service';
   ],
   exports: [ModalComponent, ModalServiceComponent],
   declarations: [ModalComponent, ModalServiceComponent],
-  providers: [AlertOptions, ModalService, PopupService]
+  providers: [ModalService, PopupService]
 })
 export class ModalModule {}
