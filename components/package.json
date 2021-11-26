@@ -1,6 +1,6 @@
 {
   "name": "ng-zorro-antd-mobile",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "An enterprise-class mobile UI components based on Ant Design and Angular",
   "schematics": "./schematics/collection.json",
   "keywords": [

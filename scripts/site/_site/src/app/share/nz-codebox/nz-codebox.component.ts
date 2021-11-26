@@ -352,7 +352,7 @@ export class AppModule { }
         '@ant-design/icons-angular': '^12.0.3',
         rxjs: '~6.6.2',
         'zone.js': '~0.11.4',
-        'ng-zorro-antd-mobile': '5.0.0'
+        'ng-zorro-antd-mobile': '5.0.1'
       },
       tags: ['stackblitz', 'sdk']
     });
