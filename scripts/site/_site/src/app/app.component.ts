@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     '2.0.7',
     '3.0.3',
     '4.0.0',
-    '5.0.0'
+    '5.0.1'
   ];
   versionMap = {
     '0.12.x': '0.12.5',
@@ -40,9 +40,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     '2.x': '2012.0.7',
     '3.0.3': '2013.0.3',
     '4.0.0': '2014.0.0',
-    '5.0.0': '2015.0.0'
+    '5.0.1': '2015.0.1'
   };
-  currentVersion = '5.0.0';
+  currentVersion = '5.0.1';
   isHomeURL = true;
   isKitchenURL = false;
   demoTitle = '';
