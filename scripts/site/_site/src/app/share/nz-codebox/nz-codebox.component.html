@@ -22,7 +22,7 @@
         (nzOnCancel)="handleCancel()"
         (nzOnOk)="handleOk()"
       >
-        <nz-highlight [nzCode]="_code" [nzLanguage]="'typescript'"></nz-highlight>
+        <nz-highlight *nzModalContent [nzCode]="_code" [nzLanguage]="'typescript'"></nz-highlight>
       </nz-modal>
     </span>
   </section>
