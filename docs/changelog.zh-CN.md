@@ -13,6 +13,17 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 5.0.1(2021-11-26)
+
+### Bug Fixes
+
+* **all:** 修复 ios 异常样式 ([#810](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/810)) ([99c8e52](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/99c8e52f8906c89cf17ba5a325b99a4815620e99))
+
+
+### Features
+
+* **modal:** Modal.operation 支持 maskClosable 参数 ([#804](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/804)) ([00b9e69](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/00b9e693682038f5e4452e1b4d85b44215679b5d))
+
 ## 5.0.0(2021-08-06)
 
 ### Features
