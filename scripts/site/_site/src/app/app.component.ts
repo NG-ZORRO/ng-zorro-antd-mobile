@@ -21,14 +21,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   language = 'zh';
   versionList = [
     '0.12.x',
-    '1.0.1',
-    '1.0.2',
-    '1.0.3',
-    '1.0.4',
-    '1.0.5',
     '1.0.6',
-    '2.0.1',
-    '2.0.3',
     '2.0.7',
     '3.0.3',
     '4.0.0',
@@ -36,11 +29,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   ];
   versionMap = {
     '0.12.x': '0.12.5',
-    '1.x': '2001.0.6',
-    '2.x': '2012.0.7',
+    '1.0.6': '2001.0.6',
+    '2.0.7': '2012.0.7',
     '3.0.3': '2013.0.3',
     '4.0.0': '2014.0.0',
-    '5.0.1': '2015.0.1'
+    '5.0.1': '2015.0.3'
   };
   currentVersion = '5.0.1';
   isHomeURL = true;
