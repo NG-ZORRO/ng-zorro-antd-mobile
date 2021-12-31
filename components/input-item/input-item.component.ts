@@ -80,10 +80,11 @@ export class InputItemComponent implements OnInit, AfterViewInit, ControlValueAc
         this._type = 'password';
       } else if (value === 'digit') {
         this._type = 'number';
-      } else if (value !== 'text' && value !== 'number') {
+      } else {
         this._type = value;
       }
       if (value === 'number') {
+        this._type = 'text';
         this.pattern = '[0-9]*';
       }
     }
