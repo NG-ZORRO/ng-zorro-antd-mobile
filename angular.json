@@ -27,9 +27,7 @@
               },
               "site/src/manifest.json"
             ],
-            "styles": [
-              "site/src/styles.less"
-            ],
+            "styles": ["site/src/styles.less"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -79,6 +77,13 @@
             "production": {
               "browserTarget": "ng-zorro-antd-mobile:build:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["site/src/tsconfig.app.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
