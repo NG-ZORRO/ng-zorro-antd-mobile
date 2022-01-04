@@ -17,9 +17,6 @@
  * BROWSER POLYFILLS
  */
 
-/** Evergreen browsers require these. **/
-import 'core-js/es/reflect';
-
 import 'web-animations-js';
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
