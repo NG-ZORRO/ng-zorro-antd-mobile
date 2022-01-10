@@ -36,7 +36,7 @@ rootDir.forEach(componentName => {
     }
   }
   const componentDirPath = path.join(rootPath, componentName);
-  if (componentName === 'util' || componentName === 'styles' || componentName === 'pipes' || componentName === 'style' || componentName === 'core' || componentName === 'locale' || componentName === 'i18n') {
+  if (componentName === 'util' || componentName === 'styles' || componentName === 'pipes' || componentName === 'style' || componentName === 'core' || componentName === 'locale' || componentName === 'i18n' || componentName === 'node_modules') {
     return;
   }
   if (fs.statSync(componentDirPath).isDirectory()) {
