@@ -3,9 +3,18 @@
 import 'zone.js/testing';
 import { getTestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-declare const require: { context; [key: string]: any };
+// same as https://github.com/angular/angular/blob/master/aio/src/test.ts
+declare const require: {
+  context(
+    path: string,
+    deep?: boolean,
+    filter?: RegExp
+  ): {
+    keys(): string[];
+    <T>(id: string): T;
+  };
+};
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting(), {
