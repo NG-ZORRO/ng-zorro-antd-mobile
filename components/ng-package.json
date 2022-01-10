@@ -5,9 +5,5 @@
   "lib": {
     "entryFile": "ng-zorro-antd-mobile.module.ts"
   },
-  "whitelistedNonPeerDependencies": [
-    "@ant-design/icons-angular",
-    "tslib",
-    "angular"
-  ]
+  "allowedNonPeerDependencies": ["@ant-design/icons-angular", "tslib", "angular"]
 }
