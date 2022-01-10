@@ -3,7 +3,10 @@ import { Title } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
 import { ROUTER_LIST } from './router';
 import { environment } from '../environments/environment';
-declare const docsearch: any;
+declare const docsearch;
+interface SpWindowProps extends Window {
+  less: { modifyVars?(param): Promise<null>; async: boolean };
+}
 
 @Component({
   selector: 'app-root',
@@ -35,7 +38,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   demoTitle = '';
   qrcode: string = '';
 
-  private listenerQRCode: any;
+  private listenerQRCode;
 
   constructor(private router: Router, private title: Title) {}
 
@@ -109,9 +112,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     document.getElementsByTagName('head')[0].appendChild(node);
   }
 
-  changeColor(res: any) {
+  changeColor(res: { color: { hex: string } }) {
     const changeColor = () => {
-      (window as any).less
+      ((window as unknown) as SpWindowProps).less
         .modifyVars({
           '@primary-color': res.color.hex
         })
@@ -127,7 +130,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (this.lessLoaded) {
       changeColor();
     } else {
-      (window as any).less = {
+      ((window as unknown) as SpWindowProps).less = {
         async: true
       };
       this.loadScript(lessUrl).then(() => {
