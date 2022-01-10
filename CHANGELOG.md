@@ -1,3 +1,20 @@
+# [6.0.0](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/5.0.1...6.0.0) (2022-01-10)
+
+
+### Bug Fixes
+
+* **inputitem:** type allows  text ([#818](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/818)) ([c0695e7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/c0695e7d184ddf494b2ead47ad86257caac5da5c))
+* **showcase:** fix missing older documents ([#822](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/822)) ([e461731](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/e4617311efe0c56f85142af2697068587edc954f))
+* **showcase:** fix the problem that the pop-up code is not displayed ([#814](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/814)) ([887b438](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/887b438cdbd79c63af4ec00dc7644f8159c07707))
+
+
+### Features
+
+* **all:** support angular 13 ([#829](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/829)) ([7e213e7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7e213e768e33c5919440772f212012e3197f8d36))
+* **dependencies:** downgrade karma version to avoid shield color bug ([#830](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/830)) ([13b7df6](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/13b7df6432ecf57f50ae26fcffa5386401045fe7))
+
+
+
 ## [5.0.1](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/compare/5.0.0...5.0.1) (2021-11-26)
 
 
