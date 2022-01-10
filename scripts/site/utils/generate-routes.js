@@ -27,6 +27,7 @@ module.exports = function generateRoutes(showCaseTargetPath, componentsMap, docs
   fs.writeFileSync(path.join(showCaseTargetPath, `intros.json`), JSON.stringify(intro, null, 2));
   const reverseMap = {};
   for (const key in componentsMap) {
+    if(componentsMap[key] === undefined) continue;
     const zh = {
       label   : componentsMap[key].title,
       path    : `components/${key}/zh`,

@@ -36,7 +36,7 @@ rootDir.forEach(componentName => {
     }
   }
   const componentDirPath = path.join(rootPath, componentName);
-  if (componentName === 'util' || componentName === 'styles' || componentName === 'pipes' || componentName === 'style' || componentName === 'core' || componentName === 'locale' || componentName === 'i18n') {
+  if (componentName === 'util' || componentName === 'styles' || componentName === 'pipes' || componentName === 'style' || componentName === 'core' || componentName === 'locale' || componentName === 'i18n' || componentName === 'node_modules') {
     return;
   }
   if (fs.statSync(componentDirPath).isDirectory()) {
@@ -46,7 +46,7 @@ rootDir.forEach(componentName => {
 
     // 处理components->${component}->demo文件夹
     const demoDirPath = path.join(componentDirPath, 'demo');
-    const demoMap = {};
+    const demoMap = {'basic':{}};
     let zhCode = '';
     let enCode = '';
     let demoList = [];
