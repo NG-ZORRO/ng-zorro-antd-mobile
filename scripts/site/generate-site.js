@@ -46,7 +46,7 @@ rootDir.forEach(componentName => {
 
     // 处理components->${component}->demo文件夹
     const demoDirPath = path.join(componentDirPath, 'demo');
-    const demoMap = {};
+    const demoMap = {'basic':{}};
     let zhCode = '';
     let enCode = '';
     let demoList = [];
@@ -84,15 +84,27 @@ rootDir.forEach(componentName => {
     }
     demoMap['basic']['enCode'] = generateCodeBox(showCaseComponentPath, componentName, 'en', enCode, keys, enTitles);
     demoMap['basic']['zhCode'] = generateCodeBox(showCaseComponentPath, componentName, 'zh', zhCode, keys, zhTitles);
+    let docZh;
+    let docEn;
+    try{
+      docZh = parseDocMdUtil(fs.readFileSync(path.join(componentDirPath, 'doc/index.zh-CN.md')), `components/${componentName}/doc/index.zh-CN.md`);
+    }catch(error){
+      docZh = {};
+    }
+    try{
+      docEn = parseDocMdUtil(fs.readFileSync(path.join(componentDirPath, 'doc/index.en-US.md')), `components/${componentName}/doc/index.en-US.md`);
+    }catch(error){
+      docEn = {};
+    }
     // 处理components->${component}->doc文件夹
     const result = {
       name   : componentName,
-      docZh  : parseDocMdUtil(fs.readFileSync(path.join(componentDirPath, 'doc/index.zh-CN.md')), `components/${componentName}/doc/index.zh-CN.md`),
-      docEn  : parseDocMdUtil(fs.readFileSync(path.join(componentDirPath, 'doc/index.en-US.md')), `components/${componentName}/doc/index.en-US.md`),
+      docZh  ,
+      docEn  ,
       demoMap: demoMap
     };
     componentsMap[componentName] = result.docZh.meta;
-    generateDemo(showCaseComponentPath, result);
+    if(result.docZh.meta)generateDemo(showCaseComponentPath, result);
   }
 });
 
