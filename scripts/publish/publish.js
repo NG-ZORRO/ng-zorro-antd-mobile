@@ -136,7 +136,8 @@ function checkout() {
   /* 
   2022-01-10
   因项目测试依赖的 colors 开源项目异常 (https://github.com/Marak/colors.js/issues/289)、(https://github.com/karma-runner/karma/issues/3738)
-  暂时注释掉本地验证，github发布检查处包含相同的测试命令。待依赖修复后再取消注释
+  暂时注释掉本地验证，github发布检查处包含相同的测试命令。
+  之后待依赖修复后再取消注释
   */
   execSync(`git commit -m "release(${nextVersion}): release ${nextVersion}" --no-verify`);
   execSync(`git push origin publish-${nextVersion}`);
