@@ -161,6 +161,7 @@ export class StepperComponent implements OnChanges, ControlValueAccessor {
       const allowNegative = this._min < 0;
       let decimalFlag = false;
       let negativeFlag = false;
+      if (!event) event = '';
       let value = event.toString().replace(/\D/g, (match, index, str) => {
         if (allowDecimal && match === '.' && !decimalFlag) {
           decimalFlag = true;
@@ -172,7 +173,6 @@ export class StepperComponent implements OnChanges, ControlValueAccessor {
         }
         return '';
       });
-
       if (negativeFlag && value.indexOf('-') > 0) {
         value = value.replace(/-/g, '');
       }
