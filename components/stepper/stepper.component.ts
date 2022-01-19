@@ -89,7 +89,7 @@ export class StepperComponent implements OnChanges, ControlValueAccessor {
     this.clsShowNum = value;
   }
   @Output()
-  onChange = new EventEmitter<any>();
+  onChange = new EventEmitter();
 
   @HostBinding('class.am-stepper')
   clsStepper: boolean = true;
