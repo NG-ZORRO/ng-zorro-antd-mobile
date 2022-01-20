@@ -20,7 +20,8 @@
 </div>
 <div class="{{ prefixCls }}-input-wrap">
   <input
-    type="text"
+    type="number"
+    pattern="\-?\d+(\.\d+)?"
     style="outline:none"
     class="{{ prefixCls }}-input"
     [disabled]="disabled"

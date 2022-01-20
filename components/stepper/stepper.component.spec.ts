@@ -170,12 +170,12 @@ describe('StepperComponent', () => {
     inputEle.value = 's1s.s2s.s3s';
     inputEle.dispatchEvent(new UIEvent('input'));
     tick(0);
-    expect(component.value).toBe(123, 'input s1s.s2s.s3s');
+    expect(component.value).toBe(0, 'input s1s.s2s.s3s');
 
-    inputEle.value = '-1-2-3';
+    inputEle.value = '-123.5';
     inputEle.dispatchEvent(new UIEvent('input'));
     tick(0);
-    expect(component.value).toBe(-123, 'input -1-2-3');
+    expect(component.value).toBe(-1235, 'input -123.5');
   }));
 
   it('should blur check work', fakeAsync(() => {
