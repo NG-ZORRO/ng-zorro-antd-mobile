@@ -141,6 +141,7 @@ describe('tab', () => {
   });
 
   it('distanceToChangeTab work when tabDirection is vertical', () => {
+    component.tabBarPosition = 'left';
     component.tabDirection = 'vertical';
     fixture.detectChanges();
     let content = tabsEle.querySelector('.am-tabs-content-wrap');
@@ -155,6 +156,7 @@ describe('tab', () => {
   });
 
   it('distanceToChangeTab work when tabDirection is vertical', () => {
+    component.tabBarPosition = 'left';
     component.tabDirection = 'vertical';
     fixture.detectChanges();
     let content = tabsEle.querySelector('.am-tabs-content-wrap');
@@ -169,6 +171,7 @@ describe('tab', () => {
   });
 
   it('distanceToChangeTab work when tabDirection is vertical', () => {
+    component.tabBarPosition = 'left';
     component.tabDirection = 'vertical';
     component.activeTab = 2;
     component.useOnPan = true;
@@ -295,6 +298,7 @@ describe('tab', () => {
   it('onChange work', () => {
     component.onChange = jasmine.createSpy('onChange is callback');
     component.activeTab = 0;
+    component.tabBarPosition = 'left';
     component.tabDirection = 'vertical';
     fixture.detectChanges();
     let content = tabsEle.querySelector('.am-tabs-content-wrap');

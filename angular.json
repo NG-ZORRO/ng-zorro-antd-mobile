@@ -108,6 +108,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "styles": ["components/ng-zorro-antd-mobile.less"],
             "main": "components/test.ts",
             "karmaConfig": "components/karma.conf.js",
             "polyfills": "components/polyfills.ts",
