@@ -73,7 +73,7 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~11.13.7",
-    "antd-theme-generator": "~1.1.9",
+    "antd-theme-generator": "1.2.2",
     "codecov": "^3.0.0",
     "codelyzer": "^6.0.1",
     "conventional-changelog-cli": "^2.1.1",
