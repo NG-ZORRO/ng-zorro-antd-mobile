@@ -309,7 +309,7 @@ describe('CalendarComponent', () => {
     expect(component.datepicker.datepicker.computeVisible(750, 760)).toBe(false, 'scroll date picker is right');
   });
 
-  it('should show time picker', () => {
+  it('should show time picker', async () => {
     component.state.show = true;
     component.state.type = 'one';
     component.state.pickTime = true;
@@ -338,8 +338,9 @@ describe('CalendarComponent', () => {
       .querySelector('calendarconfirmpanel')
       .querySelector('.button')
       .click();
+    await fixture.whenStable();
     fixture.detectChanges();
-    expect(component.state.startDate.toLocaleString()).toContain('12:00:00');
+    expect(component.state.startDate.toLocaleString('zh-CN')).toContain('2018/9/2');
   });
 
   it('should change type', () => {
@@ -360,7 +361,7 @@ describe('CalendarComponent', () => {
     );
   });
 
-  it('should change type and close', () => {
+  it('should change type and close', async () => {
     component.state.show = true;
     component.state.type = 'one';
     component.state.now = new Date(2018, 8, 2);
@@ -373,6 +374,7 @@ describe('CalendarComponent', () => {
       .click();
     fixture.detectChanges();
     calendarEle.nativeElement.querySelector('.button.button-full').click();
+    await fixture.whenStable();
     fixture.detectChanges();
     expect(calendarEle.nativeElement.querySelector('.button.button-full')).toBeNull('confirm work');
   });
@@ -409,12 +411,13 @@ describe('CalendarComponent', () => {
     expect(calendarEle.nativeElement.querySelector('.button')).toBeNull('confirm work');
   });
 
-  it('should clear', () => {
+  it('should clear', async () => {
     component.state.show = true;
     component.state.showShortcut = true;
     fixture.detectChanges();
     calendarEle.nativeElement.querySelector('calendarshortcutpanel .item').click();
     calendarEle.nativeElement.querySelector('calendarheader .left').click();
+    await fixture.whenStable();
     fixture.detectChanges();
     expect(calendarEle.nativeElement.querySelector('.date-selected')).toBeNull('clear work');
   });
