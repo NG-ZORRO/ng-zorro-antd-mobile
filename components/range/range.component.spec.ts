@@ -102,12 +102,12 @@ describe('RangeComponent', () => {
     const sliderCoords = amSlider.getBoundingClientRect();
     const sliderLength = sliderCoords.width;
     const sliderStart = sliderCoords.left;
-    const offset = Math.round(((400 - sliderStart) / sliderLength) * 100);
+    const offset = Math.round(((300 - sliderStart) / sliderLength) * 100);
 
     const sliderHandlerNodeList = rangeEle.nativeElement.querySelectorAll('sliderhandle');
     dispatchMouseEvent(sliderHandlerNodeList[0], 'mousedown');
     fixture.detectChanges();
-    dispatchMouseEvent(document, 'mousemove', 400);
+    dispatchMouseEvent(document, 'mousemove', 300);
     fixture.detectChanges();
     dispatchMouseEvent(document, 'mouseup');
     sliderHandler = rangeEle.nativeElement.querySelectorAll('.am-slider-handle');

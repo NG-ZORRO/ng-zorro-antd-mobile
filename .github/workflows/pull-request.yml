@@ -1,0 +1,34 @@
+name: Pull Request CI
+# master 分支发生PR事件时触发运行工作流程
+on:
+  pull_request:
+    branches: master
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+        task: [test-headless, pre-release]
+
+    steps:
+      # 拉取代码
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 设置 node 环境
+      - name: Setup Node.js env
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.node-version}}
+
+      # 安装依赖
+      - name: Installing Dependencies
+        run: |
+          npm install
+
+      # 执行单测 or pre-release # or see https://medium.com/rupesh-tiwari/how-to-deploy-angular-apps-to-github-pages-gh-pages-setup-ci-cd-for-angular-app-with-github-714c1e555de5
+      - name: Run Task ${{matrix.task}}
+        run: npm run ${{matrix.task}}
