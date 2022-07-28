@@ -102,12 +102,12 @@ export class PickerComponent<T = any, R = any> extends PickerRef<T, R> implement
     }
     this.dom.style.transition = 'transform ' + (time < 0.3 ? 0.3 : time) + 's';
     if (this.differY <= -this.lineHeight / 2) {
-      this.currentY += Math.floor(this.differY / this.lineHeight);
+      this.currentY += Math.floor(this.differY / this.lineHeight + 0.5);
       if (this.currentY <= this.maxY) {
         this.currentY = this.maxY;
       }
     } else if (this.differY >= this.lineHeight / 2) {
-      this.currentY += Math.floor(this.differY / this.lineHeight);
+      this.currentY += Math.floor(this.differY / this.lineHeight + 0.5);
       if (this.currentY >= 0) {
         this.currentY = 0;
       }
