@@ -4,9 +4,8 @@ import { CommonModule } from '@angular/common';
 import { DatePickerComponent } from './date-picker.component';
 import { DatePickerDirective } from './date-picker.directive';
 import { DatePickerOptions } from './date-picker-options.provider';
-import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
-import { ToastModule } from '../toast/toast.module';
-import { ToastComponent } from '../toast/toast.component';
+import { LocaleProviderModule } from 'ng-zorro-antd-mobile/locale-provider';
+import { ToastModule } from 'ng-zorro-antd-mobile/toast';
 
 @NgModule({
   imports: [CommonModule, LocaleProviderModule, ToastModule, FormsModule],

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ImagePickerComponent } from './image-picker.component';
-import { FlexModule } from '../flex/flex.module';
+import { FlexModule } from 'ng-zorro-antd-mobile/flex';
 import { CommonModule } from '@angular/common';
 
 @NgModule({

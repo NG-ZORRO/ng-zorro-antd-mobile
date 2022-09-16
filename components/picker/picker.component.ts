@@ -10,11 +10,10 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { PickerOptions } from './picker-options.provider';
-import * as velocity from '../core/util/velocity';
-import * as touchEvent from '../core/util/touch-event';
-import { LocaleProviderService } from '../locale-provider/locale-provider.service';
+import { getEventTarget, getVelocity } from 'ng-zorro-antd-mobile/core';
+import { LocaleProviderService } from 'ng-zorro-antd-mobile/locale-provider';
 import { takeUntil } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { PickerRef } from './picker-ref.class';
 
 @Component({
@@ -36,7 +35,7 @@ export class PickerComponent<T = any, R = any> extends PickerRef<T, R> implement
   dataForRender: any[] = [];
   selectedTarget: any[] = [];
   isMouseDown: boolean = false;
-  Velocity = velocity.getVelocity();
+  Velocity = getVelocity();
   currentPicker: any;
 
   private _unsubscribe$: Subject<void> = new Subject<void>();
@@ -52,7 +51,7 @@ export class PickerComponent<T = any, R = any> extends PickerRef<T, R> implement
     }
     this.isMouseDown = true;
     event.preventDefault();
-    this.dom = touchEvent.getEventTarget(event).target.parentElement.children[2];
+    this.dom = getEventTarget(event).target.parentElement.children[2];
     this.len = this.dom.children.length;
     this.maxY = -(this.len - 1);
 
@@ -66,7 +65,7 @@ export class PickerComponent<T = any, R = any> extends PickerRef<T, R> implement
         }
       });
     }
-    this.startY = touchEvent.getEventTarget(event).clientY;
+    this.startY = getEventTarget(event).clientY;
   }
 
   @HostListener('mousemove', ['$event'])
@@ -76,7 +75,7 @@ export class PickerComponent<T = any, R = any> extends PickerRef<T, R> implement
       return;
     }
     event.preventDefault();
-    const ev = touchEvent.getEventTarget(event);
+    const ev = getEventTarget(event);
     this.differY = ev.clientY - this.startY;
     this.Velocity.record(this.differY);
     this.dom.style.transition = 'transform 0s';
@@ -92,11 +91,11 @@ export class PickerComponent<T = any, R = any> extends PickerRef<T, R> implement
     }
     this.isMouseDown = false;
     event.preventDefault();
-    const ev = touchEvent.getEventTarget(event);
+    const ev = getEventTarget(event);
     this.differY = ev.clientY - this.startY;
     let time = 0.3;
     const velocityTemp = this.Velocity.getVelocity(this.differY) * 4;
-    if (velocity) {
+    if (getVelocity) {
       this.differY = velocityTemp * 40 + this.differY;
       time = Math.abs(velocityTemp) * 0.1;
     }

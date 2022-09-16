@@ -20,7 +20,7 @@ import {
 import { PopoverComponent } from './popover.component';
 import { PopoverOptions } from './popover-options.provider';
 import { PopoverComponentOptions } from './popover-component-options.provider';
-import * as Positioning from '../core/util/position';
+import { getPositionElements } from 'ng-zorro-antd-mobile/core';
 
 @Directive({
   selector: '[Popover], [nzm-popover]',
@@ -203,7 +203,7 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
   private positionPopover(): void {
     if (this.popover) {
       const popoverElement = this.popover.location.nativeElement.children[1];
-      const popoverPosition = Positioning.getPositionElements(
+      const popoverPosition = getPositionElements(
         this._elm.nativeElement,
         popoverElement,
         this.positionMap(this.placement) || this._defaultOptions.placement,

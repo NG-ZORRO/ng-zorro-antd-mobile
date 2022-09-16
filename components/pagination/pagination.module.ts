@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from '../button/button.module';
-import { FlexModule } from '../flex/flex.module';
-import { IconModule } from '../icon/icon.module';
+import { ButtonModule } from 'ng-zorro-antd-mobile/button';
+import { FlexModule } from 'ng-zorro-antd-mobile/flex';
+import { IconModule } from 'ng-zorro-antd-mobile/icon';
 import { PaginationComponent } from './pagination.component';
-import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
+import { LocaleProviderModule } from 'ng-zorro-antd-mobile/locale-provider';
 
 @NgModule({
   imports: [CommonModule, ButtonModule, FlexModule, IconModule, LocaleProviderModule],

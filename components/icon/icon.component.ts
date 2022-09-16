@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { IconHandler } from '../core/util/icon';
+import { IconHandler } from 'ng-zorro-antd-mobile/core';
 
 @Component({
   selector: 'Icon, nzm-icon',

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
-import { LocaleProviderService } from '../locale-provider/locale-provider.service';
+import { LocaleProviderService } from 'ng-zorro-antd-mobile/locale-provider';
 import { takeUntil } from 'rxjs/operators';
 
 interface LocaleValue {

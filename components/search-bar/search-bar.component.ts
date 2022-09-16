@@ -13,7 +13,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { trigger, state, animate, transition, style } from '@angular/animations';
-import { LocaleProviderService } from '../locale-provider/locale-provider.service';
+import { LocaleProviderService } from 'ng-zorro-antd-mobile/locale-provider';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';

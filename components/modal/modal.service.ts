@@ -2,7 +2,7 @@ import { Injectable, Injector, ComponentRef, TemplateRef } from '@angular/core';
 
 import { ModalServiceComponent } from './modal.component';
 import { ModalBaseOptions, ModalOptions, ModalServiceCustomOptions, Action } from './modal-options.provider';
-import { PopupService } from '../core/services/popup.service';
+import { PopupService } from 'ng-zorro-antd-mobile/core';
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PickerComponent } from './picker.component';
 import { PickerDirective } from './picker.directive';
 import { PickerOptions } from './picker-options.provider';
-import { PopupService } from '../core/services/popup.service';
+import { PopupService } from 'ng-zorro-antd-mobile/core';
 import { PickerService } from './picker.service';
 import { OverlayModule } from '@angular/cdk/overlay';
 

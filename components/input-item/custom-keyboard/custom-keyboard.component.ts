@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, OnDestroy, HostBinding } from '@angular/core';
-import { LocaleProviderService } from '../../locale-provider/locale-provider.service';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { LocaleProviderService } from 'ng-zorro-antd-mobile/locale-provider';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
