@@ -3,7 +3,7 @@
   "dest": "../publish",
   "deleteDestPath": true,
   "lib": {
-    "entryFile": "ng-zorro-antd-mobile.module.ts"
+    "entryFile": "./index.ts"
   },
   "allowedNonPeerDependencies": ["@ant-design/icons-angular", "tslib", "angular"]
 }
