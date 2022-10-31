@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "target": "es2015",
+    "target": "es2020",
     "module": "es2015",
     "sourceMap": true,
     "inlineSources": true,
