@@ -64,7 +64,7 @@
     "@angular-devkit/build-angular": "^13.1.2",
     "@angular-devkit/core": "^13.1.2",
     "@angular-devkit/schematics": "^13.1.2",
-    "@angular/cli": "^13.1.2",
+    "@angular/cli": "^14.2.7",
     "@angular/compiler-cli": "^13.1.1",
     "@angular/platform-server": "^13.1.1",
     "@angular/service-worker": "^13.1.1",
@@ -116,7 +116,7 @@
     "tsickle": "^0.39.1",
     "tslib": "^2.3.0",
     "tslint": "~6.1.3",
-    "typescript": "~4.5.4",
+    "typescript": "~4.7.2",
     "yaml-front-matter": "^4.0.0",
     "zone.js": "~0.11.4"
   },
