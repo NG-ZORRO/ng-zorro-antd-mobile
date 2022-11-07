@@ -13,6 +13,12 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 7.0.0(2022-11-07)
+
+### Features
+
+- **all:** 升级支持 Angular 14 ([#854](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/854)) ()
+
 ## 6.0.0(2022-01-10)
 
 ### Bug Fixes
