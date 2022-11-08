@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run site:init && node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng serve --port=4300",
-    "build": "node ./scripts/site/generate-site init && node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng build --aot --configuration production --output-hashing none",
+    "build": "node ./scripts/site/generate-site init && node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng build ng-zorro-antd-mobile --aot --configuration production --output-hashing none",
     "test": "npm run site:init && ng test --watch=false --code-coverage",
     "test-headless": "npm run site:init && ng test --watch=false --code-coverage --browsers=ChromeHeadless",
     "test-watch": "npm run site:init && ng test --watch=true --code-coverage",
@@ -20,14 +20,14 @@
     "schematic:tsc": "tsc -p schematics/tsconfig.json",
     "schematic:build": "node ./scripts/schematics/set-theme.js && node ./scripts/schematics/set-version.js && npm run schematic:tsc && node ./scripts/schematics/copy-resources",
     "schematic:generate": "npm run schematic:demo && npm run schematic:build && rm -rf schematics/demo",
-    "doc": "node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng build --aot --configuration production",
+    "doc": "node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng build ng-zorro-antd-mobile --aot --configuration production",
     "helper": "bash ./release-helper.sh",
     "migration-styles": "node ./scripts/build/migration-styles.js",
     "integration": "npm run generate && bash ./integration-test.sh",
     "format": "prettier --write './components/**/*.{ts,tsx,js,scss,html}' && tslint --fix './components/**/*.{js,ts,tsx}'",
     "postgenerate": "node ./scripts/build/generate-less.js && cp README.md publish/README.md && npm run migration-styles && npm run schematic:generate",
     "generate": "node --max_old_space_size=5120 node_modules/@angular/cli/bin/ng build ng-zorro-antd-mobile-lib --configuration production",
-    "pre-release": "npm run site:init && bash ./scripts/build/replace-publish.sh && npm run generate && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --aot --configuration production && npm run helper"
+    "pre-release": "npm run site:init && bash ./scripts/build/replace-publish.sh && npm run generate && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build ng-zorro-antd-mobile --aot --configuration production && npm run helper"
   },
   "main": "./bundles/antd.umd.js",
   "module": "./esm5/antd.js",
@@ -55,10 +55,10 @@
     "@angular/platform-browser-dynamic": "^14.2.8",
     "@angular/pwa": "^14.2.7",
     "@angular/router": "^14.2.8",
-    "@ant-design/icons-angular": "^13.0.1",
+    "@ant-design/icons-angular": "^14.1.0",
     "ant-design": "^1.0.0",
     "antd-mobile-demo-data": "^0.3.0",
-    "ng-zorro-antd": "^13.0.0"
+    "ng-zorro-antd": "^14.1.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.7",
@@ -111,7 +111,7 @@
     "rollup-plugin-replace": "~2.2.0",
     "rollup-plugin-sourcemaps": "~0.4.2",
     "rollup-plugin-uglify": "~6.0.0",
-    "rxjs": "~6.6.2",
+    "rxjs": "~7.5.7",
     "ts-node": "~8.1.0",
     "tsickle": "^0.39.1",
     "tslib": "^2.3.0",

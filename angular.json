@@ -119,7 +119,6 @@
       }
     }
   },
-  "defaultProject": "ng-zorro-antd-mobile",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
