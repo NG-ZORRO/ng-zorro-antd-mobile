@@ -13,6 +13,12 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 7.0.0(2022-11-07)
+
+### Features
+
+- **all:** support Angular 14 ([#854](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/854)) ()
+
 ## 6.0.0(2022-01-10)
 
 ### Bug Fixes

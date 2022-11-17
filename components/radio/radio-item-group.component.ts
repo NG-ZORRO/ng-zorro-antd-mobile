@@ -84,7 +84,7 @@ export class RadioItemGroupComponent implements AfterContentInit, OnDestroy, Con
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
+    this.destroy$.next('');
     this.destroy$.complete();
   }
 
