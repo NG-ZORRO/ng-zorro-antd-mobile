@@ -15,9 +15,18 @@ timeline: true
 
 ## 7.0.0(2022-11-07)
 
+### Bug Fixes
+
+* **date-picker:** fix date filter issue, when minimum date is selected ([6cb071a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6cb071a18713155d947d8506e24529a97fe0d69b))
+* **picker:** fix drop down selection ([#805](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/805)) ([#844](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/844)) ([535c044](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/535c0446b192d7c69e06888524c5d37ffe22b152))
+* **site:**  fixed ngAdd error when ng version >=13 ([#843](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/843)) ([416845f](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/416845fb137b243093b907952baeac690cb8192e))
+
+
 ### Features
 
-- **all:** support Angular 14 ([#854](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/854)) ()
+* **stepper:** bring up numeric keypad ([#832](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/832)) ([09de58b](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/09de58b0f4ad088a7e810f667d78083509a628d3))
+* **workflow:** add github actions flow ([#846](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/846)) ([8b59b31](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8b59b31fcc18dfef59f32e9bca1c509e2f410147))
+* **all:** support Angular 14  ([efc2db2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/efc2db285485929e59caa1b87cfbde960229d1ef))([0a67edc](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0a67edc2777410efbdd548a31d6af9be90707ba2))([0a900b4](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0a900b4e2433168f81c5149cde2eef4b187e74df))([faa52d2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/faa52d29df52dcccd197c92a9d88c335f5112bf2))([f4fb9a5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f4fb9a5fd4e1125d91ddd16cf75b5e30ded4a883))([2bba379](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/2bba37922a717d3d63db34bf83acf05d477aa7c5))
 
 ## 6.0.0(2022-01-10)
 

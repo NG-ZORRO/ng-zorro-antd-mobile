@@ -15,9 +15,19 @@ timeline: true
 
 ## 7.0.0(2022-11-07)
 
+### Bug Fixes
+
+* **date-picker:** 修复设置最小值的情况下，月份变更后，日期筛选不完整的bug ([6cb071a](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/6cb071a18713155d947d8506e24529a97fe0d69b))
+* **picker:** 修复 pickerview 下拉选中异常bug ([#805](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/805)) ([#844](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/844)) ([535c044](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/535c0446b192d7c69e06888524c5d37ffe22b152))
+* **site:**  修复了 ng 版本 >=13 时的 ngAdd 错误 ([#843](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/843)) ([416845f](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/416845fb137b243093b907952baeac690cb8192e))
+
+
 ### Features
 
-- **all:** 升级支持 Angular 14 ([#854](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/pull/854)) ()
+* **stepper:** stepper 唤起数字键盘 ([#832](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/832)) ([09de58b](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/09de58b0f4ad088a7e810f667d78083509a628d3))
+* **workflow:** 更新工作流 ([#846](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/846)) ([8b59b31](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/8b59b31fcc18dfef59f32e9bca1c509e2f410147))
+* **all:** 升级支持 Angular 14  ([efc2db2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/efc2db285485929e59caa1b87cfbde960229d1ef))([0a67edc](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0a67edc2777410efbdd548a31d6af9be90707ba2))([0a900b4](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/0a900b4e2433168f81c5149cde2eef4b187e74df))([faa52d2](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/faa52d29df52dcccd197c92a9d88c335f5112bf2))([f4fb9a5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/f4fb9a5fd4e1125d91ddd16cf75b5e30ded4a883))([2bba379](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/2bba37922a717d3d63db34bf83acf05d477aa7c5))
+
 
 ## 6.0.0(2022-01-10)
 
