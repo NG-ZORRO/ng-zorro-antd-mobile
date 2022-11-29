@@ -15,8 +15,8 @@ Located above the app content area, below the system status bar, and provides na
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[mode]` | Style mode | `'dark' \| 'light'` | `'dark'`
 | `[icon]` | Appears on the leftmost icon placeholder | `TemplateRef` | - |
 | `[leftContent]` | Left content | `string \| TemplateRef` | - |

@@ -15,8 +15,8 @@ Located at the bottom of the APP, to facilitate users to quickly switch between 
 
 ### TabBar
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[activeTab]` | Current tab index | `number` | `0` |
 | `[barTintColor]` | Tabbar's background color | `string` | `'white'` |
 | `[tintColor]` | Selected's font color | `string` | `'#108ee9'` |
@@ -28,8 +28,8 @@ Properties | Descrition | Type | Default
 
 ### TabBarItem
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[badge]` | Badge number | `number \| string` | - |
 | `[dot]` | Show red dot on right-top(invalid when set badge number) | `boolean` | `false` |
 | `[icon]` | The default icon | `TemplateRef` | - |

@@ -11,8 +11,8 @@ Used to select a date range.
 
 ## API
 
-Properties | Description | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[enterDirection]` | Enter direction | `'horizontal' \| 'vertical'` | `'vertical'` |
 | `[locale]` | Locale | `DateModels.Locale` | - |
 | `[pickTime]` | If pick time | `boolean` | `false` |

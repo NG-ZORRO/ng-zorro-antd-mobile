@@ -17,15 +17,15 @@ A single and continuous block content is vertically arranged to display current 
 
 ### List
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[renderHeader]` | list heder | `string \| TemplateRef` | - |
 | `[renderFooter]` | list footer | `string \| TemplateRef` | - |
 
 ### ListItem
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[thumb]` | thumbnail on the left side of `List`(string type will be used to set img src) | `string \| TemplateRef` | - |
 | `[extra]` | extra content on the right side of `List` | `string \| TemplateRef` | - |
 | `[arrow]` | arrow direction，`empty` option may hide the dom | `'horizontal' \| 'up' \| 'down' \| 'empty'` | - |

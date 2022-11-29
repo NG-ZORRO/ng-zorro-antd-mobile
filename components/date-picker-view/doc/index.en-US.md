@@ -8,8 +8,8 @@ DatePickerView's functions like DatePicker, but it is rendered directly in the a
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[mode]`| Mode value | `'year' \| 'month' \| 'date' \| 'time' \| 'datetime'` | `'date'` |
 | `[minDate]` | Minimum date | `Date` | `2000-1-1` |
 | `[maxDate]` | Maximum date | `Date` | `2030-1-1` |

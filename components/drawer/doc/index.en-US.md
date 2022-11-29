@@ -12,8 +12,8 @@ Drawer is a panel that displays the app's navigation options on the left edge of
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[sidebar]` | The sidebar content | `TemplateRef` | - |
 | `[open]` | If the sidebar should be open | `boolean` | `false` |
 | `[position]` | Position of `Drawer` | `'left' \| 'right' \| 'top' \| 'bottom'` | `'left'` |

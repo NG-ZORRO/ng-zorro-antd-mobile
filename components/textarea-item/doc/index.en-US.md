@@ -14,8 +14,8 @@ A foundational component for inputting multi-line text into the app via a keyboa
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[value]` | the value to show for the textarea for more information about controlled component | `string` | - |
 | `[defaultValue]` | provides an initial value that will change when the user starts typing | `string` | - |
 | `[placeholder]` | the string that will be rendered before text input has been entered | `string` | - |

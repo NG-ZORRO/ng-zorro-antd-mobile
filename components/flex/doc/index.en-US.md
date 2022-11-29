@@ -13,8 +13,8 @@ Flex is a wrap of  Flexible Box.
 
 ### Flex
 
-Properties | Descrition | Type | Default
-----|-----|------|------
+| Properties | Description | Type | Default |
+|----|-----|------|------|
 | `[direction]` | how flex items are placed in the flex container | `'row' \| 'row-reverse' \| 'column' \| 'column-reverse'` | `'row'` |
 | `[wrap]` | the wrap way of sub-elements | `'nowrap' \| 'wrap' \| 'wrap-reverse'`  | `'nowrap'` |
 | `[justify]` | the way of alignment for sub-elements of main axis | `'start' \| 'end' \| 'center' \| 'between' \| 'around'` | `'start'` |

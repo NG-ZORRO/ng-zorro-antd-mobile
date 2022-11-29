@@ -14,8 +14,8 @@ subtitle: 搜索栏
 
 ## API
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[defaultValue]` | 搜索框的默认值 | `string` | - |
 | `[value]` | 搜索框的当前值 | `string` | - |
 | `[placeholder]` | placeholder | `string` | - |

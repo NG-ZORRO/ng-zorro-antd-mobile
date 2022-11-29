@@ -8,8 +8,8 @@ Note: Just for selecting picture. Generally `ImagePicker` is used to select pict
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[files]` | Picture files array which includes `url`(required) in each object | `Array` | `[]` |
 | `[selectable]` | Whether to show selector button | `boolean` | `true` |
 | `[multiple]` | Whether support choose multi images at once | `boolean` | `false` |

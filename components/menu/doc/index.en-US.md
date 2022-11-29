@@ -13,8 +13,8 @@ Show a seires of operations on a panel.
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[data]` | `Menu` data (children will be ignored when `isLeaf` is true) | `Array<{label: string, value, disabled?, children<data>?, isLeaf?}>` | `[]` |
 | `[level]` | `Menu` levels  | `1 \| 2`  | `2` |
 | `[value]` | Selected value of `Menu`, it's a array which includes first and second level's `value`. When menu is in multiple select mode, if level is `1`, all values of array mean multiple select options; if level is `2`, the first value of array means first level's option, second value is an array of submenu values | `Array` | - |

@@ -14,14 +14,14 @@ Card can be used to organize information and operations, usually also as an entr
 
 ### Card
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[full]` | Whether is full column | `boolean` | `false` |
 
 ### CardHeader
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[title]` | Title for `CardHeader` | `string \| TemplateRef` | - |
 | `[thumb]` | Thumb to render in the left of  `CardHeader` | `string \| TemplateRef` | - |
 | `[thumbStyle]` | Style of thumb | `object` | `{}` |
@@ -29,7 +29,7 @@ Properties | Descrition | Type | Default
 
 ### CardFooter
 
-Properties | Descrition | Type | Default
------------|------------|------|--------z
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[content]` | Content of `CardFooter` | `string \| TemplateRef` | - |
 | `[extra]` | Extra content of `CardFooter` | `string \| TemplateRef` | - |

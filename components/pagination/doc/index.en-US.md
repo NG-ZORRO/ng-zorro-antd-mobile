@@ -12,8 +12,8 @@ A long list can be divided into several pages by `Pagination`, and only one page
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[mode]` | The mode of `Pagination` | `'button' \| 'number' \| 'pointer'` | `'button'` |
 | `[current]` | Current page index | `number` | `1`  |
 | `[total]` |  Total number of data | `number` | `0` |

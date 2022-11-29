@@ -10,7 +10,7 @@ Checkbox
 
 ### Checkbox
 
-| Properties | Descrition | Type | Default |
+| Properties | Description | Type | Default |
 | ---------- | ---------- | ---- | ------- |
 | `[name]` | name | `string` | - |
 | `[value]` | value | `string` | - |
@@ -22,7 +22,7 @@ Checkbox
 
 The encapsulation about `Checkbox` based on `ListItem`, the property `thumb` of `ListItem` will be passed to `Checkbox`, while other properties remain the same (except for onClick, which has been changed to onChange).
 
-| Properties | Descrition | Type | Default |
+| Properties | Description | Type | Default |
 | ---------- | ---------- | ---- | ------- |
 | `[name]` | name | `string` | - |
 | `[value]` | value | `string` | - |
@@ -34,7 +34,7 @@ The encapsulation about `Checkbox` based on `ListItem`, the property `thumb` of 
 
 Almost the same as CheckboxItem and be used for special scenes. See demo for details.
 
-| Properties | Descrition | Type | Default |
+| Properties | Description | Type | Default |
 | ---------- | ---------- | ---- | ------- |
 | `[name]` | name | `string` | - |
 | `[value]` | value | `string` | - |

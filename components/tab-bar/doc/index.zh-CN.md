@@ -16,8 +16,8 @@ subtitle: 标签栏
 
 ### TabBar
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[activeTab]` | 当前激活Tab索引 | `number` | `0` |
 | `[barTintColor]` | tabbar 背景色 | `string` | `'white'` |
 | `[tintColor]` | 选中的字体颜色 | `string` | `'#108ee9'` |
@@ -29,8 +29,8 @@ subtitle: 标签栏
 
 ### TabBarItem
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[badge]` | 徽标数 | `number \| string` | - |
 | `[dot]` | 是否在右上角显示小红点（在设置badge的情况下失效） | `boolean` | `false` |
 | `[icon]` | 默认展示的内容 | `TemplateRef` | - |

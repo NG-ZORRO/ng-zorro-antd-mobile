@@ -27,8 +27,8 @@ subtitle: 步骤条
 
 整体步骤条。
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[current]` | 指定当前步骤，从 0 开始记数。在子 Step 元素中，可以通过 `status` 属性覆盖状态 | `number` | `0` |
 | `[size]` | 尺寸 | `large \| 'small'` | - |
 | `[status]` | 指定当前步骤的状态 | `'wait' \| 'process' \| 'finish' \| 'error'` | `'process'` |
@@ -38,8 +38,8 @@ subtitle: 步骤条
 
 步骤条内的每一个步骤。
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[status]` | 指定状态。当不配置该属性时，会使用 Steps 的 `current` 来自动指定状态 | `'wait' \| 'process' \| 'finish' \| 'error'` | `wait` |
 | `[title]` | 标题 | `string \| TemplateRef` | - |
 | `[description]` | 步骤的详情描述 | `string \| TemplateRef` | - |

@@ -8,8 +8,8 @@ PickerView's functions like Picker, but it is rendered directly in the area inst
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[data]` | data source | `Array<{value, label}> \| Array<Array<{value, label}> `| - |
 | `[cascade]` | whether cascade | `boolean` | `true` |
 | `[cols]` | col numbers | `number` | `3` |

@@ -13,8 +13,8 @@ subtitle: 选择器
 
 ## API
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[data]` | 数据源 | `Array<{value, label, children: Array}>` | - |
 | `[cols]` | 列数 | `number` | `3` |
 | `[okText]` | 选中的文案 | `string` | `'确定'` |
@@ -33,8 +33,8 @@ subtitle: 选择器
 
 
 ### PickerService.showPicker(config, confirm?, cancel?)
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `config` | 初始化配置 | `{data: [], value: [],...}` | - |
 | `confirm` | 选中后的回调 | `(val) => void` | - |
 | `cancel` | 点击取消时执行的回调 | `() => void` | - |

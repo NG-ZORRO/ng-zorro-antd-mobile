@@ -8,6 +8,6 @@ Layout controls
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[size]` | left and right blank space | `'sm' \| 'md' \| 'lg'` | `'lg'` |

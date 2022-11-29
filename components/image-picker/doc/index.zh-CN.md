@@ -10,7 +10,7 @@ subtitle: 图片选择器
 ## API
 
 属性 | 说明 | 类型 | 默认值
-----|-----|------|------
+|----|-----|------|------|
 | `[files]` | 图片文件数组,元素为对象,包含属性 url（必选, 可能还有id, orientation, 以及业务需要的其它属性 | `Array` | `[]` |
 | `[selectable]` | 是否显示添加按钮 | `boolean` | `true` |
 | `[multiple]` | 是否支持多选 | `boolean` | `false` |

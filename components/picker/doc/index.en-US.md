@@ -12,8 +12,8 @@ Choose from a set of data, e.g. Country choice.
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[data]` | Data source | `Array<{value, label, children: Array}>` | - |
 | `[cols]` | Col numbers | `number` | `3` |
 | `[okText]` | Ok text | `string` | `'确定'` |
@@ -31,8 +31,8 @@ Properties | Descrition | Type | Default
 > **注：** Don't support default city initialization data any more。
 
 ### PickerService.showPicker(config, confirm?, cancel?)
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `config` | Init config | `{data: [], value: [],...}` | - |
 | `confirm` | Handler called when click ok | `(val) => void` | - |
 | `cancel` | Handler called when click cancel | `() => void` | - |

@@ -27,8 +27,8 @@ Steps is typically used for displaying the progress of a task, or guiding users 
 
 The Steps container.
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[current]` | To set the current step, counting from 0. You can overwrite this state by using `status` of `Step` | `number` | `0` |
 | `[size]` | Size | `large \| 'small'` | - |
 | `[status]` | Current step's states | `'wait' \| 'process' \| 'finish' \| 'error'` | `'process'` |
@@ -38,8 +38,8 @@ Properties | Descrition | Type | Default
 
 A single step used as child component of the Step.
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[status]` | To specify the status. It will be automatically set by `current` of `Steps` if not configured | `'wait' \| 'process' \| 'finish' \| 'error'` | `wait` |
 | `[title]` | Title of the step | `string \| TemplateRef` | - |
 | `[description]` | Detail of the step | `string \| TemplateRef` | - |

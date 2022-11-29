@@ -16,8 +16,8 @@ subtitle: 手风琴
 
 ### Accordion
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[activeKey]` | 当前激活 tab 面板的 key, accordion模式下默认第一个元素 | `Array \| string` | - |
 | `[defaultActiveKey]` | 初始化选中面板的 key | `string` | - |
 | `[accordion]` | `手风琴`模式 | `boolean` | `false` |
@@ -25,8 +25,8 @@ subtitle: 手风琴
 
 ### AccordionPanel
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[key]` | 对应 activeKey | `string` | - |
 | `[header]` | 面板头内容 | `string \| TemplateRef` | - |
 

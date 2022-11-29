@@ -6,8 +6,8 @@ title: Carousel
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[selectedIndex]` | current selected index | `number` | `0` |
 | `[dots]` | whether to display the indication dots | `boolean`  | `true` |
 | `[vertical]` | this prop controls the content display direction | `boolean`  | `false` |

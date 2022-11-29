@@ -14,8 +14,8 @@ Result page contains feedback like illustrations, icons and text.
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[imgUrl]` | Image url | `string` | - |
 | `[img]` | Image node (could be `<img src="" />` or `<Icon type="" />`), which will override `imgUrl` | `TemplateRef` | - |
 | `[title]` | Title of result page | `TemplateRef \| string` | - |

@@ -12,8 +12,8 @@ If set mask prop, it is recommended to exit by clicking on any of the mask layer
 
 ### Popover
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[visible]` | Visible state | `boolean` | `false` |
 | `[placement]` | The position of popover | `'left' \|'right' \|'top' \|'bottom' \| 'topLeft' \| 'topRight' \| 'bottomLeft' \| 'bottomRight'` \| `'bottomRight'` |
 | `[mask]` | Whether to display the mask background layer | `boolean` | `false` |
@@ -25,8 +25,8 @@ Properties | Descrition | Type | Default
 
 ### Popover.Item
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[disabled]` | If set disabled | `boolean` | `false` |
 | `[style]` | Item style | `object` | - |
 | `[icon]` | Icon | `TemplateRef` | - |

@@ -14,8 +14,8 @@ A foundational component for inputting text into the app via a keyboard.
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[type]` | Can be `bankCard`; `phone`(which the maxLength is 11 and setting will be ignored); `password`; `number`(in order to evoke the 'numeric keyboard with decimal', this type is not a native number, but `<input type="text" pattern="[0-9]*"/>`); `digit`(represent the native type number); `money`; As well as other standard html input type values | `string` | `'text'` |
 | `[value]` | The value of input for more information about controled component | `string` | - |
 | `[defaultValue]` | Provides an initial value that will change when the user starts typing | `string` | - |

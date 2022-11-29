@@ -13,8 +13,8 @@ Progress Bar to indicate your task's progress.
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[percent]` | Percent value of progress | `number` | `0`
 | `[position]` | Position of progress bar | `'fixed' \| 'normal'` | `'fixed'`
 | `[unfilled]` | Whether to fill unfinished part of progress | `boolean` | `true`
