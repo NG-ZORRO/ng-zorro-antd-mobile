@@ -13,8 +13,8 @@ subtitle: 标签
 
 ## API
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[small]` | 小号标签 | `boolean` | `false` |
 | `[disabled]` | 是否不可用 | `boolean` | `false` |
 | `[closable]` | 是否关闭（非 disabled small 状态） | `boolean` | `false` |

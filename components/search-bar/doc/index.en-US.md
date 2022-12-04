@@ -13,8 +13,8 @@ Normally located below NavBar, the activation status is exited by the Cancel but
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[defaultValue]` | the uncontrolled default value | `string` | - |
 | `[value]` | the controlled current value | `string` | - |
 | `[placeholder]` | placeholder | `string` | - |

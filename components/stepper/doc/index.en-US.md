@@ -11,8 +11,8 @@ title: Stepper
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[min]` | Specifies the minimum value | `number` | - |
 | `[max]` | Specifies the maximum value | `number` | - |
 | `[value]` | Specifies the value of the `Stepper` | `number` | - |

@@ -12,8 +12,8 @@ Instantly reload the content by triggering.
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[direction]` | Pull direction | `'up' \| 'down'` | - |
 | `[distanceToRefresh]` | Distance to refresh | `number` | `25` |
 | `[refreshing]` | Whether the view should be indicating an active refresh | `boolean` | `false` |

@@ -18,15 +18,15 @@ subtitle: 列表
 
 ### List
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[renderHeader]` | list heder | `string \| TemplateRef` | - |
 | `[renderFooter]` | list footer | `string \| TemplateRef` | - |
 
 ### ListItem
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[thumb]` | 缩略图(当为 string 类型时作为 img src) | `string \| TemplateRef` | - |
 | `[extra]` | 右边内容 | `string \| TemplateRef` | - |
 | `[arrow]` | 箭头方向(右,上,下)，如果是`empty`则存在对应的dom,但是不显示 | `'horizontal' \| 'up' \| 'down' \| 'empty'` | - |

@@ -15,8 +15,8 @@ Select between two status, e.g. Select On or Off.
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[checked]` | Whether is checked by default | `boolean` | `false` |
 | `[disabled]` | Whether is disabled | `boolean` | `false` |
 | `[color]` | Background color when the switch is turned on | `string` | `'#4dd865'` |

@@ -17,8 +17,8 @@ subtitle: 文本输入
 
 ## API
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[type]` | 可以是银行卡`bankCard`; 手机号`phone`(此时最大长度固定为11,`maxLength`设置无效); 密码`password`; 数字`number`(为了尽量唤起`带小数点`的数字键盘，此类型并不是原生 number，而是`<input type="text" pattern="[0-9]*" />`); `digit`(表示原生的 number 类型); `money` 以及其他标准 html input type 类型 | `string` | `'text'` |
 | `[value]` | value | `string` | - |
 | `[defaultValue]` | 设置初始默认值 | `string` | - |

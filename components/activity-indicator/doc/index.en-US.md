@@ -25,8 +25,8 @@ title: ActivityIndicator
 
 ### ActivityIndicator
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[animating]` | Whether to show the indicator | `boolean`  | `true`  |
 | `[size]` | Size of the indicator | `'small' \| 'large'` | `'small'`  |
 | `[toast]` | Whether to use toast style | `boolean` | `false`  |

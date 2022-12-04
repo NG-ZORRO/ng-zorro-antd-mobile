@@ -13,8 +13,8 @@ The red dot at corner for notification and getting user attention.
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 `[size]` | Size of badge | `'large' \| 'small'` | `'small'`
 `[text]` | Text or number inside badge | `string \| number` | -
 `[corner]` | Whether is badge at corner position | `boolean` | `false`

@@ -8,6 +8,6 @@ Layout controls
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[size]` | up and down margins | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |

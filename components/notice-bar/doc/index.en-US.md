@@ -13,13 +13,13 @@ Component to display a system message, event notice and etc. Which is under the 
 ## API
 
 ## NoticeBar
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[option]` | NoticeBar params | `object` | `{ mode: '', icon: '', action: '', content: '', fontSize: '14px', scrolling: true, marqueeProps: { loop: true, leading: 500, trailing: 8000, fps: 200, style: {} } }` |
 
 ## option NoticeBar params
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[mode]` | Type of NoticeBar | `'closable' \| 'link'` | - |
 | `[icon]` | Set the icon at the start position | `TemplateRef` | - |
 | `[action]` | Text which is used to replace icon | `TemplateRef` | - |

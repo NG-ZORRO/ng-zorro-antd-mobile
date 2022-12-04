@@ -26,8 +26,8 @@ constructor(private _toast: ToastService) {}
 
 The component provide several static methods：
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[content]` | Toast content | `string \| TemplateRef` | - |
 | `[duration]` | Delay time to close, which units is millisecond | `number` | `3000` |
 | `[onClose]` | A callback function Triggered when the Toast is closed | `Function` | - |

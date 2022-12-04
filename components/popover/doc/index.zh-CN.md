@@ -13,8 +13,8 @@ subtitle: 气泡
 
 ### Popover
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[visible]` | 当前显隐状态 | `boolean` | `false` |
 | `[placement]` | 气泡的位置 | `'left' \|'right' \|'top' \|'bottom' \| 'topLeft' \| 'topRight' \| 'bottomLeft' \| 'bottomRight'` \| `'bottomRight'` |
 | `[mask]` | 是否显示遮罩背景层 | `boolean` | `false` |
@@ -26,8 +26,8 @@ subtitle: 气泡
 
 ### Popover.Item
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `disabled` | 是否禁用 | `boolean` | `false` |
 | `style` | item 样式 | `object` | - |
 | `icon` | icon | `TemplateRef` | - |

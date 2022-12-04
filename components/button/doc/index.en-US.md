@@ -9,8 +9,8 @@ To trigger an operation.
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[type]` | Button type | `'default' \| 'primary' \| 'ghost' \| 'warning'` | `'default'` |
 | `[size]` | Button size | `'large' \| 'small'` | `large`|
 | `[disabled]` | Set disabled | `boolean` | `false` |

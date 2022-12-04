@@ -18,8 +18,8 @@ Call out oprations from one side of screen with gesture.
 
 ### SwipeAction
 
-Properties | Descrition | Type | Default
------------|------------|------|--------|
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[left]` | Left buttons for `swipeout` | `Array` | - |
 | `[right]` | Right buttons for `swipeout` | `Array` | - |
 | `[autoClose]` | Auto hide after button is pressed | `boolean` | `false` |
@@ -29,7 +29,7 @@ Properties | Descrition | Type | Default
 
 ### Button
 
-| Properties | Descrition | Type | Default |
+| Properties | Description | Type | Default |
 |------|------------------|-------------------------|--------|
 | `[text]` | Text of button | `string` | `'Click'` |
 | `[style]` | Style of button | `object` | `{}` |

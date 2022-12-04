@@ -15,8 +15,8 @@ subtitle: 结果页
 
 ## API
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[imgUrl]` | 插图 url | `string` | - |
 | `[img]` | 插图元素 (可以为`<img src="" />`/`<Icon type="" />`等), 会覆盖 imgUrl 设置 | `TemplateRef` | - |
 | `[title]` | title 文案 | `TemplateRef \| string` | - |

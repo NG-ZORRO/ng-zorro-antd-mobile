@@ -26,8 +26,8 @@ constructor(private _toast: ToastService) {}
 
 组件提供了五个静态方法，参数如下：
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[content]` | 提示内容 | `string \| TemplateRef` | - |
 | `[duration]` | 自动关闭的延时，单位毫秒 | `number` | `3000` |
 | `[onClose]` | 关闭后回调 | `Function` | - |

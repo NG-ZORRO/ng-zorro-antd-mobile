@@ -13,13 +13,13 @@ subtitle: 通告栏
 ## API
 
 ## NoticeBar
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[option]` | 公告栏参数 | `object` | `{mode: '', icon: '', action: '', content: '', fontSize: '14px', scrolling: true, marqueeProps: { loop: true, leading: 500, trailing: 8000, fps: 200, style: {} }}` |
 
 ## option 公告栏参数
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[mode]` | 提示类型 | `'closable' \| 'link'` | - |
 | `[icon]` | 在开始位置设置图标 | `TemplateRef` | - |
 | `[action]` | 用于替换操作 icon 的文案 | `TemplateRef` | - |

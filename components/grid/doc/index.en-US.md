@@ -12,8 +12,8 @@ We divided the design area into a number of aliquots in horizontal and vertical.
 
 ## API
 
-Properties | Description | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[data]` | Data record array to be rendered  | `Array<{icon: string, text: string}>` | `[]` |
 | `[columnNum]` | The number of columns  | `number` | `4` |
 | `[hasLine]` | Whether to show border  | `boolean` | `true` |

@@ -14,8 +14,8 @@ title: SegmentedControl
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[tintColor]` | Accent color of the control | `string` | `'#2DB7F5'` |
 | `[disabled]` | Whether the user is able to interact with the control | `boolean` | `false` |
 | `[selectedIndex]` | The index of the segment to be (pre)selected | `number` | `0` |

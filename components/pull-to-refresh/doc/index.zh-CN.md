@@ -13,8 +13,8 @@ subtitle: 拉动刷新
 
 ## API
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[direction]` | 拉动方向 | `'up' \| 'down'` | - |
 | `[distanceToRefresh]` | 刷新距离 | `number` | `25` |
 | `[refreshing]` | 是否显示刷新状态 | `boolean` | `false` |

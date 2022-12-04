@@ -13,8 +13,8 @@ subtitle: 日历
 
 ## API
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[enterDirection]` | 入场方向 | `'horizontal' \| 'vertical'` | `'vertical'` |
 | `[locale]` | 本地化 | `DateModels.Locale` | - |
 | `[pickTime]` |是否选择时间 | `boolean` | `false` |

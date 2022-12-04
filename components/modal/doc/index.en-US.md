@@ -16,8 +16,8 @@ Use to show important information for the system, and ask for user feedback. eg:
 
 ### Modal
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[ngModel]` | Determine whether a modal dialog is visible or not | `boolean` | `false` |
 | `[closable]` | Determine whether a close (x) button is visible or not | `boolean` | `false` |
 | `[maskClosable]` | Determine whether to close the modal dialog when clicked mask of it | `boolean` | `true` |
@@ -31,8 +31,8 @@ Properties | Descrition | Type | Default
 
 ### ModalService.alert(title, message, actions?)
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[title]` | Title | `string \| TemplateRef` | - |
 | `[message]` | Message | `string \| TemplateRef` | - |
 | `[actions]` | Button group | `Array<text: string, onPress: Function, style: object>` | - |
@@ -42,8 +42,8 @@ call `ModalService.alert(title, message, actions?).close()`  can close Alert Mod
 
 ### ModalService.prompt(title, message, callbackOrActions, type?, defaultValue?)
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[title]` | title | `string \| TemplateRef` | - |
 | `[message]` | message | `string \| TemplateRef` | - |
 | `[callbackOrActions]` | button group or callback | `Array<text: string, onPress: Function> \| Function` | - |
@@ -56,8 +56,8 @@ call `ModalService.prompt(title, message, callbackOrActions, type?, defaultValue
 
 ### ModalService.operation(actions?) ( Support Platform：WEB )
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[actions]` | button group | `Array<text: string, onPress: Function, style: object>` | - |
 | `[platform]` | Set the special style depends on platform, works on web only | `'android' \| 'ios'` | `'ios'`|
 | `[customOptions]` | support `maskClosable` params，Determine whether to close the modal dialog when clicked mask of it | `Object` | - |
@@ -75,8 +75,8 @@ constructor(modal: ModalService) {
 
 #### Other Methods/Attributes for ModalService
 
-Methods/Attributes | Description | Type 
--------------------|-------------|-----
+| Methods/Attributes | Description | Type |
+|-------------------|-------------|-----|
 | `openModals` | All currently open Modal list | `ModalRef[]` |
 | `afterAllClose` | Callback called after all Modals closed completely | `Observable<void>` |
 | `closeAll()` | Close all modals | `Function` |
@@ -87,8 +87,8 @@ Methods/Attributes | Description | Type
 
 The dialog created by the service method `ModalService.xxx()` will return a `ModalRef` object that is used to manipulate the dialog, This object has the following methods:
 
-Method | Description
--------|------------
+| Method | Description |
+|-------|------------|
 | `afterOpen` | Same as AfterOpen but of type `Observable<void>` |
 | `afterClose` | Same as AfterClose, but of type `Observable<result:any>` |
 | `close(result: any) => void` | Close (hide) the dialog. <i>Note: When used for a dialog created as a service, this method will destroy the dialog directly (as with the destroy method)</i> |

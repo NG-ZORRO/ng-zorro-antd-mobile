@@ -17,8 +17,8 @@ A `Tabs` is used to allow users to switch between different views.
 
 ### Tabs
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[activeTab]` | Current tab index | `number` | `0` |
 | `[tabBarPosition]` | TabBar's position | `'top' \| 'bottom' \| 'left'  \| 'right'` | `'top'` |
 | `[page]` | The size for the tab of tabbar | `number` | `5` |
@@ -39,6 +39,6 @@ Properties | Descrition | Type | Default
 
 ### TabPane
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[title]` | Tab pane's title | `string \| TemplateRef` | - |

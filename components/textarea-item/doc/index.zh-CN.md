@@ -15,8 +15,8 @@ subtitle: 多行输入
 
 ## API
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[value]` | value | `string` | - |
 | `[defaultValue]` | 设置初始默认值 | `string` | - |
 | `[placeholder]` | placeholder | `string` | - |

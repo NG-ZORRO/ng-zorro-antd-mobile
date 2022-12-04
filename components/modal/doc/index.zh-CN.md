@@ -18,8 +18,8 @@ subtitle: 对话框
 
 ### Modal
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[ngModel]` | 对话框是否可见 | `boolean` | `false` |
 | `[closable]` | 是否显示关闭按钮 | `boolean` | `false` |
 | `[maskClosable]` | 点击蒙层是否允许关闭 | `boolean` | `true` |
@@ -33,8 +33,8 @@ subtitle: 对话框
 
 ### ModalService.alert(title, message, actions?, platform?)
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[title]` | 标题 | `string \| TemplateRef` | - |
 | `[message]` | 提示信息 | `string \| TemplateRef` | - |
 | `[actions]` | 按钮组 | `Array<text: string, onPress: Function, style: object>` | - |
@@ -44,8 +44,8 @@ subtitle: 对话框
 
 ### ModalService.prompt(title, message, callbackOrActions, type?, defaultValue?, placeholders?, platform?)
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[title]` | 标题 | `string \| TemplateRef` | - |
 | `[message]` | 提示信息 | `string \| TemplateRef` | - |
 | `[callbackOrActions]` | 按钮组或回调函数 | `Array<text: string, onPress: Function> \| Function` | - |
@@ -59,8 +59,8 @@ subtitle: 对话框
 
 ### ModalService.operation(actions?, platform?, customOptions?)
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[actions]` | 按钮组 | `Array<text: string, onPress: Function, style: object>` | - |
 | `[platform]` | 设定组件的平台特有样式, 仅限 web | `'android' \| 'ios'` | `'ios'`|
 | `[customOptions]` | 支持 `maskClosable` 入参，控制点击蒙层是否允许关闭 | `Object` | - |

@@ -12,8 +12,8 @@ Tag for categorizing or markuping, can be used to make classification or mark th
 
 ## API
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[small]` | Whether to show a smaller size | `boolean` | `false` |
 | `[disabled]` | Whether is disabled | `boolean` | `false` |
 | `[closable]` | Whether can be closed(invalid in `small` or `disabled` mode) | `boolean` | `false` |

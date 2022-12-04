@@ -15,8 +15,8 @@ You can collapse / expand the content area.
 
 ### Accordion
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[activeKey]` | Current active Panel key, The first panel key on accordion mode | `Array \| string` | - |
 | `[defaultActiveKey]` | Default active key | `string` | - |
 | `[accordion]` | Accordion mode | `boolean` | `false` |
@@ -24,8 +24,8 @@ Properties | Descrition | Type | Default
 
 ### AccordionPanel
 
-Properties | Descrition | Type | Default
------------|------------|------|--------
+| Properties | Description | Type | Default |
+|-----------|------------|------|--------|
 | `[key]` | Corresponding activeKey | `string` | - |
 | `[header]` | Header content of Panel | `string \| TemplateRef` | - |
 

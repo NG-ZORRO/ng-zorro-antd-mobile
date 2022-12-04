@@ -13,8 +13,8 @@ subtitle: 抽屉
 
 ## API
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[sidebar]` | 抽屉里的内容 | `TemplateRef` | - |
 | `[open]` | 开关状态 | `boolean` | `false` |
 | `[position]` | 抽屉所在位置 | `'left' \| 'right' \| 'top' \| 'bottom'` | `'left'` |

@@ -10,8 +10,8 @@ subtitle: 按钮
 
 ## API
 
-参数 | 说明 | 类型 | 默认值
-----|-----|------|------
+| 参数 | 说明 | 类型 | 默认值 |
+|----|-----|------|------|
 | `[type]` | 按钮类型 | `'default' \| 'primary' \| 'ghost' \| 'warning'` | `'default'` |
 | `[size]` | 按钮大小 | `'large' \| 'small'` | `large`|
 | `[disabled]` | 设置禁用 | `boolean` | `false` |
