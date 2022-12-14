@@ -124,7 +124,7 @@ title: Ant Design Mobile of Angular <div class="github-btn"><a class="gh-btn" hr
 
 > 需要 [polyfills](https://angular.io/guide/browser-support)
 
-- `iOS 7.0+`
+- `iOS 10.3+`
 - `Android 4.4+`
 
 ## 当前版本
@@ -133,7 +133,7 @@ title: Ant Design Mobile of Angular <div class="github-btn"><a class="gh-btn" hr
 
 ## 支持 Angular 版本
 
-目前支持 Angular `^14.0.0` 版本。
+目前支持 Angular `^15.0.0` 版本。
 
 ## 安装
 

@@ -33,12 +33,12 @@
 
 > 需要 [polyfills](https://angular.io/guide/browser-support)
 
-- `iOS 7.0+`
+- `iOS 10.3+`
 - `Android 4.4+`
 
 ## Angular 支持
 
-现在支持 Angular `^14.0.0`.
+现在支持 Angular `^15.0.0`.
 
 ## 安装
 

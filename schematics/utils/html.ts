@@ -10,13 +10,12 @@ import { Project } from './devkit-utils/config';
  * @param src the src path of the html file to parse
  */
 export function getHeadTag(host: Tree, src: string) {
-  const document = parse5.parse(src,
-    { locationInfo: true }) as parse5.AST.Default.Document;
+  const document = parse5.parse(src, { sourceCodeLocationInfo: true }) ;
 
   let head;
-  const visit = (nodes: parse5.AST.Default.Node[]) => {
+  const visit = (nodes) => {
     nodes.forEach(node => {
-      const element = <parse5.AST.Default.Element>node;
+      const element = node;
       if (element.tagName === 'head') {
         head = element;
       } else {
