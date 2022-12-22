@@ -33,12 +33,12 @@ This is the **Angular** implementation of **Ant Design Mobile** specification, s
 
 > with [polyfills](https://angular.io/guide/browser-support)
 
-- `iOS 7.0+`
+- `iOS 10.3+`
 - `Android 4.4+`
 
 ## Angular Support
 
-Now Supports Angular `^14.0.0`.
+Now Supports Angular `^15.0.0`.
 
 ## Installation
 

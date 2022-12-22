@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "../out-tsc/spec",
     "baseUrl": "./",
-    "target": "es2020",
+    "target": "es2022",
     "types": [
       "jasmine",
       "node"
