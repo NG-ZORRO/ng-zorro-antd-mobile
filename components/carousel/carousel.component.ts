@@ -226,6 +226,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
           v.top = 0;
           v.margin = `auto ${this.cellSpacing / 2}px`;
         });
+        this.stopTimer();
       }, 0);
     }
   }
@@ -351,7 +352,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     if (afterIndex === 0) {
       setTimeout(() => {
         this._nodeArr.forEach((v, index) => {
-          if (index === this._nodeArr.length - 1) {
+          if (this._nodeArr.length > 1 && index === this._nodeArr.length - 1) {
             v.left = this.vertical ? 0 : -this._rationWidth;
             v.top = this.vertical ? -this._rationWidth : 0;
           } else {
@@ -359,7 +360,9 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
             v.top = this.vertical ? index * this._rationWidth : 0;
           }
         });
-        this.startTimer();
+        if (this._nodeArr.length > 1) {
+          this.startTimer();
+        }
         this.getListStyles(0);
       }, this.speed);
     }
