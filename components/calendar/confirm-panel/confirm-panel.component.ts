@@ -25,6 +25,12 @@ export class CalendarConfirmPanelComponent {
   @Input()
   set disableBtn(value) {
     this.props.disableBtn = value;
+    const { type } = this.props;
+    let btnCls = value ? 'button button-disable' : 'button';
+    if (type === 'one') {
+      btnCls += ' button-full';
+    }
+    this.btnCls = btnCls;
   }
   @Input()
   set formatStr(value) {
@@ -50,7 +56,7 @@ export class CalendarConfirmPanelComponent {
   constructor() {}
 
   formatTime() {
-    const { type, locale, disableBtn } = this.props;
+    const { locale } = this.props;
     let { startDateTime, endDateTime } = this.props;
     if (startDateTime && endDateTime && +startDateTime > +endDateTime) {
       const tmp = startDateTime;
@@ -60,11 +66,6 @@ export class CalendarConfirmPanelComponent {
 
     this.startTimeStr = startDateTime ? this.selfFormatDate(startDateTime) : locale.noChoose;
     this.endTimeStr = endDateTime ? this.selfFormatDate(endDateTime) : locale.noChoose;
-    let btnCls = disableBtn ? 'button button-disable' : 'button';
-    if (type === 'one') {
-      btnCls += ' button-full';
-    }
-    this.btnCls = btnCls;
   }
 
   triggerConfirm = () => {
