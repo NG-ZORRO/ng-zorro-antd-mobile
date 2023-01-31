@@ -6,7 +6,7 @@ import {
   ActionSheetWithOptions,
   ShareActionSheetWithOptions
 } from './action-sheet-options.provider';
-import { PopupService } from '../core/services/popup.service';
+import { PopupService } from 'ng-zorro-antd-mobile/core';
 
 const NORMAL = 'NORMAL';
 const SHARE = 'SHARE';

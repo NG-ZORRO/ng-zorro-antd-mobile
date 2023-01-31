@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { zh_CN } from '../locale-provider/locale';
+
 export interface DatePickerOptionsInterface {
   mode: string;
   value: Date;

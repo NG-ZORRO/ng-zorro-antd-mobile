@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TabsModule } from '../tabs/tabs.module';
+import { TabsModule } from 'ng-zorro-antd-mobile/tabs';
 import { TabBarComponent } from './tab-bar.component';
-import { BadgeModule } from '../badge/badge.module';
+import { BadgeModule } from 'ng-zorro-antd-mobile/badge';
 import { TabBarItemComponent } from './tab-bar-item.component';
 
 @NgModule({

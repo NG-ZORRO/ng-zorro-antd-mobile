@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RadioComponent } from './radio.component';
-import { ListModule } from '../list/list.module';
+import { ListModule } from 'ng-zorro-antd-mobile/list';
 import { RadioItemGroupComponent } from './radio-item-group.component';
 import { RadioItemComponent } from './radio-item.component';
 import { CommonModule } from '@angular/common';

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { StepsComponent } from './steps.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IconModule } from '../icon/icon.module';
+import { IconModule } from 'ng-zorro-antd-mobile/icon';
 import { StepComponent } from './step/step.component';
 
 @NgModule({

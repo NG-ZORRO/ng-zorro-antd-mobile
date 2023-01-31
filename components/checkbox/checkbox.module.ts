@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ListModule } from '../list/list.module';
+import { ListModule } from 'ng-zorro-antd-mobile/list';
 import { CheckboxComponent } from './checkbox.component';
 import { AgreeItemComponent } from './agree-item.component';
 import { CheckboxItemComponent } from './checkbox-item.component';

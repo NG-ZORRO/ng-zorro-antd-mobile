@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GridComponent } from './grid.component';
-import { FlexModule } from '../flex/flex.module';
-import { CarouselModule } from '../carousel/carousel.module';
-import { IconModule } from '../icon/icon.module';
-import { TouchFeedbackModule } from '../core/directive/touch-feedback.module';
-import { NgZorroAntdMobilePipesModule } from '../pipes/ng-zorro-antd-mobile.pipes.module';
+import { FlexModule } from 'ng-zorro-antd-mobile/flex';
+import { CarouselModule } from 'ng-zorro-antd-mobile/carousel';
+import { IconModule } from 'ng-zorro-antd-mobile/icon';
+import { TouchFeedbackModule } from 'ng-zorro-antd-mobile/core';
+import { NgZorroAntdMobilePipesModule } from 'ng-zorro-antd-mobile/pipes';
+
 @NgModule({
   imports: [FlexModule, IconModule, CommonModule, CarouselModule, TouchFeedbackModule, NgZorroAntdMobilePipesModule],
   exports: [GridComponent],

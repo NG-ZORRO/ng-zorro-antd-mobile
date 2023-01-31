@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlexModule } from '../flex/flex.module';
-import { ListModule } from '../list/list.module';
-import { RadioModule } from '../radio/radio.module';
-import { CheckboxModule } from '../checkbox/checkbox.module';
-import { ButtonModule } from '../button/button.module';
+import { FlexModule } from 'ng-zorro-antd-mobile/flex';
+import { ListModule } from 'ng-zorro-antd-mobile/list';
+import { RadioModule } from 'ng-zorro-antd-mobile/radio';
+import { CheckboxModule } from 'ng-zorro-antd-mobile/checkbox';
+import { ButtonModule } from 'ng-zorro-antd-mobile/button';
 import { MenuComponent } from './menu.component';
 import { SubMenuComponent } from './sub-menu/sub-menu.component';
-import { LocaleProviderModule } from '../locale-provider/locale-provider.module';
+import { LocaleProviderModule } from 'ng-zorro-antd-mobile/locale-provider';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({

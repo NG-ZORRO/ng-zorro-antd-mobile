@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { IconHandler } from '../core/util/icon';
-import * as util from './util';
+import { IconHandler } from 'ng-zorro-antd-mobile/core';
+import { deleteKeyFrame, getTextWidth, getWidthHeight, insertKeyFrame } from './util';
+
 @Component({
   selector: 'NoticeBar, nzm-notice-bar',
   templateUrl: './notice-bar.component.html',
@@ -52,15 +53,15 @@ export class NoticeBarComponent implements OnInit, OnDestroy {
     this.style = {
       width: '200%'
     };
-    this._width = util.getTextWidth(this._option.content, this._option.fontSize);
-    if (util.getWidthHeight().width < this._width) {
+    this._width = getTextWidth(this._option.content, this._option.fontSize);
+    if (getWidthHeight().width < this._width) {
       const count = this._option.marqueeProps.loop ? 'infinite' : 1;
       let animationName = `noticebarmarquee_${this._width}`;
       this.style = {
         width: this._width * 2 + 'px',
         'animation-name': animationName,
         'animation-delay': `${this._option.marqueeProps.leading}ms`,
-        'animation-duration': `${(((1 / this._option.marqueeProps.fps) * this._width) / util.getWidthHeight().width) *
+        'animation-duration': `${(((1 / this._option.marqueeProps.fps) * this._width) / getWidthHeight().width) *
           1000}s`,
         'animation-iteration-count': `${count}`
       };
@@ -72,28 +73,28 @@ export class NoticeBarComponent implements OnInit, OnDestroy {
   }
 
   insetKeyframe(animationName) {
-    util.insertKeyFrame(
+    insertKeyFrame(
       `@keyframes ${animationName} {
       0% { left: 0px; }
       100% { left: -${this._width}px }
     }`,
       'notice_bar_animation_cls'
     );
-    util.insertKeyFrame(
+    insertKeyFrame(
       `@-webkit-keyframes ${animationName} {
       0% { left: 0px; }
       100% { left: -${this._width}px }
     }`,
       'notice_bar_animation_cls'
     );
-    util.insertKeyFrame(
+    insertKeyFrame(
       `@-moz-keyframes ${animationName} {
       0% { left: 0px; }
       100% { left: -${this._width}px }
     }`,
       'notice_bar_animation_cls'
     );
-    util.insertKeyFrame(
+    insertKeyFrame(
       `@-o-keyframes ${animationName} {
       0% { left: 0px; }
       100% { left: -${this._width}px }
@@ -113,6 +114,6 @@ export class NoticeBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    util.deleteKeyFrame('notice_bar_animation_cls');
+    deleteKeyFrame('notice_bar_animation_cls');
   }
 }

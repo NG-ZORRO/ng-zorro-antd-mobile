@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IconModule } from '../icon/icon.module';
+import { IconModule } from 'ng-zorro-antd-mobile/icon';
 import { TagComponent } from './tag.component';
 
 @NgModule({

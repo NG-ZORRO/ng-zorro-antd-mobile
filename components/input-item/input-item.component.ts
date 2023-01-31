@@ -13,7 +13,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { isTemplateRef } from '../core/util/check';
+import { isTemplateRef } from 'ng-zorro-antd-mobile/core';
 import { NzmInputType } from './input-item.definitions';
 
 @Component({

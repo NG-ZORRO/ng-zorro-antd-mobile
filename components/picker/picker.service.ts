@@ -1,7 +1,7 @@
 import { Injectable, Injector, ComponentRef } from '@angular/core';
 import { PickerComponent } from './picker.component';
 import { PickerCallBack, PickerOptions } from './picker-options.provider';
-import { PopupService } from '../core/services/popup.service';
+import { PopupService } from 'ng-zorro-antd-mobile/core';
 
 @Injectable()
 export class PickerService extends PopupService {

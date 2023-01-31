@@ -1,8 +1,9 @@
 import { OnInit, Component, OnDestroy, ElementRef, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { LocaleProviderService } from '../locale-provider/locale-provider.service';
+import { LocaleProviderService } from 'ng-zorro-antd-mobile/locale-provider';
 import { ActionSheetRef } from './action-sheet-ref.class';
+
 @Component({
   selector: 'ActionSheet',
   templateUrl: './action-sheet.component.html',

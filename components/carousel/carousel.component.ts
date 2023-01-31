@@ -13,7 +13,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CarouselSlideComponent } from './carousel-slide/carousel-slide.component';
-import * as touchEvent from '../core/util/touch-event';
+import { getEventTarget } from 'ng-zorro-antd-mobile/core';
 
 @Component({
   selector: 'Carousel, nzm-carousel',
@@ -108,8 +108,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     this.stopTimer();
     this._isMouseDown = true;
     this.touchObject = {
-      startX: touchEvent.getEventTarget(event).pageX,
-      startY: touchEvent.getEventTarget(event).pageY,
+      startX: getEventTarget(event).pageX,
+      startY: getEventTarget(event).pageY,
       direction: this.touchObject.direction
     };
   }
@@ -124,22 +124,22 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     }
     const { direction } = this.swipeDirection(
       this.touchObject.startX,
-      touchEvent.getEventTarget(event).pageX,
+      getEventTarget(event).pageX,
       this.touchObject.startY,
-      touchEvent.getEventTarget(event).pageY
+      getEventTarget(event).pageY
     );
     if (direction === 0) {
       return;
     }
     const length = this.vertical
-      ? Math.abs(touchEvent.getEventTarget(event).pageY - this.touchObject.startY)
-      : Math.abs(touchEvent.getEventTarget(event).pageX - this.touchObject.startX);
+      ? Math.abs(getEventTarget(event).pageY - this.touchObject.startY)
+      : Math.abs(getEventTarget(event).pageX - this.touchObject.startX);
     const offset = -this.touchObject.direction * length - this.currentSelectedIndex * this._rationWidth;
     this.touchObject = {
       startX: this.touchObject.startX,
       startY: this.touchObject.startY,
-      endX: touchEvent.getEventTarget(event).pageX,
-      endY: touchEvent.getEventTarget(event).pageY,
+      endX: getEventTarget(event).pageX,
+      endY: getEventTarget(event).pageY,
       length,
       direction,
       offset

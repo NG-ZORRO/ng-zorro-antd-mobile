@@ -11,10 +11,10 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { LocaleProviderService } from '../locale-provider/locale-provider.service';
+import { LocaleProviderService } from 'ng-zorro-antd-mobile/locale-provider';
 import { DatePickerOptions } from './date-picker-options.provider';
-import { ToastService } from '../toast/toast.service';
-import * as velocity from '../core/util/velocity';
+import { ToastService } from 'ng-zorro-antd-mobile/toast';
+import { getVelocity } from 'ng-zorro-antd-mobile/core';
 export type DateMode = 'date' | 'time' | 'datetime' | 'year' | 'month';
 
 @Component({
@@ -57,7 +57,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   currentPicker: any;
   localeNew: any = {};
   unsubscribe$ = new Subject<void>();
-  Velocity = velocity.getVelocity();
+  Velocity = getVelocity();
   errorMessage = '';
   curTLessThanMin = false;
   curTMoreThanMax = false;
@@ -180,7 +180,6 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
       }
       this.init();
     } else {
-      this.updateLessMoreState();
       this.setCurrentSelected(0, this.differY < 0, this.index);
       this.options.onValueChange.emit({ date: this.handleReslut(), index: event.target.id });
       if (this.options.updateNgModel) {
@@ -190,20 +189,6 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
         this.ngModelOnChange(this.handleReslut());
       }
     }
-  }
-
-  updateLessMoreState() {
-    const minT = new Date(this.min_date[0], this.min_date[1], this.min_date[2], this.min_date[3], this.min_date[4]).getTime();
-    const maxT = new Date(this.max_date[0],this.max_date[1], this.max_date[2], this.max_date[3], this.max_date[4]).getTime();
-    const curT = new Date(
-      this.current_time[0],
-      this.current_time[1],
-      this.current_time[2],
-      this.current_time[3] || 0,
-      this.current_time[4] || 0
-    ).getTime();
-    this.curTLessThanMin = curT < minT;
-    this.curTMoreThanMax = curT > maxT;
   }
 
   constructor(

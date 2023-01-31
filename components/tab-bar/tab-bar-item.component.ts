@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild, TemplateRef } from '@angular/core';
-import { TabPaneComponent } from '../tabs/tab-pane.component';
+import { TabPaneComponent } from 'ng-zorro-antd-mobile/tabs';
 
 @Component({
   selector: 'TabBarItem, nzm-tab-bar-item',

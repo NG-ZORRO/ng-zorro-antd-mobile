@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RangeComponent } from './range.component';
 import { CommonModule } from '@angular/common';
-import { SliderModule } from '../slider/slider.module';
+import { SliderModule } from 'ng-zorro-antd-mobile/slider';
 
 @NgModule({
   exports: [RangeComponent],
