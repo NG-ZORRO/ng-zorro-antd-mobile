@@ -1,7 +1,7 @@
 import { DateModels } from '../date/DataTypes';
-import { DatepickerPropsType } from './datepicker.props.component';
-import { formatDate } from '../util';
 import defaultLocale from '../locale/zh_CN';
+import { formatDate } from '../util';
+import { DatepickerPropsType } from './datepicker.props.component';
 
 export interface DatepickerStateType {
   months: DateModels.MonthData[];
@@ -115,6 +115,11 @@ export class CalendarDatePickerBaseComponent {
         outOfDate: tick < minDateTime || tick > maxDateTime
       });
       currentDay = new Date(currentDay.getTime() + 3600 * 24 * 1000);
+      if (currentDay.getHours() === 1) {
+        currentDay.setHours(0);
+      } else if (currentDay.getHours() === 23) {
+        currentDay.setHours(currentDay.getHours() + 1);
+      }
     }
     currentWeek[currentWeek.length - 1].isLastOfMonth = true;
     return weeks;
