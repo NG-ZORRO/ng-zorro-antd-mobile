@@ -111,7 +111,7 @@ describe('DatePickerComponent', () => {
   it('should time mode minDate work', () => {
     component.mode = 'time';
     component.minDate = new Date();
-    component.value1 = new Date(component.maxDate.getTime() - 60 * 1000);
+    component.value1 = new Date(component.minDate.getTime() - 60 * 1000);
     fixture.detectChanges();
     button.click();
     fixture.detectChanges();
