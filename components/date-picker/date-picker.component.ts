@@ -350,9 +350,9 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
         return parseInt(item, 0);
       });
     }
-    const min_date = JSON.parse(JSON.stringify(this.min_date));
-    const max_date = JSON.parse(JSON.stringify(this.max_date));
-    const current_time = JSON.parse(JSON.stringify(this.currentTime));
+    const min_date = [...this.min_date];
+    const max_date = [...this.max_date];
+    const current_time = [...this.currentTime];
     this.localMinDate = [];
     if (this.localMinDate.length === 0) {
       for (let index = 0; index < this.indexArray.length; index++) {
