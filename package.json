@@ -141,5 +141,6 @@
   "browserslist": [
     "iOS > 10.3",
     "Android > 4.4"
-  ]
+  ],
+  "repository": "https://github.com/NG-ZORRO/ng-zorro-antd-mobile.git"
 }
