@@ -114,7 +114,10 @@ export class CalendarDatePickerBaseComponent {
         isLastOfMonth: false,
         outOfDate: tick < minDateTime || tick > maxDateTime
       });
-      currentDay = new Date(currentDay.getTime() + 3600 * 24 * 1000);
+      const year = currentDay.getFullYear();
+      const month = currentDay.getMonth();
+      const date = currentDay.getDate();
+      currentDay = new Date(year, month, date + 1);
     }
     currentWeek[currentWeek.length - 1].isLastOfMonth = true;
     return weeks;
