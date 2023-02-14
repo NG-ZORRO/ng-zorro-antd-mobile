@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalComponent, ModalServiceComponent } from './modal.component';
 import { ModalService } from './modal.service';
-import { ListModule } from '../list/list.module';
-import { WingBlankModule } from '../wing-blank/wing-blank.module';
-import { WhiteSpaceModule } from '../white-space/white-space.module';
-import { ButtonModule } from '../button/button.module';
-import { InputItemModule } from '../input-item/input-item.module';
+import { ListModule } from 'ng-zorro-antd-mobile/list';
+import { WingBlankModule } from 'ng-zorro-antd-mobile/wing-blank';
+import { WhiteSpaceModule } from 'ng-zorro-antd-mobile/white-space';
+import { ButtonModule } from 'ng-zorro-antd-mobile/button';
+import { InputItemModule } from 'ng-zorro-antd-mobile/input-item';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { PopupService } from '../core/services/popup.service';
+import { PopupService } from 'ng-zorro-antd-mobile/core';
+
 @NgModule({
   imports: [
     CommonModule,

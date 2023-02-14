@@ -11,10 +11,10 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { LocaleProviderService } from '../locale-provider/locale-provider.service';
+import { LocaleProviderService } from 'ng-zorro-antd-mobile/locale-provider';
 import { DatePickerOptions } from './date-picker-options.provider';
-import { ToastService } from '../toast/toast.service';
-import * as velocity from '../core/util/velocity';
+import { ToastService } from 'ng-zorro-antd-mobile/toast';
+import { getVelocity } from 'ng-zorro-antd-mobile/core';
 export type DateMode = 'date' | 'time' | 'datetime' | 'year' | 'month';
 
 @Component({
@@ -57,7 +57,7 @@ export class DatePickerComponent implements OnInit, OnDestroy, AfterViewInit {
   currentPicker: any;
   localeNew: any = {};
   unsubscribe$ = new Subject<void>();
-  Velocity = velocity.getVelocity();
+  Velocity = getVelocity();
   errorMessage = '';
   curTLessThanMin = false;
   curTMoreThanMax = false;

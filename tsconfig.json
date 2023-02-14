@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "module": "esnext",
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -9,13 +10,22 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
+    "strict": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
     "target": "es2022",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ]
-  }
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2020", "dom"],
+    "paths": {
+      "ng-zorro-antd-mobile": ["components/index.ts"],
+      "ng-zorro-antd-mobile/*": ["components/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true
+  },
+  "include": ["./components/**/*.ts", "./site/**/*.ts"]
 }

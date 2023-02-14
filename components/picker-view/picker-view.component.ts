@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, Input, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
-import { PickerComponent } from '../picker/picker.component';
+import { PickerComponent } from 'ng-zorro-antd-mobile/picker';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 @Component({
   selector: 'PickerView, nzm-picker-view',
   templateUrl: './picker-view.component.html',

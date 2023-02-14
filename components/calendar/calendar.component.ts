@@ -12,10 +12,9 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateModels } from './date/DataTypes';
-import zhCN from './locale/zh_CN';
-import enUS from './locale/en_US';
+import { zh_CN, en_US } from 'ng-zorro-antd-mobile/locale-provider';
 import { CalendarPropsType } from './calendar.props.component';
-import { LocaleProviderService } from '../locale-provider/locale-provider.service';
+import { LocaleProviderService } from 'ng-zorro-antd-mobile/locale-provider';
 import { mergeDateTime, isSameDate } from './util/index';
 import { takeUntil } from 'rxjs/operators';
 import { CalendarDatePickerComponent } from './datepicker/datepicker.component';
@@ -48,7 +47,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   props = {
     visible: false,
     showHeader: true,
-    locale: zhCN,
+    locale: zh_CN.Calendar,
     pickTime: false,
     showShortcut: false,
     prefixCls: 'rmc-calendar',
@@ -77,9 +76,9 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
   @Input()
   set locale(value) {
     if (value === 'enUS') {
-      this.props.locale = enUS;
+      this.props.locale = en_US.Calendar;
     } else if (value === 'zhCN') {
-      this.props.locale = zhCN;
+      this.props.locale = zh_CN.Calendar;
     }
 
     this._unsubscribe$.next();
@@ -299,7 +298,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
 
     this.writeModelData(date);
     return newState;
-  }
+  };
 
   writeModelData(date) {
     if (this._dateModelValue instanceof Array) {
@@ -353,14 +352,14 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     };
 
     this.showClear = !!this.state.startDate;
-  }
+  };
 
   triggerSelectHasDisableDate = (date: Date[]) => {
     this.triggerClear();
     if (this.onSelectHasDisableDate) {
       this.onSelectHasDisableDate.emit(date);
     }
-  }
+  };
 
   onClose = () => {
     this.state = {
@@ -372,7 +371,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
       clientHight: 0
     } as CalendarStateType;
     this.showClear = !!this.state.startDate;
-  }
+  };
 
   triggerConfirm = () => {
     const { startDate, endDate } = this.state;
@@ -384,7 +383,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
       this.onConfirm.emit({ startDate, endDate });
     }
     this.onClose();
-  }
+  };
 
   triggerCancel() {
     if (this.props.onCancel) {
@@ -408,7 +407,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
       }
       this.showClear = !!this.state.startDate;
     }, 0);
-  }
+  };
 
   onTimeChange = (date: Date) => {
     const { startDate, endDate } = this.state;
@@ -417,7 +416,7 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
     } else if (startDate) {
       this.state.startDate = date;
     }
-  }
+  };
 
   shortcutSelect = (startDate: Date, endDate: Date, props = this.props) => {
     this.state = {
@@ -426,11 +425,11 @@ export class CalendarComponent implements ControlValueAccessor, OnInit, OnDestro
       ...this.selectDate(endDate, true, { startDate }, props)
     };
     this.showClear = !!this.state.startDate;
-  }
+  };
 
   setClientHeight = (height: number) => {
     this.state.clientHight = height;
-  }
+  };
 
   ngOnInit() {
     const defaultValue = this.props.defaultValue;

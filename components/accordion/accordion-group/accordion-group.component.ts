@@ -10,7 +10,8 @@ import {
 } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AccordionService } from '../accordion.service';
-import { isTemplateRef } from '../../core/util/check';
+import { isTemplateRef } from 'ng-zorro-antd-mobile/core';
+
 @Component({
   selector: 'AccordionPanel, nzm-accordion-panel',
   templateUrl: './accordion-group.component.html',

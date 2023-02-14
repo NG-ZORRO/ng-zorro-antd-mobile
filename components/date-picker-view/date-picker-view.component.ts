@@ -12,8 +12,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DatePickerComponent } from '../date-picker/date-picker.component';
-import { DatePickerOptions } from '../date-picker/date-picker-options.provider';
+import { DatePickerComponent, DatePickerOptions } from 'ng-zorro-antd-mobile/date-picker';
 
 @Component({
   selector: 'DatePickerView, nzm-date-picker-view',

@@ -1,18 +1,18 @@
-function insertKeyFrame(rule, className) {
+export function insertKeyFrame(rule, className) {
   const style = document.createElement('style');
   style.setAttribute('class', className);
   style.innerHTML = rule;
   document.body.appendChild(style);
 }
 
-function deleteKeyFrame(className) {
+export function deleteKeyFrame(className) {
   const styleDom = document.getElementsByClassName(className);
   while (styleDom.length > 0) {
     styleDom[0].remove();
   }
 }
 
-function getWidthHeight() {
+export function getWidthHeight() {
   const w = window;
   const d = document;
   const e = d.documentElement;
@@ -23,7 +23,7 @@ function getWidthHeight() {
   };
 }
 
-function getTextWidth(text, font) {
+export function getTextWidth(text, font) {
   const _dom = document.createElement('div');
   _dom.innerHTML = text;
   _dom.style.position = 'absolute';
@@ -36,4 +36,4 @@ function getTextWidth(text, font) {
   return _w;
 }
 
-export { insertKeyFrame, deleteKeyFrame, getWidthHeight, getTextWidth };
+ 

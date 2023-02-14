@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core';
-import { zh_CN, en_US } from '../../locale-provider/locale';
+import { zh_CN, en_US } from 'ng-zorro-antd-mobile/locale-provider';
 import { CalendarTimePickerPropsType } from './PropsType';
 
 @Component({

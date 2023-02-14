@@ -1,7 +1,7 @@
 import { DateModels } from '../date/DataTypes';
 import { DatepickerPropsType } from './datepicker.props.component';
 import { formatDate } from '../util';
-import defaultLocale from '../locale/zh_CN';
+import { zh_CN } from 'ng-zorro-antd-mobile/locale-provider';
 
 export interface DatepickerStateType {
   months: DateModels.MonthData[];
@@ -14,7 +14,7 @@ export class CalendarDatePickerBaseComponent {
     infiniteOpt: false,
     defaultDate: new Date(),
     initalMonths: 6,
-    locale: defaultLocale
+    locale: zh_CN.Calendar
   } as DatepickerPropsType;
 
   state: any = {
@@ -81,7 +81,7 @@ export class CalendarDatePickerBaseComponent {
       return 0;
     }
     return +new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  }
+  };
 
   genWeekData = (firstDate: Date) => {
     const minDateTime = this.getDateWithoutTime(this.props.minDate);
@@ -121,7 +121,7 @@ export class CalendarDatePickerBaseComponent {
     }
     currentWeek[currentWeek.length - 1].isLastOfMonth = true;
     return weeks;
-  }
+  };
 
   genMonthData(date?: Date, addMonth: number = 0) {
     if (!date) {
@@ -225,7 +225,7 @@ export class CalendarDatePickerBaseComponent {
         console.warn('Unusable date. You can handle by onSelectHasDisableDate.', unuseable);
       }
     }
-  }
+  };
 
   computeVisible = (clientHeight: number, scrollTop: number) => {
     let needUpdate = false;
@@ -236,7 +236,8 @@ export class CalendarDatePickerBaseComponent {
     const filterFunc = (vm: DateModels.MonthData) =>
       vm.y &&
       vm.height &&
-      (vm.y + vm.height > scrollTop - MAX_VIEW_PORT && vm.y < scrollTop + clientHeight + MAX_VIEW_PORT);
+      vm.y + vm.height > scrollTop - MAX_VIEW_PORT &&
+      vm.y < scrollTop + clientHeight + MAX_VIEW_PORT;
 
     if (this.props.infiniteOpt && this.visibleMonth.length > 12) {
       this.visibleMonth = this.visibleMonth.filter(filterFunc).sort((a, b) => +a.firstDate - +b.firstDate);
@@ -277,7 +278,7 @@ export class CalendarDatePickerBaseComponent {
     }
 
     return needUpdate;
-  }
+  };
 
   createOnScroll = () => {
     // let timer: any;
@@ -305,7 +306,7 @@ export class CalendarDatePickerBaseComponent {
       //   }
       // }, 50);
     };
-  }
+  };
 
   baseOnCellClick = (day: DateModels.CellData) => {
     if (!day.tick) {
@@ -314,5 +315,5 @@ export class CalendarDatePickerBaseComponent {
     if (this.props.onCellClick) {
       this.props.onCellClick(new Date(day.tick));
     }
-  }
+  };
 }
