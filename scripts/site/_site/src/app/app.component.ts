@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   docsearch = null;
   kitchenUrl = window.location.origin + '/#/kitchen-sink?lang=zh-CN';
   language = 'zh';
-  versionList = ['0.12.x', '1.0.6', '2.0.7', '3.0.3', '4.0.0', '5.0.3', '6.0.2', '7.0.1'];
+  versionList = ['0.12.x', '1.0.6', '2.0.7', '3.0.3', '4.0.0', '5.0.3', '6.0.2', '7.0.1', '8.0.0'];
   versionMap = {
     '0.12.x': '0.12.5',
     '1.0.6': '2001.0.6',
@@ -31,9 +31,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     '4.0.0': '2014.0.0',
     '5.0.3': '2015.0.3',
     '6.0.2': '2016.0.2',
-    '7.0.1': '2017.0.1'
+    '7.0.1': '2017.0.1',
+    '8.0.0': '2018.0.0'
   };
-  currentVersion = '7.0.1';
+  currentVersion = '8.0.0';
   isHomeURL = true;
   isKitchenURL = false;
   demoTitle = '';
@@ -94,7 +95,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         inputSelector: '#search-box input',
         algoliaOptions: { hitsPerPage: 5, facetFilters: [`tags:${this.language}`] },
         transformData(hits) {
-          hits.forEach(hit => {
+          hits.forEach((hit) => {
             hit.url = hit.url.replace('ng.mobile.ant.design', location.host);
             hit.url = hit.url.replace('https:', location.protocol);
           });
@@ -115,7 +116,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   changeColor(res: { color: { hex: string } }) {
     const changeColor = () => {
-      ((window as unknown) as SpWindowProps).less
+      (window as unknown as SpWindowProps).less
         .modifyVars({
           '@primary-color': res.color.hex
         })
@@ -131,7 +132,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (this.lessLoaded) {
       changeColor();
     } else {
-      ((window as unknown) as SpWindowProps).less = {
+      (window as unknown as SpWindowProps).less = {
         async: true
       };
       this.loadScript(lessUrl).then(() => {
@@ -153,10 +154,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.routerList.components.forEach(group => {
+    this.routerList.components.forEach((group) => {
       this.componentList = this.componentList.concat([...group.children]);
     });
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       if (
         event &&
         event['url'] &&
@@ -179,21 +180,20 @@ export class AppComponent implements OnInit, AfterViewInit {
         }
       }
       if (event instanceof NavigationEnd) {
-        const currentDemoComponent = this.componentList.find(component => `/${component.path}` === this.router.url);
+        const currentDemoComponent = this.componentList.find((component) => `/${component.path}` === this.router.url);
         if (currentDemoComponent) {
           this.title.setTitle(`${currentDemoComponent.zh} ${currentDemoComponent.label} - NG-ZORRO-MOBILE`);
         }
-        const currentIntroComponent = this.routerList.intro.find(component => `/${component.path}` === this.router.url);
+        const currentIntroComponent = this.routerList.intro.find(
+          (component) => `/${component.path}` === this.router.url
+        );
         if (currentIntroComponent) {
           this.title.setTitle(`${currentIntroComponent.label} - NG-ZORRO-MOBILE`);
         }
         if (this.router.url !== '/' + this.searchComponent) {
           this.searchComponent = null;
         }
-        this.language = this.router.url
-          .split('/')
-          [this.router.url.split('/').length - 1].split('#')[0]
-          .split(';')[0];
+        this.language = this.router.url.split('/')[this.router.url.split('/').length - 1].split('#')[0].split(';')[0];
         // this.nzI18nService.setLocale(this.language === 'en' ? en_US : zh_CN);
         if (this.docsearch) {
           this.docsearch.algoliaOptions = { hitsPerPage: 5, facetFilters: [`tags:${this.language}`] };
@@ -228,7 +228,7 @@ export class AppComponent implements OnInit, AfterViewInit {
             document.querySelector('span.edit-button') &&
             document.querySelector('span.edit-button').addEventListener(
               'mouseenter',
-              function() {
+              function () {
                 setTimeout(() => {
                   if (document.querySelector('#qrcode')) {
                     this.qrcode = new window['QRCode'](document.querySelector('#qrcode'), {
@@ -246,7 +246,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
     this.initColor();
     const self = this;
-    window.addEventListener('hashchange', function(event) {
+    window.addEventListener('hashchange', function (event) {
       if (event && event['newURL'] && event['newURL'].indexOf('/kitchen-sink') >= 0) {
         self.isKitchenURL = true;
       } else {
