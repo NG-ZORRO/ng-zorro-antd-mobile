@@ -13,6 +13,21 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 8.0.0(2023-02-14)
+### Bug Fixes
+
+* **calendar:** 修复日历组件夏令时的问题 ([#874](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/874)) ([3210fa7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/3210fa75cd74dcd04ace6bb279ac349515344bca))
+* **calendar:** 修复日历组件时间范围选择问题 ([#870](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/870)) ([5939e45](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/5939e45822fbaf27bf640fc6c29879f7a67f29a4))
+* **carousel:** 修复走马灯数量为1时的轮询问题 ([#865](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/865)) ([4cbefd4](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/4cbefd418ae479572b6654abd415a225b568a6c6))
+* **datePicker:** 修复datePickerView 初始化问题 ([#873](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/873)) ([cd69290](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/cd69290146074b546e785c8a7957dd1acebdb3f3))
+
+### Features
+
+* **all:** change site version ([9f6b8cc](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/9f6b8cc03a0ec6302a2ce715c80b3585e008f8ea))
+* **all:** support Angular 15 ([fd4adba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/fd4adbae8546e38bdb74252391db90201eb45969))
+* **all:** support-import-by-module ([#871](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/871)) ([7fa1e17](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7fa1e17047e230d7f86a85df1e89d2762ddb0efd))
+* **dependencies:** Upgrade partial dependencies to be compatible with angular15 ([#867](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/867)) ([607efab](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/607efab30102daf693281da526d6187ca483b544))
+
 ## 7.0.0(2022-12-05)
 
 ### Bug Fixes
