@@ -23,10 +23,10 @@ timeline: true
 
 ### Features
 
-* **all:** change site version ([9f6b8cc](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/9f6b8cc03a0ec6302a2ce715c80b3585e008f8ea))
-* **all:** support Angular 15 ([fd4adba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/fd4adbae8546e38bdb74252391db90201eb45969))
-* **all:** support-import-by-module ([#871](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/871)) ([7fa1e17](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7fa1e17047e230d7f86a85df1e89d2762ddb0efd))
-* **dependencies:** Upgrade partial dependencies to be compatible with angular15 ([#867](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/867)) ([607efab](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/607efab30102daf693281da526d6187ca483b544))
+* **all:** 修改站点版本 ([9f6b8cc](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/9f6b8cc03a0ec6302a2ce715c80b3585e008f8ea))
+* **all:** 支持 Angular 15 ([fd4adba](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/fd4adbae8546e38bdb74252391db90201eb45969))
+* **all:** 支持import-by-module ([#871](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/871)) ([7fa1e17](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/7fa1e17047e230d7f86a85df1e89d2762ddb0efd))
+* **dependencies:** 升级Angular15的依赖 ([#867](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/867)) ([607efab](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/607efab30102daf693281da526d6187ca483b544))
 
 ## 7.0.0(2022-12-05)
 
