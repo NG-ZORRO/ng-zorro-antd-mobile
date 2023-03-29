@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     '5.0.3': '2015.0.3',
     '6.0.2': '2016.0.2',
     '7.0.1': '2017.0.1',
-    '8.0.0': '2018.0.0'
+    '8.0.0': '2018.0.11'
   };
   currentVersion = '8.0.0';
   isHomeURL = true;
