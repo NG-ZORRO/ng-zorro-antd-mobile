@@ -10,7 +10,7 @@ export default {
   dateTimeFormat: 'MM/dd/yyyy w hh:mm',
   dateFormat: 'yyyy/MM/dd w',
   noChoose: 'No Choose',
-  week: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fir', 'Sat'],
+  week: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   clear: 'Clear',
   selectTime: 'Select Time',
   selectStartTime: 'Select Start Time',
