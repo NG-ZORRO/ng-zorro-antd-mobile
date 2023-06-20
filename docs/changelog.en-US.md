@@ -13,6 +13,19 @@ timeline: true
 - Monthly release: minor version at the end of every month for new features.
 - Major version release is not included in this schedule for breadking change and new features.
 
+## 9.0.0(2023-06-20)
+
+### Bug Fixes
+
+* **changelog:** fix language bug; ([57a34b7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/57a34b7014f7b7751d27f92042d0f82d25616643))
+* **calendar:** fix typo in calendar english day names ([#881](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/881)) ([cbcc512](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/cbcc512bf4b220c7831bc4ba881420ba0ba1fda6))
+* **popover:** remove user agent styles ([#882](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/882)) ([a505f59](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/a505f595187c43742c6a73650fecbf523ec32fd5))
+
+### Features
+
+* **all:** support Angular 16 ([#883](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/883)) ([67d08da](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/67d08da3a2fe853013e7f5809d312e1616bd10ae))
+* **website:** update site cdn version ([#877](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/877)) ([994b63b](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/994b63b205370e1e9cd481cc803b9168ead40c2d))
+
 ## 8.0.0(2023-02-14)
 ### Bug Fixes
 

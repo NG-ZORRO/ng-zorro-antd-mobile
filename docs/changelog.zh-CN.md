@@ -13,6 +13,19 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 9.0.0(2023-06-20)
+
+### Bug Fixes
+
+* **changelog:** 修复语言错误; ([57a34b7](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/57a34b7014f7b7751d27f92042d0f82d25616643))
+* **calendar:** 修复日历英文日期错误 ([#881](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/881)) ([cbcc512](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/cbcc512bf4b220c7831bc4ba881420ba0ba1fda6))
+* **popover:** 删除 user agent 样式 ([#882](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/882)) ([a505f59](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/a505f595187c43742c6a73650fecbf523ec32fd5))
+
+### Features
+
+* **all:** 升级支持 Angular 16 ([#883](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/883)) ([67d08da](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/67d08da3a2fe853013e7f5809d312e1616bd10ae))
+* **website:** 更新站点CDN版本 ([#877](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/877)) ([994b63b](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/994b63b205370e1e9cd481cc803b9168ead40c2d))
+
 ## 8.0.0(2023-02-14)
 ### Bug Fixes
 
