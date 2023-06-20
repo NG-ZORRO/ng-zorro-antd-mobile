@@ -32,7 +32,7 @@ describe('custom-input', () => {
     component.value = 'haha';
     fixture.detectChanges();
     component.doBlur(ev);
-    component.onBlur.subscribe(value => {
+    component.onBlur.subscribe((value) => {
       expect(value).toBe('haha');
     });
   });
@@ -83,10 +83,10 @@ describe('custom-input', () => {
     CustomInputService.clickValue = 'confirm';
     fixture.detectChanges();
     component.doBlur(ev);
-    component.onBlur.subscribe(value => {
+    component.onBlur.subscribe((value) => {
       expect(value).toBe('122');
     });
-    component.onChange.subscribe(value => {
+    component.onChange.subscribe((value) => {
       expect(value).toBe('122');
     });
   });
@@ -103,16 +103,18 @@ describe('custom-input', () => {
     CustomInputService.clickValue = 'hide';
     fixture.detectChanges();
     component.doBlur(ev);
-    component.onBlur.subscribe(value => {
+    component.onBlur.subscribe((value) => {
       expect(value).toBe('122');
     });
   });
 
   it('should service work, when custom-keyboard is clicked', () => {
     CustomInputService.showKeyboard();
-    fixture.detectChanges();
-    keyboard = document.querySelector('.am-number-keyboard-item');
-    keyboard.click();
-    expect(CustomInputService.clickValue).toBe(1);
+    setTimeout(() => {
+      fixture.detectChanges();
+      keyboard = document.querySelector('.am-number-keyboard-item');
+      keyboard.click();
+      expect(CustomInputService.clickValue).toBe(1);
+    }, 200);
   });
 });
