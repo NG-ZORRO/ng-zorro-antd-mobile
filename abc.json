@@ -1,0 +1,8 @@
+{
+  "assets": {
+    "type": "command",
+    "command": {
+      "cmd": ["mv ./dist $BUILD_DEST"]
+    }
+  }
+}
