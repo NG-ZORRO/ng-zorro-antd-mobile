@@ -9,7 +9,7 @@ const collectionPath = join('./node_modules/@schematics/angular/collection.json'
 export async function createTestApp(): Promise<UnitTestTree> {
   const baseRunner = new SchematicTestRunner('schematics', collectionPath);
   return await baseRunner
-    .runSchematicAsync('application', {
+    .runSchematic('application', {
       directory: '',
       name: 'app',
       prefix: 'app',
@@ -22,6 +22,5 @@ export async function createTestApp(): Promise<UnitTestTree> {
       style: 'scss',
       skipTests: false,
       minimal: false
-    })
-    .toPromise();
+    });
 }

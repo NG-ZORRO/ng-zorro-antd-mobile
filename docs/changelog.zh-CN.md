@@ -13,6 +13,14 @@ timeline: true
 - 次版本号：每月发布一个带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
+## 10.0.0(2024-01-04)
+
+
+### Features
+
+* **all:** 升级支持 Angular 17 ([#886](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/issues/886)) ([31e8ca5](https://github.com/NG-ZORRO/ng-zorro-antd-mobile/commit/31e8ca5869140768b6a10c8a4e8e362c99b62c78))
+
+
 ## 9.0.0(2023-06-20)
 
 ### Bug Fixes

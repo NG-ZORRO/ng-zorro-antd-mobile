@@ -80,14 +80,14 @@ function generateTemplate(docsPath, name, zh, en) {
     generateTitle(zh.meta.title, '', zh.path),
     angularNonBindAble(zh.content, name),
     generateStyle(zh.content)
-  )
+  ).replaceAll('@', '&#64;')
   );
   fs.writeFileSync(path.join(docsPath, `${name}-en.html`), wrapperDocs(
     generateToc(en.meta, en.raw),
     generateTitle(en.meta.title, '', en.path),
     angularNonBindAble(en.content, name),
     generateStyle(en.content)
-  ),
+  ).replaceAll('@', '&#64;'),
   );
 }
 

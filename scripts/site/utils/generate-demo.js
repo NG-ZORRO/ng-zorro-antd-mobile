@@ -5,8 +5,8 @@ const camelCase = require('./camelcase');
 const PrismAngular = require('./angular-language-marked');
 module.exports = function (showCaseComponentPath, result) {
   const demoTemplate = generateTemplate(result);
-  fs.writeFileSync(path.join(showCaseComponentPath, `zh.html`), demoTemplate.zh);
-  fs.writeFileSync(path.join(showCaseComponentPath, `en.html`), demoTemplate.en);
+  fs.writeFileSync(path.join(showCaseComponentPath, `zh.html`), demoTemplate.zh.replaceAll('@', '&#64;'));
+  fs.writeFileSync(path.join(showCaseComponentPath, `en.html`), demoTemplate.en.replaceAll('@', '&#64;'));
   const demoComponent = generateDemoComponent(result);
   fs.writeFileSync(path.join(showCaseComponentPath, `zh.component.ts`), demoComponent.zh);
   fs.writeFileSync(path.join(showCaseComponentPath, `en.component.ts`), demoComponent.en);
