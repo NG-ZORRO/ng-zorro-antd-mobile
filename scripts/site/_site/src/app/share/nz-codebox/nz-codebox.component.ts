@@ -351,7 +351,7 @@ export class AppModule { }
         '@angular/router': '^17.0.0',
         '@ant-design/icons-angular': '^17.0.0',
         rxjs: '~7.6.0',
-        'zone.js': '~0.13.0',
+        'zone.js': '~0.14.0',
         'ng-zorro-antd-mobile': '10.0.0'
       },
       tags: ['stackblitz', 'sdk']
