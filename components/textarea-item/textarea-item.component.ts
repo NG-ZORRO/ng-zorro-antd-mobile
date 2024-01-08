@@ -70,7 +70,6 @@ export class TextareaItemComponent implements OnInit, AfterContentChecked, Contr
       this._value = v;
     }
     this.textRef.nativeElement.value = this._value;
-    this._onChange(this._value);
   }
   @Input()
   get defaultValue(): string {
