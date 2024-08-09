@@ -9,13 +9,16 @@
       "projectType": "application",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist",
+            "outputPath": {
+              "base": "dist"
+            },
             "index": "./site/src/index.html",
-            "main": "./site/src/main.ts",
             "tsConfig": "./site/src/tsconfig.app.json",
-            "polyfills": "./site/src/polyfills.ts",
+            "polyfills": [
+              "./site/src/polyfills.ts"
+            ],
             "assets": [
               "site/src/assets",
               "site/src/favicon.ico",
@@ -31,12 +34,11 @@
               "site/src/styles.less"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "./site/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -63,8 +65,6 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "serviceWorker": false
             }
           },
@@ -73,11 +73,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-zorro-antd-mobile:build"
+            "buildTarget": "ng-zorro-antd-mobile:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-zorro-antd-mobile:build:production"
+              "buildTarget": "ng-zorro-antd-mobile:build:production"
             }
           }
         }

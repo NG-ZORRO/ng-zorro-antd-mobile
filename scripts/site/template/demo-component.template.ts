@@ -58,7 +58,6 @@ export class {{componentName}} implements OnInit, AfterViewInit, OnDestroy {
   }
 
   {{code}};
-  {{rawCode}};
 
   constructor(private sanitizer: DomSanitizer) { }
 

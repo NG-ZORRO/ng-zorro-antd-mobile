@@ -128,19 +128,7 @@
   }
 
   .code-expand-icon {
-    position: absolute;
-    right: 16px;
-    bottom: 23px;
     cursor: pointer;
-    width: 16px;
-    height: 16px;
-    line-height: 16px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 8px;
-    background-color: rgba(256, 256, 256, 0.6);
-    z-index: 1000;
   }
 
   .code-expand-icon-show,
@@ -174,7 +162,7 @@
   }
 
   .highlight-wrapper {
-    display: block;
+    display: none;
     overflow: auto;
     border-radius: 0 0 @border-radius-sm @border-radius-sm;
     max-height: 150px;
@@ -197,14 +185,42 @@
   }
 
   &-actions {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    text-align: right;
-    > i,
-    > form {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+    border-top: 1px dashed @site-border-color-split;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    > form,
+    > span {
+      position: relative;
       display: inline-block;
-      margin-left: 8px;
+      width: 16px;
+      height: 16px;
+      margin-left: 16px;
+      vertical-align: top;
+
+      .ant-row-rtl & {
+        margin-right: 16px;
+        margin-left: 0;
+      }
+
+      &:first-child {
+        margin-left: 0;
+
+        .ant-row-rtl & {
+          margin-right: 0;
+        }
+      }
+    }
+
+    > form {
+      top: -2px;
     }
   }
 
