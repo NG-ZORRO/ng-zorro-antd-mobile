@@ -118,7 +118,7 @@ export class SliderHandleComponent implements OnInit, OnDestroy {
       this._handleStatus = 'end';
       this._isDraging = false;
       const pos = event.changedTouches[0].clientX;
-      this._value = Math.round(this.calcValueByPos(pos));
+      this._value = Math.max(this._min, Math.min(this._max, Math.round(this.calcValueByPos(pos))));
       this.left = this.calcOffset(this._value);
       this.onAfterChange.emit(this._value);
     }
@@ -155,7 +155,7 @@ export class SliderHandleComponent implements OnInit, OnDestroy {
       this._handleStatus = 'end';
       this._isDraging = false;
       const pos = event.clientX;
-      this._value = Math.round(this.calcValueByPos(pos));
+      this._value = Math.max(this._min, Math.min(this._max, Math.round(this.calcValueByPos(pos))));
       this.left = this.calcOffset(this._value);
       this.onAfterChange.emit(this._value);
     }
